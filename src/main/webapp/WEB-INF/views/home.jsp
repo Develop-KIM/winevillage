@@ -9,7 +9,7 @@
 <body>
 	<h2>스프링 부트 프로젝트</h2>
 	<ul>
-		<li><a href="/">루트</a>
+		<li><a href="/">루트!</a>
 	</ul>
 </body>
 </html>
