@@ -9,5 +9,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 컨트롤러와 Mapper사이에서 매개역할을 하는 인터페이스를 namespace로 지정한다.
 xml파일에서는 클래스에 대한 import가 불가능하므로 아래와 같이 패키지의 풀경로를 지정해야 한다.
  -->
-<mapper namespace="com.edu.springboot.jdbc.IMemberService">
+<mapper>
 </mapper>
