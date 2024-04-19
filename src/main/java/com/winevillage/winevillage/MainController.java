@@ -20,5 +20,9 @@ public class MainController {
 	public String pay() {
 		return "pay/order_write";
 	}
+	@GetMapping("/product_lists.do")
+	public String public_list() {
+		return "product/product_lists";
+	}
 	
 }
