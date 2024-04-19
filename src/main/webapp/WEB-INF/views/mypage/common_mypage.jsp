@@ -20,7 +20,7 @@
         RC_Initialize('https://waapi.winenara.com:18099', "", "s3klkmjskuf6n4ruqsf4t1673qfpejlf", "visitor");
     </script> -->
 <!--백로그 API-->
-<meta id="CsrfSecrets" name="witplus_csrf_token" 
+<meta id="CsrfSecrets" name="witplus_csrf_token"
 	content="be7b38b9302ff3c05cc7f68a617d7dd7" />
 
 <script async
@@ -46,81 +46,6 @@
 	</div>
 	<!-- //skip_menu -->
 	<!-- header - 로그인 상태 -->
-	<form action="https://www.winenara.com/login" id="LoginPostFrm"
-		onkeydown="javascript:onEnterLogin();" method="post"
-		accept-charset="utf-8">
-		<input type="hidden" name="witplus_csrf_token"
-			value="be7b38b9302ff3c05cc7f68a617d7dd7" />
-		<div class="layer login_layer" id="login_layer">
-			<div class="display_table">
-				<div class="table_cell">
-					<div class="layer_area">
-						<h2 class="layer_tit">회원서비스</h2>
-						<button type="button" class="layer_close"
-							onclick="commonUI.layer.close()">닫기</button>
-						<div class="layer_con">
-							<div class="login_tab">
-								<p class="check">
-									<span>기존회원</span>
-								</p>
-								<p>
-									<span><a href="/member/join/law_agreement">신규회원가입</a></span>
-								</p>
-							</div>
-							<div class="social_login">
-								<h2 class="social_tit">소셜아이디로 로그인</h2>
-								<ul>
-									<li><a href="#none" class="social_btn naver">네이버</a></li>
-									<li><a href="#none" class="social_btn kakao">카카오</a></li>
-									<li><a href="#none" class="social_btn google">구글</a></li>
-									<!-- <li><a href="#none" class="social_btn apple">애플</a></li> -->
-								</ul>
-							</div>
-							<div class="form_area">
-								<ul>
-									<li>
-										<div class="form_box">
-											<input type="text" id="login_user_id" name="login_user_id"
-												value="" placeholder="아이디를 입력하세요">
-										</div>
-									</li>
-									<li>
-										<div class="form_box">
-											<input type="password" id="login_passwd" name="login_passwd"
-												placeholder="비밀번호를 입력하세요">
-										</div>
-									</li>
-								</ul>
-							</div>
-							<input type="hidden" id="login_return_url_param"
-								name="login_return_url_param">
-							<div class="save_box">
-								<div class="checkbox">
-									<input type="checkbox" name="login_auto" id="login_auto"
-										value="Y" checked> <label for="login_auto">로그인유지</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" name="id_save" id="id_save" value="Y">
-									<label for="id_save">아이디저장</label>
-								</div>
-								<p class="input_info_txt">※ 공공장소에서는 꺼주세요.</p>
-							</div>
-							<div class="btn_area">
-								<button type="button" class="btn_txt btn_black" id="loginBtn">
-									<span>로그인</span>
-								</button>
-							</div>
-							<div class="login_sub_btn">
-								<a href="/member/forgoten/forgoten_id" class="btn">아이디
-									찾기</a> <a href="/member/forgoten/forgoten_pw" class="btn">비밀번호
-									재발급</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
 	<!-- 와인 프로파일 레이어 -->
 	<!-- /mypageping/wine_profile_ajax.php LOAD -->
 	<div class="layer wine_profile_layer"></div>
@@ -278,8 +203,7 @@
 								<p class="info">봄에 어울리는 색, 그리고 향을 테마로 준비한 이달의 와인 5종을 소개합니다.
 								</p>
 								<div class="img">
-									<img src=".././images/product/mb_recom_lnb.jpg"
-										alt="">
+									<img src=".././images/product/mb_recom_lnb.jpg" alt="">
 								</div>
 								<div class="btn_box">
 									<span class="date">2022.04.01</span>
@@ -355,10 +279,8 @@
 							<div class="box cate">
 								<p class="tit">카테고리</p>
 								<ul>
-									<li><a
-										href="/product/group_product_lists?group_cd=1901">신상품</a></li>
-									<li><a
-										href="/product/group_product_lists?group_cd=1902">베스트</a></li>
+									<li><a href="/product/group_product_lists?group_cd=1901">신상품</a></li>
+									<li><a href="/product/group_product_lists?group_cd=1902">베스트</a></li>
 									<li><a href="/event/event_lists">프로모션</a></li>
 									<li><a href="/cs/special">대량구매 할인</a></li>
 								</ul>
@@ -905,8 +827,7 @@
 						<li><a href="/mypage/action/qna_lists">문의내역확인</a></li>
 						<li><a href="/mypage/account/password_cert">회원정보수정</a></li>
 						<li><a href="/mypage/account/sns_connect">SNS 연동관리</a></li>
-						<li><a href="/mypage/account/change_password">비밀번호
-								변경</a></li>
+						<li><a href="/mypage/account/change_password">비밀번호 변경</a></li>
 						<li><a href="/mypage/account/withdrawal">회원탈퇴</a></li>
 					</ul>
 				</div>
@@ -957,8 +878,7 @@
 						<ul class="depth_02">
 							<li><a href="/mypage/action/qna_lists">문의내역확인</a></li>
 							<li class="on"><a href="/mypage/account/password_cert">회원정보수정</a></li>
-							<li><a href="/mypage/account/change_password">비밀번호
-									변경</a></li>
+							<li><a href="/mypage/account/change_password">비밀번호 변경</a></li>
 							<li><a href="/mypage/account/withdrawal">회원탈퇴</a></li>
 						</ul></li>
 				</ul>
