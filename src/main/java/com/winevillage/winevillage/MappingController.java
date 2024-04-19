@@ -29,5 +29,9 @@ public class MappingController {
 		return "mainpage/mainpage";
 	}
 
+	@GetMapping("/product_lists.do")
+	public String product_lists() {
+		return "product/product_lists";
+	}
 
 }
