@@ -2051,7 +2051,7 @@
 	</section>
 	<!-- //contents -->
 	<!-- footer -->
-	
+	<%@ include file="../common/footer.jsp" %>
 	<!-- //footer -->
 	<script language=javascript>
     $(".quick_menu .menu_open").on("click", function () {
