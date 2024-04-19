@@ -47,7 +47,7 @@
 .mypage_lnb .common_lnb .my_class_info ul li .num_box span{position:relative;display:inline-block;font-size:16px;font-weight:500;vertical-align:middle}
 .mypage_lnb .common_lnb .my_class_info ul li .num_box em{position:relative;display:inline-block;margin-left:11px;padding-left:5px;font-size:12px;font-weight:500;color:#999;vertical-align:middle}
 .mypage_lnb .common_lnb .my_class_info ul li .num_box em::before{content:'';position:absolute;top:50%;left:0;margin-top:-5px;width:1px;height:10px;background-color:#DDDDDD}
-.mypage_lnb .common_lnb .my_class_info ul li.on .num_box span::after{content:'';position:absolute;top:4px;right:-6px;display:inline-block;width:6px;height:6px;border-radius:50%;background-color:#B5302F}
+/* .mypage_lnb .common_lnb .my_class_info ul li.on .num_box span::after{content:'';position:absolute;top:4px;right:-6px;display:inline-block;width:6px;height:6px;border-radius:50%;background-color:#B5302F} */
 .mypage_lnb .common_lnb .my_class_info ul li .info_switch{display:flex;align-items:center}
 .mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch .btn_switch{min-width:54px;height:21px}
 .mypage_lnb .common_lnb .my_class_info ul li .info_switch .css_switch .btn_switch .bar{width:18px;height:18px;}
