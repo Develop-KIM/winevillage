@@ -20,7 +20,7 @@
         RC_Initialize('https://waapi.winenara.com:18099', "", "s3klkmjskuf6n4ruqsf4t1673qfpejlf", "visitor");
     </script> -->
 <!--백로그 API-->
-<meta id="CsrfSecrets" name="witplus_csrf_token"
+<meta id="CsrfSecrets" name="witplus_csrf_token" 
 	content="be7b38b9302ff3c05cc7f68a617d7dd7" />
 
 <script async
