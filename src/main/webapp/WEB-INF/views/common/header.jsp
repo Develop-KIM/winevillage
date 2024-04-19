@@ -81,7 +81,7 @@
 				<div class="gnb">
 					<ul>
 						<li class=""><a
-							href="product/product_lists9852.html?sh_category1_cd=10000&amp;sh_category2_cd=10100">WINE</a>
+							href="product/product_lists9852.do?category=">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
