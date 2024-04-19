@@ -6,9 +6,9 @@
 .js_tabCon{display:none}
 .js_tabCon.on{display:block}
 .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{top:4px}
-.ui-datepicker .ui-datepicker-prev span{background:url(../../images/shop/default/mb_ico_arrow_left.png)center no-repeat;background-size:16px}
-.ui-datepicker .ui-datepicker-next span{background:url(../../images/shop/default/mb_ico_arrow_right.png)center no-repeat;background-size:16px}
-.content.intro_page{display:table;padding:0 20px;width:100%;height:100vh;background:url(../../images/shop/main/mb_intro_bg.jpg)center no-repeat;background-size:100% 100%}
+.ui-datepicker .ui-datepicker-prev span{background:url(../../images/default/mb_ico_arrow_left.png)center no-repeat;background-size:16px}
+.ui-datepicker .ui-datepicker-next span{background:url(../../images/default/mb_ico_arrow_right.png)center no-repeat;background-size:16px}
+.content.intro_page{display:table;padding:0 20px;width:100%;height:100vh;background:url(../../images/main/mb_intro_bg.jpg)center no-repeat;background-size:100% 100%}
 .intro_page .intro_area{display:table-cell;vertical-align:middle;}
 .intro_page .intro_area .txt_area .inner_box{padding:20px;box-sizing:border-box;background:rgba(0, 0, 0, 0.8);border:1px solid #AC8B68}
 .intro_page .intro_area .txt_area .inner_box h2.logo{margin:0 auto;width:150px}
@@ -19,12 +19,12 @@
 .intro_page .intro_area .txt_area .inner_box .btn_area .btn_txt.btn_black{background:#AC8B68}
 .intro_page .intro_area .txt_area .inner_box .btn_area .btn_txt{background:#fff}
 .intro_page .intro_area .txt_area .inner_box .sub_area{text-align:center}
-.intro_page .intro_area .txt_area .inner_box .sub_area .sub_txt{display:inline-block;padding-left:22px;margin-top:20px;text-align:center;color:#fff;font-size:14px;line-height:20px;background:url(../../images/shop/default/ico_nineteen.png)0 center no-repeat;background-size:20px}
+.intro_page .intro_area .txt_area .inner_box .sub_area .sub_txt{display:inline-block;padding-left:22px;margin-top:20px;text-align:center;color:#fff;font-size:14px;line-height:20px;background:url(../../images/default/ico_nineteen.png)0 center no-repeat;background-size:20px}
 /* header */
 .header .top_banner a{display:block}
 .header .top_banner a .banner{overflow:hidden;background:#AC8B68}
 .header .top_banner a .banner h3.banner_tit{height:30px;color:#fff;font-size:13px;font-weight:400;line-height:30px;text-align:center}
-.header .top_banner a .banner h3.banner_tit span{padding-right:20px;background:url(../../images/shop/default/ico_top_banner_arrow.png) 100% 62% no-repeat;background-size:5px}
+.header .top_banner a .banner h3.banner_tit span{padding-right:20px;background:url(../../images/default/ico_top_banner_arrow.png) 100% 62% no-repeat;background-size:5px}
 /* footer - quick */
 .footer .quick_menu{position:fixed;right:20px;bottom:90px;text-align:center;z-index:400}
 .footer .quick_menu .list{display:none}
@@ -40,7 +40,7 @@
 .footer .quick_menu .list li.top .icon img{position:absolute;top:50%;left:50%;width:23px;height:13px;margin:-6px 0 0 -13px}
 .footer .quick_menu .list li.top .txt{text-indent:-9999px;overflow:hidden}
 .footer .quick_menu .open_box{width:70px;margin-top:10px;text-align:center}
-.footer .quick_menu .menu_open{width:40px;height:40px;border-radius:50%;background:#333 url(../../images/shop/default/icon_plus_wh.png) no-repeat center/24px;text-indent:-9999px;overflow:hidden;transition:all 1s}
+.footer .quick_menu .menu_open{width:40px;height:40px;border-radius:50%;background:#333 url(../../images/default/icon_plus_wh.png) no-repeat center/24px;text-indent:-9999px;overflow:hidden;transition:all 1s}
 .footer .quick_menu.on .list{display:block}
 .footer .quick_menu.on .menu_open{transform:rotate(-45deg)}
 /* login */
@@ -73,17 +73,17 @@
 .layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li{display:inline-block;vertical-align:middle;margin-right:10px;width:50px;height:50px;text-indent:-9999px;border-radius:50%}
 .layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li:last-of-type{margin-right:0}
 .layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn{display:block;width:100%;height:100%}
-.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.naver{background:url(../../images/shop/default/ico_naver.png)center no-repeat;background-size:cover}
-.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.kakao{background:url(../../images/shop/default/ico_kakao.png)center no-repeat;background-size:cover}
-.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.face{background:url(../../images/shop/default/ico_face.png)center no-repeat;background-size:cover}
-.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.google{background:url(../../images/shop/default/ico_google.png)center no-repeat;background-size:cover}
-.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.apple{background:url(../../images/shop/default/ico_apple.png)center no-repeat;background-size:cover}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.naver{background:url(../../images/default/ico_naver.png)center no-repeat;background-size:cover}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.kakao{background:url(../../images/default/ico_kakao.png)center no-repeat;background-size:cover}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.face{background:url(../../images/default/ico_face.png)center no-repeat;background-size:cover}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.google{background:url(../../images/default/ico_google.png)center no-repeat;background-size:cover}
+.layer.login_layer .display_table .table_cell .layer_area .layer_con .social_login ul li .social_btn.apple{background:url(../../images/default/ico_apple.png)center no-repeat;background-size:cover}
 .layer.login_layer .layer_area .layer_tit{display:block;height:50px;padding:0 20px;font-size:16px;font-weight:500;color:#111}
 .layer.login_layer .layer_area .layer_tit p{position:relative;width:50%}
 .layer.login_layer .layer_area .layer_tit p:first-child::after{content:"";display:block;position:absolute;top:50%;right:0;width:1px;height:22px;margin-top:-11px;background:#ddd}
 .layer.login_layer .layer_area .layer_tit p span{width:auto}
 .layer.login_layer .layer_area .layer_tit p span a{font-size:16px}
-.layer.login_layer .layer_area .layer_tit p.check span{display:inline-block;padding-left:17px;background:url(../../images/shop/default/mb_ico_log_arrow.png) 0 50% no-repeat;background-size:12px;color:#000}
+.layer.login_layer .layer_area .layer_tit p.check span{display:inline-block;padding-left:17px;background:url(../../images/default/mb_ico_log_arrow.png) 0 50% no-repeat;background-size:12px;color:#000}
 /* mypage */
 .content.mypage{padding:30px 20px 120px}
 .content.mypage .inner .page_tit .tit{display:none}
@@ -108,16 +108,16 @@
 .giftcard_page .inner .my_gift .js_tabCon .list{border-top:1px solid #555}
 .giftcard_page .inner .my_gift .js_tabCon .list li{position:relative;padding:20px;box-sizing:border-box;width:100%;border-bottom:1px solid #ddd}
 .giftcard_page .inner .my_gift .js_tabCon .list li .category{display:inline-block;padding:4px 16px;border:1px solid #ddd}
-.giftcard_page .inner .my_gift .js_tabCon .list li .category.box p{padding-left:28px;background:url(../../images/shop/mypage/ico_lists_order.png)no-repeat left;font-size:14px;font-weight:500}
-.giftcard_page .inner .my_gift .js_tabCon .list li .category.box .gift{background-image:url(../../images/shop/mypage/ico_lists_gift.png)}
+.giftcard_page .inner .my_gift .js_tabCon .list li .category.box p{padding-left:28px;background:url(../../images/mypage/ico_lists_order.png)no-repeat left;font-size:14px;font-weight:500}
+.giftcard_page .inner .my_gift .js_tabCon .list li .category.box .gift{background-image:url(../../images/mypage/ico_lists_gift.png)}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info{display:table-cell;vertical-align:middle}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info .tit{font-size:13px;font-weight:700;color:#555}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info .tit>span{position:relative;padding-right:10px;margin-right:10px}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info .tit>span:not(:last-of-type)::after{content:'';position:absolute;top:50%;right:0;display:block;width:1px;height:15px;margin-top:-7.5px;background-color:#DDD}
-.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .type{padding-left:25px;background:url(../../images/shop/mypage/ico_kakao_on.png)no-repeat left;background-size:15px;font-size:12px;font-weight:400}
-.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit.sms .type{background-image:url(../../images/shop/mypage/ico_sms_off.png)}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .type{padding-left:25px;background:url(../../images/mypage/ico_kakao_on.png)no-repeat left;background-size:15px;font-size:12px;font-weight:400}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit.sms .type{background-image:url(../../images/mypage/ico_sms_off.png)}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .btn_send{display:block;margin-top:10px;padding:4px 16px;background-color:#FEE500}
-.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .btn_send span{padding-left:25px;background:url(../../images/shop/mypage/ico_kakao_on.png)no-repeat left;background-size:15px;font-size:14px;font-weight:500;color:#111}
+.giftcard_page .inner .my_gift .js_tabCon .list li .info .tit .btn_send span{padding-left:25px;background:url(../../images/mypage/ico_kakao_on.png)no-repeat left;background-size:15px;font-size:14px;font-weight:500;color:#111}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info .txt{margin-top:10px;font-size:0}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info .txt span{position:relative;display:inline-block;/* padding-right:10px;margin-right:10px; */color:#999;font-size:12px;line-height:17px}
 .giftcard_page .inner .my_gift .js_tabCon .list li .info .txt span:not(:first-of-type){margin-left:10px;padding-left:10px}
@@ -161,12 +161,12 @@
 .giftcard_order_page .inner .order_box.tab_area .js_tabBtn li button.sms_btn{border:1px solid #ddd}
 .giftcard_order_page .inner .order_box.tab_area .js_tabBtn li button.kakao_btn::after,
 .giftcard_order_page .inner .order_box.tab_area .js_tabBtn li button.sms_btn::after{display:none}
-.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li button.kakao_btn span{padding-left:25px;background:url(../../images/shop/mypage/ico_kakao_off.png)0 center no-repeat;background-size:15px}
-.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li button.sms_btn span{padding-left:25px;background:url(../../images/shop/mypage/ico_sms_off.png)0 center no-repeat;background-size:15px}
+.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li button.kakao_btn span{padding-left:25px;background:url(../../images/mypage/ico_kakao_off.png)0 center no-repeat;background-size:15px}
+.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li button.sms_btn span{padding-left:25px;background:url(../../images/mypage/ico_sms_off.png)0 center no-repeat;background-size:15px}
 .giftcard_order_page .inner .order_box.tab_area .js_tabBtn li.on button.kakao_btn{background:#FEE500;border:1px solid #FEE500}
-.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li.on button.kakao_btn span{background:url(../../images/shop/mypage/ico_kakao_on.png)0 center no-repeat;background-size:15px}
+.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li.on button.kakao_btn span{background:url(../../images/mypage/ico_kakao_on.png)0 center no-repeat;background-size:15px}
 .giftcard_order_page .inner .order_box.tab_area .js_tabBtn li.on button.sms_btn{color:#fff;background:#0085F4;border:1px solid #0085F4}
-.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li.on button.sms_btn span{background:url(../../images/shop/mypage/ico_sms_on.png)0 center no-repeat;background-size:15px}
+.giftcard_order_page .inner .order_box.tab_area .js_tabBtn li.on button.sms_btn span{background:url(../../images/mypage/ico_sms_on.png)0 center no-repeat;background-size:15px}
 
 .giftcard_order_page .inner .order_box .js_tabCon{margin-top:20px}
 .giftcard_order_page .inner .order_box .js_tabCon .gift_way{display:none}
@@ -194,7 +194,7 @@
 /* .mileage_lists_page .inner .mileage_box{margin-top:30px} */
 .mileage_lists_page .inner .o_lists ul{margin:0;border-top:1px solid #555}
 .mileage_lists_page .inner .o_lists li{padding:20px 0;border-top:0;border-bottom:1px solid #DDD}
-.mileage_lists_page .inner .o_lists li .top_date .store{display:none;margin-left:10px;padding-left:23px;background:url(../../images/shop/default/ico_store.png) 0 50% no-repeat;color:#AC8B68}
+.mileage_lists_page .inner .o_lists li .top_date .store{display:none;margin-left:10px;padding-left:23px;background:url(../../images/default/ico_store.png) 0 50% no-repeat;color:#AC8B68}
 .mileage_lists_page .inner .o_lists li .o_wrap{padding:0 0 15px;overflow:hidden;border-top:0}
 .mileage_lists_page .inner .o_lists li .o_wrap .box.ip_img{float:left;width:60px}
 .mileage_lists_page .inner .o_lists li .o_wrap .box.ip_img picture{height:60px}
@@ -246,10 +246,10 @@
 .recommand_wine .wine_list .list .info .box .satisfaction{display:inline-block;vertical-align:middle;font-size:0}
 .recommand_wine .wine_list .list .info .box .satisfaction span{display:inline-block;vertical-align:middle;margin-right:2px;width:12px;height:18px}
 .recommand_wine .wine_list .list .info .box .satisfaction span:last-of-type{margin-right:0}
-.recommand_wine .wine_list .list .info .box .satisfaction span.on{background:url(../../images/shop/default/ico_star_on.png)center 0 no-repeat;background-size:12px}
-.recommand_wine .wine_list .list .info .box .satisfaction span.off{background:url(../../images/shop/default/ico_star_off.png)center 0 no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .info .box .satisfaction span.on{background:url(../../images/default/ico_star_on.png)center 0 no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .info .box .satisfaction span.off{background:url(../../images/default/ico_star_off.png)center 0 no-repeat;background-size:12px}
 .recommand_wine .wine_list .list .btn_area{margin-top:20px}
-.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/shop/default/ico_app.png)0 center no-repeat;background-size:15px}
+.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/default/ico_app.png)0 center no-repeat;background-size:15px}
 .recommand_wine .wine_list .list .btn_area .btn_txt::after{display:none} */
 .recommand_wine .wine_list .list{border-top:1px solid #555}
 .recommand_wine .wine_list .list li{padding:20px 0;box-sizing:border-box;width:100%;border-bottom:1px solid #ddd}
@@ -267,7 +267,7 @@
 .recommand_wine .wine_list .list .table_box .info .follower_btn{display:block;margin-bottom:15px}
 .recommand_wine .wine_list .list .table_box .info .follower_btn .name{display:inline-block;font-weight:500;color:#111;vertical-align:middle}
 .recommand_wine .wine_list .list .table_box .info .follower_btn .btn{display:inline-block;margin-left:25px;width:100px;height:28px;line-height:26px;border-radius:5px;background:#AC8B68;border:1px solid #AC8B68;font-size:14px;font-weight:500;color:#fff;box-sizing:border-box;text-align:center;vertical-align:middle}
-/* .recommand_wine .wine_list .list .table_box .info .follower_btn .btn span{padding-left:18px;background:url(../../images/shop/mypage/ico_follower_chk.png) 0 center no-repeat;background-size:13px} */
+/* .recommand_wine .wine_list .list .table_box .info .follower_btn .btn span{padding-left:18px;background:url(../../images/mypage/ico_follower_chk.png) 0 center no-repeat;background-size:13px} */
 .recommand_wine .wine_list .list .table_box .info .follower_btn .btn.on{background:#fff;color:#AC8B68}
 .recommand_wine .wine_list .list .table_box .info .follower_btn .btn.on span{background:none;padding-left:0}
 .recommand_wine .wine_list .list .table_box .info .pick_box .pick{color:#999;font-size:14px;line-height:20px}
@@ -280,8 +280,8 @@
 .recommand_wine .wine_list .list .table_box .info .box .satisfaction em i{font-style:normal;font-weight:700;color:#555}
 .recommand_wine .wine_list .list .table_box .info .box .satisfaction span{display:inline-block;vertical-align:middle;margin-right:2px;width:12px;height:18px}
 .recommand_wine .wine_list .list .table_box .info .box .satisfaction span:last-of-type{margin-right:0}
-.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.on{background:url(../../images/shop/default/ico_star_on.png)center 0 no-repeat;background-size:12px}
-.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.off{background:url(../../images/shop/default/ico_star_off.png)center 0 no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.on{background:url(../../images/default/ico_star_on.png)center 0 no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.off{background:url(../../images/default/ico_star_off.png)center 0 no-repeat;background-size:12px}
 .recommand_wine .wine_list .list .table_box .info .info_box{margin-top:15px}
 .recommand_wine .wine_list .list .table_box .info .info_box .tit{margin-bottom:10px;font-size:14px;color:#999}
 .recommand_wine .wine_list .list .table_box .info .info_box span{display:block;color:#555}
@@ -289,7 +289,7 @@
 .recommand_wine .wine_list .list .btn_area{position:relative;margin-top:25px}
 .recommand_wine .wine_list .list .btn_area .tool_tip{position:absolute;top:-26px;left:0;width:83px;height:22px;line-height:24px;background-color:#333;font-size:12px;color:#fff}
 .recommand_wine .wine_list .list .btn_area .tool_tip::before{content:'';display:block;position:absolute;top:22px;left:8px;width:0;height:0;border-top:2px solid #333;border-right:2px solid transparent;border-bottom:2px solid transparent;border-left:2px solid transparent}
-.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/shop/default/ico_app.png)0 center no-repeat;background-size:15px}
+.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/default/ico_app.png)0 center no-repeat;background-size:15px}
 .recommand_wine .wine_list .list .btn_area .btn_txt::after{display:none}
 .recommand_wine .wine_list .btn_area{margin-top:30px}
 .recommand_page .tab_area>ul.tab3>li{width:30%}
@@ -306,12 +306,12 @@
 .law_agreement_page .inner .check_list .list li .chk{display:table-cell;vertical-align:middle;line-height:10px}
 .law_agreement_page .inner .check_list .list li .chk .checkbox label{color:#555;font-size:13px}
 .law_agreement_page .inner .check_list .list li .view{display:table-cell;vertical-align:middle;width:70px;text-align:right}
-.law_agreement_page .inner .check_list .list li .view .view_btn{display:block;padding-right:10px;width:70px;color:#999;font-size:12px;line-height:17px;background:url(../../images/shop/default/ico_gray_arrow.png)100% center no-repeat;background-size:5px}
+.law_agreement_page .inner .check_list .list li .view .view_btn{display:block;padding-right:10px;width:70px;color:#999;font-size:12px;line-height:17px;background:url(../../images/default/ico_gray_arrow.png)100% center no-repeat;background-size:5px}
 .law_agreement_page .inner .check_list .expiry .expiry_list{display:flex;border-top:1px solid #ddd;padding-top:20px}
 .law_agreement_page .inner .check_list .expiry .expiry_list li:not(:first-of-type){margin-left:34px}
 .law_agreement_page .inner .check_list .expiry>p{margin-top:15px;font-size:13px;color:#999}
-.law_agreement_page .inner .check_list .expiry .checkbox input[type='radio'] + label{line-height:20px;background:url(../../images/shop/default/radio.png) no-repeat left/18px;font-size:13px;color:#555}
-.law_agreement_page .inner .check_list .expiry .checkbox input[type='radio']:checked + label{background:url(../../images/shop/default/radio_on.png) no-repeat left/18px}
+.law_agreement_page .inner .check_list .expiry .checkbox input[type='radio'] + label{line-height:20px;background:url(../../images/default/radio.png) no-repeat left/18px;font-size:13px;color:#555}
+.law_agreement_page .inner .check_list .expiry .checkbox input[type='radio']:checked + label{background:url(../../images/default/radio_on.png) no-repeat left/18px}
 .law_agreement_page .inner .social_login{position:relative;margin-top:60px;text-align:center}
 .law_agreement_page .inner .social_login::before{content:'';display:block;position:absolute;top:11px;left:0;width:100%;height:1px;background:#dcdcdc}
 .law_agreement_page .inner .social_login .social_tit{display:inline-block;vertical-align:middle;position:relative;padding:0 15px;box-sizing:border-box;color:#111;font-size:17px;font-weight:500;line-height:24px;text-align:center;background:#fff}
@@ -319,12 +319,12 @@
 .law_agreement_page .inner .social_login ul li{display:inline-block;vertical-align:middle;margin-right:10px;width:50px;height:50px;text-indent:-9999px;border-radius:50%}
 .law_agreement_page .inner .social_login ul li:last-of-type{margin-right:0}
 .law_agreement_page .inner .social_login ul li .social_btn{display:block;width:100%;height:100%}
-.law_agreement_page .inner .social_login ul li .social_btn.naver{background:url(../../images/shop/default/ico_naver.png)center no-repeat;background-size:cover}
-.law_agreement_page .inner .social_login ul li .social_btn.kakao{background:url(../../images/shop/default/ico_kakao.png)center no-repeat;background-size:cover}
-.law_agreement_page .inner .social_login ul li .social_btn.face{background:url(../../images/shop/default/ico_face.png)center no-repeat;background-size:cover}
-.law_agreement_page .inner .social_login ul li .social_btn.google{background:url(../../images/shop/default/ico_google.png)center no-repeat;background-size:cover}
-.law_agreement_page .inner .social_login ul li .social_btn.apple{background:url(../../images/shop/default/ico_apple.png)center no-repeat;background-size:cover}
-.law_agreement_page .inner .social_login ul li .social_btn.id{background:url(../../images/shop/default/ico_id.png)center no-repeat;background-size:cover}
+.law_agreement_page .inner .social_login ul li .social_btn.naver{background:url(../../images/default/ico_naver.png)center no-repeat;background-size:cover}
+.law_agreement_page .inner .social_login ul li .social_btn.kakao{background:url(../../images/default/ico_kakao.png)center no-repeat;background-size:cover}
+.law_agreement_page .inner .social_login ul li .social_btn.face{background:url(../../images/default/ico_face.png)center no-repeat;background-size:cover}
+.law_agreement_page .inner .social_login ul li .social_btn.google{background:url(../../images/default/ico_google.png)center no-repeat;background-size:cover}
+.law_agreement_page .inner .social_login ul li .social_btn.apple{background:url(../../images/default/ico_apple.png)center no-repeat;background-size:cover}
+.law_agreement_page .inner .social_login ul li .social_btn.id{background:url(../../images/default/ico_id.png)center no-repeat;background-size:cover}
 /* member - join - join_form_page */
 .content.join_form_page{padding:30px 20px 120px}
 .join_form_page .inner .connect_info{padding:20px 15px;box-sizing:border-box;border:3px solid #eee}
@@ -406,7 +406,7 @@
 .recommand_lists_page .inner .recommend_list .list li .data_info .patch.cancel{color:#fff;background:#ccc}
 .recommand_lists_page .inner .recommend_list .list li .data_info .draw_day{display:inline-block;vertical-align:middle;margin-left:7px;color:#666;font-size:12px}
 .recommand_lists_page .inner .recommend_list .list li .data_info .cancel_btn{display:inline-block;vertical-align:middle;padding:0 18px;margin-left:5px;height:24px;color:#fff;font-size:12px;line-height:25px;text-align:center;box-sizing:border-box;background:#000}
-.recommand_lists_page .inner .recommend_list .list li .data_info .view_btn{position:absolute;top:0;right:0;width:20px;height:60px;background:url(../../images/shop/default/ico_arrow_right.png)100% center no-repeat;text-indent:-9999px}
+.recommand_lists_page .inner .recommend_list .list li .data_info .view_btn{position:absolute;top:0;right:0;width:20px;height:60px;background:url(../../images/default/ico_arrow_right.png)100% center no-repeat;text-indent:-9999px}
 .recommand_lists_page .inner .recommend_list .list li .info{padding:20px 0;box-sizing:border-box;font-size:0}
 .recommand_lists_page .inner .recommend_list .list li .info .recommend_img{display:inline-block;vertical-align:top;width:80px}
 .recommand_lists_page .inner .recommend_list .list li .info .recommend_img img{overflow:hidden;width:80px;height:80px;border-radius:50%}
@@ -433,19 +433,19 @@
 .recommand_view_page .wine_list .list .table_box .info .pick_box{margin-top:0}
 .recommand_view_page .wine_list .list .table_box .info .box{margin-top:0}
 .recommand_view_page.recommand_wine .wine_list .list .table_box .info .box .satisfaction span{width:14px;height:14px;margin-right:4px;background-size:14px}
-.recommand_view_page.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.on{background-image:url(../../images/shop/mypage/ico_star_point_on.png)}
-.recommand_view_page.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.off{background-image:url(../../images/shop/mypage/ico_star_empty_off.png)}
+.recommand_view_page.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.on{background-image:url(../../images/mypage/ico_star_point_on.png)}
+.recommand_view_page.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.off{background-image:url(../../images/mypage/ico_star_empty_off.png)}
 
 .recommand_view_page .inner .counselor_recommend{margin-top:40px}
 .recommand_view_page .inner .counselor_recommend .recommend_chk{margin:30px 0 0;padding-top:30px;border-top:1px solid #AC8B68}
 .recommand_view_page .inner .counselor_recommend .recommend_chk .chk_tit{color:#111;font-size:16px;font-weight:700;line-height:22px;text-align:center}
 .recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list{display:flex;position:relative;flex-direction:row-reverse;justify-content:center;margin-top:12px}
 .recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list input{position:absolute;top:0;left:0;width:0;height:0}
-.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label{display:inline-block;vertical-align:middle;margin-left:4px;width:16px;height:16px;background:url(../../images/shop/mypage/ico_star_rating.png)center no-repeat;background-size:16px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label{display:inline-block;vertical-align:middle;margin-left:4px;width:16px;height:16px;background:url(../../images/mypage/ico_star_rating.png)center no-repeat;background-size:16px}
 .recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label:last-of-type{margin-left:0}
-.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list input:checked ~ label{background:url(../../images/shop/mypage/ico_star_rating_on.png)center no-repeat;background-size:16px}
-.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label:hover{background:url(../../images/shop/mypage/ico_star_rating_on.png)center no-repeat;background-size:16px}
-.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label:hover ~ label{background:url(../../images/shop/mypage/ico_star_rating_on.png)center no-repeat;background-size:16px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list input:checked ~ label{background:url(../../images/mypage/ico_star_rating_on.png)center no-repeat;background-size:16px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label:hover{background:url(../../images/mypage/ico_star_rating_on.png)center no-repeat;background-size:16px}
+.recommand_view_page .inner .counselor_recommend .recommend_chk .chk_list label:hover ~ label{background:url(../../images/mypage/ico_star_rating_on.png)center no-repeat;background-size:16px}
 
 .recommand_view_page .inner .recommand_request_con{margin-bottom:20px;padding:15px;background-color:#F8F8F8}
 .recommand_view_page .inner .recommand_request_con .tit{display:block;margin-bottom:20px;font-size:16px;color:#000}
@@ -479,15 +479,15 @@
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .price_area .del_price{display:inline-block;vertical-align:middle;margin-right:4px;color:#999;font-size:14px;line-height:20px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .price_area .main_price{display:inline-block;vertical-align:middle;;color:#111;font-size:16px;font-weight:700;line-height:22px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area{margin-top:20px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area .wish{display:inline-block;vertical-align:middle;margin-right:20px;width:24px;height:24px;text-indent:-9999px;background:url(../../images/shop/mypage/ico_wish.png)center no-repeat}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area .cart{display:inline-block;vertical-align:middle;width:24px;height:24px;text-indent:-9999px;background:url(../../images/shop/mypage/ico_cart.png)center no-repeat} */
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area .wish{display:inline-block;vertical-align:middle;margin-right:20px;width:24px;height:24px;text-indent:-9999px;background:url(../../images/mypage/ico_wish.png)center no-repeat}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area .cart{display:inline-block;vertical-align:middle;width:24px;height:24px;text-indent:-9999px;background:url(../../images/mypage/ico_cart.png)center no-repeat} */
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02{margin-top:20px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box{font-size:0;text-align:center}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_patch{display:inline-block;vertical-align:middle}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating{display:inline-block;vertical-align:middle;margin-left:10px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_txt{color:#111;font-size:32px;font-weight:700;line-height:45px;text-align:center}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_icon{position:relative;width:68px;height:12.8px;background:url(../../images/shop/mypage/icon_star_group_empty.png)0 no-repeat;background-size:68px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_icon .bar{position:absolute;top:0;left:0;height:100%;background:url(../../images/shop/mypage/icon_star_group_full.png)0 no-repeat;background-size:68px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_icon{position:relative;width:68px;height:12.8px;background:url(../../images/mypage/icon_star_group_empty.png)0 no-repeat;background-size:68px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .score_icon .bar{position:absolute;top:0;left:0;height:100%;background:url(../../images/mypage/icon_star_group_full.png)0 no-repeat;background-size:68px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_02 .inner_box .wine_rating .sub_score{margin-top:8px;color:#999;font-size:10px;line-height:14px;text-align:center}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar{margin-top:20px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar_list:not(:first-of-type){margin-top:7px}
@@ -502,7 +502,7 @@
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar_list>li .bar_area .bar{display:inline-block;vertical-align:middle;position:relative;overflow:hidden;margin:0 16px;box-sizing:border-box;width:calc(100% - 142px);height:10px;background:#DDD;border-radius:50px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .box.box_03 .rating_bar_list>li .bar_area .bar .gauge{display:block;position:absolute;top:0;left:0;height:100%;background:linear-gradient(270deg, #EA5715 0%, #DC252A 77.6%), #DC252A;border-radius:50px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .wine_comment{position:relative;margin-top:20px;white-space:normal;padding:15px 15px 15px 60px;box-sizing:border-box;border:1px solid #AC8B68}
-.recommand_view_page .inner .recommand_area .recommand_list>li .wine_comment::before{content:'';display:block;position:absolute;top:15px;left:15px;width:30px;height:30px;background:url(../../images/shop/mypage/ico_comment.png)center no-repeat;background-size:30px}
+.recommand_view_page .inner .recommand_area .recommand_list>li .wine_comment::before{content:'';display:block;position:absolute;top:15px;left:15px;width:30px;height:30px;background:url(../../images/mypage/ico_comment.png)center no-repeat;background-size:30px}
 .recommand_view_page .inner .recommand_area .recommand_list>li .wine_comment .txt{padding:15px;box-sizing:border-box;color:#555;font-size:12px;line-height:17px;background:#eee}
 .recommand_view_page .inner .user_recommand{margin-top:30px;padding:15px;box-sizing:border-box;background:#f8f8f8}
 .recommand_view_page .inner .user_recommand .tit{color:#000;font-size:16px;line-height:22px}
@@ -549,7 +549,7 @@
 .about_us_page .inner .typo_txt .txt{color:#555;font-size:14px;line-height:20px;text-align:center}
 .about_us_page .inner .about_middle_banner{position:relative;margin-top:30px}
 .about_us_page .inner .about_middle_banner .f_box{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;width:100%;height:100%;padding:0 5px}
-.about_us_page .inner .about_middle_banner .f_box p{padding-top:28px;background:url(../../images/shop/company/mb_ico_quotes.png) center 0 no-repeat;background-size:27px;font-size:13px;font-weight:500;color:#fff;text-align:center}
+.about_us_page .inner .about_middle_banner .f_box p{padding-top:28px;background:url(../../images/company/mb_ico_quotes.png) center 0 no-repeat;background-size:27px;font-size:13px;font-weight:500;color:#fff;text-align:center}
 
 .about_us_page .inner .about_info{margin-top:30px}
 .about_us_page .inner .js_tab{}

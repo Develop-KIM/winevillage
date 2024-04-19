@@ -12,9 +12,9 @@ public class MainController {
 		return "home";
 	}
 	
-	@GetMapping("/header.do")
+	@GetMapping("/common.do")
 	public String header() {
-		return "common/header";
+		return "common/common";
 	}
 	@GetMapping("/order_write.do")
 	public String pay() {

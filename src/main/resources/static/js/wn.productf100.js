@@ -109,7 +109,7 @@ product.cartProduct = function(products, set) {
     Csrf.Set(_CSRF_NAME_); //토큰 초기화
     $.ajax({
         type: "POST",
-        url : "/shop/cart/insert_cart_ajax",
+        url : "/cart/insert_cart_ajax",
         dataType : 'json',
         data: {'products' : products, 'iscurr' : 'F'},
         success : function (res) {
@@ -219,7 +219,7 @@ product.buyProduct = function(products) {
    Csrf.Set(_CSRF_NAME_); //토큰 초기화
 	$.ajax({
        type: "POST",
-       url : "/shop/cart/insert_cart_ajax",
+       url : "/cart/insert_cart_ajax",
        dataType : 'json',
        data: {'products' : products, 'iscurr' : 'T'},
        success : function (res) {
@@ -227,7 +227,7 @@ product.buyProduct = function(products) {
 		       alert(res.national_msg);
 	       }
 	       if( $.trim(res.status) == "ok"){
-		       location.href = "/shop/order/order_write";
+		       location.href = "/order/order_write";
 	       }else{
 		       alert(res.msg);
 		       return;
@@ -260,9 +260,9 @@ product.likeProduct = function(product_cd) {
 	
 	    if( now_url.indexOf("/main") > -1){
 	        if( now_url.indexOf("/main/main") > -1){
-	            var url = "/shop/mypage/note/wish_proc_ajax?ajax_mode="+ajax_mode;
+	            var url = "/mypage/note/wish_proc_ajax?ajax_mode="+ajax_mode;
 	        } else {
-	            var url = "/shop/mypage/note/wish_proc_ajax?ajax_mode="+ajax_mode;
+	            var url = "/mypage/note/wish_proc_ajax?ajax_mode="+ajax_mode;
 	        }
 	    } else if( now_url.indexOf("/mypage") > -1){
 	        var url = "../note/wish_proc_ajax?ajax_mode="+ajax_mode;

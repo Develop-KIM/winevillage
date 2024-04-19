@@ -72,7 +72,7 @@ input[type='tel']{display:inline-block;width:100%;height:50px;padding:0 14px;bor
 input[type="password"]::placeholder{letter-spacing:-0.05em;color:#999}
 select:disabled,
 input:disabled{background:#eee;color:#999}
-select{display:inline-block;width:100%;height:50px;padding:0 0 0 14px;border:1px solid #dcdcdc;background:url(../../images/shop/default/icon_arrow_down.png) no-repeat 95% 50%;font-size:14px;color:#555;line-height:50px;vertical-align:top;border-radius:0;-webkit-appearance:none;-moz-appearance: none;appearance:none}
+select{display:inline-block;width:100%;height:50px;padding:0 0 0 14px;border:1px solid #dcdcdc;background:url(../../images/default/icon_arrow_down.png) no-repeat 95% 50%;font-size:14px;color:#555;line-height:50px;vertical-align:top;border-radius:0;-webkit-appearance:none;-moz-appearance: none;appearance:none}
 select::-ms-expand{display:none}
 textarea{display:inline-block;width:100%;height:150px;padding:15px 20px;border:1px solid #ddd;background-color:#fff;vertical-align:middle;font-size:14px;color:#555;resize:none} 
 input[type='file'], input[type='image'], input[type='reset'], input[type='button'], input[type='submit']{cursor:pointer}
