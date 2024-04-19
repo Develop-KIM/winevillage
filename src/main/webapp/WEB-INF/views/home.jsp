@@ -17,5 +17,8 @@
 	<ul>
 		<li><a href="/order_write.do">결제</a></li>
 	</ul>
+	<ul>
+		<li><a href="/return_order_list.do">교환/반품내역</a></li>
+	</ul>
 </body>
 </html>

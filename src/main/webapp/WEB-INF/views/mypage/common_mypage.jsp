@@ -944,7 +944,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="mypage_link mb_hidden">
+<!-- 		<div class="mypage_link mb_hidden">
 				<ul class="depth_01">
 					<li><a href="/mypageping/mypage">나의 쇼핑</a>
 						<ul class="depth_02">
@@ -960,9 +960,10 @@
 							<li><a href="/mypage/account/change_password">비밀번호
 									변경</a></li>
 							<li><a href="/mypage/account/withdrawal">회원탈퇴</a></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 		<script>
 	function myPublic(){
