@@ -1640,7 +1640,7 @@
 				behavior:"page_view"
 			});
 			*/
-	}
+	} 
 </script>
 <!--백로그 API-->
 <!--lazy_loading-->
