@@ -4,16 +4,6 @@
 <html lang="ko">
 <head>
 <title>WINENARA 1987 ㅣ 장바구니</title>
-<!-- 삭제 불가 토큰갱신시 사용-->
-<script>
-    var _BASE_URL_ = "https://www.winenara.com/";
-    var _CSRF_NAME_ = "witplus_csrf_token";
-    var sesId = "";
-    var sesCustSeq = "";
-    var session_id = "";
-    var ci_cookie = "s3klkmjskuf6n4ruqsf4t1673qfpejlf";
-</script>
-<!--백로그 API-->
 <script type="text/JavaScript" language="JavaScript"
 	src="https://winenara-recommend-method.s3.ap-northeast-2.amazonaws.com/rcMethod.js"
 	charset="UTF-8"></script>
