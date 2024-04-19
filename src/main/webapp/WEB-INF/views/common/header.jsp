@@ -68,13 +68,13 @@
 			<div class="wrap">
 				<h1 class="logo">
 					<a href="main6f31.html"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-						<source srcset="./images/default/pc_logo.png"
+						<source srcset="./images/default/wine_village.svg"
 							media="(min-width:768px)">
 						<!-- pc이미지 -->
-						<source srcset="./images/default/mb_logo.png"
+						<source srcset="./images/default/wine_village.svg"
 							media="(max-width:767px)">
 						<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-							src="./images/default/pc_logo.png" alt="WINENARA 1987"
+							src="./images/default/wine_village.svg" alt="WINEVILLAGE"
 							draggable="false"><!-- pc이미지 --> </picture>
 					</a>
 				</h1>
