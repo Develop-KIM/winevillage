@@ -8,7 +8,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
-public class MainController {
+public class MappingController {
 
 	@RequestMapping("/")
 	public String landing() {
