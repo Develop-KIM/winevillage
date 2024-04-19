@@ -26,7 +26,7 @@
                 <div class="gnb">
                     <ul>
                         <li class="">
-                            <a href="/product/product_lists?category=${}">WINE</a>
+                            <a href="/product/product_lists?category=">WINE</a>
                             <div class="pc_category_gnb">
                                 <div class="flex_box">
                                     <div class="box wine">
