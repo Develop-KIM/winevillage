@@ -23,7 +23,7 @@
 						<ul class="depth_02">
 							<li class="on"><a href="/order_list.do">주문내역</a></li>
 							<li><a href="/return_order_list.do">교환/반품내역</a></li>
-							<li><a href="/wish_lists.do">위시리스트</a></li>
+							<li><a href="/wish_list.do">위시리스트</a></li>
 							<li><a href="/cart_list.do">장바구니</a></li>
 						</ul></li>
 					<li><a href="#none">개인정보</a>

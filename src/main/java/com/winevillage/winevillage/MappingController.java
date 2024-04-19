@@ -10,14 +10,10 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class MappingController {
 
-	@RequestMapping("/")
-	public String home() {
-		return "home";
+    @RequestMapping("/")
+ 	public String landing() {
+		return "landing";
 	}
-//	@RequestMapping("/")
-//	public String landing() {
-//		return "landing";
-//	}
 	@GetMapping("/common.do")
 	public String header() {
 		return "common/common";
