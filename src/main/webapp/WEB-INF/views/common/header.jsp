@@ -40,7 +40,7 @@
 <!-- <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script> -->
 <script type="text/javascript" src="./js/front_ui9442.js"></script>
 <script src="./js/wn.productf100.js"></script>
-<title>Insert title here</title>
+<title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
 	<header id="header" class="header">
