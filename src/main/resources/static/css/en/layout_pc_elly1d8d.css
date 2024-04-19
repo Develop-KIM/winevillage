@@ -14,19 +14,19 @@
 .step_wrap.lnb .page_tit{line-height:1;padding-top:90px}
 .step_wrap.lnb .page_tit ul{height:26px;line-height:26px;margin-top:30px}
 .step_wrap.lnb .page_tit li{display:inline-block;vertical-align:middle;height:26px;line-height:26px;font-size:18px;font-weight:700;color:#999}
-.step_wrap.lnb .page_tit li::after{content:"";display:inline-block;vertical-align:middle;width:64px;height:26px;background:url(../../images/shop/order/page_tit_arrow.png) no-repeat 50% 50%;background-size:10px}
+.step_wrap.lnb .page_tit li::after{content:"";display:inline-block;vertical-align:middle;width:64px;height:26px;background:url(../../images/order/page_tit_arrow.png) no-repeat 50% 50%;background-size:10px}
 .step_wrap.lnb .page_tit li:last-child::after{display:none}
 .step_wrap.lnb .page_tit li.on{color:#111}
 .lnb_wrap.step_wrap.lnb .page_tit{height:200px;padding-top:36px}
 .lnb_wrap.step_wrap.lnb .page_tit ul{height:auto;line-height:1}
 .lnb_wrap.step_wrap.lnb .page_tit li{height:52px;line-height:52px}
 .lnb_wrap.step_wrap.lnb .page_tit li span{display:inline-block;padding-top:26px;line-height:26px}
-.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(1) span{background:url(../../images/shop/order/ico_cart_gray.png)no-repeat top}
-.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(2) span{background:url(../../images/shop/order/ico_payment_gray.png)no-repeat top}
-.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(3) span{background:url(../../images/shop/order/ico_complete_gray.png)no-repeat top}
-.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(1).on span{background-image:url(../../images/shop/order/ico_cart.png)}
-.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(2).on span{background-image:url(../../images/shop/order/ico_payment.png)}
-.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(3).on span{background-image:url(../../images/shop/order/ico_complete.png)}
+.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(1) span{background:url(../../images/order/ico_cart_gray.png)no-repeat top}
+.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(2) span{background:url(../../images/order/ico_payment_gray.png)no-repeat top}
+.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(3) span{background:url(../../images/order/ico_complete_gray.png)no-repeat top}
+.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(1).on span{background-image:url(../../images/order/ico_cart.png)}
+.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(2).on span{background-image:url(../../images/order/ico_payment.png)}
+.lnb_wrap.step_wrap.lnb .page_tit li:nth-of-type(3).on span{background-image:url(../../images/order/ico_complete.png)}
 .lnb_wrap.step_wrap.lnb .order_tit .page_tit{max-width:1200px}
 .c_lists .top{display:flex;flex-wrap:wrap;justify-content:space-between;margin:40px 0 30px}
 .c_lists .top .checkbox{margin-top:6px}
@@ -77,11 +77,11 @@
 /* order - cart_lists */
 
 /* 220211 장바구니 디자인 변경 */
-.cart_lists_page .tab_area>ul>li.on>button span{background:url(../../images/shop/default/pc_tab_select_gd.png) no-repeat 0 center;background-size:13px}
+.cart_lists_page .tab_area>ul>li.on>button span{background:url(../../images/default/pc_tab_select_gd.png) no-repeat 0 center;background-size:13px}
 .cart_lists_page .tab_area ul li button span em{width:30px;height:30px;font-size:16px;right:-30px;line-height:30px}
 .cart_lists_page .c_lists li{margin:0;padding:0 30px}
-.cart_lists_page .c_lists li .box.ip_img .checkbox input[type='checkbox'] + label{background:url(../../images/shop/default/checkbox_default_gd.png) no-repeat left 50%;background-size:24px}
-.cart_lists_page .c_lists li .box.ip_img .checkbox input[type='checkbox']:checked + label{background:url(../../images/shop/default/checkbox_onclick_gd.png) no-repeat left 50%;background-size:24px}
+.cart_lists_page .c_lists li .box.ip_img .checkbox input[type='checkbox'] + label{background:url(../../images/default/checkbox_default_gd.png) no-repeat left 50%;background-size:24px}
+.cart_lists_page .c_lists li .box.ip_img .checkbox input[type='checkbox']:checked + label{background:url(../../images/default/checkbox_onclick_gd.png) no-repeat left 50%;background-size:24px}
 .cart_lists_page .c_lists li .box.price_amount{position:relative;width:640px}
 /* .cart_lists_page .c_lists li .box.price{font-size:0} */
 .cart_lists_page .c_lists li .box.price .sub_txt{margin-bottom:5px}
@@ -99,7 +99,7 @@
 .cart_lists_page .tab_area ul li button{padding:11px 0}
 .cart_lists_page .radio_area{width:720px;margin:0 auto}
 .cart_lists_page .radio_area .radiobox input[type='radio'] + label{height:44px;padding:12px 0;font-size:18px;line-height:22px}
-.cart_lists_page .radio_area .radiobox input[type='radio']:checked + label span{padding-left:23px;background:url(../../images/shop/default/pc_tab_select.png) no-repeat left 50%}
+.cart_lists_page .radio_area .radiobox input[type='radio']:checked + label span{padding-left:23px;background:url(../../images/default/pc_tab_select.png) no-repeat left 50%}
 .cart_lists_page .radio_area .radiobox input[type='radio']:checked + label::after{height:3px}
 .cart_lists_page .cart_top{display:flex;flex-wrap:wrap;justify-content:space-between;border:1px solid #DCDCDC;margin-bottom:60px;padding:41px 86px 39px 42px}
 .cart_lists_page .cart_top .txt{color:#555}
@@ -303,12 +303,12 @@
 .grade_layer .grade_status li p span i{font-size:18px}
 .grade_layer .grade_status li p.ico_diamond span i,
 .grade_layer .grade_status li em{font-size:14px}
-.grade_layer .grade_status li p.ico_green span{background-image:url(../../images/shop/mypage/pc_ico_grade_status_green.png)}
-.grade_layer .grade_status li p.ico_silver span{background-image:url(../../images/shop/mypage/pc_ico_grade_status_silver.png)}
-.grade_layer .grade_status li p.ico_silver_plus span{background-image:url(../../images/shop/mypage/pc_ico_grade_status_silver_plus.png)}
-.grade_layer .grade_status li p.ico_gold span{background-image:url(../../images/shop/mypage/pc_ico_grade_status_gold.png)}
-.grade_layer .grade_status li p.ico_diamond span{background-image:url(../../images/shop/mypage/pc_ico_grade_status_diamond.png)}
-.grade_layer .grade_status li p.ico_trinity span{background-image:url(../../images/shop/mypage/pc_ico_grade_status_trinity.png)}
+.grade_layer .grade_status li p.ico_green span{background-image:url(../../images/mypage/pc_ico_grade_status_green.png)}
+.grade_layer .grade_status li p.ico_silver span{background-image:url(../../images/mypage/pc_ico_grade_status_silver.png)}
+.grade_layer .grade_status li p.ico_silver_plus span{background-image:url(../../images/mypage/pc_ico_grade_status_silver_plus.png)}
+.grade_layer .grade_status li p.ico_gold span{background-image:url(../../images/mypage/pc_ico_grade_status_gold.png)}
+.grade_layer .grade_status li p.ico_diamond span{background-image:url(../../images/mypage/pc_ico_grade_status_diamond.png)}
+.grade_layer .grade_status li p.ico_trinity span{background-image:url(../../images/mypage/pc_ico_grade_status_trinity.png)}
 .grade_layer .grade_ex dl{margin-bottom:30px}
 .grade_layer .grade_ex dt{width:98px}
 .grade_layer .grade_ex dd{font-size:20px}

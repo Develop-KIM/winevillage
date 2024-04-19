@@ -9,7 +9,7 @@
 .lnb_wrap .menu.tab4 li{width:calc(100%/4)}
 .lnb_wrap .menu li.on{border-bottom:3px solid #AC8B68}
 .lnb_wrap .menu li a span{font-size:18px}
-.lnb_wrap .menu li.on a span{padding-left:23px;background-image:url(../../images/shop/mypage/pc_tab_select_point.png);background-size:13px}
+.lnb_wrap .menu li.on a span{padding-left:23px;background-image:url(../../images/mypage/pc_tab_select_point.png);background-size:13px}
 
 .lnb_wrap.community_lnb, .lnb_wrap.company_lnb{overflow:hidden}
 
@@ -23,7 +23,7 @@
 .mypage_lnb .common_lnb .my{width:418px;height:100%;padding:0 38px 0 0;border-right:10px solid #DDD;font-size:0}
 .mypage_lnb .common_lnb .my img{width:80px;height:80px}
 .mypage_lnb .common_lnb .my .txt{flex-basis:205px}
-.mypage_lnb .common_lnb .my .txt .img{width:80px;height:80px;line-height:80px;background:url(../../images/shop/mypage/pc_ico_grade_status_silver.png) no-repeat;background-size:contain}
+.mypage_lnb .common_lnb .my .txt .img{width:80px;height:80px;line-height:80px;background:url(../../images/mypage/pc_ico_grade_status_silver.png) no-repeat;background-size:contain}
 .mypage_lnb .common_lnb .my .txt .img span{font-size:24px}
 .mypage_lnb .common_lnb .my .txt p{width:calc(100% - 80px);color:#555;font-size:21px;line-height:33px}
 .mypage_lnb .common_lnb .my .txt p .name{font-size:23px}
@@ -47,10 +47,10 @@
 
 .mypage_lnb .common_lnb .my_info li .tit{padding-top:36px;background-size:36px}
 .mypage_lnb .common_lnb .my_info ul li>a span{font-size:24px}
-.mypage_lnb .common_lnb .my_info li:nth-of-type(1) .tit{background-image:url(../../images/shop/mypage/pc_ico_pay.png);background-size:36px}
-.mypage_lnb .common_lnb .my_info li:nth-of-type(2) .tit{background-image:url(../../images/shop/mypage/pc_ico_coupon.png)}
-.mypage_lnb .common_lnb .my_info li:nth-of-type(3) .tit{background-image:url(../../images/shop/mypage/pc_ico_cash.png)}
-.mypage_lnb .common_lnb .my_info li:nth-of-type(4) .tit{background-image:url(../../images/shop/mypage/pc_ico_gift.png)}
+.mypage_lnb .common_lnb .my_info li:nth-of-type(1) .tit{background-image:url(../../images/mypage/pc_ico_pay.png);background-size:36px}
+.mypage_lnb .common_lnb .my_info li:nth-of-type(2) .tit{background-image:url(../../images/mypage/pc_ico_coupon.png)}
+.mypage_lnb .common_lnb .my_info li:nth-of-type(3) .tit{background-image:url(../../images/mypage/pc_ico_cash.png)}
+.mypage_lnb .common_lnb .my_info li:nth-of-type(4) .tit{background-image:url(../../images/mypage/pc_ico_gift.png)}
 
 .mypage_lnb .giftcard_lnb.common_lnb, .mypage_lnb .mileage_lnb.common_lnb{padding:0 0px 0 20px}
 .mypage_lnb .giftcard_lnb.common_lnb .my, .mypage_lnb .mileage_lnb.common_lnb .my{width:378px;padding-right:28px}
@@ -93,7 +93,7 @@
 .lnb_wrap.cs_lnb .pc_lnb .menu li{width:calc(100% / 5)}
 .notice_lists_page .search_box{width:383px;margin:0 auto}
 .notice_lists_page .search_box input{width:calc(100% - 44px);height:40px;line-height:40px;border:0}
-.notice_lists_page .search_box button{width:44px;height:40px;line-height:40px;border:0;background:url(../../images/shop/default/pc_icon_search.png) no-repeat 50%}
+.notice_lists_page .search_box button{width:44px;height:40px;line-height:40px;border:0;background:url(../../images/default/pc_icon_search.png) no-repeat 50%}
 .notice_lists_page .tbl_list{margin-top:42px;border-top:1px solid #555;border-bottom:1px solid #ddd}
 .notice_lists_page .tbl_list .num{display:table-cell}
 .notice_lists_page .tbl_list col.num{display:table-column;width:110px}
@@ -102,7 +102,7 @@
 .notice_lists_page .tbl_list .tbl_list_tit th.num{padding-left:10px}
 .notice_lists_page .tbl_list .notice_lists tr{height:62px;line-height:62px}
 .notice_lists_page .tbl_list .notice_lists tr td.tit .ico_ntc{display:none}
-.notice_lists_page .tbl_list .notice_lists tr td.tit .down_f{width:20px;height:20px;background-image:url(../../images/shop/cs/pc_icon_download.png)}
+.notice_lists_page .tbl_list .notice_lists tr td.tit .down_f{width:20px;height:20px;background-image:url(../../images/cs/pc_icon_download.png)}
 .notice_lists_page .tbl_list .notice_lists tr td.num, .notice_lists_page .tbl_list .notice_lists tr td.date{font-size:16px}
 .notice_lists_page .tbl_list .notice_lists tr td.num{padding-left:10px}
 .notice_lists_page .tbl_list .notice_lists tr td .ico_ntc{padding:0 15px;line-height:30px}
@@ -112,7 +112,7 @@
 .content.notice_view_page{padding:60px 0 120px}
 .notice_view_page .view_page_wrap .con{padding:30px 30px;font-size:16px}
 .notice_view_page .view_page_wrap .down_f_wrap{padding:30px 30px}
-.notice_view_page .view_page_wrap .down_f_wrap button{padding-left:28px;line-height:22px;background-image:url(../../images/shop/cs/mb_icon_download.png);background-size:20px}
+.notice_view_page .view_page_wrap .down_f_wrap button{padding-left:28px;line-height:22px;background-image:url(../../images/cs/mb_icon_download.png);background-size:20px}
 .notice_view_page .view_page_wrap .down_f_wrap button:not(:first-of-type){margin-top:15px}
 
 /* content cs faq_lists */
@@ -179,9 +179,9 @@
 .store_page .store_tab .store_tabCon .store_info .store_img_slide{width:770px}
 .store_page .store_tab .store_tabCon .store_info .info{margin-top:0;padding-left:30px}
 .store_page .store_tab .store_tabCon .store_info .info li:not(:first-of-type){margin-top:30px}
-.store_page .store_tab .store_tabCon .store_info .info li p{padding-left:29px;line-height:23px;background:url(../../images/shop/cs/pc_ico_map.png) no-repeat left;background-size:24px}
-.store_page .store_tab .store_tabCon .store_info .info li p.clock{background-image:url(../../images/shop/cs/pc_ico_clock.png)}
-.store_page .store_tab .store_tabCon .store_info .info li p.master{background-image:url(../../images/shop/cs/pc_ico_master.png)}
+.store_page .store_tab .store_tabCon .store_info .info li p{padding-left:29px;line-height:23px;background:url(../../images/cs/pc_ico_map.png) no-repeat left;background-size:24px}
+.store_page .store_tab .store_tabCon .store_info .info li p.clock{background-image:url(../../images/cs/pc_ico_clock.png)}
+.store_page .store_tab .store_tabCon .store_info .info li p.master{background-image:url(../../images/cs/pc_ico_master.png)}
 .store_page .store_tab .store_tabCon .store_info.map_area{display:block}
 .store_page .store_tab .store_tabCon .store_info.map_area .info{padding:0}
 .store_page .store_tab .store_tabCon .map_area{padding:60px 0}
@@ -189,15 +189,15 @@
 .store_page .store_tab .store_tabCon .map_area strong{margin-bottom:60px;line-height:35px;font-size:24px}
 .store_page .store_tab .store_tabCon .map_area .chk{margin:30px 0}
 .store_page .store_tab .store_tabCon .map_area .chk span{line-height:23px}
-.store_page .store_tab .store_tabCon .map_area .info li p.vehicle{background-image:url(../../images/shop/cs/pc_ico_vehicle.png)}
-.store_page .store_tab .store_tabCon .map_area .info li p.parking{background-image:url(../../images/shop/cs/pc_ico_parking.png)}
+.store_page .store_tab .store_tabCon .map_area .info li p.vehicle{background-image:url(../../images/cs/pc_ico_vehicle.png)}
+.store_page .store_tab .store_tabCon .map_area .info li p.parking{background-image:url(../../images/cs/pc_ico_parking.png)}
 
 .store_page .mb_page_tit{display:none}
 .store_page .store_map{margin-top:54px}
 .store_page .store_map .map{margin:0}
 .store_page .store_map .map #map{height:525px}
 .store_page .store_map .search_store{margin:0;padding:25px}
-.store_page .store_map .search_store select{width:173px;height:55px;line-height:55px;border:1px solid #000;background:url(../../images/shop/company/pc_ico_arrow_down.png) no-repeat calc(100% - 27px) 50%;background-size:17px;font-size:20px}
+.store_page .store_map .search_store select{width:173px;height:55px;line-height:55px;border:1px solid #000;background:url(../../images/company/pc_ico_arrow_down.png) no-repeat calc(100% - 27px) 50%;background-size:17px;font-size:20px}
 .store_page .store_map .search_store input{width:calc(100% - 245px);height:55px;line-height:55px;font-size:20px}
 .store_page .store_map .search_store button{width:230px;height:55px;line-height:55px;font-size:20px}
 .store_page .store_list{width:1045px;margin:0 auto;padding:71px 0 0}
@@ -224,12 +224,12 @@
 .content.member_benefit_page{padding:60px 0 120px}
 .member_benefit_page .benefit_top{width:620px;margin:0 auto}
 .member_benefit_page .benefit_top p{width:110px;height:110px;line-height:110px;background-size:110px;font-size:22px}
-.member_benefit_page .benefit_top li.green p{background-image:url(../../images/shop/cs/pc_ico_benefit_green.png)}
-.member_benefit_page .benefit_top li.silver p{background-image:url(../../images/shop/cs/pc_ico_benefit_silver.png)}
-.member_benefit_page .benefit_top li.silver_plus p{background-image:url(../../images/shop/cs/pc_ico_benefit_silver_plus.png)}
-.member_benefit_page .benefit_top li.gold p{background-image:url(../../images/shop/cs/pc_ico_benefit_gold.png)}
-.member_benefit_page .benefit_top li.diamond p{background-image:url(../../images/shop/cs/pc_ico_benefit_diamond.png)}
-.member_benefit_page .benefit_top li.trinity p{background-image:url(../../images/shop/cs/pc_ico_benefit_trinity.png)}
+.member_benefit_page .benefit_top li.green p{background-image:url(../../images/cs/pc_ico_benefit_green.png)}
+.member_benefit_page .benefit_top li.silver p{background-image:url(../../images/cs/pc_ico_benefit_silver.png)}
+.member_benefit_page .benefit_top li.silver_plus p{background-image:url(../../images/cs/pc_ico_benefit_silver_plus.png)}
+.member_benefit_page .benefit_top li.gold p{background-image:url(../../images/cs/pc_ico_benefit_gold.png)}
+.member_benefit_page .benefit_top li.diamond p{background-image:url(../../images/cs/pc_ico_benefit_diamond.png)}
+.member_benefit_page .benefit_top li.trinity p{background-image:url(../../images/cs/pc_ico_benefit_trinity.png)}
 .member_benefit_page .benefit_top span{margin-top:8px;font-size:20px}
 .member_benefit_page .benefit_table{display:flex;width:980px;margin:50px auto 0}
 .member_benefit_page .benefit_table>li{flex-basis:calc(100%/7)}
@@ -280,7 +280,7 @@
 .tasting_lists .con .info .tit .label span.txt{margin-left:20px}
 .tasting_lists .con .info .tit .label .cir{padding-left:22px;line-height:22px}
 .tasting_lists .con .info .tit .label .cir::before{width:18px;height:18px;margin-top:-9px}
-.tasting_lists .con .info .tit .label .cir.usa::before{background-image:url(../../images/shop/mypage/pc_icon_cir_flag_usa.png)}
+.tasting_lists .con .info .tit .label .cir.usa::before{background-image:url(../../images/mypage/pc_icon_cir_flag_usa.png)}
 .tasting_lists .con .info .tit strong{line-height:22px;font-size:16px}
 .tasting_lists .con .info .review_area .q{margin-left:20px}
 .tasting_lists .con .del_con{width:260px;margin:25px 0 0 20px}
@@ -310,8 +310,8 @@
 .review_img_layer .display_table .table_cell{display:flex;flex-wrap:wrap;align-items:center}
 .review_img_layer .display_table .table_cell .layer_area{width:100%}
 .review_img_layer .rv_slide .slick-arrow{display:block !important;position:absolute;top:50%;width:40px;height:60px;margin-top:-30px;text-indent:-9999px;overflow:hidden;z-index:100}
-.review_img_layer .rv_slide .slick-arrow.slick-prev{left:0;background:rgba(0, 0, 0, 0.5) url(../../images/shop/mypage/ico_arrow_prev.png) no-repeat 50%;background-size:10px}
-.review_img_layer .rv_slide .slick-arrow.slick-next{right:0;background:rgba(0, 0, 0, 0.5) url(../../images/shop/mypage/ico_arrow_next.png) no-repeat 50%;background-size:10px}
+.review_img_layer .rv_slide .slick-arrow.slick-prev{left:0;background:rgba(0, 0, 0, 0.5) url(../../images/mypage/ico_arrow_prev.png) no-repeat 50%;background-size:10px}
+.review_img_layer .rv_slide .slick-arrow.slick-next{right:0;background:rgba(0, 0, 0, 0.5) url(../../images/mypage/ico_arrow_next.png) no-repeat 50%;background-size:10px}
 .review_img_layer .rv_slide .slick-dots{bottom:30px}
 .review_img_layer .rv_slide .slick-dots li.slick-active button{width:24px}
 .review_img_layer .rv_con{padding:40px}
@@ -411,10 +411,10 @@
 .follow_wrap .follow_lists li .user_info .txt{display:flex;align-items:center;height:80px;float:left;margin-top:0;vertical-align:middle}
 .follow_wrap .follow_lists li .icon_wrap{width:410px;margin-top:0}
 .follow_wrap .follow_lists li .icon_wrap>ul li span{font-size:16px}
-.follow_wrap .follow_lists li .icon_wrap>ul li.follower span{background-image:url(../../images/shop/mypage/pc_ico_follow_user.png);background-size:26px}
-.follow_wrap .follow_lists li .icon_wrap>ul li.following span{background-image:url(../../images/shop/mypage/pc_ico_following_user.png);background-size:21px}
-.follow_wrap .follow_lists li .icon_wrap>ul li.helpful span{background-image:url(../../images/shop/mypage/pc_ico_follow_helpful.png);background-size:22px}
-.follow_wrap .follow_lists li .icon_wrap>ul li.unhelpful span{background-image:url(../../images/shop/mypage/pc_ico_follow_unhelpful.png);background-size:22px}
+.follow_wrap .follow_lists li .icon_wrap>ul li.follower span{background-image:url(../../images/mypage/pc_ico_follow_user.png);background-size:26px}
+.follow_wrap .follow_lists li .icon_wrap>ul li.following span{background-image:url(../../images/mypage/pc_ico_following_user.png);background-size:21px}
+.follow_wrap .follow_lists li .icon_wrap>ul li.helpful span{background-image:url(../../images/mypage/pc_ico_follow_helpful.png);background-size:22px}
+.follow_wrap .follow_lists li .icon_wrap>ul li.unhelpful span{background-image:url(../../images/mypage/pc_ico_follow_unhelpful.png);background-size:22px}
 .follow_wrap .follow_lists li .icon_wrap>ul li i{font-size:20px}
 .follow_wrap .follow_lists li .del{top:50%;right:20px;transform:translateY(-50%)}
 .follower_page .follow_wrap{margin-top:60px}
@@ -507,8 +507,8 @@
 .magazine_con_view_page .prd_list li .item .main_img .img_con .label span:not(:first-of-type){margin:5px 0 0 0}
 .magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap{height:0}
 .magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap button{position:absolute;bottom:10px;width:45px;height:45px;border:1px solid #ddd;border-radius:50%;background-color:#fff}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap .like{float:none;left:10px;background-image:url(/asset/images/shop/community/btn_wish_lightgray.png);background-size:19px}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap .cart{float:none;right:10px;background-image:url(/asset/images/shop/community/btn_cart_lightgray.png);background-size:20px} */
+.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap .like{float:none;left:10px;background-image:url(/asset/images/community/btn_wish_lightgray.png);background-size:19px}
+.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap .cart{float:none;right:10px;background-image:url(/asset/images/community/btn_cart_lightgray.png);background-size:20px} */
 
 /* content community press_lists */
 .content.press_lists_page{padding:60px 0 0}
@@ -674,7 +674,7 @@
 /* company whatisnew */
 .whatisnew_page.content{max-width:none;padding:0}
 .lnb_wrap .pc_lnb .page_tit.new_tit{background-color:#AC8B68}
-.lnb_wrap .pc_lnb .page_tit.new_tit h2{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:url(../../images/shop/company/new_tit_bg.png) no-repeat center;line-height:1.4;color:#fff}
+.lnb_wrap .pc_lnb .page_tit.new_tit h2{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:url(../../images/company/new_tit_bg.png) no-repeat center;line-height:1.4;color:#fff}
 .lnb_wrap .pc_lnb .page_tit.new_tit h2 p{font-size:20px;font-weight:500;margin-bottom:5px}
 .whatisnew_page .new_con{max-width:1200px;margin:0 auto;padding:100px 0}
 .whatisnew_page .line_box .float_con{display:flex;justify-content:space-between}
@@ -691,11 +691,11 @@
 .whatisnew_page .new_con .box.txt .tit_wrap strong{font-size:32px}
 .whatisnew_page .new_con .box.txt .tit_wrap p{margin-top:20px;font-size:16px}
 .whatisnew_page .new_con .box.txt .btn_more{width:220px;margin:40px 0 0}
-.whatisnew_page .new_con .box.txt .btn_white.btn_more span{background-image:url(../../images/shop/company/pc_ico_cate_arrow_point.png)}
+.whatisnew_page .new_con .box.txt .btn_white.btn_more span{background-image:url(../../images/company/pc_ico_cate_arrow_point.png)}
 .whatisnew_page .new_con .box.txt .logo{margin:40px 0 0}
 .whatisnew_page .new_con .box.txt .step{display:flex;justify-content:center;justify-content:flex-start;margin-top:30px}
-.whatisnew_page .new_con .box.txt .step::after{top:50px;left:100px;height:13px;background-image:url(../../images/shop/company/pc_new_right_arrow.png)}
-.whatisnew_page .new_con .box.txt .step.col_03::after{left:100px;background-image:url(../../images/shop/company/pc_new_right_arrow_col03.png)}
+.whatisnew_page .new_con .box.txt .step::after{top:50px;left:100px;height:13px;background-image:url(../../images/company/pc_new_right_arrow.png)}
+.whatisnew_page .new_con .box.txt .step.col_03::after{left:100px;background-image:url(../../images/company/pc_new_right_arrow_col03.png)}
 .whatisnew_page .new_con .box.txt .step li{position:relative}
 .whatisnew_page .new_con .box.txt .step li:not(:last-of-type){padding-right:50px}
 .whatisnew_page .new_con.card .box.txt .step li:last-of-type .step_img::after{right:-8px;bottom:-11px;width:40px;height:40px;border-width:3px;background-size:12px}
@@ -744,8 +744,8 @@
 .mypage_page .mypage_info ul li p span{margin-top:10px;font-size:24px}
 .mypage_page .mypage_info ul:not(:first-of-type){margin-top:30px;border-top:0}
 .mypage_page .slide_area{margin:60px 0 0}
-.mypage_page .slide_area .slick-arrow{position:absolute;top:50%;left:30px;display:block;width:60px;height:60px;border:1px solid #fff;background:url(../../images/shop/main/pc_ico_arrow_prev_wht.png) no-repeat center;text-indent:-9999px;transform:translateY(-50%);z-index:10}
-.mypage_page .slide_area .slick-next{left:auto;right:30px;background-image:url(../../images/shop/main/pc_ico_arrow_next_wht.png)}
+.mypage_page .slide_area .slick-arrow{position:absolute;top:50%;left:30px;display:block;width:60px;height:60px;border:1px solid #fff;background:url(../../images/main/pc_ico_arrow_prev_wht.png) no-repeat center;text-indent:-9999px;transform:translateY(-50%);z-index:10}
+.mypage_page .slide_area .slick-next{left:auto;right:30px;background-image:url(../../images/main/pc_ico_arrow_next_wht.png)}
 .mypage_page .slide_area .slide .txt_wrap .p{line-height:28px;font-size:20px}
 .mypage_page .newest_order{margin:78px 0 0 0;padding:0;border-bottom:0}
 .mypage_page .newest_order p.tit{font-size:30px}

@@ -12,7 +12,7 @@
 		<li><a href="/">루트!!!!!!</a>
 	</ul>
 	<ul>
-		<li><a href="/header.do">파일업로드(싱글파일)</a></li>
+		<li><a href="/common.do">파일업로드(싱글파일)</a></li>
 	</ul>
 	<ul>
 		<li><a href="/order_write.do">결제</a></li>

@@ -34,10 +34,10 @@
 .btn_area.col2 .btn_txt{float:left;width:49%;margin-right:2%}
 .btn_area.col3 .btn_txt{float:left;width:32%;margin-right:2%}
 .btn_area.col2 .btn_txt:last-child,.btn_area.col3 .btn_txt:last-child{margin-right:0}
-.arrow_btn_prev{width:40px;height:40px;background:url(../../images/shop/default/arrow_btn_prev.png) no-repeat 50%;background-size:100%;text-indent:-9999px;overflow:hidden}
-.arrow_btn_next{width:40px;height:40px;background:url(../../images/shop/default/arrow_btn_next.png) no-repeat 50%;background-size:100%;text-indent:-9999px;overflow:hidden}
-.arrow_btn_prev.white{background:url(../../images/shop/default/arrow_btn_prev_wh.png) no-repeat 50%;background-size:100%;}
-.arrow_btn_next.white{background:url(../../images/shop/default/arrow_btn_next_wh.png) no-repeat 50%;background-size:100%;}
+.arrow_btn_prev{width:40px;height:40px;background:url(../../images/default/arrow_btn_prev.png) no-repeat 50%;background-size:100%;text-indent:-9999px;overflow:hidden}
+.arrow_btn_next{width:40px;height:40px;background:url(../../images/default/arrow_btn_next.png) no-repeat 50%;background-size:100%;text-indent:-9999px;overflow:hidden}
+.arrow_btn_prev.white{background:url(../../images/default/arrow_btn_prev_wh.png) no-repeat 50%;background-size:100%;}
+.arrow_btn_next.white{background:url(../../images/default/arrow_btn_next_wh.png) no-repeat 50%;background-size:100%;}
 .btn_txt:disabled{background:#999 !important;border:1px solid #999 !important;cursor:default}
 /* common style - form_area */
 .form_area{padding-bottom:20px;border-bottom:1px solid #ddd}
@@ -65,16 +65,16 @@
 .checkbox input[type='radio'],
 .checkbox input[type='checkbox']{position:absolute;top:-1px;left:-1px;font-size:0;opacity:0;width:0;height:0;overflow:hidden}
 .checkbox input[type='radio'] + label,
-.checkbox input[type='checkbox'] + label{display:block;padding-left:29px;background:url(../../images/shop/default/checkbox_default.png) no-repeat left 50%;line-height:24px}
+.checkbox input[type='checkbox'] + label{display:block;padding-left:29px;background:url(../../images/default/checkbox_default.png) no-repeat left 50%;line-height:24px}
 .checkbox input[type='radio']:checked + label,
-.checkbox input[type='checkbox']:checked + label{background:url(../../images/shop/default/checkbox_onclick.png) no-repeat left 50%}
+.checkbox input[type='checkbox']:checked + label{background:url(../../images/default/checkbox_onclick.png) no-repeat left 50%}
 .checkbox.type2 input[type='radio'] + label,
-.checkbox.type2 input[type='checkbox'] + label{background:url(../../images/shop/default/checkbox_default_gd.png) no-repeat left 50%}
+.checkbox.type2 input[type='checkbox'] + label{background:url(../../images/default/checkbox_default_gd.png) no-repeat left 50%}
 .checkbox.type2 input[type='radio']:checked + label,
-.checkbox.type2 input[type='checkbox']:checked + label{background:url(../../images/shop/default/checkbox_onclick_gd.png) no-repeat left 50%}
+.checkbox.type2 input[type='checkbox']:checked + label{background:url(../../images/default/checkbox_onclick_gd.png) no-repeat left 50%}
 
-.checkbox.radio input[type='radio'] + label{padding-left:25px;background:url(../../images/shop/default/radio_gd.png) no-repeat left 50%;line-height:20px}
-.checkbox.radio input[type='radio']:checked + label{background:url(../../images/shop/default/radio_gd_on.png) no-repeat left 50%}
+.checkbox.radio input[type='radio'] + label{padding-left:25px;background:url(../../images/default/radio_gd.png) no-repeat left 50%;line-height:20px}
+.checkbox.radio input[type='radio']:checked + label{background:url(../../images/default/radio_gd_on.png) no-repeat left 50%}
 /* common style - font */
 .h0{font-size:32px;font-weight:500}
 .h1{font-size:24px;font-weight:500}
@@ -91,25 +91,25 @@ p.small2{font-size:12px}
 .tab_area>ul>li>button{position:relative;display:block;width:100%;padding:14px 0;font-size:15px;line-height:22px;font-weight:700;color:#999;text-align:center}
 .tab_area>ul>li>button::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:#ddd}
 .tab_area>ul>li.on>button{color:#AC8B68}
-.tab_area>ul>li.on>button span{display:inline-block;padding-left:17px;background:url(../../images/shop/mypage/mb_tab_select_point.png) no-repeat left 50%;background-size:12px}
+.tab_area>ul>li.on>button span{display:inline-block;padding-left:17px;background:url(../../images/mypage/mb_tab_select_point.png) no-repeat left 50%;background-size:12px}
 .tab_area>ul>li.on>button:after{background:#AC8B68;height:2px}
 /* common style - layer */
 .layer{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000}
 .layer .layer_area{position:relative;padding:0;margin:0;background:#fff}
-.layer .layer_area .layer_close{position:absolute;top:15px;left:18px;width:20px;height:20px;background:url(../../images/shop/default/mb_layer_close.png) 50% 50% no-repeat;overflow:hidden;text-indent:-9999px;z-index:30}
+.layer .layer_area .layer_close{position:absolute;top:15px;left:18px;width:20px;height:20px;background:url(../../images/default/mb_layer_close.png) 50% 50% no-repeat;overflow:hidden;text-indent:-9999px;z-index:30}
 .layer .layer_area .layer_tit{position:relative;border-bottom:1px solid #dcdcdc;font-size:16px;color:#111;font-weight:500;line-height:50px}
 .layer .layer_area .layer_con{padding:30px 20px;max-height:calc( 100vh - 50px );overflow:auto}
 /* common style - srch_box */
 .srch_box{border:1px solid #DCDCDC;overflow:hidden}
 .srch_box input{float:left;width:calc(100% - 54px);height:48px;line-height:48px;border:0}
-.srch_box button{float:left;width:54px;height:48px;background:url(../../images/shop/default/mb_ico_srch.html) no-repeat 50%;background-size:22px;text-indent:-9999px;overflow:hidden}
+.srch_box button{float:left;width:54px;height:48px;background:url(../../images/default/mb_ico_srch.html) no-repeat 50%;background-size:22px;text-indent:-9999px;overflow:hidden}
 /* common style - lnb */
 .lnb .page_tit{position:relative;height:50px;line-height:50px;background:#fff;border-bottom:1px solid #DCDCDC;font-size:16px;font-weight:500;text-align:center}
-.lnb .page_tit button{position:absolute;top:15px;left:18px;width:20px;height:20px;background:url(../../images/shop/default/mb_layer_close.png) no-repeat 50% 50%;text-indent:-9999px;overflow:hidden}
+.lnb .page_tit button{position:absolute;top:15px;left:18px;width:20px;height:20px;background:url(../../images/default/mb_layer_close.png) no-repeat 50% 50%;text-indent:-9999px;overflow:hidden}
 /* module - toggle */
 .js_toggle{position:relative}
-.js_toggle .js_title_btn{display:block;width:100%;padding:0 14px;border:1px solid #666;background:url(../../images/shop/default/mb_ico_sel.html) no-repeat 100% 50%;background-size:34px;font-size:13px;line-height:50px;color:#999;text-align:left}
-.js_toggle .js_title_btn.on{background:url(../../images/shop/default/mb_ico_sel_on.html) no-repeat 100% 50%;background-size:34px}
+.js_toggle .js_title_btn{display:block;width:100%;padding:0 14px;border:1px solid #666;background:url(../../images/default/mb_ico_sel.html) no-repeat 100% 50%;background-size:34px;font-size:13px;line-height:50px;color:#999;text-align:left}
+.js_toggle .js_title_btn.on{background:url(../../images/default/mb_ico_sel_on.html) no-repeat 100% 50%;background-size:34px}
 .js_toggle ul{display:none;position:absolute;bottom:100%;left:0;right:0;border:1px solid #666;border-bottom:0;padding:10px 0;background:#111;z-index:950}
 .js_toggle ul li .js_change_btn{display:block;width:100%;font-size:13px;margin-top:20px;padding:0 14px;color:#999;text-align:left}
 .js_toggle ul li:first-child .js_change_btn{margin-top:0}
@@ -125,14 +125,14 @@ p.small2{font-size:12px}
 .header .top .wrap .left_menu::after{content:'';display:block;clear:both}
 .header .top .wrap .left_menu>li{float:left;margin-left:19px}
 .header .top .wrap .left_menu>li:first-of-type{margin-left:0}
-.header .top .wrap .left_menu .mb_btn_menu>button{width:23px;height:21px;background:url(../../images/shop/default/mb_btn_menu_.png) no-repeat 50%;background-size:23px;overflow:hidden;text-indent:-9999px}
-.header .top .wrap .left_menu .mb_search_btn button{width:24px;height:24px;background:url(../../images/shop/default/mb_icon_search.png) no-repeat 50%;overflow:hidden;text-indent:-9999px}
-.header .top .wrap .left_menu .mb_search_btn button.on{background:url(../../images/shop/default/mb_icon_close.png) no-repeat 50%}
+.header .top .wrap .left_menu .mb_btn_menu>button{width:23px;height:21px;background:url(../../images/default/mb_btn_menu_.png) no-repeat 50%;background-size:23px;overflow:hidden;text-indent:-9999px}
+.header .top .wrap .left_menu .mb_search_btn button{width:24px;height:24px;background:url(../../images/default/mb_icon_search.png) no-repeat 50%;overflow:hidden;text-indent:-9999px}
+.header .top .wrap .left_menu .mb_search_btn button.on{background:url(../../images/default/mb_icon_close.png) no-repeat 50%}
 .header .mb_gnb_area{display:none;position:fixed;left:0;bottom:0;right:0;top:0;z-index: 900;}
 .header .mb_gnb_area .mb_gnb_con{position:relative;background:#fff;height:100%;overflow:auto}
 .header .mb_gnb_area .mb_gnb_con:after{content:"";display:block;clear:both}
-.header .mb_gnb_area .mb_gnb_con .mb_gnb_close{float:right;width:24px;height:24px;margin:23px 23px 0 13px;background:url(../../images/shop/default/mb_icon_close.png) no-repeat 50%;overflow:hidden;text-indent:-9999px}
-.header .mb_gnb_area .mb_gnb_con .btn_settings{float:right;width:24px;height:24px;margin:23px 0 0;background:url(../../images/shop/default/mb_ico_settings.png) no-repeat center/24px;overflow:hidden;text-indent:-9999px}
+.header .mb_gnb_area .mb_gnb_con .mb_gnb_close{float:right;width:24px;height:24px;margin:23px 23px 0 13px;background:url(../../images/default/mb_icon_close.png) no-repeat 50%;overflow:hidden;text-indent:-9999px}
+.header .mb_gnb_area .mb_gnb_con .btn_settings{float:right;width:24px;height:24px;margin:23px 0 0;background:url(../../images/default/mb_ico_settings.png) no-repeat center/24px;overflow:hidden;text-indent:-9999px}
 .header .mb_gnb_area .mb_gnb_con .mb_gnb_member,
 .header .mb_gnb_area .mb_gnb_con .mb_gnb_no_member{padding:20px 20px 0;clear:both}
 .header .mb_gnb_area .mb_gnb_con .mb_gnb_member .btn_dgray,
@@ -158,7 +158,7 @@ p.small2{font-size:12px}
 .header .mb_gnb_area .mb_gnb_con .menu_list{padding:0 20px}
 .header .mb_gnb_area .mb_gnb_con .menu_list>li{padding:20px 0;border-bottom:1px solid #eee}
 .header .mb_gnb_area .mb_gnb_con .menu_list>li>a,
-.header .mb_gnb_area .mb_gnb_con .menu_list>li>button{display:block;width:100%;font-size:16px;color:#555;background:url(../../images/shop/default/mb_gnb_menu_list.png) no-repeat 97% 50%;text-align:left}
+.header .mb_gnb_area .mb_gnb_con .menu_list>li>button{display:block;width:100%;font-size:16px;color:#555;background:url(../../images/default/mb_gnb_menu_list.png) no-repeat 97% 50%;text-align:left}
 .header .mb_gnb_area .mb_gnb_con .menu_list>li:last-child{border-bottom:0}
 .header .mb_gnb_area .mb_gnb_con .menu_list>li>ul{display:none;margin-top:20px}
 .header .mb_gnb_area .mb_gnb_con .menu_list ul>li{text-align:left}
@@ -188,7 +188,7 @@ p.small2{font-size:12px}
 .header .mb_gnb_area .mb_gnb_con .cs_center .box1 a{display:inline-block;width:84px;margin-left:10px;line-height:28px;border:1px solid #ddd;text-align:center;color:#555}
 .header .mb_gnb_area .mb_gnb_con .cs_center .box1 strong{display:block;margin-top:5px;color:#111;font-size:24px} */
 .header .mb_gnb_area .mb_gnb_con .cs_center .box1{position:relative;padding:10px 0}
-.header .mb_gnb_area .mb_gnb_con .cs_center .box1 a{padding-left:60px;background:url(../../images/shop/default/mb_ico_gnb_kakao_color.png) no-repeat 0 50%;background-size:48px;font-size:16px;font-weight:500}
+.header .mb_gnb_area .mb_gnb_con .cs_center .box1 a{padding-left:60px;background:url(../../images/default/mb_ico_gnb_kakao_color.png) no-repeat 0 50%;background-size:48px;font-size:16px;font-weight:500}
 .header .mb_gnb_area .mb_gnb_con .cs_center .box1:after{content:"";position:absolute;top:2px;bottom:2px;right:0;width:1px;background:#ddd}
 .header .mb_gnb_area .mb_gnb_con .cs_center .box2{padding-left:23px;color:#999}
 .header .top .wrap .right_menu{position:absolute;top:23px;right:21px}
@@ -197,10 +197,10 @@ p.small2{font-size:12px}
 .header .top .wrap .right_menu .mobile_mypage{margin-top:2px}
 .header .top .wrap .right_menu .wish a{position:relative;width:35px;height:28px;font-size: 0;vertical-align:top}
 .header .top .wrap .right_menu .wish a .list-count{position:absolute;top:-5px;right:-5px;display:inline-block;width:18px;background:#111;border-radius:100%;line-height:18px;text-align:center;font-size:10px;color:#fff;text-indent:0}
-.header .top .wrap .right_menu .cart a{position:relative;width:24px;height:24px;background:url(../../images/shop/default/ico_cart.png) no-repeat 50%;background-size:24px;font-size: 0;vertical-align:top}
+.header .top .wrap .right_menu .cart a{position:relative;width:24px;height:24px;background:url(../../images/default/ico_cart.png) no-repeat 50%;background-size:24px;font-size: 0;vertical-align:top}
 .header .top .wrap .right_menu .cart a span{display:inline-block;overflow:hidden}
 .header .top .wrap .right_menu .cart a .list-count{position:absolute;top:-3px;right:-7px;display:inline-block;width:15px;background:#111;border-radius:100%;line-height:15px;text-align:center;font-size:10px;color:#fff;text-indent:0}
-.header .top .wrap .right_menu .reservation a{position:relative;width:22px;height:22px;background:url(../../images/shop/default/ico_reservation.png) no-repeat 50%;background-size:22px;font-size:0;vertical-align:top}
+.header .top .wrap .right_menu .reservation a{position:relative;width:22px;height:22px;background:url(../../images/default/ico_reservation.png) no-repeat 50%;background-size:22px;font-size:0;vertical-align:top}
 .header .top .wrap .right_menu .reservation a::before{content:'RESERVATION';position:absolute;top:-18px;right:-5px;height:16px;line-height:16px;padding:0 5px;border-radius:3px;background-color:#AC8B68;font-size:10px;font-weight:500;color:#fff}
 .header .top .wrap .right_menu .reservation a::after{content:'';position:absolute;top:-2px;right:2px;border-right:4px solid transparent;border-top:4px solid #AC8B68;border-left:4px solid transparent}
 .header .top .wrap .right_menu .home a{width:24px}
@@ -242,8 +242,8 @@ p.small2{font-size:12px}
 .search_box input,
 .search_box button{float:left;border:0;height:50px;line-height:50px}
 .search_box input{width:calc( 100% - 64px );font-size:13px;padding:0 10px;background-color:transparent;text-align:left}
-.search_box button{width:64px;background:url(../../images/shop/default/mb_icon_search.png) no-repeat 50%;overflow:hidden;text-indent:-9999px}
-.search_box button.btn_close{background-image:url(../../images/shop/default/mb_icon_close.png)}
+.search_box button{width:64px;background:url(../../images/default/mb_icon_search.png) no-repeat 50%;overflow:hidden;text-indent:-9999px}
+.search_box button.btn_close{background-image:url(../../images/default/mb_icon_close.png)}
 
 
 .search_result{display:none;position:absolute;top:100%;left:0;padding:20px;box-sizing:border-box;width:100%;background:#fff;border-top:1px solid #dcdcdc}
@@ -254,13 +254,13 @@ p.small2{font-size:12px}
 .search_result .result_inner #result_list{font-size:0}
 .search_result .result_inner #result_list li{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:20px;color:#555;font-size:14px;line-height:20px}
 .search_result .result_inner #result_list li span{display:inline-block}
-.search_result .result_inner #result_list li button{display:inline-block;width:18px;height:18px;background:url(../../images/shop/default/icon_x_grey.png) center no-repeat;background-size:cover}
+.search_result .result_inner #result_list li button{display:inline-block;width:18px;height:18px;background:url(../../images/default/icon_x_grey.png) center no-repeat;background-size:cover}
 
 /* 20220929 모바일 하단바 카테고리/검색창 디자인 수정 */
 .category_layer.layer{bottom:auto;height:calc(100vh - 60px);overflow:hidden}
-.category_layer.layer .layer_area .layer_close{top:7px;left:0;width:64px;height:50px;line-height:50px;background-image:url(../../images/shop/default/mb_icon_close.png)}
+.category_layer.layer .layer_area .layer_close{top:7px;left:0;width:64px;height:50px;line-height:50px;background-image:url(../../images/default/mb_icon_close.png)}
 .category_layer.layer .layer_area .layer_con{height:100vh;max-height:100vh;padding:0 20px 20px}
-.category_layer .open_search_area{display:flex;align-items:center;height:64px;background:#F8F8F8 url(../../images/shop/default/mb_icon_search.png) no-repeat calc(100% - 20px) 50%;margin:0 -20px}
+.category_layer .open_search_area{display:flex;align-items:center;height:64px;background:#F8F8F8 url(../../images/default/mb_icon_search.png) no-repeat calc(100% - 20px) 50%;margin:0 -20px}
 .category_layer .open_search_area button{width:100%;height:100%;font-size:13px;color:#999}
 .category_layer .tit{margin-bottom:20px;font-size:16px;font-weight:500;color:#111;text-align:left}
 .category_layer .category_area{padding-bottom:80px}
@@ -276,38 +276,38 @@ p.small2{font-size:12px}
 .category_layer .category_area .box.cate li{display:inline-block;width:auto;border:1px solid #ddd;margin:0 5px 10px}
 .category_layer .category_area .box.cate li a{padding:5px 14px}
 /* 와인 */
-.category_layer .category_area .box li.ico_red a{background:url(../../images/shop/default/ico_wine_red.png) no-repeat 50% 0;background-size:12px}
-.category_layer .category_area .box li.ico_white a{background:url(../../images/shop/default/ico_wine_white.png) no-repeat 50% 0;background-size:12px}
-.category_layer .category_area .box li.ico_rose a{background:url(../../images/shop/default/ico_wine_rose.png) no-repeat 50% 0;background-size:12px}
-.category_layer .category_area .box li.ico_sparkling a{background:url(../../images/shop/default/ico_wine_sparkling.png) no-repeat 50% 0;background-size:12px}
-.category_layer .category_area .box li.ico_dessert a{background:url(../../images/shop/default/ico_wine_dessert.png) no-repeat 50% 0;background-size:12px}
-.category_layer .category_area .box li.ico_spirits a{background:url(../../images/shop/default/ico_wine_spirits.png) no-repeat 50% 0;background-size:12px}
+.category_layer .category_area .box li.ico_red a{background:url(../../images/default/ico_wine_red.png) no-repeat 50% 0;background-size:12px}
+.category_layer .category_area .box li.ico_white a{background:url(../../images/default/ico_wine_white.png) no-repeat 50% 0;background-size:12px}
+.category_layer .category_area .box li.ico_rose a{background:url(../../images/default/ico_wine_rose.png) no-repeat 50% 0;background-size:12px}
+.category_layer .category_area .box li.ico_sparkling a{background:url(../../images/default/ico_wine_sparkling.png) no-repeat 50% 0;background-size:12px}
+.category_layer .category_area .box li.ico_dessert a{background:url(../../images/default/ico_wine_dessert.png) no-repeat 50% 0;background-size:12px}
+.category_layer .category_area .box li.ico_spirits a{background:url(../../images/default/ico_wine_spirits.png) no-repeat 50% 0;background-size:12px}
 /* 기타 주류 */
-.category_layer .category_area .box li.ico_whiskey a{background:url(../../images/shop/default/ico_other_whiskey.png) no-repeat 50% 0;background-size:13px}
-.category_layer .category_area .box li.ico_cognac a{background:url(../../images/shop/default/ico_other_cognac.png) no-repeat 50% 0;background-size:10px}
-.category_layer .category_area .box li.ico_tequila a{background:url(../../images/shop/default/ico_other_tequila.png) no-repeat 50% 0;background-size:9px}
-.category_layer .category_area .box li.ico_jin a{background:url(../../images/shop/default/ico_other_jin.png) no-repeat 50% 0;background-size:12px}
-.category_layer .category_area .box li.ico_rum a{background:url(../../images/shop/default/ico_other_rum.png) no-repeat 50% 0;background-size:9px}
-.category_layer .category_area .box li.ico_beer a{background:url(../../images/shop/default/ico_other_beer.png) no-repeat 50% 0;background-size:13px}
+.category_layer .category_area .box li.ico_whiskey a{background:url(../../images/default/ico_other_whiskey.png) no-repeat 50% 0;background-size:13px}
+.category_layer .category_area .box li.ico_cognac a{background:url(../../images/default/ico_other_cognac.png) no-repeat 50% 0;background-size:10px}
+.category_layer .category_area .box li.ico_tequila a{background:url(../../images/default/ico_other_tequila.png) no-repeat 50% 0;background-size:9px}
+.category_layer .category_area .box li.ico_jin a{background:url(../../images/default/ico_other_jin.png) no-repeat 50% 0;background-size:12px}
+.category_layer .category_area .box li.ico_rum a{background:url(../../images/default/ico_other_rum.png) no-repeat 50% 0;background-size:9px}
+.category_layer .category_area .box li.ico_beer a{background:url(../../images/default/ico_other_beer.png) no-repeat 50% 0;background-size:13px}
 /* OTHER */
-.category_layer .category_area .box li.ico_acc a{background:url(../../images/shop/default/ico_acc.png) no-repeat 50% 0;background-size:18px}
-.category_layer .category_area .box li.ico_ticket a{background:url(../../images/shop/default/ico_ticket.png) no-repeat 50% 0;background-size:18px}
+.category_layer .category_area .box li.ico_acc a{background:url(../../images/default/ico_acc.png) no-repeat 50% 0;background-size:18px}
+.category_layer .category_area .box li.ico_ticket a{background:url(../../images/default/ico_ticket.png) no-repeat 50% 0;background-size:18px}
 /* 국가별 와인 */
-.category_layer .category_area .box li.ico_france a{background:url(../../images/shop/default/icon_rec_flag_france.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_italia a{background:url(../../images/shop/default/icon_rec_flag_italia.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_spain a{background:url(../../images/shop/default/icon_rec_flag_spain.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_germ a{background:url(../../images/shop/default/icon_rec_flag_germ.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_usa a{background:url(../../images/shop/default/icon_rec_flag_usa.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_chile a{background:url(../../images/shop/default/icon_rec_flag_chile.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_argentina a{background:url(../../images/shop/default/icon_rec_flag_argentina.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_aus a{background:url(../../images/shop/default/icon_rec_flag_aus.png) no-repeat 50% 0;background-size:26px}
-.category_layer .category_area .box li.ico_etc a{background:url(../../images/shop/default/icon_rec_etc_map.png) no-repeat 50% 0;background-size:27px}
+.category_layer .category_area .box li.ico_france a{background:url(../../images/default/icon_rec_flag_france.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_italia a{background:url(../../images/default/icon_rec_flag_italia.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_spain a{background:url(../../images/default/icon_rec_flag_spain.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_germ a{background:url(../../images/default/icon_rec_flag_germ.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_usa a{background:url(../../images/default/icon_rec_flag_usa.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_chile a{background:url(../../images/default/icon_rec_flag_chile.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_argentina a{background:url(../../images/default/icon_rec_flag_argentina.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_aus a{background:url(../../images/default/icon_rec_flag_aus.png) no-repeat 50% 0;background-size:26px}
+.category_layer .category_area .box li.ico_etc a{background:url(../../images/default/icon_rec_etc_map.png) no-repeat 50% 0;background-size:27px}
 
 .category_layer .mb_search_layer{display:none;position:fixed;top:0;left:0;right:0;height:calc(100vh - 60px);overflow:hidden;z-index:1100}
 .category_layer.layer .mb_search_layer .layer_area .layer_con{padding:0 0 60px}
 .category_layer .mb_search_layer .search_box{height:64px;background:#F8F8F8;border:0}
 .category_layer .mb_search_layer .search_box input{text-align:center}
-.category_layer .mb_search_layer .search_box button.btn_close{background-image:url(../../images/shop/default/icon_arrow_back.png)}
+.category_layer .mb_search_layer .search_box button.btn_close{background-image:url(../../images/default/icon_arrow_back.png)}
 .category_layer .mb_search_layer .search_result{display:block;position:static;border-top:0;border-bottom:10px solid #eee;padding-bottom:6px}
 .category_layer .mb_search_layer .search_result .result_inner .allDelete .tit{font-size:16px}
 .category_layer .mb_search_layer .search_result .result_inner #result_list{display:flex;flex-wrap:wrap;margin:0 -7px}
@@ -335,7 +335,7 @@ p.small2{font-size:12px}
 .layer.set_layer .layer_con{padding:0 0 101px 0;background-color:#F8F8F8}
 .layer.set_layer .layer_con>.tit{display:block;margin-bottom:10px;padding:20px 20px 0;text-align:left;font-size:16px;font-weight:500;color:#111}
 .layer.set_layer .layer_con .set_con{display:flex;justify-content:space-between;align-items:center;padding:20px;background-color:#fff;font-size:16px}
-.layer.set_layer .layer_con a.set_con{display:block;width:100%;border-top:10px solid #f8f8f8;background:#fff url(../../images/shop/default/mb_gnb_menu_list.png) no-repeat 92% 50%;font-size:16px;color:#555;text-align:left}
+.layer.set_layer .layer_con a.set_con{display:block;width:100%;border-top:10px solid #f8f8f8;background:#fff url(../../images/default/mb_gnb_menu_list.png) no-repeat 92% 50%;font-size:16px;color:#555;text-align:left}
 .layer.set_layer .layer_con .set_con .btn_txt{width:120px;height:30px;line-height:30px;font-size:13px;font-weight:500}
 .layer.set_layer .layer_con .set_con .css_switch .btn_switch{min-width:60px}
 .layer.set_layer .layer_con .set_con .css_switch .btn_switch_check:checked + .btn_switch_area .btn_switch{background-color:#AC8B68}
@@ -356,7 +356,7 @@ p.small2{font-size:12px}
 .footer .hidden_info .link_box ul li:not(:last-of-type)::after{content:'';position:absolute;top:50%;right:0;width:1px;height:12px;margin-top:-6px;background-color:rgba(221, 221, 221, .1)}
 .footer .hidden_info .link_box ul li:last-child{margin-bottom:0}
 .footer .hidden_info .link_box ul li a{color:#999}
-.footer .hidden_info .js_top_btn{position:absolute;top:0;right:0;width:49px;height:70px;overflow:hidden;background:#111 url(../../images/shop/default/top_arrow_white.png) no-repeat 50%;text-indent:-9999px}
+.footer .hidden_info .js_top_btn{position:absolute;top:0;right:0;width:49px;height:70px;overflow:hidden;background:#111 url(../../images/default/top_arrow_white.png) no-repeat 50%;text-indent:-9999px}
 .footer .hidden_info .info_box{display:none}
 .footer .hidden_info .info_box .wrap{padding:20px 20px 30px;overflow:hidden}
 .footer .hidden_info .info_box .info .logo{float:left}
@@ -376,7 +376,7 @@ p.small2{font-size:12px}
 .footer .hidden_info .info_box .cs>p{padding-left:10px;color:#999}
 .footer .copy{padding:15px 0 75px;text-align:center}
 .footer .copy.view_copy{padding-bottom:85px}
-.footer .copy button{padding-top:12px;color:#999;background:url(../../images/shop/default/footer_open_btn.png) no-repeat 50% 0}
+.footer .copy button{padding-top:12px;color:#999;background:url(../../images/default/footer_open_btn.png) no-repeat 50% 0}
 /* guide - guide */
 .guide_page .guide_area{padding:25px 0 100px;border-top:1px solid #868686}
 .guide_page .guide_area .g_tit{margin-bottom:35px;font-size:20px;font-weight:700;color:#000}
