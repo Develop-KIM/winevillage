@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <link rel="shortcut icon" href="./images/default/favicon.ico"
@@ -438,9 +438,8 @@
 								</button>
 							</div>
 							<div class="login_sub_btn">
-								<a href="/member/forgoten/forgoten_id" class="btn">아이디
-									찾기</a> <a href="/member/forgoten/forgoten_pw" class="btn">비밀번호
-									재발급</a>
+								<a href="/member/forgoten/forgoten_id" class="btn">아이디 찾기</a> <a
+									href="/member/forgoten/forgoten_pw" class="btn">비밀번호 재발급</a>
 							</div>
 						</div>
 					</div>
@@ -448,6 +447,5 @@
 			</div>
 		</div>
 	</form>
-
 </body>
 </html>
