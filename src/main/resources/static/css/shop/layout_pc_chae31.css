@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* common */
 .nodata{min-height:150px !important;line-height:150px !important;font-size:16px !important}
-.content.intro_page{padding:0;max-width:100%;background:url(../../images/shop/main/pc_intro_bg.jpg)center no-repeat;background-size:100% 100%}
+.content.intro_page{padding:0;max-width:100%;background:url(../../images/main/pc_intro_bg.jpg)center no-repeat;background-size:100% 100%}
 .intro_page .intro_area .txt_area{margin:0 auto;width:608px}
 .intro_page .intro_area .txt_area .inner_box{padding:50px 0}
 .intro_page .intro_area .txt_area .inner_box .txt{margin-top:40px;font-size:32px;line-height:45px}
@@ -22,7 +22,7 @@
 .footer .quick_menu .list li.prd .icon{width:30px;height:33px;}
 .footer .quick_menu .list li.top .icon{width:50px;height:50px;margin-top:30px}
 .footer .quick_menu .list li.top .icon img{position:absolute;top:50%;left:50%;width:26px;height:16px;margin:-8px 0 0 -14px}
-.footer .quick_menu .menu_open{width:60px;height:60px;background-image:url(../../images/shop/default/ico_quick_woman.png);}
+.footer .quick_menu .menu_open{width:60px;height:60px;background-image:url(../../images/default/ico_quick_woman.png);}
 /* login */
 .layer.login_layer .display_table .table_cell .layer_area{height:auto}
 .layer.login_layer .display_table .table_cell .layer_area .layer_con{padding:40px 100px 50px}
@@ -39,7 +39,7 @@
 .layer.login_layer .layer_area .layer_tit{height:100px;padding:0 100px;font-size:24px}
 .layer.login_layer .layer_area .layer_tit p:first-child::after{height:33px;margin-top:-16px}
 .layer.login_layer .layer_area .layer_tit p span a{font-size:24px}
-.layer.login_layer .layer_area .layer_tit p.check span{padding-left:23px;background:url(../../images/shop/default/pc_ico_log_arrow.png) 0 50% no-repeat;background-size:13px}
+.layer.login_layer .layer_area .layer_tit p.check span{padding-left:23px;background:url(../../images/default/pc_ico_log_arrow.png) 0 50% no-repeat;background-size:13px}
 /* mypage */
 .content.mypage{padding:30px 0 120px;min-height:775px}
 .content.mypage .inner .top_info{width:100%;margin-top:0}
@@ -70,10 +70,10 @@
 .mypage_lnb .my_lnb_info .my_info a .new{position:absolute;top:0;right:50%;width:16px;height:16px;margin-right:-22px;text-align:center;color:#fff;font-size:11px;font-weight:700;line-height:15px;background:#DC252A;border-radius:50%}
 .mypage_lnb .my_lnb_info .my_info a .new:nth-of-type(n+3){right:30px}
 .mypage_lnb .my_lnb_info .my_info a .info{min-width:30px;padding-top:37px;color:#111;font-size:24px;font-weight:500;line-height:34px;text-align:center}
-.mypage_lnb .my_lnb_info .my_info a .info.order_info{background:url(../../images/shop/mypage/ico_pay.png)center 7px no-repeat;background-size:30px}
-.mypage_lnb .my_lnb_info .my_info a .info.coupon_info{background:url(../../images/shop/mypage/ico_coupon.png)center 6px no-repeat;background-size:30px}
-.mypage_lnb .my_lnb_info .my_info a .info.cash_info{background:url(../../images/shop/mypage/ico_cash.png)center 4px no-repeat;background-size:24px}
-.mypage_lnb .my_lnb_info .my_info a .info.gift_info{background:url(../../images/shop/mypage/ico_gift.png)center 7px no-repeat;background-size:32px}
+.mypage_lnb .my_lnb_info .my_info a .info.order_info{background:url(../../images/mypage/ico_pay.png)center 7px no-repeat;background-size:30px}
+.mypage_lnb .my_lnb_info .my_info a .info.coupon_info{background:url(../../images/mypage/ico_coupon.png)center 6px no-repeat;background-size:30px}
+.mypage_lnb .my_lnb_info .my_info a .info.cash_info{background:url(../../images/mypage/ico_cash.png)center 4px no-repeat;background-size:24px}
+.mypage_lnb .my_lnb_info .my_info a .info.gift_info{background:url(../../images/mypage/ico_gift.png)center 7px no-repeat;background-size:32px}
 .mypage_lnb .mypage_link{position:absolute;top:40px;left:0;width:170px;border-top:1px solid #555}
 .mypage_lnb .mypage_link .depth_01>li>a{display:block;padding:16px 0;color:#111;font-size:16px;font-weight:500;line-height:22px;border-bottom:1px solid #eee}
 .mypage_lnb .mypage_link .depth_01>li .depth_02{padding-bottom:15px;border-bottom:1px solid #eee}
@@ -165,8 +165,8 @@
 .recommand_wine .wine_list .list .info .txt span{font-size:12px;line-height:17px}
 .recommand_wine .wine_list .list .info .txt span em{padding-left:3px}
 .recommand_wine .wine_list .list .info .box{margin-top:10px}
-.recommand_wine .wine_list .list .info .box .satisfaction span.on{background:url(../../images/shop/default/ico_star_on.png)center 2px no-repeat;background-size:12px}
-.recommand_wine .wine_list .list .info .box .satisfaction span.off{background:url(../../images/shop/default/ico_star_off.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .info .box .satisfaction span.on{background:url(../../images/default/ico_star_on.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .info .box .satisfaction span.off{background:url(../../images/default/ico_star_off.png)center 2px no-repeat;background-size:12px}
 .recommand_wine .wine_list .list .info .box .satisfaction_txt{font-size:12px;line-height:17px}
 .recommand_wine .wine_list .list .btn_area .btn_txt{margin:0 auto;width:160px;font-size:14px}
 .recommand_wine .wine_list .btn_area{margin-top:60px} */
@@ -178,12 +178,12 @@
 .recommand_wine .wine_list .list .table_box .info .follower_btn .name{font-size:16px}
 .recommand_wine .wine_list .list .table_box .info .satisfaction_box{position:relative;display:inline-block;margin:0;padding-left:10px;vertical-align:middle}
 .recommand_wine .wine_list .list .table_box .info .satisfaction_box::before{content:'';position:absolute;top:50%;left:0;margin-top:-7.5px;width:1px;height:15px;background-color:#ddd}
-.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.on{background:url(../../images/shop/default/ico_star_on.png)center 2px no-repeat;background-size:12px}
-.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.off{background:url(../../images/shop/default/ico_star_off.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.on{background:url(../../images/default/ico_star_on.png)center 2px no-repeat;background-size:12px}
+.recommand_wine .wine_list .list .table_box .info .box .satisfaction span.off{background:url(../../images/default/ico_star_off.png)center 2px no-repeat;background-size:12px}
 .recommand_wine .wine_list .list .table_box .info .info_box{display:block}
 .recommand_wine .wine_list .list .table_box .info .info_box span{font-size:14px}
 .recommand_wine .wine_list .list .btn_area{position:absolute;top:50%;right:30px;transform:translateY(-50%);margin-top:0}
-.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/shop/default/ico_app.png)0 center no-repeat;background-size:15px}
+.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/default/ico_app.png)0 center no-repeat;background-size:15px}
 .recommand_wine .wine_list .btn_area{margin-top:60px}
 .recommand_page .tab_area>ul.tab3>li{width:33.33%}
 .recommand_page .tab_area>ul.tab3>li:last-child{width:33.33%}

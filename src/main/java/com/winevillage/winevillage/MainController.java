@@ -1,4 +1,4 @@
-package com.winevillage.wineviilage;
+package com.winevillage.winevillage;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +12,9 @@ public class MainController {
 		return "home";
 	}
 	
-	@GetMapping("/common.do")
+	@GetMapping("/header.do")
 	public String header() {
-		return "common/common";
+		return "common/header";
 	}
 	@GetMapping("/order_write.do")
 	public String pay() {

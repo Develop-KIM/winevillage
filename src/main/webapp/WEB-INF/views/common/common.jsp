@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />  
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <link rel="shortcut icon" href="./images/default/favicon.ico"
@@ -28,10 +28,8 @@
 <link rel="stylesheet" type="text/css" href="./css/layout_sy6617.css" />
 <link rel="stylesheet" type="text/css" href="./css/layout_pc_sy231a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css"
-	href="./css/shop/main99d9.css" />
-<link rel="stylesheet" type="text/css"
-	href="./css/shop/main_pc2092.css"
+<link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
+<link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
@@ -40,7 +38,7 @@
 <!-- <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script> -->
 <script type="text/javascript" src="./js/front_ui9442.js"></script>
 <script src="./js/wn.productf100.js"></script>
-<title>Insert title here</title>
+<title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
 	<header id="header" class="header">
@@ -80,8 +78,7 @@
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a
-							href="product/product_lists9852.html?sh_category1_cd=10000&amp;sh_category2_cd=10100">WINE</a>
+						<li class=""><a href="product/product_lists9852.do?category=">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
@@ -372,5 +369,180 @@
 			</div>
 		</form>
 	</header>
+	<form action="https://www.winenara.com/login" id="LoginPostFrm"
+		onkeydown="javascript:onEnterLogin();" method="post"
+		accept-charset="utf-8">
+		<input type="hidden" name="witplus_csrf_token"
+			value="be7b38b9302ff3c05cc7f68a617d7dd7" />
+		<div class="layer login_layer" id="login_layer">
+			<div class="display_table">
+				<div class="table_cell">
+					<div class="layer_area">
+						<h2 class="layer_tit">
+							회원서비스
+							<!-- <p class="check"><span>로그인</span></p>
+                    <p><span><a href="/member/join/law_agreement">회원가입</a></span></p> -->
+						</h2>
+						<button type="button" class="layer_close"
+							onclick="commonUI.layer.close()">닫기</button>
+						<div class="layer_con">
+							<div class="login_tab">
+								<p class="check">
+									<span>기존회원</span>
+								</p>
+								<p>
+									<span><a href="/member/join/law_agreement">신규회원가입</a></span>
+								</p>
+							</div>
+							<div class="social_login">
+								<h2 class="social_tit">소셜아이디로 로그인</h2>
+								<ul>
+									<li><a href="#none" class="social_btn naver">네이버</a></li>
+									<li><a href="#none" class="social_btn kakao">카카오</a></li>
+									<li><a href="#none" class="social_btn google">구글</a></li>
+									<!-- <li><a href="#none" class="social_btn apple">애플</a></li> -->
+								</ul>
+							</div>
+							<div class="form_area">
+								<ul>
+									<li>
+										<div class="form_box">
+											<input type="text" id="login_user_id" name="login_user_id"
+												value="" placeholder="아이디를 입력하세요">
+										</div>
+									</li>
+									<li>
+										<div class="form_box">
+											<input type="password" id="login_passwd" name="login_passwd"
+												placeholder="비밀번호를 입력하세요">
+										</div>
+									</li>
+								</ul>
+							</div>
+							<input type="hidden" id="login_return_url_param"
+								name="login_return_url_param">
+							<div class="save_box">
+								<div class="checkbox">
+									<input type="checkbox" name="login_auto" id="login_auto"
+										value="Y" checked> <label for="login_auto">로그인유지</label>
+								</div>
+								<div class="checkbox">
+									<input type="checkbox" name="id_save" id="id_save" value="Y">
+									<label for="id_save">아이디저장</label>
+								</div>
+								<p class="input_info_txt">※ 공공장소에서는 꺼주세요.</p>
+							</div>
+							<div class="btn_area">
+								<button type="button" class="btn_txt btn_black" id="loginBtn">
+									<span>로그인</span>
+								</button>
+							</div>
+							<div class="login_sub_btn">
+								<a href="/member/forgoten/forgoten_id" class="btn">아이디
+									찾기</a> <a href="/member/forgoten/forgoten_pw" class="btn">비밀번호
+									재발급</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<footer id="footer" class="footer">
+		<div class="hidden_info">
+			<div class="link_box">
+				<div class="wrap">
+					<ul>
+						<li><a href="/company/about_us">회사소개</a></li>
+						<li><a href="/company/brand">브랜드 소개</a></li>
+						<li><a href="/member/policy/law_con">이용약관</a></li>
+						<li><a href="/member/policy/privacy_con">개인정보처리방침</a></li>
+						<li><a href="/cs/notice_lists">고객센터</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="info_box">
+				<div class="info">
+					<ul class="company_info">
+						<li>대표번호 : 080-732-0101 (업무시간 : 10:00-17:00 월~금/ 점심시간 :
+							12:00-13:00) 주말, 공휴일 휴무</li>
+						<li><span><em>대표자</em> : 이권휴</span><span><em>주소</em> :
+								서울특별시 중구 퇴계로46길 23, 1층(묵정동)</span></li>
+						<li><span><em>법인명</em> : (주)와인나라아이비 제일와인셀러점</span><span><em>사업자
+									등록정보</em> : 142-81-83435</span></li>
+						<li><span><em>통신판매업</em> : 제 2022-서울중구-1128호</span><span><em>개인정보보호책임자</em>
+								: 정재훈</span></li>
+						<li><span>호스팅 : (주)와인나라아이비</span><span>E-MAIL :
+								jjh2310@winenara.com</span></li>
+						<li>주류는 매장을 방문하여 수령하여야 하며, 주류를 매장 외부로 반출하여 소비자에게 배달/판매하지 않음</li>
+						<li>Copyright (c) WINENARA All Rights Reserved. 무단 전재와 무단 복제를
+							금함.</li>
+					</ul>
+				</div>
+				<div class="logo">
+					<img src="./images/default/logo_footer.png" alt="WINENARA 1987">
+				</div>
+			</div>
+		</div>
+		<div class=" mb_hidden quick_menu">
+			<ul class="list">
+				<li class="top"><a href="#none"
+					onclick="commonUI.footer.topMove()">TOP</a></li>
+				<li><a href="/cs/special">
+						<div class="icon">
+							<picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source
+								srcset="./images/default/pc_ico_quick_delivery.png"
+								media="(min-width:768px)">
+							<!-- pc이미지 -->
+							<source
+								srcset="./images/default/mb_ico_quick_delivery.png"
+								media="(max-width:767px)">
+							<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
+								src="./images/default/pc_ico_quick_delivery.png"
+								alt="특판문의" draggable="false"> <!-- pc이미지 --> </picture>
+						</div>
+						<div class="txt">특판문의</div>
+				</a></li>
+				<li><a href="http://pf.kakao.com/_vlkxfxb/chat"
+					class="pc_hidden">
+						<div class="icon">
+							<picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source
+								srcset="./images/default/pc_ico_quick_talk.png"
+								media="(min-width:768px)">
+							<!-- pc이미지 -->
+							<source
+								srcset="./images/default/mb_ico_quick_talk.png"
+								media="(max-width:767px)">
+							<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
+								src="./images/default/pc_ico_quick_talk.png"
+								alt="Talk" draggable="false"> <!-- pc이미지 --> </picture>
+						</div>
+						<div class="txt">1:1문의</div>
+				</a> <a
+					href="javascript:window.open('http://pf.kakao.com/_vlkxfxb/chat','1:1문의','width=800,height=800,scrollbars=yes');"
+					class="mb_hidden">
+						<div class="icon">
+							<picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
+							<source
+								srcset="./images/default/pc_ico_quick_talk.png"
+								media="(min-width:768px)">
+							<!-- pc이미지 -->
+							<source
+								srcset="./images/default/mb_ico_quick_talk.png"
+								media="(max-width:767px)">
+							<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
+								src="./images/default/pc_ico_quick_talk.png"
+								alt="Talk" draggable="false"> <!-- pc이미지 --> </picture>
+						</div>
+						<div class="txt">1:1문의</div>
+				</a></li>
+			</ul>
+			<div class="open_box">
+				<button type="button" class="menu_open">quick menu open</button>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>
