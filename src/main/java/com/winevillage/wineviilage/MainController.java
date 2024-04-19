@@ -16,5 +16,9 @@ public class MainController {
 	public String header() {
 		return "common/header";
 	}
+	@GetMapping("/order_write.do")
+	public String pay() {
+		return "pay/order_write";
+	}
 	
 }
