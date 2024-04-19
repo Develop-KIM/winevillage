@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -946,7 +947,7 @@
 								</div>
 								<div class="form_box">
 									<input type="text" id="or_name" name="or_name"
-										placeholder="이름을 입력해주세요." value="윤영길" readonly="">
+										placeholder="이름을 입력해주세요." value="${member.name }" readonly="">
 								</div>
 							</li>
 							<li>
@@ -955,7 +956,7 @@
 								</div>
 								<div class="form_box">
 									<input type="text" id="or_email" name="or_email"
-										placeholder="이메일을 입력해주세요." value="ygyun3580@hanmail.net">
+										placeholder="이메일을 입력해주세요." value="${member.email }">
 									<!-- <p class="input_info_txt">이메일을 입력해주세요.</p> -->
 								</div>
 							</li>
@@ -965,7 +966,7 @@
 								</div>
 								<div class="form_box">
 									<input type="text" id="or_hp" name="or_hp"
-										placeholder="'-'제외한 숫자만 입력해주세요." value="01072044511">
+										placeholder="'-'제외한 숫자만 입력해주세요." value="${member.phoneNumber }">
 									<!-- <p class="input_info_txt">'-'제외한 숫자만 입력해주세요.</p> -->
 								</div>
 							</li>
