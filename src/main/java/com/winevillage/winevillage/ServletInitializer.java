@@ -1,4 +1,4 @@
-package com.winevillage.wineviilage;
+package com.winevillage.winevillage;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
