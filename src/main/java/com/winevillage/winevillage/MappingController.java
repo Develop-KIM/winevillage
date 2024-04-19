@@ -8,16 +8,15 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
-public class MainController {
+public class MappingController {
 
 	@RequestMapping("/")
 	public String landing() {
 		return "landing";
 	}
-
-	@GetMapping("/header.do")
+	@GetMapping("/common.do")
 	public String header() {
-		return "common/header";
+		return "common/common";
 	}
 
 	@GetMapping("/order_write.do")

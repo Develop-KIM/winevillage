@@ -4,6 +4,8 @@
 <html lang="ko">
 <head>
 <title>WINENARA 1987 ㅣ 장바구니</title>
+<<<<<<< HEAD
+=======
 <script type="text/JavaScript" language="JavaScript"
 	src="https://winenara-recommend-method.s3.ap-northeast-2.amazonaws.com/rcMethod.js"
 	charset="UTF-8"></script>
@@ -12,15 +14,13 @@
 	content="be7b38b9302ff3c05cc7f68a617d7dd7" />
 <script async
 	src="https://www.googletagmanager.com/gtag/js?id=UA-217574467-1"></script>
+>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }
 	gtag('js', new Date());
 	gtag('config', 'UA-217574467-1');
 </script>
-<!-- 구글 로그 분석 220428 -->
-<!-- 트래킹 관련 include -->
-<!-- 트래킹 관련 include -->
 </head>
 <body>
 	<!-- skip_menu -->
@@ -192,8 +192,7 @@
 								<p class="info">봄에 어울리는 색, 그리고 향을 테마로 준비한 이달의 와인 5종을 소개합니다.
 								</p>
 								<div class="img">
-									<img src="./images/product/mb_recom_lnb.jpg"
-										alt="">
+									<img src="./images/product/mb_recom_lnb.jpg" alt="">
 								</div>
 								<div class="btn_box">
 									<span class="date">2022.04.01</span>
@@ -269,10 +268,8 @@
 							<div class="box cate">
 								<p class="tit">카테고리</p>
 								<ul>
-									<li><a
-										href="/product/group_product_lists?group_cd=1901">신상품</a></li>
-									<li><a
-										href="/product/group_product_lists?group_cd=1902">베스트</a></li>
+									<li><a href="/product/group_product_lists?group_cd=1901">신상품</a></li>
+									<li><a href="/product/group_product_lists?group_cd=1902">베스트</a></li>
 									<li><a href="/event/event_lists">프로모션</a></li>
 									<!-- <li><a href="#">시그니쳐</a></li> -->
 									<li><a href="/cs/special">대량구매 할인</a></li>
@@ -405,22 +402,6 @@
 													</ul>
 												</div>
 											</div>
-											<!-- 지금 인기 있는 검색어 -->
-											<!-- <div class="search_popular">
-                                                <h2 class="tit">지금 인기 있는 검색어</h2>
-                                                <ul>
-                                                    <li><a href="/product/search_product_lists?keyword=프랑스">추석</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=레드">레드</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=제로">제로</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=스파클링">스파클링</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=로제">로제</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=레드와인">레드와인</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=이벤트 와인">이벤트 와인</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=논알콜">논알콜</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=디저트 와인">디저트 와인</a></li>
-                                                    <li><a href="/product/search_product_lists?keyword=화이트">화이트</a></li>
-                                                </ul>
-                                            </div> -->
 										</div>
 									</div>
 								</div>
@@ -433,8 +414,7 @@
 	</div>
 	<!-- //모바일 카테고리 레이어 -->
 	<input type="hidden" id="path_gb" value="">
-	<link rel="stylesheet" type="text/css"
-		href="./css/slick.css">
+	<link rel="stylesheet" type="text/css" href="./css/slick.css">
 	<script type="text/javascript" src="./js/slick.min.js"></script>
 	<script type="text/javascript">
     //배너 슬라이드
@@ -837,8 +817,7 @@
 			</div>
 		</div>
 		<div class="wrap">
-			<script type="text/javascript"
-				src="./js/wn.order.js?v=240318123259"></script>
+			<script type="text/javascript" src="./js/wn.order.js?v=240318123259"></script>
 			<style>
 .quick_menu {
 	display: none
@@ -1681,8 +1660,7 @@
 	});
 	</script>
 		<!-- //page_script -->
-		<script type="text/javascript"
-			src="./js/kcp/approval_key.js"></script>
+		<script type="text/javascript" src="./js/kcp/approval_key.js"></script>
 		<script>
 			function call_pay_form()
 				{
@@ -1933,44 +1911,6 @@
 						<div class="layer_tit">쿠폰선택</div>
 						<div class="layer_con">
 							<ul id="coupon_list">
-								<!--
-													<li>
-															<div class="box">
-																	<p class="tit">회원가입 (15,000원 할인)</p>
-																	<p class="date">2020.10.01 ~ 2020.10.31 </p>
-															</div>
-															<div class="box btn">
-																	<button type="button">선택</button>
-															</div>
-													</li>
-													<li>
-															<div class="box">
-																	<p class="tit">생일기념 (3% 할인)</p>
-																	<p class="date">2020.10.01 ~ 2020.10.31 </p>
-															</div>
-															<div class="box btn">
-																	<button type="button">선택</button>
-															</div>
-													</li>
-													<li>
-															<div class="box">
-																	<p class="tit">회원등급 (5% 할인)</p>
-																	<p class="date">2020.10.01 ~ 2020.10.31 </p>
-															</div>
-															<div class="box btn">
-																	<button type="button">선택</button>
-															</div>
-													</li>
-													<li>
-															<div class="box">
-																	<p class="tit">구매이벤트 (10% 할인)</p>
-																	<p class="date">2020.10.01 ~ 2020.10.31 </p>
-															</div>
-															<div class="box btn">
-																	<button type="button">선택</button>
-															</div>
-													</li>
-											-->
 							</ul>
 							<div class="ntc_box">
 								- 쿠폰 당 1개의 상품에 1회 사용하실 수 있습니다.<br> - 쿠폰마다 사용기한이 있으므로 기간 내에
@@ -2039,9 +1979,8 @@
 	}
 	</script>
 	</section>
-	<!-- //contents -->
 	<!-- footer -->
-	<%@ include file="../common/footer.jsp" %>
+	<%@ include file="../common/footer.jsp"%>
 	<!-- //footer -->
 	<script language=javascript>
     $(".quick_menu .menu_open").on("click", function () {
@@ -2058,13 +1997,6 @@
 	}
 	if( page !== 'product_view' && page !== 'order_ok'){
 		console.log(page);
-		/*
-			RC_Method({
-				sign_up_data: "",
-				page_type : page, 
-				behavior:"page_view"
-			});
-			*/
 	}
 </script>
 <!--백로그 API-->
