@@ -1,4 +1,4 @@
-package com.winevillage.wineviilage;
+package com.winevillage.winevillage;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
