@@ -1,0 +1,4 @@
+.header {position: fixed; top: 0; left: 0; width: 100%; background-color: #fff; z-index: 9999; border-bottom: 1px solid #ddd;}
+.header .header_wrap {height: 125px; padding: 22px 0 21px; text-align: center; width: 1200px; margin: 0 auto;}
+.header .header_wrap .logo {position: relative; display: block; float: left; z-index: 10; width: 152px;}
+.header .gnb {position: relative;}
