@@ -21,9 +21,9 @@
 				<ul class="depth_01">
 					<li><a href="/mypageping/mypage">나의 쇼핑</a>
 						<ul class="depth_02">
-							<li><a href="/order_list.do">주문내역</a></li>
-							<li class="on"><a href="/return_order_list.do">교환/반품내역</a></li>
-							<li><a href="/wish_list.do">위시리스트</a></li>
+							<li class="on"><a href="/order_list.do">주문내역</a></li>
+							<li><a href="/return_order_list.do">교환/반품내역</a></li>
+							<li><a href="/wish_lists.do">위시리스트</a></li>
 							<li><a href="/cart_list.do">장바구니</a></li>
 						</ul></li>
 					<li><a href="#none">개인정보</a>
@@ -43,7 +43,7 @@
             <form action="https://www.winenara.com/shop/mypage/shopping/return_order_lists" id="searchFrm" name="searchFrm" method="get" accept-charset="utf-8">
             <div class="top_info">
                 <div class="page_tit">
-                    <h2 class="tit">교환/반품내역</h2>
+                    <h2 class="tit">주문내역</h2>
                 </div>
                 <div class="term_box">
                     <div class="datepicker_area">
@@ -62,7 +62,7 @@
             <div class="o_lists">
                                 <!-- 주문 내역 없을 때 -->
                     <div class="empty" id="nodata">
-                        <p>교환/반품 내역이 없습니다.</p>
+                        <p>주문 내역이 없습니다.</p>
                     </div>
                     <!-- //주문 내역 없을 때 -->
                             </div>
