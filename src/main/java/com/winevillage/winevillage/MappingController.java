@@ -10,10 +10,6 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class MappingController {
 
-    @RequestMapping("/")
- 	public String landing() {
-		return "landing";
-	}
 	@GetMapping("/common.do")
 	public String header() {
 		return "common/common";
@@ -24,7 +20,8 @@ public class MappingController {
 		return "pay/order_write";
 	}
 
-	@GetMapping("/mainpage.do")
+	// 메인페이지
+	@GetMapping("/mainPage.do")
 	public String mainpage() {
 		return "mainpage/mainpage";
 	}
