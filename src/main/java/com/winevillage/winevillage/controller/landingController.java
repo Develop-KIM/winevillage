@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class landingController {
 
-	// 랜딩페이지
 	@RequestMapping("/")
 	public String landingPage(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
@@ -24,11 +23,9 @@ public class landingController {
 			}
 		}
 
-		// 쿠키가 없는 경우에만 랜딩페이지로 이동
 		if (!hasCookie) {
 			return "landing";
 		} else {
-			// 쿠키가 있는 경우에는 메인페이지로 리다이렉트
 			return "redirect:/mainPage.do";
 		}
 	}
