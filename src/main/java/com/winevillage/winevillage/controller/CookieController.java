@@ -12,7 +12,7 @@ public class CookieController {
 
 	@GetMapping("/setCookie")
 	public String setCookie(HttpServletResponse response) {
-		Cookie cookie = new Cookie("exampleCookie", "value");
+		Cookie cookie = new Cookie("WineVillageCookie", "value");
 		cookie.setMaxAge(3600); // 1시간 동안 유효
 		response.addCookie(cookie);
 		return "redirect:/mainpage.do";
