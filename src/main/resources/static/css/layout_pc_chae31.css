@@ -55,7 +55,7 @@
 .content.mypage .inner .top_info .gift_price.gift_price_type2 ul{text-align:right}
 .content.mypage .inner .top_info .gift_price.gift_price_type2 ul li{text-align:center}
 .content.mypage .inner .top_info .gift_price.gift_price_type2 ul li:not(:last-of-type){margin-right:20px}
-.content.mypage .inner{max-width:100%;margin:0;padding:0 0 0 220px;width:100%}
+.content.mypage .inner{max-width:100%;margin-top:-100px;padding:0 0 0 220px;width:100%}
 /* mapage_lnb */
 .mypage_lnb.lnb{display:block;position:relative;max-width:1200px;margin:0 auto;padding-top:40px}
 .mypage_lnb .my_lnb_info{display:table;table-layout:fixed;padding:0 30px;margin:0 0 0 auto;box-sizing:border-box;max-width:calc(100% - 220px);width:100%;height:140px;background:#F8F8F8}
@@ -74,7 +74,7 @@
 .mypage_lnb .my_lnb_info .my_info a .info.coupon_info{background:url(../../images/mypage/ico_coupon.png)center 6px no-repeat;background-size:30px}
 .mypage_lnb .my_lnb_info .my_info a .info.cash_info{background:url(../../images/mypage/ico_cash.png)center 4px no-repeat;background-size:24px}
 .mypage_lnb .my_lnb_info .my_info a .info.gift_info{background:url(../../images/mypage/ico_gift.png)center 7px no-repeat;background-size:32px}
-.mypage_lnb .mypage_link{position:absolute;top:40px;left:0;width:170px;border-top:1px solid #555}
+.mypage_lnb .mypage_link{position:absolute;top:-210px;left:0;width:170px;border-top:1px solid #555}
 .mypage_lnb .mypage_link .depth_01>li>a{display:block;padding:16px 0;color:#111;font-size:16px;font-weight:500;line-height:22px;border-bottom:1px solid #eee}
 .mypage_lnb .mypage_link .depth_01>li .depth_02{padding-bottom:15px;border-bottom:1px solid #eee}
 .mypage_lnb .mypage_link .depth_01>li .depth_02>li>a{display:block;margin-top:15px;color:#999;font-size:14px;line-height:20px}
