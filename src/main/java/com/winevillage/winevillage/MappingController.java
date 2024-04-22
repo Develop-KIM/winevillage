@@ -2,10 +2,6 @@ package com.winevillage.winevillage;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class MappingController {
@@ -63,4 +59,48 @@ public class MappingController {
 		return "mypage/withdrawal";
 	}
 
+	// 상품 리스트 페이지 (wine)
+	@GetMapping("/list_wine.do")
+	public String list_wine() {
+		return "shop/wine/product_list_Wine";
+	}
+	@GetMapping("/list_wine_red.do")
+	public String list_red() {
+		return "shop/wine/product_list_Red";
+	}
+	@GetMapping("/list_wine_white.do")
+	public String list_white() {
+		return "shop/wine/product_list_White";
+	}
+	@GetMapping("/list_wine_rose.do")
+	public String list_rose() {
+		return "shop/wine/product_list_Rose";
+	}
+	@GetMapping("/list_wine_deu.do")
+	public String list_deu() {
+		return "shop/wine/product_list_deu";
+	}
+	@GetMapping("/list_wine_esp.do")
+	public String list_esp() {
+		return "shop/wine/product_list_esp";
+	}
+	@GetMapping("/list_wine_fra.do")
+	public String list_fra() {
+		return "shop/wine/product_list_fra";
+	}
+	@GetMapping("/list_wine_ita.do")
+	public String list_ita() {
+		return "shop/wine/product_list_ita";
+	}
+	
+	//상품리스트 페이지(other)
+	@GetMapping("/list_other.do")
+	public String list_other() {
+		return "shop/other/product_list_other";
+	}
+	@GetMapping("/list_other_acc.do")
+	public String list_acc() {
+		return "shop/other/product_list_acc";
+	}
 }
+
