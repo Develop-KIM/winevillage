@@ -65,7 +65,7 @@
 		<div class="top">
 			<div class="wrap">
 				<h1 class="logo">
-					<a href="main6f31.html"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
+					<a href="/mainpage.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
 						<source srcset="./images/default/wine_village.svg"
 							media="(min-width:768px)">
 						<!-- pc이미지 -->

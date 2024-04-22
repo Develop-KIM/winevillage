@@ -17,7 +17,7 @@ public class MappingController {
 	}
 
 	// 메인페이지
-	@GetMapping("/mainPage.do")
+	@GetMapping("/mainpage.do")
 	public String mainpage() {
 		return "mainpage/mainpage";
 	}

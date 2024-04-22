@@ -26,7 +26,7 @@ public class landingController {
 		if (!hasCookie) {
 			return "landing";
 		} else {
-			return "redirect:/mainPage.do";
+			return "redirect:/mainpage.do";
 		}
 	}
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>WINEVILLAGE | Other</title>
+<title>WINEVILLAGE | OTHER</title>
 </head>
 <body>
 	<%@ include file="../../common/common.jsp"%>
