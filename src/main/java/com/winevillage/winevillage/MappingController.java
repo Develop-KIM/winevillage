@@ -10,9 +10,13 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class MappingController {
 
+//    @RequestMapping("/")
+// 	public String landing() {
+//		return "landing";
+//	}
     @RequestMapping("/")
- 	public String landing() {
-		return "landing";
+ 	public String home() {
+		return "home";
 	}
 	@GetMapping("/common.do")
 	public String header() {
@@ -64,6 +68,14 @@ public class MappingController {
 	@GetMapping("/withdrawal.do")
 	public String withdrawal() {
 		return "mypage/withdrawal";
+	}
+	@GetMapping("/faq_list.do")
+	public String faq_list() {
+		return "mypage/faq_list";
+	}
+	@GetMapping("/notice_list.do")
+	public String notice_list() {
+		return "mypage/notice_list";
 	}
 
 }
