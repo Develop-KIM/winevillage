@@ -1,28 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
-<!-- Mirrored from www.winenara.com/shop/main?login_on=Y&return_url=https://me2.do/Fijy5pow by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 13:02:33 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-
 <head>
     <title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
-
 </head>
-<script type="text/javascript" src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
 <body>
 <%@ include file="../common/common.jsp"%>
-
-<%@ include file="common_mypage.jsp"%>
+<%@ include file="../common/common_mypage.jsp"%>
 		<div class="lnb mypage_lnb lnb_wrap">
 			<div class="mypage_link mb_hidden">
 				<ul class="depth_01">
 					<li><a href="/mypageping/mypage">나의 쇼핑</a>
 						<ul class="depth_02">
-							<li><a href="/order_list.do">주문내역</a></li>
-							<li class="on"><a href="/return_order_list.do">교환/반품내역</a></li>
+							<li class="on"><a href="/order_list.do">주문내역</a></li>
+							<li><a href="/return_order_list.do">교환/반품내역</a></li>
 							<li><a href="/wish_list.do">위시리스트</a></li>
 							<li><a href="/cart_list.do">장바구니</a></li>
 						</ul></li>
@@ -43,7 +33,7 @@
             <form action="https://www.winenara.com/shop/mypage/shopping/return_order_lists" id="searchFrm" name="searchFrm" method="get" accept-charset="utf-8">
             <div class="top_info">
                 <div class="page_tit">
-                    <h2 class="tit">교환/반품내역</h2>
+                    <h2 class="tit">주문내역</h2>
                 </div>
                 <div class="term_box">
                     <div class="datepicker_area">
@@ -62,7 +52,7 @@
             <div class="o_lists">
                                 <!-- 주문 내역 없을 때 -->
                     <div class="empty" id="nodata">
-                        <p>교환/반품 내역이 없습니다.</p>
+                        <p>주문 내역이 없습니다.</p>
                     </div>
                     <!-- //주문 내역 없을 때 -->
                             </div>
@@ -88,8 +78,6 @@
         </div>
         </form>      
     </div>
+	<%@ include file="../common/footer.jsp"%>
 </body>
-<footer>
-<%@ include file="../common/footer.jsp"%>
-</footer>
 </html>

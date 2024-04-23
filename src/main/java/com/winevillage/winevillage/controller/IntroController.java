@@ -2,16 +2,15 @@ package com.winevillage.winevillage.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class landingController {
+public class IntroController {
 
 	@GetMapping("/")
-	public String landingPage(HttpServletRequest request) {
+	public String Intro(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
 		boolean hasCookie = false;
 		if (cookies != null) {
@@ -24,9 +23,9 @@ public class landingController {
 		}
 
 		if (!hasCookie) {
-			return "landing/landingpage";
+			return "intro";
 		} else {
-			return "redirect:/mainpage.do";
+			return "redirect:/main.do";
 		}
 	}
 }
