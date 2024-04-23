@@ -10,14 +10,17 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class MappingController {
 
+//<<<<<<< HEAD
+////    @RequestMapping("/")
+//// 	public String landing() {
+////		return "landing";
+////	}
 //    @RequestMapping("/")
-// 	public String landing() {
-//		return "landing";
+// 	public String home() {
+//		return "home";
 //	}
-    @RequestMapping("/")
- 	public String home() {
-		return "home";
-	}
+//=======
+//>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 	@GetMapping("/common.do")
 	public String header() {
 		return "common/common";
@@ -28,7 +31,8 @@ public class MappingController {
 		return "pay/order_write";
 	}
 
-	@GetMapping("/mainpage.do")
+	// 메인페이지
+	@GetMapping("/mainPage.do")
 	public String mainpage() {
 		return "mainpage/mainpage";
 	}
