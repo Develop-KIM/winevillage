@@ -65,7 +65,7 @@
 		<div class="top">
 			<div class="wrap">
 				<h1 class="logo">
-					<a href="main6f31.html"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
+					<a href="/mainpage.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
 						<source srcset="./images/default/wine_village.svg"
 							media="(min-width:768px)">
 						<!-- pc이미지 -->
@@ -78,46 +78,46 @@
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a href="product/product_lists9852.do?category=">WINE</a>
+						<li class=""><a href="list_wine.do">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
 											<li class="ico_red"><a
-												href="product/product_lists9767.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;sh_category3_cd=10101">레드</a>
+												href="list_wine_red.do">레드</a>
 											</li>
 											<li class="ico_white"><a
-												href="product/product_lists1c99.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;sh_category3_cd=10102">화이트</a>
+												href="list_wine_white.do">화이트</a>
 											</li>
 											<li class="ico_rose"><a
-												href="product/product_lists5123.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;sh_category3_cd=10108">로제</a>
+												href="list_wine_rose.do">로제</a>
 											</li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
-												href="product/product_listsf3cc.html?sh_category1_cd=10000&amp;sh_category2_cd=10200&amp;sh_category3_cd=10201">프랑스</a>
+												href="list_wine_fra.do">프랑스</a>
 											</li>
 											<li class="ico_italia"><a
-												href="product/product_listsf523.html?sh_category1_cd=10000&amp;sh_category2_cd=10200&amp;sh_category3_cd=10202">이탈리아</a>
+												href="list_wine_ita.do">이탈리아</a>
 											</li>
 											<li class="ico_spain"><a
-												href="product/product_lists0266.html?sh_category1_cd=10000&amp;sh_category2_cd=10200&amp;sh_category3_cd=10203">스페인</a>
+												href="list_wine_esp.do">스페인</a>
 											</li>
 											<li class="ico_germ"><a
-												href="product/product_lists50d2.html?sh_category1_cd=10000&amp;sh_category2_cd=10200&amp;sh_category3_cd=10204">독일</a>
+												href="list_wine_deu.do">독일</a>
 											</li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
 						<li class=""><a
-							href="product/product_lists421d.html?sh_category1_cd=40000">OTHER</a>
+							href="list_other.do">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
 										<ul>
 											<li class="ico_acc"><a
-												href="product/product_listse5ca.html?sh_category1_cd=40000&amp;sh_category2_cd=40100&amp;sh_category3_cd=40101">액세서리</a>
+												href="list_other_acc.do">액세서리</a>
 											</li>
 										</ul>
 									</div>
@@ -139,7 +139,7 @@
 						<div class="mypage_layer">
 							<div class="no_login">
 								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a> <a
-									href="member/join/law_agreement.html">회원가입</a>
+									href="join.do">회원가입</a>
 							</div>
 						</div>
 					</li>
