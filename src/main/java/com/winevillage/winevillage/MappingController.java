@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MappingController {
 
-	// order
+	@GetMapping("/common.do")
+	public String header() {
+		return "common/common";
+	}
+
 	@GetMapping("/order_write.do")
-	public String pay() {
+	public String order_write() {
 		return "order/order_write";
 	}
 
@@ -67,6 +71,14 @@ public class MappingController {
 	@GetMapping("/withdrawal.do")
 	public String withdrawal() {
 		return "member/withdrawal";
+	}
+	@GetMapping("/faq_list.do")
+	public String faq_list() {
+		return "mypage/faq_list";
+	}
+	@GetMapping("/notice_list.do")
+	public String notice_list() {
+		return "mypage/notice_list";
 	}
 
 	// product
