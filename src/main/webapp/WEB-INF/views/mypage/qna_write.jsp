@@ -20,9 +20,9 @@
         <div class="select_brand js_select" id="select_brand">
             <button type="button" class="my_value js_selectBtn" onclick="$(this).toggleClass('on')"><span>1:1문의</span></button>
             <ul class="mb_lnb_lists">
-                <li><a href="/shop/cs/notice_lists">공지사항</a></li>
-                <li><a href="/shop/cs/faq_lists">자주하는 질문</a></li>
-                        	<li class="on"><a href="/shop/cs/qna_write">1:1문의</a></li>
+                <li><a href="/notice_list.do">공지사항</a></li>
+                <li><a href="/faq_list.do">자주하는 질문</a></li>
+                        	<li class="on"><a href="/qna_write.do">1:1문의</a></li>
                         <li><a href="/shop/company/member_benefit">회원혜택</a></li>
             </ul>
         </div>
@@ -32,9 +32,9 @@
             <h2><span>1:1문의</span></h2>
         </div>
         <ul class="menu tab3">
-            <li><a href="/shop/cs/notice_lists"><span>공지사항</span></a></li>
-            <li><a href="/shop/cs/faq_lists"><span>자주하는 질문</span></a></li>
-                	<li class="on"><a href="/shop/cs/qna_write"><span>1:1문의</span></a></li>
+            <li><a href="/notice_list.do"><span>공지사항</span></a></li>
+            <li><a href="/faq_list.do"><span>자주하는 질문</span></a></li>
+                	<li class="on"><a href="/qna_write.do"><span>1:1문의</span></a></li>
         </ul>
     </div>
 </div>

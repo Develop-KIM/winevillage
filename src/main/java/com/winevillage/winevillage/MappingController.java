@@ -6,6 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MappingController {
 
+//<<<<<<< HEAD
+////    @RequestMapping("/")
+//// 	public String landing() {
+////		return "landing";
+////	}
+//    @RequestMapping("/")
+// 	public String home() {
+//		return "home";
+//	}
+//=======
+//>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 	@GetMapping("/common.do")
 	public String header() {
 		return "common/common";
@@ -57,6 +68,14 @@ public class MappingController {
 	@GetMapping("/withdrawal.do")
 	public String withdrawal() {
 		return "mypage/withdrawal";
+	}
+	@GetMapping("/faq_list.do")
+	public String faq_list() {
+		return "mypage/faq_list";
+	}
+	@GetMapping("/notice_list.do")
+	public String notice_list() {
+		return "mypage/notice_list";
 	}
 
 	// 상품 리스트 페이지 (wine)
