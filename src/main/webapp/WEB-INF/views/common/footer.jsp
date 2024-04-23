@@ -48,6 +48,9 @@
 				</div>
 			</div>
 			<div class="info_box">
+				<div class="logo">
+					<img src="./css/default/wine_village_rev1_wh.svg" alt="WINEVILLAGE">
+				</div>
 				<div class="info">
 					<ul class="company_info">
 						<li>대표번호 : 080-732-0101 (업무시간 : 10:00-17:00 월~금/ 점심시간 :
@@ -64,9 +67,6 @@
 						<li>Copyright (c) WINENARA All Rights Reserved. 무단 전재와 무단 복제를
 							금함.</li>
 					</ul>
-				</div>
-				<div class="logo">
-					<img src="./images/default/logo_footer.png" alt="WINENARA 1987">
 				</div>
 			</div>
 		</div>
