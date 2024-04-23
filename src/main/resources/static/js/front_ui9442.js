@@ -400,20 +400,6 @@ var commonUI = commonUI || {};
             showOn: "both",
             buttonText: "선택"
         });
-
-        $(window).scroll(function(){
-            var $header = $("header"),
-                scrlTop = $(window).scrollTop(),
-                hdHeight = $header.outerHeight();
-
-            if(scrlTop >= hdHeight){
-                $header.addClass("fixed");
-            }
-            else{
-                $header.removeClass("fixed");
-                conPd();
-            }
-        });
     });
 
 })(commonUI);

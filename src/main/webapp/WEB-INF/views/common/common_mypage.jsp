@@ -856,7 +856,7 @@
 									<span>0</span>
 								</div>
 						</a></li>
-						<li class="on"><a href="/mypage/note/mileage_lists">
+						<li><a href="/mypage/note/mileage_lists">
 								<p class="tit">나의 마일리지</p>
 								<div class="num_box">
 									<span>0</span>
@@ -865,7 +865,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="mypage_link mb_hidden">
+<!-- 		<div class="mypage_link mb_hidden">
 				<ul class="depth_01">
 					<li><a href="/mypageping/mypage">나의 쇼핑</a>
 						<ul class="depth_02">
@@ -880,9 +880,10 @@
 							<li class="on"><a href="/mypage/account/password_cert">회원정보수정</a></li>
 							<li><a href="/mypage/account/change_password">비밀번호 변경</a></li>
 							<li><a href="/mypage/account/withdrawal">회원탈퇴</a></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 		<script>
 	function myPublic(){
