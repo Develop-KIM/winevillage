@@ -130,10 +130,10 @@ public class AdminMappingController {
 	}
 	
 	/* 환경 설정 */
-	@RequestMapping("/admin_setting_super.do") 
-	public String admin_setting_super() { 
-		return "admin_setting/admin_setting_super"; 
-	}
+//	@RequestMapping("/admin_setting_super.do") 
+//	public String admin_setting_super() { 
+//		return "admin_setting/admin_setting_super"; 
+//	}
 	
 
 	
