@@ -362,7 +362,7 @@ p.small2{font-size:12px}
 .footer .hidden_info .info_box .info .logo{float:left}
 .footer .hidden_info .info_box .info .sns{float:right}
 .footer .hidden_info .info_box .info .sns li{float:left;margin-left:5px}
-.footer .hidden_info .info_box .info .company_info{clear:both;padding:30px 0;color:#999}
+.footer .hidden_info .info_box .info .company_info{clear:both;padding:30px 0;color:#999;margin-left: 280px}
 .footer .hidden_info .info_box .info .company_info li{margin-bottom:8px}
 .footer .hidden_info .info_box .info .company_info li:last-child{margin-bottom:0}
 .footer .hidden_info .info_box .info .company_info li em{font-weight:500}
