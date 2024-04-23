@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
 	<%@ include file="../common/common.jsp"%>
