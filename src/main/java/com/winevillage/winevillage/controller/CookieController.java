@@ -14,6 +14,6 @@ public class CookieController {
 		Cookie cookie = new Cookie("WineVillageCookie", "value");
 		cookie.setMaxAge(3600); 
 		response.addCookie(cookie);
-		return "redirect:/mainpage.do";
+		return "redirect:/main.do";
 	}
 }

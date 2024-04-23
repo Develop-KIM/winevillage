@@ -3,9 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>WINENARA 1987 ㅣ 장바구니</title>
-<<<<<<< HEAD
-=======
+<title>WINENARA 1987 ㅣ 장바구니</title> <<<<<<< HEAD =======
 <script type="text/JavaScript" language="JavaScript"
 	src="https://winenara-recommend-method.s3.ap-northeast-2.amazonaws.com/rcMethod.js"
 	charset="UTF-8"></script>
@@ -14,7 +12,8 @@
 	content="be7b38b9302ff3c05cc7f68a617d7dd7" />
 <script async
 	src="https://www.googletagmanager.com/gtag/js?id=UA-217574467-1"></script>
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
+>>>>>>> branch 'develop' of
+https://github.com/Develop-KIM/WineVillage.git
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }
@@ -394,8 +393,8 @@
 													<div class="allDelete off">
 														<h2 class="tit">최근검색어</h2>
 														<button type="button" class="btn del_btn"
-															onclick="all_del_item();">
-															전체삭제</span>
+															onclick="all_del_item();">전체삭제
+														</span>
 													</div>
 													<ul id="result_list" class="result_list">
 														<li id="nodata">최근검색어 내역이 없습니다.</li>
@@ -412,10 +411,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- //모바일 카테고리 레이어 -->
-	<input type="hidden" id="path_gb" value="">
-	<link rel="stylesheet" type="text/css" href="./css/slick.css">
-	<script type="text/javascript" src="./js/slick.min.js"></script>
 	<script type="text/javascript">
     //배너 슬라이드
     $('.top_banner .top_banner_slide').slick({
@@ -951,19 +946,6 @@
 							</div>
 						</div>
 						<ul>
-							<!-- <li>
-											<div class="l_tit">
-													<p>수령방법</p>
-											</div>
-											<div class="form_box">
-													<div class="radio_area col3">
-																													<div class="radiobox type2 ">
-																	<input type="radio" name="receive_way" id="pickup" checked value="P">
-																	<label for="pickup">직접픽업</label>
-															</div>
-																																																							</div>
-											</div>
-									</li> -->
 							<input type="hidden" name="order_gb" value="P">
 							<!-- 수령방법 - 직접픽업 선택시 -->
 							<li class="receive_way_con pickup">
@@ -1221,14 +1203,6 @@
 										<input type="radio" name="otype_cd" id="otype_cd_20"
 											value="20" checked=""> <label for="otype_cd_20">신용카드</label>
 									</div>
-									<!-- <div class="radiobox type2">
-															<input type="radio" name="otype_cd" id="otype_cd_10" value="10">
-															<label for="otype_cd_10">가상계좌</label>
-													</div>
-													<div class="radiobox type2">
-															<input type="radio" name="otype_cd" id="otype_cd_30" value="30">
-															<label for="otype_cd_30">실시간계좌이체</label>
-													</div> -->
 									<div class="radiobox type2">
 										<input type="radio" name="otype_cd" id="otype_cd_70"
 											value="70"> <label for="otype_cd_70">카카오페이</label>
@@ -2008,4 +1982,3 @@
 	observer.observe();
 	console.log('test');
 </script>
-<!--lazy_loading-->

@@ -3,22 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>WINEVILLAGE</title>
+<title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
 	<%@ include file="../common/common.jsp"%>
 	<section id="contents">
-		<script type='text/javascript' src="../js/instafeed.js"></script>
-		<link rel="stylesheet" type="text/css"
-			href="../asset/css/shop/main99d9.css?v=231010140029" />
-		<link rel="stylesheet" type="text/css"
-			href="../asset/css/shop/main_pc2092.css?v=230810114342"
-			media="screen and (min-width:1024px)">
 		<div class="content main_page">
-
 			<div class="main_visual">
-
 				<div class="m_slide">
 					<a href="event/event_viewd86e.html?no=361">
 						<div class="slide">
@@ -616,8 +607,8 @@
 									</p>
 								</div>
 								<p class="sub_txt">
-									모든 서비스를 다시 이용하고 싶을 경우에는, <br class="pc_hidden">
-									<span>휴면 해제하기</span>를 선택해 주세요.
+									모든 서비스를 다시 이용하고 싶을 경우에는, <br class="pc_hidden"> <span>휴면
+										해제하기</span>를 선택해 주세요.
 								</p>
 								<ul class="mem_lists">
 								</ul>
@@ -651,12 +642,7 @@
 			<!-- //리뷰 레이어 (유형 퍼블 추가) -->
 
 			<!-- page_script -->
-			<link rel="stylesheet" type="text/css"
-				href="../asset/css/shop/slick.css" />
-			<link rel="stylesheet" type="text/css"
-				href="../asset/css/shop/jqcloud.min.css" />
-			<script type="text/javascript" src="../asset/js/jqcloud.min.js"></script>
-			<script type="text/javascript" src="../asset/js/slick.min.js"></script>
+	
 			<script>
 				function dormant_submit() {
 					location.href = "auth/change_dormentba25.html?num=";
