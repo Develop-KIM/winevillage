@@ -5,9 +5,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.edu.springboot.jdbc.IMemberService">
-	
-	
+<mapper namespace="com.winevillage.winevillage.jdbc.IPayService">
+	 <select id="getMemberInfo" parameterType="int" resultType="com.winevillage.winevillage.jdbc.MemberDTO">
+     	SELECT name, email, phone_number phoneNumber
+        FROM
+            member
+        WHERE
+            member_no = #{memberNo}
+    </select>
 </mapper>
 
 

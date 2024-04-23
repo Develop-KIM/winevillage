@@ -13,7 +13,7 @@
 			<div class="product_lists_wrap">
 				<div class="prd_list_tit">
 					<div class="top">
-						<h2>RED</h2>
+						<h2>SPARKLING</h2>
 						<div class="line_map">
 							<ul>
 								<li onclick="location.href='../main.html'"

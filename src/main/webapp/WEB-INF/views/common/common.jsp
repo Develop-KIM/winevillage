@@ -31,13 +31,23 @@
 <link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
+<link rel="stylesheet" type="text/css" href="./css/shop/main99d9.css?v=231010140029" />
+<link rel="stylesheet" type="text/css" href="./css/shop/main_pc2092.css?v=230810114342"
+            media="screen and (min-width:1024px)">
+<link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
+<link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
+<script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="./js/picturefill.min.js"></script>
-<script type='text/javascript' src="./js/instafeed.js"></script>
-<!-- <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script> -->
-<script type="text/javascript" src="./js/front_ui9442.js"></script>
-<script src="./js/wn.productf100.js"></script>
+<script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
+<script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
+<script type="text/JavaScript" src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
+<script src="./js/wn.productf100.js?v=230405140747"></script>
+<script type="text/javascript" src="./js/jqcloud.min.js"></script>
+<script type="text/javascript" src="./js/slick.min.js"></script>
+
+
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
@@ -65,7 +75,7 @@
 		<div class="top">
 			<div class="wrap">
 				<h1 class="logo">
-					<a href="/mainpage.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
+					<a href="/main.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
 						<source srcset="./images/default/wine_village.svg"
 							media="(min-width:768px)">
 						<!-- pc이미지 -->
@@ -88,11 +98,11 @@
 											<li class="ico_white"><a
 												href="/list_wine_white.do">화이트</a></li>
 											<li class="ico_rose"><a
-												href="/list_wine_rese.do">로제</a></li>
+												href="/list_wine_rose.do">로제</a></li>
 											<li class="ico_sparkling"><a
 												href="/list_wine_sparkling.do">스파클링</a></li>
 											<li class="ico_spirits"><a
-												href="/list_wine_fortifield.do">주정강화</a></li>
+												href="/list_wine_fortified.do">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a

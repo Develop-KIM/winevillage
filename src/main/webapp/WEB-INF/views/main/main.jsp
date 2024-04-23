@@ -642,6 +642,7 @@
 			<!-- //리뷰 레이어 (유형 퍼블 추가) -->
 
 			<!-- page_script -->
+	
 			<script>
 				function dormant_submit() {
 					location.href = "auth/change_dormentba25.html?num=";
