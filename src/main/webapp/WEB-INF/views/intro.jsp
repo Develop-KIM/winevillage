@@ -37,7 +37,7 @@
 				<div class="txt_area">
 					<div class="inner_box">
 						<h2 class="logo">
-							<a href="/"><img src="./images/default/wine_village.svg"
+							<a href="/"><img src="./images/default/wine_village	.svg"
 								alt="인트로 와인빌리지"></a>
 						</h2>
 						<p class="txt">
