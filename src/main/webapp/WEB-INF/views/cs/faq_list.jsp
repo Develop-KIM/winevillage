@@ -3,10 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<!-- Mirrored from www.winenara.com/shop/main?login_on=Y&return_url=https://me2.do/Fijy5pow by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 13:02:33 GMT -->
-<!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<!-- /Added by HTTrack -->
 
 <head>
 <title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
