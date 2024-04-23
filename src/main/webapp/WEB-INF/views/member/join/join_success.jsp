@@ -29,8 +29,8 @@
 					</h2>
 					<ul>
 						<li class="">1. 이용약관 동의</li>
-						<li class="on">2. 회원정보 입력</li>
-						<li class="">3. 회원가입 완료</li>
+						<li class="">2. 회원정보 입력</li>
+						<li class="on">3. 회원가입 완료</li>
 					</ul>
 				</div>
 			</div>
@@ -49,157 +49,15 @@
 					name="witplus_csrf_token" value="6d4b67b6bb470edeee07d5a9e38ef1d6" />
 				<div class="content member join join_form_page">
 					<div class="inner">
-						<iframe id="kcp_cert" name="kcp_cert" width="100%" height="700"
-							frameborder="0" scrolling="no" style="display: none"></iframe>
-
-						<div class="form_area">
-							<ul>
-								<li>
-									<div class="l_tit">
-										<label for="user_nm">이름*</label>
-									</div>
-									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="text" id="user_nm" name="user_nm"
-											placeholder="이름을 입력해주세요." value="">
-										<p class="input_info_txt"></p>
-									</div>
-								</li>
-								<li>
-									<div class="l_tit">
-										<label for="user_birth">생년월일*</label>
-									</div>
-									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="text" id="user_birth" name="birthday" 
-											placeholder="생년월일을 입력해주세요. (ex yyyymmdd)" maxlength="8"
-											oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-											value="">
-										<!--p class="input_info_txt">생년월일을 숫자 8자리로 입력하세요.</p-->
-									</div>
-								</li>
-								<li class="gender_li">
-									<div class="l_tit">
-										<label for="user_gender" style="display: none;"
-											id="gender_label">성별*</label>
-									</div>
-									<div class="form_box">
-										<div class="gender_box">
-											<div class="box men" style="display: none;">
-												<input type="radio" name="gender" id="gender_men" value="M">
-												<label for="gender_men">남성</label>
-											</div>
-											<div class="box women" style="display: none;">
-												<input type="radio" name="gender" id="gender_women"
-													value="F"> <label for="gender_women">여성</label>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="tel_li">
-									<div class="l_tit">
-										<label for="user_name">휴대폰번호*</label>
-									</div>
-									<div class="form_box">
-										<div class="tel_box">
-											<input type="text" id="phone" name="phone"
-												placeholder="'-'제외한 숫자만 입력해주세요." maxlength="11"
-												oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-												value="">
-											<!-- <button type="button" class="btn_txt btn_bgray btn_m_view" onclick="commonUI.layer.open('m_view_layer')">통합회원 조회</button> -->
-											<button type="button" class="btn_txt btn_bgray btn_m_view"
-												onclick="chk_wine_member();">통합회원 조회</button>
-											<p class="input_info_txt"></p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="l_tit">
-										<label for="user_id">아이디*</label>
-										<p class="input_info_txt" id="id_length_chk">5~20자의 영문 혹은
-											영문+숫자 조합</p>
-									</div>
-									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="text" id="user_id" name="user_id"
-											placeholder="5~20자의 영문 혹은 영문+숫자 조합" value="">
-										<p class="input_info_txt" id="id_chk" style="display: none;">입력해
-											주신 아이디는 사용중인 아이디입니다.</p>
-									</div>
-								</li>
-								<li>
-									<div class="l_tit">
-										<label for="user_pass_01">비밀번호*</label>
-										<p class="input_info_txt" id="pw_chk">영문+숫자+특수문자 조합 8자
-											이상(공백제외)</p>
-									</div>
-									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="password" id="user_pass_01" name="user_pass_01"
-											placeholder="영문 + 숫자 + 특수문자 조합 8자 이상" autocomplete="off">
-									</div>
-								</li>
-								<li>
-									<div class="l_tit">
-										<label for="user_pass_02">비밀번호 확인*</label>
-									</div>
-									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="password" id="user_pass_02" name="user_pass_02"
-											placeholder="비밀번호를 한번 더 입력해주세요." autocomplete="off">
-										<!-- <p class="input_info_txt">동일한 비밀번호를 입력했습니다.</p> -->
-										<p class="input_info_txt"></p>
-									</div>
-								</li>
-								<li>
-									<div class="l_tit">
-										<label for="user_email">이메일*</label>
-									</div>
-									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="text" id="user_email" name="email"
-											placeholder="이메일을 입력해주세요." value="">
-										<p class="input_info_txt"></p>
-									</div>
-								</li>
-								<li class="add_li">
-									<div class="l_tit">
-										<label for="home_zip">주소</label>
-									</div>
-									<div class="form_box">
-										<div class="add_box_01">
-											<input type="text" id="home_zip" name="home_zip"
-												placeholder="주소를 입력해주세요." readonly>
-											<button type="button" class="btn_txt btn_bgray"
-												id="addr_open">우편번호찾기</button>
-										</div>
-										<div class="add_box_02">
-											<input type="text" id="home_addr1" name="home_addr1">
-											<input type="text" id="home_addr2" name="home_addr2">
-										</div>
-									</div>
-								</li>
-								<li class="marry_li gender_li">
-									<div class="l_tit">
-										<label for="reference_id">추천인 코드</label>
-									</div>
-									<div class="l_tit">
-										<input type="text" name="reference_id" id="reference_id"
-											placeholder="추천인 코드를 입력해주세요.">
-									</div>
-								</li>
-							</ul>
+						<div class="form_area"></div>
+						<div>
+							<h2 style="text-align: center; font-size: 32px;">
+								<strong style="font-weight: 500;">ㅇㅇㅇ</strong>님 회원가입을 환영합니다.
+							</h2>
 						</div>
 						<div class="btn_area">
-						<form action="/join_success.do" mothod="get">
-							<button type="submit" class="btn_txt btn_black">회원가입</button>
-						</form>
+							<button type="button" class="btn_txt btn_black">메인페이지로
+								이동</button>
 						</div>
 					</div>
 

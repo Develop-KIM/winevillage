@@ -72,6 +72,10 @@ public class MappingController {
 	public String join_form() {
 		return "member/join/join_form";
 	}
+	@GetMapping("/join_success.do")
+	public String join_success() {
+		return "member/join/join_success";
+	}
 	
 	@GetMapping("/password_cert.do")
 	public String password_cert() {
