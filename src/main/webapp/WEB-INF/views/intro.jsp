@@ -28,7 +28,7 @@
 <link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
-<title>와인 빌리지</title>
+<title>WINE VILLAGE</title>
 </head>
 <body>
 	<form action="/setCookie" method="get">

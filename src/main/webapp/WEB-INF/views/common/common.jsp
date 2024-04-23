@@ -140,7 +140,7 @@
 					</ul>
 				</div>
 				<ul class="right_menu">
-					<li class="cart"><a href="cart/cart_lists.html"><span>Cart
+					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
 								List</span> </a></li>
 					<li class="mb_hidden wish"><a href="wish_lists.html"><img
 							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
@@ -151,12 +151,12 @@
 						<div class="mypage_layer">
 							<div class="no_login">
 								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a>
-								 <a href="join.do">회원가입</a>
+								 <a href="/join.do">회원가입</a>
 								 <a href="order_list.do">MyPage</a>
 							</div>
 						</div>
 					</li>
-					<li class="mb_hidden"><a href="cs/notice_lists.html"><img
+					<li class="mb_hidden"><a href="/notice_list.do"><img
 							src="./images/default/pc_icon_center.png" alt="Info Center"></a></li>
 				</ul>
 
