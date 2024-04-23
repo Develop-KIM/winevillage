@@ -135,8 +135,8 @@
 									</div>
 								</div>
 							</div></li>
-						<li><a href="company/store.html">SHOP</a></li>
-						<li><a href="company/about_us.html">ABOUT US</a></li>
+						<li><a href="list_store.do">SHOP</a></li>
+						<li><a href="list_aboutus.do">ABOUT US</a></li>
 					</ul>
 				</div>
 				<ul class="right_menu">
