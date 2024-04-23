@@ -65,10 +65,14 @@ public class MappingController {
 
 	// member
 	@GetMapping("/join.do")
-	public String join() {
-		return "member/join";
+	public String join_agree() {
+		return "member/join/join_agree";
 	}
-
+	@GetMapping("/join_form.do")
+	public String join_form() {
+		return "member/join/join_form";
+	}
+	
 	@GetMapping("/password_cert.do")
 	public String password_cert() {
 		return "member/password_cert";
