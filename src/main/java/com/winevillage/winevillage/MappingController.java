@@ -102,5 +102,11 @@ public class MappingController {
 	public String list_acc() {
 		return "shop/other/product_list_acc";
 	}
+	
+	//회원가입
+	@GetMapping("/join.do")
+	public String join() {
+		return "member/join";
+	}
 }
 

@@ -139,7 +139,7 @@
 						<div class="mypage_layer">
 							<div class="no_login">
 								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a> <a
-									href="member/join/law_agreement.html">회원가입</a>
+									href="join.do">회원가입</a>
 							</div>
 						</div>
 					</li>
