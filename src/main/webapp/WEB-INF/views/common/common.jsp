@@ -74,7 +74,7 @@
 		<div class="top">
 			<div class="wrap">
 				<h1 class="logo">
-					<a href="/mainpage.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
+					<a href="/main.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
 						<source srcset="./images/default/wine_village.svg"
 							media="(min-width:768px)">
 						<!-- pc이미지 -->
@@ -92,20 +92,34 @@
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
-											<li class="ico_red"><a href="list_wine_red.do">레드</a></li>
-											<li class="ico_white"><a href="list_wine_white.do">화이트</a>
-											</li>
-											<li class="ico_rose"><a href="list_wine_rose.do">로제</a>
-											</li>
+											<li class="ico_red"><a
+												href="/list_wine_red.do">레드</a></li>
+											<li class="ico_white"><a
+												href="/list_wine_white.do">화이트</a></li>
+											<li class="ico_rose"><a
+												href="/list_wine_rose.do">로제</a></li>
+											<li class="ico_sparkling"><a
+												href="/list_wine_sparkling.do">스파클링</a></li>
+											<li class="ico_spirits"><a
+												href="/list_wine_fortified.do">주정강화</a></li>
 										</ul>
 										<ul>
-											<li class="ico_france"><a href="list_wine_fra.do">프랑스</a>
-											</li>
-											<li class="ico_italia"><a href="list_wine_ita.do">이탈리아</a>
-											</li>
-											<li class="ico_spain"><a href="list_wine_esp.do">스페인</a>
-											</li>
-											<li class="ico_germ"><a href="list_wine_deu.do">독일</a></li>
+											<li class="ico_france"><a
+												href="/list_wine_fra.do">프랑스</a></li>
+											<li class="ico_italia"><a
+												href="/list_wine_ita.do">이탈리아</a></li>
+											<li class="ico_spain"><a
+												href="/list_wine_esp.do">스페인</a></li>
+											<li class="ico_germ"><a
+												href="/list_wine_deu.do">독일</a></li>
+											<li class="ico_usa"><a
+												href="/list_wine_usa.do">미국</a></li>
+											<li class="ico_chile"><a
+												href="/list_wine_chl.do">칠레</a></li>
+											<li class="ico_argentina"><a
+												href="/list_wine_arg.do">아르헨티나</a></li>
+											<li class="ico_aus"><a
+												href="/list_wine_aus.do">호주</a></li>
 										</ul>
 									</div>
 								</div>
