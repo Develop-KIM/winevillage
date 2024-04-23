@@ -156,8 +156,19 @@ public class MappingController {
 		return "shop/other/product_list_other";
 	}
 
+	@GetMapping("/list_store.do")
+	public String list_store() {
+		return "/store/store";
+	}
+	
+	@GetMapping("/list_aboutus.do")
+	public String list_aboutus() {
+		return "/aboutus/about_us";
+	}
+	
 	@GetMapping("/list_other_acc.do")
 	public String list_acc() {
 		return "shop/other/product_list_acc";
 	}
+	
 }
