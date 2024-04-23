@@ -6,11 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MappingController {
 
-	@GetMapping("/common.do")
-	public String header() {
-		return "common/common";
-	}
-
+	// order
 	@GetMapping("/order_write.do")
 	public String order_write() {
 		return "order/order_write";
