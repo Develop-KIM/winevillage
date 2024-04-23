@@ -112,38 +112,38 @@ public class AdminMappingController {
 	/* 고객 지원 */
 	@GetMapping("/admin_customer_inquery.do")
 	public String admin_customer_inquery() {
-		return "admin_customer/admin_customer_inquery";
+		return "admin/admin_customer/admin_customer_inquery";
 	}
 	
 	@GetMapping("/admin_customer_withdrawal.do")
 	public String admin_customer_withdrawal() {
-		return "admin_customer/admin_customer_withdrawal";
+		return "admin/admin_customer/admin_customer_withdrawal";
 	}
 	
 	@GetMapping("/admin_customer_faq_lists.do")
 	public String admin_customer_faq_lists() {
-		return "admin_customer/admin_customer_faq_lists";
+		return "admin/admin_customer/admin_customer_faq_lists";
 	}
 	
 	@GetMapping("/admin_customer_faq_write.do")
 	public String admin_customer_faq_write() {
-		return "admin_customer/admin_customer_faq_write";
+		return "admin/admin_customer/admin_customer_faq_write";
 	}
 	
 	@GetMapping("/admin_customer_notice_lists.do")
 	public String admin_customer_notice_lists() {
-		return "admin_customer/admin_customer_notice_lists";
+		return "admin/admin_customer/admin_customer_notice_lists";
 	}
 	
 	@GetMapping("/admin_customer_notice_write.do")
 	public String admin_customer_notice_write() {
-		return "admin_customer/admin_customer_notice_write";
+		return "admin/admin_customer/admin_customer_notice_write";
 	}
 	
 	/* 환경 설정 */
 	@GetMapping("/admin_setting_super.do") 
 	public String admin_setting_super() { 
-		return "admin_setting/admin_setting_super"; 
+		return "admin/admin_setting/admin_setting_super"; 
 	}
 	
 }
