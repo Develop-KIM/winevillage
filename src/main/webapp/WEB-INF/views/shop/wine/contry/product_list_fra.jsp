@@ -7,15 +7,35 @@
 <title>WINEVILLAGE | WINE</title>
 </head>
 <body>
-	<%@ include file="../../common/common.jsp"%>
+	<%@ include file="../../../common/common.jsp"%>
 	<div class="wrap">
 		<div class="content product product_lists_page test">
 			<div class="product_lists_wrap">
 				<div class="prd_list_tit">
+					<div class="top">
+						<h2>프랑스</h2>
+						<div class="line_map">
+							<ul>
+								<li onclick="location.href='../main.html'"
+									style="cursor: pointer;">HOME</li>
+								<li
+									onclick="location.href='product_listsf694.html?sh_category1_cd=10000&amp;sh_category2_cd=&amp;sh_category3_cd='"
+									style="cursor: pointer;" id="cate_txt">ALL</li>
+							</ul>
+						</div>
+					</div>
 					<div class="tab_area prd_tab_area tab3">
-						<h2 class="category_tit">스페인</h2>
+						<ul>
+							<li class="state_li on" id="state_li_1"><a
+								href="javascript:void(0);" onclick="state_list('1');">VALUE
+							</a></li>
+							<li class="state_li " id="state_li_5"><a
+								href="javascript:void(0);" onclick="state_list('5');">EXCLUSIVE</a></li>
+							<li class="state_li " id="state_li_all"><a
+								href="javascript:void(0);" onclick="state_list('all');">ALL</a></li>
+						</ul>
 						<button class="smart_search"
-							onclick="$('.layer.filter_layer').show();">
+							onclick="commonUI.layer.open('filter_layer.html')">
 							<span>SMART SEARCH</span>
 						</button>
 					</div>
@@ -1746,6 +1766,6 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="../../common/footer.jsp" %>
+	<%@ include file="../../../common/footer.jsp"%>
 </body>
 </html>
