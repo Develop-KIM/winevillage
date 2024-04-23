@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class landingController {
 
-	@RequestMapping("/")
+	@GetMapping("/")
 	public String landingPage(HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
 		boolean hasCookie = false;
@@ -24,9 +24,9 @@ public class landingController {
 		}
 
 		if (!hasCookie) {
-			return "landing";
+			return "landing/landingpage";
 		} else {
-			return "redirect:/mainPage.do";
+			return "redirect:/mainpage.do";
 		}
 	}
 }
