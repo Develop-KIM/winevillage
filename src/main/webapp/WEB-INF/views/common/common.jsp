@@ -31,13 +31,23 @@
 <link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
+<link rel="stylesheet" type="text/css" href="./css/shop/main99d9.css?v=231010140029" />
+<link rel="stylesheet" type="text/css" href="./css/shop/main_pc2092.css?v=230810114342"
+            media="screen and (min-width:1024px)">
+<link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
+<link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
+<script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="./js/picturefill.min.js"></script>
-<script type='text/javascript' src="./js/instafeed.js"></script>
-<!-- <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script> -->
-<script type="text/javascript" src="./js/front_ui9442.js"></script>
-<script src="./js/wn.productf100.js"></script>
+<script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
+<script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
+<script type="text/JavaScript" src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
+<script src="./js/wn.productf100.js?v=230405140747"></script>
+<script type="text/javascript" src="./js/jqcloud.min.js"></script>
+<script type="text/javascript" src="./js/slick.min.js"></script>
+
+
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
@@ -83,41 +93,30 @@
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
-											<li class="ico_red"><a
-												href="list_wine_red.do">레드</a>
+											<li class="ico_red"><a href="list_wine_red.do">레드</a></li>
+											<li class="ico_white"><a href="list_wine_white.do">화이트</a>
 											</li>
-											<li class="ico_white"><a
-												href="list_wine_white.do">화이트</a>
-											</li>
-											<li class="ico_rose"><a
-												href="list_wine_rose.do">로제</a>
+											<li class="ico_rose"><a href="list_wine_rose.do">로제</a>
 											</li>
 										</ul>
 										<ul>
-											<li class="ico_france"><a
-												href="list_wine_fra.do">프랑스</a>
+											<li class="ico_france"><a href="list_wine_fra.do">프랑스</a>
 											</li>
-											<li class="ico_italia"><a
-												href="list_wine_ita.do">이탈리아</a>
+											<li class="ico_italia"><a href="list_wine_ita.do">이탈리아</a>
 											</li>
-											<li class="ico_spain"><a
-												href="list_wine_esp.do">스페인</a>
+											<li class="ico_spain"><a href="list_wine_esp.do">스페인</a>
 											</li>
-											<li class="ico_germ"><a
-												href="list_wine_deu.do">독일</a>
-											</li>
+											<li class="ico_germ"><a href="list_wine_deu.do">독일</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li class=""><a
-							href="list_other.do">OTHER</a>
+						<li class=""><a href="list_other.do">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
 										<ul>
-											<li class="ico_acc"><a
-												href="list_other_acc.do">액세서리</a>
+											<li class="ico_acc"><a href="list_other_acc.do">액세서리</a>
 											</li>
 										</ul>
 									</div>
