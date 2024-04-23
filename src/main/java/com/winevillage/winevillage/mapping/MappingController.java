@@ -1,4 +1,4 @@
-package com.winevillage.winevillage;
+package com.winevillage.winevillage.mapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,11 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MappingController {
 
-	@GetMapping("/common.do")
-	public String header() {
-		return "common/common";
-	}
-
+	// order
 	@GetMapping("/order_write.do")
 	public String order_write() {
 		return "order/order_write";
@@ -65,18 +61,20 @@ public class MappingController {
 
 	// member
 	@GetMapping("/join.do")
-	public String join_agree() {
+	public String join() {
 		return "member/join/join_agree";
 	}
+
 	@GetMapping("/join_form.do")
 	public String join_form() {
 		return "member/join/join_form";
 	}
+
 	@GetMapping("/join_success.do")
 	public String join_success() {
 		return "member/join/join_success";
 	}
-	
+
 	@GetMapping("/password_cert.do")
 	public String password_cert() {
 		return "member/password_cert";
@@ -172,15 +170,15 @@ public class MappingController {
 	public String list_store() {
 		return "/store/store";
 	}
-	
+
 	@GetMapping("/list_aboutus.do")
 	public String list_aboutus() {
 		return "/aboutus/about_us";
 	}
-	
+
 	@GetMapping("/list_other_acc.do")
 	public String list_acc() {
 		return "shop/other/product_list_acc";
 	}
-	
+
 }

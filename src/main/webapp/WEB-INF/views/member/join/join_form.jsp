@@ -197,9 +197,9 @@
 							</ul>
 						</div>
 						<div class="btn_area">
-						<form action="/join_success.do" mothod="get">
-							<button type="submit" class="btn_txt btn_black">회원가입</button>
-						</form>
+							<!-- <a href="#" class="btn_txt btn_black">회원가입</a>-->
+							<button type="button" class="btn_txt btn_black"
+								onclick="submit_join();">회원가입</button>
 						</div>
 					</div>
 
