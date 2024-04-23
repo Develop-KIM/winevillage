@@ -2,7 +2,7 @@
 /* lnb event_lnb */
 .lnb_wrap .pc_lnb .page_tit{background-color:#F8F8F8;border:none;text-transform:uppercase}
 .lnb_wrap .pc_lnb .page_tit h2 span{font-family:'NotoSansCJKkr',sans-serif}
-.lnb_wrap .menu{width:1200px;margin:60px auto 0}
+.lnb_wrap .menu{width:1200px;margin:60px auto 0;display:flex;justify-content:center}
 .lnb_wrap .menu li{width:100%}
 .lnb_wrap .menu.tab2 li{width:50%}
 .lnb_wrap .menu.tab3 li{width:calc(100%/3)}
@@ -164,7 +164,7 @@
 .class_page .class_table>span{font-size:16px}
 
 /* content cs store */
-.content.store_page{padding:60px 0 120px}
+.content.store_page{padding:0px 120px}
 .store_page .con_top h3{margin-bottom:30px;line-height:45px;font-size:32px}
 .store_page .store_tab{margin-top:60px}
 .store_page .store_tab .store_tabBtn{display:flex;justify-content:space-between;overflow:visible;white-space:normal}
