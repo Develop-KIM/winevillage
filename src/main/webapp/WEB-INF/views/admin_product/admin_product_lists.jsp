@@ -269,7 +269,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">10</td>
 									<td rowspan="2"><a href="https://www.winenara.com/shop/product/product_view?product_cd=03U001" target="_blank"><img
-												src="./images/Diablo_Devil's.png"
+												src="./images/admin/Diablo_Devil's.png"
 												width="40" height="40"></a></td>
 									<td>0000000010</td>
 									<td colspan="1" class="tal">디아블로 데블스 카나발 카베르네</td>
@@ -293,7 +293,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">09</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/Firriato.png"
+												src="./images/admin/Firriato.png"
 												width="40" height="40"></a></td>
 									<td>0000000009</td>
 									<td colspan="1" class="tal">피리아토 끼아라몬테 샤르도네</td>
@@ -317,7 +317,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">08</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/wine_08.png"
+												src="./images/admin/wine_08.png"
 												width="40" height="40"></a></td>
 									<td>0000000008</td>
 									<td colspan="1" class="tal">미누티 프레스티지</td>
@@ -341,7 +341,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">07</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/wine_07.png"
+												src="./images/admin/wine_07.png"
 												width="40" height="40"></a></td>
 									<td>0000000007</td>
 									<td colspan="1" class="tal">라 샤펠 고르돈느 로제</td>
@@ -365,7 +365,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">06</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/wine_06.png"
+												src="./images/admin/wine_06.png"
 												width="40" height="40"></a></td>
 									<td>0000000006</td>
 									<td colspan="1" class="tal">코라빈CO2캡슐(6개입)</td>
@@ -389,7 +389,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">05</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/wine_05.png"
+												src="./images/admin/wine_05.png"
 												width="40" height="40"></a></td>
 									<td>0000000005</td>
 									<td colspan="1" class="tal">이자디 블랑코</td>
@@ -413,7 +413,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">04</td>
 									<td rowspan="2"><a href="#" target="_blank"><img
-												src="/images/wine_04.png"
+												src="/images/admin/wine_04.png"
 												width="40" height="40"></a></td>
 									<td>0000000004</td>
 									<td colspan="1" class="tal">피리아토 하모니엄 네로 다볼라</td>
@@ -437,7 +437,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">03</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/wine_03.png"
+												src="./images/admin/wine_03.png"
 												width="40" height="40"></a></td>
 									<td>0000000003</td>
 									<td colspan="1" class="tal">비냐 조잘 그라시아노</td>
@@ -461,7 +461,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">02</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/wine_02.png"
+												src="./images/admin/wine_02.png"
 												width="40" height="40"></a></td>
 									<td>0000000002</td>
 									<td colspan="1" class="tal">블랙타워 러블리 드림 리슬링</td>
@@ -485,7 +485,7 @@ pageEncoding="UTF-8"%>
 									</td>
 									<td rowspan="2">01</td>
 									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/wine_01.png"
+												src="./images/admin/wine_01.png"
 												width="40" height="40"></a></td>
 									<td>0000000001</td>
 									<td colspan="1" class="tal">샤또 루빈 라 비 앙 로제</td>
