@@ -4,8 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="./images/default/favicon.ico" type="image/x-icon" />
-<link rel="icon" href="./images/default/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="./css/layouta0da.css" />
 <link rel="stylesheet" type="text/css" href="./css/layout_pcdc60.css"
