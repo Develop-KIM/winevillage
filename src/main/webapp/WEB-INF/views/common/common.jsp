@@ -142,7 +142,7 @@
 				<ul class="right_menu">
 					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
 								List</span> </a></li>
-					<li class="mb_hidden wish"><a href="wish_lists.html"><img
+					<li class="mb_hidden wish"><a href="#" onclick="$('.layer.login_layer').show();"><img
 							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
 					<li class="mypage mb_hidden">
 						<button type="button" onclick="commonUI.header.Mypage.clickFn()">
@@ -404,7 +404,7 @@
 									<span>기존회원</span>
 								</p>
 								<p>
-									<span><a href="/member/join/law_agreement">신규회원가입</a></span>
+									<span><a href="/join.do">신규회원가입</a></span>
 								</p>
 							</div>
 							<div class="social_login">
