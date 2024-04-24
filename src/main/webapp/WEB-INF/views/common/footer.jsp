@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<!-- <head>
+<head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,7 +32,7 @@
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
 <title>Insert title here</title>
-</head> -->
+</head>
 <body>
 	<footer id="footer" class="footer">
 		<div class="hidden_info">
@@ -74,14 +74,14 @@
 			<ul class="list">
 				<li><a href="http://pf.kakao.com/_vlkxfxb/chat">
 						<div class="icon">
-							<img src="./images/shop/default/ico_quick_kakao_comment.png"
+							<img src="./images/default/ico_quick_kakao_comment.png"
 								alt="카카오 상담" draggable="false">
 						</div>
 						<div class="txt">온라인 1:1 상담</div>
 				</a></li>
 				<li><a href="/faq_list.do">
 						<div class="icon">
-							<img src="./images/shop/default/ico_quick_faq.png" alt="자주하는 질문"
+							<img src="./images/default/ico_quick_faq.png" alt="자주하는 질문"
 								draggable="false">
 						</div>
 						<div class="txt">FAQ</div>
