@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +37,7 @@
 								href="javascript:void(0);" onclick="state_list('all');">ALL</a></li>
 						</ul>
 						<button class="smart_search"
-							onclick="commonUI.layer.open('filter_layer.html')">
+							onclick="$('.layer.filter_layer').show();">
 							<span>SMART SEARCH</span>
 						</button>
 					</div>
