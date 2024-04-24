@@ -45,7 +45,6 @@
 .form_area .f_top h2{display:inline-block;line-height:1.2;font-size:20px;font-weight:500;color:#111}
 .form_area .f_top .checkbox{float:right}
 .form_area .f_top .checkbox input[type='checkbox'] + label{color:#555}
-.form_area ul{border-top:1px solid #555}
 .form_area li{margin-top:20px}
 .form_area li .l_tit{display:block;margin-bottom:10px;font-size:14px;font-weight:700;color:#333;overflow:hidden}
 .form_area li .l_tit label{float:left;}
@@ -238,7 +237,7 @@ p.small2{font-size:12px}
 .header .search_layer .search_box input{width:calc( 100% - 128px );text-align:center}
 .header.prd_view_header .search_layer{top:50px}
 
-.search_box{display:flex;justify-content:space-between;align-items:center;height:50px;border:1px solid #DCDCDC;overflow:hidden}
+.search_box{display:flex;justify-content:space-around;align-items:center;height:50px;border:1px solid #DCDCDC;overflow:hidden}
 .search_box input,
 .search_box button{float:left;border:0;height:50px;line-height:50px}
 .search_box input{width:calc( 100% - 64px );font-size:13px;padding:0 10px;background-color:transparent;text-align:left}
@@ -362,7 +361,7 @@ p.small2{font-size:12px}
 .footer .hidden_info .info_box .info .logo{float:left}
 .footer .hidden_info .info_box .info .sns{float:right}
 .footer .hidden_info .info_box .info .sns li{float:left;margin-left:5px}
-.footer .hidden_info .info_box .info .company_info{clear:both;padding:30px 0;color:#999}
+.footer .hidden_info .info_box .info .company_info{clear:both;padding:30px 0;color:#999;margin-left: 280px}
 .footer .hidden_info .info_box .info .company_info li{margin-bottom:8px}
 .footer .hidden_info .info_box .info .company_info li:last-child{margin-bottom:0}
 .footer .hidden_info .info_box .info .company_info li em{font-weight:500}

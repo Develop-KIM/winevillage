@@ -160,10 +160,11 @@
 .prd_list_area .second_order .btn_switch_module{margin-right:20px}
 
 /* 202209 - UI/UX 개편 prd_list */
-.content.product_lists_page{padding-top:60px}
+.content.product_lists_page{padding-top:160px}
 .product_lists_page .prd_list_tit .top h2{font-size:32px}
 .product_lists_page .prd_list_tit .top .line_map ul li{font-size:16px}
 .product_lists_page .prd_list_tit .prd_tab_area{display:flex;justify-content:space-between;align-items:flex-start}
+.product_lists_page .prd_list_tit .prd_tab_area h2 {font-size:32px;font-weight:500;color: #111}
 .product_lists_page .prd_list_tit .prd_tab_area>ul{width:390px}
 .product_lists_page .prd_list_tit .prd_tab_area>ul li a{font-size:16px}
 .product_lists_page .prd_list_tit .smart_search{width:162px;margin-top:0}
