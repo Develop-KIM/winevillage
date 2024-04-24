@@ -13,6 +13,11 @@ public class CookieConfig implements WebMvcConfigurer {
         "/**/*.png",
         "/**/*.svg",
         "/**/*.jpg",
+        "/**/*.ttf",
+        "/**/*.eot",
+        "/**/*.woff",
+        "/**/*.otf",
+        "/**/*.html",
     };
 
     @Override
