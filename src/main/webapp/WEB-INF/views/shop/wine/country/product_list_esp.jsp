@@ -13,7 +13,7 @@
 			<div class="product_lists_wrap">
 				<div class="prd_list_tit">
 					<div class="top">
-						<h2>칠레</h2>
+						<h2>스페인</h2>
 						<div class="line_map">
 							<ul>
 								<li onclick="location.href='../main.html'"
@@ -34,10 +34,7 @@
 							<li class="state_li " id="state_li_all"><a
 								href="javascript:void(0);" onclick="state_list('all');">ALL</a></li>
 						</ul>
-						<button class="smart_search"
-							onclick="$('.layer.filter_layer').show();">
-							<span>SMART SEARCH</span>
-						</button>
+						<button class="smart_search" onclick="commonUI.layer.open('filter_layer')"><span>SMART SEARCH</span></button>
 					</div>
 				</div>
 
@@ -51,6 +48,28 @@
 									<span>Layer Close</span>
 								</button>
 								<div class="layer_tit">SMART SEARCH</div>
+								<!-- 검색창 시작 -->
+									<form action="" id="searchForm" name="searchForm" method="get" accept-charset="utf-8">
+										<div class="search_layer">
+											<div class="search_box" style="position:relative;">
+												<input type="text" name="keyword" id="keyword" placeholder='오늘 마시고 싶은 와인을 검색해 보세요' 
+													   autocomplete="off" class="srch_close_event" value="" style="text-align: center; letter-spacing:0.3px;">  
+												<button type="submit" id="s_btn" style="position:absolute;right:60px;opacity:0.3;">검색</button>
+											</div>
+											<div class="search_result srch_close_event" id="search_block">
+												<div class="result_inner">
+													<div class="allDelete off">
+														<h2 class="tit">최근검색어</h2>
+															<button type="button" class="btn del_btn" onclick="all_del_item();">전체삭제</span>
+													</div>
+													<ul id="result_list" class="result_list">
+														<li id="nodata">최근검색어 내역이 없습니다.</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</form>
+								<!-- 검색창 끝  -->
 								<div class="layer_con">
 									<div class="filter">
 										<div class="check_area ">
