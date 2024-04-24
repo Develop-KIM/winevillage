@@ -182,7 +182,9 @@ jQuery(function($){
 							<option value="">=카테고리선택=</option>
 							<option value="001">레드</option>
 							<option value="002">화이트</option>
-							<option value="002">로제</option>
+							<option value="003">로제</option>
+							<option value="004">스파클링</option>
+							<option value="005">주정강화</option>
 						</select>
 					</td>
 					<td class="w20p bg1">
@@ -190,7 +192,12 @@ jQuery(function($){
 							<option value="">=카테고리선택=</option>
 							<option value="001">프랑스</option>
 							<option value="002">이탈리아</option>
-							<option value="002">독일</option>
+							<option value="003">스페인</option>
+							<option value="004">독일</option>
+							<option value="005">미국</option>
+							<option value="006">칠레</option>
+							<option value="007">아르헨티나</option>
+							<option value="008">호주</option>
 					</td>
 				</tr>
 				</table>

@@ -35,7 +35,7 @@
 								href="javascript:void(0);" onclick="state_list('all');">ALL</a></li>
 						</ul>
 						<button class="smart_search"
-							onclick="commonUI.layer.open('filter_layer.html')">
+							onclick="$('.layer.filter_layer').show();">
 							<span>SMART SEARCH</span>
 						</button>
 					</div>
