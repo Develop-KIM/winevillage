@@ -1763,200 +1763,200 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="../../common/footer.jsp"%>
-	<script>	
-		$(function(){
-			$(".pagination > a:first-child, .pagination > a:last-child").css("display", "none");	// << >> 미노출
-			var state = '1';
-			if(state == "5"){	// 매장문의(2022-11-28 soldout랑 통합)
-				$("#cate_txt").text("EXCLUSIVE");
-			}else if(state == "all"){
-				$("#cate_txt").text("ALL");
-			}else{
-				$("#cate_txt").text("VALUE");
-			}
-			filter_submit();
-		});
-		function number_format(num){
-			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
-		}
-		var total_list = '';
-		var listFormData = '';
-		if(location.hash){
-			var current_location_href = window.location.href;
-		}else{
-			var current_location_href = window.location.href +'##';
-		}
-		// 상태탭
-		function state_list(state){
-			var form = document.listFrm;
-			$("#sh_order_by").val(state);
-			if(state == "5"){	// 매장문의(2022-11-28 soldout랑 통합)
-				$("#cate_txt").text("EXCLUSIVE");
-			}else if(state == "1"){
-				$("#cate_txt").text("VALUE");
-			}else{
-				$("#cate_txt").text("ALL");
-			}
-			form.submit();
-		};
-		// 갯수
-		$(".rcd_cnt").on("click", function(){
-			var form = document.listFrm;
-			var val = $(this).val();
-			$("#sh_rcd").val(val);
-			setCookie("row_count_cookie",val, 30);
-			form.submit();
-		});
-		// 정렬
-		$("#js_select").change(function(){
-			var form = document.listFrm;
-			var val = $(this).val();
-			$("#sh_sort_order_by").val(val);
-			setCookie("list_order_cookie",val, 30);
-			form.submit();
-		});
-		function setCookie(cname, cvalue, exdays) {
-			var d = new Date();
-			d.setTime(d.getTime() + (exdays*24*60*60*1000)); //시간설정
-			var expires = "expires="+d.toUTCString(); var temp = cname + "=" + cvalue + "; " + expires;
-			document.cookie = temp;
-		}
-	/************************ 필터 ************************/
-		$(function() {
-			$("#info_ul li").first().addClass("on");	// 대분류 처음꺼
-			$(".js_tabCon").first().addClass("on");	// 중분류 처음꺼
-		});
-		function filter_submit(){  
-			var seq = '';
-			var html = '';
-			$(".filter_item").empty();	// 클릭마다 초기화
-			$("#page").val(1);
-			$("input[name='item_seq']:checked").each(function() {
-				// console.log($(this).data('nm'));
-				if(seq == ""){
-					seq = String($(this).val());
-				}else{
-					seq = String($(this).val())+","+seq;
-				}
-				html += '<div class="check_select item_chk" id="filtet_btn_'+$(this).val()+'" onclick="DelFilterEvent('+$(this).val()+');">';
-				html +=		$(this).data('nm');
-				html +=		'<button type="button" class="del" name="del_btn" value="'+$(this).val()+'" onclick="DelFilterEvent('+$(this).val()+');">삭제</button>';
-				html += '</div>';
-			});
-			html += '<button type="button" class="reset" onclick="all_reset();">초기화</button>';
-			$(".filter_item").html(html);
-			if($('.filter_item .check_select').length > 0){
-				$('.filter_item').removeClass('nodata_fiter');
-			}else{
-				$('.filter_item').addClass('nodata_fiter');
-			}
-			$("#sh_filter_code").val(seq);
-			// console.log($("#sh_filter_code").val());
-			if( sessionStorage.getItem("checkFilterList") == seq){
-				// console.log('동일');
-				$('.btn_filter').addClass('apply');
-			}else{
-				// console.log('동일하지않음');
-				$('.btn_filter').removeClass('apply');
-			}
-			DelFilterEvent();
-			//필터 레이어 컨텐츠 하위 동적 여백
-			if($(".filter_layer").css("display") == "block"){
-				var filterCon = $(".product_lists_page .filter_layer.layer .layer_area .layer_con"),
-					filterConBtm = $(".product_lists_page .filter_layer.layer .layer_area .layer_con .bottom"),
-					filterConHgt = filterConBtm.outerHeight();
-				filterCon.css({"padding-bottom":filterConHgt});
-			}
-		}
-		/**
-		 * 필터 조건 삭제 EVENT
-		 */
-		function DelFilterEvent(val){		
-			$("#page").val(1);
-			$("button[name='del_btn']").on('click', function() {
-				var remove_val = val;
-				var seq = '';
-				$("input:checkbox[name='item_seq']:checked").each(function() {
-					if($(this).val() == remove_val){
-						$(this).prop("checked", false);
-					}
-				});
-				$("input:radio[name='item_seq']:checked").each(function() {
-					if($(this).val() == remove_val){
-						$(this).prop("checked", false);
-					}
-				});
-				 filter_submit()
-			});
-		};
-		// 필터 리셋
-		function all_reset() {
-			$("#sh_filter_code").val("");	// 검색값
-			$("input:checkbox[name='item_seq']").prop("checked", false);	// 체크값
-			$(".filter_item").empty();	// 체크된값
-			$(".filter_item").addClass("nodata_fiter");
-			$('.btn_filter').removeClass('apply');
-			sessionStorage.setItem("checkFilterList", $("#sh_filter_code").val());
-			var form = document.listFrm;
-			form.submit();
-		}
-		// 필터 적용
-		function filter_btn(){
-			var form = document.listFrm;
-			form.submit();
-		}
-	/************************ 필터 ************************/
-	/* var db = (document.body) ? 1 : 0;
-	var scroll = (window.scrollTo) ? 1 : 0;
-	function loadScrollsetCookie(name, value, expires, path, domain, secure) {
-		var curCookie = name + "=" + escape(value) +
-		((expires) ? "; expires=" + expires.toGMTString() : "") +
-		((path) ? "; path=" + path : "") +
-		((domain) ? "; domain=" + domain : "") +
-		((secure) ? "; secure" : "");
-		document.cookie = curCookie;
-	}
-	function loadScrollgetCookie(name) {
-		var dc = document.cookie;
-		var prefix = name + "=";
-		var begin = dc.indexOf("; " + prefix);
-		if (begin == -1) {
-		begin = dc.indexOf(prefix);
-		if (begin != 0) return null;
-		} else {
-		begin += 2;
-		}
-		var end = document.cookie.indexOf(";", begin);
-		if (end == -1) end = dc.length;
-		return unescape(dc.substring(begin + prefix.length, end));
-	}
-	function loadScroll() {
-		if (!scroll) return;
-		var getCurrentPd = loadScrollgetCookie("currentPd");
-	// 	console.log(getCurrentPd);
-		if(getCurrentPd){
-			// alert("move");
-			var ar = $("[data-val="+getCurrentPd+"]").offset().top - 200
-			// alert(ar);
-			setTimeout(function () {
-				window.scrollTo(0, parseInt(ar))
-			},200);
-			deleteCookie('currentPd');
-			deleteCookie('pageInt');
-			pageInt=null;
-		}
-	}
-	function scrollSaveEventBinding(_target){
-	// 	console.log(_target)
-		loadScrollsetCookie("currentPd", _target.attr('data-val'));
-		loadScrollsetCookie("pageInt", $("#page").val());
-		// setCookie("docHeight", $('#contents').height());
-	}
-	function deleteCookie (name) {
-		document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-	} */
-	</script>
+<%@ include file="../../common/footer.jsp"%>
 
+<script>	
+	$(function(){
+		$(".pagination > a:first-child, .pagination > a:last-child").css("display", "none");	// << >> 미노출
+		var state = '1';
+		if(state == "5"){	// 매장문의(2022-11-28 soldout랑 통합)
+			$("#cate_txt").text("EXCLUSIVE");
+		}else if(state == "all"){
+			$("#cate_txt").text("ALL");
+		}else{
+			$("#cate_txt").text("VALUE");
+		}
+		filter_submit();
+	});
+	function number_format(num){
+		return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+	}
+	var total_list = '';
+	var listFormData = '';
+	if(location.hash){
+		var current_location_href = window.location.href;
+	}else{
+		var current_location_href = window.location.href +'##';
+	}
+	// 상태탭
+	function state_list(state){
+		var form = document.listFrm;
+		$("#sh_order_by").val(state);
+		if(state == "5"){	// 매장문의(2022-11-28 soldout랑 통합)
+			$("#cate_txt").text("EXCLUSIVE");
+		}else if(state == "1"){
+			$("#cate_txt").text("VALUE");
+		}else{
+			$("#cate_txt").text("ALL");
+		}
+		form.submit();
+	};
+	// 갯수
+	$(".rcd_cnt").on("click", function(){
+		var form = document.listFrm;
+		var val = $(this).val();
+		$("#sh_rcd").val(val);
+		setCookie("row_count_cookie",val, 30);
+		form.submit();
+	});
+	// 정렬
+	$("#js_select").change(function(){
+		var form = document.listFrm;
+		var val = $(this).val();
+		$("#sh_sort_order_by").val(val);
+		setCookie("list_order_cookie",val, 30);
+		form.submit();
+	});
+	function setCookie(cname, cvalue, exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000)); //시간설정
+		var expires = "expires="+d.toUTCString(); var temp = cname + "=" + cvalue + "; " + expires;
+		document.cookie = temp;
+	}
+/************************ 필터 ************************/
+	$(function() {
+		$("#info_ul li").first().addClass("on");	// 대분류 처음꺼
+		$(".js_tabCon").first().addClass("on");	// 중분류 처음꺼
+	});
+	function filter_submit(){  
+		var seq = '';
+		var html = '';
+		$(".filter_item").empty();	// 클릭마다 초기화
+		$("#page").val(1);
+		$("input[name='item_seq']:checked").each(function() {
+			// console.log($(this).data('nm'));
+			if(seq == ""){
+				seq = String($(this).val());
+			}else{
+				seq = String($(this).val())+","+seq;
+			}
+			html += '<div class="check_select item_chk" id="filtet_btn_'+$(this).val()+'" onclick="DelFilterEvent('+$(this).val()+');">';
+			html +=		$(this).data('nm');
+			html +=		'<button type="button" class="del" name="del_btn" value="'+$(this).val()+'" onclick="DelFilterEvent('+$(this).val()+');">삭제</button>';
+			html += '</div>';
+		});
+		html += '<button type="button" class="reset" onclick="all_reset();">초기화</button>';
+		$(".filter_item").html(html);
+		if($('.filter_item .check_select').length > 0){
+			$('.filter_item').removeClass('nodata_fiter');
+		}else{
+			$('.filter_item').addClass('nodata_fiter');
+		}
+		$("#sh_filter_code").val(seq);
+		// console.log($("#sh_filter_code").val());
+		if( sessionStorage.getItem("checkFilterList") == seq){
+			// console.log('동일');
+			$('.btn_filter').addClass('apply');
+		}else{
+			// console.log('동일하지않음');
+			$('.btn_filter').removeClass('apply');
+		}
+		DelFilterEvent();
+		//필터 레이어 컨텐츠 하위 동적 여백
+		if($(".filter_layer").css("display") == "block"){
+			var filterCon = $(".product_lists_page .filter_layer.layer .layer_area .layer_con"),
+				filterConBtm = $(".product_lists_page .filter_layer.layer .layer_area .layer_con .bottom"),
+				filterConHgt = filterConBtm.outerHeight();
+			filterCon.css({"padding-bottom":filterConHgt});
+		}
+	}
+	/**
+	 * 필터 조건 삭제 EVENT
+	 */
+	function DelFilterEvent(val){		
+		$("#page").val(1);
+		$("button[name='del_btn']").on('click', function() {
+			var remove_val = val;
+			var seq = '';
+			$("input:checkbox[name='item_seq']:checked").each(function() {
+				if($(this).val() == remove_val){
+					$(this).prop("checked", false);
+				}
+			});
+			$("input:radio[name='item_seq']:checked").each(function() {
+				if($(this).val() == remove_val){
+					$(this).prop("checked", false);
+				}
+			});
+			 filter_submit()
+		});
+	};
+	// 필터 리셋
+	function all_reset() {
+		$("#sh_filter_code").val("");	// 검색값
+		$("input:checkbox[name='item_seq']").prop("checked", false);	// 체크값
+		$(".filter_item").empty();	// 체크된값
+		$(".filter_item").addClass("nodata_fiter");
+		$('.btn_filter').removeClass('apply');
+		sessionStorage.setItem("checkFilterList", $("#sh_filter_code").val());
+		var form = document.listFrm;
+		form.submit();
+	}
+	// 필터 적용
+	function filter_btn(){
+		var form = document.listFrm;
+		form.submit();
+	}
+/************************ 필터 ************************/
+/* var db = (document.body) ? 1 : 0;
+var scroll = (window.scrollTo) ? 1 : 0;
+function loadScrollsetCookie(name, value, expires, path, domain, secure) {
+	var curCookie = name + "=" + escape(value) +
+	((expires) ? "; expires=" + expires.toGMTString() : "") +
+	((path) ? "; path=" + path : "") +
+	((domain) ? "; domain=" + domain : "") +
+	((secure) ? "; secure" : "");
+	document.cookie = curCookie;
+}
+function loadScrollgetCookie(name) {
+	var dc = document.cookie;
+	var prefix = name + "=";
+	var begin = dc.indexOf("; " + prefix);
+	if (begin == -1) {
+	begin = dc.indexOf(prefix);
+	if (begin != 0) return null;
+	} else {
+	begin += 2;
+	}
+	var end = document.cookie.indexOf(";", begin);
+	if (end == -1) end = dc.length;
+	return unescape(dc.substring(begin + prefix.length, end));
+}
+function loadScroll() {
+	if (!scroll) return;
+	var getCurrentPd = loadScrollgetCookie("currentPd");
+// 	console.log(getCurrentPd);
+	if(getCurrentPd){
+		// alert("move");
+		var ar = $("[data-val="+getCurrentPd+"]").offset().top - 200
+		// alert(ar);
+		setTimeout(function () {
+			window.scrollTo(0, parseInt(ar))
+		},200);
+		deleteCookie('currentPd');
+		deleteCookie('pageInt');
+		pageInt=null;
+	}
+}
+function scrollSaveEventBinding(_target){
+// 	console.log(_target)
+	loadScrollsetCookie("currentPd", _target.attr('data-val'));
+	loadScrollsetCookie("pageInt", $("#page").val());
+	// setCookie("docHeight", $('#contents').height());
+}
+function deleteCookie (name) {
+	document.cookie = name + '=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+} */
+</script>
 </body>
 </html>
