@@ -44,6 +44,7 @@
 <script src="./js/wn.productf100.js?v=230405140747"></script>
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
+<script type="text/javascript" src="./js/filter.js"></script>
 
 
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
