@@ -95,6 +95,15 @@ public class MappingController {
 		return "member/withdrawal";
 	}
 
+	@GetMapping("/forgoten_id.do")
+	public String forgoten_id() {
+		return "member/forgoten_id";
+	}
+	@GetMapping("/forgoten_pw.do")
+	public String forgoten_pw() {
+		return "member/forgoten_pw";
+	}
+	
 	// product
 	@GetMapping("/list_wine.do")
 	public String list_wine() {
