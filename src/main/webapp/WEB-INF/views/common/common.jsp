@@ -35,6 +35,7 @@
             media="screen and (min-width:1024px)">
 <link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
 <link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
+
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>

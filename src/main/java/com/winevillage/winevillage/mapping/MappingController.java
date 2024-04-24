@@ -180,5 +180,10 @@ public class MappingController {
 	public String list_acc() {
 		return "shop/other/product_list_acc";
 	}
+	
+	@GetMapping("/mileage_list.do")
+	public String mileage_list() {
+		return "order/mileage_list";
+	}
 
 }
