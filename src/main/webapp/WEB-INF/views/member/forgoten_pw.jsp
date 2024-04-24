@@ -19,7 +19,7 @@
             <button type="button" class="my_value js_selectBtn" onclick="$(this).toggleClass('on')"><span>비밀번호 재발급</span></button>
             <ul class="mb_lnb_lists">
                 <li><a href="/forgoten_id.do">아이디 찾기</a></li>
-                <li class="on"><a href="/forgoten_pw.do">비밀번호 재발급</a></li>
+                <li class="on"><a href="/forgoten_pw.do">비밀번호 재발급</a></li> 
             </ul>
         </div>
     </div>
