@@ -18,6 +18,7 @@
 					<li><a href="/return_order_list.do">교환/반품내역</a></li>
 					<li><a href="/wish_list.do">위시리스트</a></li>
 					<li><a href="/cart_list.do">장바구니</a></li>
+					<li class="on"><a href="/mileage_list.do">나의 마일리지</a></li>
 				</ul></li>
 			<li><a href="#none">개인정보</a>
 				<ul class="depth_02">
