@@ -55,7 +55,7 @@
 .content.mypage .inner .top_info .gift_price.gift_price_type2 ul{text-align:right}
 .content.mypage .inner .top_info .gift_price.gift_price_type2 ul li{text-align:center}
 .content.mypage .inner .top_info .gift_price.gift_price_type2 ul li:not(:last-of-type){margin-right:20px}
-.content.mypage .inner{max-width:100%;margin-top:-10px;padding:0 0 0 220px;width:100%}
+.content.mypage .inner{max-width:100%;margin-top:-100px;padding:0 0 0 220px;width:100%}
 /* mapage_lnb */
 .mypage_lnb.lnb{display:block;position:relative;max-width:1200px;margin:0 auto;padding-top:40px}
 .mileage{display:block;position:relative;max-width:1200px;margin:0 auto;padding-top:20px}

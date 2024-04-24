@@ -131,9 +131,9 @@
       }
     </script>
     <div class="content mypage note shopping mileage_lists_page mileage_lists_test_page top_gap">
-      <div class="inner">
-        <div class="top_info">
-          <div class="page_tit">
+      <div class="inner" style="max-width:100%; margin-top:10px; padding: 0 0 0 220px; width:100%;">
+        <div class="top_info" style="margin-bottom: 0px;">
+          <div class="page_tit" style="border-bottom: none;">
             <h2 class="tit">나의 마일리지</h2>
           </div>
           <div class="term_box">
