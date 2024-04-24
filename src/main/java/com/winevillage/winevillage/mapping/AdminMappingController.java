@@ -145,5 +145,10 @@ public class AdminMappingController {
 	public String admin_setting_super() { 
 		return "admin/admin_setting/admin_setting_super"; 
 	}
+	/* 환경 설정 */
+	@GetMapping("/admin_setting_super_lists.do") 
+	public String admin_setting_super_lists() { 
+		return "admin/admin_setting/admin_setting_super_lists"; 
+	}
 	
 }

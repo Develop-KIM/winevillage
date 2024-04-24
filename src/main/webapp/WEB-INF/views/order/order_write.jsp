@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>WINENARA 1987 ㅣ 장바구니</title> <<<<<<< HEAD =======
+<title>WINENARA 1987 ㅣ 장바구니</title> 
 <script type="text/JavaScript" language="JavaScript"
 	src="https://winenara-recommend-method.s3.ap-northeast-2.amazonaws.com/rcMethod.js"
 	charset="UTF-8"></script>
@@ -12,8 +12,6 @@
 	content="be7b38b9302ff3c05cc7f68a617d7dd7" />
 <script async
 	src="https://www.googletagmanager.com/gtag/js?id=UA-217574467-1"></script>
->>>>>>> branch 'develop' of
-https://github.com/Develop-KIM/WineVillage.git
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }

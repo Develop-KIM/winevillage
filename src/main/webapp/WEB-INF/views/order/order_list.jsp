@@ -16,31 +16,31 @@
 <%@ include file="../common/common.jsp"%>
 
 <%@ include file="../common/common_mypage.jsp"%>
-		<div class="lnb mypage_lnb lnb_wrap">
-			<div class="mypage_link mb_hidden">
-				<ul class="depth_01">
-					<li><a href="/mypageping/mypage">나의 쇼핑</a>
-						<ul class="depth_02">
-							<li class="on"><a href="/order_list.do">주문내역</a></li>
-							<li><a href="/return_order_list.do">교환/반품내역</a></li>
-							<li><a href="/wish_lists.do">위시리스트</a></li>
-							<li><a href="/cart_list.do">장바구니</a></li>
-						</ul></li>
-					<li><a href="#none">개인정보</a>
-						<ul class="depth_02">
-							<li><a href="/qna_list.do">문의내역확인</a></li>
-							<li><a href="/password_cert.do">회원정보수정</a></li>
-							<li><a href="/change_password.do">비밀번호
-									변경</a></li>
-							<li><a href="/withdrawal.do">회원탈퇴</a></li>
-						</ul>
-					</li>
-				</ul>
+	<div class="lnb mypage_lnb lnb_wrap">
+		<div class="mypage_link mb_hidden">
+			<ul class="depth_01">
+				<li><a href="javascript:void(0);">나의 쇼핑</a>
+					<ul class="depth_02">
+						<li class="on"><a href="/order_list.do">주문내역</a></li>
+						<li><a href="/return_order_list.do">교환/반품내역</a></li>
+						<li><a href="/wish_list.do">위시리스트</a></li>
+						<li><a href="/cart_list.do">장바구니</a></li>
+					</ul></li>
+				<li><a href="#none">개인정보</a>
+					<ul class="depth_02">
+						<li><a href="/qna_list.do">문의내역확인</a></li>
+						<li><a href="/password_cert.do">회원정보수정</a></li>
+						<li><a href="/change_password.do">비밀번호
+								변경</a></li>
+						<li><a href="/withdrawal.do">회원탈퇴</a></li>
+					</ul>
+				</li>
+			</ul>
 			</div>
 		</div>
 <div class="content mypage shopping order_lists_page return_order_lists_page">
         <div class="inner">
-            <form action="https://www.winenara.com/shop/mypage/shopping/return_order_lists" id="searchFrm" name="searchFrm" method="get" accept-charset="utf-8">
+<!--             <form action="" id="searchFrm" name="searchFrm" method="get" accept-charset="utf-8"> -->
             <div class="top_info">
                 <div class="page_tit">
                     <h2 class="tit">주문내역</h2>
