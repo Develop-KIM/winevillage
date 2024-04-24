@@ -558,6 +558,7 @@ jQuery(function($){
 <span class="pg_next">다음</span>
 <a href="/admin/order.php?code=list&page=2" class="pg_page pg_end">맨끝</a>
 </span></nav>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"></script>
 <script>
 $(function(){
     $("#fr_date, #to_date").datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", showButtonPanel: true, yearRange: "c-99:c+99", maxDate: "+0d" });

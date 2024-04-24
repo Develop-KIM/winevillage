@@ -121,12 +121,12 @@ a.gnb_2da:focus, a.gnb_2da:hover {background:#484848 !important;color:#fff !impo
 #snb dd em {height:14px;min-width:10px;padding:0 5px;font-size:10px;line-height:14px;color:#fff;background:#ccc;border-radius:3px;position:absolute;top:7px;right:10px;z-index:100;display:inline-block;text-align:center;}
 #snb dd em.snb_air{background:#1a4e99 !important;}
 #snb dl {margin-bottom:100px;}
-#snb dt {background:#f6f6f6 url('../images/sflex_icon.png') 174px -302px no-repeat;border-top:1px solid #cfcfcf;padding:0 0 0 17px;font-size:12px;line-height:2.8;font-weight:600;vertical-align:middle;cursor:pointer;}
+#snb dt {background:#f6f6f6 url('/images/admin/sflex_icon.png') 174px -302px no-repeat;border-top:1px solid #cfcfcf;padding:0 0 0 17px;font-size:12px;line-height:2.8;font-weight:600;vertical-align:middle;cursor:pointer;}
 #snb dd {display:block;position:relative;}
 #snb dd a {display:block;padding:7px 0 7px 17px;text-decoration:none;background:#fff;color:#555;vertical-align:middle;}
 #snb dd a:hover {font-weight:600;text-decoration:underline;}
 #snb dd.active a {font-weight:600;color:#fa2828 !important;background:#eeeeee !important;}
-#snb dt.menu_close {background:#f6f6f6 url('../images/sflex_icon.png') 175px -347px no-repeat;}
+#snb dt.menu_close {background:#f6f6f6 url('/images/admin/sflex_icon.png') 175px -347px no-repeat;}
 #snb dd.menu_close {display:none;}
 
 /*본문*/
@@ -420,7 +420,7 @@ a.gnb_2da:focus, a.gnb_2da:hover {background:#484848 !important;color:#fff !impo
 #anc_header{z-index:20;position:fixed;right:70px;bottom:30px;display:none;}
 #anc_header a{width:80px;display:block;text-align:center;font:11px/100% Arial, Helvetica, sans-serif;text-transform:uppercase;text-decoration:none;color:#bbb;-webkit-transition:1s;-moz-transition:1s;transition:1s;}
 #anc_header a:hover{color:#000;}
-#anc_header span{width:80px;height:80px;display:block;margin-bottom:7px;background:#ddd url('/img/up-arrow.png') no-repeat center center;-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;-webkit-transition:1s;-moz-transition:1s;transition:1s;}
+#anc_header span{width:80px;height:80px;display:block;margin-bottom:7px;background:#ddd url('/images/admin/up-arrow.png') no-repeat center center;-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;-webkit-transition:1s;-moz-transition:1s;transition:1s;}
 #anc_header a:hover span{background-color:#777;}
 
 /*가격비교 사이트*/

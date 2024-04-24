@@ -2,8 +2,10 @@
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!doctype html>
-<link rel="stylesheet" href="css/login.css">
-<link rel="stylesheet" href="css/admin.css">
+<head>
+<link rel="stylesheet" href="css/admin/login.css">
+<link rel="stylesheet" href="css/admin/admin.css">
+</head>
 <html lang="ko">
 <body>
 <div class="login-content">
@@ -14,7 +16,7 @@ pageEncoding="UTF-8"%>
 <!--                    <a target="_blank" href="http://jobcan.co.kr">-->
 <!--                        <img src="/st/image/header/jobcan_logo_foreign.png" style="width: calc(200px * 0.727);" alt="JOBCAN">-->
 <!--                    </a>-->
-                    <img src="images/wine_village.png" style="width: calc(200px * 0.727);" alt="Wine Village">
+                    <img src="images/admin/wine_village.png" style="width: calc(200px * 0.727);" alt="Wine Village">
                 </h1>
             </div>
             <h2 class="login-title">관리자 페이지 로그인</h2>
