@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<!-- <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <link rel="shortcut icon" href="./images/default/favicon.ico"
@@ -32,7 +32,7 @@
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
 <title>Insert title here</title>
-</head>
+</head> -->
 <body>
 	<footer id="footer" class="footer">
 		<div class="hidden_info">
@@ -48,6 +48,9 @@
 				</div>
 			</div>
 			<div class="info_box">
+				<div class="logo">
+					<img src="./css/default/wine_village_rev2_wh.svg" alt="WINEVILLAGE">
+				</div>
 				<div class="info">
 					<ul class="company_info">
 						<li>대표번호 : 080-732-0101 (업무시간 : 10:00-17:00 월~금/ 점심시간 :
@@ -65,70 +68,35 @@
 							금함.</li>
 					</ul>
 				</div>
-				<div class="logo">
-					<img src="./images/default/logo_footer.png" alt="WINENARA 1987">
-				</div>
 			</div>
 		</div>
-		<div class=" mb_hidden quick_menu">
+		<div class="mb_hidden quick_menu">
 			<ul class="list">
-				<li class="top"><a href="#none"
-					onclick="commonUI.footer.topMove()">TOP</a></li>
-				<li><a href="/cs/special">
+				<li><a href="http://pf.kakao.com/_vlkxfxb/chat">
 						<div class="icon">
-							<picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-							<source
-								srcset="./images/default/pc_ico_quick_delivery.png"
-								media="(min-width:768px)">
-							<!-- pc이미지 -->
-							<source
-								srcset="./images/default/mb_ico_quick_delivery.png"
-								media="(max-width:767px)">
-							<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-								src="./images/default/pc_ico_quick_delivery.png"
-								alt="특판문의" draggable="false"> <!-- pc이미지 --> </picture>
+							<img src="./images/shop/default/ico_quick_kakao_comment.png"
+								alt="카카오 상담" draggable="false">
 						</div>
-						<div class="txt">특판문의</div>
+						<div class="txt">온라인 1:1 상담</div>
 				</a></li>
-				<li><a href="http://pf.kakao.com/_vlkxfxb/chat"
-					class="pc_hidden">
+				<li><a href="/faq_list.do">
 						<div class="icon">
-							<picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-							<source
-								srcset="./images/default/pc_ico_quick_talk.png"
-								media="(min-width:768px)">
-							<!-- pc이미지 -->
-							<source
-								srcset="./images/default/mb_ico_quick_talk.png"
-								media="(max-width:767px)">
-							<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-								src="./images/default/pc_ico_quick_talk.png"
-								alt="Talk" draggable="false"> <!-- pc이미지 --> </picture>
+							<img src="./images/shop/default/ico_quick_faq.png" alt="자주하는 질문"
+								draggable="false">
 						</div>
-						<div class="txt">1:1문의</div>
-				</a> <a
-					href="javascript:window.open('http://pf.kakao.com/_vlkxfxb/chat','1:1문의','width=800,height=800,scrollbars=yes');"
-					class="mb_hidden">
-						<div class="icon">
-							<picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-							<source
-								srcset="./images/default/pc_ico_quick_talk.png"
-								media="(min-width:768px)">
-							<!-- pc이미지 -->
-							<source
-								srcset="./images/default/mb_ico_quick_talk.png"
-								media="(max-width:767px)">
-							<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-								src="./images/default/pc_ico_quick_talk.png"
-								alt="Talk" draggable="false"> <!-- pc이미지 --> </picture>
-						</div>
-						<div class="txt">1:1문의</div>
+						<div class="txt">FAQ</div>
 				</a></li>
 			</ul>
 			<div class="open_box">
 				<button type="button" class="menu_open">quick menu open</button>
 			</div>
+			<a href="#none" class="go_top" onclick="commonUI.footer.topMove()"></a>
 		</div>
 	</footer>
+	<script language=javascript>
+		$(".quick_menu .menu_open").on("click", function() {
+			$(".quick_menu").toggleClass("on")
+		});
+	</script>
 </body>
 </html>

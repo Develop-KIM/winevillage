@@ -2,6 +2,7 @@
 
 .header .top .wrap{height:125px;padding:22px 0 21px}
 .header .top .wrap h1.logo{position: relative;display:block;float: left;z-index: 10;}
+.header .top .wrap h1.logo a {width: 152px;}
 .header .bottom{display:block}
 
 .main_page.content{max-width:100%}
