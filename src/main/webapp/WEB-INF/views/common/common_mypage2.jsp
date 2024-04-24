@@ -848,22 +848,34 @@
 						<!-- <span>시음노트 작성하면 등급 UP</span> -->
 					</div>
 				</div>
-				<div class="my_info my_class_info">
-					<ul class="">
-						<li><a href="/order_list.do">
-								<p class="tit">주문내역</p>
-								<div class="num_box">
-									<span>0</span>
-								</div>
-						</a></li>
-						<li><a href="/mileage_list.do">
-								<p class="tit">나의 마일리지</p>
-								<div class="num_box">
-									<span>0</span>
-								</div>
-						</a></li>
-					</ul>
-				</div>
+				<div class="my_class_info">
+            <ul class="">
+                <li class="on">
+                    <p class="tit">누적 마일리지</p>
+                    <div class="num_box">
+                        <span>0</span>
+                    </div>
+                </li>
+                <li>
+                    <p class="tit">사용 마일리지</p>
+                    <div class="num_box">
+                        <span>0</span>
+                    </div>
+                </li>
+                <li>
+                    <p class="tit">가용 마일리지</p>
+                    <div class="num_box">
+                        <span>0</span>
+                    </div>
+                </li>
+                <li class="on">
+                    <p class="tit">소멸예정마일리지</p>
+                    <div class="num_box">
+                        <span>0</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
 			</div>
 <!-- 		<div class="mypage_link mb_hidden">
 				<ul class="depth_01">

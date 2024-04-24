@@ -218,9 +218,9 @@ pageEncoding="UTF-8"%>
 								<col class="w50">
 								<col class="w50">
 								<col class="w60">
-								<col class="w120">
-								<col>
-								<col>
+								<col class="w80">
+								<col class="w180">
+								<col class="w180">
 								<col class="w80">
 								<col class="w80">
 								<col class="w90">

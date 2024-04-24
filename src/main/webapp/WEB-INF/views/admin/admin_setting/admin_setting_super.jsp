@@ -17,11 +17,14 @@ pageEncoding="UTF-8"%>
 				<dd class="q10 active">
 					<a href="admin_setting_super.do">관리자 등록</a>
 				</dd>
+				<dd class="q10">
+					<a href="admin_setting_super_lists.do">관리자 목록</a>
+				</dd>
 			</dl>
 		</div>
 		<div id="content">
 			<div class="breadcrumb">
-				<span>HOME</span> <i class="ionicons ion-ios-arrow-right"></i> 환경설정 <i class="ionicons ion-ios-arrow-right"></i>
+				<span>HOME</span> <i class="ionicons ion-ios-arrow-right"></i> 기본환경설정 <i class="ionicons ion-ios-arrow-right"></i>
 				관리자 등록
 			</div>
 
