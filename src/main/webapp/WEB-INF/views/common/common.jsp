@@ -454,7 +454,7 @@
 							<div class="login_sub_btn">
 								<a href="/member/forgoten/forgoten_id" class="btn">아이디 찾기</a> <a
 									href="/member/forgoten/forgoten_pw" class="btn">비밀번호 재발급</a> <a
-									href="/admin_index.do" class="btn">관리자 로그인</a>
+									href="/admin_login.do" class="btn">관리자 로그인</a>
 							</div>
 						</div>
 					</div>

@@ -27,8 +27,8 @@ pageEncoding="UTF-8"%>
 			<div id="tnb">
 				<ul>
 					<li>오늘:60, 어제:80, 최대:739, 전체:167994</li>
-					<li><a href="admin_index.do">관리자홈</a></li>
-					<li><a href="#" target="_blank">쇼핑몰</a></li>
+					<li><a href="main.do">쇼핑몰</a></li>
+					<li><p>admin님 환영합니다.</p></li>
 					<li id="tnb_logout"><a href="admin_login.do">로그아웃</a></li>
 				</ul>
 			</div>
