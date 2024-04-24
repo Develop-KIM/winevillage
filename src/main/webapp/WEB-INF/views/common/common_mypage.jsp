@@ -856,7 +856,7 @@
 									<span>0</span>
 								</div>
 						</a></li>
-						<li><a href="/mypage/note/mileage_lists">
+						<li><a href="/mileage_lists.do">
 								<p class="tit">나의 마일리지</p>
 								<div class="num_box">
 									<span>0</span>
