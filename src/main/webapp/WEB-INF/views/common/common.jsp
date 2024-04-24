@@ -8,8 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-<link rel="shortcut icon" href="./images/shop/default/favicon.ico" type="image/x-icon" />
-<link rel="icon" href="./images/shop/default/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="./css/layouta0da.css" />
 <link rel="stylesheet" type="text/css" href="./css/layout_pcdc60.css"
@@ -46,6 +44,7 @@
 <script src="./js/wn.productf100.js?v=230405140747"></script>
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
+<script type="text/javascript" src="./js/filter.js"></script>
 
 
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>

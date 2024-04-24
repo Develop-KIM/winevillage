@@ -237,7 +237,7 @@ p.small2{font-size:12px}
 .header .search_layer .search_box input{width:calc( 100% - 128px );text-align:center}
 .header.prd_view_header .search_layer{top:50px}
 
-.search_box{display:flex;justify-content:space-between;align-items:center;height:50px;border:1px solid #DCDCDC;overflow:hidden}
+.search_box{display:flex;justify-content:space-around;align-items:center;height:50px;border:1px solid #DCDCDC;overflow:hidden}
 .search_box input,
 .search_box button{float:left;border:0;height:50px;line-height:50px}
 .search_box input{width:calc( 100% - 64px );font-size:13px;padding:0 10px;background-color:transparent;text-align:left}
