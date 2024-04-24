@@ -9,9 +9,31 @@
 <body>
 <%@ include file="../common/common.jsp"%>
 
+<div class="lnb mypage_lnb lnb_wrap">
+	<div class="mypage_link mb_hidden" style="top:166px; z-index:9999;">
+		<ul class="depth_01">
+			<li><a href="javascript:void(0);">나의 쇼핑</a>
+				<ul class="depth_02">
+					<li><a href="/order_list.do">주문내역</a></li>
+					<li><a href="/return_order_list.do">교환/반품내역</a></li>
+					<li><a href="/wish_list.do">위시리스트</a></li>
+					<li><a href="/cart_list.do">장바구니</a></li>
+				</ul></li>
+			<li><a href="#none">개인정보</a>
+				<ul class="depth_02">
+					<li><a href="/qna_list.do">문의내역확인</a></li>
+					<li><a href="/password_cert.do">회원정보수정</a></li>
+					<li><a href="/change_password.do">비밀번호
+							변경</a></li>
+					<li><a href="/withdrawal.do">회원탈퇴</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
 <!-- contents -->
   <section id="contents">
-    <div class="lnb mypage_lnb lnb_wrap">
+    <div class="lnb mypage_lnb lnb_wrap" style="padding-top:0px;">
       <div class="pc_hidden">
         <a href="javascript:history.go(-1);" class="prev">이전</a>
         <div class="select_brand js_select" id="select_brand">

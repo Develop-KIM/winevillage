@@ -850,13 +850,13 @@
 				</div>
 				<div class="my_info my_class_info">
 					<ul class="">
-						<li><a href="/mypageping/order_lists">
+						<li><a href="/order_list.do">
 								<p class="tit">주문내역</p>
 								<div class="num_box">
 									<span>0</span>
 								</div>
 						</a></li>
-						<li><a href="/mileage_lists.do">
+						<li><a href="/mileage_list.do">
 								<p class="tit">나의 마일리지</p>
 								<div class="num_box">
 									<span>0</span>

@@ -652,3 +652,6 @@ strong.sodr_nonpay{display:block;padding:5px 0;text-align:right;}
 /*옵션*/
 #sit_option_frm fieldset,#sit_option_addfrm fieldset{margin-top:20px;padding:10px !important;border:1px solid #cbdbe8;background:#f6fbff;text-align:center;font-weight:400;}
 .sit_option_msg {display:block;padding-bottom:10px;line-height:1.4em;color:#197fe0;}
+
+/*말줄임표*/
+span.ellipsis1{display:-webkit-box;text-overflow: ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
