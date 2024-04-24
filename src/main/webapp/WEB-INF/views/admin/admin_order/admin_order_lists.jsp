@@ -111,8 +111,8 @@ jQuery(function($){
 		<th scope="row">검색어</th>
 		<td>
 			<select name="sfl">
-				<option value="od_id">주문번호</option>
-				<option value="od_no">일련번호</option>
+				<option value="od_no">주문번호</option>
+				<option value="od_name">주문상품</option>
 				<option value="mb_id">회원아이디</option>
 				<option value="name">주문자명</option>
 				<option value="deposit_name">입금자명</option>
@@ -224,7 +224,7 @@ jQuery(function($){
 		<col class="w150">
 		<col class="w40">
 		<col class="w40">
-		<col>
+		<col class="w400">
 		<col class="w60">
 		<col class="w80">
 		<col class="w80">
