@@ -7,13 +7,13 @@
 <title>WINE VILLAGE | WINE</title>
 </head>
 <body>
-	<%@ include file="../../../common/common.jsp"%>
+	<%@ include file="../../common/common.jsp"%>
 	<div class="wrap">
 		<div class="content product product_lists_page test">
 			<div class="product_lists_wrap">
 				<div class="prd_list_tit">
 					<div class="top">
-						<h2>이탈리아</h2>
+						<h2>WINE</h2>
 						<div class="line_map">
 							<ul>
 								<li onclick="location.href='../main.html'"
@@ -1766,6 +1766,6 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="../../../common/footer.jsp"%>
+	<%@ include file="../../common/footer.jsp"%>
 </body>
 </html>

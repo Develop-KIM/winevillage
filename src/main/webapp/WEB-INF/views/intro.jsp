@@ -28,7 +28,7 @@
 <link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
-<title>와인 빌리지</title>
+<title>WINE VILLAGE</title>
 </head>
 <body>
 	<form action="/setCookie" method="get">
@@ -37,7 +37,7 @@
 				<div class="txt_area">
 					<div class="inner_box">
 						<h2 class="logo">
-							<a href="/"><img src="./css/default/wine_village_rev1_wh.svg"
+							<a href="/"><img src="./css/default/wine_village_rev2_wh.svg"
 								alt="인트로 와인빌리지"></a>
 						</h2>
 						<p class="txt">

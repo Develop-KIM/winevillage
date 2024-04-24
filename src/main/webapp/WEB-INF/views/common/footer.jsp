@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<!-- <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,7 +32,7 @@
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
 <title>Insert title here</title>
-</head>
+</head> -->
 <body>
 	<footer id="footer" class="footer">
 		<div class="hidden_info">
@@ -49,7 +49,7 @@
 			</div>
 			<div class="info_box">
 				<div class="logo">
-					<img src="./css/default/wine_village_rev1_wh.svg" alt="WINEVILLAGE">
+					<img src="./css/default/wine_village_rev2_wh.svg" alt="WINEVILLAGE">
 				</div>
 				<div class="info">
 					<ul class="company_info">

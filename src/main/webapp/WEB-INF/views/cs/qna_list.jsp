@@ -17,11 +17,11 @@
 		<div class="lnb mypage_lnb lnb_wrap">
 			<div class="mypage_link mb_hidden">
 				<ul class="depth_01">
-					<li><a href="/mypageping/mypage">나의 쇼핑</a>
+					<li><a href="javascript:void(0);">나의 쇼핑</a>
 						<ul class="depth_02">
 							<li><a href="/order_list.do">주문내역</a></li>
 							<li><a href="/return_order_list.do">교환/반품내역</a></li>
-							<li><a href="/wish_lists.do">위시리스트</a></li>
+							<li><a href="/wish_list.do">위시리스트</a></li>
 							<li><a href="/cart_list.do">장바구니</a></li>
 						</ul></li>
 					<li><a href="#none">개인정보</a>

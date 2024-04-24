@@ -7,7 +7,7 @@
 <title>WINE VILLAGE | 회원가입</title>
 </head>
 <body>
-	<%@ include file="../common/common.jsp" %>
+	<%@ include file="../../common/common.jsp" %>
     <section id="contents">
         <div class="lnb member_lnb lnb_wrap step_wrap">
             <div class="pc_hidden">
@@ -164,7 +164,7 @@
                             <li><a href="#none" class="social_btn naver">네이버</a></li>
                             <li><a href="#none" class="social_btn kakao">카카오</a></li>
                             <li><a href="#none" class="social_btn google">구글</a></li>
-                            <li><a href="#none" class="social_btn id">아이디</a></li>
+                            <li><a href="/join_form.do" class="social_btn id">아이디</a></li>
                         </ul>
                     </div>
                 </div>
@@ -291,6 +291,6 @@
         </script>
         <!-- //page_script -->
     </section>
-    <%@ include file="../common/footer.jsp" %>
+    <%@ include file="../../common/footer.jsp" %>
 </body>
 </html>
