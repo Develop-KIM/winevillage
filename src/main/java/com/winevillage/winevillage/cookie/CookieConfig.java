@@ -1,22 +1,32 @@
 package com.winevillage.winevillage.cookie;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CookieConfig implements WebMvcConfigurer {
+    
+    private static final String[] STATIC_RESOURCES = {
+        "/**/*.css",
+        "/**/*.png",
+        "/**/*.svg",
+        "/**/*.jpg",
+    };
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(cookieInterceptor())
-				.addPathPatterns("/**")
-				.excludePathPatterns("/setCookie");
-	}
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new CookieInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/setCookie")
+                .excludePathPatterns(STATIC_RESOURCES);
+    }
 
-	@Bean
-	public CookieInterceptor cookieInterceptor() {
-		return new CookieInterceptor();
-	}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("classpath:/static/")
+                .setCachePeriod(0); // 캐시 비활성화
+    }
 }
