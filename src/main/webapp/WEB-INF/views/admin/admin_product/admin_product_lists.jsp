@@ -79,7 +79,7 @@ pageEncoding="UTF-8"%>
 								<tr>
 									<th scope="row">검색어</th>
 									<td colspan="3">
-										<select name="sfl">
+										<select name="searchField">
 											<option value="gname">상품명</option>
 											<option value="gcode">상품코드</option>
 											<option value="mb_id">업체코드</option>
@@ -88,7 +88,7 @@ pageEncoding="UTF-8"%>
 											<option value="model">모델명</option>
 											<option value="explan">짧은설명</option>
 										</select>
-										<input type="text" name="stx" value="" class="frm_input" size="30">
+										<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 									</td>
 								</tr>
 								<tr>
@@ -221,9 +221,9 @@ pageEncoding="UTF-8"%>
 								<col class="w80">
 								<col class="w180">
 								<col class="w180">
+								<col class="w180">
 								<col class="w80">
 								<col class="w80">
-								<col class="w90">
 								<col class="w90">
 								<col class="w90">
 								<col class="w90">
@@ -236,10 +236,9 @@ pageEncoding="UTF-8"%>
 											onclick="check_all(this.form);"></th>
 									<th scope="col" rowspan="2">번호</th>
 									<th scope="col" rowspan="2">이미지</th>
-									<th scope="col" rowspan="2"><a href="/admin/goods.php?code=list&page=&filed=gcode&orderby=asc">상품코드</a></th>
-									<th scope="col" colspan="2"><a href="/admin/goods.php?code=list&page=&filed=gname&orderby=asc">상품정보</a>
-									</th>
-									<th scope="col" colspan="2"><a href="/admin/goods.php?code=list&page=&filed=reg_time&orderby=asc">등록일자</a></th>
+									<th scope="col" rowspan="2">상품코드</th>
+									<th scope="col" colspan="3">상품정보</th>
+									<th scope="col" rowspan="2">등록일자</th>
 									<th scope="col" rowspan="2" colspan="1">재고</th>
 									<th scope="col" colspan="4" class="th_bg">가격정보</th>
 									<th scope="col" colspan="1" rowspan="2">관리</th>
@@ -247,46 +246,57 @@ pageEncoding="UTF-8"%>
 								<tr class="rows">
 									<th scope="col">상품명</th>
 									<th scope="col">카테고리</th>
-									<th scope="col"><a href="/admin/goods.php?code=list&page=&filed=reg_time&orderby=asc">최초등록일</a></th>
-									<th scope="col"><a href="/admin/goods.php?code=list&page=&filed=reg_time&orderby=asc">최근수정일</a></th>
+									<th scope="col">알코올/바디/산도/탄닌/당도</th>
 									<!-- <th scope="col"><a href="/admin/goods.php?code=list&page=&filed=isopen&orderby=asc">진열</a></th>
 									<th scope="col"><a href="/admin/goods.php?code=list&page=&filed=stock_qty&orderby=asc">재고</a></th> -->
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=goods_price&orderby=asc">판매가</a></th>
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=goods_price&orderby=asc">할인율</a></th>
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=gpoint&orderby=asc">할인가</a></th>
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=gpoint&orderby=asc">포인트</a></th>
+									<th scope="col" colspan="1" class="th_bg"><p>판매가</p></th>
+									<th scope="col" colspan="1" class="th_bg"><p>할인율</p></th>
+									<th scope="col" colspan="1" class="th_bg"><p>할인가</p></th>
+									<th scope="col" colspan="1" class="th_bg"><p>포인트</p></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="list1">
-									<td rowspan="2">
+							<c:choose>
+								<c:when test="${ empty lists }">
+									<tr>
+										<td colspan="5" align="center">
+										등록된 상품이 없습니다.
+										</td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<tbody>
+									<c:forEach items="${ lists }" var="item" varStatus="loop">
+								<tr class="list0">
+									<td rowspan="1">
 										<input type="hidden" name="gs_id[0]" value="21">
 										<input type="checkbox" name="chk[]" value="0">
 									</td>
-									<td rowspan="2">10</td>
-									<td rowspan="2"><a href="https://www.winenara.com/shop/product/product_view?product_cd=03U001" target="_blank"><img
-												src="./images/admin/Diablo_Devil's.png"
+									<td rowspan="1">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
+									<td rowspan="1"><a href="/"><img
+												src="../Uploads/product/200/${item.productImg }"
 												width="40" height="40"></a></td>
-									<td>0000000010</td>
-									<td colspan="1" class="tal">디아블로 데블스 카나발 카베르네</td>
-									<td colspan="1" class="tal">와인/레드/칠레</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">14,900</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">13,410</td>
-									<td rowspan="2" colspan="1" class="tar">745</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
+ 									<td>${item.productCode}</td>
+									<td colspan="1" class="tal">${item.productName }</td>
+									<td colspan="1" class="tal">${item.wine}/${item.country}/${item.grapeVariety }</td>
+									<td colspan="1" class="tal">${item.alcohol}/${item.body}/${item.acidity }/${item.tannins }/${item.sweetNess }</td>
+									<td>${item.registerDate }</td>
+									<td>${item.stock }</td>
+									<td rowspan="1" colspan="1" class="tar">${item.fullPrice}</td>
+									<td rowspan="1" colspan="1" class="tar">${item.discountRate }%</td>
+									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
+									<td rowspan="1" colspan="1" class="tar"></td>
+									<td rowspan="1" colspan="1"><a href="/" class="btn_small">수정</a>
 									</td>
-									<tr class="list0">
-									</tr>
 								</tr>
-								<tr class="list0">
+									</c:forEach>
+							</tbody>
+								</c:otherwise>
+							</c:choose>
+						</table>
+					</div>
+				</form>
+<!-- 								<tr class="list0">
 									<td rowspan="2">
 										<input type="hidden" name="gs_id[0]" value="21">
 										<input type="checkbox" name="chk[]" value="0">
@@ -500,14 +510,16 @@ pageEncoding="UTF-8"%>
 									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
 									</td>
 									<tr class="list0">
-									</tr>
-								</tr>
-							</tbody>
+									</tr> -->
+<!-- 							</tbody>
 						</table>
 					</div>
-				</form>
-
-
+				</form> -->
+				<div class="paging" style="display: flex; justify-content: center; align-items: center;">
+					<p>
+						${ pagingImg }
+					</p>
+				</div>
 				<script>
 					function fgoodslist_submit(f) {
 						if (!is_checked("chk[]")) {

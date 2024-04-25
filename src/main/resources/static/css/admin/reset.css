@@ -176,3 +176,33 @@ thead, tfoot {
 	line-height: 1em;
 	vertical-align: baseline;
 }
+.paging {
+	margin-top:40px;
+	font-size : 24px;
+	color: #fa2828;
+}
+.paging p{
+	display: flex;
+	gap: 3px;
+}
+/* .paging a{
+	padding-left:10px;
+} */
+.paging a>img{
+	border: 1px solid #e4e5e7;
+	width: 20px;
+}
+
+.tbl_frm02 label{
+	padding: 0 4px;
+	line-height: 20px;
+	font-weight: 500;
+}
+
+
+.wine_select {
+	display: none;
+}
+.wine_select.on {
+	display: block;
+}

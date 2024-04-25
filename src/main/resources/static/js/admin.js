@@ -231,3 +231,15 @@ $(function(){
         }
     });
 });
+
+$(function() {
+	
+	$('.wine_choice').on('click', function() {
+			
+		$('.wine_select').addClass('on')
+	})
+	
+	$('.other_choice').on('click', function() {
+		$('.wine_select').removeClass('on')
+	})
+});

@@ -40,28 +40,7 @@ pageEncoding="UTF-8"%>
 	<h1>신규 상품등록</h1>
 	
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script>
-jQuery(function($){
-    $.datepicker.regional["ko"] = {
-        closeText: "닫기",
-        prevText: "이전달",
-        nextText: "다음달",
-        currentText: "오늘",
-        monthNames: ["1월(JAN)","2월(FEB)","3월(MAR)","4월(APR)","5월(MAY)","6월(JUN)", "7월(JUL)","8월(AUG)","9월(SEP)","10월(OCT)","11월(NOV)","12월(DEC)"],
-        monthNamesShort: ["1월","2월","3월","4월","5월","6월", "7월","8월","9월","10월","11월","12월"],
-        dayNames: ["일","월","화","수","목","금","토"],
-        dayNamesShort: ["일","월","화","수","목","금","토"],
-        dayNamesMin: ["일","월","화","수","목","금","토"],
-        weekHeader: "Wk",
-        dateFormat: "yymmdd",
-        firstDay: 0,
-        isRTL: false,
-        showMonthAfterYear: true,
-        yearSuffix: ""
-    };
-	$.datepicker.setDefaults($.datepicker.regional["ko"]);
-});
-</script>
+
 <script src="http://demofran.com/js/categoryform.js?ver=20240416184431"></script>
 
 <form name="fregform" method="post" onsubmit="return fregform_submit(this)" enctype="MULTIPART/FORM-DATA">
@@ -75,9 +54,9 @@ jQuery(function($){
 <input type="hidden" name="ca_id3" value="">
 
 <section id="anc_sitfrm_cate">
-<h2>카테고리</h2>
+<h2>상품설정</h2>
 <div class="local_desc02 local_desc">
-	<p>선택된 카테고리에 <span class="fc_084">최상위 카테고리는 대표 카테고리로 자동설정</span>되며, 최소 1개의 카테고리는 등록하셔야 합니다.</p>
+	<p>등록하실 상품 종류를 선택하셔야 합니다.</p>
 </div>
 <div class="tbl_frm02">
 	<table>
@@ -87,83 +66,26 @@ jQuery(function($){
 	</colgroup>
 	<tbody>
 	<tr>
-		<th scope="row">스마트 서치 선택 : 생산지역</th>
-		<div class="sub_frm01">
+		<th scope="row">상품 선택</th>
 			<td>
-				<label><input type="checkbox" name="" value="Y"> 랑그독루시용</label>
-				<label><input type="checkbox" name="" value="Y"> 론</label>
-				<label><input type="checkbox" name="" value="Y"> 보르도</label>
-				<label><input type="checkbox" name="" value="Y"> 루아르</label>
-				<label><input type="checkbox" name="" value="Y"> 보졸레</label>
-				<label><input type="checkbox" name="" value="Y"> 부르고뉴</label>
-				<label><input type="checkbox" name="" value="Y"> 샴페인</label>
-				<label><input type="checkbox" name="" value="Y"> 알자스</label>
-				<label><input type="checkbox" name="" value="Y"> 프로방스</label>
-				<label><input type="checkbox" name="" value="Y"> 라치오</label>
-				<br>
-				<label><input type="checkbox" name="" value="Y"> 롬바르디아</label>
-				<label><input type="checkbox" name="" value="Y"> 리구리아</label>
-				<label><input type="checkbox" name="" value="Y"> 베네토</label>
-				<label><input type="checkbox" name="" value="Y"> 시실리</label>
-				<label><input type="checkbox" name="" value="Y"> 아브루쪼</label>
-				<label><input type="checkbox" name="" value="Y"> 에밀리아</label>
-				<label><input type="checkbox" name="" value="Y"> 움브리아</label>
-				<label><input type="checkbox" name="" value="Y"> 캄파니아</label>
-				<label><input type="checkbox" name="" value="Y"> 토스카나</label>
-				<label><input type="checkbox" name="" value="Y"> 풀리아</label>
-				<br>
-				<label><input type="checkbox" name="" value="Y"> 프리울리</label>
-				<label><input type="checkbox" name="" value="Y"> 피에몬테</label>
-				<label><input type="checkbox" name="" value="Y"> 갈리시아</label>
-				<label><input type="checkbox" name="" value="Y"> 까딸루냐</label>
-				<label><input type="checkbox" name="" value="Y"> 나바라</label>
-				<label><input type="checkbox" name="" value="Y"> 리오하</label>
-				<label><input type="checkbox" name="" value="Y"> 카스틸라 라만차</label>
-				<label><input type="checkbox" name="" value="Y"> 카스틸라 이 레온</label>
-				<label><input type="checkbox" name="" value="Y"> 캘리포니아</label>
-				<label><input type="checkbox" name="" value="Y"> 오레곤</label>
-				<label><input type="checkbox" name="" value="Y"> 워싱턴</label>
-				<label><input type="checkbox" name="" value="Y"> 기타</label>
+				<label><input class="wine_choice" type="radio" name="option" value="Y"> 와인</label>
+				<label><input class="other_choice" type="radio" name="option" value="Y"> 액세서리</label>
 			</td>
-		</div>
 	</tr>
-	<tr>
-		<th scope="row">스마트 서치 선택 : 포도품종</th>
-		<div class="sub_frm01">
-			<td>
-				<label><input type="checkbox" name="" value="Y"> 카베르네 소비뇽</label>
-				<label><input type="checkbox" name="" value="Y"> 쉬라즈</label>
-				<label><input type="checkbox" name="" value="Y"> 메를로</label>
-				<label><input type="checkbox" name="" value="Y"> 카베르네 프랑</label>
-				<label><input type="checkbox" name="" value="Y"> 템프라니요</label>
-				<label><input type="checkbox" name="" value="Y"> 피노 누아</label>
-				<label><input type="checkbox" name="" value="Y"> 말벡</label>
-				<label><input type="checkbox" name="" value="Y"> 진판델</label>
-				<label><input type="checkbox" name="" value="Y"> 산지오베제</label>
-				<label><input type="checkbox" name="" value="Y"> 가메</label>
-				<br>
-				<label><input type="checkbox" name="" value="Y"> 네비올로</label>
-				<label><input type="checkbox" name="" value="Y"> 카르메네르</label>
-				<label><input type="checkbox" name="" value="Y"> 그르나슈</label>
-				<label><input type="checkbox" name="" value="Y"> 몬테풀치아노</label>
-				<label><input type="checkbox" name="" value="Y"> 바르베라</label>
-				<label><input type="checkbox" name="" value="Y"> 샤르도네</label>
-				<label><input type="checkbox" name="" value="Y"> 세미용</label>
-				<label><input type="checkbox" name="" value="Y"> 소비용 블랑</label>
-				<label><input type="checkbox" name="" value="Y"> 리슬링</label>
-				<label><input type="checkbox" name="" value="Y"> 슈냉 블랑</label>
-				<br>
-				<label><input type="checkbox" name="" value="Y"> 모스카토</label>
-				<label><input type="checkbox" name="" value="Y"> 피노그리</label>
-				<label><input type="checkbox" name="" value="Y"> 비오니에</label>
-				<label><input type="checkbox" name="" value="Y"> 게뷔르츠트라미너</label>
-				<label><input type="checkbox" name="" value="Y"> 그뤼너 펠트리너</label>
-				<label><input type="checkbox" name="" value="Y"> 베르데호</label>
-				<label><input type="checkbox" name="" value="Y"> 알리고떼</label>
-				<label><input type="checkbox" name="" value="Y"> 기타</label>
-			</td>
-		</div>
-	</tr>
+	</tbody>
+	</table>
+</div>
+
+<div class="wine_select">
+<h2>메인 카테고리</h2>
+<div class="local_desc02 local_desc">
+	<p>선택된 카테고리에 <span class="fc_084">최상위 카테고리는 대표 카테고리로 자동설정</span>되며, 최소 1개의 카테고리는 등록하셔야 합니다.</p>
+</div>
+<div class="tbl_frm02">
+
+				
+	<table>
+	<tbody>
 	<tr>
 		<th scope="row">카테고리 선택</th>
 		<td>
@@ -172,32 +94,59 @@ jQuery(function($){
 				<tr>
 					<td class="w20p bg1">
 						<select id="sel_ca1" name="sel_ca1" size="10" class="multiple-select">
-							<option value="">=카테고리선택=</option>
-							<option value="001">와인</option>
-							<option value="002">액세서리</option>
+							<option value="">=와인선택=</option>
+							<option value="레드">레드</option>
+							<option value="화이트">화이트</option>
+							<option value="로제">로제</option>
+							<option value="스파클링">스파클링</option>
+							<option value="주정강화">주정강화</option>
 						</select>
 					</td>
 					<td class="w20p bg1">
 						<select id="sel_ca2" name="sel_ca2" size="10" class="multiple-select">
-							<option value="">=카테고리선택=</option>
-							<option value="001">레드</option>
-							<option value="002">화이트</option>
-							<option value="003">로제</option>
-							<option value="004">스파클링</option>
-							<option value="005">주정강화</option>
+							<option value="">=원산지선택=</option>
+							<option value="프랑스">프랑스</option>
+							<option value="이탈리아">이탈리아</option>
+							<option value="스페인">스페인</option>
+							<option value="독일">독일</option>
+							<option value="미국">미국</option>
+							<option value="칠레">칠레</option>
+							<option value="아르헨티나">아르헨티나</option>
+							<option value="호주">호주</option>
 						</select>
 					</td>
 					<td class="w20p bg1">
 						<select id="sel_ca3" name="sel_ca3" size="10" class="multiple-select">
-							<option value="">=카테고리선택=</option>
-							<option value="001">프랑스</option>
-							<option value="002">이탈리아</option>
-							<option value="003">스페인</option>
-							<option value="004">독일</option>
-							<option value="005">미국</option>
-							<option value="006">칠레</option>
-							<option value="007">아르헨티나</option>
-							<option value="008">호주</option>
+						<option value="">=품종선택=</option>
+							<option value="카베르네 소비뇽">카베르네 소비뇽</option>
+							<option value="쉬라즈">쉬라즈</option>
+							<option value="메를로">메를로</option>
+							<option value="카베르네 프랑">카베르네 프랑</option>
+							<option value="템프라니요">템프라니요</option>
+							<option value="피노 누아">피노 누아</option>
+							<option value="말벡">말벡</option>
+							<option value="진판델">진판델</option>
+							<option value="산지오베제">산지오베제</option>
+							<option value="가메">가메</option>
+							<option value="네비올로">네비올로</option>
+							<option value="카르메네르">카르메네르</option>
+							<option value="그르나슈">그르나슈</option>
+							<option value="몬테풀치아노">몬테풀치아노</option>
+							<option value="바르베라">바르베라</option>
+							<option value="샤르도네">샤르도네</option>
+							<option value="세미용">세미용</option>
+							<option value="소비뇽 블랑">소비뇽 블랑</option>
+							<option value="리슬링">리슬링</option>
+							<option value="슈냉 블랑">슈냉 블랑</option>
+							<option value="모스카토">모스카토</option>
+							<option value="피노그리">피노그리</option>
+							<option value="비오니에">비오니에</option>
+							<option value="게뷔르츠트라미너">게뷔르츠트라미너</option>
+							<option value="그뤼너 펠트리너">그뤼너 펠트리너</option>
+							<option value="베르데호">베르데호</option>
+							<option value="알리고떼">알리고떼</option>
+							<option value="기타">기타</option>
+						</select>
 					</td>
 				</tr>
 				</table>
@@ -207,11 +156,9 @@ jQuery(function($){
 			</div>
 			<script>
 			$(function() {
-				$("#sel_ca1").multi_select_box("#sel_ca",5,tb_admin_url+"/ajax.category_select_json.php","=카테고리선택=");
-				$("#sel_ca2").multi_select_box("#sel_ca",5,tb_admin_url+"/ajax.category_select_json.php","=카테고리선택=");
-				$("#sel_ca3").multi_select_box("#sel_ca",5,tb_admin_url+"/ajax.category_select_json.php","=카테고리선택=");
-				$("#sel_ca4").multi_select_box("#sel_ca",5,tb_admin_url+"/ajax.category_select_json.php","=카테고리선택=");
-				$("#sel_ca5").multi_select_box("#sel_ca",5,"","=카테고리선택=");
+				$("#sel_ca1").multi_select_box("#sel_ca",3,tb_admin_url+"/ajax.category_select_json.php","=카테고리선택=");
+				$("#sel_ca2").multi_select_box("#sel_ca",3,tb_admin_url+"/ajax.category_select_json.php","=카테고리선택=");
+				$("#sel_ca3").multi_select_box("#sel_ca",3,tb_admin_url+"/ajax.category_select_json.php","=카테고리선택=");
 			});
 			</script>
 		</td>
@@ -219,7 +166,7 @@ jQuery(function($){
 	<tr>
 		<th scope="row">선택된 카테고리<br><span class="fc_red">(최대 3개까지만 등록)</span></th>
 		<td>
-			<select name="sel_ca_id" id="sel_ca_id" size="5" class="multiple-select">
+			<select name="sel_ca_id" id="sel_ca_id" size="3" class="multiple-select">
 						</select>
 			<div class="btn_confirm02">
 				<button type="button" class="btn_lsmall bx-white" onclick="category_move('sel_ca_id', 'prev');">▲ 위로</button>
@@ -231,8 +178,63 @@ jQuery(function($){
 	</tbody>
 	</table>
 </div>
-</section>
+<h2>세부 카테고리</h2>
+<div class="local_desc02 local_desc">
+	<p>해당 카테고리는 선택사항 입니다.</p>
+</div>
+<div class="tbl_frm02">
 
+				
+	<table>
+	<colgroup>
+		<col class="w180">
+		<col>
+	</colgroup>
+	<tbody>
+	<tr>
+		<th scope="row">바디</th>
+		<div class="sub_frm01">
+			<td>
+				<label><input type="radio" name="body" value=""> 없음</label>
+				<label><input type="radio" name="body" value="가벼움"> 가벼움</label>
+				<label><input type="radio" name="body" value="약간가벼움"> 약간가벼움</label>
+				<label><input type="radio" name="body" value="중간"> 중간</label>
+				<label><input type="radio" name="body" value="약간무거움"> 약간무거움</label>
+				<label><input type="radio" name="body" value="무거움"> 무거움</label>
+			</td>
+		</div>
+	</tr>
+	<tr>
+		<th scope="row">산도</th>
+		<div class="sub_frm01">
+			<td>
+				<label><input type="radio" name="acidity" value=""> 없음</label>
+				<label><input type="radio" name="acidity" value="낮음"> 낮음</label>
+				<label><input type="radio" name="acidity" value="약간낮음"> 약간낮음</label>
+				<label><input type="radio" name="acidity" value="중간"> 중간</label>
+				<label><input type="radio" name="acidity" value="약간높음"> 약간높음</label>
+				<label><input type="radio" name="acidity" value="높음"> 높음</label>
+			</td>
+		</div>
+	</tr>
+	<tr>
+		<th scope="row">타닌</th>
+		<div class="sub_frm01">
+			<td>
+				<label><input type="radio" name="tannins" value=""> 없음</label>
+				<label><input type="radio" name="tannins" value="약함"> 약함</label>
+				<label><input type="radio" name="tannins" value="약간약함"> 약간약함</label>
+				<label><input type="radio" name="tannins" value="중간"> 중간</label>
+				<label><input type="radio" name="tannins" value="약간강함"> 약간강함</label>
+				<label><input type="radio" name="tannins" value="강함"> 강함</label>
+			</td>
+		</div>
+	</tr>
+	</tbody>
+	</table>
+</div>
+</div>
+</section>
 <section id="anc_sitfrm_ini">
 <h2>기본정보</h2>
 <div class="tbl_frm02">
@@ -351,13 +353,6 @@ jQuery(function($){
 		</td>
 	</tr>
 	<tr>
-		<th scope="row">포인트</th>
-		<td>
-			<input type="text" name="gpoint" value="0" class="frm_input w80" onkeyup="addComma(this);"> P
-			<span class="fc_197 marl5">고객에게 제공되는 포인트</span>
-		</td>
-	</tr>
-	<tr>
 		<th scope="row">수량</th>
 		<td>
 			<input type="radio" name="stock_mod" value="0" id="ids_stock_mode1" checked="checked" onclick="chk_stock(0);">
@@ -372,7 +367,6 @@ jQuery(function($){
 	</tbody>
 	</table>
 </div>
-</section>
 
 
 
