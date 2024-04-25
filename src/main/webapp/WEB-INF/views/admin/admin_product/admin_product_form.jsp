@@ -68,7 +68,7 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">상품 선택</th>
 			<td>
-				<label><input class="wine_choice" type="radio" name="option" value="Y"> 와인</label>
+				<label><input class="wine_choice" type="radio" name="option" value="Y" checked="checked"> 와인</label>
 				<label><input class="other_choice" type="radio" name="option" value="Y"> 액세서리</label>
 			</td>
 	</tr>
@@ -195,7 +195,7 @@ pageEncoding="UTF-8"%>
 		<th scope="row">바디</th>
 		<div class="sub_frm01">
 			<td>
-				<label><input type="radio" name="body" value=""> 없음</label>
+				<label><input type="radio" name="body" checked="checked" value=""> 없음</label>
 				<label><input type="radio" name="body" value="가벼움"> 가벼움</label>
 				<label><input type="radio" name="body" value="약간가벼움"> 약간가벼움</label>
 				<label><input type="radio" name="body" value="중간"> 중간</label>
@@ -208,7 +208,7 @@ pageEncoding="UTF-8"%>
 		<th scope="row">산도</th>
 		<div class="sub_frm01">
 			<td>
-				<label><input type="radio" name="acidity" value=""> 없음</label>
+				<label><input type="radio" name="acidity" checked="checked" value=""> 없음</label>
 				<label><input type="radio" name="acidity" value="낮음"> 낮음</label>
 				<label><input type="radio" name="acidity" value="약간낮음"> 약간낮음</label>
 				<label><input type="radio" name="acidity" value="중간"> 중간</label>
@@ -221,7 +221,7 @@ pageEncoding="UTF-8"%>
 		<th scope="row">타닌</th>
 		<div class="sub_frm01">
 			<td>
-				<label><input type="radio" name="tannins" value=""> 없음</label>
+				<label><input type="radio" name="tannins" checked="checked" value=""> 없음</label>
 				<label><input type="radio" name="tannins" value="약함"> 약함</label>
 				<label><input type="radio" name="tannins" value="약간약함"> 약간약함</label>
 				<label><input type="radio" name="tannins" value="중간"> 중간</label>

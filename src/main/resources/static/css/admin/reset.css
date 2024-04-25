@@ -201,8 +201,8 @@ thead, tfoot {
 
 
 .wine_select {
-	display: none;
+	display: block;
 }
 .wine_select.on {
-	display: block;
+	display: none;
 }

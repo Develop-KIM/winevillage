@@ -236,10 +236,10 @@ $(function() {
 	
 	$('.wine_choice').on('click', function() {
 			
-		$('.wine_select').addClass('on')
+		$('.wine_select').removeClass('on')
 	})
 	
 	$('.other_choice').on('click', function() {
-		$('.wine_select').removeClass('on')
+		$('.wine_select').addClass('on')
 	})
 });
