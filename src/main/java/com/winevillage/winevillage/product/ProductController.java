@@ -1,5 +1,6 @@
 package com.winevillage.winevillage.product;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,10 +8,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.Part;
 import utils.PagingUtil;
 
 @Controller
@@ -58,15 +61,76 @@ public class ProductController {
 	}
 	
 	@PostMapping("/admin_product_form.do")
-	public String productFormPost(ProductDTO productDTO) {
-
-		int result = dao.productWrite(productDTO);
-		if(result==1) System.out.println("입력완료");;
-		
+	public String productFormPost(HttpServletRequest req, ProductDTO productDTO, Model model) {
+		try {
+			String uploadDirectory = ResourceUtils
+				.getFile("classpath:static/uploads/product/200").toPath().toString();
+			System.out.println("물리적경로: "+uploadDirectory);
+			Part part = req.getPart("imgUpload");
+			String partHeader = part.getHeader("content-disposition");
+			String[] phArr = partHeader.split("filename=");
+			String originalFileName = phArr[1].trim().replace("\"", "");
+			if(!originalFileName.isEmpty()) {
+				part.write(uploadDirectory + File.separator + originalFileName);
+			}
+			model.addAttribute("originalFileName", originalFileName);
+			
+			productDTO.setProductImg(originalFileName);			
+			
+			int result = dao.productWrite(productDTO);
+			if(result==1) System.out.println("입력완료");;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("상품 등록 실패");
+		}
 		return "redirect:admin_product_lists.do";
-		
-		
 	}
+	
+	@GetMapping("/admin_product_edit.do")
+	public String productEditGet(Model model, ProductDTO productDTO) {
+		productDTO = dao.productView(productDTO);
+		model.addAttribute("ProductDTO", productDTO);
+		return "admin_product_edit";
+	}
+	
+	@PostMapping("/admin_product_edit.do")
+	public String productEditPost(ProductDTO productDTO) {
+		int result = dao.productEdit(productDTO);
+		System.out.println("글수정결과:" + result);
+		return "redirect:admin_product_lists.do";
+	}
+	
+//	@PostMapping("/admin_product_form.do")
+//	public String productFormPost(HttpServletRequest req, ProductDTO productDTO) {
+//		
+//			int result = dao.productWrite(productDTO);
+//			if(result==1) System.out.println("입력완료");
+//
+//		return "redirect:admin_index.do";
+//	}
+	
+//	@PostMapping("/admin_product_form.do")
+//	public String uploadProcess(HttpServletRequest req, ProductDTO productDTO) {
+//		
+//		try {
+//			String uploadDirectory = ResourceUtils
+//					.getFile("classpath:static/uploads/").toPath().toString();
+//			System.out.println("물리적경로: "+uploadDirectory);
+//			Part part = req.getPart("productImg");
+//			String partHeader = part.getHeader("content-disposition");
+//			String[] phArr = partHeader.split("filename=");
+//			String originalFileName = phArr[1].trim().replace("\"", "");
+//			if(!originalFileName.isEmpty()) {
+//				part.write(uploadDirectory + File.separator + originalFileName);
+//			}
+//		} catch (Exception e) {
+//			System.out.println("업로드 실패");
+//		}
+//		
+//		return "redirect:admin_index.do";
+//		}
+	
+	
 }
 
 

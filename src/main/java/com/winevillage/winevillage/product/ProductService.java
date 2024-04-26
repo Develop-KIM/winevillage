@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Mapper
 public interface ProductService {
 	public int getTotalCount(ParameterDTO parameterDTO);
@@ -13,4 +15,7 @@ public interface ProductService {
 	
 	public int productWrite(ProductDTO productDTO);
 
+	public ProductDTO productView(ProductDTO productDTO);
+	
+	public int productEdit(ProductDTO productDTO);
 }

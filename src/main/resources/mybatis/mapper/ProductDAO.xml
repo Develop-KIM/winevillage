@@ -32,10 +32,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	INSERT INTO product (productNo, productCode, productName, productInfo, productImg,
 		fullPrice, discountPrice, stock, discountRate, wine, country, grapeVariety, alcohol, body,
 		acidity, tannins, sweetNess)
-	VALUES (#{product_seq}, #{productCode}, #{productName}, #{productInfo}, #{productImg},
+	VALUES (product_seq.nextval, #{productCode}, #{productName}, #{productInfo}, #{productImg},
 	 	#{fullPrice}, #{discountPrice}, #{stock}, #{discountRate}, #{wine}, #{country}, #{grapeVariety}, #{alcohol}, #{body},
 	 	#{acidity}, #{tannins}, #{sweetNess})
 	</insert>
+	
+	<select id="productView" resultType="com.winevillage.winevillage.product.ProductDTO"
+	parameterType="com.winevillage.winevillage.product.ProductDTO">
+	SELECT * FROM product WHERE productNo=#{productNo}
+	</select>
+	
+	<update id="productEdit"
+	parameterType="com.winevillage.winevillage.product.ProductDTO">
+	UPDATE product SET
+		productCode=#{productCode}, productName=#{productName}, productInfo=#{productInfo}, productImg=#{productImg},
+	 	fullPrice=#{fullPrice}, discountPrice=#{discountPrice}, stock=#{stock}, discountRate=#{discountRate},
+	 	 wine=#{wine}, country=#{country}, grapeVariety=#{grapeVariety}, alcohol=#{alcohol}, body=#{body},
+	 	acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
+	 	WHERE productNo=#{productNo}
+	</update>
 
 </mapper>
 

@@ -74,7 +74,7 @@ pageEncoding="UTF-8"%>
 				<tr>
 					<td class="w20p bg1">
 						<select id="wine_category1" name="wine" size="10" class="multiple-select">
-							<option selected="selected" value="">=와인선택=</option>
+							<option value="">=와인선택=</option>
 							<option value="레드">레드</option>
 							<option value="화이트">화이트</option>
 							<option value="로제">로제</option>
@@ -84,7 +84,7 @@ pageEncoding="UTF-8"%>
 					</td>
 					<td class="w20p bg1">
 						<select id="wine_category2" name="country" size="10" class="multiple-select">
-							<option selected="selected" value="">=원산지선택=</option>
+							<option value="">=원산지선택=</option>
 							<option value="프랑스">프랑스</option>
 							<option value="이탈리아">이탈리아</option>
 							<option value="스페인">스페인</option>
@@ -97,7 +97,7 @@ pageEncoding="UTF-8"%>
 					</td>
 					<td class="w20p bg1">
 						<select id="wine_category3" name="grapeVariety" size="10" class="multiple-select">
-						<option selected="selected" value="">=품종선택=</option>
+						<option value="">=품종선택=</option>
 							<option value="카베르네 소비뇽">카베르네 소비뇽</option>
 							<option value="쉬라즈">쉬라즈</option>
 							<option value="메를로">메를로</option>
@@ -277,7 +277,7 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">판매가격</th>
 		<td>
-			<input type="text" name="fullPrice" value="0" class="frm_input w80" > 원
+			<input type="text" name="pullPrice" value="0" class="frm_input w80" > 원
 			<span class="fc_197 marl5">해당 상품의 기본 판매가격</span>
 		</td>
 	</tr>
