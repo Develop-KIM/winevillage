@@ -105,10 +105,10 @@ public class MappingController {
 	}
 	
 	// product
-	@GetMapping("/list_wine.do")
-	public String list_wine() {
-		return "shop/wine/product_list_Wine";
-	}
+//	@GetMapping("/list_wine.do")
+//	public String list_wine() {
+//		return "shop/wine/product_list_Wine";
+//	}
 
 	@GetMapping("/list_wine_red.do")
 	public String list_red() {
