@@ -6,6 +6,7 @@ pageEncoding="UTF-8"%>
 <head>
 <body>
 <%@ include file="../admin_common/admin_header.jsp"%>
+<script src="js/admin_product.js"></script>
 <div id="wrapper">
 	
 <div id="snb">
@@ -65,7 +66,7 @@ pageEncoding="UTF-8"%>
 					});
 				</script>
 				<h2>기본검색</h2>
-				<form name="fsearch" id="fsearch" method="get">
+				<form name="searchField" id="fsearch" method="get">
 					<input type="hidden" name="code" value="list">
 					<div class="tbl_frm01">
 						<table class="tablef">
@@ -79,40 +80,76 @@ pageEncoding="UTF-8"%>
 								<tr>
 									<th scope="row">검색어</th>
 									<td colspan="3">
-										<select name="sfl">
-											<option value="gname">상품명</option>
-											<option value="gcode">상품코드</option>
-											<option value="mb_id">업체코드</option>
-											<option value="maker">제조사</option>
-											<option value="origin">원산지</option>
-											<option value="model">모델명</option>
-											<option value="explan">짧은설명</option>
+										<select name="searchField">
+											<option value="productName">상품명</option>
+											<option value="productCode">상품코드</option>
 										</select>
-										<input type="text" name="stx" value="" class="frm_input" size="30">
+										<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 									</td>
 								</tr>
+<!-- 								<tr>
+								<th scope="row">상품선택</th>
+								<td colspan="3">
+								<label><input class="wine_choice" type="radio" name="option" value="액세서리" checked="checked"> 와인</label>
+								<label><input class="other_choice" type="radio" name="option" value="와인"> 액세서리</label>
+								</td>
+								</tr> -->
 								<tr>
 									<th scope="row">카테고리</th>
 									<td colspan="3">
-										<select id="sel_ca1" name="sel_ca1">
-											<option value="">=카테고리선택=</option>
-											<option value="001">와인</option>
-											<option value="002">액세서리</option>
+								<div class="wine_select">
+										
+										<select id="wine_category1" name="wine">
+											<option value="">=와인선택=</option>
+											<option value="레드">레드</option>
+											<option value="화이트">화이트</option>
+											<option value="로제">로제</option>
+											<option value="스파클링">스파클링</option>
+											<option value="주정강화">주정강화</option>
 										</select>
-										<select id="sel_ca2" name="sel_ca2">
-											<option value="">=카테고리선택=</option>
-											<option value="001">레드</option>
-											<option value="002">화이트</option>
-											<option value="003">로제</option>
+										<select id="wine_category2" name="country">
+											<option value="">=원산지선택=</option>
+												<option value="프랑스">프랑스</option>
+												<option value="이탈리아">이탈리아</option>
+												<option value="스페인">스페인</option>
+												<option value="독일">독일</option>
+												<option value="미국">미국</option>
+												<option value="칠레">칠레</option>
+												<option value="아르헨티나">아르헨티나</option>
+												<option value="호주">호주</option>
 										</select>
-										<select id="sel_ca3" name="sel_ca3">
-											<option value="">=카테고리선택=</option>
-											<option value="001">프랑스</option>
-											<option value="002">이탈리아</option>
-											<option value="003">스페인</option>
-											<option value="004">독일</option>
+										<select id="wine_category3" name="grapeVariety">
+											<option value="">=품종선택=</option>
+											<option value="카베르네 소비뇽">카베르네 소비뇽</option>
+											<option value="쉬라즈">쉬라즈</option>
+											<option value="메를로">메를로</option>
+											<option value="카베르네 프랑">카베르네 프랑</option>
+											<option value="템프라니요">템프라니요</option>
+											<option value="피노 누아">피노 누아</option>
+											<option value="말벡">말벡</option>
+											<option value="진판델">진판델</option>
+											<option value="산지오베제">산지오베제</option>
+											<option value="가메">가메</option>
+											<option value="네비올로">네비올로</option>
+											<option value="카르메네르">카르메네르</option>
+											<option value="그르나슈">그르나슈</option>
+											<option value="몬테풀치아노">몬테풀치아노</option>
+											<option value="바르베라">바르베라</option>
+											<option value="샤르도네">샤르도네</option>
+											<option value="세미용">세미용</option>
+											<option value="소비뇽 블랑">소비뇽 블랑</option>
+											<option value="리슬링">리슬링</option>
+											<option value="슈냉 블랑">슈냉 블랑</option>
+											<option value="모스카토">모스카토</option>
+											<option value="피노그리">피노그리</option>
+											<option value="비오니에">비오니에</option>
+											<option value="게뷔르츠트라미너">게뷔르츠트라미너</option>
+											<option value="그뤼너 펠트리너">그뤼너 펠트리너</option>
+											<option value="베르데호">베르데호</option>
+											<option value="알리고떼">알리고떼</option>
+											<option value="기타">기타</option>
 										</select>
-
+										</div>
 										<script>
 											$(function () {
 												$("#sel_ca1").multi_select_box("#sel_ca", 5, tb_admin_url + "/ajax.category_select_json.php", "=카테고리선택=");
@@ -124,7 +161,7 @@ pageEncoding="UTF-8"%>
 										</script>
 									</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<th scope="row">기간검색</th>
 									<td colspan="3">
 										<select name="q_date_field" id="q_date_field">
@@ -148,8 +185,8 @@ pageEncoding="UTF-8"%>
 												onclick="search_date('fr_date','to_date',this.value);" class="btn_small white"
 												value="전체"></span>
 									</td>
-								</tr>
-								<tr>
+								</tr> -->
+								<!-- <tr>
 									<th scope="row">상품재고</th>
 									<td>
 										<select name="q_stock_field" id="q_stock_field">
@@ -174,7 +211,7 @@ pageEncoding="UTF-8"%>
 										<label for="to_price" class="sound_only">상품가격 끝</label>
 										<input type="text" name="to_price" value="" id="to_price" class="frm_input" size="6"> 원 이하
 									</td>
-								</tr>
+								</tr> -->
 							</tbody>
 						</table>
 					</div>
@@ -184,7 +221,7 @@ pageEncoding="UTF-8"%>
 					</div>
 				</form>
 
-				<form name="fgoodslist" id="fgoodslist" method="post" action="./goods/goods_list_update.php"
+				<form name="fgoodslist" id="fgoodslist" method="post" action=""
 					onsubmit="return fgoodslist_submit(this);">
 					<input type="hidden" name="q1" value="code=list">
 					<input type="hidden" name="page" value="1">
@@ -192,20 +229,15 @@ pageEncoding="UTF-8"%>
 					<div class="local_ov mart30">
 						전체 : <b class="fc_red">10</b> 건 조회
 						<span class="ov_a">
-							<select id="page_rows" onchange="location='/admin/goods.php?code=list&page=1&page_rows='+this.value;">
-								<option value="30" selected="selected">30줄 정렬</option>
-								<option value="50">50줄 정렬</option>
-								<option value="100">100줄 정렬</option>
-								<option value="150">150줄 정렬</option>
+							<select id="page_rows" onchange="location='admin_product_lists.do?pageNum='+this.value;">
+								<option value="30" selected="selected">10줄 정렬</option>
+								<option value="50">30줄 정렬</option>
+								<option value="100">50줄 정렬</option>
 							</select>
 						</span>
 					</div>
 					<div class="local_frm01">
 						<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white"
-							onclick="document.pressed=this.value">
-						<input type="submit" name="act_button" value="선택순위수정" class="btn_lsmall bx-white"
-							onclick="document.pressed=this.value">
-						<input type="submit" name="act_button" value="선택상품복사" class="btn_lsmall bx-white"
 							onclick="document.pressed=this.value">
 						<a href="./goods/goods_list_excel.php?code=list" class="btn_lsmall bx-white"><i
 								class="fa fa-file-excel-o"></i> 엑셀저장</a>
@@ -221,9 +253,9 @@ pageEncoding="UTF-8"%>
 								<col class="w80">
 								<col class="w180">
 								<col class="w180">
+								<col class="w180">
 								<col class="w80">
 								<col class="w80">
-								<col class="w90">
 								<col class="w90">
 								<col class="w90">
 								<col class="w90">
@@ -232,14 +264,14 @@ pageEncoding="UTF-8"%>
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col" rowspan="2"><input type="checkbox" name="chkall" value="1"
+									<th scope="col" rowspan="2">
+									<input type="checkbox" name="chkall" value="1"
 											onclick="check_all(this.form);"></th>
 									<th scope="col" rowspan="2">번호</th>
 									<th scope="col" rowspan="2">이미지</th>
-									<th scope="col" rowspan="2"><a href="/admin/goods.php?code=list&page=&filed=gcode&orderby=asc">상품코드</a></th>
-									<th scope="col" colspan="2"><a href="/admin/goods.php?code=list&page=&filed=gname&orderby=asc">상품정보</a>
-									</th>
-									<th scope="col" colspan="2"><a href="/admin/goods.php?code=list&page=&filed=reg_time&orderby=asc">등록일자</a></th>
+									<th scope="col" rowspan="2">상품코드</th>
+									<th scope="col" colspan="3">상품정보</th>
+									<th scope="col" rowspan="2">등록일자</th>
 									<th scope="col" rowspan="2" colspan="1">재고</th>
 									<th scope="col" colspan="4" class="th_bg">가격정보</th>
 									<th scope="col" colspan="1" rowspan="2">관리</th>
@@ -247,267 +279,60 @@ pageEncoding="UTF-8"%>
 								<tr class="rows">
 									<th scope="col">상품명</th>
 									<th scope="col">카테고리</th>
-									<th scope="col"><a href="/admin/goods.php?code=list&page=&filed=reg_time&orderby=asc">최초등록일</a></th>
-									<th scope="col"><a href="/admin/goods.php?code=list&page=&filed=reg_time&orderby=asc">최근수정일</a></th>
-									<!-- <th scope="col"><a href="/admin/goods.php?code=list&page=&filed=isopen&orderby=asc">진열</a></th>
-									<th scope="col"><a href="/admin/goods.php?code=list&page=&filed=stock_qty&orderby=asc">재고</a></th> -->
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=goods_price&orderby=asc">판매가</a></th>
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=goods_price&orderby=asc">할인율</a></th>
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=gpoint&orderby=asc">할인가</a></th>
-									<th scope="col" colspan="1" class="th_bg"><a
-											href="/admin/goods.php?code=list&page=&filed=gpoint&orderby=asc">포인트</a></th>
+									<th scope="col">알코올/바디/산도/탄닌/당도</th>
+									<th scope="col" colspan="1" class="th_bg"><p>판매가</p></th>
+									<th scope="col" colspan="1" class="th_bg"><p>할인율</p></th>
+									<th scope="col" colspan="1" class="th_bg"><p>할인가</p></th>
+									<th scope="col" colspan="1" class="th_bg"><p>포인트</p></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="list1">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">10</td>
-									<td rowspan="2"><a href="https://www.winenara.com/shop/product/product_view?product_cd=03U001" target="_blank"><img
-												src="./images/admin/Diablo_Devil's.png"
-												width="40" height="40"></a></td>
-									<td>0000000010</td>
-									<td colspan="1" class="tal">디아블로 데블스 카나발 카베르네</td>
-									<td colspan="1" class="tal">와인/레드/칠레</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">14,900</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">13,410</td>
-									<td rowspan="2" colspan="1" class="tar">745</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
+							<c:choose>
+								<c:when test="${ empty lists }">
+									<tr>
+										<td colspan="5" align="center">
+										등록된 상품이 없습니다.
+										</td>
 									</tr>
-								</tr>
+								</c:when>
+								<c:otherwise>
+									<tbody>
+									<c:forEach items="${ lists }" var="item" varStatus="loop">
 								<tr class="list0">
-									<td rowspan="2">
+									<td rowspan="1">
 										<input type="hidden" name="gs_id[0]" value="21">
 										<input type="checkbox" name="chk[]" value="0">
 									</td>
-									<td rowspan="2">09</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/Firriato.png"
-												width="40" height="40"></a></td>
-									<td>0000000009</td>
-									<td colspan="1" class="tal">피리아토 끼아라몬테 샤르도네</td>
-									<td colspan="1" class="tal">와인/화이트/이탈리아</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">36,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">32,400</td>
-									<td rowspan="2" colspan="1" class="tar">1,800</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
+									<td rowspan="1">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
+									<td rowspan="1"><a href="/"> <img
+												src="../Uploads/product/200/${item.productImg }"
+												width="40" height="40"> </a></td>
+ 									<td>${item.productCode}</td>
+									<td colspan="1" class="tal">${item.productName }</td>
+									<td colspan="1" class="tal">${item.wine}/${item.country}/${item.grapeVariety }</td>
+									<td colspan="1" class="tal">${item.alcohol}/${item.body}/${item.acidity }/${item.tannins }/${item.sweetNess }</td>
+									<td>${item.registerDate }</td>
+									<td>${item.stock }</td>
+									<td rowspan="1" colspan="1" class="tar">${item.fullPrice}</td>
+									<td rowspan="1" colspan="1" class="tar">${item.discountRate }%</td>
+									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
+									<td rowspan="1" colspan="1" class="tar"></td>
+									<td rowspan="1" colspan="1"><a href="admin_product_edit.do" class="btn_small">수정</a>
 									</td>
-									<tr class="list0">
-									</tr>
 								</tr>
-								<tr class="list1">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">08</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/wine_08.png"
-												width="40" height="40"></a></td>
-									<td>0000000008</td>
-									<td colspan="1" class="tal">미누티 프레스티지</td>
-									<td colspan="1" class="tal">와인/로제/프랑스</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">38,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">34,200</td>
-									<td rowspan="2" colspan="1" class="tar">1,900</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
-								<tr class="list0">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">07</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/wine_07.png"
-												width="40" height="40"></a></td>
-									<td>0000000007</td>
-									<td colspan="1" class="tal">라 샤펠 고르돈느 로제</td>
-									<td colspan="1" class="tal">와인/로제/프랑스</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">55,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">49,500</td>
-									<td rowspan="2" colspan="1" class="tar">2,750</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
-								<tr class="list1">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">06</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/wine_06.png"
-												width="40" height="40"></a></td>
-									<td>0000000006</td>
-									<td colspan="1" class="tal">코라빈CO2캡슐(6개입)</td>
-									<td colspan="1" class="tal">액세서리</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">99,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">89,100</td>
-									<td rowspan="2" colspan="1" class="tar">4,950</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
-								<tr class="list0">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">05</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/wine_05.png"
-												width="40" height="40"></a></td>
-									<td>0000000005</td>
-									<td colspan="1" class="tal">이자디 블랑코</td>
-									<td colspan="1" class="tal">와인/화이트/스페인</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">35,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">31,500</td>
-									<td rowspan="2" colspan="1" class="tar">1,750</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
-								<tr class="list1">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">04</td>
-									<td rowspan="2"><a href="#" target="_blank"><img
-												src="/images/admin/wine_04.png"
-												width="40" height="40"></a></td>
-									<td>0000000004</td>
-									<td colspan="1" class="tal">피리아토 하모니엄 네로 다볼라</td>
-									<td colspan="1" class="tal">와인/레드/이탈리아</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">90,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">81,000</td>
-									<td rowspan="2" colspan="1" class="tar">4,500</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
-								<tr class="list0">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">03</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/wine_03.png"
-												width="40" height="40"></a></td>
-									<td>0000000003</td>
-									<td colspan="1" class="tal">비냐 조잘 그라시아노</td>
-									<td colspan="1" class="tal">와인/레드/스페인</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">19,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">17,100</td>
-									<td rowspan="2" colspan="1" class="tar">950</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
-								<tr class="list1">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">02</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/wine_02.png"
-												width="40" height="40"></a></td>
-									<td>0000000002</td>
-									<td colspan="1" class="tal">블랙타워 러블리 드림 리슬링</td>
-									<td colspan="1" class="tal">와인/화이트/독일</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">9,900</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">8,910</td>
-									<td rowspan="2" colspan="1" class="tar">495</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
-								<tr class="list0">
-									<td rowspan="2">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
-									</td>
-									<td rowspan="2">01</td>
-									<td rowspan="2"><a href="http://demofran.com/shop/view.php?index_no=21" target="_blank"><img
-												src="./images/admin/wine_01.png"
-												width="40" height="40"></a></td>
-									<td>0000000001</td>
-									<td colspan="1" class="tal">샤또 루빈 라 비 앙 로제</td>
-									<td colspan="1" class="tal">와인/로제/프랑스</td>
-									<td>17-11-10</td>
-									<td class="fc_00f">23-11-01</td>
-									<td>무제한</td>
-									<td rowspan="2" colspan="1" class="tar">25,000</td>
-									<td rowspan="2" colspan="1" class="tar">10%</td>
-									<td rowspan="2" colspan="1" class="tar">22,500</td>
-									<td rowspan="2" colspan="1" class="tar">1,250</td>
-									<td rowspan="2" colspan="1"><a href="./goods.php?code=form&w=u&gs_id=21&page=1&bak=list" class="btn_small">수정</a>
-									</td>
-									<tr class="list0">
-									</tr>
-								</tr>
+									</c:forEach>
 							</tbody>
+								</c:otherwise>
+							</c:choose>
 						</table>
 					</div>
 				</form>
 
-
+				<div class="paging" style="display: flex; justify-content: center; align-items: center;">
+					<p>
+						${ pagingImg }
+					</p>
+				</div>
 				<script>
 					function fgoodslist_submit(f) {
 						if (!is_checked("chk[]")) {
