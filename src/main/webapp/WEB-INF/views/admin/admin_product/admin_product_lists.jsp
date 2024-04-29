@@ -237,8 +237,9 @@ pageEncoding="UTF-8"%>
 						</span>
 					</div>
 					<div class="local_frm01">
-						<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white"
-							onclick="document.pressed=this.value">
+						<input type="button" name="act_button" value="선택삭제" class="btn_lsmall bx-white"
+							onclick="location.href='admin_product_delete.do?procuct=${product.productNo}'">
+							<!-- onclick="document.pressed=this.value" -->
 						<a href="./goods/goods_list_excel.php?code=list" class="btn_lsmall bx-white"><i
 								class="fa fa-file-excel-o"></i> 엑셀저장</a>
 						<a href="admin_product_form.do" class="fr btn_lsmall red"><i class="ionicons ion-android-add"></i> 상품등록</a>
@@ -316,8 +317,8 @@ pageEncoding="UTF-8"%>
 									<td rowspan="1" colspan="1" class="tar">${item.fullPrice}</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountRate }%</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
-									<td rowspan="1" colspan="1" class="tar"></td>
-									<td rowspan="1" colspan="1"><a href="admin_product_edit.do" class="btn_small">수정</a>
+									<td rowspan="1" colspan="1"><a href="admin_product_delete.do?productNo=${item.productNo }" class="btn_small">삭제</a></td>
+									<td rowspan="1" colspan="1"><a href="admin_product_edit.do?productNo=${item.productNo }" class="btn_small">수정</a>
 									</td>
 								</tr>
 									</c:forEach>
