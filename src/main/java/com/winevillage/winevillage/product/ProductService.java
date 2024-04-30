@@ -3,9 +3,6 @@ package com.winevillage.winevillage.product;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Mapper
 public interface ProductService {
@@ -18,4 +15,6 @@ public interface ProductService {
 	public ProductDTO productView(ProductDTO productDTO);
 	
 	public int productEdit(ProductDTO productDTO);
+	
+	public int productDelete(ProductDTO productDTO);
 }

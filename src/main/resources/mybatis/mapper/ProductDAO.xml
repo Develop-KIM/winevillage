@@ -47,11 +47,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	UPDATE product SET
 		productCode=#{productCode}, productName=#{productName}, productInfo=#{productInfo}, productImg=#{productImg},
 	 	fullPrice=#{fullPrice}, discountPrice=#{discountPrice}, stock=#{stock}, discountRate=#{discountRate},
-	 	 wine=#{wine}, country=#{country}, grapeVariety=#{grapeVariety}, alcohol=#{alcohol}, body=#{body},
+	 	wine=#{wine}, country=#{country}, grapeVariety=#{grapeVariety}, alcohol=#{alcohol}, body=#{body},
 	 	acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
 	 	WHERE productNo=#{productNo}
 	</update>
 
+	<delete id="productDelete"
+	parameterType="com.winevillage.winevillage.product.ProductDTO">
+		DELETE FROM product WHERE productNo=#{productNo}
+	</delete>
 </mapper>
 
 
