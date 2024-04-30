@@ -160,10 +160,19 @@ pageEncoding="UTF-8"%>
 		<col>
 	</colgroup>
 	<tbody>
+		<tr>
+		<th scope="row">구분</th>
+		<div class="sub_frm01">
+			<td>
+				<label><input type="radio" name="state" checked="checked" value=""> 없음</label>
+				<label><input type="radio" name="state" value="value" ${"value".equals(productDTO.state)?"checked":""}> value</label>
+				<label><input type="radio" name="state" value="exclusive" ${"exclusive".equals(productDTO.state)?"checked":""}> exclusive</label>
+			</td>
+		</div>
+	</tr>
 	<tr>
 		<th scope="row">바디</th>
 		<div class="sub_frm01">
-		
 			<td>
 				<label><input type="radio" name="body" checked="checked" value=""> 없음</label>
 				<label><input type="radio" name="body" value="가벼움" ${"가벼움".equals(productDTO.body)?"checked":""}> 가벼움</label>
@@ -247,7 +256,10 @@ pageEncoding="UTF-8"%>
 		<th scope="row">상품명</th>
 		<td><input type="text" name="productName" value="${productDTO.productName }" required class="required frm_input" size="80"></td>
 	</tr>
-
+	<tr>
+		<th scope="row">영문명</th>
+		<td><input type="text" name="productName_En" value="${productDTO.productName_En }" required class="required frm_input" size="80"></td>
+	</tr>
 		<tr class="item_img_fld">
 		<th scope="row">이미지1 <span class="fc_197">(400 * 400)</span> <strong class="fc_red">[필수]</strong></th>
 		<td>
