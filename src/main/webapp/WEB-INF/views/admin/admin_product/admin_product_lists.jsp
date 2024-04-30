@@ -221,10 +221,10 @@ pageEncoding="UTF-8"%>
 					</div>
 				</form>
 
-				<form name="fgoodslist" id="fgoodslist" method="post" action=""
+				<form id="fgoodslist" method="post" action="admin_product_delete.do"
 					onsubmit="return fgoodslist_submit(this);">
-					<input type="hidden" name="q1" value="code=list">
-					<input type="hidden" name="page" value="1">
+<!-- 					<input type="hidden" name="q1" value="code=list">
+					<input type="hidden" name="page" value="1"> -->
 
 					<div class="local_ov mart30">
 						전체 : <b class="fc_red">10</b> 건 조회
@@ -317,7 +317,8 @@ pageEncoding="UTF-8"%>
 									<td rowspan="1" colspan="1" class="tar">${item.fullPrice}</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountRate }%</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
-									<td rowspan="1" colspan="1"><a href="admin_product_delete.do?productNo=${item.productNo }" class="btn_small">삭제</a></td>
+									<input type="hid-den" name="productNo" value="${item.productNo }">
+									<td rowspan="1" colspan="1"><button type="submit" class="btn_small">삭제</button></td>
 									<td rowspan="1" colspan="1"><a href="admin_product_edit.do?productNo=${item.productNo }" class="btn_small">수정</a>
 									</td>
 								</tr>

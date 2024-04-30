@@ -52,8 +52,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	WHERE productNo=#{productNo}
 	</update>
 
-	<delete id="delete"
-	parameterType="com.winevillage.winevillage.product.ProductDTO">>
+	<delete id="productDelete"
+	parameterType="com.winevillage.winevillage.product.ProductDTO">
 		DELETE FROM product WHERE productNo=#{productNo}
 	</delete>
 </mapper>

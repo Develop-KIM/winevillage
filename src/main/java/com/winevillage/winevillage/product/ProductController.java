@@ -119,9 +119,9 @@ public class ProductController {
 		return "redirect:admin_product_lists.do";
 	}
 	
-	@PostMapping("/delete.do")
+	@PostMapping("/admin_product_delete.do")
 	public String productDeletePost(ProductDTO productDTO) {
-		int result = dao.delete(productDTO);
+		int result = dao.productDelete(productDTO);
 		if(result==1) System.out.println("삭제되었습니다.");
 		return "redirect:admin_product_lists.do";
 	}
