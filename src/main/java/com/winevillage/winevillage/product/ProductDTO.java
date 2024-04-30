@@ -7,6 +7,8 @@ public class ProductDTO {
 	private int productNo;
 	private String productCode;
 	private String productName;
+	private String productName_En;
+	private String state;
 	private String productInfo;
     private String productImg;
 	private int fullPrice;
