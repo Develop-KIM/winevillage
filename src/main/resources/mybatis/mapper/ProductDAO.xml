@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper 파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winevillage.winevillage.product.IProductService">
+
+<select id="select" parameterType="com.winevillage.winevillage.product.ProductDTO" resultType="com.winevillage.winevillage.product.ProductDTO">
+    SELECT * FROM product
+    <where>
+		<trim prefixOverrides="AND">
+		    <if test="searchField != null and !searchField.isEmpty()">
+		        AND (
+		        <foreach item="item" collection="searchField" separator="OR">
+		            wine = #{item}
+		        </foreach>
+		        )
+		    </if>
+		
+		    <if test="searchField != null and !searchField.isEmpty()">
+		        AND (
+		        <foreach item="item" collection="searchField" separator="OR">
+		            grapeVariety = #{item}
+		        </foreach>
+		        )
+		    </if>
+		
+		    <if test="searchField != null and !searchField.isEmpty()">
+		        AND (
+		        <foreach item="item" collection="searchField" separator="OR">
+		            country = #{item}
+		        </foreach>
+		        )
+		    </if>
+		
+		     <if test="searchKeyword != null and !searchKeyword.isEmpty()">
+          		 AND productName LIKE CONCAT('%', #{searchKeyword}, '%')
+       		</if>
+		
+		    <if test="priceRange != null and !priceRange.isEmpty()">
+              <choose>
+                    <when test="priceRange == '~30000'">
+                        AND discountPrice &lt;= 30000
+                    </when>
+                    <when test="priceRange == '30000~60000'">
+                        AND discountPrice BETWEEN 30000 AND 60000
+                    </when>
+                    <when test="priceRange == '60000~100000'">
+                        AND discountPrice BETWEEN 60000 AND 100000
+                    </when>
+                    <when test="priceRange == '100000~'">
+                        AND discountPrice &gt;= 100000
+                    </when>
+                </choose>
+           	 </if>
+		</trim>
+    </where>
+</select>
+
+
+
+
+<!-- <select id="select" parameterType="com.winevillage.winevillage.product.ProductDTO" resultType="com.winevillage.winevillage.product.ProductDTO">
+   SELECT * FROM product
+   <where>
+       <if test="searchKeyword != null and !searchKeyword.isEmpty()">
+           AND productName LIKE CONCAT('%', #{searchKeyword}, '%')
+       </if>
+     	<trim prefixOverrides="AND">
+            <if test="searchField != null and !searchField.isEmpty()">
+                AND (
+                <foreach item="item" collection="searchField" separator="OR">
+                    wine = #{item}
+                </foreach>
+                )
+            </if>
+            <if test="searchField != null and !searchField.isEmpty()">
+                AND (
+                <foreach item="item" collection="searchField" separator="OR">
+                    grapeVariety = #{item}
+                </foreach>
+                )
+            </if>
+       		<if test="searchField != null and !searchField.isEmpty()">
+                AND (
+                <foreach item="item" collection="searchField" separator="OR">
+                    country = #{item}
+                </foreach>
+                )
+           </if>
+           <if test="priceRange != null and !priceRange.isEmpty()">
+                <choose>
+                    <when test="priceRange == '~30000'">
+                        AND discountPrice &lt;= 30000
+                    </when>
+                    <when test="priceRange == '30000~60000'">
+                        AND discountPrice BETWEEN 30000 AND 60000
+                    </when>
+                    <when test="priceRange == '60000~100000'">
+                        AND discountPrice BETWEEN 60000 AND 100000
+                    </when>
+                    <when test="priceRange == '100000~'">
+                        AND discountPrice &gt;= 100000
+                    </when>
+                </choose>
+            </if>
+        </trim>
+   </where>
+</select> -->
+</mapper>
+	
+
+
+
+
+
+
+
+
+
+
+
+

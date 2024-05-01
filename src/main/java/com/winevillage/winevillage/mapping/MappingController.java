@@ -194,5 +194,6 @@ public class MappingController {
 	public String list_acc() {
 		return "shop/other/product_list_acc";
 	}
+	
 
 }
