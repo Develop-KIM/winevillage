@@ -67,10 +67,10 @@ public class AdminMappingController {
 	}
 	
 	/* 상품 관리 */
-	@GetMapping("/admin_product_lists.do")
-	public String admin_product_lists() {
-		return "admin/admin_product/admin_product_lists";
-	}
+//	@GetMapping("/admin_product_lists.do")
+//	public String admin_product_lists() {
+//		return "admin/admin_product/admin_product_lists";
+//	}
 	
 	@GetMapping("/admin_product_review.do")
 	public String admin_product_review() {
@@ -82,10 +82,10 @@ public class AdminMappingController {
 		return "admin/admin_product/admin_product_category";
 	}
 	
-	@GetMapping("/admin_product_form.do")
-	public String admin_product_form() {
-		return "admin/admin_product/admin_product_form";
-	}
+//	@GetMapping("/admin_product_form.do")
+//	public String admin_product_form() {
+//		return "admin/admin_product/admin_product_form";
+//	}
 	
 	/* 회원 관리 */
 	@GetMapping("/admin_member_lists.do")

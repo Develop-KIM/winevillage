@@ -199,7 +199,6 @@
 .n_prd_list li .item .info .price_area .price.set .discount{font-size:16px}
 .n_prd_list li .item .info .price_area .price.regular_price{margin:0 0 5px}
 .product_lists_page .pagination{margin-top:80px}
-
 /* new & best */
 .best_lnb{display:flex;justify-content:center}
 .best_lnb picture{display:block;min-width:1900px}
