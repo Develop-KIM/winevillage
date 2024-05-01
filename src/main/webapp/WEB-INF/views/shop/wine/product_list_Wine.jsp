@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,39 @@
 			<div class="product_lists_wrap">
 				<div class="prd_list_tit">
 					<div class="top">
-						<h2>WINE</h2>
+						<c:choose>
+
+							<c:when test="${category == 'fra'}">
+								<h2>프랑스</h2>
+							</c:when>
+							<c:when test="${category == 'ita'}">
+								<h2>이탈리아</h2>
+							</c:when>
+							<c:when test="${category == 'esp'}">
+								<h2>스페인</h2>
+							</c:when>
+							<c:when test="${category == 'deu'}">
+								<h2>독일</h2>
+							</c:when>
+							<c:when test="${category == 'usa'}">
+								<h2>미국</h2>
+							</c:when>
+							<c:when test="${category == 'chl'}">
+								<h2>칠레</h2>
+							</c:when>
+							<c:when test="${category == 'arg'}">
+								<h2>아르헨티나</h2>
+							</c:when>
+							<c:when test="${category == 'aus'}">
+								<h2>호주</h2>
+							</c:when>
+							<c:when test="${not empty uppercaseCategory }">
+								<h2>${uppercaseCategory }</h2>
+							</c:when>
+							<c:otherwise>
+								<h2>WINE</h2>
+							</c:otherwise>
+						</c:choose>
 						<div class="line_map">
 							<ul>
 								<li onclick="location.href='../main.html'"
@@ -52,7 +84,8 @@
 				<div class="prd_list_area">
 					<div class="search_result">
 						<div class="result_area">
-							<p class="result" id="total_count_text">${maps.wineCount}개의 상품</p>
+							<p class="result" id="total_count_text">${maps.wineCount}개의
+								상품</p>
 						</div>
 
 						<div class="second_order">
@@ -66,8 +99,7 @@
 					</div>
 					<ul class="n_prd_list" id="product_ul">
 						<c:forEach items="${lists }" var="product" varStatus="loop">
-						<c:set var="Count" value="${lists.size() }" />
-							<c:if test="${not empty product.state }">
+							<c:set var="category" value="${category }" />
 							<li>
 								<div class="item">
 									<div class="main_img"
@@ -101,15 +133,14 @@
 									<div class="info">
 										<div class="more_info">
 											<p class="prd_name">
-												<a href="product_view9f82.html?product_cd=03T999">
-												 <span>${product.productName }</span>
-												 <span>${product.productName_En }</span>
-												 <span class="en"></span></a>
+												<a href="product_view9f82.html?product_cd=03T999"> <span>${product.productName }</span>
+													<span>${product.productName_En }</span> <span class="en"></span></a>
 											</p>
 											<p class="prd_info">${product.productInfo }</p>
 										</div>
-										<div class="cate_label">
-										<span style="<c:choose>
+										<div class="cate_label" style="height: 23.3px">
+											<span
+												style="<c:choose>
 							                 <c:when test="${not empty product.wine}">
 							                     <c:choose>
 							                         <c:when test="${product.wine eq '레드'}">background: #E0D8EA;</c:when>
@@ -122,8 +153,9 @@
 							                 </c:when>
 							                 <c:otherwise>display:none;</c:otherwise>
 							             </c:choose>">${product.wine }</span>
-							             
-										<span style="<c:choose>
+
+											<span
+												style="<c:choose>
 											<c:when test="${not empty product.country }">
 												<c:choose>
 										   			<c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
@@ -134,9 +166,11 @@
 		   											<c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
 		   										</c:choose>
 	   										</c:when>
+						                 	<c:otherwise>display:none;</c:otherwise>
 										</c:choose>">${product.country }</span>
-										
-										<span style="<c:choose>
+
+											<span
+												style="<c:choose>
 											<c:when test="${not empty product.grapeVariety }">
 												<c:choose>
 										   			<c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
@@ -147,6 +181,7 @@
 		   											<c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
 	   											</c:choose>
    											</c:when>
+						                 	<c:otherwise>display:none;</c:otherwise>
 										</c:choose>">${product.grapeVariety }</span>
 										</div>
 										<div class="price_area">
@@ -154,11 +189,17 @@
 												<c:if test="${product.discountRate > 0 }">
 													<em class="discount">${product.discountRate }%</em>
 													<del>${product.fullPrice }원</del>
-													<ins><fmt:formatNumber value="${(product.fullPrice - (product.fullPrice * product.discountRate / 100))}" type="number" />원</ins>
+													<ins>
+														<fmt:formatNumber
+															value="${(product.fullPrice - (product.fullPrice * product.discountRate / 100))}"
+															type="number" />
+														원
+													</ins>
 												</c:if>
 												<c:if test="${product.discountRate == 0}">
 													<ins class="out">매장문의</ins>
-													<del class="out out_price"style="text-decoration: none; font-weight: 700">${product.fullPrice }원</del>
+													<del class="out out_price"
+														style="text-decoration: none; font-weight: 700">${product.fullPrice }원</del>
 												</c:if>
 												<ins></ins>
 											</p>
@@ -166,17 +207,16 @@
 									</div>
 								</div>
 							</li>
-							</c:if>
 						</c:forEach>
 					</ul>
 				</div>
 
-				<div> 
+				<div>
 					<p>${ pagination }</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<%@ include file="../../common/footer.jsp" %>
+	<%@ include file="../../common/footer.jsp"%>
 </body>
 </html>

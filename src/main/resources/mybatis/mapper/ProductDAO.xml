@@ -30,48 +30,131 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="Wine_count" resultType="int"
 		parameterType="com.winevillage.winevillage.product.ParameterDTO">
-		SELECT COUNT(*) FROM product Where state IS NOT NULL
+		SELECT COUNT(*) FROM product
+		<where>
+			AND state IS NOT NULL
+			<if test="category != null">
+				<choose>
+					<when test="category == 'red'">
+						AND wine = '레드'
+					</when>
+					<when test="category == 'white'">
+						AND wine = '화이트'
+					</when>
+					<when test="category == 'rose'">
+						AND wine = '로제'
+					</when>
+					<when test="category == 'sparkling'">
+						AND wine = '스파클링'
+					</when>
+					<when test="category == 'fortified'">
+						AND wine = '주정강화'
+					</when>
+					<when test="category == 'fra'">
+						AND country = '프랑스'
+					</when>
+					<when test="category == 'ita'">
+						AND country = '이탈리아'
+					</when>
+					<when test="category == 'esp'">
+						AND country = '스페인'
+					</when>
+					<when test="category == 'deu'">
+						AND country = '독일'
+					</when>
+					<when test="category == 'usa'">
+						AND country = '미국'
+					</when>
+					<when test="category == 'chl'">
+						AND country = '칠레'
+					</when>
+					<when test="category == 'arg'">
+						AND country = '아르헨티나'
+					</when>
+					<when test="category == 'aus'">
+						AND country = '호주'
+					</when>
+				</choose>
+			</if>
+		</where>
 	</select>
 	<select id="listWine"
-    resultType="com.winevillage.winevillage.product.ProductDTO"
-    parameterType="com.winevillage.winevillage.product.ParameterDTO">
-    SELECT * FROM (
-        SELECT Tb.*, ROWNUM AS rnum FROM (
-            SELECT * FROM product
-            WHERE wine = 
-                <choose>
-                	<when test="wineType == '레드'">
-                		'레드'
-                	</when>
-                    <when test="wineType == '화이트'">
-                        '화이트'
-                    </when>
-                    <when test="wineType == '로제'">
-                        '로제'
-                    </when>
-                    <when test="wineType == '스파클링'">
-                        '스파클링'
-                    </when>
-                </choose>
-            ORDER BY productno DESC
-        ) Tb
-    )
-	WHERE rNum<![CDATA[>=]]>#{start}
-	AND rNum<![CDATA[<=]]>#{end}
-</select>
-	
+		resultType="com.winevillage.winevillage.product.ProductDTO"
+		parameterType="com.winevillage.winevillage.product.ParameterDTO">
+		SELECT * FROM (
+		SELECT Tb.*, ROWNUM AS rnum FROM (
+		SELECT * FROM product
+		<where>
+			AND state IS NOT NULL
+			<if test="category != null">
+				<choose>
+					<when test="category == 'red'">
+						AND wine = '레드'
+					</when>
+					<when test="category == 'white'">
+						AND wine = '화이트'
+					</when>
+					<when test="category == 'rose'">
+						AND wine = '로제'
+					</when>
+					<when test="category == 'sparkling'">
+						AND wine = '스파클링'
+					</when>
+					<when test="category == 'fortified'">
+						AND wine = '주정강화'
+					</when>
+					<when test="category == 'fra'">
+						AND country = '프랑스'
+					</when>
+					<when test="category == 'ita'">
+						AND country = '이탈리아'
+					</when>
+					<when test="category == 'esp'">
+						AND country = '스페인'
+					</when>
+					<when test="category == 'deu'">
+						AND country = '독일'
+					</when>
+					<when test="category == 'usa'">
+						AND country = '미국'
+					</when>
+					<when test="category == 'chl'">
+						AND country = '칠레'
+					</when>
+					<when test="category == 'arg'">
+						AND country = '아르헨티나'
+					</when>
+					<when test="category == 'aus'">
+						AND country = '호주'
+					</when>
+				</choose>
+			</if>
+		</where>
+		ORDER BY productno DESC
+		) Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start}
+		AND rNum<![CDATA[<=]]>#{end}
+	</select>
+
 	<insert id="productWrite"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
-		INSERT INTO product (productNo, productCode, productName, productInfo,
+		INSERT INTO product (productNo, productCode,
+		productName, productInfo,
 		productImg,
-		fullPrice, discountPrice, stock, discountRate, wine,
+		fullPrice, discountPrice, stock,
+		discountRate, wine,
 		country, grapeVariety, alcohol, body,
-		acidity, tannins, sweetNess)
-		VALUES (product_seq.nextval, #{productCode}, #{productName},
+		acidity,
+		tannins, sweetNess)
+		VALUES (product_seq.nextval, #{productCode},
+		#{productName},
 		#{productInfo}, #{productImg},
-		#{fullPrice}, #{discountPrice}, #{stock}, #{discountRate}, #{wine}, #{country},
+		#{fullPrice},
+		#{discountPrice}, #{stock}, #{discountRate}, #{wine}, #{country},
 		#{grapeVariety}, #{alcohol}, #{body},
-		#{acidity}, #{tannins}, #{sweetNess})
+		#{acidity}, #{tannins},
+		#{sweetNess})
 	</insert>
 
 	<select id="productView"
@@ -83,14 +166,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="productEdit"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		UPDATE product SET
-		productCode=#{productCode}, productName=#{productName},
-		productInfo=#{productInfo}, productImg=#{productImg},
-		fullPrice=#{fullPrice}, discountPrice=#{discountPrice},
-		stock=#{stock}, discountRate=#{discountRate},
-		wine=#{wine}, country=#{country}, grapeVariety=#{grapeVariety}, alcohol=#{alcohol},
+		productCode=#{productCode},
+		productName=#{productName},
+		productInfo=#{productInfo},
+		productImg=#{productImg},
+		fullPrice=#{fullPrice},
+		discountPrice=#{discountPrice},
+		stock=#{stock},
+		discountRate=#{discountRate},
+		wine=#{wine}, country=#{country},
+		grapeVariety=#{grapeVariety}, alcohol=#{alcohol},
 		body=#{body},
 		acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
-		WHERE productNo=#{productNo}
+		WHERE
+		productNo=#{productNo}
 	</update>
 
 	<delete id="delete"
