@@ -105,20 +105,20 @@ public class MappingController {
 	}
 	
 	// product
-	@GetMapping("/list_wine.do")
-	public String list_wine() {
-		return "shop/wine/product_list_Wine";
-	}
+//	@GetMapping("/list_wine.do")
+//	public String list_wine() {
+//		return "shop/wine/product_list_Wine";
+//	}
 
 	@GetMapping("/list_wine_red.do")
 	public String list_red() {
 		return "shop/wine/product_list_Red";
 	}
 
-	@GetMapping("/list_wine_white.do")
-	public String list_white() {
-		return "shop/wine/product_list_White";
-	}
+//	@GetMapping("/list_wine_white.do")
+//	public String list_white() {
+//		return "shop/wine/product_list_White";
+//	}
 
 	@GetMapping("/list_wine_rose.do")
 	public String list_rose() {
