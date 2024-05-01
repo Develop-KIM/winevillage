@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -204,8 +205,8 @@ function deletePost(productNo) {
 
 					<div class="local_frm01">
 						<%-- <a href="admin_product_delete.do?=productNo${item.productNo }" value="선택삭제" class="btn_lsmall bx-white">선택삭제 --%>
-<%-- 						<a href="#" onclick="deletePost('${item.productNo}');" class="btn_small">삭제</a> --%>
-						<a onclick="deletePost('${product.productNo}');" class="btn_lsmall bx-white">선택삭제</a>
+						<%-- <a href="#" onclick="deletePost('${item.productNo}');" class="btn_small">삭제</a> --%>
+						<a onclick="deleteSelectedProducts('${product.productNo}');" class="btn_lsmall bx-white">선택삭제</a>
 							<!-- onclick="document.pressed=this.value" -->
 						<a href="./goods/goods_list_excel.php?code=list" class="btn_lsmall bx-white"><i
 								class="fa fa-file-excel-o"></i> 엑셀저장</a>
@@ -267,7 +268,7 @@ function deletePost(productNo) {
 								<c:otherwise>
 									<tbody>
 									<c:forEach items="${ lists }" var="item" varStatus="loop">
-								<tr class="list0">
+								<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
 									<td rowspan="1">
 										<%-- <input type="hidden" name="productNo" value="${item.productNo }"> --%>
 										<input type="checkbox" name="productNo" value="${item.productNo }">
