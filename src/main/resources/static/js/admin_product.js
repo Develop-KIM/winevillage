@@ -68,6 +68,34 @@ $(function() {
 		}
 	})
 	
+	function deleteSelectedProducts() {
+    var productNos = [];
+    $('input[name="productNo"]:checked').each(function() {
+        productNos.push($(this).val());
+    });
+
+    if (productNos.length > 0) {
+        var confirmed = confirm("정말로 선택된 상품을 삭제하시겠습니까?");
+        if (confirmed) {
+            $.ajax({
+                type: "POST",
+                url: "admin_delete_selected_products.do",
+                data: { productNos: productNos },
+                success: function(response) {
+                    // 삭제 성공 시 처리할 작업
+                    alert("선택된 상품이 삭제되었습니다.");
+                    location.reload(); // 페이지 새로고침
+                },
+                error: function() {
+                    // 삭제 실패 시 처리할 작업
+                    alert("상품 삭제에 실패했습니다.");
+                }
+            });
+        }
+    } else {
+        alert("삭제할 상품을 선택해주세요.");
+    }
+}
 	
 	
 	

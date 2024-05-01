@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -118,8 +119,9 @@ pageEncoding="UTF-8"%>
 				</form>
 
 				<div class="local_ov mart30">
-					총 관리자수 : <b class="fc_red">2</b>명
+					총 관리자수 : <b class="fc_red">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</b>명
 				</div>
+				<form>
 				<!-- <div class="local_frm01">
 					<a href="./member.php?code=mail_list" class="btn_lsmall bx-white">전체메일발송</a>
 					<a href="./sms/sms_member.php" onclick="win_open(this,'pop_sms','245','360','no');return false"
@@ -149,7 +151,7 @@ pageEncoding="UTF-8"%>
 								<th scope="col">번호</th>
 								<th scope="col"><p>관리자아이디</p></th>
 								<th scope="col"><p>이름</p></th>
-								<th scope="col"><p>등급</p></th>
+								<!-- <th scope="col"><p>등급</p></th> -->
 								<th scope="col"><p>이메일</p></th>
 								<th scope="col"><p>핸드폰</p></th>
 								<th scope="col"><p>생성일시</p></th>
@@ -157,58 +159,38 @@ pageEncoding="UTF-8"%>
 							</tr>
 						</thead>
 						<tbody class="list">
-							<tr class="list1">
-								<td>2</td>
-								<td><span class="sv_wrap">
-										<a href="javascript:void(0);" class="sv_member">asdfasdf</a>
-										<span class="sv">
-											<a href="http://demofran.com/admin/pop_memberform.php?mb_id=tubeweb3"
-												onclick="win_open(this,'win_member','1200','600','yes');return false;">회원정보수정</a>
-											<a href="http://demofran.com/admin/formmail.php?mb_id=tubeweb3&name=%EC%84%B8%EA%B8%80%EB%A7%8C&email=2qyUnKnIk5mlmtHHn9JelaLO"
-												onclick="win_open(this,'win_email','650','580','no'); return false;">메일보내기</a>
-										</span>
-
-										<noscript class="sv_nojs"><span class="sv">
-												<a href="http://demofran.com/admin/pop_memberform.php?mb_id=tubeweb3"
-													onclick="win_open(this,'win_member','1200','600','yes');return false;">회원정보수정</a>
-												<a href="http://demofran.com/admin/formmail.php?mb_id=tubeweb3&name=%EC%84%B8%EA%B8%80%EB%A7%8C&email=2qyUnKnIk5mlmtHHn9JelaLO"
-													onclick="win_open(this,'win_email','650','580','no'); return false;">메일보내기</a>
-											</span>
-										</noscript></span></td>
-								<td>이형렬</td>
-								<td>최고 관리자</td>
-								<td>asdf@naver.com</td>
-								<td>010-0000-0000</td>
-								<td>2024-04-23 00:00:00</td>
+						<c:choose>
+							<c:when test="${ empty lists }">
+									<tr>
+										<td colspan="5" align="center">
+										등록된 관리자가 없습니다.
+										</td>
+									</tr>
+								</c:when>
+							<c:otherwise>
+						<c:forEach items="${ lists }" var="item" varStatus="loop">
+						<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
+								<td>${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
+								<td>${item.admin_id }</td>
+								<td>${item.admin_name}</td>
+								<td>${item.admin_email}</td>
+								<td>${item.admin_phone}</td>
+								<td>${item.admin_joindate}</td>
 								<td><a href="#" class="btn_small">수정</a>
 							</tr>
-							<tr class="list0">
-								<td>1</td>
-								<td><span class="sv_wrap">
-										<a href="javascript:void(0);" class="sv_member">admin</a>
-										<span class="sv">
-											<a href="http://demofran.com/admin/pop_memberform.php?mb_id=tubeweb2"
-												onclick="win_open(this,'win_member','1200','600','yes');return false;">회원정보수정</a>
-											<a href="http://demofran.com/admin/formmail.php?mb_id=tubeweb2&name=%EB%91%90%EA%B8%80%EB%A7%8C&email=2qyUnKnIk5ilmtHHn9JelaLO"
-												onclick="win_open(this,'win_email','650','580','no'); return false;">메일보내기</a>
-										</span>
-
-										<noscript class="sv_nojs"><span class="sv">
-												<a href="http://demofran.com/admin/pop_memberform.php?mb_id=tubeweb2"
-													onclick="win_open(this,'win_member','1200','600','yes');return false;">회원정보수정</a>
-												<a href="http://demofran.com/admin/formmail.php?mb_id=tubeweb2&name=%EB%91%90%EA%B8%80%EB%A7%8C&email=2qyUnKnIk5ilmtHHn9JelaLO"
-													onclick="win_open(this,'win_email','650','580','no'); return false;">메일보내기</a>
-											</span>
-										</noscript></span></td>
-								<td>박성현</td>
-								<td>운영 관리자</td>
-								<td>admin@naver.com</td>
-								<td>010-2222-2222</td>
-								<td>2020-10-04 18:05:04</td>
-								<td><a href="#" class="btn_small">수정</a>
-							</tr>
+							</c:forEach>
 						</tbody>
+						</c:otherwise>
+						</c:choose>
+						
 					</table>
+				</div>
+				</form>
+				
+				<div class="paging" style="display: flex; justify-content: center; align-items: center;">
+					<p>
+						${ pagingImg }
+					</p>
 				</div>
 				<!-- <div class="local_frm02">
 					<a href="./member.php?code=mail_list" class="btn_lsmall bx-white">전체메일발송</a>
