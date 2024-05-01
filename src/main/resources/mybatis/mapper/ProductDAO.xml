@@ -40,6 +40,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             SELECT * FROM product
             WHERE wine = 
                 <choose>
+                	<when test="wineType == '레드'">
+                		'레드'
+                	</when>
                     <when test="wineType == '화이트'">
                         '화이트'
                     </when>
@@ -49,9 +52,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                     <when test="wineType == '스파클링'">
                         '스파클링'
                     </when>
-                    <otherwise>
-                        '화이트' <!-- 기본값, 필요에 따라 수정 -->
-                    </otherwise>
                 </choose>
             ORDER BY productno DESC
         ) Tb
@@ -60,59 +60,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	AND rNum<![CDATA[<=]]>#{end}
 </select>
 	
-<!-- 	<select id="list_wine_red"
-		resultType="com.winevillage.winevillage.product.ProductDTO"
-		parameterType="com.winevillage.winevillage.product.ParameterDTO">
-		SELECT * FROM (
-		SELECT Tb.*, ROWNUM AS rnum FROM (
-		SELECT * FROM product WHERE wine = '레드'
-			ORDER BY productno DESC
-		)Tb
-		)
-		WHERE rNum<![CDATA[>=]]>#{start}
-		AND rNum<![CDATA[<=]]>#{end}
-	</select>
-	
-	<select id="list_wine_white"
-		resultType="com.winevillage.winevillage.product.ProductDTO"
-		parameterType="com.winevillage.winevillage.product.ParameterDTO">
-		SELECT * FROM (
-		SELECT Tb.*, ROWNUM AS rnum FROM (
-		SELECT * FROM product WHERE wine = '화이트'
-			ORDER BY productno DESC
-		)Tb
-		)
-		WHERE rNum<![CDATA[>=]]>#{start}
-		AND rNum<![CDATA[<=]]>#{end}
-	</select>
-	
-	<select id="list_wine_rose"
-		resultType="com.winevillage.winevillage.product.ProductDTO"
-		parameterType="com.winevillage.winevillage.product.ParameterDTO">
-		SELECT * FROM (
-		SELECT Tb.*, ROWNUM AS rnum FROM (
-		SELECT * FROM product WHERE wine = '로제'
-			ORDER BY productno DESC
-		)Tb
-		)
-		WHERE rNum<![CDATA[>=]]>#{start}
-		AND rNum<![CDATA[<=]]>#{end}
-	</select>
-	
-	<select id="list_wine_sparkling"
-		resultType="com.winevillage.winevillage.product.ProductDTO"
-		parameterType="com.winevillage.winevillage.product.ParameterDTO">
-		SELECT * FROM (
-		SELECT Tb.*, ROWNUM AS rnum FROM (
-		SELECT * FROM product WHERE wine = '스파클링'
-			ORDER BY productno DESC
-		)Tb
-		)
-		WHERE rNum<![CDATA[>=]]>#{start}
-		AND rNum<![CDATA[<=]]>#{end}
-	</select>
-	
-	 -->
 	<insert id="productWrite"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		INSERT INTO product (productNo, productCode, productName, productInfo,
