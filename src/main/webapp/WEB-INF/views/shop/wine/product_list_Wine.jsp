@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,7 @@
 				<div class="prd_list_area">
 					<div class="search_result">
 						<div class="result_area">
-							<p class="result" id="total_count_text">394개의 상품</p>
+							<p class="result" id="total_count_text">${maps.wineCount}개의 상품</p>
 						</div>
 
 						<div class="second_order">
@@ -64,21 +65,29 @@
 						</div>
 					</div>
 					<ul class="n_prd_list" id="product_ul">
-						<c:forEach items="${products }" var="product">
+						<c:forEach items="${lists }" var="product" varStatus="loop">
+						<c:set var="Count" value="${lists.size() }" />
+							<c:if test="${not empty product.state }">
 							<li>
 								<div class="item">
-									<div class="main_img" style="background: #E0D8EA">
+									<div class="main_img"
+										style="<c:choose>
+								   			 <c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
+   											 <c:when test="${product.wine eq '화이트'}">background: #F6EC9C</c:when>
+   											 <c:when test="${product.wine eq '로제'}">background: #EEC1CC</c:when>
+   											 <c:when test="${product.wine eq '스파클링'}">background: #E0EBF8</c:when>
+   											 <c:when test="${product.wine eq '주정강화'}">background: #E1D5CA</c:when>
+   											 <c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
+										</c:choose>">
 										<a href="product_view9f82.html?product_cd=03T999"
 											class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-											<source
-												srcset="/uploads/product/200/${productImg }"
+											<source srcset="/uploads/product/200/${product.productImg }"
 												media="(min-width:1024px)">
 											<!-- pc이미지 -->
-											<source
-												srcset="/uploads/product/200/${productImg }"
+											<source srcset="/uploads/product/200/${product.productImg }"
 												media="(max-width:1023px)">
 											<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-												src="../../uploads/product/200/${productiImg }"
+												src="../../uploads/product/200/${product.productImg }"
 												loading="lazy" alt=""><!-- pc이미지 --> </picture>
 										</a>
 										<div class="btn">
@@ -93,63 +102,81 @@
 										<div class="more_info">
 											<p class="prd_name">
 												<a href="product_view9f82.html?product_cd=03T999">
-												<span>
-												${product.productName }
-												</span><span class="en"></span></a>
+												 <span>${product.productName }</span>
+												 <span>${product.productName_En }</span>
+												 <span class="en"></span></a>
 											</p>
+											<p class="prd_info">${product.productInfo }</p>
 										</div>
 										<div class="cate_label">
-											<span style="background: #E0D8EA">${product.wine }</span> <span
-												style="background: #E0D8EA">${product.contry }</span>
+										<span style="<c:choose>
+							                 <c:when test="${not empty product.wine}">
+							                     <c:choose>
+							                         <c:when test="${product.wine eq '레드'}">background: #E0D8EA;</c:when>
+							                         <c:when test="${product.wine eq '화이트'}">background: #F6EC9C;</c:when>
+							                         <c:when test="${product.wine eq '로제'}">background: #EEC1CC;</c:when>
+							                         <c:when test="${product.wine eq '스파클링'}">background: #E0EBF8;</c:when>
+							                         <c:when test="${product.wine eq '주정강화'}">background: #E1D5CA;</c:when>
+							                         <c:when test="${product.wine eq '디저트'}">background: #D7F9E2;</c:when>
+							                     </c:choose>
+							                 </c:when>
+							                 <c:otherwise>display:none;</c:otherwise>
+							             </c:choose>">${product.wine }</span>
+							             
+										<span style="<c:choose>
+											<c:when test="${not empty product.country }">
+												<c:choose>
+										   			<c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
+		   											<c:when test="${product.wine eq '화이트'}">background: #F6EC9C</c:when>
+		   											<c:when test="${product.wine eq '로제'}">background: #EEC1CC</c:when>
+		   											<c:when test="${product.wine eq '스파클링'}">background: #E0EBF8</c:when>
+		   											<c:when test="${product.wine eq '주정강화'}">background: #E1D5CA</c:when>
+		   											<c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
+		   										</c:choose>
+	   										</c:when>
+										</c:choose>">${product.country }</span>
+										
+										<span style="<c:choose>
+											<c:when test="${not empty product.grapeVariety }">
+												<c:choose>
+										   			<c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
+		   											<c:when test="${product.wine eq '화이트'}">background: #F6EC9C</c:when>
+		   											<c:when test="${product.wine eq '로제'}">background: #EEC1CC</c:when>
+		   											<c:when test="${product.wine eq '스파클링'}">background: #E0EBF8</c:when>
+		   											<c:when test="${product.wine eq '주정강화'}">background: #E1D5CA</c:when>
+		   											<c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
+	   											</c:choose>
+   											</c:when>
+										</c:choose>">${product.grapeVariety }</span>
 										</div>
 										<div class="price_area">
 											<p class="price">
-												<!-- 할인가 -->
-												<em class="discount">${product.discountRate }%</em>
-												<del>${product.fullprice }원</del>
+												<c:if test="${product.discountRate > 0 }">
+													<em class="discount">${product.discountRate }%</em>
+													<del>${product.fullPrice }원</del>
+													<ins><fmt:formatNumber value="${(product.fullPrice - (product.fullPrice * product.discountRate / 100))}" type="number" />원</ins>
+												</c:if>
+												<c:if test="${product.discountRate == 0}">
+													<ins class="out">매장문의</ins>
+													<del class="out out_price"style="text-decoration: none; font-weight: 700">${product.fullPrice }원</del>
+												</c:if>
 												<ins></ins>
 											</p>
 										</div>
 									</div>
 								</div>
 							</li>
+							</c:if>
 						</c:forEach>
 					</ul>
 				</div>
 
-				<div class="pagination">
-					<a
-						href="product_lists9852.html?sh_category1_cd=10000&amp;sh_category2_cd=10100"
-						data-ci-pagination-page="1" rel="start" class="">&lt;&lt;</a><a
-						href="product_lists9852.html?sh_category1_cd=10000&amp;sh_category2_cd=10100"
-						data-ci-pagination-page="1" rel="prev" class="">&lt;</a><span
-						class="page"><a href="#self" class="on">1</a><a
-						href="product_lists1c12.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=2"
-						data-ci-pagination-page="2">2</a><a
-						href="product_listsaa3a.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=3"
-						data-ci-pagination-page="3">3</a><a
-						href="product_lists3ad3.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=4"
-						data-ci-pagination-page="4">4</a><a
-						href="product_listse51b.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=5"
-						data-ci-pagination-page="5">5</a><a
-						href="product_listsef68.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=6"
-						data-ci-pagination-page="6">6</a><a
-						href="product_lists79f4.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=7"
-						data-ci-pagination-page="7">7</a><a
-						href="product_lists0a8d.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=8"
-						data-ci-pagination-page="8">8</a><a
-						href="product_lists3972.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=9"
-						data-ci-pagination-page="9">9</a><a
-						href="product_listsb188.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=10"
-						data-ci-pagination-page="10">10</a></span><a
-						href="product_lists1c12.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=2"
-						data-ci-pagination-page="2" rel="next" class="">&gt;</a><a
-						href="product_lists0783.html?sh_category1_cd=10000&amp;sh_category2_cd=10100&amp;page=16"
-						data-ci-pagination-page="16" class="">&gt;&gt;</a>
+				<div> 
+					<p>${ pagination }</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<%@ include file="../../common/footer.jsp"%>
+	<%@ include file="../../common/footer.jsp" %>
 </body>
 </html>

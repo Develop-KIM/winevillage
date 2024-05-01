@@ -8,6 +8,7 @@ import lombok.Setter;
 public class ParameterDTO {
 	private String searchField;
 	private String searchKeyword;
+	private String wineType;
 	private int start;
 	private int end;
 }

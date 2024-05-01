@@ -115,10 +115,10 @@ public class MappingController {
 		return "shop/wine/product_list_Red";
 	}
 
-	@GetMapping("/list_wine_white.do")
-	public String list_white() {
-		return "shop/wine/product_list_White";
-	}
+//	@GetMapping("/list_wine_white.do")
+//	public String list_white() {
+//		return "shop/wine/product_list_White";
+//	}
 
 	@GetMapping("/list_wine_rose.do")
 	public String list_rose() {
