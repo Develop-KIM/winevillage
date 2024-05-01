@@ -61,10 +61,6 @@
                                         <label for="law_chk">홈페이지 이용약관</label>
                                     </div>
                                 </div>
-                                <div class="view">
-                                    <button type="button" class="view_btn"
-                                        onclick="commonUI.layer.open('law_layer.html')"><span>자세히보기</span></button>
-                                </div>
                             </li>
                             <li>
                                 <div class="chk">
@@ -73,63 +69,7 @@
                                         <label for="pri_chk">개인정보수집 및 이용동의</label>
                                     </div>
                                 </div>
-                                <div class="view">
-                                    <button type="button" class="view_btn"
-                                        onclick="commonUI.layer.open('privacy_layer.html')"><span>자세히보기</span></button>
-                                </div>
                             </li>
-                        </ul>
-
-                        <div class="top">
-                            <h3>(선택) 마케팅 활용 동의/철회</h3>
-                            <!-- <div class="all_check">
-                        <div class="checkbox">
-                            <input type="checkbox" id="all_chk_select" class="all_chk">
-                            <label for="all_chk_select">모두 동의하기</label>
-                        </div>                
-                    </div> -->
-                        </div>
-                        <ul class="list all_chk_select">
-                            <li>
-                                <div class="chk">
-                                    <div class="checkbox">
-                                        <input type="checkbox" id="maketing_01" class="ip_all">
-                                        <label for="maketing_01">개인(신용)정보의 수집·이용에 관한 사항</label>
-                                    </div>
-                                </div>
-                                <div class="view">
-                                    <button type="button" class="view_btn"
-                                        onclick="commonUI.layer.open('credit_use_layer.html')"><span>자세히보기</span></button>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="chk">
-                                    <div class="checkbox">
-                                        <input type="checkbox" id="maketing_02" class="ip_all">
-                                        <label for="maketing_02">개인(신용)정보에 따른 프로모션 및 할인 혜택/정보 수신 동의</label>
-                                    </div>
-                                </div>
-                                <div class="view">
-                                    <button type="button" class="view_btn"
-                                        onclick="commonUI.layer.open('credit_view_layer.html')"><span>자세히보기</span></button>
-                                </div>
-                            </li>
-                            <!-- <li>
-                        <div class="chk">
-                            <div class="checkbox">
-                                <input type="checkbox" id="sms_chk">
-                                <label for="sms_chk">SMS 수신동의 <span class="not_point">(선택)</span></label>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="chk">
-                            <div class="checkbox">
-                                <input type="checkbox" id="email_chk">
-                                <label for="email_chk">이메일 수신동의 <span class="not_point">(선택)</span></label>
-                            </div>
-                        </div>
-                    <li> -->
                         </ul>
                         <div class="expiry">
                             <div class="top">
@@ -170,16 +110,12 @@
                 </div>
             </div>
         </div>
-
-        <!-- page_script -->
         <script>
-
             function terms_check() { // 약관동의체크
                 if (!$('#age_chk').is(':checked') || !$('#law_chk').is(':checked') || !$('#pri_chk').is(':checked')) {
                     alert("필수 약관에 동의해주세요.");
                     return false;
                 }
-
                 Cookie.Set('join_agreement_age', $('#age_chk').is(':checked'), 1);
                 Cookie.Set('join_agreement_service', $('#law_chk').is(':checked'), 1);
                 Cookie.Set('join_agreement_private', $('#pri_chk').is(':checked'), 1);
@@ -289,7 +225,6 @@
                 }
             });          
         </script>
-        <!-- //page_script -->
     </section>
     <%@ include file="../../common/footer.jsp" %>
 </body>
