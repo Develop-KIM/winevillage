@@ -300,7 +300,8 @@
 .n_prd_list li .item .info .price_area .price.regular_price i{font-weight:500}
 .n_prd_list li .item .info .price_area .price.regular_price ins{font-weight:500}
 .product_lists_page .pagination{display:flex;align-items:center;justify-content:center;margin:60px auto 0}
-.product_lists_page .pagination>a{font-size:20px}
+.product_lists_page .pagination>a{font-size:20px; margin-right:25px; color:#999;font-weight:350;}
+.product_lists_page .pagination .current{color:#333; }
 .product_lists_page .pagination .arrow{width:40px;height:40px;line-height:40px;border:1px solid #ddd;background:url(../../images/default/icon_page_prev.png) no-repeat center/6px;text-align:center;text-indent:-9999px}
 .product_lists_page .pagination .arrow.next{background-image:url(../../images/default/icon_page_next.png)}
 .product_lists_page .pagination .page{margin:0 30px}
