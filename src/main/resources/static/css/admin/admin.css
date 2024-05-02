@@ -655,3 +655,4 @@ strong.sodr_nonpay{display:block;padding:5px 0;text-align:right;}
 
 /*말줄임표*/
 span.ellipsis1{display:-webkit-box;text-overflow: ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;}
+.admin_id_bold{color:#fff};
