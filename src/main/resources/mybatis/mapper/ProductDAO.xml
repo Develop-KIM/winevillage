@@ -189,17 +189,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       productNo=#{productNo}
    </update>
 
-<<<<<<< HEAD
-	<delete id="delete"
-		parameterType="com.winevillage.winevillage.product.ProductDTO">
-		DELETE FROM product WHERE productNo=#{productNo}
-	</delete>
-=======
    <delete id="delete"
       parameterType="com.winevillage.winevillage.product.ProductDTO">
       DELETE FROM product WHERE productNo=#{productNo}
    </delete>
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 </mapper>
 
 
