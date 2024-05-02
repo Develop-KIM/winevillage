@@ -92,11 +92,12 @@ pageEncoding="UTF-8"%>
 							<label for="chk_0" class="sound_only">${ item.faq_classified }</label>
 							<input type="checkbox" name="chk[]" value="0" id="chk_0">
 						</td>
-						<td>${ item.faq_no }</td>
-						<td>
+						<td>${ lists.size() - loop.index }</td>
+						<td class="tal"><input type="text" name="faq_classified" value="${ item.faq_classified }" class="frm_input"></td>
+						<%-- <td>
 							<span class="ellipsis1">${ item.faq_classified }</span>
-						</td>
-						<td><a href="/" class="fc_90">${ item.faq_count }</a></td>
+						</td> --%>
+						<td>${ item.faq_count }</td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>

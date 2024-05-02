@@ -10,6 +10,7 @@ public interface FAQService {
 	public ArrayList<FAQDTO> listPage(ParameterDTO parameterDTO);
 	public ArrayList<FAQDTO> faqCategory(ParameterDTO parameterDTO);
 	public int faqWrite(FAQDTO faqDTO);
+	public int categoryEdit(FAQDTO faqDTO);
 	public int faqCategoryWrite(FAQDTO faqDTO);
 	public FAQDTO faqView(FAQDTO faqDTO);
 	public int categoryCount(ParameterDTO parameterDTO);

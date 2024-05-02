@@ -44,10 +44,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT faq_classified, count(*) AS faq_count FROM faq GROUP BY faq_classified
 	</select>
 	
+	<insert id="faqCategoryWrite"
+	parameterType="com.winevillage.winevillage.faq.FAQDTO">
+	INSERT INTO faq (faq_classified) VALUES (#{faq_classified})
+	</insert>
+	
 	<select id="categoryCount" resultType="integer"
 	parameterType="com.winevillage.winevillage.faq.ParameterDTO">
 	SELECT COUNT(DISTINCT faq_classified) FROM faq
 	</select>
+	
+	<update id="categoryEdit"
+	parameterType="com.winevillage.winevillage.faq.FAQDTO">
+	UPDATE faq SET faq_classified=#{faq_classified}
+	WHERE faq_classified=#{faq_classified}
+	</update>
 	
 	<select id="faqView"
 	resultType="com.winevillage.winevillage.faq.FAQDTO"

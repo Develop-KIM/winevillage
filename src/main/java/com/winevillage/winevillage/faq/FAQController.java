@@ -3,6 +3,7 @@ package com.winevillage.winevillage.faq;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,6 +85,7 @@ public class FAQController {
 		model.addAttribute("categoryCount", dao.categoryCount(parameterDTO));
 		
 		ArrayList<FAQDTO> lists = dao.faqCategory(parameterDTO);
+		Collections.reverse(lists);
 		model.addAttribute("lists", lists);
 		
 		String pagingImg = PagingUtil.pagingImg(totalCount, pageSize, blockPage, pageNum, 

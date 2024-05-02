@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +48,24 @@
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/filter.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
+<script>
+    $(document).ready(function(){
+        $('ul li a').click(function(){
+            var category = $(this).text();
+            $.ajax({
+                type: "POST",
+                url: "/processCategory",
+                data: { category: category },
+                success: function(response){
+                    console.log("카테고리 값이 서버로 전송되었습니다.");
+                }
+            });
+        });
+    });
+</script>
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
@@ -87,49 +106,49 @@
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a href="list_wine.do">WINE</a>
+						<li class=""><a href="list_product.do?category=wine">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
-											<li class="ico_red"><a
-												href="/list_wine_red.do">레드</a></li>
-											<li class="ico_white"><a
-												href="/list_wine_white.do">화이트</a></li>
-											<li class="ico_rose"><a
-												href="/list_wine_rose.do">로제</a></li>
-											<li class="ico_sparkling"><a
-												href="/list_wine_sparkling.do">스파클링</a></li>
-											<li class="ico_spirits"><a
-												href="/list_wine_fortified.do">주정강화</a></li>
+								        	<li class="ico_red"><a
+								        		href="list_product.do?category=red">레드</a></li>
+								            <li class="ico_white"><a 
+								            	href="list_product.do?category=white">화이트</a></li>
+								            <li class="ico_rose"><a 
+								            	href="list_product.do?category=rose">로제</a></li>
+								            <li class="ico_sparkling"><a 
+								            	href="list_product.do?category=sparkling">스파클링</a></li>
+								            <li class="ico_spirits"><a 
+								            	href="list_product.do?category=fortified">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
-												href="/list_wine_fra.do">프랑스</a></li>
+												href="list_product.do?category=fra">프랑스</a></li>
 											<li class="ico_italia"><a
-												href="/list_wine_ita.do">이탈리아</a></li>
+												href="list_product.do?category=ita">이탈리아</a></li>
 											<li class="ico_spain"><a
-												href="/list_wine_esp.do">스페인</a></li>
+												href="list_product.do?category=esp">스페인</a></li>
 											<li class="ico_germ"><a
-												href="/list_wine_deu.do">독일</a></li>
+												href="list_product.do?category=deu">독일</a></li>
 											<li class="ico_usa"><a
-												href="/list_wine_usa.do">미국</a></li>
+												href="list_product.do?category=usa">미국</a></li>
 											<li class="ico_chile"><a
-												href="/list_wine_chl.do">칠레</a></li>
+												href="list_product.do?category=chl">칠레</a></li>
 											<li class="ico_argentina"><a
-												href="/list_wine_arg.do">아르헨티나</a></li>
+												href="list_product.do?category=arg">아르헨티나</a></li>
 											<li class="ico_aus"><a
-												href="/list_wine_aus.do">호주</a></li>
+												href="list_product.do?category=aus">호주</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li class=""><a href="list_other.do">OTHER</a>
+						<li class=""><a href="list_product.do?category=other">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
 										<ul>
-											<li class="ico_acc"><a href="list_other_acc.do">액세서리</a>
+											<li class="ico_acc"><a href="list_product.do?category=acc">액세서리</a>
 											</li>
 										</ul>
 									</div>

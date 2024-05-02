@@ -51,7 +51,7 @@ public class PagingUtil {
 				}
 				intTemp++;
 				blockCount++;
-			}
+			} 
 			
 			//5.다음페이지블럭 & 마지막페이지 바로가기
 			if(intTemp <= totalPage) {
