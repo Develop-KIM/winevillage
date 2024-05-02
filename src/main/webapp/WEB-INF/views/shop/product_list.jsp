@@ -174,9 +174,9 @@
 												<c:if test="${product.discountRate == 0}">
 													<ins class="out">매장문의</ins>
 													<del class="out out_price"
-														style="text-decoration: none; font-weight: 700">${product.fullPrice }원</del>
+														style="text-decoration: none; font-weight: 700">
+														<fmt:formatNumber value="${product.fullPrice }" pattern="#,##0"/>원</del>
 												</c:if>
-												<ins></ins>
 											</p>
 										</div>
 									</div>
