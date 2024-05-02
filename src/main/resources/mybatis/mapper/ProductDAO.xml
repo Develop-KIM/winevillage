@@ -14,10 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </if>
    </select>
 
+
 	<delete id="productDelete"
 	parameterType="com.winevillage.winevillage.product.ProductDTO">
 		DELETE FROM product WHERE productNo=#{productNo}
 	</delete>
+
    <select id="listPage"
       resultType="com.winevillage.winevillage.product.ProductDTO"
       parameterType="com.winevillage.winevillage.product.ParameterDTO">
@@ -195,6 +197,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       WHERE
       productNo=#{productNo}
    </update>
+
 
    
 </mapper>

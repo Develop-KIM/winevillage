@@ -47,12 +47,13 @@ pageEncoding="UTF-8"%>
 	<span>HOME</span> <i class="ionicons ion-ios-arrow-right"></i> 고객지원 <i class="ionicons ion-ios-arrow-right"></i> FAQ 작성		</div>
 
 	<div class="s_wrap">
-		<h1>공지사항 작성</h1>
-		<form name="fboardform" method="post" action="admin_customer_notice_write.do">
-			<input type="hidden" name="w" value="u">
+		<h1>공지사항 수정</h1>
+		<form name="fboardform" method="post" action="admin_customer_notice_edit.do">
+			<input type="hidden" name="notice_no" value="${noticeDTO.notice_no }" />
+			<!-- <input type="hidden" name="w" value="u">
 			<input type="hidden" name="sfl" value="">
 			<input type="hidden" name="stx" value="">
-			<input type="hidden" name="page" value="1">
+			<input type="hidden" name="page" value="1"> -->
 			<div class="tbl_frm02">
 				<table>
 				<colgroup>
@@ -63,21 +64,20 @@ pageEncoding="UTF-8"%>
 				<tr>
 					<th scope="row">고정여부</th>
 					<td>
-						<input type="checkbox" id="checkbox_notice" />
-						<input type="hidden" name="notice_pinned" id="pinned_notice" value="0" />
+					<input type="checkbox" id="checkbox_notice" ${"1".equals(noticeDTO.notice_pinned) ? "checked" : ""}/>
+					<input type="hidden" name="notice_pinned" id="pinned_notice" value="${noticeDTO.notice_pinned}" />
 					</td>
-					
 				</tr>
 				<tr>
 					<th scope="row">제목</th>
 					<td>
-						<input type="text" name="notice_title" value="" class="frm_input" size="100">
+						<input type="text" name="notice_title" value="${noticeDTO.notice_title}" class="frm_input" size="100">
 					</td>
 				</tr>
 				<tr>
 					<th scope="row">내용</th>
 					<td>
-						<textarea name="notice_content" class="frm_textbox wfull" rows="5"></textarea>
+						<textarea name="notice_content" class="frm_textbox wfull" rows="5">${noticeDTO.notice_content}</textarea>
 					</td>
 				</tr>
 				</tbody>

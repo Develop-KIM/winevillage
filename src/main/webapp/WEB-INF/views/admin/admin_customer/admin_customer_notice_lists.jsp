@@ -6,7 +6,63 @@ pageEncoding="UTF-8"%>
 <head>
 <body>
 <%@ include file="../admin_common/admin_header.jsp"%>
+
+<script>
+function deleteNotice(notice_no) {
+    if (!isNaN(notice_no)) {
+           var confirmed = confirm("정말로 삭제하시겠습니까?");
+           if (confirmed) {
+               var form = document.createElement("form");
+               form.setAttribute("method", "post");
+               form.setAttribute("action", "admin_customer_notice_delete.do");
+
+               var input = document.createElement("input");
+               input.setAttribute("type", "hidden");
+               input.setAttribute("name", "notice_no");
+               input.setAttribute("value", parseInt(notice_no)); // 문자열을 숫자로 변환하여 설정
+
+               form.appendChild(input);
+               document.body.appendChild(form);
+
+               form.submit();
+           }
+       } else {
+           alert("유효하지 않은 상품 번호입니다.");
+       }
+}
+function multiDelete() {
+	var form = document.getElementById('noticelist');
+    if (!form) {
+        alert('리스트가 정상적으로 로드되지 않았습니다.');
+        return;
+    }
 	
+	var selected = document.querySelectorAll('#sodr_list input[name="chk[]"]:checked');
+	var deleteItem = Array.from(selected).map(chk => chk.value);
+	
+	if (deleteItem.length === 0) {
+		alert("선택된 항목이 없습니다.");
+		return;
+	}
+	
+	var confirmed = confirm("정말로 삭제하시겠습니까?");
+	if (confirmed) {
+		form.setAttribute("method", "post");
+	    form.setAttribute("action", "admin_customer_notice_delete2.do");
+	    
+	    var input = document.createElement("input");
+	    input.setAttribute("type", "hidden");
+	    input.setAttribute("name", "deleteItem");
+	    input.setAttribute("value", deleteItem.join(','));
+	    
+	    form.appendChild(input);
+	    document.body.appendChild(form);
+	
+	    form.submit();		
+	}
+}
+</script>
+
 <div id="wrapper">
 
 		<div id="snb">
@@ -25,7 +81,10 @@ pageEncoding="UTF-8"%>
 				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
-					<a href="admin_customer_faq_lists.do">FAQ 분류</a>
+					<a href="admin_customer_faq_lists.do">FAQ 관리</a>
+				</dd>
+				<dd class="h20">
+					<a href="admin_customer_faq_category.do">FAQ 분류</a>
 				</dd>
 				<dd class="h20">
 					<a href="admin_customer_faq_write.do">FAQ 작성</a>
@@ -116,12 +175,12 @@ pageEncoding="UTF-8"%>
 			</div>
 		</form>
 
-		<form name="fgoodslist" id="fgoodslist" method="post" action="./goods/goods_list_update.php" onsubmit="return fgoodslist_submit(this);">
+		<form name="noticelist" id="noticelist" method="post">
 			<input type="hidden" name="q1" value="code=list">
 			<input type="hidden" name="page" value="1">
 
 			<div class="local_ov mart30">
-				전체 : <b class="fc_red">10</b> 건 조회
+				전체 : <b class="fc_red">${ maps.totalCount }</b> 건 조회
 				<span class="ov_a">
 					<select id="page_rows" onchange="location='/admin/goods.php?code=list&amp;page=1&amp;page_rows='+this.value;">
 						<option value="30" selected="selected">30줄 정렬</option>
@@ -132,9 +191,9 @@ pageEncoding="UTF-8"%>
 				</span>
 			</div>
 			<div class="local_frm01">
-				<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="document.pressed=this.value">
+				<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="multiDelete(); return false;">
 				<!-- <input type="submit" name="act_button" value="선택순위수정" class="btn_lsmall bx-white" onclick="document.pressed=this.value"> -->
-				<a href="./product_write.html" class="fr btn_lsmall red"><i class="ionicons ion-android-add"></i> 공지등록</a>
+				<a href="admin_customer_notice_write.do" class="fr btn_lsmall red"><i class="ionicons ion-android-add"></i> 공지등록</a>
 			</div>
 
 			<div class="tbl_head01">
@@ -147,6 +206,7 @@ pageEncoding="UTF-8"%>
 						<col class="w80">
 						<col class="w80">
 						<col class="w60">
+						<col class="w100">
 					</colgroup>
 					<thead>
 						<tr>
@@ -155,6 +215,7 @@ pageEncoding="UTF-8"%>
 							<th scope="col" rowspan="2">제목</th>
 							<th scope="col" rowspan="2">내용</th>
 							<th scope="col" colspan="2"><a href="/admin/goods.php?code=list&amp;page=&amp;filed=reg_time&amp;orderby=asc">등록일자</a></th>
+							<th scope="col" colspan="1" rowspan="2">고정</th>
 							<th scope="col" colspan="1" rowspan="2">관리</th>
 						</tr>
 						<tr class="rows">
@@ -165,7 +226,50 @@ pageEncoding="UTF-8"%>
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="list1">
+						<c:choose>
+						<c:when test="${ empty lists }">
+							<tr>
+								<td colspan='7'>리스트가 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${ lists }" var="item" varStatus="loop">
+								<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
+								<td>
+									<input type="hidden" name="gs_id[0]" value="${ item.notice_no }">
+									<input type="checkbox" name="chk[]" value="${ item.notice_no }">
+								</td>
+								<td style="display:none;">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
+								<td>${ item.notice_no }</td>
+								<td class="tal">
+									<span class="ellipsis1"><a href="admin_customer_notice_edit.do?notice_no=${ item.notice_no }">
+									${ item.notice_title }
+									</a></span>
+								</td>
+								<td class="tal">
+									<span class="ellipsis1"><a href="admin_customer_notice_edit.do?notice_no=${ item.notice_no }">
+									${ item.notice_content }
+									</a></span>
+								</td>
+								<td>${ item.notice_postdate }</td>
+								<td class="fc_00f">
+									${ item.notice_editdate == null ? item.notice_postdate : item.notice_editdate }
+								</td>
+								<td>
+								<div class="btn_small ${ item.notice_pinned == 0 ? 'white' : '' }">
+									${ item.notice_pinned == 0 ? '해제됨' : '고정됨' }
+								</div>
+								</td>
+								<td>
+									<a href="admin_customer_notice_edit.do?notice_no=${ item.notice_no }" class="btn_small">수정</a>
+									<a href="#" onclick="event.preventDefault(); deleteNotice(${item.notice_no});" class="btn_small white">삭제</a>
+								</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+						</c:choose>
+						
+						<!-- <tr class="list1">
 							<td>
 								<input type="hidden" name="gs_id[0]" value="21">
 								<input type="checkbox" name="chk[]" value="0">
@@ -364,13 +468,33 @@ pageEncoding="UTF-8"%>
 							<td><a href="./goods.php?code=form&amp;w=u&amp;gs_id=21&amp;page=1&amp;bak=list" class="btn_small">수정</a>
 							</td>
 							</tr><tr class="list0">
-							</tr>
+							</tr> -->
 						
 					</tbody>
 				</table>
 			</div>
 		</form>
 
+		<nav class="pg_wrap">
+			<span class="pg">
+				<span class="pg_start">처음</span>
+				<span class="pg_prev">이전</span>
+				<span class="sound_only">열린</span>
+				<strong class="pg_current">1</strong>
+				<span class="sound_only">페이지</span>
+				<a href="/admin/order.php?code=list&page=2" class="pg_page">2
+					<span class="sound_only">페이지</span>
+				</a>
+				<span class="pg_next">다음</span>
+				<a href="/admin/order.php?code=list&page=2" class="pg_page pg_end">맨끝</a>
+			</span>
+		</nav>
+		
+		<nav class="pg_wrap">
+		<span class="pg">
+			${ pagingImg }
+		</span]>
+		</nav>
 
 		<script>
 			function fgoodslist_submit(f) {
