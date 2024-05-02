@@ -131,27 +131,27 @@
 										<span style="background: ${wineStyles[row.wine]};">${row.grapeVariety }</span>
 									</c:if>
 								</div>
-								<div class="price_area">
-									<p class="price">
-										<c:if test="${row.discountRate > 0 }">
-										<!-- 할인가 -->
-											<em class="discount">${row.discountRate }%</em>
-											<del><fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>원</del>
-											<ins>
-												<script>
-											        var price = ${(row.fullPrice - (row.fullPrice * row.discountRate / 100))};
-											        var DiscountPrice = Math.floor(price / 100) * 100;
-											        document.write(DiscountPrice.toLocaleString() + "원");
-										    	</script>
-									    	</ins>
-								    	</c:if>
-								    	<c:if test="${product.discountRate == 0}">
+									<div class="price_area">
+										<p class="price">
+											<c:if test="${row.discountRate > 0 }">
+												<em class="discount">${row.discountRate }%</em>
+												<del><fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>원</del>
+												<ins>
+												    <script>
+												        var price = ${(row.fullPrice - (row.fullPrice * row.discountRate / 100))};
+												        var DiscountPrice = Math.floor(price / 100) * 100;
+												        document.write(DiscountPrice.toLocaleString() + "원");
+												    </script>
+												</ins>
+											</c:if>
+											<c:if test="${row.discountRate == 0}">
 												<ins class="out">매장문의</ins>
 												<del class="out out_price"
-														style="text-decoration: none; font-weight: 700">${product.fullPrice }원</del>
-										</c:if>
-									</p>
-								</div>
+													style="text-decoration: none; font-weight: 700">
+												<fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>	원</del>
+											</c:if>
+										</p>
+									</div>
 							</div>
 						</div>
 						</li>
