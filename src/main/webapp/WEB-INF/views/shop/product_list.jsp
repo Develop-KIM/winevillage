@@ -76,12 +76,13 @@
 					<div class="tab_area prd_tab_area tab3">
 						<ul
 							style="height: ${category == 'other' || category == 'acc' ? '0' : 'auto'};">
-							<li class="state_li on" id="state_li_1"><a
-								href="javascript:void(0);" onclick="state_list('1');">VALUE</a></li>
-							<li class="state_li" id="state_li_5"><a
-								href="javascript:void(0);" onclick="state_list('5');">EXCLUSIVE</a></li>
-							<li class="state_li" id="state_li_all"><a
-								href="javascript:void(0);" onclick="state_list('all');">ALL</a></li>
+							<li class="state_li <c:if test='${state == "value"}'>on</c:if>" id="state_li_1">
+							    <a href="/list_product.do?category=${category}&state=value">VALUE</a>
+							</li>
+							<li class="state_li <c:if test='${state == "exclusive"}'>on</c:if>" id="state_li_5"><a
+								href="/list_product.do?category=${category }&state=exclusive" >EXCLUSIVE</a></li>
+							<li class="state_li <c:if test='${state == "all"}'>on</c:if>" id="state_li_all"><a
+								href="/list_product.do?category=${category }&state=all" >ALL</a></li>
 						</ul>
 
 						<button class="smart_search"
@@ -113,6 +114,7 @@
 					<ul class="n_prd_list" id="product_ul">
 						<c:forEach items="${lists }" var="product" varStatus="loop">
 							<c:set var="category" value="${category }" />
+							<c:set var="state" value="${state }" />
 							<c:set var="wineStyles"
 								value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
 							<li>

@@ -9,6 +9,7 @@ public class ParameterDTO {
 	private String searchField;
 	private String searchKeyword;
 	private String category;
+	private String state;
 	private String wine;
     private boolean stateNotNull;
 	private int start;

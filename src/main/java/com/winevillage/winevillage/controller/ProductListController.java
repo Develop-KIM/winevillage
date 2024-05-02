@@ -25,8 +25,10 @@ public class ProductListController {
 
 	@GetMapping("/list_product.do")
 	public String list_Product(Model model, HttpServletRequest req,
-			@RequestParam(name = "category", required = false) String category, ParameterDTO parameterDTO) {
+			@RequestParam(name = "category", required = false) String category, 
+			@RequestParam(name = "state", required = false) String state, ParameterDTO parameterDTO) {
 
+		parameterDTO.setState(state);
 	    parameterDTO.setCategory(category);
 	    parameterDTO.setStateNotNull(true); 
 	    
@@ -48,7 +50,7 @@ public class ProductListController {
 		maps.put("ProductCount", ProductCount);
 		model.addAttribute("maps", maps);
 		model.addAttribute("category", category);
-
+		model.addAttribute("state", state);
 		String uppercaseCategory = null; 
 		if (category != null) {
 		uppercaseCategory = category.toUpperCase();
