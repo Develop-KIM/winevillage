@@ -6,7 +6,40 @@ pageEncoding="UTF-8"%>
 <head>
 <body>
 <%@ include file="../admin_common/admin_header.jsp"%>
+
+<script>
+function multiEdit() {
+	var form = document.getElementById('faqcategorylist');
+	if (!form) {
+		alert('리스트가 정상적으로 로드되지 않았습니다.');
+		return;
+	}
 	
+	var selected = document.querySelectorAll('.tbl_head01 input[name="chk[]"]:checked');
+	var editItem = Array.from(selected).map(chk => chk.value);
+	
+	if (editItem.length === 0) {
+		alert("선택된 항목이 없습니다.");
+		return;
+	}
+	
+	var confirmed = confirm("정말로 수정하시겠습니까?");
+	if (confirmed) {
+		form.setAttribute("method", "post");
+		form.setAttribute("action", "admin_customer_faq_category_edit.do");
+	    
+		var input = document.createElement("input");
+		input.setAttribute("type", "hidden");
+		input.setAttribute("name", "editItem");
+		input.setAttribute("value", editItem.join(','));
+
+		form.appendChild(input);
+		document.body.appendChild(form);
+	
+		form.submit();		
+	}
+}
+</script>
 <div id="wrapper">
 
 		<div id="snb">
@@ -51,7 +84,7 @@ pageEncoding="UTF-8"%>
 	
 <h2>분류 등록</h2>
 
-<form name="faqlist" id="faqlist" method="post" action="./help/help_faq_group_update.php" onsubmit="return faqlist_submit(this);">
+<form name="faqcategorylist" id="faqcategorylist" method="post">
 <input type="hidden" name="q1" value="code=faq_group">
 <input type="hidden" name="page" value="1">
 
@@ -60,7 +93,7 @@ pageEncoding="UTF-8"%>
 </div>
 <div class="local_frm01">
 	<input type="submit" name="act_button" value="선택수정" class="btn_lsmall bx-white" onclick="document.pressed=this.value">
-<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="document.pressed=this.value"></div>
+<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="multiEdit(); return false;"></div>
 <div class="tbl_head01">
 	<table>
 	<colgroup>
@@ -90,7 +123,7 @@ pageEncoding="UTF-8"%>
 						<td>
 							<input type="hidden" name="faq_no" value="${ item.faq_no }">
 							<label for="chk_0" class="sound_only">${ item.faq_classified }</label>
-							<input type="checkbox" name="chk[]" value="0" id="chk_0">
+							<input type="checkbox" name="chk[]" value="${ item.faq_classified }" id="chk_0">
 						</td>
 						<td>${ lists.size() - loop.index }</td>
 						<td class="tal"><input type="text" name="faq_classified" value="${ item.faq_classified }" class="frm_input"></td>

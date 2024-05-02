@@ -145,15 +145,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="productWrite"
-<<<<<<< HEAD
-	parameterType="com.winevillage.winevillage.product.ProductDTO">
-	INSERT INTO product (productNo, productCode, productName, productName_En, state, productInfo, productImg,
-		fullPrice, discountPrice, stock, discountRate, wine, country, grapeVariety, alcohol, body,
-		acidity, tannins, sweetNess)
-	VALUES (product_seq.nextval, #{productCode}, #{productName}, #{productName_En}, #{state}, #{productInfo}, #{productImg},
-	 	#{fullPrice}, #{discountPrice}, #{stock}, #{discountRate}, #{wine}, #{country}, #{grapeVariety}, #{alcohol}, #{body},
-	 	#{acidity}, #{tannins}, #{sweetNess})
-=======
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		INSERT INTO product (productNo, productCode,
 		productName, productInfo,
@@ -171,7 +162,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{grapeVariety}, #{alcohol}, #{body},
 		#{acidity}, #{tannins},
 		#{sweetNess})
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 	</insert>
 
 	<select id="productView"
@@ -181,15 +171,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<update id="productEdit"
-<<<<<<< HEAD
-	parameterType="com.winevillage.winevillage.product.ProductDTO">
-	UPDATE product SET
-		productCode=#{productCode}, productName=#{productName}, productName_En=#{productName_En}, state=#{state}, productInfo=#{productInfo}, 
-		productImg=#{productImg}, fullPrice=#{fullPrice}, discountPrice=#{discountPrice}, stock=#{stock}, 
-		discountRate=#{discountRate}, wine=#{wine}, country=#{country}, grapeVariety=#{grapeVariety}, alcohol=#{alcohol}, body=#{body},
-	 	acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
-	 	WHERE productNo=#{productNo}
-=======
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		UPDATE product SET
 		productCode=#{productCode},
@@ -206,16 +187,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
 		WHERE
 		productNo=#{productNo}
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 	</update>
 
-<<<<<<< HEAD
-	<delete id="productDelete"
-	parameterType="com.winevillage.winevillage.product.ProductDTO">
-=======
 	<delete id="delete"
-		parameterType="com.winevillage.winevillage.product.ProductDTO">>
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
+		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		DELETE FROM product WHERE productNo=#{productNo}
 	</delete>
 </mapper>

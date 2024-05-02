@@ -107,6 +107,26 @@ public class FAQController {
 		return "redirect:admin_customer_faq_category.do";
 	}
 	
+	@GetMapping("/admin_customer_faq_category_edit.do")
+	public String faqCategoryEditGet(Model model, FAQDTO faqDTO) {
+		faqDTO = dao.faqView(faqDTO);
+		model.addAttribute("faqDTO", faqDTO);
+		return "admin/admin_customer/admin_customer_faq_category_edit";
+	}
+	
+	@PostMapping("/admin_customer_faq_category_edit.do")
+	public String faqCategoryEditPost(FAQDTO faqDTO, Model model) {
+		try {
+			int result = dao.categoryEdit(faqDTO);
+			System.out.println("수정결과:" + result);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("수정 실패");
+		}
+
+		return "redirect:admin_customer_faq_category.do";
+	}
+	
 	@GetMapping("/admin_customer_faq_write.do")
 	public String faqWriteGet(Model model, ParameterDTO parameterDTO) {
 		List<String> category = dao.faqCategory(parameterDTO).stream().map

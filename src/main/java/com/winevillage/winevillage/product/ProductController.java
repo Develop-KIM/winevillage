@@ -122,7 +122,7 @@ public class ProductController {
 	
 	@PostMapping("/admin_product_delete.do")
 	public String productDeletePost(ProductDTO productDTO) {
-		int result = dao.productDelete(productDTO);
+		int result = dao.delete(productDTO);
 			if(result==1) {
 				System.out.println("삭제되었습니다.");
 			} else {

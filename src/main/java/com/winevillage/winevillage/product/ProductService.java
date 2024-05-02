@@ -19,11 +19,6 @@ public interface ProductService {
 	public ProductDTO productView(ProductDTO productDTO);
 
 	public int productEdit(ProductDTO productDTO);
-<<<<<<< HEAD
-	
-	public int productDelete(ProductDTO productDTO);
-=======
 
 	public int delete(ProductDTO productNo);
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 }
