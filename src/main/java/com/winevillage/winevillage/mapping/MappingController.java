@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MappingController {
 
-	// order
-	@GetMapping("/order_write.do")
-	public String order_write() {
-		return "order/order_write";
-	}
+//	// order
+//	@GetMapping("/order_write.do")
+//	public String order_write() {
+//		return "order/order_write";
+//	}
 
 	@GetMapping("/return_order_list.do")
 	public String return_order_list() {
@@ -105,75 +105,6 @@ public class MappingController {
 	}
 	
 	// product
-//	@GetMapping("/list_wine.do")
-//	public String list_wine() {
-//		return "shop/wine/product_list_Wine";
-//	}
-
-	@GetMapping("/list_wine_red.do")
-	public String list_red() {
-		return "shop/wine/product_list_Red";
-	}
-
-//	@GetMapping("/list_wine_white.do")
-//	public String list_white() {
-//		return "shop/wine/product_list_White";
-//	}
-
-	@GetMapping("/list_wine_rose.do")
-	public String list_rose() {
-		return "shop/wine/product_list_Rose";
-	}
-
-	@GetMapping("/list_wine_sparkling.do")
-	public String list_sparkling() {
-		return "shop/wine/product_list_Sparkling";
-	}
-
-	@GetMapping("/list_wine_fortified.do")
-	public String list_fortified() {
-		return "shop/wine/product_list_Fortified";
-	}
-
-	@GetMapping("/list_wine_fra.do")
-	public String list_fra() {
-		return "shop/wine/country/product_list_fra";
-	}
-
-	@GetMapping("/list_wine_ita.do")
-	public String list_ita() {
-		return "shop/wine/country/product_list_ita";
-	}
-
-	@GetMapping("/list_wine_esp.do")
-	public String list_esp() {
-		return "shop/wine/country/product_list_esp";
-	}
-
-	@GetMapping("/list_wine_deu.do")
-	public String list_deu() {
-		return "shop/wine/country/product_list_deu";
-	}
-
-	@GetMapping("/list_wine_usa.do")
-	public String list_usa() {
-		return "shop/wine/country/product_list_usa";
-	}
-
-	@GetMapping("/list_wine_chl.do")
-	public String list_chl() {
-		return "shop/wine/country/product_list_chl";
-	}
-
-	@GetMapping("/list_wine_arg.do")
-	public String list_arg() {
-		return "shop/wine/country/product_list_arg";
-	}
-
-	@GetMapping("/list_wine_aus.do")
-	public String list_aus() {
-		return "shop/wine/country/product_list_aus";
-	}
 
 	@GetMapping("/list_other.do")
 	public String list_other() {

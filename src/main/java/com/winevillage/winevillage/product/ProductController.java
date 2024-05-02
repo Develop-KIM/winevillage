@@ -28,7 +28,7 @@ public class ProductController {
 		
 		int totalCount = dao.getTotalCount(parameterDTO);
 		int pageSize = 10;
-		int blockPage = 5;
+		int blockPage = 10;
 		int pageNum = (req.getParameter("pageNum")==null || req.getParameter("pageNum").equals(""))
 				? 1 : Integer.parseInt(req.getParameter("pageNum"));
 		int start = (pageNum-1) * pageSize + 1;
@@ -120,10 +120,15 @@ public class ProductController {
 		return "redirect:admin_product_lists.do";
 	}
 	
-	@PostMapping("/delete.do")
+	@PostMapping("/admin_product_delete.do")
 	public String productDeletePost(ProductDTO productDTO) {
-		int result = dao.delete(productDTO);
-		if(result==1) System.out.println("삭제되었습니다.");
+		int result = dao.productDelete(productDTO);
+			if(result==1) {
+				System.out.println("삭제되었습니다.");
+			} else {
+				System.out.println("삭제실패");
+				System.out.println("result? "+result);
+			}
 		return "redirect:admin_product_lists.do";
 	}
 }

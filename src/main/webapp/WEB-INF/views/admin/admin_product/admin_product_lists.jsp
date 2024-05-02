@@ -1,12 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
 <!doctype html>
 <html lang="ko">
 <head>
 <body>
 <%@ include file="../admin_common/admin_header.jsp"%>
 <script src="js/admin_product.js"></script>
+<script>
+/* function deletePost(productNo) {
+	var confirmed = confirm("정말로 삭제하시겠습니까?");
+	if(confirmed) {
+		var form = document.productList;
+		form.method = "post";
+		form.action = "admin_product_delete.do";
+		form.submit();
+	}
+} */
+function deletePost(productNo) {
+	 if (!isNaN(productNo)) {
+	        var confirmed = confirm("정말로 삭제하시겠습니까?");
+	        if (confirmed) {
+	            var form = document.createElement("form");
+	            form.setAttribute("method", "post");
+	            form.setAttribute("action", "admin_product_delete.do");
+
+	            var input = document.createElement("input");
+	            input.setAttribute("type", "hidden");
+	            input.setAttribute("name", "productNo");
+	            input.setAttribute("value", parseInt(productNo)); // 문자열을 숫자로 변환하여 설정
+
+	            form.appendChild(input);
+	            document.body.appendChild(form);
+
+	            form.submit();
+	        }
+	    } else {
+	        alert("유효하지 않은 상품 번호입니다.");
+	    }
+}
+</script>
 <div id="wrapper">
 	
 <div id="snb">
@@ -150,68 +184,8 @@ pageEncoding="UTF-8"%>
 											<option value="기타">기타</option>
 										</select>
 										</div>
-										<script>
-											$(function () {
-												$("#sel_ca1").multi_select_box("#sel_ca", 5, tb_admin_url + "/ajax.category_select_json.php", "=카테고리선택=");
-												$("#sel_ca2").multi_select_box("#sel_ca", 5, tb_admin_url + "/ajax.category_select_json.php", "=카테고리선택=");
-												$("#sel_ca3").multi_select_box("#sel_ca", 5, tb_admin_url + "/ajax.category_select_json.php", "=카테고리선택=");
-												$("#sel_ca4").multi_select_box("#sel_ca", 5, tb_admin_url + "/ajax.category_select_json.php", "=카테고리선택=");
-												$("#sel_ca5").multi_select_box("#sel_ca", 5, "", "=카테고리선택=");
-											});
-										</script>
 									</td>
 								</tr>
-								<!-- <tr>
-									<th scope="row">기간검색</th>
-									<td colspan="3">
-										<select name="q_date_field" id="q_date_field">
-											<option value="update_time">최근수정일</option>
-											<option value="reg_time">최초등록일</option>
-										</select>
-										<label for="fr_date" class="sound_only">시작일</label>
-										<input type="text" name="fr_date" value="" id="fr_date" class="frm_input w80" maxlength="10">
-										~
-										<label for="to_date" class="sound_only">종료일</label>
-										<input type="text" name="to_date" value="" id="to_date" class="frm_input w80" maxlength="10">
-										<span class="btn_group"><input type="button" onclick="search_date('fr_date','to_date',this.value);"
-												class="btn_small white" value="오늘"><input type="button"
-												onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="어제"><input
-												type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white"
-												value="일주일"><input type="button" onclick="search_date('fr_date','to_date',this.value);"
-												class="btn_small white" value="지난달"><input type="button"
-												onclick="search_date('fr_date','to_date',this.value);" class="btn_small white"
-												value="1개월"><input type="button" onclick="search_date('fr_date','to_date',this.value);"
-												class="btn_small white" value="3개월"><input type="button"
-												onclick="search_date('fr_date','to_date',this.value);" class="btn_small white"
-												value="전체"></span>
-									</td>
-								</tr> -->
-								<!-- <tr>
-									<th scope="row">상품재고</th>
-									<td>
-										<select name="q_stock_field" id="q_stock_field">
-											<option value="stock_qty">재고수량</option>
-											<option value="noti_qty">통보수량</option>
-										</select>
-										<label for="fr_stock" class="sound_only">재고수량 시작</label>
-										<input type="text" name="fr_stock" value="" id="fr_stock" class="frm_input" size="6"> 개 이상 ~
-										<label for="to_stock" class="sound_only">재고수량 끝</label>
-										<input type="text" name="to_stock" value="" id="to_stock" class="frm_input" size="6"> 개 이하
-									</td>
-									<th scope="row">상품가격</th>
-									<td>
-										<select name="q_price_field" id="q_price_field">
-											<option value="goods_price">판매가격</option>
-											<option value="supply_price">공급가격</option>
-											<option value="normal_price">시중가격</option>
-											<option value="gpoint">포인트</option>
-										</select>
-										<label for="fr_price" class="sound_only">상품가격 시작</label>
-										<input type="text" name="fr_price" value="" id="fr_price" class="frm_input" size="6"> 원 이상 ~
-										<label for="to_price" class="sound_only">상품가격 끝</label>
-										<input type="text" name="to_price" value="" id="to_price" class="frm_input" size="6"> 원 이하
-									</td>
-								</tr> -->
 							</tbody>
 						</table>
 					</div>
@@ -220,25 +194,19 @@ pageEncoding="UTF-8"%>
 						<input type="button" value="초기화" id="frmRest" class="btn_medium grey">
 					</div>
 				</form>
+				<div class="local_ov mart30">
+					전체 : <b class="fc_red">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</b> 건 조회
+					<span class="ov_a">
+					</span>
+				</div>
+				<form id="productList" name="productList">
+<!-- 					<input type="hidden" name="q1" value="code=list">
+					<input type="hidden" name="page" value="1"> -->
 
-				<form name="fgoodslist" id="fgoodslist" method="post" action=""
-					onsubmit="return fgoodslist_submit(this);">
-					<input type="hidden" name="q1" value="code=list">
-					<input type="hidden" name="page" value="1">
-
-					<div class="local_ov mart30">
-						전체 : <b class="fc_red">10</b> 건 조회
-						<span class="ov_a">
-							<select id="page_rows" onchange="location='admin_product_lists.do?pageNum='+this.value;">
-								<option value="30" selected="selected">10줄 정렬</option>
-								<option value="50">30줄 정렬</option>
-								<option value="100">50줄 정렬</option>
-							</select>
-						</span>
-					</div>
 					<div class="local_frm01">
-						<input type="button" name="act_button" value="선택삭제" class="btn_lsmall bx-white"
-							onclick="location.href='admin_product_delete.do?procuct=${product.productNo}'">
+						<%-- <a href="admin_product_delete.do?=productNo${item.productNo }" value="선택삭제" class="btn_lsmall bx-white">선택삭제 --%>
+						<%-- <a href="#" onclick="deletePost('${item.productNo}');" class="btn_small">삭제</a> --%>
+						<a onclick="deleteSelectedProducts('${product.productNo}');" class="btn_lsmall bx-white">선택삭제</a>
 							<!-- onclick="document.pressed=this.value" -->
 						<a href="./goods/goods_list_excel.php?code=list" class="btn_lsmall bx-white"><i
 								class="fa fa-file-excel-o"></i> 엑셀저장</a>
@@ -251,6 +219,7 @@ pageEncoding="UTF-8"%>
 								<col class="w50">
 								<col class="w50">
 								<col class="w60">
+								<col class="w80">
 								<col class="w80">
 								<col class="w180">
 								<col class="w180">
@@ -271,20 +240,20 @@ pageEncoding="UTF-8"%>
 									<th scope="col" rowspan="2">번호</th>
 									<th scope="col" rowspan="2">이미지</th>
 									<th scope="col" rowspan="2">상품코드</th>
-									<th scope="col" colspan="3">상품정보</th>
+									<th scope="col" colspan="4">상품정보</th>
 									<th scope="col" rowspan="2">등록일자</th>
 									<th scope="col" rowspan="2" colspan="1">재고</th>
-									<th scope="col" colspan="4" class="th_bg">가격정보</th>
-									<th scope="col" colspan="1" rowspan="2">관리</th>
+									<th scope="col" colspan="3" class="th_bg">가격정보</th>
+									<th scope="col" colspan="2" rowspan="2">관리</th>
 								</tr>
 								<tr class="rows">
+									<th scope="col">구분</th>
 									<th scope="col">상품명</th>
 									<th scope="col">카테고리</th>
 									<th scope="col">알코올/바디/산도/탄닌/당도</th>
 									<th scope="col" colspan="1" class="th_bg"><p>판매가</p></th>
 									<th scope="col" colspan="1" class="th_bg"><p>할인율</p></th>
 									<th scope="col" colspan="1" class="th_bg"><p>할인가</p></th>
-									<th scope="col" colspan="1" class="th_bg"><p>포인트</p></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -299,17 +268,18 @@ pageEncoding="UTF-8"%>
 								<c:otherwise>
 									<tbody>
 									<c:forEach items="${ lists }" var="item" varStatus="loop">
-								<tr class="list0">
+								<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
 									<td rowspan="1">
-										<input type="hidden" name="gs_id[0]" value="21">
-										<input type="checkbox" name="chk[]" value="0">
+										<%-- <input type="hidden" name="productNo" value="${item.productNo }"> --%>
+										<input type="checkbox" name="productNo" value="${item.productNo }">
 									</td>
 									<td rowspan="1">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
 									<td rowspan="1"><a href="/"> <img
 												src="../Uploads/product/200/${item.productImg }"
 												width="40" height="40"> </a></td>
  									<td>${item.productCode}</td>
-									<td colspan="1" class="tal">${item.productName }</td>
+ 									<td>${item.state}</td>
+									<td colspan="1" class="tal">${item.productName }<br/>${item.productName_En }</td>
 									<td colspan="1" class="tal">${item.wine}/${item.country}/${item.grapeVariety }</td>
 									<td colspan="1" class="tal">${item.alcohol}/${item.body}/${item.acidity }/${item.tannins }/${item.sweetNess }</td>
 									<td>${item.registerDate }</td>
@@ -317,7 +287,9 @@ pageEncoding="UTF-8"%>
 									<td rowspan="1" colspan="1" class="tar">${item.fullPrice}</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountRate }%</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
-									<td rowspan="1" colspan="1"><a href="admin_product_delete.do?productNo=${item.productNo }" class="btn_small">삭제</a></td>
+									<%-- <input type="hid-den" name="productNo" value="${item.productNo }"> --%>
+									<!-- <td rowspan="1" colspan="1"><button type="submit" class="btn_small">삭제</button></td> -->
+									<td rowspan="1" colspan="1"><a href="#" onclick="deletePost('${item.productNo}');" class="btn_small">삭제</a></td>
 									<td rowspan="1" colspan="1"><a href="admin_product_edit.do?productNo=${item.productNo }" class="btn_small">수정</a>
 									</td>
 								</tr>
@@ -334,8 +306,8 @@ pageEncoding="UTF-8"%>
 						${ pagingImg }
 					</p>
 				</div>
-				<script>
-					function fgoodslist_submit(f) {
+<!-- 				<script>
+					function productlist_submit(f) {
 						if (!is_checked("chk[]")) {
 							alert(document.pressed + " 하실 항목을 하나 이상 선택하세요.");
 							return false;
@@ -354,7 +326,7 @@ pageEncoding="UTF-8"%>
 						// 날짜 검색 : TODAY MAX값으로 인식 (maxDate: "+0d")를 삭제하면 MAX값 해제
 						$("#fr_date,#to_date").datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", showButtonPanel: true, yearRange: "c-99:c+99", maxDate: "+0d" });
 					});
-				</script>
+				</script> -->
 			</div>
 
 		</div>
