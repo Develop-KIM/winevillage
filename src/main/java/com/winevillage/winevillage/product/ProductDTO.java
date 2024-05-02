@@ -10,10 +10,7 @@ public class ProductDTO {
 	private String productCode;
 	private String productName;
 	private String productName_En;
-<<<<<<< HEAD
-=======
 	private String state;
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 	private String productInfo;
     private String productImg;
 	private int fullPrice;
