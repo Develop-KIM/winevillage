@@ -3,6 +3,10 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 <mapper
    namespace="com.winevillage.winevillage.product.ProductService">
    <select id="getTotalCount" resultType="int"
@@ -13,6 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </if>
    </select>
 
+<<<<<<< HEAD
+=======
+	<delete id="productDelete"
+	parameterType="com.winevillage.winevillage.product.ProductDTO">
+		DELETE FROM product WHERE productNo=#{productNo}
+	</delete>
+>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
    <select id="listPage"
       resultType="com.winevillage.winevillage.product.ProductDTO"
       parameterType="com.winevillage.winevillage.product.ParameterDTO">
@@ -189,10 +200,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       productNo=#{productNo}
    </update>
 
+<<<<<<< HEAD
    <delete id="delete"
       parameterType="com.winevillage.winevillage.product.ProductDTO">
       DELETE FROM product WHERE productNo=#{productNo}
    </delete>
+=======
+   
+>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 </mapper>
 
 
