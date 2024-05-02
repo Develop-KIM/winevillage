@@ -88,9 +88,11 @@
 					</div>
 					<ul class="n_prd_list" id="product_ul">
 						<c:forEach items="${productList }" var="row" varStatus="loop"> 
+						<c:set var="wineStyles"
+							   value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
 						<li>
 						<div class="item">
-							<div class="main_img" style="background:#E0D8EA">
+							<div class="main_img" style="background: ${wineStyles[row.wine]};">
 								<a href="/shop/product/product_view?product_cd=03R032" class="prd_img table_box">
 								<picture>
 								<!--[if IE 9]><video style="display: none;"><![endif]-->
@@ -118,15 +120,36 @@
 										${ row.productInfo }
 									</p>
 								</div>
-								<div class="cate_label">
-									<span style="background:#E0D8EA">${row.wine }</span><span style="background:#E0D8EA">${row.country }</span><span style="background:#E0D8EA">${row.grapeVariety }</span>
+								<div class="cate_label" style="height: 23.3px">
+									<c:if test="${not empty row.wine }">
+										<span style="background: ${wineStyles[row.wine]};">${row.wine }</span>
+									</c:if>
+									<c:if test="${not empty row.country }">
+										<span style="background: ${wineStyles[row.wine]};">${row.country }</span>
+									</c:if>
+									<c:if test="${not empty row.grapeVariety }">
+										<span style="background: ${wineStyles[row.wine]};">${row.grapeVariety }</span>
+									</c:if>
 								</div>
 								<div class="price_area">
 									<p class="price">
+										<c:if test="${row.discountRate > 0 }">
 										<!-- 할인가 -->
-										<em class="discount">${row.discountRate }%</em>
-										<del>${row.fullPrice }원</del>
-										<ins>${row.discountPrice }원</ins>
+											<em class="discount">${row.discountRate }%</em>
+											<del><fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>원</del>
+											<ins>
+												<script>
+											        var price = ${(row.fullPrice - (row.fullPrice * row.discountRate / 100))};
+											        var DiscountPrice = Math.floor(price / 100) * 100;
+											        document.write(DiscountPrice.toLocaleString() + "원");
+										    	</script>
+									    	</ins>
+								    	</c:if>
+								    	<c:if test="${product.discountRate == 0}">
+												<ins class="out">매장문의</ins>
+												<del class="out out_price"
+														style="text-decoration: none; font-weight: 700">${product.fullPrice }원</del>
+										</c:if>
 									</p>
 								</div>
 							</div>
