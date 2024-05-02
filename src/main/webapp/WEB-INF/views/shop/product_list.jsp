@@ -162,12 +162,13 @@
 											<p class="price">
 												<c:if test="${product.discountRate > 0 }">
 													<em class="discount">${product.discountRate }%</em>
-													<del>${product.fullPrice }원</del>
+													<del><fmt:formatNumber value="${product.fullPrice }" pattern="#,##0"/>원</del>
 													<ins>
-														<fmt:formatNumber
-															value="${(product.fullPrice - (product.fullPrice * product.discountRate / 100))}"
-															type="number" />
-														원
+													    <script>
+													        var price = ${(product.fullPrice - (product.fullPrice * product.discountRate / 100))};
+													        var DiscountPrice = Math.floor(price / 100) * 100;
+													        document.write(DiscountPrice.toLocaleString() + "원");
+													    </script>
 													</ins>
 												</c:if>
 												<c:if test="${product.discountRate == 0}">
