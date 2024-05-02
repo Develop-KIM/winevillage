@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper 파일을 구성하기 위한 Doctype 설정 -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winevillage.winevillage.search.ISearchService">
+
+ <select id="select" parameterType="com.winevillage.winevillage.search.SearchDTO" resultType="com.winevillage.winevillage.search.SearchDTO">
+	SELECT * FROM product
+	<where>
+		<if test="searchKeyword != null and !searchKeyword.isEmpty()">
+			AND (
+			productName LIKE '%' || #{searchKeyword} || '%'
+			OR LOWER(productName_EN) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+			OR productInfo LIKE '%' || #{searchKeyword} || '%'
+			)
+		</if>
+		<if test="searchField_wine != null and !searchField_wine.isEmpty()">
+	         AND (
+	         <foreach item="item" collection="searchField_wine" open="(" separator="OR" close=")">
+	             wine = #{item}
+	         </foreach>
+	         )
+  		</if>
+		<if test="searchField_country != null and !searchField_country.isEmpty()">
+	         AND (
+	         <foreach item="item" collection="searchField_country" open="(" separator="OR" close=")">
+	             country = #{item}
+	         </foreach>
+	         )
+  		</if>
+		<if test="searchField_grapeVariety != null and !searchField_grapeVariety.isEmpty()">
+	         AND (
+	         <foreach item="item" collection="searchField_grapeVariety" open="(" separator="OR" close=")">
+	             grapeVariety = #{item}
+	         </foreach>
+	         )
+  		</if>
+		<if test="priceRange != null and priceRange != ''">
+               <choose>
+                   <when test="priceRange == '~30000'">
+                       AND discountPrice &lt;= 30000
+                   </when>
+                   <when test="priceRange == '30000~60000'">
+                       AND discountPrice BETWEEN 30000 AND 60000
+                   </when>
+                   <when test="priceRange == '60000~100000'">
+                       AND discountPrice BETWEEN 60000 AND 100000
+                   </when>
+                   <when test="priceRange == '100000~'">
+                       AND discountPrice &gt;= 100000
+                   </when>
+               </choose>
+           </if>
+	</where>
+</select>
+
+<select id="searchTotalCount" resultType="int" parameterType="com.winevillage.winevillage.search.SearchDTO">
+	    SELECT COUNT(*) FROM product
+	    <where>
+	           <if test="searchField_wine != null and !searchField_wine.isEmpty()">
+			         AND (
+			         <foreach item="item" collection="searchField_wine" open="(" separator="OR" close=")">
+			             wine = #{item}
+			         </foreach>
+			         )
+	  			</if>
+				<if test="searchField_country != null and !searchField_country.isEmpty()">
+			         AND (
+			         <foreach item="item" collection="searchField_country" open="(" separator="OR" close=")">
+			             country = #{item}
+			         </foreach>
+			         )
+	  			</if>
+				<if test="searchField_grapeVariety != null and !searchField_grapeVariety.isEmpty()">
+			         AND (
+			         <foreach item="item" collection="searchField_grapeVariety" open="(" separator="OR" close=")">
+			             grapeVariety = #{item}
+			         </foreach>
+		      		   )
+	  			</if>
+	            <if test="priceRange != null and priceRange != ''">
+	                <choose>
+	                    <when test="priceRange == '~30000'">
+	                        AND discountPrice &lt;= 30000
+	                    </when>
+	                    <when test="priceRange == '30000~60000'">
+	                        AND discountPrice BETWEEN 30000 AND 60000
+	                    </when>
+	                    <when test="priceRange == '60000~100000'">
+	                        AND discountPrice BETWEEN 60000 AND 100000
+	                    </when>
+	                    <when test="priceRange == '100000~'">
+	                        AND discountPrice &gt;= 100000
+	                    </when>
+	                </choose>
+	            </if>
+	    </where>
+	</select>
+	<select id="searchTotalCountKeyword" resultType="int" parameterType="com.winevillage.winevillage.search.SearchDTO">
+		SELECT COUNT(*) FROM product
+		<where>
+			<if test="searchKeyword != null and !searchKeyword.isEmpty()">
+				AND (
+				productName LIKE '%' || #{searchKeyword} || '%'
+				OR LOWER(productName_EN) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+				OR productInfo LIKE '%' || #{searchKeyword} || '%'
+				)
+			</if>
+		</where>
+	</select>
+</mapper>
+	
+
+
+
+
+
+
+
+
+
+
+
+
