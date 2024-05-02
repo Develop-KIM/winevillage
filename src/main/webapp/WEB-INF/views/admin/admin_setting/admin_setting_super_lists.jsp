@@ -33,7 +33,7 @@ pageEncoding="UTF-8"%>
 				<h1>관리자 목록</h1>
 
 				<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-				<script>
+<!-- 				<script>
 					jQuery(function ($) {
 						$.datepicker.regional["ko"] = {
 							closeText: "닫기",
@@ -54,7 +54,7 @@ pageEncoding="UTF-8"%>
 						};
 						$.datepicker.setDefaults($.datepicker.regional["ko"]);
 					});
-				</script>
+				</script> -->
 				<h2>관리자 검색</h2>
 				<form name="fsearch" id="fsearch" method="get">
 					<input type="hidden" name="code" value="list">
