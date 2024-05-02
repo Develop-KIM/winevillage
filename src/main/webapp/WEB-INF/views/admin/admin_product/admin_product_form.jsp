@@ -164,8 +164,7 @@ pageEncoding="UTF-8"%>
 		<th scope="row">구분</th>
 		<div class="sub_frm01">
 			<td>
-				<label><input type="radio" name="state" checked="checked" value=""> 없음</label>
-				<label><input type="radio" name="state" value="value"> value</label>
+				<label><input id="wine_category_sub1" type="radio" name="state" checked="checked" value="value"> value</label>
 				<label><input type="radio" name="state" value="exclusive"> exclusive</label>
 			</td>
 		</div>

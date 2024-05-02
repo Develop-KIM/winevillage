@@ -278,7 +278,12 @@ function deletePost(productNo) {
 												src="../Uploads/product/200/${item.productImg }"
 												width="40" height="40"> </a></td>
  									<td>${item.productCode}</td>
+ 									<c:if test="${item.state eq null }">
+									<td>other</td>
+									</c:if>
+									<c:if test="${item.state ne null }">
  									<td>${item.state}</td>
+ 									</c:if>
 									<td colspan="1" class="tal">${item.productName }<br/>${item.productName_En }</td>
 									<td colspan="1" class="tal">${item.wine}/${item.country}/${item.grapeVariety }</td>
 									<td colspan="1" class="tal">${item.alcohol}/${item.body}/${item.acidity }/${item.tannins }/${item.sweetNess }</td>

@@ -20,6 +20,8 @@ $(function() {
 	
 	$('.wine_choice').on('click', function() {
 		$('.wine_select').show();
+		$('#wine_category_sub1').val("value").change();
+		alert($('#wine_category_sub1').val());
 	})
 	
 	$('.other_choice').on('click', function() {
@@ -27,7 +29,9 @@ $(function() {
 		$('#wine_category1 option:selected').val("");
 		$('#wine_category2 option:selected').val("");
 		$('#wine_category3 option:selected').val("");
-		$('#wine_category_sub').prop("checked",false);
+		
+		$('#wine_category_sub1').val("").change();
+		alert($('#wine_category_sub1').val());
 	})
 	
 /*	$('.wine_choice').on('click', function() {

@@ -152,7 +152,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <insert id="productWrite"
       parameterType="com.winevillage.winevillage.product.ProductDTO">
       INSERT INTO product (productNo, productCode,
-      productName, productInfo,
+      productName, productName_En, state, productInfo,
       productImg,
       fullPrice, discountPrice, stock,
       discountRate, wine,
@@ -160,7 +160,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       acidity,
       tannins, sweetNess)
       VALUES (product_seq.nextval, #{productCode},
-      #{productName},
+      #{productName}, #{productName_En}, #{state},
       #{productInfo}, #{productImg},
       #{fullPrice},
       #{discountPrice}, #{stock}, #{discountRate}, #{wine}, #{country},
@@ -180,6 +180,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       UPDATE product SET
       productCode=#{productCode},
       productName=#{productName},
+      productName=#{productName_En},
+      state=#{state},
       productInfo=#{productInfo},
       productImg=#{productImg},
       fullPrice=#{fullPrice},
