@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MappingController {
 
-	// order
-	@GetMapping("/order_write.do")
-	public String order_write() {
-		return "order/order_write";
-	}
+//	// order
+//	@GetMapping("/order_write.do")
+//	public String order_write() {
+//		return "order/order_write";
+//	}
 
 	@GetMapping("/return_order_list.do")
 	public String return_order_list() {
