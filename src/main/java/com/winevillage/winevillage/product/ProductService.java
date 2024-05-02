@@ -8,11 +8,11 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ProductService {
 	public int getTotalCount(ParameterDTO parameterDTO);
 
-	public int Wine_count(ParameterDTO parameterDTO);
+	public int ProductCount(ParameterDTO parameterDTO);
 
 	public ArrayList<ProductDTO> listPage(ParameterDTO parameterDTO);
 
-	public ArrayList<ProductDTO> listWine(ParameterDTO parameterDTO);
+	public ArrayList<ProductDTO> listProduct(ParameterDTO parameterDTO);
 
 	public int productWrite(ProductDTO productDTO);
 

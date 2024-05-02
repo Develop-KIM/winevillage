@@ -1,17 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>WINE VILLAGE | WINE</title>
+<script>
+	function state_list(value) {
+
+		var clickedId = "state_li_" + value;
+
+		var listItems = document.querySelectorAll('.state_li');
+		listItems.forEach(function(item) {
+			item.classList.remove('on');
+		});
+
+		var clickedItem = document.getElementById(clickedId);
+		clickedItem.classList.add('on');
+	}
+</script>
 </head>
 
 <body>
-	<%@ include file="../../common/common.jsp"%>
+	<%@ include file="../common/common.jsp"%>
 	<div class="wrap">
 		<div class="content product product_lists_page test">
 			<div class="product_lists_wrap">
@@ -43,6 +54,9 @@
 							<c:when test="${category == 'aus'}">
 								<h2>호주</h2>
 							</c:when>
+							<c:when test="${category == 'acc' }">
+								<h2>ACCESSORY</h2>
+							</c:when>
 							<c:when test="${not empty uppercaseCategory }">
 								<h2>${uppercaseCategory }</h2>
 							</c:when>
@@ -52,8 +66,7 @@
 						</c:choose>
 						<div class="line_map">
 							<ul>
-								<li onclick="location.href='../main.html'"
-									style="cursor: pointer;">HOME</li>
+								<li onclick="location.href='/main.do'" style="cursor: pointer;">HOME</li>
 								<li
 									onclick="location.href='product_listsf694.html?sh_category1_cd=10000&amp;sh_category2_cd=&amp;sh_category3_cd='"
 									style="cursor: pointer;" id="cate_txt">ALL</li>
@@ -61,13 +74,13 @@
 						</div>
 					</div>
 					<div class="tab_area prd_tab_area tab3">
-						<ul>
+						<ul
+							style="height: ${category == 'other' || category == 'acc' ? '0' : 'auto'};">
 							<li class="state_li on" id="state_li_1"><a
-								href="javascript:void(0);" onclick="state_list('1');">VALUE
-							</a></li>
-							<li class="state_li " id="state_li_5"><a
+								href="javascript:void(0);" onclick="state_list('1');">VALUE</a></li>
+							<li class="state_li" id="state_li_5"><a
 								href="javascript:void(0);" onclick="state_list('5');">EXCLUSIVE</a></li>
-							<li class="state_li " id="state_li_all"><a
+							<li class="state_li" id="state_li_all"><a
 								href="javascript:void(0);" onclick="state_list('all');">ALL</a></li>
 						</ul>
 
@@ -79,12 +92,12 @@
 					</div>
 				</div>
 
-				<%@ include file="../../common/search.jsp"%>
+				<%@ include file="../common/search.jsp"%>
 
 				<div class="prd_list_area">
 					<div class="search_result">
 						<div class="result_area">
-							<p class="result" id="total_count_text">${maps.wineCount}개의
+							<p class="result" id="total_count_text">${maps.ProductCount}개의
 								상품</p>
 						</div>
 
@@ -100,18 +113,14 @@
 					<ul class="n_prd_list" id="product_ul">
 						<c:forEach items="${lists }" var="product" varStatus="loop">
 							<c:set var="category" value="${category }" />
+							<c:set var="wineStyles"
+								value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
 							<li>
 								<div class="item">
 									<div class="main_img"
-										style="<c:choose>
-								   			 <c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
-   											 <c:when test="${product.wine eq '화이트'}">background: #F6EC9C</c:when>
-   											 <c:when test="${product.wine eq '로제'}">background: #EEC1CC</c:when>
-   											 <c:when test="${product.wine eq '스파클링'}">background: #E0EBF8</c:when>
-   											 <c:when test="${product.wine eq '주정강화'}">background: #E1D5CA</c:when>
-   											 <c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
-										</c:choose>">
-										<a href="product_view9f82.html?product_cd=03T999"
+										style="background: ${wineStyles[product.wine]};">
+										<a
+											href="/product_view.do?category=${category }&productNo=${product.productNo}"
 											class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
 											<source srcset="/uploads/product/200/${product.productImg }"
 												media="(min-width:1024px)">
@@ -139,50 +148,15 @@
 											<p class="prd_info">${product.productInfo }</p>
 										</div>
 										<div class="cate_label" style="height: 23.3px">
-											<span
-												style="<c:choose>
-							                 <c:when test="${not empty product.wine}">
-							                     <c:choose>
-							                         <c:when test="${product.wine eq '레드'}">background: #E0D8EA;</c:when>
-							                         <c:when test="${product.wine eq '화이트'}">background: #F6EC9C;</c:when>
-							                         <c:when test="${product.wine eq '로제'}">background: #EEC1CC;</c:when>
-							                         <c:when test="${product.wine eq '스파클링'}">background: #E0EBF8;</c:when>
-							                         <c:when test="${product.wine eq '주정강화'}">background: #E1D5CA;</c:when>
-							                         <c:when test="${product.wine eq '디저트'}">background: #D7F9E2;</c:when>
-							                     </c:choose>
-							                 </c:when>
-							                 <c:otherwise>display:none;</c:otherwise>
-							             </c:choose>">${product.wine }</span>
-
-											<span
-												style="<c:choose>
-											<c:when test="${not empty product.country }">
-												<c:choose>
-										   			<c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
-		   											<c:when test="${product.wine eq '화이트'}">background: #F6EC9C</c:when>
-		   											<c:when test="${product.wine eq '로제'}">background: #EEC1CC</c:when>
-		   											<c:when test="${product.wine eq '스파클링'}">background: #E0EBF8</c:when>
-		   											<c:when test="${product.wine eq '주정강화'}">background: #E1D5CA</c:when>
-		   											<c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
-		   										</c:choose>
-	   										</c:when>
-						                 	<c:otherwise>display:none;</c:otherwise>
-										</c:choose>">${product.country }</span>
-
-											<span
-												style="<c:choose>
-											<c:when test="${not empty product.grapeVariety }">
-												<c:choose>
-										   			<c:when test="${product.wine eq '레드'}">background: #E0D8EA</c:when>
-		   											<c:when test="${product.wine eq '화이트'}">background: #F6EC9C</c:when>
-		   											<c:when test="${product.wine eq '로제'}">background: #EEC1CC</c:when>
-		   											<c:when test="${product.wine eq '스파클링'}">background: #E0EBF8</c:when>
-		   											<c:when test="${product.wine eq '주정강화'}">background: #E1D5CA</c:when>
-		   											<c:when test="${product.wine eq '디저트'}">background: #D7F9E2</c:when>
-	   											</c:choose>
-   											</c:when>
-						                 	<c:otherwise>display:none;</c:otherwise>
-										</c:choose>">${product.grapeVariety }</span>
+											<c:if test="${not empty product.wine }">
+												<span style="background: ${wineStyles[product.wine]};">${product.wine }</span>
+											</c:if>
+											<c:if test="${not empty product.country }">
+												<span style="background: ${wineStyles[product.wine]};">${product.country }</span>
+											</c:if>
+											<c:if test="${not empty product.grapeVariety }">
+												<span style="background: ${wineStyles[product.wine]};">${product.grapeVariety }</span>
+											</c:if>
 										</div>
 										<div class="price_area">
 											<p class="price">
@@ -217,6 +191,6 @@
 			</div>
 		</div>
 	</div>
-	<%@ include file="../../common/footer.jsp"%>
+	<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

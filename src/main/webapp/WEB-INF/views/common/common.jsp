@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,49 +106,49 @@
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a href="list_wine.do">WINE</a>
+						<li class=""><a href="list_product.do?category=wine">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
 								        	<li class="ico_red"><a
-								        		href="list_wine.do?category=red">레드</a></li>
+								        		href="list_product.do?category=red">레드</a></li>
 								            <li class="ico_white"><a 
-								            	href="list_wine.do?category=white">화이트</a></li>
+								            	href="list_product.do?category=white">화이트</a></li>
 								            <li class="ico_rose"><a 
-								            	href="list_wine.do?category=rose">로제</a></li>
+								            	href="list_product.do?category=rose">로제</a></li>
 								            <li class="ico_sparkling"><a 
-								            	href="list_wine.do?category=sparkling">스파클링</a></li>
+								            	href="list_product.do?category=sparkling">스파클링</a></li>
 								            <li class="ico_spirits"><a 
-								            	href="list_wine.do?category=fortified">주정강화</a></li>
+								            	href="list_product.do?category=fortified">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
-												href="list_wine.do?category=fra">프랑스</a></li>
+												href="list_product.do?category=fra">프랑스</a></li>
 											<li class="ico_italia"><a
-												href="list_wine.do?category=ita">이탈리아</a></li>
+												href="list_product.do?category=ita">이탈리아</a></li>
 											<li class="ico_spain"><a
-												href="list_wine.do?category=esp">스페인</a></li>
+												href="list_product.do?category=esp">스페인</a></li>
 											<li class="ico_germ"><a
-												href="list_wine.do?category=deu">독일</a></li>
+												href="list_product.do?category=deu">독일</a></li>
 											<li class="ico_usa"><a
-												href="list_wine.do?category=usa">미국</a></li>
+												href="list_product.do?category=usa">미국</a></li>
 											<li class="ico_chile"><a
-												href="list_wine.do?category=chl">칠레</a></li>
+												href="list_product.do?category=chl">칠레</a></li>
 											<li class="ico_argentina"><a
-												href="list_wine.do?category=arg">아르헨티나</a></li>
+												href="list_product.do?category=arg">아르헨티나</a></li>
 											<li class="ico_aus"><a
-												href="list_wine.do?category=aus">호주</a></li>
+												href="list_product.do?category=aus">호주</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li class=""><a href="list_other.do">OTHER</a>
+						<li class=""><a href="list_product.do?category=other">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
 										<ul>
-											<li class="ico_acc"><a href="list_other_acc.do">액세서리</a>
+											<li class="ico_acc"><a href="list_product.do?category=acc">액세서리</a>
 											</li>
 										</ul>
 									</div>
