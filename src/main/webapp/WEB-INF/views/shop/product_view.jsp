@@ -192,12 +192,9 @@
 						<c:if test="${not empty productDTO.alcohol }">
 							<dt>알코올</dt>
 							<dd>
-								<span class="label"
-								style ="${product.alcohol == '낮음(~11%)' ? 'background-color: ' + wineStyles[product.wine] + ';' : ''}">낮음(~11%)</span> 
-								<span class="label"
-								style ="${product.alcohol == '중간(12~13%)' ? 'background-color: wineStyles[product.wine]' : ''}">중간(12~13%)</span>
-								<span class="label"
-								style ="${product.alcohol == '높음(14%+)' ? 'background-color: wineStyles[product.wine]' : ''}">높음(14%+)</span>
+								<span class="label">낮음(~11%)</span>
+								<span class="label">중간(12~13%)</span>
+								<span class="label">높음(14%+)</span>
 							</dd>
 						</c:if>
 						</dl>
