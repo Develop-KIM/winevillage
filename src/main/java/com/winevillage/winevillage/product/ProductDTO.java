@@ -6,10 +6,11 @@ import lombok.Data;
 
 @Data
 public class ProductDTO {
-	private String productNo;
+	private int productNo;
 	private String productCode;
 	private String productName;
 	private String productName_En;
+	private String state;
 	private String productInfo;
     private String productImg;
 	private int fullPrice;
@@ -24,7 +25,6 @@ public class ProductDTO {
 	private String acidity;
 	private String tannins;
 	private String sweetNess;
-	private String state;
 	private java.sql.Date registerDate;
 	
 }

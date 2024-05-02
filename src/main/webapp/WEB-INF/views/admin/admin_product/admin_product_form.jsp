@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -160,6 +161,16 @@ pageEncoding="UTF-8"%>
 	</colgroup>
 	<tbody>
 	<tr>
+		<th scope="row">구분</th>
+		<div class="sub_frm01">
+			<td>
+				<label><input type="radio" name="state" checked="checked" value=""> 없음</label>
+				<label><input type="radio" name="state" value="value"> value</label>
+				<label><input type="radio" name="state" value="exclusive"> exclusive</label>
+			</td>
+		</div>
+	</tr>
+	<tr>
 		<th scope="row">바디</th>
 		<div class="sub_frm01">
 			<td>
@@ -189,18 +200,18 @@ pageEncoding="UTF-8"%>
 		<th scope="row">타닌</th>
 		<div class="sub_frm01">
 			<td>
-				<label><input type="radio" name="tannins" checked="checked" value=""> 없음</label>
-				<label><input type="radio" name="tannins" value="약함"> 약함</label>
-				<label><input type="radio" name="tannins" value="약간약함"> 약간약함</label>
-				<label><input type="radio" name="tannins" value="중간"> 중간</label>
-				<label><input type="radio" name="tannins" value="약간강함"> 약간강함</label>
-				<label><input type="radio" name="tannins" value="강함"> 강함</label>
+				<label><input id="wine_category_sub" type="radio" name="tannins" checked="checked" value=""> 없음</label>
+				<label><input id="wine_category_sub" type="radio" name="tannins" value="약함"> 약함</label>
+				<label><input id="wine_category_sub" type="radio" name="tannins" value="약간약함"> 약간약함</label>
+				<label><input id="wine_category_sub" type="radio" name="tannins" value="중간"> 중간</label>
+				<label><input id="wine_category_sub" type="radio" name="tannins" value="약간강함"> 약간강함</label>
+				<label><input id="wine_category_sub" type="radio" name="tannins" value="강함"> 강함</label>
 			</td>
 		</div>
 	</tr>
 	<tr>
 		<th scope="row">알콜</th>
-		<div class="sub_frm01">
+		<div id="wine_category_sub" class="sub_frm01">
 			<td>
 				<label><input type="radio" name="alcohol" checked="checked" value=""> 없음</label>
 				<label><input type="radio" name="alcohol" value="낮음(~11%)"> 낮음(~11%)</label>
@@ -240,11 +251,16 @@ pageEncoding="UTF-8"%>
 		<th scope="row">상품코드</th>
 		<td>
 			<input type="text" name="productCode" value="" required class="required frm_input">
-					</td>
+					<button type="button">코드생성</button></td>
+					
 	</tr>
 	<tr>
 		<th scope="row">상품명</th>
 		<td><input type="text" name="productName" value="" required class="required frm_input" size="80"></td>
+	</tr>
+	<tr>
+		<th scope="row">영문명</th>
+		<td><input type="text" name="productName_En" value="" required class="required frm_input" size="80"></td>
 	</tr>
 
 		<tr class="item_img_fld">
@@ -277,21 +293,21 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">판매가격</th>
 		<td>
-			<input type="text" name="fullPrice" value="0" class="frm_input w80" > 원
+			<input type="text" required name="fullPrice" value="" class="frm_input fullPrice w80" > 원
 			<span class="fc_197 marl5">해당 상품의 기본 판매가격</span>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">할인율</th>
 		<td>
-			<input type="text" name="discountRate" value="0" class="frm_input w50"> %
+			<input type="text" name="discountRate" value="0" class="frm_input discountRate w50"> %
 			<span class="fc_197 marl5">할인비율(1% 단위로 표시)</span>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">할인가격</th>
 		<td>
-			<input type="text" name="discountPrice" value="0" class="frm_input w80" > 원
+			<input type="text" name="discountPrice" value="0" class="frm_input discountPrice w80" > 원
 			<span class="fc_197 marl5">할인 적용된 가격 (할인율 없을경우 비활성화)</span>
 		</td>
 	</tr>

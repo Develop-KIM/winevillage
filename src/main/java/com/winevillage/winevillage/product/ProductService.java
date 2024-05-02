@@ -19,6 +19,7 @@ public interface ProductService {
 	public ProductDTO productView(ProductDTO productDTO);
 
 	public int productEdit(ProductDTO productDTO);
+	
+	public int productDelete(ProductDTO productDTO);
 
-	public int delete(ProductDTO productNo);
 }
