@@ -149,6 +149,7 @@
 							</div>
 						</div>
 						<dl class="details">
+					    <c:if test="${not empty productDTO.sweetNess}">
 							<dt>당도</dt>
 							<dd>
 								<span class="label">드라이</span> 
@@ -157,6 +158,8 @@
 								<span class="label">미디움스윗</span>
 								<span class="label">스윗</span>
 							</dd>
+						</c:if>
+						<c:if test="${not empty productDTO.body }">
 							<dt>바디</dt>
 							<dd>
 								<span class="label">가벼움</span> 
@@ -165,6 +168,8 @@
 								<span class="label">약간 무거움</span>
 								<span class="label">무거움</span>
 							</dd>
+						</c:if>
+						<c:if test="${not empty productDTO.acidity }">
 							<dt>산도</dt>
 							<dd>
 								<span class="label">낮음</span> 
@@ -173,12 +178,28 @@
 								<span class="label">약간높음</span>
 								<span class="label">높음</span>
 							</dd>
+						</c:if>
+						<c:if test="${not empty productDTO.tannins }">
+							<dt>타닌</dt>
+							<dd>
+								<span class="label">약함</span>
+								<span class="label">약한약함</span>
+								<span class="label">중간</span>
+								<span class="label">약간강함</span>
+								<span class="label">강함</span>
+							</dd>
+						</c:if>
+						<c:if test="${not empty productDTO.alcohol }">
 							<dt>알코올</dt>
 							<dd>
-								<span class="label">낮음(~11%)</span> 
-								<span class="label">중간(12~13%)</span>
-								<span class="label">높음(14%+)</span>
+								<span class="label"
+								style ="${product.alcohol == '낮음(~11%)' ? 'background-color: ' + wineStyles[product.wine] + ';' : ''}">낮음(~11%)</span> 
+								<span class="label"
+								style ="${product.alcohol == '중간(12~13%)' ? 'background-color: wineStyles[product.wine]' : ''}">중간(12~13%)</span>
+								<span class="label"
+								style ="${product.alcohol == '높음(14%+)' ? 'background-color: wineStyles[product.wine]' : ''}">높음(14%+)</span>
 							</dd>
+						</c:if>
 						</dl>
 					</div>
 
