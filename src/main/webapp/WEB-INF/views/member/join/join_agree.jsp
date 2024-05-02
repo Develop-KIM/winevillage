@@ -104,7 +104,7 @@
                             <li><a href="#none" class="social_btn naver">네이버</a></li>
                             <li><a href="#none" class="social_btn kakao">카카오</a></li>
                             <li><a href="#none" class="social_btn google">구글</a></li>
-                            <li><a href="/join_form.do" class="social_btn id">아이디</a></li>
+                            <li><a href="/join/join_form.do" class="social_btn id">아이디</a></li>
                         </ul>
                     </div>
                 </div>

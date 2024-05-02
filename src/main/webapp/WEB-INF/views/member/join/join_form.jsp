@@ -36,7 +36,7 @@
 			</div>
 		</div>
 		<div class="wrap">
-			<form action="https://www.winenara.com/shop/member/join/join_proc"
+			<form action="join_Form"
 				name='join_form' id='join_form' method="post" accept-charset="utf-8">
 				<input type="hidden" name="join_agreement_age" value="" /> <input
 					type="hidden" name="join_agreement_service" value="" /> <input
@@ -59,10 +59,8 @@
 										<label for="user_nm">이름*</label>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="text" id="user_nm" name="user_nm"
-											placeholder="이름을 입력해주세요." value="">
+											placeholder="이름을 입력해주세요." value="${JoinDTO.name }">
 										<p class="input_info_txt"></p>
 									</div>
 								</li>
@@ -71,31 +69,10 @@
 										<label for="user_birth">생년월일*</label>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="text" id="user_birth" name="birthday" 
 											placeholder="생년월일을 입력해주세요. (ex yyyymmdd)" maxlength="8"
 											oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-											value="">
-										<!--p class="input_info_txt">생년월일을 숫자 8자리로 입력하세요.</p-->
-									</div>
-								</li>
-								<li class="gender_li">
-									<div class="l_tit">
-										<label for="user_gender" style="display: none;"
-											id="gender_label">성별*</label>
-									</div>
-									<div class="form_box">
-										<div class="gender_box">
-											<div class="box men" style="display: none;">
-												<input type="radio" name="gender" id="gender_men" value="M">
-												<label for="gender_men">남성</label>
-											</div>
-											<div class="box women" style="display: none;">
-												<input type="radio" name="gender" id="gender_women"
-													value="F"> <label for="gender_women">여성</label>
-											</div>
-										</div>
+											value="${JoinDTO.birtday }">
 									</div>
 								</li>
 								<li class="tel_li">
@@ -107,10 +84,13 @@
 											<input type="text" id="phone" name="phone"
 												placeholder="'-'제외한 숫자만 입력해주세요." maxlength="11"
 												oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-												value="">
-											<!-- <button type="button" class="btn_txt btn_bgray btn_m_view" onclick="commonUI.layer.open('m_view_layer')">통합회원 조회</button> -->
+												value="${JoinDTO.phoneNumber }">
 											<button type="button" class="btn_txt btn_bgray btn_m_view"
-												onclick="chk_wine_member();">통합회원 조회</button>
+												onclick="chk_wine_member();">휴대폰 인증</button>
+											<input type="text" id="certification"
+												oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+												
+												 />
 											<p class="input_info_txt"></p>
 										</div>
 									</div>
@@ -122,10 +102,8 @@
 											영문+숫자 조합</p>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="text" id="user_id" name="user_id"
-											placeholder="5~20자의 영문 혹은 영문+숫자 조합" value="">
+											placeholder="5~20자의 영문 혹은 영문+숫자 조합" value="${JoinDTO.memberId }">
 										<p class="input_info_txt" id="id_chk" style="display: none;">입력해
 											주신 아이디는 사용중인 아이디입니다.</p>
 									</div>
@@ -137,10 +115,9 @@
 											이상(공백제외)</p>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="password" id="user_pass_01" name="user_pass_01"
-											placeholder="영문 + 숫자 + 특수문자 조합 8자 이상" autocomplete="off">
+											placeholder="영문 + 숫자 + 특수문자 조합 8자 이상" autocomplete="off"
+											value="${JoinDTO.password }">
 									</div>
 								</li>
 								<li>
@@ -148,8 +125,6 @@
 										<label for="user_pass_02">비밀번호 확인*</label>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="password" id="user_pass_02" name="user_pass_02"
 											placeholder="비밀번호를 한번 더 입력해주세요." autocomplete="off">
 										<!-- <p class="input_info_txt">동일한 비밀번호를 입력했습니다.</p> -->
@@ -164,7 +139,7 @@
 										<!-- <div class="form_box error">
                         <div class="form_box success"> -->
 										<input type="text" id="user_email" name="email"
-											placeholder="이메일을 입력해주세요." value="">
+											placeholder="이메일을 입력해주세요." value="${JoinDTO.email }">
 										<p class="input_info_txt"></p>
 									</div>
 								</li>

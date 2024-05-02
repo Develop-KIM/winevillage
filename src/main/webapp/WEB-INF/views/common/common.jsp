@@ -151,7 +151,7 @@
 						<div class="mypage_layer">
 							<div class="no_login">
 								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a>
-								 <a href="/join.do">회원가입</a>
+								 <a href="join/join.do">회원가입</a>
 								 <a href="order_list.do">MyPage</a>
 							</div>
 						</div>

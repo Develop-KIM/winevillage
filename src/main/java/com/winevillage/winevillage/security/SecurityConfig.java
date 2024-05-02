@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,36 +21,31 @@ import jakarta.servlet.DispatcherType;
  * 웹 컨테이너가 시작될 때 빈이 생성되어야 하므로 기본패키지 하위에 정의한다.
  */
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
 
 	@Autowired
 	public MyAuthFailureHandler myAuthFailureHandler;
-	
+
 	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) 
+	public SecurityFilterChain filterChain(HttpSecurity http) 
 			throws Exception {
-		/*
-		 * 스프링 시큐리티는 특정 페이지에 로그인 확인을 위한 코드를 삽입하는 게 아닌
-		 * 아래와 같이 요청명의 패턴을 통해 설정한다.
-		 * permetAll(): 인증없이 누구나 접근할 수 있는 페이지를 지정
-		 * hasAnyRole(): 인증 후 권한을 획득해야 접근할 수 있는 페이지를 지정
-		 * hasRole(): hasAnyRole()과 비슷하지만 한 가지의 권한을 획득해야 접근할 수 있다.
-		 * 
-		 * 정적리소스가 있는 css, js, images 폴더와 guest는 권한없이 누구나 접근할 수 있다.
-		 * member 하위는 USER 혹은 ADMIN 권한을 획득한 후 접근할 수 있다.
-		 * admin 하위는 ADMIN 권한만 접근할 수 있다.
-		 */
 		http.csrf((csrf) -> csrf.disable())
-			.cors((cors) -> cors.disable())
 			.authorizeHttpRequests((request) -> request
 					.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-					.requestMatchers("/").permitAll()
-					.requestMatchers("/setCookie").permitAll()
-					.requestMatchers("/**.do").permitAll()
+					.requestMatchers("/", "/setCookie", "/**.do").permitAll()
 					.requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
 					.anyRequest().authenticated()
 			);
-		
+		http.formLogin((formLogin) -> formLogin
+				.loginPage("/join/myLogin.do")
+				.loginProcessingUrl("/myLoginAction.do")
+//				.failureUrl("/myError.do")
+				.failureHandler(myAuthFailureHandler)
+				.usernameParameter("my_id")
+				.passwordParameter("my_pass")
+				.permitAll());
+			
 		return http.build();
 	}
 	

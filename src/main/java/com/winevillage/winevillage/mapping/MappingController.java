@@ -65,17 +65,17 @@ public class MappingController {
 	}
 
 	// member
-	@GetMapping("/join.do")
+	@GetMapping("/join/join.do")
 	public String join() {
 		return "member/join/join_agree";
 	}
 
-	@GetMapping("/join_form.do")
+	@GetMapping("/join/join_form.do")
 	public String join_form() {
 		return "member/join/join_form";
 	}
 
-	@GetMapping("/join_success.do")
+	@GetMapping("/join/join_success.do")
 	public String join_success() {
 		return "member/join/join_success";
 	}
