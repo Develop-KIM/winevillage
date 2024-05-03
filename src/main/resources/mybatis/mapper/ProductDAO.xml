@@ -13,16 +13,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
       </if>
    </select>
-<<<<<<< HEAD
-=======
-
-
-	<delete id="productDelete"
-	parameterType="com.winevillage.winevillage.product.ProductDTO">
-		DELETE FROM product WHERE productNo=#{productNo}
-	</delete>
-
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
    <select id="listPage"
       resultType="com.winevillage.winevillage.product.ProductDTO"
       parameterType="com.winevillage.winevillage.product.ParameterDTO">
