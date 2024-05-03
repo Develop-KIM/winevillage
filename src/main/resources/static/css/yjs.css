@@ -1,0 +1,7 @@
+@charset "EUC-KR";
+#contents {
+	margin-top:126px !important;
+}
+#header .loading {
+	display: none;
+}
