@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,15 +29,14 @@
 						<span>회원가입</span>
 					</h2>
 					<ul>
-						<li class="">1. 이용약관 동의</li>
-						<li class="on">2. 회원정보 입력</li>
-						<li class="">3. 회원가입 완료</li>
+						<li class="on">1. 회원정보 입력</li>
+						<li class="">2. 회원가입 완료</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="wrap">
-			<form action="join_Form"
+			<form action="join_form"
 				name='join_form' id='join_form' method="post" accept-charset="utf-8">
 				<input type="hidden" name="join_agreement_age" value="" /> <input
 					type="hidden" name="join_agreement_service" value="" /> <input

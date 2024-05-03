@@ -1,7 +1,12 @@
 package com.winevillage.winevillage.member;
 
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
 public interface MemberService {
-	
-	void join(MemberDTO member);
-	MemberDTO findMember(String memberId);
+
+	public int insert(MemberDTO memberDTO);
+	public MemberDTO selectOne(MemberDTO memberDTO);
+	public int update(MemberDTO memberDTO);
+	public int delete(MemberDTO memberDTO);
 }

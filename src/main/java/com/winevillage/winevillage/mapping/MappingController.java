@@ -64,22 +64,6 @@ public class MappingController {
 		return "cs/notice_list";
 	}
 
-	// member
-	@GetMapping("/join/join.do")
-	public String join() {
-		return "member/join/join_agree";
-	}
-
-	@GetMapping("/join/join_form.do")
-	public String join_form() {
-		return "member/join/join_form";
-	}
-
-	@GetMapping("/join/join_success.do")
-	public String join_success() {
-		return "member/join/join_success";
-	}
-
 	@GetMapping("/password_cert.do")
 	public String password_cert() {
 		return "member/password_cert";

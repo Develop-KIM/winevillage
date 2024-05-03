@@ -169,7 +169,7 @@
 						<div class="mypage_layer">
 							<div class="no_login">
 								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a>
-								 <a href="join/join.do">회원가입</a>
+								 <a href="join/join_form.do">회원가입</a>
 								 <a href="order_list.do">MyPage</a>
 							</div>
 						</div>
@@ -422,7 +422,7 @@
 									<span>기존회원</span>
 								</p>
 								<p>
-									<span><a href="/join.do">신규회원가입</a></span>
+									<span><a href="/join/join_form.do">신규회원가입</a></span>
 								</p>
 							</div>
 							<div class="social_login">
