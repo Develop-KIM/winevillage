@@ -11,10 +11,10 @@ public class AdminMappingController {
 		return "admin/admin_common/admin_index";
 	}
 	
-	@GetMapping("/admin_login.do")
-	public String admin_login() {
-		return "admin/admin_common/admin_login";
-	}
+//	@GetMapping("/admin_login.do")
+//	public String admin_login() {
+//		return "admin/admin_common/admin_login";
+//	}
 	
 	/* 주문 관리 */
 	@GetMapping("/admin_order_lists.do")
@@ -67,10 +67,10 @@ public class AdminMappingController {
 	}
 	
 	/* 상품 관리 */
-	@GetMapping("/admin_product_lists.do")
-	public String admin_product_lists() {
-		return "admin/admin_product/admin_product_lists";
-	}
+//	@GetMapping("/admin_product_lists.do")
+//	public String admin_product_lists() {
+//		return "admin/admin_product/admin_product_lists";
+//	}
 	
 	@GetMapping("/admin_product_review.do")
 	public String admin_product_review() {
@@ -82,10 +82,10 @@ public class AdminMappingController {
 		return "admin/admin_product/admin_product_category";
 	}
 	
-	@GetMapping("/admin_product_form.do")
-	public String admin_product_form() {
-		return "admin/admin_product/admin_product_form";
-	}
+//	@GetMapping("/admin_product_form.do")
+//	public String admin_product_form() {
+//		return "admin/admin_product/admin_product_form";
+//	}
 	
 	/* 회원 관리 */
 	@GetMapping("/admin_member_lists.do")
@@ -120,35 +120,35 @@ public class AdminMappingController {
 		return "admin/admin_customer/admin_customer_withdrawal";
 	}
 	
-	@GetMapping("/admin_customer_faq_lists.do")
-	public String admin_customer_faq_lists() {
-		return "admin/admin_customer/admin_customer_faq_lists";
-	}
+//	@GetMapping("/admin_customer_faq_lists.do")
+//	public String admin_customer_faq_lists() {
+//		return "admin/admin_customer/admin_customer_faq_lists";
+//	}
 	
-	@GetMapping("/admin_customer_faq_write.do")
-	public String admin_customer_faq_write() {
-		return "admin/admin_customer/admin_customer_faq_write";
-	}
+//	@GetMapping("/admin_customer_faq_write.do")
+//	public String admin_customer_faq_write() {
+//		return "admin/admin_customer/admin_customer_faq_write";
+//	}
 	
-	@GetMapping("/admin_customer_notice_lists.do")
-	public String admin_customer_notice_lists() {
-		return "admin/admin_customer/admin_customer_notice_lists";
-	}
+//	@GetMapping("/admin_customer_notice_lists.do")
+//	public String admin_customer_notice_lists() {
+//		return "admin/admin_customer/admin_customer_notice_lists";
+//	}
 	
-	@GetMapping("/admin_customer_notice_write.do")
-	public String admin_customer_notice_write() {
-		return "admin/admin_customer/admin_customer_notice_write";
-	}
+//	@GetMapping("/admin_customer_notice_write.do")
+//	public String admin_customer_notice_write() {
+//		return "admin/admin_customer/admin_customer_notice_write";
+//	}
 	
-	/* 환경 설정 */
-	@GetMapping("/admin_setting_super.do") 
-	public String admin_setting_super() { 
-		return "admin/admin_setting/admin_setting_super"; 
-	}
-	/* 환경 설정 */
-	@GetMapping("/admin_setting_super_lists.do") 
-	public String admin_setting_super_lists() { 
-		return "admin/admin_setting/admin_setting_super_lists"; 
-	}
+//	/* 환경 설정 */
+//	@GetMapping("/admin_setting_super.do") 
+//	public String admin_setting_super() { 
+//		return "admin/admin_setting/admin_setting_super"; 
+//	}
+//	/* 환경 설정 */
+//	@GetMapping("/admin_setting_super_lists.do") 
+//	public String admin_setting_super_lists() { 
+//		return "admin/admin_setting/admin_setting_super_lists"; 
+//	}
 	
 }
