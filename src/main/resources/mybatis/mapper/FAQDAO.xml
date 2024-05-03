@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winevillage.winevillage.faq.FAQService">
+	<select id="getTotalCount" resultType="int"
+	parameterType="com.winevillage.winevillage.faq.ParameterDTO">
+		SELECT COUNT(*) FROM faq
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+		WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</select>
+	
+	<select id="listPage"
+		resultType="com.winevillage.winevillage.faq.FAQDTO"
+		parameterType="com.winevillage.winevillage.faq.ParameterDTO">
+		SELECT * FROM (
+			SELECT Tb.*, rownum rNum FROM (
+				SELECT * FROM faq
+				<if test="searchKeyword!=null and !searchKeyword.equals('')">
+				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</if>
+				ORDER BY faq_no DESC
+			)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start} AND rNum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<insert id="faqWrite"
+	parameterType="com.winevillage.winevillage.faq.FAQDTO">
+	DECLARE
+		next_no NUMBER;
+	BEGIN
+		getnext_faq_no(next_no);
+		INSERT INTO faq (faq_no, faq_classified, faq_title, faq_content)
+		VALUES (next_no, #{faq_classified}, #{faq_title}, #{faq_content});
+	END;
+	</insert>
+		
+	<select id="faqCategory"
+	resultType="com.winevillage.winevillage.faq.FAQDTO"
+	parameterType="com.winevillage.winevillage.faq.ParameterDTO">
+	SELECT faq_classified, count(*) AS faq_count FROM faq GROUP BY faq_classified
+	</select>
+	
+	<insert id="faqCategoryWrite"
+	parameterType="com.winevillage.winevillage.faq.FAQDTO">
+	INSERT INTO faq (faq_classified) VALUES (#{faq_classified})
+	</insert>
+	
+	<select id="categoryCount" resultType="integer"
+	parameterType="com.winevillage.winevillage.faq.ParameterDTO">
+	SELECT COUNT(DISTINCT faq_classified) FROM faq
+	</select>
+	
+	<update id="categoryEdit"
+	parameterType="com.winevillage.winevillage.faq.FAQDTO">
+	UPDATE faq SET faq_classified=#{faq_classified}
+	WHERE faq_no IN (SELECT faq_no FROM faq WHERE faq_classified=#{faq_classified});
+	</update>
+	
+	<select id="faqView"
+	resultType="com.winevillage.winevillage.faq.FAQDTO"
+	parameterType="com.winevillage.winevillage.faq.ParameterDTO">
+	SELECT * FROM faq WHERE faq_no=#{faq_no}
+	</select>
+	
+	<update id="faqEdit"
+	parameterType="com.winevillage.winevillage.faq.FAQDTO">
+	UPDATE faq SET
+		faq_title=#{faq_title},
+		faq_content=#{faq_content}
+	 	WHERE faq_no=#{faq_no}
+	</update>
+	
+	<delete id="faqDelete"
+	parameterType="com.winevillage.winevillage.faq.FAQDTO">
+		DELETE FROM faq WHERE faq_no=#{faq_no}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

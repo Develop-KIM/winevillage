@@ -21,5 +21,4 @@ public interface ProductService {
 	public int productEdit(ProductDTO productDTO);
 	
 	public int productDelete(ProductDTO productDTO);
-
 }

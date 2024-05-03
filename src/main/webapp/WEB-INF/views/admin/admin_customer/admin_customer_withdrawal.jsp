@@ -25,7 +25,10 @@ pageEncoding="UTF-8"%>
 				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
-					<a href="admin_customer_faq_lists.do">FAQ 분류</a>
+					<a href="admin_customer_faq_lists.do">FAQ 관리</a>
+				</dd>
+				<dd class="h20">
+					<a href="admin_customer_faq_category.do">FAQ 분류</a>
 				</dd>
 				<dd class="h20">
 					<a href="admin_customer_faq_write.do">FAQ 작성</a>
