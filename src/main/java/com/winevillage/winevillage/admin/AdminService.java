@@ -20,5 +20,5 @@ public interface AdminService {
 	public int adminEdit(AdminDTO adminDTO);
 	
 	public int adminDelete(AdminDTO adminDTO);
-	
+	  
 }
