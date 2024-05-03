@@ -182,7 +182,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       UPDATE product SET
       productCode=#{productCode},
       productName=#{productName},
-      productName=#{productName_En},
+      productName_En=#{productName_En},
       state=#{state},
       productInfo=#{productInfo},
       productImg=#{productImg},
@@ -198,8 +198,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       productNo=#{productNo}
    </update>
 
-
-   
 </mapper>
 
 

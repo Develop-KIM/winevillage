@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
+<%-- <%@ include file="../admin_common/admin_isLoggedin.jsp" %> --%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -249,9 +249,9 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">상품코드</th>
 		<td>
-			<input type="text" name="productCode" value="" required class="required frm_input">
-					<button type="button">코드생성</button></td>
-					
+		    <input type="text" name="productCode" id="productCode" value="" required class="required frm_input">
+		    <a href="#" id="generateCodeBtn">코드생성</a>
+		</td>
 	</tr>
 	<tr>
 		<th scope="row">상품명</th>
@@ -292,22 +292,22 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">판매가격</th>
 		<td>
-			<input type="text" required name="fullPrice" value="" class="frm_input fullPrice w80" > 원
+			<input type="text" id="number_only1" required name="fullPrice" value="" class="frm_input fullPrice w80" > 원
 			<span class="fc_197 marl5">해당 상품의 기본 판매가격</span>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">할인율</th>
 		<td>
-			<input type="text" name="discountRate" value="0" class="frm_input discountRate w50"> %
+			<input type="text" id="number_only2" name="discountRate" value="0" class="frm_input discountRate w50"> %
 			<span class="fc_197 marl5">할인비율(1% 단위로 표시)</span>
 		</td>
 	</tr>
 	<tr>
-		<th scope="row">할인가격</th>
+		<th scope="row">등록가격</th>
 		<td>
-			<input type="text" name="discountPrice" value="0" class="frm_input discountPrice w80" > 원
-			<span class="fc_197 marl5">할인 적용된 가격 (할인율 없을경우 비활성화)</span>
+			<input type="text" name="discountPrice" value="" class="frm_input discountPrice w80" readonly="readonly"> 원
+			<span class="fc_197 marl5">할인 적용된 가격 (할인율 없을경우 판매가격과 동일)</span>
 		</td>
 	</tr>
 	<tr>

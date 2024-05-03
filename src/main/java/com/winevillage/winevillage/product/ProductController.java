@@ -2,8 +2,11 @@ package com.winevillage.winevillage.product;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.winevillage.winevillage.notice.NoticeDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import utils.PagingUtil;
+import utils.UuidFunctions;
 
 @Controller
 public class ProductController {
@@ -59,6 +67,7 @@ public class ProductController {
 	@GetMapping("/admin_product_form.do")
 	public String productFormGet(Model model) {
 		return "admin/admin_product/admin_product_form";
+		
 	}
 	
 	@PostMapping("/admin_product_form.do")
@@ -74,8 +83,8 @@ public class ProductController {
 			if(!originalFileName.isEmpty()) {
 				part.write(uploadDirectory + File.separator + originalFileName);
 			}
-			model.addAttribute("originalFileName", originalFileName);
 			
+			model.addAttribute("originalFileName", originalFileName);
 			productDTO.setProductImg(originalFileName);			
 			
 			int result = dao.productWrite(productDTO);
@@ -131,6 +140,35 @@ public class ProductController {
 			}
 		return "redirect:admin_product_lists.do";
 	}
+	
+	@PostMapping("/admin_product_delete2.do")
+	public String productDelete2Post(@RequestParam("deleteItem") String deleteItem,
+			ProductDTO productDTO) {
+		
+		List<String> items = Arrays.asList(deleteItem.split(","));
+
+		for(String item : items) {
+			ProductDTO productToDelete = new ProductDTO();
+	        productToDelete.setProductNo(Integer.parseInt(item));
+			int result = dao.productDelete(productToDelete);
+			if(result==1) {
+				System.out.println("삭제되었습니다.");
+			} else {
+				System.out.println("삭제실패");
+				System.out.println("result? "+result);
+			}
+		}
+		
+		return "redirect:admin_product_lists.do";
+	}
+	
+	@GetMapping("/productCode.do")
+	@ResponseBody
+	public String productCode() {
+	    String generatedUuid = UuidFunctions.getUuid();
+		return generatedUuid;
+	}
+
 }
 
 

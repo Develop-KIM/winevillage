@@ -48,13 +48,13 @@ pageEncoding="UTF-8"%>
 								<tr>
 									<th scope="row">관리자 ID</th>
 									<td>
-										<input id="admin_id" type="text" name="admin_id" value="" required itemname="관리자id" class="frm_input required">
+										<input id="admin_id" type="text" name="admin_id" value="${adminDTO.admin_id }" required itemname="관리자id" class="frm_input required">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">이름</th>
 									<td>
-										<input id="admin_name" type="text" name="admin_name" value="" required itemname="관리자이름" class="frm_input required">
+										<input id="admin_name" type="text" name="admin_name" value="${adminDTO.admin_name }" required itemname="관리자이름" class="frm_input required">
 									</td>
 								</tr>
 								<tr>
@@ -72,13 +72,13 @@ pageEncoding="UTF-8"%>
 								<tr>
 									<th scope="row">이메일주소</th>
 									<td>
-										<input type="text" name="admin_email" value="" required email itemname="이메일"
+										<input type="text" name="admin_email" value="${adminDTO.admin_email }" required email itemname="이메일"
 											class="frm_input required" size="30">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">핸드폰</th>
-									<td><input type="text" name="admin_phone" value="" required itemname="핸드폰" placeholder="010-0000-0000"
+									<td><input type="text" name="admin_phone" value="${adminDTO.admin_phone }" required itemname="핸드폰" placeholder="010-0000-0000"
 											class="frm_input required"></td>
 								</tr>
 							</tbody>
@@ -86,7 +86,8 @@ pageEncoding="UTF-8"%>
 					</div>
 
 					<div class="btn_confirm">
-						<input id="admin_signup" type="submit" value="등록" class="btn_large" accesskey="s">
+						<input id="admin_signup" type="submit" value="수정" class="btn_large" >
+						<a id="admin_list" href="#" class="btn_large" >목록</a>
 					</div>
 				</form>
 			</div>

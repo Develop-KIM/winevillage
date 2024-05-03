@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 @Mapper
 public interface ProductService {
+	
 	public int getTotalCount(ParameterDTO parameterDTO);
 
 	public int ProductCount(ParameterDTO parameterDTO);
@@ -21,4 +23,5 @@ public interface ProductService {
 	public int productEdit(ProductDTO productDTO);
 	
 	public int productDelete(ProductDTO productDTO);
+	
 }

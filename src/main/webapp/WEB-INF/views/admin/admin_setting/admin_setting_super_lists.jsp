@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
+<%-- <%@ include file="../admin_common/admin_isLoggedin.jsp" %> --%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -68,14 +68,14 @@ pageEncoding="UTF-8"%>
 								<tr>
 									<th scope="row">검색어</th>
 									<td>
-										<select name="sfl">
-											<option value="id">아이디</option>
-											<option value="name">이름</option>
+										<select name="searchField">
+											<option value="admin_id">관리자ID</option>
+											<option value="admin_name">이름</option>
 										</select>
-										<input type="text" name="stx" value="" class="frm_input" size="30">
+										<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 									</td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<th scope="row">기간검색</th>
 									<td>
 										<select name="spt">
@@ -108,7 +108,7 @@ pageEncoding="UTF-8"%>
 										<label><input type="radio" name="sst" value="3"> 부 관리자</label>
 										<label><input type="radio" name="sst" value="2"> 운영 관리자</label>
 									</td>
-								</tr>
+								</tr> -->
 							</tbody>
 						</table>
 					</div>
@@ -149,7 +149,7 @@ pageEncoding="UTF-8"%>
 						<thead>
 							<tr>
 								<th scope="col">번호</th>
-								<th scope="col"><p>관리자아이디</p></th>
+								<th scope="col"><p>관리자ID</p></th>
 								<th scope="col"><p>이름</p></th>
 								<!-- <th scope="col"><p>등급</p></th> -->
 								<th scope="col"><p>이메일</p></th>
@@ -176,7 +176,7 @@ pageEncoding="UTF-8"%>
 								<td>${item.admin_email}</td>
 								<td>${item.admin_phone}</td>
 								<td>${item.admin_joindate}</td>
-								<td><a href="#" class="btn_small">수정</a>
+								<td><a href="admin_setting_super_edit.do?admin_idx=${item.admin_idx }" class="btn_small">수정</a>
 							</tr>
 							</c:forEach>
 						</tbody>

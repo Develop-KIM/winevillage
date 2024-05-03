@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
+<%-- <%@ include file="../admin_common/admin_isLoggedin.jsp" %> --%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -39,6 +39,37 @@ function deletePost(productNo) {
 	    } else {
 	        alert("유효하지 않은 상품 번호입니다.");
 	    }
+}
+function multiDelete() {
+	var form = document.getElementById('productList');
+    if (!form) {
+        alert('리스트가 정상적으로 로드되지 않았습니다.');
+        return;
+    }
+	
+	var selected = document.querySelectorAll('#sodr_list input[name="chk[]"]:checked');
+	var deleteItem = Array.from(selected).map(chk => chk.value);
+	
+	if (deleteItem.length === 0) {
+		alert("선택된 항목이 없습니다.");
+		return;
+	}
+	
+	var confirmed = confirm("정말로 삭제하시겠습니까?");
+	if (confirmed) {
+		form.setAttribute("method", "post");
+	    form.setAttribute("action", "admin_product_delete2.do");
+	    
+	    var input = document.createElement("input");
+	    input.setAttribute("type", "hidden");
+	    input.setAttribute("name", "deleteItem");
+	    input.setAttribute("value", deleteItem.join(','));
+	    
+	    form.appendChild(input);
+	    document.body.appendChild(form);
+	
+	    form.submit();		
+	}
 }
 </script>
 <div id="wrapper">
@@ -199,15 +230,12 @@ function deletePost(productNo) {
 					<span class="ov_a">
 					</span>
 				</div>
-				<form id="productList" name="productList">
-<!-- 					<input type="hidden" name="q1" value="code=list">
-					<input type="hidden" name="page" value="1"> -->
+				<form id="productList" name="productList" method="post">
+ 					<input type="hidden" name="q1" value="code=list">
+					<input type="hidden" name="page" value="1">
 
 					<div class="local_frm01">
-						<%-- <a href="admin_product_delete.do?=productNo${item.productNo }" value="선택삭제" class="btn_lsmall bx-white">선택삭제 --%>
-						<%-- <a href="#" onclick="deletePost('${item.productNo}');" class="btn_small">삭제</a> --%>
-						<a onclick="deleteSelectedProducts('${product.productNo}');" class="btn_lsmall bx-white">선택삭제</a>
-							<!-- onclick="document.pressed=this.value" -->
+						<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="multiDelete(); return false;">
 						<a href="./goods/goods_list_excel.php?code=list" class="btn_lsmall bx-white"><i
 								class="fa fa-file-excel-o"></i> 엑셀저장</a>
 						<a href="admin_product_form.do" class="fr btn_lsmall red"><i class="ionicons ion-android-add"></i> 상품등록</a>
@@ -270,8 +298,8 @@ function deletePost(productNo) {
 									<c:forEach items="${ lists }" var="item" varStatus="loop">
 								<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
 									<td rowspan="1">
-										<%-- <input type="hidden" name="productNo" value="${item.productNo }"> --%>
-										<input type="checkbox" name="productNo" value="${item.productNo }">
+										<input type="hidden" name="gs_id[0]" value="${item.productNo }">
+										<input type="checkbox" name="chk[]" value="${item.productNo }">
 									</td>
 									<td rowspan="1">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
 									<td rowspan="1"><a href="/"> <img
@@ -294,8 +322,7 @@ function deletePost(productNo) {
 									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
 									<%-- <input type="hid-den" name="productNo" value="${item.productNo }"> --%>
 									<!-- <td rowspan="1" colspan="1"><button type="submit" class="btn_small">삭제</button></td> -->
-									<td rowspan="1" colspan="1"><a href="#" onclick="deletePost('${item.productNo}');" class="btn_small">삭제</a></td>
-									<td rowspan="1" colspan="1"><a href="admin_product_edit.do?productNo=${item.productNo }" class="btn_small">수정</a>
+									<td rowspan="1" colspan="2"><a href="admin_product_edit.do?productNo=${item.productNo }" class="btn_small">수정</a>
 									</td>
 								</tr>
 									</c:forEach>

@@ -90,7 +90,26 @@ public class AdminController {
 		return "admin/admin_setting/admin_setting_super_lists";
 	}
 	
+	@GetMapping("/admin_setting_super_edit.do")
+	public String adminEditGet(Model model, AdminDTO adminDTO) {
+		adminDTO = dao.adminView(adminDTO);
+		model.addAttribute("adminDTO", adminDTO);
+		return "admin/admin_setting/admin_setting_super_edit";
+	}
+	
+	@PostMapping("/admin_setting_super_edit.do")
+	public String adminEditPost(AdminDTO adminDTO, Model model) {
+		int result = dao.adminEdit(adminDTO);
+		System.out.println("관리자 수정 결과" + result);
+		return "redirect:admin_setting_super.do:";
+	}
 	
 	
 	
 }
+
+
+
+
+
+

@@ -1,7 +1,5 @@
 package com.winevillage.winevillage.product;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data

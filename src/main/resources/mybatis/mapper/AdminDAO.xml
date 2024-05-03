@@ -40,5 +40,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (admin_seq.nextval, #{admin_id}, #{admin_name}, #{admin_pass},
 				#{admin_email}, #{admin_phone})
 	</insert>
+	
+	<select id="adminView"
+      resultType="com.winevillage.winevillage.admin.AdminDTO"
+      parameterType="com.winevillage.winevillage.admin.AdminDTO">
+      SELECT * FROM admin WHERE admin_idx = #{admin_idx}
+    </select>
+
+	<update id="adminEdit"
+      parameterType="com.winevillage.winevillage.admin.AdminDTO">
+      UPDATE admin SET
+      admin_id=#{admin_id},
+      admin_name=#{admin_name},
+      admin_pass=#{admin_pass},
+      admin_email=#{admin_email},
+      admin_phone=#{admin_phone},
+      WHERE
+      admin_idx=#{admin_idx}
+   </update>
 
 </mapper>
