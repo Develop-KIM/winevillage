@@ -8,6 +8,6 @@ public class UuidFunctions {
 		String uuid = UUID.randomUUID().toString();
 		uuid = uuid.replaceAll("-", "");
 		uuid = uuid.substring(uuid.length()-6);
-		return uuid;
+		return uuid.toUpperCase();
 	}
 }

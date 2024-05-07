@@ -99,8 +99,10 @@ public class ProductController {
 	@GetMapping("/admin_product_edit.do")
 	public String productEditGet(Model model, ProductDTO productDTO) {
 		productDTO = dao.productView(productDTO);
-		productDTO.setProductInfo(productDTO.getProductInfo()
-				  .replace("\r\n", "<br/>"));
+		if(productDTO.getProductInfo() !=null) {
+			productDTO.setProductInfo(productDTO.getProductInfo()
+					  .replace("\r\n", "<br/>"));
+		} 
 		model.addAttribute("productDTO", productDTO);
 		return "admin/admin_product/admin_product_edit";
 	}

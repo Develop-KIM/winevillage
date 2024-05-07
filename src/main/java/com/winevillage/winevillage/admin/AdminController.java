@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.winevillage.winevillage.product.ProductDTO;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import utils.JSFunction;
 import utils.PagingUtil;
 
 
@@ -94,6 +97,7 @@ public class AdminController {
 	public String adminEditGet(Model model, AdminDTO adminDTO) {
 		adminDTO = dao.adminView(adminDTO);
 		model.addAttribute("adminDTO", adminDTO);
+		
 		return "admin/admin_setting/admin_setting_super_edit";
 	}
 	
@@ -101,9 +105,21 @@ public class AdminController {
 	public String adminEditPost(AdminDTO adminDTO, Model model) {
 		int result = dao.adminEdit(adminDTO);
 		System.out.println("관리자 수정 결과" + result);
-		return "redirect:admin_setting_super.do:";
+		System.out.println(adminDTO);
+		return "redirect:admin_setting_super_lists.do";
 	}
 	
+	@PostMapping("/admin_setting_super_delete.do")
+	public String adminDeletePost(AdminDTO adminDTO) {
+		int result = dao.adminDelete(adminDTO);
+			if(result==1) {
+				System.out.println("삭제되었습니다.");
+			} else {
+				System.out.println("삭제실패");
+				System.out.println("result? "+result + adminDTO);
+			}
+			return "redirect:admin_setting_super_lists.do";
+	}
 	
 	
 }

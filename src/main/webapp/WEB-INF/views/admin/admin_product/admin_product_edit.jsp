@@ -250,8 +250,9 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">상품코드</th>
 		<td>
-			<input type="text" name="productCode" value="${productDTO.productCode }" required class="required frm_input">
-					</td>
+			<input type="text" name="productCode" value="${productDTO.productCode }" required readonly="readonly" class="required frm_input">
+			<p class="fc_197 mart7">한번 등록된 상품코드는 수정이 불가능합니다.</p>
+		</td>
 	</tr>
 	<tr>
 		<th scope="row">상품명</th>
@@ -265,14 +266,14 @@ pageEncoding="UTF-8"%>
 		<th scope="row">이미지1 <span class="fc_197">(400 * 400)</span> <strong class="fc_red">[필수]</strong></th>
 		<td>
 			<div class="item_file_fld">
-				<input type="file" value="${productDTO.productImg }" name="imgUpload" required>
-							</div>
-
+				<input type="file" value="${productDTO.productImg }" name="imgUpload" required accept="image/*">
+			</div>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">상세설명</th>
-		<td><textarea id="memo" required name="productInfo" class="smarteditor2" maxlength="65536" style="width:100%">${productDTO.productInfo }</textarea>
+		<td>
+		<textarea id="memo" required name="productInfo" class="smarteditor2" maxlength="65536" style="width:100%">${productDTO.productInfo }</textarea>
 <span class="sound_only">웹 에디터 끝</span>		</td>
 	</tr>
 	</tbody>

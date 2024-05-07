@@ -7,6 +7,17 @@ pageEncoding="UTF-8"%>
 <head>
 <body>
 <%@ include file="../admin_common/admin_header.jsp"%>
+<script>
+function deletePost(idx) {
+	var confirmed = confirm("정말로 삭제하시겠습니까?");
+	if(confirmed) {
+		var form = document.deleteform;
+		form.method = "post";
+		form.action = "admin_setting_super_delete.do";
+		form.submit();
+	}
+}
+</script>
 <div id="wrapper">
 	
 <div id="snb">
@@ -56,8 +67,7 @@ pageEncoding="UTF-8"%>
 					});
 				</script> -->
 				<h2>관리자 검색</h2>
-				<form name="fsearch" id="fsearch" method="get">
-					<input type="hidden" name="code" value="list">
+				<form name="deleteform">
 					<div class="tbl_frm01">
 						<table>
 							<colgroup>
@@ -155,7 +165,7 @@ pageEncoding="UTF-8"%>
 								<th scope="col"><p>이메일</p></th>
 								<th scope="col"><p>핸드폰</p></th>
 								<th scope="col"><p>생성일시</p></th>
-								<th scope="col"><p>관리</p></th>
+								<th scope="col" colspan="2"><p>관리</p></th>
 							</tr>
 						</thead>
 						<tbody class="list">
@@ -176,13 +186,14 @@ pageEncoding="UTF-8"%>
 								<td>${item.admin_email}</td>
 								<td>${item.admin_phone}</td>
 								<td>${item.admin_joindate}</td>
+								<input type="hid-den" name="admin_idx" value="${item.admin_idx }">
 								<td><a href="admin_setting_super_edit.do?admin_idx=${item.admin_idx }" class="btn_small">수정</a>
+								<td><button type="button" onclick="deletePost(${param.idx})" class="btn_small">삭제</button></td>
 							</tr>
 							</c:forEach>
-						</tbody>
 						</c:otherwise>
 						</c:choose>
-						
+						</tbody>
 					</table>
 				</div>
 				</form>

@@ -249,24 +249,25 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">상품코드</th>
 		<td>
-		    <input type="text" name="productCode" id="productCode" value="" required class="required frm_input">
-		    <a href="#" id="generateCodeBtn">코드생성</a>
+		    <input type="text" name="productCode" id="productCode" placeholder="[코드생성] 버튼을 눌러주세요" readonly="readonly" value="" required class="required frm_input">
+		    <button type="button" class="btn_small" id="generateCodeBtn">코드생성</button>
+		    <p class="fc_197 mart7">상품코드는 랜덤한 6자리의 문자를 통해 생성됩니다.</p>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">상품명</th>
-		<td><input type="text" name="productName" value="" required class="required frm_input" size="80"></td>
+		<td><input type="text" name="productName" value="" placeholder="상품명 입력"  required class="required frm_input" size="80"></td>
 	</tr>
 	<tr>
 		<th scope="row">영문명</th>
-		<td><input type="text" name="productName_En" value="" required class="required frm_input" size="80"></td>
+		<td><input type="text" name="productName_En" value="" placeholder="영문명 입력" required class="required frm_input" size="80"></td>
 	</tr>
 
 		<tr class="item_img_fld">
 		<th scope="row">이미지1 <span class="fc_197">(400 * 400)</span> <strong class="fc_red">[필수]</strong></th>
 		<td>
 			<div class="item_file_fld">
-				<input type="file" name="imgUpload" required>
+				<input type="file" name="imgUpload" required accept="image/*">
 							</div>
 
 		</td>
@@ -292,21 +293,21 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">판매가격</th>
 		<td>
-			<input type="text" id="number_only1" required name="fullPrice" value="" class="frm_input fullPrice w80" > 원
+			<input type="text" id="number_only1" required name="fullPrice" placeholder="0" value="" class="frm_input fullPrice w80" > 원
 			<span class="fc_197 marl5">해당 상품의 기본 판매가격</span>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">할인율</th>
 		<td>
-			<input type="text" id="number_only2" name="discountRate" value="0" class="frm_input discountRate w50"> %
+			<input type="text" id="number_only2" name="discountRate" placeholder="0" value="" class="frm_input discountRate w50"> %
 			<span class="fc_197 marl5">할인비율(1% 단위로 표시)</span>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">등록가격</th>
 		<td>
-			<input type="text" name="discountPrice" value="" class="frm_input discountPrice w80" readonly="readonly"> 원
+			<input type="text" name="discountPrice" placeholder="0" value="" class="frm_input discountPrice w80" readonly="readonly"> 원
 			<span class="fc_197 marl5">할인 적용된 가격 (할인율 없을경우 판매가격과 동일)</span>
 		</td>
 	</tr>
@@ -317,7 +318,7 @@ pageEncoding="UTF-8"%>
 			<label for="ids_stock_mode1" class="marr10">무제한</label>
 			<input type="radio" name="stock" value="" id="ids_stock_mode2">
 			<label for="ids_stock_mode2">한정</label> -->
-			<input type="text" name="stock" value="0" class="frm_input w80"> 개,
+			<input type="text" name="stock" placeholder="0" value="" class="frm_input w80"> 개,
 			<p class="fc_197 mart7">상품의 재고가 통보수량보다 작을 때 상품 재고관리에 표시됩니다.<br>옵션이 있는 상품은 개별 옵션의 통보수량이 적용됩니다. 설정이 무제한이면 재고관리에 표시되지 않습니다.</p>
 		</td>
 	</tr>

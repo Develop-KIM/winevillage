@@ -55,8 +55,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       admin_pass=#{admin_pass},
       admin_email=#{admin_email},
       admin_phone=#{admin_phone},
+      admin_joindate=#{admin_joindate}
       WHERE
       admin_idx=#{admin_idx}
    </update>
 
+	<delete id="adminDelete"
+	parameterType="com.winevillage.winevillage.admin.AdminDTO">
+		DELETE FROM admin WHERE admin_idx=#{admin_idx}
+	</delete>
 </mapper>

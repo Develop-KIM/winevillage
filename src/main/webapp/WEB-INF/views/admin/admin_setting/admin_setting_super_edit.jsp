@@ -33,8 +33,9 @@ pageEncoding="UTF-8"%>
 			<div class="s_wrap">
 				<h1>관리자 등록</h1>
 
-				<form name="fregform" method="post" action="admin_setting_super.do">
-					<input type="hidden" name="token" value="">
+				<form name="fregform" method="post" action="admin_setting_super_edit.do">
+					<input type="hid-den" name="admin_idx" value="${adminDTO.admin_idx }">
+					<input type="hid-den" name="admin_joindate" value="${adminDTO.admin_joindate }">
 
 
 					<h2>관리자 정보 입력</h2>

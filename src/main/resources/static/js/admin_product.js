@@ -119,12 +119,9 @@ $(function() {
 
         $.ajax({
             type: 'GET',
-            url: '/productCode.do', // 상품 코드 생성 엔드포인트
+            url: '/productCode.do', 
             success: function(response) {
-                // 받은 UUID 값을 사용하여 원하는 동작을 수행
-                console.log('받은 UUID 값:', response);
                 $('#productCode').val(response);
-                // 이곳에 UUID 값을 사용하여 원하는 동작을 수행하는 코드를 작성하세요
             },
             error: function(xhr, status, error) {
                 console.error('에러 발생:', error);
