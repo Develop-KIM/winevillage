@@ -99,6 +99,7 @@ pageEncoding="UTF-8"%>
 								<col class="w40">
 								<col class="w80">
 								<col class="w100">
+								<col class="w100">
 								<col class="w300">
 								<col>
 								<col class="w50">
@@ -109,6 +110,7 @@ pageEncoding="UTF-8"%>
 									<th scope="col">번호</th>
 									<th scope="col">작성일</th>
 									<th scope="col">구분</th>
+									<th scope="col">작성자</th>
 									<th scope="col">제목</th>
 									<th scope="col">문의내용</th>
 									<th scope="col">답변여부</th>
@@ -123,6 +125,7 @@ pageEncoding="UTF-8"%>
 									<td>9</td>
 									<td>2024-99-99</td>
 									<td>상품관련</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">상품관련 문의입니다. 상품관련 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">상품관련이 이래서 이렇고 저래서 저렇습니다. 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련</span></td>
 									<td><span class="btn_small red">답변대기</span></td>
@@ -212,6 +215,7 @@ pageEncoding="UTF-8"%>
 									<td>8</td>
 									<td>2024-99-99</td>
 									<td>주문/결제관련</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">주문/결제관련 문의입니다. 주문/결제관련 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">주문/결제관련이 이래서 이렇고 저래서 저렇습니다. 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련 주문/결제관련</span></td>
 									<td><span class="btn_small">답변완료</span></td>
@@ -221,6 +225,7 @@ pageEncoding="UTF-8"%>
 									<td>7</td>
 									<td>2024-99-99</td>
 									<td>반품/환불관련</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">반품/환불관련 문의입니다. 반품/환불관련 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">반품/환불관련이 이래서 이렇고 저래서 저렇습니다. 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련 반품/환불관련</span></td>
 									<td><span class="btn_small">답변완료</span></td>
@@ -230,6 +235,7 @@ pageEncoding="UTF-8"%>
 									<td>6</td>
 									<td>2024-99-99</td>
 									<td>건강정보관련</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">건강정보관련 문의입니다. 건강정보관련 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">건강정보관련이 이래서 이렇고 저래서 저렇습니다. 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련 건강정보관련</span></td>
 									<td><span class="btn_small">답변완료</span></td>
@@ -239,6 +245,7 @@ pageEncoding="UTF-8"%>
 									<td>5</td>
 									<td>2024-99-99</td>
 									<td>기타관련</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">기타관련 문의입니다. 기타관련 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">기타관련이 이래서 이렇고 저래서 저렇습니다. 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련 기타관련</span></td>
 									<td><span class="btn_small">답변완료</span></td>
@@ -248,6 +255,7 @@ pageEncoding="UTF-8"%>
 									<td>4</td>
 									<td>2024-99-99</td>
 									<td>상품관련</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">상품문의입니다. 상품문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">상품이 이래서 이렇고 저래서 저렇습니다. 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련</span></td>
 									<td><span class="btn_small">답변완료</span></td>
@@ -257,6 +265,7 @@ pageEncoding="UTF-8"%>
 									<td>3</td>
 									<td>2024-99-99</td>
 									<td>회원/정보관리</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">회원/정보관리 문의입니다. 회원/정보관리 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">회원정보가 이래서 이렇고 저래서 저렇습니다. 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리 회원/정보관리</span></td>
 									<td><span class="btn_small">답변완료</span></td>
@@ -266,6 +275,7 @@ pageEncoding="UTF-8"%>
 									<td>2</td>
 									<td>2024-99-99</td>
 									<td>배송</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">배송 문의입니다. 배송 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">배송이 이래서 이렇고 저래서 저렇습니다. 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송 배송</span></td>
 									<td><span class="btn_small">답변완료</span></td>
@@ -275,6 +285,7 @@ pageEncoding="UTF-8"%>
 									<td>1</td>
 									<td>2024-99-99</td>
 									<td>영수증/증빙서류</td>
+									<td><span class="ellipsis1">작성자</span></td>
 									<td class="tal"><span class="ellipsis1">영수증/증빙서류 문의입니다. 영수증/증빙서류 문의입니다.</span></td>
 									<td class="tal"><span class="ellipsis1">증빙서류가 이래서 이렇고 저래서 저렇습니다. 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류 영수증/증빙서류</span></td>
 									<td><span class="btn_small">답변완료</span></td>

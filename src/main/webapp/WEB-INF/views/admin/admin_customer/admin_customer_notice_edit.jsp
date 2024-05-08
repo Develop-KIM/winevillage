@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10">
-					<a href="admin_customer_inquery.do">1:1 상담문의
+					<a href="admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
 				</dd>

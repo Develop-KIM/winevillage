@@ -1,13 +1,7 @@
 package com.winevillage.winevillage.notice;
 
 import java.util.ArrayList;
-
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
-import com.winevillage.winevillage.faq.FAQDTO;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Mapper
 public interface NoticeService {

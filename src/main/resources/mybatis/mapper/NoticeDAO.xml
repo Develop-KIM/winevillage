@@ -8,7 +8,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	parameterType="com.winevillage.winevillage.notice.ParameterDTO">
 		SELECT COUNT(*) FROM notice
 		<if test="searchKeyword!=null and !searchKeyword.equals('')">
-		WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+			<choose>
+				<when test="searchField == 'all'">
+					WHERE
+					notice_title LIKE '%'||#{searchKeyword}||'%' OR
+					notice_content LIKE '%'||#{searchKeyword}||'%'
+				</when>
+				<otherwise>
+					WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</otherwise>
+			</choose>
 		</if>
 	</select>
 	
@@ -19,7 +28,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT Tb.*, rownum rNum FROM (
 				SELECT * FROM notice
 				<if test="searchKeyword!=null and !searchKeyword.equals('')">
-				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+					<choose>
+						<when test="searchField == 'all'">
+							WHERE
+							notice_title LIKE '%'||#{searchKeyword}||'%' OR
+							notice_content LIKE '%'||#{searchKeyword}||'%'
+						</when>
+						<otherwise>
+							WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+						</otherwise>
+					</choose>
 				</if>
 				ORDER BY notice_no DESC
 			)Tb
