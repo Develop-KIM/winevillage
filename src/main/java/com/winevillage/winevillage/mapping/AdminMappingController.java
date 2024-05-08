@@ -88,10 +88,10 @@ public class AdminMappingController {
 //	}
 	
 	/* 회원 관리 */
-	@GetMapping("/admin_member_lists.do")
-	public String admin_member_lists() {
-		return "admin/admin_member/admin_member_lists";
-	}
+//	@GetMapping("/admin_member_lists.do")
+//	public String admin_member_lists() {
+//		return "admin/admin_member/admin_member_lists";
+//	}
 	
 	@GetMapping("/admin_member_level.do")
 	public String admin_member_level() {

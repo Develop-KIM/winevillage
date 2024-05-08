@@ -148,6 +148,7 @@ function multiDelete() {
 										<select name="searchField">
 											<option value="productName">상품명</option>
 											<option value="productCode">상품코드</option>
+											<option value="wine">와인</option>
 										</select>
 										<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 									</td>
@@ -334,9 +335,7 @@ function multiDelete() {
 				</form>
 
 				<div class="paging" style="display: flex; justify-content: center; align-items: center;">
-					<p>
 						${ pagingImg }
-					</p>
 				</div>
 <!-- 				<script>
 					function productlist_submit(f) {

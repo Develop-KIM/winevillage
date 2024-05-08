@@ -267,6 +267,7 @@ pageEncoding="UTF-8"%>
 		<td>
 			<div class="item_file_fld">
 				<input type="file" value="${productDTO.productImg }" name="imgUpload" required accept="image/*">
+				<img src="../Uploads/product/200/${productDTO.productImg }" alt="img">
 			</div>
 		</td>
 	</tr>
