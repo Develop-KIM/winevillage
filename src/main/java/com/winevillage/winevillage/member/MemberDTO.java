@@ -2,11 +2,16 @@ package com.winevillage.winevillage.member;
 
 import java.sql.Date;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import utils.Role;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberDTO {
 	
 	private String memberNo;
@@ -17,9 +22,7 @@ public class MemberDTO {
 	private String email;
 	private String address;
 	private MemberGrade grade;
-	private String RecommenderCode;
-	private Role role;
 	private int point;
 	private Date joinDate;
-	private Date birthday;
+	private String birthday;
 } 

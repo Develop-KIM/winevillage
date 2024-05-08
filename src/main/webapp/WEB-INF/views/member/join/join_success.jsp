@@ -51,7 +51,7 @@
 						<div class="form_area"></div>
 						<div>
 							<h2 style="text-align: center; font-size: 32px;">
-								<strong style="font-weight: 500;">ㅇㅇㅇ</strong>님 회원가입을 환영합니다.
+								<strong style="font-weight: 500;">{memberDTO.memberId}</strong>님 회원가입을 환영합니다.
 							</h2>
 						</div>
 						<div class="btn_area">
