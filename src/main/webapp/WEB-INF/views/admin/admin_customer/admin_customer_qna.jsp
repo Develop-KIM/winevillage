@@ -124,6 +124,8 @@ $('body').on('click', '.close-qna-form', function(e) {
 	$(this).parent().parent().siblings('.form_reply_qna').slideUp();
 	setTimeout(function(){
 		tr_detail_qna.remove();
+		$(this).parent().parent().siblings('.padt10').remove();
+		$(this).parent().parent().siblings('.form_reply_qna').remove();
     }, 500);
 });
 $('body').on('click', '.open-reply-qna', function(event) {
