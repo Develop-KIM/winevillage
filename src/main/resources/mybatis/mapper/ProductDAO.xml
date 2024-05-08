@@ -13,8 +13,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
 		</if>
 	</select>
-
-
 	<delete id="productDelete"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		DELETE FROM product WHERE productNo=#{productNo}
@@ -180,7 +178,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE rNum<![CDATA[>=]]>#{start}
 		AND rNum<![CDATA[<=]]>#{end}
 	</select>
-
 	<insert id="productWrite"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		INSERT INTO product (productNo, productCode,
