@@ -26,8 +26,11 @@ public class ProductListController {
 	@GetMapping("/list_product.do")
 	public String list_Product(Model model, HttpServletRequest req,
 			@RequestParam(name = "category", required = false) String category, 
-			@RequestParam(name = "state", required = false) String state, ParameterDTO parameterDTO) {
+			@RequestParam(name = "state", required = false) String state, 
+			@RequestParam(name = "sort", required = false) String sort,
+			ParameterDTO parameterDTO) {
 
+		parameterDTO.setSort(sort);
 		parameterDTO.setState(state);
 	    parameterDTO.setCategory(category);
 	    parameterDTO.setStateNotNull(true); 
@@ -51,17 +54,22 @@ public class ProductListController {
 		model.addAttribute("maps", maps);
 		model.addAttribute("category", category);
 		model.addAttribute("state", state);
+		model.addAttribute("sort", sort);
 		String uppercaseCategory = null; 
+		String uppercaseState = null;
 		if (category != null) {
 		uppercaseCategory = category.toUpperCase();
 		}
+		if (state != null) {
+		uppercaseState = state.toUpperCase();
+		}
 		model.addAttribute("uppercaseCategory", uppercaseCategory); 
-
+		model.addAttribute("uppercaseState", uppercaseState);
 		ArrayList<ProductDTO> lists = dao.listProduct(parameterDTO);
 		model.addAttribute("lists", lists);
 
 		String pagination = ProductPagination.pagination(ProductCount, pageSize, blockPage, pageNum,
-				req.getContextPath() + "/list_product.do?" + "category=" + category + "&");
+				req.getContextPath() + "/list_product.do?" + "category=" + category + "&" + "state=" +  state + "&" + "sort=" + sort + "&");
 
 		model.addAttribute("pagination", pagination);
 

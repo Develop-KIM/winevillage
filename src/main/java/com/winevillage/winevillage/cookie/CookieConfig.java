@@ -32,6 +32,6 @@ public class CookieConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("classpath:/static/")
-                .setCachePeriod(0); // 캐시 비활성화
+                .setCachePeriod(0);
     }
 }

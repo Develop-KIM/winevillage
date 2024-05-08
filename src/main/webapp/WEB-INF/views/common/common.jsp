@@ -105,44 +105,44 @@
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a href="list_product.do?category=wine&state=value">WINE</a>
+						<li class=""><a href="list_product.do?category=wine&state=value&sort=recent">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
 								        	<li class="ico_red"><a
-								        		href="list_product.do?category=red&state=value">레드</a></li>
+								        		href="list_product.do?category=red&state=value&sort=recent">레드</a></li>
 								            <li class="ico_white"><a 
-								            	href="list_product.do?category=white&state=value">화이트</a></li>
+								            	href="list_product.do?category=white&state=value&sort=recent">화이트</a></li>
 								            <li class="ico_rose"><a 
-								            	href="list_product.do?category=rose&state=value">로제</a></li>
+								            	href="list_product.do?category=rose&state=value&sort=recent">로제</a></li>
 								            <li class="ico_sparkling"><a 
-								            	href="list_product.do?category=sparkling&state=value">스파클링</a></li>
+								            	href="list_product.do?category=sparkling&state=value&sort=recent">스파클링</a></li>
 								            <li class="ico_spirits"><a 
-								            	href="list_product.do?category=fortified&state=value">주정강화</a></li>
+								            	href="list_product.do?category=fortified&state=value&sort=recent">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
-												href="list_product.do?category=fra&state=value">프랑스</a></li>
+												href="list_product.do?category=fra&state=value&sort=recent">프랑스</a></li>
 											<li class="ico_italia"><a
-												href="list_product.do?category=ita&state=value">이탈리아</a></li>
+												href="list_product.do?category=ita&state=value&sort=recent">이탈리아</a></li>
 											<li class="ico_spain"><a
-												href="list_product.do?category=esp&state=value">스페인</a></li>
+												href="list_product.do?category=esp&state=value&sort=recent">스페인</a></li>
 											<li class="ico_germ"><a
-												href="list_product.do?category=deu&state=value">독일</a></li>
+												href="list_product.do?category=deu&state=value&sort=recent">독일</a></li>
 											<li class="ico_usa"><a
-												href="list_product.do?category=usa&state=value">미국</a></li>
+												href="list_product.do?category=usa&state=value&sort=recent">미국</a></li>
 											<li class="ico_chile"><a
-												href="list_product.do?category=chl&state=value">칠레</a></li>
+												href="list_product.do?category=chl&state=value&sort=recent">칠레</a></li>
 											<li class="ico_argentina"><a
-												href="list_product.do?category=arg&state=value">아르헨티나</a></li>
+												href="list_product.do?category=arg&state=value&sort=recent">아르헨티나</a></li>
 											<li class="ico_aus"><a
-												href="list_product.do?category=aus&state=value">호주</a></li>
+												href="list_product.do?category=aus&state=value&sort=recent">호주</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li class=""><a href="list_product.do?category=other">OTHER</a>
+						<li class=""><a href="list_product.do?category=other&sort=recent">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
@@ -158,7 +158,9 @@
 					</ul>
 				</div>
 				<ul class="right_menu">
-					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
+<!-- 					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
+								List</span> </a></li> -->
+					<li class="cart"><a href="/cart_list.do" ><span>Cart
 								List</span> </a></li>
 					<li class="mb_hidden wish"><a href="#" onclick="$('.layer.login_layer').show();"><img
 							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>

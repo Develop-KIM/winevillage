@@ -114,50 +114,27 @@
                             <p class="prd_name">
                                 <a href="/shop/product/product_view?product_cd=03U001" target="_blank">
                                     디아블로 데블스 카나발 카베르네<br>
-                                                                    </a>
+                              	</a>
                             </p>
 
 							<div class="cate_label">
-								<span class="label" style="background:#E0D8EA">레드</span>								<span class="label" style="background:#E0D8EA">칠레</span>								<span class="label" style="background:#E0D8EA">카베르네 소비뇽</span>							</div>
-
-							<!-- 픽업제외매장 -->
-														<!-- //픽업제외매장 -->
-
-
+								<span class="label" style="background:#E0D8EA">레드</span>								
+								<span class="label" style="background:#E0D8EA">칠레</span>								
+								<span class="label" style="background:#E0D8EA">카베르네 소비뇽</span>							
+							</div>
                         </div>
-						                        						                    </div>
+                    </div>
                     <div class="box opt">
 						<span> </span>
-						<!-- <span></span> -->
 					</div>
                     <div class="box price_amount">
                         <div class="box amount">
                             <div class="quantity" data-cart-seq="65402" data-product-cd="03U001" data-base-price="14900" data-opt-gb="C">
-
                                 <button type="button" class="minus" onclick="box_qty(this, -1);">감소</button>
                                 <input type="text" class="qty" title="수량" value="1">
                                 <button type="button" class="plus" onclick="box_qty(this, +1);">증가</button>
                             </div>
-														<!-- <select class="packing" onchange="change_packing('65402',this.value)">
-								<option value="">포장선택</option>
-																	<option 
-										value="2701"
-																			>
-										쇼핑백									</option>
-																	<option 
-										value="2702"
-																			>
-										완충포장									</option>
-																	<option 
-										value="2703"
-																			>
-										칠링백(+2,000원)									</option>
-																	<option 
-										value="2704"
-																			>
-										선물포장(+5,000원)									</option>
-															</select> -->
-							                        </div>
+                        </div>
 						<div class="box price price_con">
 							<div>
 								<span>상품금액</span>
@@ -173,13 +150,8 @@
 							</div>
 						</div>
                     </div>
-                    <!-- <div class="box btn">
-                        <button type="button" class="btn_like wish_03U001 " id="wish_03U001" onclick="product.likeProduct('03U001');">좋아요</button>
-                        <button type="button" class="btn_del basic" value="65402">삭제</button>
-                    </div> -->
                 </li>
-
-			                        </ul>
+			</ul>
         </div>
 
 

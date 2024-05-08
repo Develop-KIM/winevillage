@@ -114,6 +114,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="state == 'exclusive'">
 					AND STATE = 'exclusive'
 				</when>
+				<when test="state == 'null'"></when> 
 			</choose>
 			<choose>
 				<when test="category == 'red'">
@@ -160,7 +161,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 			</choose>
 		</where>
-		ORDER BY productno DESC
+		<choose>
+			<when test="sort == 'recent'">
+				ORDER BY productNo DESC
+			</when>
+			<when test="sort == 'highprice'">
+				ORDER BY discountprice DESC
+			</when>
+			<when test="sort == 'lowprice'">
+				ORDER BY discountprice asc
+			</when>
+			<when test="sort == 'discount'">
+				ORDER BY discountrate DESC
+			</when>
+		</choose>
 		) Tb
 		)
 		WHERE rNum<![CDATA[>=]]>#{start}
