@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MappingController {
 
-//	// order
+	// order
 //	@GetMapping("/order_write.do")
 //	public String order_write() {
 //		return "order/order_write";
