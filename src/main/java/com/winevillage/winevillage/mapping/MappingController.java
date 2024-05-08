@@ -27,10 +27,10 @@ public class MappingController {
 		return "order/wish_list";
 	}
 
-	@GetMapping("/cart_list.do")
-	public String cart_list() {
-		return "order/cart_list";
-	}
+//	@GetMapping("/cart_list.do")
+//	public String cart_list() {
+//		return "order/cart_list";
+//	}
 
 	// main
 	@GetMapping("/main.do")
