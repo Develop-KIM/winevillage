@@ -39,9 +39,7 @@
 			<div class="link_box">
 				<div class="wrap">
 					<ul>
-						<li><a href="/company/about_us">회사소개</a></li>
-						<li><a href="/company/brand">브랜드 소개</a></li>
-						<li><a href="/member/policy/law_con">이용약관</a></li>
+						<li><a href="/company/about_us">소개</a></li>
 						<li><a href="/member/policy/privacy_con">개인정보처리방침</a></li>
 						<li><a href="/cs/notice_lists">고객센터</a></li>
 					</ul>
