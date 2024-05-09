@@ -8,7 +8,7 @@
 </head>
 <style>
 #enterBtn {
-	margin-top: 10px
+	margin-top: 10px;
 }
 </style>
 <script
@@ -201,7 +201,7 @@
 
 		<script>
     
-    function chk_wine_member(){
+    /* function chk_wine_member(){
         var name = $('#user_nm').val();
         var phone = $('#phone').val();
         if(!name || !phone){
@@ -258,7 +258,7 @@
             })
         }
 
-    }
+    } */
     var wine_mem_chk = false;
     var merge_mem_chk = true;
     function auth_type_check(){
@@ -341,22 +341,9 @@
             location.href = "../../main.html";
         }
 
-        $('#phone').val(frm.r_phone.value);
-        $('#user_birth').val(frm.r_birth.value);
-        if(frm.r_gender_cd.value == '01'){
-            $('.men').css('display','block');
-            $('#gender_label').css('display','block');
-            $('#gender_men').prop('checked',true);
-        }else if(frm.r_gender_cd.value == '02'){
-            $('.women').css('display','block');
-            $('#gender_label').css('display','block');
-            $('#gender_women').prop('checked',true);
-        }else{
-            $('#gender_label').css('display','none');
-            $('.men').css('display','block');
-            $('.women').css('display','block');
-        }
-        $('#user_nm').val(frm.r_user_name.value);
+        $('#phoneNumber').val(frm.r_phone.value);
+        $('#birthday').val(frm.r_birth.value);
+        $('#name').val(frm.r_user_name.value);
         adult_chk = true;
         $('#auth_div').hide();
         $('#kcp_cert').hide();
@@ -563,7 +550,7 @@
 				input_error(input, '비밀번호 확인을 입력해주세요.');
 				return false;
 			}else{
-				if($(input).val() != $(join_form.user_pass_01).val()){
+				if($(input).val() != $(join_form.password).val()){
 					input_error(input, '입력하신 비밀번호가 일치하지 않습니다.');
 					return false;
 				}
@@ -665,43 +652,31 @@
         }
     }
 
-    $(join_form.user_nm).on('keyup', function(){
+    $(join_form.name).on('keyup', function(){
 		form_check.user_nm(this);
 	});
 
-    $(join_form.user_id).on('keyup', function(){
+    $(join_form.memberId).on('keyup', function(){
 		form_check.user_id_usable = 'W';
 		form_check.user_id(this);
 	});
 
-    $(join_form.user_pass_01).on('keyup', function(){
+    $(join_form.password).on('keyup', function(){
 		input_reset(join_form.user_pass_02);
 		form_check.passwd(this);
 	});
 
-	$(join_form.user_pass_02).on('keyup', function(){
+	$(join_form.password2).on('keyup', function(){
 		form_check.passwd_repeat(this);
 	});
 
-    $(join_form.user_birth).on('keyup', function(){
+    $(join_form.birthday).on('keyup', function(){
         form_check.birth_chk(this);
     });
 
-    $(join_form.phone).on('keyup', function(){
+    $(join_form.phoneNumber).on('keyup', function(){
         form_check.phone(this);
     });
-
-    $('#phone_code_send').click(function(){
-		form_check.phone_code_send(this);
-	});
-
-    $(join_form.phone_code).on('keyup', function(){
-		form_check.phone_code(this);
-	});
-
-    $('#phone_code_check').click(function(){
-		form_check.phone_code_check(this);
-	});
 
     $(join_form.email).on('keyup', function(){
 		form_check.email(this);
@@ -725,10 +700,6 @@
     var address1 = document.getElementById("address1").value.trim();
     var address2 = document.getElementById("address2").value.trim();
     var postcode = document.getElementById("postcode").value.trim();
-	console.log(phoneNumber);
-	console.log(postcode);
-	console.log(address1);
-	console.log(address2);
 	
     // 빈 값 또는 유효하지 않는 값인 필드를 저장할 배열
     var invalidFields = [];
@@ -764,7 +735,7 @@
     // AJAX 요청
     $.ajax({
         type: "POST",
-        url: "/join_form.do",
+        url: "/join_form",
         contentType: "application/json",
         data: JSON.stringify(Object.fromEntries(new Map(formData))),
         success: function(response) {
@@ -781,7 +752,6 @@
     });
     
 }
-    var checkNum = null; // 전역 변수로 선언
 
     function sendPhoneNumber() {
         var phoneNumber = document.getElementById('phoneNumber').value;
@@ -814,7 +784,7 @@
                 // 성공적으로 인증번호가 확인되면 사용자에게 메시지 표시
                 alert('인증되었습니다.');
                 // 폼 요소를 비활성화
-                document.getElementById('phoneNumber').disabled = true;
+                document.getElementById('phoneNumber').readOnly = true;
                 document.getElementById('certification').disabled = true;
                 document.getElementById('enterBtn').disabled = true;
                 document.getElementById('sendBtn').disabled = true; // 휴대폰 인증 버튼 비활성화
@@ -858,6 +828,8 @@
     	}
     	return false;
     }
+    
+ 	
 </script>
 	</section>
 	<%@ include file="../../common/footer.jsp"%>

@@ -32,10 +32,10 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
 		String errorMsg = "";
 		
 		if (exception instanceof BadCredentialsException) {
-			loginFailureCnt(request.getParameter("my_id"));
+			loginFailureCnt(request.getParameter("login_user_id"));
 			errorMsg = "아이디나 비밀번호가 맞지 않습니다. " + "다시 확인해주세요.(1)";
 		} else if (exception instanceof InternalAuthenticationServiceException) {
-			loginFailureCnt(request.getParameter("my_id"));
+			loginFailureCnt(request.getParameter("login_user_id"));
 			errorMsg = "아이디나 비밀번호가 맞지 않습니다. " + "다시 확인해주세요.(2)";
 		} else if (exception instanceof DisabledException) {
 			errorMsg = "계정이 비활성화되었습니다. 관리자에게 문의하세요.(3)";
