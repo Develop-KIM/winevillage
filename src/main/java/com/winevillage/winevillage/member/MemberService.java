@@ -8,4 +8,5 @@ public interface MemberService {
 	int checkPhoneNumberExists(String phoneNumber);
 	int checkMemberIdExists(String memberId);
 	void registerMember(MemberDTO memberDTO);
+	MemberDTO getmemberId(String memberId);
 }

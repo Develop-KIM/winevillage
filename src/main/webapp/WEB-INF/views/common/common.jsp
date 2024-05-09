@@ -64,6 +64,37 @@
                 }
             });
         });
+        
+        $("#loginBtn").click(function() {
+            loginUser(); // loginBtn을 클릭하면 loginUser 함수 실행
+        });
+        
+        function submitLoginForm() {
+        	var formData = {
+        			memberId: $("login_user_id").val(),
+        			memberPassword: $("ogin_passwd").val()
+        	};
+        	$.ajax({
+        		// AJAX를 이용하여 서버로 로그인 요청 보내기
+        	    $.ajax({
+        	        url: '/login',
+        	        type: 'POST',
+        	        contentType: 'application/json',
+        	        data: JSON.stringify({ "memberId": memberId, "password": password }),
+        	        success: function(response) {
+        	            // 서버로부터의 응답 출력
+        	            console.log(response.message);
+        	            // 성공적으로 로그인했을 때 추가적인 동작을 수행하려면 여기에 작성
+        	        },
+        	        error: function(xhr, status, error) {
+        	            // 서버로부터의 응답 출력
+        	            var errorMessage = xhr.responseJSON.message;
+        	            console.log(errorMessage);
+        	            // 로그인 실패에 대한 처리를 수행하려면 여기에 작성
+        	        }
+        	    });
+        	})
+        }
     });
 </script>
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
@@ -452,14 +483,9 @@
 								name="login_return_url_param">
 							<div class="save_box">
 								<div class="checkbox">
-									<input type="checkbox" name="login_auto" id="login_auto"
-										value="Y" checked> <label for="login_auto">로그인유지</label>
-								</div>
-								<div class="checkbox">
 									<input type="checkbox" name="id_save" id="id_save" value="Y">
 									<label for="id_save">아이디저장</label>
 								</div>
-								<p class="input_info_txt">※ 공공장소에서는 꺼주세요.</p>
 							</div>
 							<div class="btn_area">
 								<button type="button" class="btn_txt btn_black" id="loginBtn">
