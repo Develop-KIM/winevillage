@@ -11,11 +11,6 @@ public class AdminMappingController {
 		return "admin/admin_common/admin_index";
 	}
 	
-//	@GetMapping("/admin_login.do")
-//	public String admin_login() {
-//		return "admin/admin_common/admin_login";
-//	}
-	
 	/* 주문 관리 */
 	@GetMapping("/admin_order_lists.do")
 	public String admin_order_lists() {
@@ -138,17 +133,6 @@ public class AdminMappingController {
 //	@GetMapping("/admin_customer_notice_write.do")
 //	public String admin_customer_notice_write() {
 //		return "admin/admin_customer/admin_customer_notice_write";
-//	}
-	
-//	/* 환경 설정 */
-//	@GetMapping("/admin_setting_super.do") 
-//	public String admin_setting_super() { 
-//		return "admin/admin_setting/admin_setting_super"; 
-//	}
-//	/* 환경 설정 */
-//	@GetMapping("/admin_setting_super_lists.do") 
-//	public String admin_setting_super_lists() { 
-//		return "admin/admin_setting/admin_setting_super_lists"; 
 //	}
 	
 }

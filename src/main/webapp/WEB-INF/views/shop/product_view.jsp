@@ -4,7 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>WINE VILLAGE | WINE</title>
+<title>WINE VILLAGE | ${productDTO.productName }</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#addToCartForm').on('submit', function(e) {
+        e.preventDefault(); // 기본 폼 제출을 방지
+        $.ajax({
+            type: "POST",
+            url: "/addToCart",
+            data: $(this).serialize(), // 폼 데이터를 직렬화
+            success: function(response) {
+                // 성공적으로 처리된 후에 실행할 코드
+                alert("장바구니에 추가되었습니다.");
+            },
+            error: function(response) {
+                // 오류가 발생했을 때 실행할 코드
+                alert("오류가 발생했습니다.");
+            }
+        });
+    });
+});
+</script>
 </head>
 <body>
 	<%@ include file="../common/common.jsp"%>
@@ -15,9 +36,40 @@
 			<div class="line_map mb_hidden">
 				<ul>
 					<li onclick="location.href='/main.do'" style="cursor: pointer;">HOME</li>
-					<li onclick="location.href='/list_product.do'"
-						style="cursor: pointer;">ALL WINES</li>
-					<li onclick="location.href='product_view.html'"
+					<li onclick="location.href='/list_product.do?category=${category }&state=${state }&sort=${sort }'"
+						style="cursor: pointer;">
+						<c:choose>
+							<c:when test="${category == 'fra'}">
+								<h2>프랑스</h2>
+							</c:when>
+							<c:when test="${category == 'ita'}">
+								<h2>이탈리아</h2>
+							</c:when>
+							<c:when test="${category == 'esp'}">
+								<h2>스페인</h2>
+							</c:when>
+							<c:when test="${category == 'deu'}">
+								<h2>독일</h2>
+							</c:when>
+							<c:when test="${category == 'usa'}">
+								<h2>미국</h2>
+							</c:when>
+							<c:when test="${category == 'chl'}">
+								<h2>칠레</h2>
+							</c:when>
+							<c:when test="${category == 'arg'}">
+								<h2>아르헨티나</h2>
+							</c:when>
+							<c:when test="${category == 'aus'}">
+								<h2>호주</h2>
+							</c:when>
+							<c:otherwise>
+								${uppercaseCategory}
+							</c:otherwise>
+						</c:choose>
+	
+						</li>
+					<li onclick="location.href='/product_view.do?category=${category }&state=${state }&sort=${sort }&productNo=${productDTO.productNo}'"
 						style="cursor: pointer;">PRODUCT</li>
 				</ul>
 			</div>
@@ -69,7 +121,7 @@
 						<div class="over_wrap tit_wrap">
 							<p class="prd_name">${productDTO.productName }</p>
 							<p class="prd_en_name">${productDTO.productName_En }</p>
-							<p class="prd_info"></p>
+							<p class="prd_info">${productDTO.productInfo }</p>
 							<div class="share_area">
 								<button type="button" class="open">공유</button>
 								<div class="share_layer">
@@ -97,33 +149,35 @@
 						</div>
 
 						<ul class="cate_label">
+							<c:if test="${not empty productDTO.wine }">
 							<li class="label"
 								style="background: ${wineStyles[productDTO.wine]};">${productDTO.wine }</li>
-
+							</c:if>
+							<c:if test="${not empty productDTO.country }">
 							<li class="label"
 								style="background: ${wineStyles[productDTO.wine]};">${productDTO.country }</li>
-
+							</c:if>
+							<c:if test="${not empty productDTO.grapeVariety }">
 							<li class="label"
 								style="background: ${wineStyles[productDTO.wine]};">${productDTO.grapeVariety }</li>
+							</c:if>
 						</ul>
 
 						<div class="price_box">
 							<p class="price info_box">
 								<c:if test="${productDTO.discountRate > 0 }">
 									<span>${productDTO.discountRate }%</span>
-									<ins>
-									    <script>
-									        var price = ${(productDTO.fullPrice - (productDTO.fullPrice * productDTO.discountRate / 100))};
-									        var DiscountPrice = Math.floor(price / 100) * 100;
-									        document.write(DiscountPrice.toLocaleString() + "원");
-									    </script>
-									</ins>
+									<ins><fmt:formatNumber value="${productDTO.discountPrice }" pattern="#,##0" />원</ins>
 									<del><fmt:formatNumber value="${productDTO.fullPrice }" pattern="#,##0"/>원</del>
 								</c:if>
-								<c:if test="${productDTO.discountRate == 0}">
-									<ins class="out">매장문의</ins>
-									<del class="out out_price"
-										style="text-decoration: none; font-weight: 700">${productDTO.fullPrice }원</del>
+								<c:if test="${productDTO.discountRate == 0 && productDTO.state != 'exclusive'}">
+									<del style="font-size:20px;font-weight: 700;color: #000; text-decoration:none;"><fmt:formatNumber value="${productDTO.discountPrice }" pattern="#,##0"/>원</del>
+								</c:if>
+								<c:if test="${productDTO.state == 'exclusive'}">
+									<ins class="out out_price"
+										style="text-decoration: none; font-weight: 700">${productDTO.fullPrice }원</ins></br>
+									<ins class="out tell">매장문의</ins>
+
 								</c:if>
 							</p>
 						</div>
@@ -135,18 +189,29 @@
 							<div class="black_bg">&nbsp;</div>
 							<div class="hide_process"></div>
 							<div class="btn_area">
+							<c:choose>
+								<c:when test="${productDTO.state != 'exclusive' }">
 								<button type="button" class="btn_txt wish_btn">찜하기</button>
 								<!--피씨-->
-
-								<button type="button"
-									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'shopping_basket'}); chklayer();"
-									class="btn_txt cart_btn buy_process_btn">장바구니</button>
+								<form id="addToCartForm">
+								    <!-- 여기에 폼 입력 필드 추가 -->
+								    <button type="submit" class="btn_txt cart_btn buy_process_btn">장바구니</button>
+								</form>
 								<button type="button"
 									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'buying'}); chklayer();"
 									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button>
-								<!--피씨-->
-
-
+								</c:when>
+								<c:when test="${productDTO.stock == 0 }">
+									<button type="button" class="btn_txt wish_btn">찜하기</button>
+									<button type="button" class="btn_txt cart_btn buy_process_btn" disabled>
+									품절</button>
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="btn_txt wish_btn">찜하기</button>
+									<button type="button" class="btn_txt cart_btn buy_process_btn" disabled>
+									구매 희망 시,방문가능한 매장으로 문의해주세요.</button>
+								</c:otherwise>
+							</c:choose>
 							</div>
 						</div>
 						<dl class="details">
@@ -356,14 +421,6 @@
 									<span>PRODUCT</span>
 								</button>
 							</li>
-
-							<li>
-								<button type="button"
-									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'winery_info'})">
-									<span>RELATED PRODUCT</span>
-								</button>
-							</li>
-
 							<li>
 								<button type="button"
 									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'winery_info'})">

@@ -27,10 +27,10 @@ public class MappingController {
 		return "order/wish_list";
 	}
 
-	@GetMapping("/cart_list.do")
-	public String cart_list() {
-		return "order/cart_list";
-	}
+//	@GetMapping("/cart_list.do")
+//	public String cart_list() {
+//		return "order/cart_list";
+//	}
 
 	// main
 	@GetMapping("/main.do")
@@ -65,20 +65,20 @@ public class MappingController {
 	}
 
 	// member
-	@GetMapping("/join.do")
-	public String join() {
-		return "member/join/join_agree";
-	}
-
-	@GetMapping("/join_form.do")
-	public String join_form() {
-		return "member/join/join_form";
-	}
-
-	@GetMapping("/join_success.do")
-	public String join_success() {
-		return "member/join/join_success";
-	}
+//	@GetMapping("/join.do")
+//	public String join() {
+//		return "member/join/join_agree";
+//	}
+//
+//	@GetMapping("/join_form.do")
+//	public String join_form() {
+//		return "member/join/join_form";
+//	}
+//
+//	@GetMapping("/join/join_success.do")
+//	public String join_success() {
+//		return "member/join/join_success";
+//	}
 
 	@GetMapping("/password_cert.do")
 	public String password_cert() {

@@ -1,18 +1,27 @@
 package com.winevillage.winevillage.member;
 
+import java.sql.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberDTO {
-	private int memberNo;
+	
+	private String memberNo;
 	private String memberId;
-	private String name;
-	private java.sql.Date birthDay;
-	private String phonenumber;
 	private String password;
+	private String name;
+	private String phoneNumber;
 	private String email;
 	private String address;
-	private String memberGrade;
-	private java.sql.Date joindate;
-	private String points;
-}
+	private MemberGrade grade;
+	private int point;
+	private Date joinDate;
+	private String birthday;
+} 

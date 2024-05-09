@@ -1,4 +1,4 @@
-package com.winevillage.winevillage.member;
+package com.winevillage.winevillage.parameter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.winevillage.winevillage.admin.AdminDTO;
+import com.winevillage.winevillage.member.MemberDTO;
+import com.winevillage.winevillage.member.MemberService;
 import com.winevillage.winevillage.product.ProductDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,7 +24,7 @@ import utils.PagingUtil;
 
 
 @Controller
-public class MemberController {
+public class ParameterController {
 	
 	@Autowired
 	MemberService dao;

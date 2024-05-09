@@ -25,4 +25,7 @@ public class ProductDTO {
 	private String sweetNess;
 	private java.sql.Date registerDate;
 	
+    public ProductDTO getProduct() {
+        return this;
+    }
 }

@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>WINE VILLAGE | 회원가입</title>
 </head>
+<style>
+#enterBtn {
+	margin-top: 10px
+}
+</style>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <body>
 	<%@ include file="../../common/common.jsp"%>
 	<section id="contents">
@@ -28,30 +35,19 @@
 						<span>회원가입</span>
 					</h2>
 					<ul>
-						<li class="">1. 이용약관 동의</li>
-						<li class="on">2. 회원정보 입력</li>
-						<li class="">3. 회원가입 완료</li>
+						<li class="on">1. 회원정보 입력</li>
+						<li class="">2. 회원가입 완료</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="wrap">
-			<form action="https://www.winenara.com/shop/member/join/join_proc"
-				name='join_form' id='join_form' method="post" accept-charset="utf-8">
-				<input type="hidden" name="join_agreement_age" value="" /> <input
-					type="hidden" name="join_agreement_service" value="" /> <input
-					type="hidden" name="join_agreement_private" value="" /> <input
-					type="hidden" name="join_agreement_marketing_1" value="" /> <input
-					type="hidden" name="join_agreement_marketing_2" value="" /> <input
-					type="hidden" name="join_agreement_sms" value="" /> <input
-					type="hidden" name="join_agreement_email" value="" /> <input
-					type="hidden" name="join_gb" value="" /> <input type="hidden"
-					name="witplus_csrf_token" value="6d4b67b6bb470edeee07d5a9e38ef1d6" />
+			<form action="join_success.do" name='join_form' id='join_form'
+				method="post" accept-charset="utf-8">
+				<input type="hidden" name="witplus_csrf_token"
+					value="6d4b67b6bb470edeee07d5a9e38ef1d6" />
 				<div class="content member join join_form_page">
 					<div class="inner">
-						<iframe id="kcp_cert" name="kcp_cert" width="100%" height="700"
-							frameborder="0" scrolling="no" style="display: none"></iframe>
-
 						<div class="form_area">
 							<ul>
 								<li>
@@ -59,10 +55,8 @@
 										<label for="user_nm">이름*</label>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="text" id="user_nm" name="user_nm"
-											placeholder="이름을 입력해주세요." value="">
+										<input type="text" id="user_nm" name="memberId"
+											placeholder="이름을 입력해주세요." value="${MemberDTO.memberId}">
 										<p class="input_info_txt"></p>
 									</div>
 								</li>
@@ -71,46 +65,27 @@
 										<label for="user_birth">생년월일*</label>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
-										<input type="text" id="user_birth" name="birthday" 
+										<input type="text" id="user_birth" name="birthday"
 											placeholder="생년월일을 입력해주세요. (ex yyyymmdd)" maxlength="8"
 											oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-											value="">
-										<!--p class="input_info_txt">생년월일을 숫자 8자리로 입력하세요.</p-->
-									</div>
-								</li>
-								<li class="gender_li">
-									<div class="l_tit">
-										<label for="user_gender" style="display: none;"
-											id="gender_label">성별*</label>
-									</div>
-									<div class="form_box">
-										<div class="gender_box">
-											<div class="box men" style="display: none;">
-												<input type="radio" name="gender" id="gender_men" value="M">
-												<label for="gender_men">남성</label>
-											</div>
-											<div class="box women" style="display: none;">
-												<input type="radio" name="gender" id="gender_women"
-													value="F"> <label for="gender_women">여성</label>
-											</div>
-										</div>
+											value="${MemberDTO.birthday}">
 									</div>
 								</li>
 								<li class="tel_li">
 									<div class="l_tit">
-										<label for="user_name">휴대폰번호*</label>
+										<label for="phone">휴대폰번호*</label>
 									</div>
 									<div class="form_box">
 										<div class="tel_box">
-											<input type="text" id="phone" name="phone"
-												placeholder="'-'제외한 숫자만 입력해주세요." maxlength="11"
-												oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-												value="">
-											<!-- <button type="button" class="btn_txt btn_bgray btn_m_view" onclick="commonUI.layer.open('m_view_layer')">통합회원 조회</button> -->
-											<button type="button" class="btn_txt btn_bgray btn_m_view"
-												onclick="chk_wine_member();">통합회원 조회</button>
+											<input type="text" id="phone" name="phoneNumber"
+												placeholder="휴대폰번호를 입력해주세요.">
+											<button type="button" id="sendBtn"
+												class="btn_txt btn_bgray btn_m_view"
+												onclick="sendPhoneNumber();">휴대폰 인증</button>
+											<input type="text" id="certification"
+												placeholder="인증 번호를 입력해주세요." />
+											<button type="button" onclick="verifyCode();" id="enterBtn"
+												class="btn_txt btn_bgray btn_m_view">확인</button>
 											<p class="input_info_txt"></p>
 										</div>
 									</div>
@@ -122,10 +97,9 @@
 											영문+숫자 조합</p>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="text" id="user_id" name="user_id"
-											placeholder="5~20자의 영문 혹은 영문+숫자 조합" value="">
+											placeholder="5~20자의 영문 혹은 영문+숫자 조합"
+											value="${MemberDTO.memberId }">
 										<p class="input_info_txt" id="id_chk" style="display: none;">입력해
 											주신 아이디는 사용중인 아이디입니다.</p>
 									</div>
@@ -137,10 +111,9 @@
 											이상(공백제외)</p>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="password" id="user_pass_01" name="user_pass_01"
-											placeholder="영문 + 숫자 + 특수문자 조합 8자 이상" autocomplete="off">
+											placeholder="영문 + 숫자 + 특수문자 조합 8자 이상" autocomplete="off"
+											value="${MemberDTO.password }">
 									</div>
 								</li>
 								<li>
@@ -148,11 +121,8 @@
 										<label for="user_pass_02">비밀번호 확인*</label>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="password" id="user_pass_02" name="user_pass_02"
 											placeholder="비밀번호를 한번 더 입력해주세요." autocomplete="off">
-										<!-- <p class="input_info_txt">동일한 비밀번호를 입력했습니다.</p> -->
 										<p class="input_info_txt"></p>
 									</div>
 								</li>
@@ -161,10 +131,8 @@
 										<label for="user_email">이메일*</label>
 									</div>
 									<div class="form_box">
-										<!-- <div class="form_box error">
-                        <div class="form_box success"> -->
 										<input type="text" id="user_email" name="email"
-											placeholder="이메일을 입력해주세요." value="">
+											placeholder="이메일을 입력해주세요." value="${MemberDTO.email }">
 										<p class="input_info_txt"></p>
 									</div>
 								</li>
@@ -185,48 +153,16 @@
 										</div>
 									</div>
 								</li>
-								<li class="marry_li gender_li">
-									<div class="l_tit">
-										<label for="reference_id">추천인 코드</label>
-									</div>
-									<div class="l_tit">
-										<input type="text" name="reference_id" id="reference_id"
-											placeholder="추천인 코드를 입력해주세요.">
-									</div>
-								</li>
 							</ul>
 						</div>
 						<div class="btn_area">
-							<!-- <a href="#" class="btn_txt btn_black">회원가입</a>-->
 							<button type="button" class="btn_txt btn_black"
 								onclick="submit_join();">회원가입</button>
 						</div>
 					</div>
-
-					<!-- 통합회원 조회 레이어 -->
-					<div class="layer m_view_layer" id="m_view_layer">
-						<div class="display_table">
-							<div class="table_cell">
-								<div class="layer_area">
-									<h2 class="layer_tit">통합회원 조회</h2>
-									<!-- <button type="button" class="layer_close" onclick="commonUI.layer.close()">닫기</button> -->
-									<div class="layer_con">
-										<ul id="wine_mem_list">
-
-										</ul>
-										<div class="btn_area">
-											<button type="button" class="btn_txt btn_black"
-												onclick="merge_member();">회원통합</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- //통합회원 조회 레이어 -->
 				</div>
+			</form>
 		</div>
-		</form>
 		<form
 			action="https://www.winenara.com/shop/member/join/KCP/kcpcert_proc"
 			name='form_auth' id='form_auth'>
@@ -258,48 +194,7 @@
 				onclick="closeDaumPostcode()" alt="닫기 버튼">
 		</div>
 
-		<!-- page_script -->
-		<script
-			src="../../../../t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
-    
-    $("input[name='marry_yn']:radio").change(function(){
-        if(this.value == 'Y'){
-            $('.marry_date_li').css({'display':'block'});
-        }else{
-            $('.marry_date_li').css({'display':'none'});
-        }
-    })
-
-    function merge_member(){
-        var no = $("input:radio[name='mem_num']:checked").val();
-        var shop = $("input:radio[name='mem_num']:checked").data('shop');
-        console.log(shop);
-        if(no == 'undefined' || no == "" || no == null){
-            alert('회원 선택 후 통합을 진행해주세요.');
-        }else{
-            Csrf.Set(_CSRF_NAME_); //토큰 초기화
-            $.ajax({
-                type:'POST',
-                url :'/shop/auth/merge_mem',
-                data : {'no':no},
-                dataType:'json',
-                success:function(res){
-                    if(res.state == 'Y'){
-                        merge_mem_chk = true;
-                        commonUI.layer.close();
-                        if(shop){$("#store_cd").val(shop).attr("selected", "selected");}
-                        alert(res.msg);
-                    }else{
-                        alert(res.msg);
-                    }
-                },error:function(res){
-                    alert('회원 통합 중 오류가 발생했습니다.');
-                    console.log(res);
-                }
-            })
-        }
-    }
     
     function chk_wine_member(){
         var name = $('#user_nm').val();
@@ -420,9 +315,6 @@
     
     
     function auth_data( frm ){
-        // if(Mobile()){
-        //     location.reload();
-        // }
         
         var auth_form     = document.form_auth;
 
@@ -464,12 +356,7 @@
         $('#auth_div').hide();
         $('#kcp_cert').hide();
     }
-    
-    /* 예제 */
-    // document.ready(function(){
-    //     init_orderid();
-    // });
-    
+
     function init_orderid(){
         var today = new Date();
         var year  = today.getFullYear();
@@ -577,13 +464,11 @@
         user_id : function(input, usable_check_reset){
             var usable_check_reset = typeof usable_check_reset == 'undefined' ? true : usable_check_reset;
             if(!$(input).val()){
-                // input_error(input, '아이디를 입력해주세요.');
                 check_error('#id_length_chk');
                 return false;
             }else{
                 if(!/^[a-zA-Z0-9]+$/.test($(input).val())){
                     check_error('#id_length_chk');
-					// input_error(input, '아이디는 영대소문자, 숫자만 입력 가능합니다.');
 					return false;
 				}else if( $(input).val().length < 5 || $(input).val().length > 20 ){
                     check_error('#id_length_chk');
@@ -704,106 +589,6 @@
                 }
             }
         },
-        phone: function(input){
-			if($(input).val() == ''){
-				input_error(input, '본인 인증 후 자동으로 기입됩니다.', '.tel_box');
-				return false;
-			}else{
-				if(!/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/.test($(input).val())){
-					input_error(input, '휴대폰번호 양식이 정확하지 않습니다.', '.tel_box');
-					return false;
-				}
-            }
-			input_success(input, '', '.tel_box');
-			return true;
-		},
-        phone_code_send:function(button){
-            if(!form_check.phone(join_form.phone)){
-                return false;
-            }
-            Csrf.Set(_CSRF_NAME_);
-            $.ajax({
-                url: '/shop/member/join/phone_code_send_ajax',
-                type: 'POST',
-                data: {'phone': $(join_form.phone).val()},
-                dataType: 'json',
-                beforeSend: function(){
-                    $(button).prop('disabled', true);
-                },
-                error: function(){
-                    input_error(join_form.phone, '인증번호 발송 중 오류가 발생했습니다.', '.code_box');
-                },
-                success: function(result){
-                    if(result.send){
-                        input_success(join_form.phone, '인증번호를 확인해 주시기 바랍니다.', '.code_box');
-                        alert('인증번호 : ' + result.tmp_code);
-                        // $('#time').css('display','block');
-                        // var display = $('#time');
-                        // var leftSec = 180;
-                        // if(isRunning){
-                        //     clearInterval(timer);
-                        //     display.html("");
-                        //     startTimer(leftSec, display);
-                        // }else{
-                        //     startTimer(leftSec, display);
-                        // }
-                    }else{
-                        input_error(join_form.phone, '인증번호 발송 중 오류가 발생했습니다.', '.code_box');
-                    }
-                },
-                complete: function(){
-                    $(button).prop('disabled', false);
-                }
-            });
-        },
-        phone_code : function(input){
-            if($(input).val() == ''){
-                input_error(input, '인증번호를 확인해 주시기 바랍니다.', '.code_box');
-				return false;
-            }
-            return true;
-        },
-        phone_code_check: function(button){
-			if(!form_check.phone_code(join_form.phone_code)){
-				return false;
-			}
-			$.ajax({
-                url: '/shop/member/join/phone_code_check_ajax',
-                type: 'GET',
-                data: {
-                    'phone': $(join_form.phone).val(),
-                    'phone_code': $(join_form.phone_code).val()
-                },
-                dataType: 'json',
-                beforeSend: function(){
-                    form_check.phone_code_checked = 'W';
-                    $(button).prop('disabled', true);
-                },
-                error: function(){
-                    input_error(input, '인증번호 확인 중 오류가 발생했습니다.', '.code_box');
-                },
-                success: function(result){
-                    if(result.checked){
-                        form_check.phone_code_checked = 'Y';
-                        input_success(join_form.phone_code, '', '.code_box');
-                        // if(time_chk){
-                        //     phone_code_time_chk = true;
-                        // }else{
-                        //     phone_code_time_chk = false;
-                        // }
-                        
-                        // clearInterval(timer);
-                    }else{
-                        form_check.phone_code_checked = 'N';
-                        input_error(join_form.phone_code, '잘못된 인증번호입니다.', '.code_box');
-                    }
-                },
-                complete: function(){
-                    $(button).prop('disabled', false);
-                }
-            });
-		},
-        phone_code_checked: 'N',
         email: function(input){
 			if($(input).val() == ''){
 				input_error(input, '이메일을 입력해주세요.');
@@ -848,9 +633,6 @@
                         if(extraAddr !== ''){
                             extraAddr = ' (' + extraAddr + ')';
                         }
-                        // 조합된 참고항목을 해당 필드에 넣는다.
-                        // console.log('extraAddr : ' + extraAddr);
-                        // document.getElementById("sample2_extraAddress").value = extraAddr;
                     
                     } else {
                         // document.getElementById("sample2_extraAddress").value = '';
@@ -924,90 +706,118 @@
         form_check.addr_open(this);
     })
 
+   	function submit_join() {
+    var formData = new FormData(document.getElementById("join_form")); // 폼 데이터 생성
 
-    function submit_join(){
+ 	// formData에 들어 있는 내용 확인
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
+    }
+    var memberId = document.getElementById("user_nm").value;
+    var birthday = document.getElementById("user_birth").value;
+    var phoneNumber = document.getElementById("phone").value;
+    var userId = document.getElementById("user_id").value;
+    var password = document.getElementById("user_pass_01").value;
+    var email = document.getElementById("user_email").value;
+
+    // 빈 값인 필드를 저장할 배열
+    var emptyFields = [];
+
+    // 각 필수 항목이 비어 있는지 확인하고, 빈 값인 경우 emptyFields 배열에 추가
+    if (memberId === "") {
+        emptyFields.push("이름");
+    }
+    if (birthday === "") {
+        emptyFields.push("생년월일");
+    }
+    if (phoneNumber === "") {
+        emptyFields.push("휴대폰 번호");
+    }
+    if (userId === "") {
+        emptyFields.push("아이디");
+    }
+    if (password === "") {
+        emptyFields.push("비밀번호");
+    }
+    if (email === "") {
+        emptyFields.push("이메일");
+    }
+
+    // 빈 값인 필드가 있을 경우 알림 메시지 생성
+    if (emptyFields.length > 0) {
+        var errorMessage = "다음 항목을 입력해주세요\n";
+        errorMessage += emptyFields.join(", ");
+        alert(errorMessage);
+        return;
+    }
+
+    // AJAX 요청
+    $.ajax({
+        type: "POST",
+        url: "/join_form.do",
+        contentType: "application/json",
+        data: JSON.stringify(Object.fromEntries(formData)), // 수정된 부분
+        success: function(response) {
+            if (response === "success") {
+                // 회원 가입이 성공했을 때
+                alert("회원 가입이 완료되었습니다.");
+            } else {
+                // 회원 가입이 실패했을 때
+                console.log(formData);
+                alert("회원 가입에 실패했습니다. 다시 시도해주세요.");
+            }
+        },
+        error: function() {
+            // 서버와의 통신 오류 발생 시
+            alert("서버와의 통신 중 오류가 발생했습니다.");
+        }
+    });
+}
+
+    var checkNum = null; // 전역 변수로 선언
+
+    function sendPhoneNumber() {
+        var phoneNumber = document.getElementById('phone').value;
         
-		var check = true;
+        // AJAX를 이용하여 서버로 전화번호를 전송하고 인증번호 요청
+        $.ajax({
+            url: '/send_sms', // 휴대폰 인증 번호를 전송할 API 엔드포인트
+            type: 'POST',
+            data: { phone: phoneNumber },
+            success: function(response) {
+                // 성공적으로 전화번호가 전송되면 사용자에게 메시지 표시
+                alert('인증번호가 전송되었습니다.');
+            },
+            error: function(xhr, status, error) {
+                // 오류 발생 시 사용자에게 오류 메시지 표시
+                alert('전화번호 전송에 실패했습니다. 다시 시도해주세요.');
+            }
+        });
+    }
+
+    function verifyCode() {
+        var code = document.getElementById('certification').value;
         
-        if(!adult_chk){
-            alert('성인인증을 진행해주세요.');
-            $('#auth_btn').focus();
-            return false;
-        }
-
-		if(!form_check.user_nm(join_form.user_nm)){
-			check = false;
-		}
-
-		if(!form_check.user_id(join_form.user_id, false)){
-			check = false;
-		}else{
-			if(form_check.user_id_usable != 'Y'){
-				check = false;
-				if(form_check.user_id_usable == 'W'){
-					// input_error(join_form.user_id, '아이디 검사 중입니다. 잠시 후에 다시 시도해주세요.');
-                    check_error('#id_chk');
-				}else
-					if(form_check.user_id_usable == 'N'){
-						// input_error(join_form.user_id, '사용할 수 없는 아이디입니다.');
-                        check_error('#id_chk');
-					}
-			}
-		}
-				if(!form_check.passwd(join_form.user_pass_01)){
-			check = false;
-		}
-
-		if(!form_check.passwd_repeat(join_form.user_pass_02)){
-			check = false;
-		}
-		
-		if(!form_check.phone(join_form.phone)){
-			check = false;
-		}
-
-		// if(!form_check.phone_code(join_form.phone_code)){
-		// 	check = false;
-		// }
-
-		// if(form_check.phone_code_checked != 'Y'){
-		// 	check = false;
-		// 	if(form_check.phone_code_checked == 'W'){
-		// 		input_error(join_form.phone_code, '연락처 인증 중 입니다. 잠시 후에 다시 시도해주세요.', '.ip_box');
-		// 	}else{
-		// 		input_error(join_form.phone_code, '연락처 인증이 완료되지 않았습니다.', '.ip_box');
-		// 	}
-		// }
-
-		if(!form_check.email(join_form.email)){
-			check = false;
-		}
-
-        if(!wine_mem_chk){
-            alert('통합회원 조회를 진행해주세요.');
-            return false;
-        }
-
-        if(!merge_mem_chk){
-            alert('회원통합을 진행해주세요.');
-            return false;
-        }
-        
-        if(!$("#store_cd option:selected").val()){
-        	alert('매장을 선택해주세요.');
-            return false;
-        }
-
-		if(!check || !adult_chk || !wine_mem_chk || !merge_mem_chk){
-			return false;
-		}else{
-            Csrf.Set(_CSRF_NAME_);
-            $('#join_form').submit();
-            
-        }
-		
-	}
-
+        // AJAX를 이용하여 서버로 인증번호를 전송하여 확인
+        $.ajax({
+            url: '/verify_code',
+            type: 'POST',
+            data: { code: code },
+            success: function(response) {
+                // 성공적으로 인증번호가 확인되면 사용자에게 메시지 표시
+                alert('인증되었습니다.');
+                // 폼 요소를 비활성화
+                document.getElementById('phone').disabled = true;
+                document.getElementById('certification').disabled = true;
+                document.getElementById('enterBtn').disabled = true;
+                document.getElementById('sendBtn').disabled = true; // 휴대폰 인증 버튼 비활성화
+            },
+            error: function(xhr, status, error) {
+                // 오류 발생 시 사용자에게 오류 메시지 표시
+                alert('인증번호 확인에 실패했습니다. 다시 시도해주세요.');
+            }
+        });
+    }
 </script>
 	</section>
 	<%@ include file="../../common/footer.jsp"%>
