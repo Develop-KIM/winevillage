@@ -72,7 +72,7 @@ function multiDelete() {
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10">
-					<a href="admin_customer_inquery.do">1:1 상담문의
+					<a href="admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
 				</dd>
@@ -120,13 +120,13 @@ function multiDelete() {
 					<tr>
 						<th scope="row">검색어</th>
 						<td colspan="3">
-							<select name="sfl">
-								<option value="query">전체</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
-								<option value="content">분류명</option>
+							<select name="searchField">
+								<option value="all">전체</option>
+								<option value="faq_title">제목</option>
+								<option value="faq_content">내용</option>
+								<option value="faq_classified">분류명</option>
 							</select>
-							<input type="text" name="stx" value="" class="frm_input" size="30">
+							<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 						</td>
 					</tr>
 				</tbody>
@@ -154,6 +154,7 @@ function multiDelete() {
 		<col class="w50">
 		<col class="w50">
 		<col class="w100">
+		<col class="w400">
 		<col>
 		<col class="w100">
 	</colgroup>
@@ -163,6 +164,7 @@ function multiDelete() {
 		<th scope="col">번호</th>
 		<th scope="col">분류명</th>
 		<th scope="col">제목</th>
+		<th scope="col">내용</th>
 		<th scope="col">관리</th>
 	</tr>
 	</thead>
@@ -170,7 +172,7 @@ function multiDelete() {
 		<c:choose>
 			<c:when test="${ empty lists }">
 				<tr>
-					<td colspan='4'>리스트가 없습니다.</td>
+					<td colspan='4' class="empty_table">리스트가 없습니다.</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
@@ -184,6 +186,7 @@ function multiDelete() {
 						<td>${ item.faq_no }</td>
 						<td><span class="ellipsis1">${ item.faq_classified }</span></td>
 						<td class="tal"><span class="ellipsis1">${ item.faq_title }</span></td>
+						<td class="tal"><span class="ellipsis1">${ item.faq_content }</span></td>
 						<td>
 							<a href="admin_customer_faq_edit.do?faq_no=${ item.faq_no }" class="btn_small">수정</a>
 							<a href="#" onclick="event.preventDefault(); deleteFaq(${item.faq_no});" class="btn_small white">삭제</a>

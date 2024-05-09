@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -108,16 +109,19 @@ public class FAQController {
 	}
 	
 	@GetMapping("/admin_customer_faq_category_edit.do")
-	public String faqCategoryEditGet(Model model, FAQDTO faqDTO) {
+	public String faqCategoryEditGet(@RequestParam("new_faq_classified") String new_faq_classified,
+			Model model, FAQDTO faqDTO) {
+		faqDTO.setNew_faq_classified(new_faq_classified);
 		faqDTO = dao.faqView(faqDTO);
 		model.addAttribute("faqDTO", faqDTO);
 		return "admin/admin_customer/admin_customer_faq_category_edit";
 	}
 	
 	@PostMapping("/admin_customer_faq_category_edit.do")
-	public String faqCategoryEditPost(FAQDTO faqDTO, Model model) {
+	public String faqCategoryEditPost(@ModelAttribute("faqDTO") FAQDTO faqDTO, Model model) {
+		System.out.println(faqDTO.getNew_faq_classified());
 		try {
-			int result = dao.categoryEdit(faqDTO);
+			int result = dao.categoryEdit(faqDTO, faqDTO.getNew_faq_classified());
 			System.out.println("수정결과:" + result);
 		} catch (Exception e) {
 			e.printStackTrace();

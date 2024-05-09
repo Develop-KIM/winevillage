@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="wrap">
-			<form action="join_success.do" name='join_form' id='join_form'
+			<form action="join_form.do" name='join_form' id='join_form'
 				method="post" accept-charset="utf-8">
 				<input type="hidden" name="witplus_csrf_token"
 					value="6d4b67b6bb470edeee07d5a9e38ef1d6" />
@@ -55,8 +55,8 @@
 										<label for="user_nm">이름*</label>
 									</div>
 									<div class="form_box">
-										<input type="text" id="user_nm" name="memberId"
-											placeholder="이름을 입력해주세요." value="${MemberDTO.memberId}">
+										<input type="text" id="name" name="name"
+											placeholder="이름을 입력해주세요." value="">
 										<p class="input_info_txt"></p>
 									</div>
 								</li>
@@ -65,10 +65,10 @@
 										<label for="user_birth">생년월일*</label>
 									</div>
 									<div class="form_box">
-										<input type="text" id="user_birth" name="birthday"
+										<input type="text" id="birthday" name="birthday"
 											placeholder="생년월일을 입력해주세요. (ex yyyymmdd)" maxlength="8"
 											oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
-											value="${MemberDTO.birthday}">
+											value="">
 									</div>
 								</li>
 								<li class="tel_li">
@@ -77,7 +77,7 @@
 									</div>
 									<div class="form_box">
 										<div class="tel_box">
-											<input type="text" id="phone" name="phoneNumber"
+											<input type="text" id="phoneNumber" name="phoneNumber"
 												placeholder="휴대폰번호를 입력해주세요.">
 											<button type="button" id="sendBtn"
 												class="btn_txt btn_bgray btn_m_view"
@@ -90,18 +90,23 @@
 										</div>
 									</div>
 								</li>
-								<li>
-									<div class="l_tit">
-										<label for="user_id">아이디*</label>
-										<p class="input_info_txt" id="id_length_chk">5~20자의 영문 혹은
-											영문+숫자 조합</p>
-									</div>
-									<div class="form_box">
-										<input type="text" id="user_id" name="user_id"
-											placeholder="5~20자의 영문 혹은 영문+숫자 조합"
-											value="${MemberDTO.memberId }">
-										<p class="input_info_txt" id="id_chk" style="display: none;">입력해
-											주신 아이디는 사용중인 아이디입니다.</p>
+								<li class="tel_li">
+									<div class="tel_box">
+										<div class="l_tit">
+											<label for="user_id">아이디*</label>
+											<p class="input_info_txt" id="id_length_chk">5~20자의 영문 혹은
+												영문+숫자 조합</p>
+										</div>
+										<div class="form_box">
+											<input type="text" id="memberId" name="memberId"
+												placeholder="5~20자의 영문 혹은 영문+숫자 조합"
+												style="width: calc(100% - 165px);" value="">
+											<p class="input_info_txt" id="id_chk" style="display: none;">입력해
+												주신 아이디는 사용중인 아이디입니다.</p>
+											<button onclick="checkUserIDExist();return false;"
+												title="중복확인" class="btn_txt btn_bgray btn_m_view"
+												type="button">중복확인</button>
+										</div>
 									</div>
 								</li>
 								<li>
@@ -111,9 +116,9 @@
 											이상(공백제외)</p>
 									</div>
 									<div class="form_box">
-										<input type="password" id="user_pass_01" name="user_pass_01"
+										<input type="password" id="password" name="password"
 											placeholder="영문 + 숫자 + 특수문자 조합 8자 이상" autocomplete="off"
-											value="${MemberDTO.password }">
+											value="">
 									</div>
 								</li>
 								<li>
@@ -121,7 +126,7 @@
 										<label for="user_pass_02">비밀번호 확인*</label>
 									</div>
 									<div class="form_box">
-										<input type="password" id="user_pass_02" name="user_pass_02"
+										<input type="password" id="password2" name="password2"
 											placeholder="비밀번호를 한번 더 입력해주세요." autocomplete="off">
 										<p class="input_info_txt"></p>
 									</div>
@@ -131,25 +136,25 @@
 										<label for="user_email">이메일*</label>
 									</div>
 									<div class="form_box">
-										<input type="text" id="user_email" name="email"
-											placeholder="이메일을 입력해주세요." value="${MemberDTO.email }">
+										<input type="text" id="email" name="email"
+											placeholder="이메일을 입력해주세요." value="">
 										<p class="input_info_txt"></p>
 									</div>
 								</li>
 								<li class="add_li">
 									<div class="l_tit">
-										<label for="home_zip">주소</label>
+										<label for="postcode">주소</label>
 									</div>
 									<div class="form_box">
 										<div class="add_box_01">
-											<input type="text" id="home_zip" name="home_zip"
+											<input type="text" id="postcode" name="postcode"
 												placeholder="주소를 입력해주세요." readonly>
 											<button type="button" class="btn_txt btn_bgray"
 												id="addr_open">우편번호찾기</button>
 										</div>
 										<div class="add_box_02">
-											<input type="text" id="home_addr1" name="home_addr1">
-											<input type="text" id="home_addr2" name="home_addr2">
+											<input type="text" id="address1" name="address1">
+											<input type="text" id="address2" name="address2">
 										</div>
 									</div>
 								</li>
@@ -157,7 +162,7 @@
 						</div>
 						<div class="btn_area">
 							<button type="button" class="btn_txt btn_black"
-								onclick="submit_join();">회원가입</button>
+								onclick="submit_join(); return false;">회원가입</button>
 						</div>
 					</div>
 				</div>
@@ -639,10 +644,10 @@
                     }
 
                     // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                    document.getElementById('home_zip').value = data.zonecode;
-                    document.getElementById("home_addr1").value = addr;
+                    document.getElementById('postcode').value = data.zonecode;
+                    document.getElementById("address1").value = addr;
                     // 커서를 상세주소 필드로 이동한다.
-                    document.getElementById("home_addr2").focus();
+                    document.getElementById("address2").focus();
 
                     // iframe을 넣은 element를 안보이게 한다.
                     // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -706,84 +711,86 @@
         form_check.addr_open(this);
     })
 
-   	function submit_join() {
-    var formData = new FormData(document.getElementById("join_form")); // 폼 데이터 생성
 
- 	// formData에 들어 있는 내용 확인
-    for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }
-    var memberId = document.getElementById("user_nm").value;
-    var birthday = document.getElementById("user_birth").value;
-    var phoneNumber = document.getElementById("phone").value;
-    var userId = document.getElementById("user_id").value;
-    var password = document.getElementById("user_pass_01").value;
-    var email = document.getElementById("user_email").value;
+    function submit_join() {
+    var form = document.getElementById("join_form");
+    var formData = new FormData(form);
 
-    // 빈 값인 필드를 저장할 배열
-    var emptyFields = [];
+    var memberId = document.getElementById("memberId").value.trim();
+    var birthday = document.getElementById("birthday").value.trim();
+    var phoneNumber = document.getElementById("phoneNumber").value;
+    var name = document.getElementById("name").value.trim();
+    var password = document.getElementById("password").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var address1 = document.getElementById("address1").value.trim();
+    var address2 = document.getElementById("address2").value.trim();
+    var postcode = document.getElementById("postcode").value.trim();
+	console.log(phoneNumber);
+	console.log(postcode);
+	console.log(address1);
+	console.log(address2);
+	
+    // 빈 값 또는 유효하지 않는 값인 필드를 저장할 배열
+    var invalidFields = [];
 
     // 각 필수 항목이 비어 있는지 확인하고, 빈 값인 경우 emptyFields 배열에 추가
     if (memberId === "") {
-        emptyFields.push("이름");
+        invalidFields.push("이름");
     }
     if (birthday === "") {
-        emptyFields.push("생년월일");
+        invalidFields.push("생년월일");
     }
     if (phoneNumber === "") {
-        emptyFields.push("휴대폰 번호");
+        invalidFields.push("휴대폰 번호");
     }
-    if (userId === "") {
-        emptyFields.push("아이디");
+    if (memberId === "" || !/^[a-zA-Z0-9_]+$/.test(memberId)) {
+        invalidFields.push("아이디");
     }
-    if (password === "") {
-        emptyFields.push("비밀번호");
+    if (password === "" || password.length < 8) {
+        invalidFields.push("비밀번호");
     }
-    if (email === "") {
-        emptyFields.push("이메일");
+    if (email === "" || !/\S+@\S+\.\S+/.test(email)) {
+        invalidFields.push("이메일");
     }
 
     // 빈 값인 필드가 있을 경우 알림 메시지 생성
-    if (emptyFields.length > 0) {
-        var errorMessage = "다음 항목을 입력해주세요\n";
-        errorMessage += emptyFields.join(", ");
+    if (invalidFields.length > 0) {
+        var errorMessage = "다음 항목을 확인해주세요\n";
+        errorMessage += invalidFields.join(", ");
         alert(errorMessage);
         return;
     }
-
+    
     // AJAX 요청
     $.ajax({
         type: "POST",
         url: "/join_form.do",
         contentType: "application/json",
-        data: JSON.stringify(Object.fromEntries(formData)), // 수정된 부분
+        data: JSON.stringify(Object.fromEntries(new Map(formData))),
         success: function(response) {
             if (response === "success") {
-                // 회원 가입이 성공했을 때
                 alert("회원 가입이 완료되었습니다.");
+                window.location.href = "/join_success.do";
             } else {
-                // 회원 가입이 실패했을 때
-                console.log(formData);
                 alert("회원 가입에 실패했습니다. 다시 시도해주세요.");
             }
         },
         error: function() {
-            // 서버와의 통신 오류 발생 시
             alert("서버와의 통신 중 오류가 발생했습니다.");
         }
     });
+    
 }
-
     var checkNum = null; // 전역 변수로 선언
 
     function sendPhoneNumber() {
-        var phoneNumber = document.getElementById('phone').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
         
         // AJAX를 이용하여 서버로 전화번호를 전송하고 인증번호 요청
         $.ajax({
             url: '/send_sms', // 휴대폰 인증 번호를 전송할 API 엔드포인트
             type: 'POST',
-            data: { phone: phoneNumber },
+            data: { phoneNumber: phoneNumber },
             success: function(response) {
                 // 성공적으로 전화번호가 전송되면 사용자에게 메시지 표시
                 alert('인증번호가 전송되었습니다.');
@@ -807,7 +814,7 @@
                 // 성공적으로 인증번호가 확인되면 사용자에게 메시지 표시
                 alert('인증되었습니다.');
                 // 폼 요소를 비활성화
-                document.getElementById('phone').disabled = true;
+                document.getElementById('phoneNumber').disabled = true;
                 document.getElementById('certification').disabled = true;
                 document.getElementById('enterBtn').disabled = true;
                 document.getElementById('sendBtn').disabled = true; // 휴대폰 인증 버튼 비활성화
@@ -817,6 +824,39 @@
                 alert('인증번호 확인에 실패했습니다. 다시 시도해주세요.');
             }
         });
+    }
+    
+    function checkUserIDExist() {
+    	if (document.getElementById("user_id").value) {
+    		//XHR 객체를 생성한다.
+    		var xhr = new XMLHttpRequest();
+    		/* XHR을 post방식으로 요청하고 MemberCheckExist.java(서블릿)으로
+    		폼에서 받아온 아이디값을 전송한다. */
+            xhr.open("POST", "join_form.do", true);
+    		//post방식인 경우 Content-Type을 지정해야 한다고 한다.
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            
+    		//콜백함수
+            xhr.onreadystatechange = function() {
+    			//xhr.readyState==4 : 데이터를 전부 받은 상태, xhr.status==200 : 요청성공
+            	if (xhr.readyState == 4 && xhr.status == 200) {
+            		//뒤에 trim() 안 붙이면 응답값의 좌우에 무조건 공백이 있는걸로 인식되서 처리 안됨
+            		if (xhr.responseText.trim() == "id_exist") {
+            			alert("이미 존재하는 아이디입니다.");
+            			document.getElementById("user_id").focus();
+            		} else if (xhr.responseText.trim() == "id_no_exist") {
+            			alert("사용 가능한 아이디입니다.");
+            		} else {
+            			alert("아이디 검사 중 오류 발생. 다시 시도해주세요.");
+            		}
+            	}
+            };
+            //POST방식으로 "user_id"값 전송. 서블릿에도 해당 파라미터를 받아오는 구문이 있다.
+            xhr.send("user_id=" + document.getElementById("user_id").value);
+    	} else {
+    		alert("아이디를 입력해주세요.");
+    	}
+    	return false;
     }
 </script>
 	</section>

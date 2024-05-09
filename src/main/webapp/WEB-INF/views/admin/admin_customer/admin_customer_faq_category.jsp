@@ -15,8 +15,23 @@ function multiEdit() {
 		return;
 	}
 	
+	/* var new_faq_classified = $("#new_faq_classified").val();
+	
+	$.ajax({
+		url: "/admin_customer_faq_category_edit.do",
+		type: "GET",
+		data: {
+			new_faq_classified: new_faq_classified
+		}
+	})
+	.done(function(response) {})
+	.fail(function(xhr, status, errorThrown) {}); */
+	
 	var selected = document.querySelectorAll('.tbl_head01 input[name="chk[]"]:checked');
 	var editItem = Array.from(selected).map(chk => chk.value);
+	
+	var new_faq_classified =
+		Array.from(selected).map(chk => chk.siblings('input[name="new_faq_classified"]').value)).join(',');
 	
 	if (editItem.length === 0) {
 		alert("선택된 항목이 없습니다.");
@@ -34,6 +49,13 @@ function multiEdit() {
 		input.setAttribute("value", editItem.join(','));
 
 		form.appendChild(input);
+		
+		var new_faq_classified_input = document.createElement("input");
+		new_faq_classified_input.setAttribute("type", "hidden");
+		new_faq_classified_input.setAttribute("name", "new_faq_classified");
+		new_faq_classified_input.setAttribute("value", new_faq_classified);
+		
+		form.appendChild(new_faq_classified_input);
 		document.body.appendChild(form);
 	
 		form.submit();		
@@ -49,7 +71,7 @@ function multiEdit() {
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10">
-					<a href="admin_customer_inquery.do">1:1 상담문의
+					<a href="admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
 				</dd>
@@ -92,8 +114,8 @@ function multiEdit() {
 	전체 : <b class="fc_red">${ categoryCount }</b> 건 조회
 </div>
 <div class="local_frm01">
-	<input type="submit" name="act_button" value="선택수정" class="btn_lsmall bx-white" onclick="document.pressed=this.value">
-<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="multiEdit(); return false;"></div>
+	<input type="submit" name="act_button" value="선택수정" class="btn_lsmall bx-white" onclick="multiEdit(); return false;">
+<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="document.pressed=this.value"></div>
 <div class="tbl_head01">
 	<table>
 	<colgroup>
@@ -114,7 +136,7 @@ function multiEdit() {
 		<c:choose>
 			<c:when test="${ empty lists }">
 				<tr>
-					<td colspan='4'>리스트가 없습니다.</td>
+					<td colspan='4' class="empty_table">리스트가 없습니다.</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
@@ -122,11 +144,14 @@ function multiEdit() {
 					<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
 						<td>
 							<input type="hidden" name="faq_no" value="${ item.faq_no }">
+							<input type="hidden" name="new_faq_classified" value="${ item.faq_classified }">
 							<label for="chk_0" class="sound_only">${ item.faq_classified }</label>
 							<input type="checkbox" name="chk[]" value="${ item.faq_classified }" id="chk_0">
 						</td>
 						<td>${ lists.size() - loop.index }</td>
-						<td class="tal"><input type="text" name="faq_classified" value="${ item.faq_classified }" class="frm_input"></td>
+						<td class="tal">
+							<input type="text" id="new_faq_classified" name="new_faq_classified" value="${ item.faq_classified }" class="frm_input">
+						</td>
 						<%-- <td>
 							<span class="ellipsis1">${ item.faq_classified }</span>
 						</td> --%>

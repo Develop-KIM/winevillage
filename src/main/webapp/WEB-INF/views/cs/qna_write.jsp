@@ -36,65 +36,67 @@
         </ul>
     </div>
 </div>
-<div class="wrap">    <div class="content cs qna_lists_page">
+<div class="wrap">
+	<div class="content cs qna_lists_page">
         <div class="qna_lists_wrap">
             <div class="top">
                 <span>와인나라 이용 중에 생긴<br>불편한 점이나 문의사항을 보내주세요.</span>
             </div>
             <div class="form_area">
-            <form action="https://www.winenara.com/shop/cs/qna_proc" method="post" id="postFrm" accept-charset="utf-8">
-  <input type="hidden" name="witplus_csrf_token" value="ea2f7313ebf1263a2796ee85bb21ab14">
+            <form action="qna_write.do" method="post" id="postFrm" accept-charset="utf-8">
+				<!-- <input type="hidden" name="witplus_csrf_token" value="ea2f7313ebf1263a2796ee85bb21ab14"> -->
+				<input type="hidden" name="memberNo" value="38">
                 <ul>
                     <li>
                         <div class="l_tit">
-                            <label for="input_disabled">이름</label>
+                            <label for="qna_writer">이름</label>
                         </div>
                         <div class="form_box">
-                            <input type="text" id="input_disabled" name="writer" value="박성현">
+                            <input type="text" id="qna_writer" name="qna_writer" value="박성현">
                         </div>
                     </li>
                     <li>
                         <div class="l_tit">
-                            <label for="phone">연락처</label>
+                            <label for="qna_phonenumber">연락처</label>
                         </div>
                         <div class="form_box">
-                            <input type="text" id="phone" name="writer_phone" placeholder=" '-'제외한 숫자만 입력해주세요." maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="010-4924-6766">
+                            <input type="text" id="qna_phonenumber" name="qna_phonenumber" placeholder=" '-'제외한 숫자만 입력해주세요." maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="010-4924-6766">
+                            <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
+                        </div>
+                    </li>
+                    <li>
+					<div class="l_tit">
+						<label for="qna_category">구분</label>
+					</div>
+					<div class="form_box">
+						<select name="qna_category" id="qna_category">
+							<option value="상품관련">상품관련</option>
+							<option value="주문/결제관련">주문/결제관련</option>
+							<option value="반품/환불관련">반품/환불관련</option>
+							<option value="건강정보관련">건강정보관련</option>
+							<option value="기타관련">기타관련</option>
+							<option value="상품문의">상품문의</option>
+							<option value="회원/정보관리">회원/정보관리</option>
+							<option value="배송">배송</option>
+							<option value="영수증/증빙서류">영수증/증빙서류</option>
+						</select>
+					</div>
+                    </li>
+                    <li>
+                        <div class="l_tit">
+                            <label for="qna_title">제목</label>
+                        </div>
+                        <div class="form_box">
+                            <input type="text" id="qna_title" name="qna_title" placeholder="제목을 입력해주세요.">
                             <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
                         </div>
                     </li>
                     <li>
                         <div class="l_tit">
-                            <label for="code_gb">구분</label>
+                            <label for="qna_content">문의내용</label>
                         </div>
                         <div class="form_box">
-                            <select name="code_gb" id="code_gb">
-                                                                    <option value="701">상품관련</option>
-                                                                    <option value="702">주문/결제관련</option>
-                                                                    <option value="703">반품/환불관련</option>
-                                                                    <option value="704">건강정보관련</option>
-                                                                    <option value="705">기타관련</option>
-                                                                    <option value="706">상품문의</option>
-                                                                    <option value="707">회원/정보관리</option>
-                                                                    <option value="708">배송</option>
-                                                                    <option value="709">영수증/증빙서류</option>
-                                                            </select>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="l_tit">
-                            <label for="title">제목</label>
-                        </div>
-                        <div class="form_box">
-                            <input type="text" id="title" name="title" placeholder="제목을 입력해주세요.">
-                            <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="l_tit">
-                            <label for="content">문의내용</label>
-                        </div>
-                        <div class="form_box">
-                            <textarea type="text" id="content" name="content" placeholder="문의내용을 입력해주세요."></textarea>
+                            <textarea type="text" id="qna_content" name="qna_content" placeholder="문의내용을 입력해주세요."></textarea>
                             <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
                         </div>
                     </li>
@@ -107,40 +109,41 @@
 </div>
 
 <script>
-        function form_submit(){
-        if( !$('#input_disabled').val() ){
-            alert('이름을 입력해주세요.');
-            $('#input_disabled').focus();
-            return false;
-        }
-        if( !$('#phone').val() ){
-            alert('연락처를 입력해주세요.');
-            $('#phone').focus();
-            return false;
-        }
-        if( !$('#code_gb').val() ){
-            alert('구분을 선택해주세요.');
-            $('#code_gb').focus();
-            return false;
-        }
-        if( !$('#title').val().trim() ){
-            alert('제목을 입력해주세요.');
-            $('#title').focus();
-            return false;
-        }
-        if( !$('#content').val() ){
-            alert('내용을 입력해주세요.');
-            $('#content').focus();
-            return false;
-        }else{
-            var str = $('#content').val();
-            str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-            $('#content').val(str);
-        }
-		Csrf.Set(_CSRF_NAME_); // 토큰 초기화
-        $('#postFrm').submit();
-    }
-    </script></section>
+function form_submit(){
+	if( !$('#qna_writer').val() ){
+	    alert('이름을 입력해주세요.');
+	    $('#qna_writer').focus();
+	    return false;
+	}
+	if( !$('#qna_phonenumber').val() ){
+	    alert('연락처를 입력해주세요.');
+	    $('#qna_phonenumber').focus();
+	    return false;
+	}
+	if( !$('#qna_category').val() ){
+	    alert('구분을 선택해주세요.');
+	    $('#code_gb').focus();
+	    return false;
+	}
+	if( !$('#qna_title').val().trim() ){
+	    alert('제목을 입력해주세요.');
+	    $('#title').focus();
+	    return false;
+	}
+	if( !$('#qna_content').val() ){
+	    alert('내용을 입력해주세요.');
+	    $('#content').focus();
+	    return false;
+	} else{
+	    var str = $('#qna_content').val();
+	    str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	    $('#qna_content').val(str);
+	}
+	//Csrf.Set(_CSRF_NAME_); // 토큰 초기화
+	$('#postFrm').submit();
+}
+</script>
+</section>
 </body>
 <footer>
 <%@ include file="../common/footer.jsp"%>
