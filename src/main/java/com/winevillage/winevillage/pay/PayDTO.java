@@ -10,11 +10,13 @@ public class PayDTO {
 	private int memberNo;
 	private String memberId;
 	private String name;
-	private java.sql.Date birthday;
+	private String birthday;
 	private String phoneNumber;
 	private String password;
 	private String email;
 	private String address;
+	private String address1;
+	private String address2;
 	private String memberGrade;
 	public java.sql.Date joinDate;
 	private String recommendercode;

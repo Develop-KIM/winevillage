@@ -78,7 +78,7 @@
             name: $("#receipt_name").val(),
             email: $("#or_email").val(),
             phoneNumber: $("#receipt_tel").val(),
-            address: $("#receipt_address").val(),
+            address1: $("#receipt_address1").val(),
             orderRequest: $("#receipt_memo").val()
         },
         usedPoints: parseInt($("#use_reserve").val()),
@@ -108,7 +108,7 @@
                         buyer_email: orderData.orderInfo.email,
                         buyer_name: orderData.orderInfo.name,
                         buyer_tel: orderData.orderInfo.phoneNumber,
-                        buyer_addr: orderData.orderInfo.address,
+                        buyer_addr: orderData.orderInfo.address1,
                         buyer_postcode: "",
                     },
                     function(rsp) {
@@ -170,7 +170,7 @@
                 name: $("#receipt_name").val(),
                 email: $("#or_email").val(),
                 phoneNumber: $("#receipt_tel").val(), 
-                address: $("#receipt_address").val(), 
+                address1: $("#receipt_address1").val(), 
                 orderRequest: $("#receipt_memo").val() 
             }, 
             usedPoints: parseInt($("#use_reserve").val()), 
@@ -178,7 +178,7 @@
             finalPrice: parseInt($("#finish_price_span").text().replace(/[^0-9]/g, '')) ,
             orderStatus: $("#orderStatus").val(),
             //memberNo: $("#memberNo").val()
-            memberNo: 2
+            memberNo: 41
     	    };
         
        
@@ -206,7 +206,7 @@
                         buyer_email: orderData.orderInfo.email,
                         buyer_name: orderData.orderInfo.name,
                         buyer_tel: orderData.orderInfo.phoneNumber,
-                        buyer_addr: orderData.orderInfo.address,
+                        buyer_addr: orderData.orderInfo.address1,
                         buyer_postcode: "",
                     },
                     function(rsp) {
@@ -245,7 +245,7 @@
    	            name: $("#receipt_name").val(),
    	            email: $("#or_email").val(),
    	            phoneNumber: $("#receipt_tel").val(), 
-   	            address: $("#receipt_address").val(),
+   	            address1: $("#receipt_address1").val(),
    	            orderRequest: $("#receipt_memo").val()
    	        },
    	        usedPoints: parseInt($("#use_reserve").val()),
@@ -266,7 +266,7 @@
    	            buyer_email: orderData.orderInfo.email,
    	            buyer_name: orderData.orderInfo.name,
    	            buyer_tel: orderData.orderInfo.phoneNumber,
-   	            buyer_addr: orderData.orderInfo.address,
+   	            buyer_addr: orderData.orderInfo.address1,
    	            buyer_postcode: "",
    	        },
    	        function(rsp) {
@@ -413,10 +413,10 @@
 			                    </li>
 			                    <li>
 			                        <div class='l_tit'>
-			                            <label for='address'>배송주소</label>
+			                            <label for='address1'>배송주소</label>
 			                        </div>
 			                        <div class='form_box'>
-			                            <input type="text" id="address" name="address" value="${row.address}" >
+			                            <input type="text" id="address1" name="address1" value="${row.address1}" >
 			                        </div>
 			                    </li>
 			                </ul>
@@ -456,7 +456,7 @@
                                             <label for="pickup_store_cd">배송주소</label>
                                         </div>
                                         <div class="form_box">
-                                            <input type="text" id="receipt_address" name="re_address" placeholder="배송받을 주소를 입력해주세요." style="background-position:98% 50%;font-size:14px;letter-spacing:-0.05em;height:40px;line-height:40px;">
+                                            <input type="text" id="receipt_address1" name="re_address1" placeholder="배송받을 주소를 입력해주세요." style="background-position:98% 50%;font-size:14px;letter-spacing:-0.05em;height:40px;line-height:40px;">
                                             <p class="input_info_txt">주소를 입력해주세요.</p>
                                         </div>
                                     </li>
