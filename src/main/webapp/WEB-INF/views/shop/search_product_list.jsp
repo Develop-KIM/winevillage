@@ -92,7 +92,7 @@
 						<li>
 						<div class="item">
 							<div class="main_img" style="background: ${empty row.wine ? '#fff' : wineStyles[row.wine]};">
-								<a href="/product_view.do?category=${category }&productNo=${row.productNo}" class="prd_img table_box">
+								<a href="/product_view.do?category=${category }&productCode=${row.productCode}" class="prd_img table_box">
 								<picture>
 								<!--[if IE 9]><video style="display: none;"><![endif]-->
 								<source srcset="uploads/product/200/${row.productImg }" media="(min-width:1024px)">
