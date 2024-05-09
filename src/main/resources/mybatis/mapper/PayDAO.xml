@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getOrderUserInfo"
 		parameterType="com.winevillage.winevillage.pay.ParameterDTO"
 		resultType="com.winevillage.winevillage.pay.PayDTO">
-		  SELECT * FROM member WHERE memberNo = 41
+		  SELECT * FROM member WHERE memberNo = 47
 	</select>
 	
 	<select id="listOrder"
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    						 INNER JOIN Product p ON o.ProductNo = p.ProductNo
   					) tb
 			)
-		WHERE memberNo = 41
+		WHERE memberNo = 47
 	</select> 
 	
 	<insert id="write" parameterType="com.winevillage.winevillage.pay.PayDTO">
@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        order_users_seq.NEXTVAL,
 	        #{name}, #{email}, #{phoneNumber}, #{address}, #{orderRequest},
 	        #{discountPrice},
-	        #{orderAmount}, #{points}, #{finish_price_span}, 41,
+	        #{orderAmount}, #{points}, #{finish_price_span}, 47,
 	        #{re_name}, #{re_hp}, #{re_address}
 	    )
 	</insert>
@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    ) VALUES (
 		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address}, #{orderInfo.orderRequest},
 		        <!-- #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo}, -->
-		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 41,
+		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 47,
 		        #{orderInfo.name}, #{orderInfo.phoneNumber}, #{orderInfo.address}, #{orderStatus}
 		    )
 		
@@ -77,6 +77,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         UPDATE order_users
         SET orderStatus = #{orderStatus}
       <!--   WHERE Order_usersNo = #{id} -->
-        WHERE MemberNo = 41
+        WHERE MemberNo = 47
     </update>	
 </mapper>
