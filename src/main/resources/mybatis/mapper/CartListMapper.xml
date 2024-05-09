@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.winevillage.winevillage.cart.CartListMapper">
+	<!-- 회원 장바구니에 상품 추가 -->
+	<insert id="addProductToMemberCart">
+		INSERT INTO Cart (CARTNO, memberno, productCode, quantity, CrateDate)
+		VALUES (cartno_seq.NEXTVAL, #{memberNo}, #{productCode}, 1,
+		CURRENT_TIMESTAMP)
+	</insert>
+
+	<!-- 비회원 장바구니에 상품 추가 -->
+	<insert id="addProductToNonMemberCart" parameterType="com.winevillage.winevillage.cart.CartListDTO">
+    <!-- 이미 상품이 존재하는지 확인 -->
+    <selectKey keyProperty="isProductExist" resultType="int" order="BEFORE">
+        SELECT COUNT(*) FROM Cart WHERE productCode = #{productCode} AND cookie_id = #{cookieId}
+    </selectKey>
+    
+    <!-- 상품이 존재하는 경우에는 수량을 증가시킴 -->
+    <if test="isProductExist > 0">
+        UPDATE Cart SET quantity = quantity + 1
+        WHERE productCode = #{productCode} AND cookie_id = #{cookieId}
+    </if>
+    
+    <!-- 상품이 존재하지 않는 경우에는 새로 추가 -->
+    <if test="isProductExist == 0">
+        INSERT INTO Cart (CARTNO, cookie_id, productCode, quantity, CrateDate)
+        VALUES (cartno_seq.NEXTVAL, #{cookieId}, #{productCode}, 1, CURRENT_TIMESTAMP)
+    </if>
+	</insert>
+
+	
+	<!-- 비회원 장바구니 리스트 -->
+	<select id="getCartListByCookieId"
+		resultType="com.winevillage.winevillage.cart.CartListDTO">
+	    SELECT 
+	        c.*, 
+	       	p.*
+	    FROM 
+	        cart c
+	    INNER JOIN 
+	        product p ON c.productCode = p.productCode
+	    WHERE 
+	        c.cookie_id = #{cookieId}
+	</select>
+
+	<!-- 회원 장바구니 리스트 -->
+	<select id="getCartListByMemberNo"
+		resultType="com.winevillage.winevillage.cart.CartListDTO">
+		SELECT * FROM cart WHERE memberno = #{memberNo}
+	</select>
+	
+	<select id="getProductByCode" resultType="com.winevillage.winevillage.cart.CartListDTO">
+        SELECT p.*
+        FROM product p
+        JOIN cart c ON p.productCode = c.productCode
+        WHERE p.productCode = #{productCode}
+	</select>
+</mapper>
