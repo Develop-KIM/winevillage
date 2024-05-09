@@ -56,9 +56,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	next_no NUMBER;
 	BEGIN
 	getnext_qna_no(next_no);
-	INSERT INTO qna (qna_no, qna_category, qna_writer,
+	INSERT INTO qna (memberNo, qna_no, qna_category, qna_writer,
 	qna_title, qna_content, qna_postdate, qna_answered)
-	VALUES (next_no, #{qna_category}, #{qna_writer},
+	VALUES (#{memberNo}, next_no, #{qna_category}, #{qna_writer},
 	#{qna_title}, #{qna_content}, sysdate, 0);
 	END;
 	</insert>

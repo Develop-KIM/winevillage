@@ -73,22 +73,22 @@ public class QNAController {
 		return "admin/admin_customer/admin_customer_qna";
 	}
 	
-//	@GetMapping("/qna_write.do")
-//	public String qnaWriteGet(Model model) {
-//		return "cs/qna_write";
-//	}
-//	
-//	@PostMapping("/qna_write.do")
-//	public String qnaWritePost(QNADTO qnaDTO) {
-//		try {
-//			int result = dao.qnaWrite(qnaDTO);
-//			if(result==1) System.out.println("입력완료");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			System.out.println("공지사항 등록에 실패하였습니다.");
-//		}
-//		return "redirect:qna_write.do";
-//	}
+	@GetMapping("/qna_write.do")
+	public String qnaWriteGet(Model model) {
+		return "cs/qna_write";
+	}
+	
+	@PostMapping("/qna_write.do")
+	public String qnaWritePost(QNADTO qnaDTO) {
+		try {
+			int result = dao.qnaWrite(qnaDTO);
+			if(result==1) System.out.println("입력완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("1:1문의 등록에 실패하였습니다.");
+		}
+		return "redirect:qna_list.do";
+	}
 	
 	@GetMapping("/admin_customer_qna_answer_write.do")
 	public String qnaAnswerWriteGet(Model model, QNADTO qnaDTO) {

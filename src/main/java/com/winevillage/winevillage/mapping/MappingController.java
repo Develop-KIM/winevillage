@@ -49,10 +49,10 @@ public class MappingController {
 		return "order/mileage_list";
 	}
 	
-	@GetMapping("/qna_write.do")
-	public String qna_write() {
-		return "cs/qna_write";
-	}
+//	@GetMapping("/qna_write.do")
+//	public String qna_write() {
+//		return "cs/qna_write";
+//	}
 
 	@GetMapping("/faq_list.do")
 	public String faq_list() {

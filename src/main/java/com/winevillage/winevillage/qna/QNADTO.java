@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class QNADTO {
+	private String memberNo;
 	private int qna_no;
 	private String qna_category;
 	private String qna_writer;
