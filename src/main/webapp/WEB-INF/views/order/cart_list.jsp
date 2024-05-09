@@ -49,11 +49,11 @@
 <c:forEach var="cartItem" items="${cartList}" >
 <c:set var="wineStyles"
 	   value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
-                <li class="${cartItem.cartno }">
+                <li class="${cartItem.orderNo }">
                     <div class="box ip_img">
                         <div class="checkbox type2">
-                           		<input type="checkbox" id="cart_seq_${cartItem.cartno }" name="cart_seq[]" class="ip_check" value="${cartItem.productCode }" data-qty="${cartItem.quantity }" data-price="${cartItem.discountPrice }" data-supply-price="${cartItem.fullPrice }" data-promotion-limit="N">
-								<label for="cart_seq_${cartItem.cartno }">
+                           		<input type="checkbox" id="cart_seq_${cartItem.orderNo }" name="cart_seq[]" class="ip_check" value="${cartItem.productCode }" data-qty="${cartItem.orderAmount }" data-price="${cartItem.discountPrice }" data-supply-price="${cartItem.fullPrice }" data-promotion-limit="N">
+								<label for="cart_seq_${cartItem.orderNo }">
                                 <picture style="background: ${empty cartItem.wine ? '#fff' : wineStyles[cartItem.wine]}">
                                     <source srcset="/uploads/product/200/${cartItem.productImg }" media="(min-width:768px)"><!-- pc이미지 -->
                                     <source srcset="/uploads/product/200/${cartItem.productImg }" media="(max-width:767px)"><!-- mb이미지 -->
@@ -87,24 +87,24 @@
 					</div>
                     <div class="box price_amount">
                         <div class="box amount">
-                            <div class="quantity" data-cart-seq="${cartItem.cartno }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-opt-gb="C">
+                            <div class="quantity" data-cart-seq="${cartItem.orderNo }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-opt-gb="C">
                                 <button type="button" class="minus" onclick="box_qty(this, -1);">감소</button>
-                                <input type="text" class="qty" title="수량" value="${cartItem.quantity }" readonly>
+                                <input type="text" class="qty" title="수량" value="${cartItem.orderAmount }" readonly>
                                 <button type="button" class="plus" onclick="box_qty(this, +1);">증가</button>
                             </div>
                         </div>
 						<div class="box price price_con">
 							<div>
 								<span>상품금액</span>
-								<ins id="originalSupply"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.quantity}" pattern="#,##0"/>원</ins>
+								<ins id="originalSupply"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="discount">
 								<span>할인금액</span>
-								<ins id="originalSale"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.quantity}" pattern="#,##0"/>원</ins>
+								<ins id="originalSale"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="total">
 								<span>총 결제금액</span>
-								<ins id="originalTotal"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.quantity}" pattern="#,##0"/>원</ins>
+								<ins id="originalTotal"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 						</div>
                     </div>
@@ -315,9 +315,9 @@ $('.main_img .slider').slick({
 	});
 /* 	function box_qty(e, add){
 		var qty				=	parseInt( $(e).siblings('.qty').val() ) + parseInt(add);
-		var cart_seq		=	$(e).parents('.quantity').data('cart-seq');
-		var opt_gb			=	$(e).parents('.quantity').data('opt-gb');
-		var product_cd      =	$(e).parents('.quantity').data('product-cd');
+		var cart_seq		=	$(e).parents('.orderAmount').data('cart-seq');
+		var opt_gb			=	$(e).parents('.orderAmount').data('opt-gb');
+		var product_cd      =	$(e).parents('.orderAmount').data('product-cd');
 		//	alert(product_cd);
 		if( qty > 0 ){
 			Csrf.Set(_CSRF_NAME_); //토큰 초기화
