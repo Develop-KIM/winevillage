@@ -70,8 +70,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	BEGIN
 	getnext_qna_answer_no(next_no);
 	INSERT INTO qna_answer (qna_no, qna_answer_title, qna_answer_content, qna_answer_postdate)
-	VALUES (next_no, #{qna_answer_title}, #{qna_answer_content}, sysdate);
-	UPDATE qna SET qna_answered=1 WHERE qna_no = next_no;
+	VALUES (#{qna_no}, #{qna_answer_title}, #{qna_answer_content}, sysdate);
+	UPDATE qna SET qna_answered=1 WHERE qna_no = #{qna_no};
 	END;
 	</insert>
 	
@@ -106,8 +106,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="qnaDelete"
 	parameterType="com.winevillage.winevillage.qna.QNADTO">
 	BEGIN
-		DELETE FROM qna WHERE qna_no=#{qna_no};
 		DELETE FROM qna_answer WHERE qna_no=#{qna_no};
+		DELETE FROM qna WHERE qna_no=#{qna_no};
 	END;
 	</delete>
 	

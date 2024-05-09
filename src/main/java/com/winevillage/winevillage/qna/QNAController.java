@@ -50,18 +50,18 @@ public class QNAController {
 		ArrayList<QNADTO> lists = dao.listPage(parameterDTO);
 		
 		for (QNADTO list : lists) {
-		    // 각 질문에 대한 답변을 불러옵니다.
-		    // qnaAnswerView 메소드가 적절히 수정되었다는 가정 하에
-		    QNADTO qnaAnswer = dao.qnaAnswerView(list);
+			// 각 질문에 대한 답변을 불러옵니다.
+			// qnaAnswerView 메소드가 적절히 수정되었다는 가정 하에
+			QNADTO qnaAnswer = dao.qnaAnswerView(list);
 
-		    // null 체크
-		    if (qnaAnswer != null) {
-		        // 답변에 대한 정보를 원래 리스트 요소에 설정합니다.
-		        list.setQna_answer_title(qnaAnswer.getQna_answer_title());
-		        list.setQna_answer_content(qnaAnswer.getQna_answer_content());
-		        list.setQna_answer_postdate(qnaAnswer.getQna_answer_postdate());
-		        list.setQna_answer_editdate(qnaAnswer.getQna_answer_editdate());
-		    }
+			// null 체크
+			if (qnaAnswer != null) {
+				// 답변에 대한 정보를 원래 리스트 요소에 설정합니다.
+				list.setQna_answer_title(qnaAnswer.getQna_answer_title());
+				list.setQna_answer_content(qnaAnswer.getQna_answer_content());
+				list.setQna_answer_postdate(qnaAnswer.getQna_answer_postdate());
+				list.setQna_answer_editdate(qnaAnswer.getQna_answer_editdate());
+			}
 		}
 		
 		model.addAttribute("lists", lists);
@@ -94,13 +94,14 @@ public class QNAController {
 	public String qnaAnswerWriteGet(Model model, QNADTO qnaDTO) {
 		qnaDTO = dao.qnaAnswerView(qnaDTO);
 		qnaDTO.setQna_answer_content(qnaDTO.getQna_answer_content()
-				  .replace("\r\n", "<br/>"));
+				.replace("\r\n", "<br/>"));
 		model.addAttribute("qnaDTO", qnaDTO);
 		return "admin_customer_qna_answer_write";
 	}
 	
 	@PostMapping("/admin_customer_qna_answer_write.do")
 	public String qnaAnswerWritePost(QNADTO qnaDTO) {
+		System.out.println(qnaDTO.getQna_no());
 		try {
 			int result = dao.qnaAnswerWrite(qnaDTO);
 			if(result==-1) System.out.println("입력완료");
@@ -121,7 +122,7 @@ public class QNAController {
 	@PostMapping("/admin_customer_qna_answer_delete.do")
 	public String qnaAnswerDeletePost(QNADTO qnaDTO) {
 		int result = dao.qnaAnswerDelete(qnaDTO);
-		if(result==1) {
+		if(result==-1) {
 			System.out.println("삭제되었습니다.");
 		} else {
 			System.out.println("삭제실패");
@@ -170,7 +171,7 @@ public class QNAController {
 			QNADTO qnaToDelete = new QNADTO();
 	        qnaToDelete.setQna_no(Integer.parseInt(item));
 			int result = dao.qnaDelete(qnaToDelete);
-			if(result==1) {
+			if(result==-1) {
 				System.out.println("삭제되었습니다.");
 			} else {
 				System.out.println("삭제실패");

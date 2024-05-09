@@ -8,42 +8,30 @@ pageEncoding="UTF-8"%>
 <%@ include file="../admin_common/admin_header.jsp"%>
 	
 <script>
-/* function replyQna() {
-	var tr = $(event.target).parent().parent().parent();
-
-	if (tr.next().hasClass('qna_reply')) {
-		tr.next().remove();
-	} else {
-		var qna_no = tr.find("input[name='chk[]']").val();
-		var qna_title = tr.find("td:nth-child(6)").text().trim();
-		var new_row = '<tr class="qna_reply">'+
-			'<td colspan="8"><div class="tbl_frm02"><colgroup><col><col></colgroup><tbody><tr><th>칼럼1</th><td>' + qna_no + '</td></tr><tr><th>칼럼2</th><td>' + qna_title + '</td></tr></tbody></div></td></tr>';
-
-		$(new_row).insertAfter(tr);  
-	}
-} */
+//1:1 상담문의 항목 클릭 시 상세보기
 function detailQna(event) {
 	event.preventDefault();
 	
-    var tr = $(event.target).parent().parent().parent();
+	//리스트 내 항목 tr 아래에 위치해야 함. tr 위치 지정.
+	var tr = $(event.target).parent().parent().parent();
 
-    if (tr.next().hasClass('tr_detail_qna')) {
-    	$('.form_detail_qna').slideUp();
-    	setTimeout(function(){
-            tr.next().remove();
-        }, 500);
-    } else {
-        var qna_no = event.currentTarget.dataset.no;  // lists에서 no property를 참조
-        var qna_category = event.currentTarget.dataset.category;  // lists에서 category property를 참조
-        var qna_writer = event.currentTarget.dataset.writer;  // lists에서 writer property를 참조
-        var qna_phonenumber = event.currentTarget.dataset.phonenumber;  // lists에서 phonenumber property를 참조
-        var qna_title = event.currentTarget.dataset.title;  // lists에서 title property를 참조
-        var qna_content = event.currentTarget.dataset.content;  // lists에서 content property를 참조
-        var qna_postdate = event.currentTarget.dataset.postdate;  // lists에서 postdate property를 참조
-        var qna_editdate = event.currentTarget.dataset.editdate;  // lists에서 editdate property를 참조
-        var qna_answered = event.currentTarget.dataset.answered;  // lists에서 answered property를 참조
-        
-		// Undefined check for answer attributes
+	if (tr.next().hasClass('tr_detail_qna')) {
+		$('.form_detail_qna').slideUp();
+		setTimeout(function(){
+			tr.next().remove();
+		}, 500);
+	} else {
+		var qna_no = event.currentTarget.dataset.no;  // lists에서 no property를 참조
+		var qna_category = event.currentTarget.dataset.category;  // lists에서 category property를 참조
+		var qna_writer = event.currentTarget.dataset.writer;  // lists에서 writer property를 참조
+		var qna_phonenumber = event.currentTarget.dataset.phonenumber;  // lists에서 phonenumber property를 참조
+		var qna_title = event.currentTarget.dataset.title;  // lists에서 title property를 참조
+		var qna_content = event.currentTarget.dataset.content;  // lists에서 content property를 참조
+		var qna_postdate = event.currentTarget.dataset.postdate;  // lists에서 postdate property를 참조
+		var qna_editdate = event.currentTarget.dataset.editdate;  // lists에서 editdate property를 참조
+		var qna_answered = event.currentTarget.dataset.answered;  // lists에서 answered property를 참조
+		
+		//받아오는 데이터가 없을 경우(답변대기-undefined인 경우) 아래 프로퍼티를 null값으로 반환
 		var qna_answer_title = (typeof event.currentTarget.dataset.answerTitle !== 'undefined') ?
 				event.currentTarget.dataset.answerTitle : '';
 		var qna_answer_content = (typeof event.currentTarget.dataset.answerContent !== 'undefined') ?
@@ -53,7 +41,8 @@ function detailQna(event) {
 		var qna_answer_editdate = (typeof event.currentTarget.dataset.answerEditdate !== 'undefined') ?
 				event.currentTarget.dataset.answerEditdate : '';
 		
-        var new_tr = '<tr class="tr_detail_qna"><td colspan="9"><div class="tbl_frm02 form_detail_qna" style="display:none;">'
+		//폼 추가
+		var new_tr = '<tr class="tr_detail_qna"><td colspan="9"><div class="tbl_frm02 form_detail_qna" style="display:none;">'
 			+ '<div class="mart20"></div>'
 			+ '<table>'
 			+ '<colgroup>' + '<col class="w180"><col>' + '</colgroup>'
@@ -88,50 +77,37 @@ function detailQna(event) {
 			+ '<input type="submit" value="닫기" class="btn_small bx-white close-qna-form">'
 			+ '</div>'
 			+ '<div class="marb20"></div>'
-			+ '</div>'
-			;
-			/* + '<div class="padt10"></div>'
-			+ '<div class="tbl_frm02 form_reply_qna"><div class="mart20"></div>'
-			+ '<table>'
-			+ '<colgroup>' + '<col class="w180">' + '<col>' + '</colgroup>'
-			+ '<tbody>'
-			+ '<tr>'
-			+ '<th scope="row">제목</th>'
-			+ '<td><input type="text" name="qna_answer_title" value="" class="required frm_input" size="80" readonly></td>'
-			+ '</tr>'
-			+ '<tr>'
-			+ '<th scope="row">답변내용</th>'
-			+ '<td><textarea name="qna_answer_content" class="frm_textbox"></textarea></td>'
-			+ '</tr>'
-			+ '</tbody>'
-			+ '</table>'
-			+ '<div class="btn_confirm">'
-			+ '<input type="submit" value="전송" class="btn_small">'
-			+ '<input type="submit" value="닫기" class="btn_small bx-white">'
-			+ '</div>'
-			+ '<div class="marb20"></div>'
-			+ '</div></td></tr>'; */
+			+ '</div>';
 
-        $(new_tr).insertAfter(tr);
-        $('.form_detail_qna').slideDown();
-    }
+		//tr 아래쪽에 상단의 form을 insert한다.
+		$(new_tr).insertAfter(tr);
+		//slideDown으로 표시되게 한다.
+		$('.form_detail_qna').slideDown();
+	}
 }
+//1:1 상담문의 항목 상세보기 닫기 시
 $('body').on('click', '.close-qna-form', function(e) {
 	e.preventDefault();
+	
+	//1:1 상담문의 항목 상세보기의 tr 전체의 위치를 지정한다.
 	var tr_detail_qna = $(this).closest('.tr_detail_qna');
+	//form을 display 안되게 slideUp으로 가려준다.
 	$(this).closest('.form_detail_qna').slideUp();
 	$(this).parent().parent().siblings('.padt10').slideUp();
 	$(this).parent().parent().siblings('.form_reply_qna').slideUp();
+	//500밀리세컨즈 뒤에 실제로 항목을 제거한다.
 	setTimeout(function(){
 		tr_detail_qna.remove();
 		$(this).parent().parent().siblings('.padt10').remove();
 		$(this).parent().parent().siblings('.form_reply_qna').remove();
-    }, 500);
+	}, 500);
 });
+//1:1 상담문의 항목 상세보기에서 '답변' 버튼 클릭 시 답변 form 호출
 $('body').on('click', '.open-reply-qna', function(event) {
-	event.preventDefault();
+	event.preventDefault();	
 	var qna_no = $(this).data('no'); // 클릭된 버튼에서 직접 qna_no 값을 가져옴
 	
+	//받아오는 데이터가 없을 경우(답변대기-undefined인 경우) 아래 프로퍼티를 null값으로 반환
 	var qna_answer_title = (typeof event.currentTarget.dataset.answerTitle !== 'undefined') ?
 			event.currentTarget.dataset.answerTitle : '';
 	var qna_answer_content = (typeof event.currentTarget.dataset.answerContent !== 'undefined') ?
@@ -141,12 +117,16 @@ $('body').on('click', '.open-reply-qna', function(event) {
 	var qna_answer_editdate = (typeof event.currentTarget.dataset.answerEditdate !== 'undefined') ?
 			event.currentTarget.dataset.answerEditdate : '';
 	
-	var table = $(this).closest('table');
+	//1:1 상담문의 항목 상세보기의 form 위치를 지정한다.
+	var table = $(this).closest('.form_detail_qna');
+	//이미 열려있을 경우 .padt10 클래스가 있는걸 기준으로 판단해서 .slideToggle해준다.
 	if (table.next().hasClass('padt10')) {
 		$('.form_reply_qna').slideToggle();
 	} else {
+		//답변이 완료됐는지 안됐는지 기준으로 테이블이 나누어진다.
 		if (qna_answer_title == '' && qna_answer_content == ''
 			&& qna_answer_postdate == '' && qna_answer_editdate == '') {
+			//답변대기인 경우
 			var new_table = '<div class="padt10"></div>'
 				+ '<div class="tbl_frm02 form_reply_qna" style="display:none;"><div class="mart20"></div>'
 				+ '<form id="form_reply_qna_' + qna_no + '" method="post" action="admin_customer_qna_answer_write.do">'
@@ -174,8 +154,10 @@ $('body').on('click', '.open-reply-qna', function(event) {
 				+ '</form></div>';
 		}
 		else {
+			//답변완료인 경우
 			var new_table = '<div class="padt10"></div>'
 				+ '<div class="tbl_frm02 form_reply_qna" style="display:none;"><div class="mart20"></div>'
+				//항목별로 답변할 수도 있어서 form의 id에 qna_no 지정함.
 				+ '<form id="form_reply_qna_' + qna_no + '" method="post" action="admin_customer_qna_answer_edit.do">'
 				+ '<input type="hidden" name="qna_no" value="' + qna_no + '">'
 				+ '<table>'
@@ -202,19 +184,26 @@ $('body').on('click', '.open-reply-qna', function(event) {
 				+ '</form></div>';
 		}
 		
+		//1:1 상담문의 항목 상세보기 form의 아래쪽에 상기와 같은 form을 insert한다.
 		$(new_table).insertAfter(table);
+		//insert 후 display한다.
 		$('.form_reply_qna').slideDown();
 	}
 });
+//답변 form에서 '닫기' 버튼 클릭시
 $('body').on('click', '.close-reply-qna-form', function(e) {
 	e.preventDefault();
 	$(this).closest('.form_reply_qna').slideUp();
 });
+//답변 form에서 '전송' 버튼 클릭시
+//리스트의 항목별로 전송할 수도 있어서 form에 숫자를 지정했다. 
 $('body').on('submit', 'form[id^="form_reply_qna_"]', function(event) {
 	event.preventDefault();
 	
+	//값을 전송할 form 지정
 	var form = this;
 	
+	//전송할 값 지정
 	var qnaNo = $(form).find('input[name="qna_no"]').val();
 	var qnaTitle = $(form).find('input[name="qna_answer_title"]').val();
 	var qnaContent = $(form).find('textarea[name="qna_answer_content"]').val();
@@ -238,177 +227,56 @@ $('body').on('submit', 'form[id^="form_reply_qna_"]', function(event) {
 		}
 	});
 });
-/* function replyQna(event) {
-	event.preventDefault();
-	
-	var form = document.getElementById('form_reply_qna');
-	
-	var qnaNo = $(event.currentTarget).data('no');
-	var qnaTitle = $('input[name="qna_answer_title"]').val();
-    var qnaContent = $('textarea[name="qna_answer_content"]').val();
-    
-	// Submit form on 'click' event
-	$(form).on('submit', function(e) {
-		e.preventDefault(); // Prevent the form from submitting normally
-
-		// Send POST request
-		$.ajax({
-			url: 'admin_customer_qna_answer_write.do',
-			type: 'POST',
-			data: {
-				qna_no: qnaNo,
-				qna_answer_title: qnaTitle,
-				qna_answer_content: qnaContent
-			},
-			success: function(response) {
-				// handle success
-				console.log("Success:", response);
-			},
-			error: function(xhr, status, error) {
-				// handle error
-				console.error("Error:", error);
-			}
-		});
-	});
-} */
-/* function replyQna(qna_no) {
-
-    // Retrieve elements
-    var form = document.getElementById('form_reply_qna');
-    
-    var qnaTitle = $('input[name="qna_answer_title"]').val();
-    var qnaContent = $('textarea[name="qna_answer_content"]').val();
-
-    // Submit form on 'click' event
-    $(form).on('submit', function(e) {
-        e.preventDefault(); // Prevent the form from submitting normally
-
-        // Send POST request
-        $.ajax({
-            url: 'admin_customer_qna_answer_write.do',
-            type: 'POST',
-            data: {
-                qna_no: qnaNo,
-                qna_answer_title: qnaTitle,
-                qna_answer_content: qnaContent
-            },
-            success: function(response) {
-                // handle success
-                console.log("Success:", response);
-            },
-            error: function(xhr, status, error) {
-                // handle error
-                console.error("Error:", error);
-            }
-        });
-    });
-} */
-/* function replyQna(qna_no) {
-    if (!isNaN(qna_no)) {
-           var confirmed = confirm("답변을 등록하시겠습니까?");
-           if (confirmed) {
-               var form = document.createElement("form");
-               form.setAttribute("method", "post");
-               form.setAttribute("action", "admin_customer_qna_answer_write.do");
-
-               var input = document.createElement("input");
-               input.setAttribute("type", "hidden");
-               input.setAttribute("name", "qna_no");
-               input.setAttribute("value", parseInt(qna_no)); // 문자열을 숫자로 변환하여 설정
-
-               form.appendChild(input);
-               document.body.appendChild(form);
-
-               form.submit();
-           }
-       } else {
-           alert("유효하지 않은 1:1 문의 번호입니다.");
-       }
-} */
-/* function replyQna(qna_no) {
-    if (!isNaN(qna_no)) {
-        var confirmed = confirm("답변을 등록하시겠습니까?");
-        if (confirmed) {
-            var form = document.createElement("form");
-            form.setAttribute("method", "post");
-            form.setAttribute("action", "admin_customer_qna_answer_write.do");
-
-            var inputNo = document.createElement("input");
-            inputNo.setAttribute("type", "hidden");
-            inputNo.setAttribute("name", "qna_no");
-            inputNo.setAttribute("value", parseInt(qna_no)); // 문자열을 숫자로 변환하여 설정
-            form.appendChild(inputNo);
-
-            var inputTitle = document.createElement("input");
-            inputTitle.setAttribute("type", "hidden");
-            inputTitle.setAttribute("name", "qna_answer_title");
-            inputTitle.setAttribute("value", "답변 제목"); // 실제 답변 제목으로 변경해야 합니다.
-            form.appendChild(inputTitle);
-
-            var inputContent = document.createElement("input");
-            inputContent.setAttribute("type", "hidden");
-            inputContent.setAttribute("name", "qna_answer_content");
-            inputContent.setAttribute("value", "답변 내용"); // 실제 답변 내용으로 변경해야 합니다.
-            form.appendChild(inputContent);
-
-            document.body.appendChild(form);
-            form.submit();
-        }
-    } else {
-        alert("유효하지 않은 1:1 문의 번호입니다.");
-    }
-} */
-
 function deleteQna(qna_no) {
-    if (!isNaN(qna_no)) {
-           var confirmed = confirm("정말로 삭제하시겠습니까?");
-           if (confirmed) {
-               var form = document.createElement("form");
-               form.setAttribute("method", "post");
-               form.setAttribute("action", "admin_customer_qna_delete.do");
+	if (!isNaN(qna_no)) {
+		var confirmed = confirm("정말로 삭제하시겠습니까?");
+		if (confirmed) {
+			var form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", "admin_customer_qna_delete.do");
 
-               var input = document.createElement("input");
-               input.setAttribute("type", "hidden");
-               input.setAttribute("name", "qna_no");
-               input.setAttribute("value", parseInt(qna_no)); // 문자열을 숫자로 변환하여 설정
+			var input = document.createElement("input");
+			input.setAttribute("type", "hidden");
+			input.setAttribute("name", "qna_no");
+			input.setAttribute("value", parseInt(qna_no)); // 문자열을 숫자로 변환하여 설정
 
-               form.appendChild(input);
-               document.body.appendChild(form);
+			form.appendChild(input);
+			document.body.appendChild(form);
 
-               form.submit();
-           }
-       } else {
-           alert("유효하지 않은 1:1 문의 번호입니다.");
-       }
+			form.submit();
+		}
+	} else {
+		alert("유효하지 않은 1:1 문의 번호입니다.");
+	}
 }
 function deleteQnaAnswer(qna_no) {
-    if (!isNaN(qna_no)) {
-           var confirmed = confirm("정말로 삭제하시겠습니까?");
-           if (confirmed) {
-               var form = document.createElement("form");
-               form.setAttribute("method", "post");
-               form.setAttribute("action", "admin_customer_qna_answer_delete.do");
+	if (!isNaN(qna_no)) {
+		var confirmed = confirm("정말로 삭제하시겠습니까?");
+		if (confirmed) {
+			var form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", "admin_customer_qna_answer_delete.do");
 
-               var input = document.createElement("input");
-               input.setAttribute("type", "hidden");
-               input.setAttribute("name", "qna_no");
-               input.setAttribute("value", parseInt(qna_no)); // 문자열을 숫자로 변환하여 설정
+			var input = document.createElement("input");
+			input.setAttribute("type", "hidden");
+			input.setAttribute("name", "qna_no");
+			input.setAttribute("value", parseInt(qna_no)); // 문자열을 숫자로 변환하여 설정
 
-               form.appendChild(input);
-               document.body.appendChild(form);
+			form.appendChild(input);
+			document.body.appendChild(form);
 
-               form.submit();
-           }
-       } else {
-           alert("유효하지 않은 1:1 문의 번호입니다.");
-       }
+			form.submit();
+		}
+	} else {
+		alert("유효하지 않은 1:1 문의 번호입니다.");
+	}
 }
 function multiDelete() {
 	var form = document.getElementById('qnalist');
-    if (!form) {
-        alert('리스트가 정상적으로 로드되지 않았습니다.');
-        return;
-    }
+	if (!form) {
+		alert('리스트가 정상적으로 로드되지 않았습니다.');
+		return;
+	}
 	
 	var selected = document.querySelectorAll('#qnalist input[name="chk[]"]:checked');
 	var deleteItem = Array.from(selected).map(chk => chk.value);
@@ -421,92 +289,19 @@ function multiDelete() {
 	var confirmed = confirm("정말로 삭제하시겠습니까?");
 	if (confirmed) {
 		form.setAttribute("method", "post");
-	    form.setAttribute("action", "admin_customer_qna_delete2.do");
+		form.setAttribute("action", "admin_customer_qna_delete2.do");
 	    
-	    var input = document.createElement("input");
-	    input.setAttribute("type", "hidden");
-	    input.setAttribute("name", "deleteItem");
-	    input.setAttribute("value", deleteItem.join(','));
+		var input = document.createElement("input");
+		input.setAttribute("type", "hidden");
+		input.setAttribute("name", "deleteItem");
+		input.setAttribute("value", deleteItem.join(','));
 	    
-	    form.appendChild(input);
-	    document.body.appendChild(form);
+		form.appendChild(input);
+		document.body.appendChild(form);
 	
-	    form.submit();
+		form.submit();
 	}
 }
-/* function replyQna(event) {
-	var tr = $(event.target).parent().parent('tr');
-
-	if (tr.data('expand')) {
-		tr.data('expand', false).next().remove();
-	}
-	else {
-		tr.data('expand', true);
-		var qna_no = tr.find('.qna_no').text();
-		var qna_postdate = tr.find('.qna_postdate').text();
-		var qna_category = tr.find('.qna_category').text();
-		var qna_writer = tr.find('.qna_writer').children('.ellipsis1').text();
-		var qna_title = tr.find('.qna_title').children('.ellipsis1').text();
-		var qna_content = tr.find('.qna_content').children('.ellipsis1').text();
-
-		var new_tr = '<tr><td colspan="8"><div class="tbl_frm02">'
-			+ '<div class="mart20"></div>'
-			+ '<table>'
-			+ '<colgroup>' + '<col class="w180"><col>' + '</colgroup>'
-			+ '<tbody>'
-			+ '<tr>' + '<th scope="row">번호</th>'
-			+ '<td><input type="text" name="qna_no" value="9" required="" itemname="" class="frm_input" readonly>'+ qna_no +'</td>'
-			+ '</tr>'
-			+ '<tr>' + '<th scope="row">작성일</th>'
-			+ '<td><input type="text" name="qna_postdate" value="2024-99-99" required="" itemname="" class="frm_input" readonly>'+ qna_postdate +'</td>'
-			+ '</tr>'
-			+ '<tr>' + '<th scope="row">구분</th>'
-			+ '<td><input type="text" name="qna_category" value="상품관련" required="" itemname="" class="required frm_input" size="80" readonly>'+ qna_category +'</td>'
-			+ '</tr>'
-			+ '<tr>' + '<th scope="row">이름</th>'
-			+ '<td><input type="text" name="qna_writer" value="홍길동" required="" itemname="" class="required frm_input" size="80" readonly>'+ qna_writer +'</td>'
-			+ '</tr>'
-			+ '<tr>' + '<th scope="row">연락처</th>'
-			+ '<td><input type="text" name="qna_phonenumber" value="'+ qna_phonenumber +'" class="required frm_input" size="80" readonly></td>'
-			+ '</tr>'
-			+ '<tr>' + '<th scope="row">제목</th>'
-			+ '<td><input type="text" name="qna_title" value="'+ qna_title +'" class="required frm_input" size="80" readonly></td>'
-			+ '</tr>'
-			+ '<tr>' + '<th scope="row">문의내용</th>'
-			+ '<td><textarea name="qna_content" class="frm_textbox">'+ qna_content +'</textarea></td>'
-			+ '</tr>'
-			+ '</tbody></table>'
-			+ '<div class="btn_confirm">'
-			+ '<input type="submit" value="답변" class="btn_small bx-red">'
-			+ '<input type="submit" value="닫기" class="btn_small bx-white">'
-			+ '</div>'
-			+ '<div class="marb20"></div>'
-			+ '</div>'
-			+ '<div class="padt10"></div>'
-			+ '<div class="tbl_frm02"><div class="mart20"></div>'
-			+ '<table>'
-			+ '<colgroup>' + '<col class="w180">' + '<col>' + '</colgroup>'
-			+ '<tbody>'
-			+ '<tr>'
-			+ '<th scope="row">제목</th>'
-			+ '<td><input type="text" name="qna_answer_title" value="" class="required frm_input" size="80" readonly></td>'
-			+ '</tr>'
-			+ '<tr>'
-			+ '<th scope="row">답변내용</th>'
-			+ '<td><textarea name="qna_answer_content" class="frm_textbox"></textarea></td>'
-			+ '</tr>'
-			+ '</tbody>'
-			+ '</table>'
-			+ '<div class="btn_confirm">'
-			+ '<input type="submit" value="전송" class="btn_small">'
-			+ '<input type="submit" value="닫기" class="btn_small bx-white">'
-			+ '</div>'
-			+ '<div class="marb20"></div>'
-			+ '</div></td></tr>';
-
-		$(new_tr).insertAfter($(this));
-	}
-} */
 </script>
 
 <div id="wrapper">
