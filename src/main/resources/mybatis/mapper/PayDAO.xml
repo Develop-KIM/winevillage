@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  				 SELECT tb.*, ROWNUM rNum
  					 FROM (
  					   SELECT p.ProductName, p.DiscountPrice, m.Name, 
- 					   			m.PhoneNumber, m.Points, o.orderAmount, m.Email, m.memberNo, m.address, p.productImg, p.wine, p.country, o.orderStatus
+ 					   			m.PhoneNumber, m.Points, o.orderAmount, m.Email, m.memberNo, m.address1, m.address2, p.productImg, p.wine, p.country, o.orderStatus
   						  FROM Orders o
    						 INNER JOIN Member m ON o.MemberNo = m.MemberNo
    						 INNER JOIN Product p ON o.ProductNo = p.ProductNo

@@ -15,6 +15,8 @@ public class PayDTO {
 	private String password;
 	private String email;
 	private String address;
+	private String address1;
+	private String address2;
 	private String memberGrade;
 	public java.sql.Date joinDate;
 	private String recommendercode;
