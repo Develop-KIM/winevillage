@@ -34,5 +34,5 @@ public class SearchDTO {
    private String priceRange;
    private int totalCount;
    private int totalCountKeyword;
-
+   private String state;
 }
