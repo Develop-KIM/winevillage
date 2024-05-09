@@ -6,26 +6,7 @@
 <meta charset="UTF-8">
 <title>WINE VILLAGE | ${productDTO.productName }</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#addToCartForm').on('submit', function(e) {
-        e.preventDefault(); // 기본 폼 제출을 방지
-        $.ajax({
-            type: "POST",
-            url: "/addToCart",
-            data: $(this).serialize(), // 폼 데이터를 직렬화
-            success: function(response) {
-                // 성공적으로 처리된 후에 실행할 코드
-                alert("장바구니에 추가되었습니다.");
-            },
-            error: function(response) {
-                // 오류가 발생했을 때 실행할 코드
-                alert("오류가 발생했습니다.");
-            }
-        });
-    });
-});
-</script>
+
 </head>
 <body>
 	<%@ include file="../common/common.jsp"%>
@@ -69,7 +50,7 @@ $(document).ready(function() {
 						</c:choose>
 	
 						</li>
-					<li onclick="location.href='/product_view.do?category=${category }&state=${state }&sort=${sort }&productNo=${productDTO.productNo}'"
+					<li onclick="location.href='/product_view.do?category=${category }&state=${state }&sort=${sort }&productCode=${productDTO.productCode}'"
 						style="cursor: pointer;">PRODUCT</li>
 				</ul>
 			</div>
@@ -191,12 +172,31 @@ $(document).ready(function() {
 							<div class="btn_area">
 							<c:choose>
 								<c:when test="${productDTO.state != 'exclusive' }">
-								<button type="button" class="btn_txt wish_btn">찜하기</button>
+								<button  class="btn_txt wish_btn">찜하기</button>
 								<!--피씨-->
-								<form id="addToCartForm">
-								    <!-- 여기에 폼 입력 필드 추가 -->
-								    <button type="submit" class="btn_txt cart_btn buy_process_btn">장바구니</button>
-								</form>
+								    <button id="add-to-cart-button" data-product-code="${productDTO.productCode}" class="btn_txt cart_btn buy_process_btn">장바구니</button>
+									<script>
+									$(function() {
+									    $('#add-to-cart-button').click(function() {
+									    	
+									        var productCode = $(this).data('product-code');
+
+									        $.ajax({
+									            url: '/addToCart',
+									            type: 'POST',
+									            data: {
+									                productCode: productCode // 여기에 동적으로 제품 코드 삽입
+									            },
+									            success: function(response) {
+									                alert(response.message);
+									            },
+									            error: function(xhr, status, error) {
+									                alert("오류 발생: " + error);
+									            }
+									        });
+									    });
+									});
+									</script>
 								<button type="button"
 									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'buying'}); chklayer();"
 									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button>

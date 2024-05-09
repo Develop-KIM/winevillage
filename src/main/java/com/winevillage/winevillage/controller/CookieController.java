@@ -12,7 +12,7 @@ public class CookieController {
 	@GetMapping("/setCookie")
 	public String setCookie(HttpServletResponse response) {
 		Cookie cookie = new Cookie("WineVillageCookie", "value");
-		cookie.setMaxAge(3600); 
+		cookie.setMaxAge( 60 * 60 * 6); 
 		response.addCookie(cookie);
 		return "redirect:/main.do";
 	}
