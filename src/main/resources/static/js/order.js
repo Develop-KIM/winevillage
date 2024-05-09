@@ -5,17 +5,17 @@ $(function() {
             // 주문자 정보 가져오기
             var orderName = $("#or_name").val();
             var orderPhoneNumber = $("#or_hp").val();
-            var orderAddress = $("#address").val();
+            var orderAddress = $("#address1").val();
 
             // 수령자 정보에 복사
             $("#receipt_name").val(orderName);
             $("#receipt_tel").val(orderPhoneNumber);
-            $("#receipt_address").val(orderAddress);
+            $("#receipt_address1").val(orderAddress);
         } else {
             // 체크박스 해제 시 입력 필드 초기화
             $("#receipt_name").val("");
             $("#receipt_tel").val("");
-            $("#receipt_address").val("");
+            $("#receipt_address1").val("");
         }
     });
 });

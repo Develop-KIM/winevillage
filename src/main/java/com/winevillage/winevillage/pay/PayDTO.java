@@ -10,7 +10,7 @@ public class PayDTO {
 	private int memberNo;
 	private String memberId;
 	private String name;
-	private java.sql.Date birthday;
+	private String birthday;
 	private String phoneNumber;
 	private String password;
 	private String email;
