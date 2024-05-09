@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpSession;
+
 @RestController
-public class JoinController {
+public class MemberRestController {
 
 	@Autowired
 	MemberService memberService;
@@ -21,7 +23,7 @@ public class JoinController {
 	PasswordEncoder passwordEncoder;
 
     @PostMapping("/join_form")
-    public ResponseEntity<Map<String, Object>> join(@RequestBody MemberDTO memberDTO) {
+    public ResponseEntity<Map<String, Object>> join(@RequestBody MemberDTO memberDTO, HttpSession session) {
         // 비밀번호 암호화
         String encodedPassword = passwordEncoder.encode(memberDTO.getPassword());
         // 암호화된 비밀번호를 DTO에 설정
@@ -32,6 +34,8 @@ public class JoinController {
         Map<String, Object> map = new HashMap<>();
         map.put("성공", result);
 
+        session.setAttribute("memberName", memberDTO.getName());
+        
         if (result == 1) {
             System.out.println("가입이 성공했습니다.");
             return ResponseEntity.ok(map);
@@ -40,4 +44,5 @@ public class JoinController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(map);
         }
     }
+   
 }
