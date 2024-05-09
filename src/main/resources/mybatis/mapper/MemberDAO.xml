@@ -13,14 +13,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <!-- 전화번호 중복 확인 -->
-    <select id="checkPhoneNumberExists" parameterType="String" resultType="int">
+    <select id="checkPhoneNumberExist" parameterType="String" resultType="int">
         SELECT COUNT(*) FROM member WHERE phoneNumber = #{phoneNumber}
     </select>
     
     <!-- 아이디 중복 확인 -->
-    <select id="checkMemberIdExists" parameterType="String" resultType="int">
+    <select id="checkMemberIdExist" parameterType="String" resultType="int">
     	 SELECT COUNT(*) FROM member WHERE memberId = #{memberId}
     </select>
+    
+    <!-- 로그인 처리 -->
+    <select id="getMemberByCredentials" resultType="String"
+    parameterType="com.winevillage.winevillage.member.LoginRequest">
+    SELECT memberId, password
+    FROM member
+    WHERE memberId = #{memberId}
+        AND password = #{password}
+	</select>
     
     <select id="memberTotalCount" resultType="int"
 	parameterType="com.winevillage.winevillage.member.ParameterDTO">
@@ -29,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
 		</if>
 	</select>
-
+	
 	<select id="memberlistPage"
 		resultType="com.winevillage.winevillage.member.MemberDTO"
 		parameterType="com.winevillage.winevillage.member.ParameterDTO">

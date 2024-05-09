@@ -103,9 +103,8 @@
 												style="width: calc(100% - 165px);" value="">
 											<p class="input_info_txt" id="id_chk" style="display: none;">입력해
 												주신 아이디는 사용중인 아이디입니다.</p>
-											<button onclick="checkUserIDExist();return false;"
-												title="중복확인" class="btn_txt btn_bgray btn_m_view"
-												type="button">중복확인</button>
+											<button title="중복확인" class="btn_txt btn_bgray btn_m_view"
+												type="button" onclick="checkMemberIdExist()">중복확인</button>
 										</div>
 									</div>
 								</li>
@@ -371,9 +370,9 @@
     }
 
     function initLayerPosition(){
-        var width = 300; //우편번호서비스가 들어갈 element의 width
-        var height = 400; //우편번호서비스가 들어갈 element의 height
-        var borderWidth = 5; //샘플에서 사용하는 border의 두께
+        var width = 600; //우편번호서비스가 들어갈 element의 width
+        var height = 500; //우편번호서비스가 들어갈 element의 height
+        var borderWidth = 1; //샘플에서 사용하는 border의 두께
 
         // 위에서 선언한 값들을 실제 element에 넣는다.
         element_layer.style.width = width + 'px';
@@ -739,7 +738,7 @@
         contentType: "application/json",
         data: JSON.stringify(Object.fromEntries(new Map(formData))),
         success: function(response) {
-            if (response === "success") {
+            if (response['성공'] === 1) {
                 alert("회원 가입이 완료되었습니다.");
                 window.location.href = "/join_success.do";
             } else {
@@ -756,18 +755,33 @@
     function sendPhoneNumber() {
         var phoneNumber = document.getElementById('phoneNumber').value;
         
-        // AJAX를 이용하여 서버로 전화번호를 전송하고 인증번호 요청
+     // AJAX를 이용하여 서버로 전화번호 중복 여부를 확인
         $.ajax({
-            url: '/send_sms', // 휴대폰 인증 번호를 전송할 API 엔드포인트
-            type: 'POST',
+            url: '/checkPhoneNumberExist', // 중복 확인을 위한 API 엔드포인트
+            type: 'GET',
             data: { phoneNumber: phoneNumber },
             success: function(response) {
-                // 성공적으로 전화번호가 전송되면 사용자에게 메시지 표시
-                alert('인증번호가 전송되었습니다.');
+                if (response === 'exist') {
+                    alert('이미 가입된 번호입니다.');
+                } else {
+                    // 휴대폰 번호가 중복되지 않으면 인증번호를 전송
+                    $.ajax({
+                        url: '/send_sms', // 휴대폰 인증 번호를 전송할 API 엔드포인트
+                        type: 'POST',
+                        data: { phoneNumber: phoneNumber },
+                        success: function(response) {
+                            // 성공적으로 전화번호가 전송되면 사용자에게 메시지 표시
+                            alert('인증번호가 전송되었습니다.');
+                        },
+                        error: function(xhr, status, error) {
+                            // 오류 발생 시 사용자에게 오류 메시지 표시
+                            alert('전화번호 전송에 실패했습니다. 다시 시도해주세요.');
+                        }
+                    });
+                }
             },
             error: function(xhr, status, error) {
-                // 오류 발생 시 사용자에게 오류 메시지 표시
-                alert('전화번호 전송에 실패했습니다. 다시 시도해주세요.');
+                alert('이미 가입된 번호입니다.');
             }
         });
     }
@@ -796,40 +810,25 @@
         });
     }
     
-    function checkUserIDExist() {
-    	if (document.getElementById("user_id").value) {
-    		//XHR 객체를 생성한다.
-    		var xhr = new XMLHttpRequest();
-    		/* XHR을 post방식으로 요청하고 MemberCheckExist.java(서블릿)으로
-    		폼에서 받아온 아이디값을 전송한다. */
-            xhr.open("POST", "join_form.do", true);
-    		//post방식인 경우 Content-Type을 지정해야 한다고 한다.
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            
-    		//콜백함수
-            xhr.onreadystatechange = function() {
-    			//xhr.readyState==4 : 데이터를 전부 받은 상태, xhr.status==200 : 요청성공
-            	if (xhr.readyState == 4 && xhr.status == 200) {
-            		//뒤에 trim() 안 붙이면 응답값의 좌우에 무조건 공백이 있는걸로 인식되서 처리 안됨
-            		if (xhr.responseText.trim() == "id_exist") {
-            			alert("이미 존재하는 아이디입니다.");
-            			document.getElementById("user_id").focus();
-            		} else if (xhr.responseText.trim() == "id_no_exist") {
-            			alert("사용 가능한 아이디입니다.");
-            		} else {
-            			alert("아이디 검사 중 오류 발생. 다시 시도해주세요.");
-            		}
-            	}
-            };
-            //POST방식으로 "user_id"값 전송. 서블릿에도 해당 파라미터를 받아오는 구문이 있다.
-            xhr.send("user_id=" + document.getElementById("user_id").value);
-    	} else {
-    		alert("아이디를 입력해주세요.");
-    	}
-    	return false;
+    function checkMemberIdExist() {
+        var memberId = $("#memberId").val();
+        console.log("아이디: " + memberId);
+        if (memberId.trim() === "") {
+            alert("아이디를 입력하세요.");
+            return;
+        }
+        $.ajax({
+            url: "/checkMemberIdExist",
+            type: "GET",
+            data: { memberId: memberId },
+            success: function(response) {
+                alert(response);
+            },
+            error: function(xhr, status, error) {
+            	 alert("이미 사용 중인 아이디입니다."); // 에러 발생 시 메시지 표시
+            }
+        });
     }
-    
- 	
 </script>
 	</section>
 	<%@ include file="../../common/footer.jsp"%>

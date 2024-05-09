@@ -1,17 +1,17 @@
-    $("#loginBtn").click(function() {
-        var formData = $("#LoginPostFrm").serialize();
-        $.ajax({
-            type: "POST",
-            url: "/login", // Spring Security에 설정된 로그인 URL
-            data: formData,
-            success: function(response) {
-                // 로그인 성공 시 처리
-                alert("로그인 성공!");
-                location.reload(); // 페이지 새로고침 또는 다른 작업 수행
-            },
-            error: function(xhr, status, error) {
-                // 로그인 실패 시 처리
-                alert("로그인 실패: " + xhr.responseText);
-            }
-        });
+$(document).ready(function() {
+    // 아이디 입력 필드에서 keyup 이벤트 감지
+    $("#memberId").on("keyup", function() {
+        var memberId = $(this).val();
+        console.log("아이디: " + memberId);
+        
+        // 아이디 유효성 검사
+        var isValid = validateMemberId(memberId);
+        
+        // 유효성 검사 결과에 따라 메시지 표시
+        if (isValid) {
+            $("#id_info").text("사용 가능한 아이디입니다.").removeClass("invalid").addClass("valid");
+        } else {
+            $("#id_info").text("5~20자의 소문자 영문으로만 가능합니다.").removeClass("valid").addClass("invalid");
+        }
     });
+});

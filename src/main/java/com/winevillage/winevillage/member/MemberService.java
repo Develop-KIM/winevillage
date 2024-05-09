@@ -1,17 +1,17 @@
 package com.winevillage.winevillage.member;
 
 import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Mapper;
-
-
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MemberService {
 	int insert(MemberDTO memberDTO);
-	int checkPhoneNumberExists(String phoneNumber);
-	int checkMemberIdExists(String memberId);
+	int checkPhoneNumberExist(String phoneNumber);
+	int checkMemberIdExist(String memberId);
 	void registerMember(MemberDTO memberDTO);
-	MemberDTO getmemberId(String memberId);
+	MemberDTO getMemberByCredentials(@Param("memberId") String memberId, @Param("password") String password);
 	ArrayList<MemberDTO> memberlistPage(ParameterDTO parameterDTO);
 	public int memberTotalCount(ParameterDTO parameterDTO);
 }

@@ -5,17 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.winevillage.winevillage.admin.AdminDTO;
-
-import jakarta.servlet.http.HttpSession;
-
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import utils.PagingUtil;
 
 @Controller
@@ -30,27 +29,45 @@ public class MemberController {
     }
 
     @GetMapping("/join_success.do")
-    public String joinSuccess() {
+    public String joinSuccess(Model model, HttpSession session) {
+        // 세션에서 이름 가져오기
+        String memberName = (String) session.getAttribute("memberName");
+
+        // 모델에 이름 추가
+        model.addAttribute("memberName", memberName);
+
+        // join_success 페이지로 이동
         return "member/join/join_success";
     }
-
-    @PostMapping("/join_form.do")
-    public String handleJoinSuccessPost() {
-        System.out.println("회원 가입이 완료되었습니다. 환영합니다!");
-        return "redirect:/join_success.do";
+    
+    @GetMapping("/checkMemberIdExist")
+    public ResponseEntity<String> checkMemberIdExist(@RequestParam("memberId") String memberId) {
+        if (memberId == null || memberId.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("아이디를 입력하세요.");
+        }
+        System.out.println("Received memberId: " + memberId);
+        int count = memberService.checkMemberIdExist(memberId);
+        if (count > 0) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 등록된 아이디입니다.");
+        } else {
+            return ResponseEntity.ok("사용 가능한 아이디입니다.");
+        }
     }
     
-    @PostMapping("/admin_login.do")
-	public String adminLoginPost(@RequestParam("login_user_id") String login_user_id, @RequestParam("login_passwd") String login_passwd, HttpSession session) {
-		MemberDTO member =  memberService.getmemberId(login_user_id);
-		if(member==null || !member.getPassword().equals(login_passwd)) {
-			return "redirect:admin_login.do";
-		} else {
-			session.setAttribute("member", member);
-			return "redirect:admin_index.do";
-		}
-	}
-
+    @GetMapping("/checkPhoneNumberExist")
+    public ResponseEntity<String> checkPhoneNumberExist(@RequestParam("phoneNumber") String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("휴대폰 번호를 입력하세요.");
+        }
+        System.out.println("Received phoneNumber: " + phoneNumber);
+        int count = memberService.checkPhoneNumberExist(phoneNumber);
+        if (count > 0) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 등록된 휴대폰 번호입니다.");
+        } else {
+            return ResponseEntity.ok("사용 가능한 휴대폰 번호입니다.");
+        }
+    }
+    
     @GetMapping("/admin_member_lists.do")
 	public String memberLists(Model model, HttpServletRequest req,
 			ParameterDTO parameterDTO) {
