@@ -20,6 +20,8 @@ $(function() {
 	
 	$('.wine_choice').on('click', function() {
 		$('.wine_select').show();
+		$('#wine_category_sub1').val("value").change();
+		alert($('#wine_category_sub1').val());
 	})
 	
 	$('.other_choice').on('click', function() {
@@ -27,7 +29,9 @@ $(function() {
 		$('#wine_category1 option:selected').val("");
 		$('#wine_category2 option:selected').val("");
 		$('#wine_category3 option:selected').val("");
-		$('#wine_category_sub').prop("checked",false);
+		
+		$('#wine_category_sub1').val("").change();
+		alert($('#wine_category_sub1').val());
 	})
 	
 /*	$('.wine_choice').on('click', function() {
@@ -52,55 +56,189 @@ $(function() {
 		console.log(priceString2);
 	})*/
 	
-	$('.discountRate').on('keyup', function() {
+	$('.fullPrice').on('keyup', function() {
 		let originPrice = $('.fullPrice').val();
+		$('.discountPrice').val(originPrice);
+		$('.discountRate').val(0);
+	})
+/*		if(! originPrice || !discountRate) {
+		return false;
+	} else if(discountRate === ""){*/
+	$('.discountRate').on('keyup', function() {
+		let originPrice = parseInt($('.fullPrice').val());
 		let discountRate = $('.discountRate').val();
-		
-		if(! originPrice || !discountRate) {
-			return false;
+		if(discountRate > 100) {
+			alert("할인율은 100%를 넘어갈 수 없습니다.")
+			$('.discountRate').val(0);
+			$('.discountPrice').val(originPrice);
 		} else {
-			let discounted = Math.round(originPrice * (discountRate / 100));	
+			if(discountRate === ""){
+			discountRate = 0;
+			$('.discountPrice').val(originPrice);
+		} else {
+			discountRate = parseInt(discountRate);
+			let discounted = Math.floor(originPrice * (discountRate / 100));
 			let newPrice = originPrice - discounted;
+			
+			
+	        let lastDigit = newPrice % 100;
+	        if (lastDigit > 0) {
+	            newPrice -= lastDigit;
+	        }
 			$('.discountPrice').val(newPrice);
-/*			$('.discountPrice').val(priceString);
-			let priceString = newPrice.toLocaleString('ko-KR');
-			console.log(priceString);*/
+		}
+		}
+
+
+	})
+	
+	let admin_num = /^[0-9]*$/; // 영문+숫자 검사
+	let admin_Id = /^[a-zA-Z0-9]*$/; // 영문+숫자 검사
+	let admin_Name = /^[ㄱ-ㅎ가-힣]*$/; // 한글 검사
+	let admin_Pass = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/ // 영문+숫자+특수기호 검사
+	
+	$('#number_only1').on('keyup', function() {
+		if(!admin_num.test($('#number_only1').val())){
+			alert('숫자만 입력 가능합니다.');
+			$('#number_only1').val('');
+			$('.discountPrice').val('');
+			return false;
+		}
+	})
+	$('#number_only2').on('keyup', function() {
+		if(!admin_num.test($('#number_only2').val())){
+			alert('숫자만 입력 가능합니다.');
+			$('#number_only2').val('');
+			$('.discountPrice').val('');
+			return false;
 		}
 	})
 	
-	function deleteSelectedProducts() {
-    var productNos = [];
-    $('input[name="productNo"]:checked').each(function() {
-        productNos.push($(this).val());
-    });
+    $('#generateCodeBtn').on('click', function(e) {
+        e.preventDefault(); // 기본 동작 방지 (페이지 이동)
 
-    if (productNos.length > 0) {
-        var confirmed = confirm("정말로 선택된 상품을 삭제하시겠습니까?");
-        if (confirmed) {
-            $.ajax({
-                type: "POST",
-                url: "admin_delete_selected_products.do",
-                data: { productNos: productNos },
-                success: function(response) {
-                    // 삭제 성공 시 처리할 작업
-                    alert("선택된 상품이 삭제되었습니다.");
-                    location.reload(); // 페이지 새로고침
-                },
-                error: function() {
-                    // 삭제 실패 시 처리할 작업
-                    alert("상품 삭제에 실패했습니다.");
-                }
-            });
+        $.ajax({
+            type: 'GET',
+            url: '/productCode.do', 
+            success: function(response) {
+                $('#productCode').val(response);
+            },
+            error: function(xhr, status, error) {
+                console.error('에러 발생:', error);
+            }
+        });
+    });
+	
+	$('#admin_signup').on('click', function() {
+	
+	if( !admin_Id.test( $('#admin_id').val() ) ){ 
+		alert('아이디는 영문+숫자로 입력해주세요');
+		$('#admin_id').focus();
+	    return false; 
+	}
+	
+	if ($('#admin_id').val().length > 0) {
+        if ($('#admin_pass_re').val().length < 4) {
+            alert("비밀번호를 4글자 이상 입력하십시오.");
+            $('#admin_pass_re').focus();
+            return false;
         }
-    } else {
-        alert("삭제할 상품을 선택해주세요.");
     }
-}
 	
+	if( !admin_Name.test( $('#admin_name').val() ) ){ 
+		alert('이름은 한글로 입력해주세요');
+		$('#admin_name').focus();
+	    return false; 
+	}
 	
+	if( !admin_Pass.test( $('#admin_pass').val() ) ){ 
+		alert('패스워드는 영문+숫자+특수기호의 조합입니다.');
+		$('#admin_pass').focus();
+	    return false; 
+	}
+	
+    if ($('#admin_pass').val() !== $('#admin_pass_re').val()) {
+        alert("비밀번호가 같지 않습니다.");
+        $('#admin_pass_re').focus();
+        return false;
+    }
+    
+    if ($('#admin_pass').val().length > 0) {
+        if ($('#admin_pass_re').val().length < 4) {
+            alert("비밀번호를 4글자 이상 입력하십시오.");
+            $('#admin_pass_re').focus();
+            return false;
+        }
+    }
+	
+	alert('아이디 입력이 완료되었습니다.')
+		
+	})
 	
 	
 });
+
+
+
+
+	
+	let admin_Id = /^[a-zA-Z0-9]*$/; // 영문+숫자 검사
+	let admin_Name = /^[ㄱ-ㅎ가-힣]*$/; // 한글 검사
+	let admin_Pass = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/ // 영문+숫자+특수기호 검사
+	
+	$('#admin_signup').on('click', function() {
+	
+	if( !admin_Id.test( $('#admin_id').val() ) ){ 
+		alert('아이디는 영문+숫자로 입력해주세요');
+		$('#admin_id').focus();
+	    return false; 
+	}
+	
+	if ($('#admin_id').val().length > 0) {
+        if ($('#admin_pass_re').val().length < 4) {
+            alert("비밀번호를 4글자 이상 입력하십시오.");
+            $('#admin_pass_re').focus();
+            return false;
+        }
+    }
+	
+	if( !admin_Name.test( $('#admin_name').val() ) ){ 
+		alert('이름은 한글로 입력해주세요');
+		$('#admin_name').focus();
+	    return false; 
+	}
+	
+	if( !admin_Pass.test( $('#admin_pass').val() ) ){ 
+		alert('패스워드는 영문+숫자+특수기호의 조합입니다.');
+		$('#admin_pass').focus();
+	    return false; 
+	}
+	
+    if ($('#admin_pass').val() !== $('#admin_pass_re').val()) {
+        alert("비밀번호가 같지 않습니다.");
+        $('#admin_pass_re').focus();
+        return false;
+    }
+    
+    if ($('#admin_pass').val().length > 0) {
+        if ($('#admin_pass_re').val().length < 4) {
+            alert("비밀번호를 4글자 이상 입력하십시오.");
+            $('#admin_pass_re').focus();
+            return false;
+        }
+    }
+	
+	alert('아이디 입력이 완료되었습니다.')
+		
+	})
+
+	
+	
+
+
+
+
+
 
 
 

@@ -42,10 +42,10 @@ public class PagingUtil {
 			while(blockCount<=blockPage && intTemp<=totalPage)
 			{
 				if(intTemp==pageNum) {
-					pagingStr += "&nbsp;"+intTemp+"&nbsp;";
+					pagingStr += "&nbsp;<strong class='pg_current'>"+intTemp+"&nbsp;</strong>";
 				}
 				else {
-					pagingStr += "&nbsp;<a href='"+page
+					pagingStr += "&nbsp;<a class='pg_page' href='"+page
 						+"pageNum="+intTemp+"'>"+
 						intTemp+"</a>&nbsp;";
 				}
