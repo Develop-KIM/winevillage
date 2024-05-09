@@ -129,7 +129,7 @@
 									<div class="main_img"
 										style="background: ${empty product.wine ? '#fff' : wineStyles[product.wine]};">
 										<a
-											href="/product_view.do?category=${category }&state=${state }&sort=${sort }&productNo=${product.productNo}"
+											href="/product_view.do?category=${category }&state=${state }&sort=${sort }&productCode=${product.productCode}"
 											class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
 											<source srcset="/uploads/product/200/${product.productImg }"
 												media="(min-width:1024px)">
