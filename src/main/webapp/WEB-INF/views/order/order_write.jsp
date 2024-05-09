@@ -178,7 +178,7 @@
             finalPrice: parseInt($("#finish_price_span").text().replace(/[^0-9]/g, '')) ,
             orderStatus: $("#orderStatus").val(),
             //memberNo: $("#memberNo").val()
-            memberNo: 41
+            memberNo: 47
     	    };
         
        
