@@ -178,8 +178,29 @@ thead, tfoot {
 }
 .paging {
 	margin-top:40px;
-	font-size : 24px;
-	color: #fa2828;
+	font-size : 12px;
+	text-align: center;
+	vertical-align: middle;
+}
+.paging strong {
+	padding: 0 8px;
+	min-width: 10px;
+	height: 25px;
+	line-height: 25px;
+	vertical-align: middle;
+}
+.paging strong>a {
+	padding: 0 4px;
+	min-width: 20px;
+	height: 25px;
+	line-height: 25px;
+	vertical-align: middle;
+	border: 1px solid #c8c8c8;
+}
+.paging .select_page {
+	color:red;
+	text-decoration-line: none;
+	margin: 0 8px;
 }
 .paging p{
 	display: flex;
@@ -189,7 +210,6 @@ thead, tfoot {
 	padding-left:10px;
 } */
 .paging a>img{
-	border: 1px solid #e4e5e7;
 	width: 20px;
 }
 

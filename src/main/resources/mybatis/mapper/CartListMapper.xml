@@ -5,8 +5,8 @@
 	namespace="com.winevillage.winevillage.cart.CartListMapper">
 	<!-- 회원 장바구니에 상품 추가 -->
 	<insert id="addProductToMemberCart">
-		INSERT INTO Cart (CARTNO, memberno, productCode, quantity, CrateDate)
-		VALUES (cartno_seq.NEXTVAL, #{memberNo}, #{productCode}, 1,
+		INSERT INTO Orders (orderNo, memberno, productCode, orderAmount, CrateDate)
+		VALUES (order_seq.NEXTVAL, #{memberNo}, #{productCode}, 1,
 		CURRENT_TIMESTAMP)
 	</insert>
 
@@ -14,19 +14,19 @@
 	<insert id="addProductToNonMemberCart" parameterType="com.winevillage.winevillage.cart.CartListDTO">
     <!-- 이미 상품이 존재하는지 확인 -->
     <selectKey keyProperty="isProductExist" resultType="int" order="BEFORE">
-        SELECT COUNT(*) FROM Cart WHERE productCode = #{productCode} AND cookie_id = #{cookieId}
+        SELECT COUNT(*) FROM Orders WHERE productCode = #{productCode} AND cookie_id = #{cookieId}
     </selectKey>
     
     <!-- 상품이 존재하는 경우에는 수량을 증가시킴 -->
     <if test="isProductExist > 0">
-        UPDATE Cart SET quantity = quantity + 1
+        UPDATE Orders SET orderAmount = orderAmount + 1
         WHERE productCode = #{productCode} AND cookie_id = #{cookieId}
     </if>
     
     <!-- 상품이 존재하지 않는 경우에는 새로 추가 -->
     <if test="isProductExist == 0">
-        INSERT INTO Cart (CARTNO, cookie_id, productCode, quantity, CrateDate)
-        VALUES (cartno_seq.NEXTVAL, #{cookieId}, #{productCode}, 1, CURRENT_TIMESTAMP)
+        INSERT INTO Orders (orderNo, cookie_id, productCode, orderAmount, CrateDate)
+        VALUES (order_seq.NEXTVAL, #{cookieId}, #{productCode}, 1, CURRENT_TIMESTAMP)
     </if>
 	</insert>
 
@@ -38,7 +38,7 @@
 	        c.*, 
 	       	p.*
 	    FROM 
-	        cart c
+	        Orders c
 	    INNER JOIN 
 	        product p ON c.productCode = p.productCode
 	    WHERE 
@@ -48,13 +48,13 @@
 	<!-- 회원 장바구니 리스트 -->
 	<select id="getCartListByMemberNo"
 		resultType="com.winevillage.winevillage.cart.CartListDTO">
-		SELECT * FROM cart WHERE memberno = #{memberNo}
+		SELECT * FROM Orders WHERE memberno = #{memberNo}
 	</select>
 	
 	<select id="getProductByCode" resultType="com.winevillage.winevillage.cart.CartListDTO">
         SELECT p.*
         FROM product p
-        JOIN cart c ON p.productCode = c.productCode
+        JOIN Orders c ON p.productCode = c.productCode
         WHERE p.productCode = #{productCode}
 	</select>
 </mapper>

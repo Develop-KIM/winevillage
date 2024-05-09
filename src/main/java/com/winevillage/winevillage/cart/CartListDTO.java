@@ -9,11 +9,11 @@ import java.sql.Timestamp;
 @Setter
 @ToString
 public class CartListDTO {
-    private Long cartno;
-    private Long memberno;
+    private Long orderNo;
+    private Long memberNo;
     private String cookie_id;
     private String productCode;
-    private Integer quantity;
+    private Integer OrderAmount;
     private Timestamp createDate;
     
     private String productImg;
