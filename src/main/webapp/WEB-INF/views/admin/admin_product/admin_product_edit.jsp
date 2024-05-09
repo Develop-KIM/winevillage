@@ -250,8 +250,9 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">상품코드</th>
 		<td>
-			<input type="text" name="productCode" value="${productDTO.productCode }" required class="required frm_input">
-					</td>
+			<input type="text" name="productCode" value="${productDTO.productCode }" required readonly="readonly" class="required frm_input">
+			<p class="fc_197 mart7">한번 등록된 상품코드는 수정이 불가능합니다.</p>
+		</td>
 	</tr>
 	<tr>
 		<th scope="row">상품명</th>
@@ -265,14 +266,15 @@ pageEncoding="UTF-8"%>
 		<th scope="row">이미지1 <span class="fc_197">(400 * 400)</span> <strong class="fc_red">[필수]</strong></th>
 		<td>
 			<div class="item_file_fld">
-				<input type="file" value="${productDTO.productImg }" name="imgUpload" required>
-							</div>
-
+				<input type="file" value="${productDTO.productImg }" name="imgUpload" required accept="image/*">
+				<img src="../Uploads/product/200/${productDTO.productImg }" alt="img">
+			</div>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">상세설명</th>
-		<td><textarea id="memo" required name="productInfo" class="smarteditor2" maxlength="65536" style="width:100%">${productDTO.productInfo }</textarea>
+		<td>
+		<textarea id="memo" required name="productInfo" class="smarteditor2" maxlength="65536" style="width:100%">${productDTO.productInfo }</textarea>
 <span class="sound_only">웹 에디터 끝</span>		</td>
 	</tr>
 	</tbody>
@@ -291,22 +293,22 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">판매가격</th>
 		<td>
-			<input type="text" name="fullPrice" value="${productDTO.fullPrice}" class="frm_input w80" > 원
+			<input type="text" id="number_only1" name="fullPrice" value="${productDTO.fullPrice}" class="frm_input fullPrice w80" > 원
 			<span class="fc_197 marl5">해당 상품의 기본 판매가격</span>
 		</td>
 	</tr>
 	<tr>
 		<th scope="row">할인율</th>
 		<td>
-			<input type="text" name="discountRate" value="${productDTO.discountRate}" class="frm_input w50"> %
+			<input type="text" id="number_only2" name="discountRate" value="${productDTO.discountRate}" class="frm_input discountRate w50"> %
 			<span class="fc_197 marl5">할인비율(1% 단위로 표시)</span>
 		</td>
 	</tr>
 	<tr>
-		<th scope="row">할인가격</th>
+		<th scope="row">등록가격</th>
 		<td>
-			<input type="text" name="discountPrice" value="${productDTO.discountPrice}" class="frm_input w80" > 원
-			<span class="fc_197 marl5">할인 적용된 가격 (할인율 없을경우 비활성화)</span>
+			<input type="text" name="discountPrice" value="${productDTO.discountPrice}" class="frm_input discountPrice w80" readonly="readonly"> 원
+			<span class="fc_197 marl5">할인 적용된 가격 (할인율 없을경우 판매가격과 동일)</span>
 		</td>
 	</tr>
 	<tr>

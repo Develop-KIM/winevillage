@@ -15,4 +15,6 @@ public class ParameterDTO {
     private boolean stateNotNull;
 	private int start;
 	private int end;
+	private String uuid;
+	
 }

@@ -21,5 +21,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="checkMemberIdExists" parameterType="String" resultType="int">
     	 SELECT COUNT(*) FROM member WHERE memberId = #{memberId}
     </select>
+    
+    <select id="memberTotalCount" resultType="int"
+	parameterType="com.winevillage.winevillage.member.ParameterDTO">
+		SELECT COUNT(*) FROM member
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+		WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</select>
+
+	<select id="memberlistPage"
+		resultType="com.winevillage.winevillage.member.MemberDTO"
+		parameterType="com.winevillage.winevillage.member.ParameterDTO">
+		SELECT * FROM (
+			SELECT Tb.*, rownum rNum FROM (
+				SELECT * FROM member
+				<if test="searchKeyword!=null and !searchKeyword.equals('')">
+				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</if>
+				ORDER BY memberNo DESC
+			)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start} AND rNum<![CDATA[<=]]>#{end}
+	</select>
 </mapper>
 
