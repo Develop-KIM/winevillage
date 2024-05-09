@@ -12,97 +12,306 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-217574467-1"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  	<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+  
     <script>
+  
+    //결제 
+	$(document).ready(function() { 
+        var totalPrice = parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, '')); 
+        var availablePoints = ${availablePoints}; 
+
+        $("#finish_price_span").text(totalPrice.toLocaleString() + "원"); 
+
+        $("#use_reserve").on("input", function() { 
+            var usedPoints = parseInt($(this).val()); 
+             
+            if (isNaN(usedPoints) || usedPoints === 0) { 
+                $("#reserve_price_dd").text("- 0원"); 
+                $("#finish_price_span").text(totalPrice.toLocaleString() + "원"); 
+                $("#result2 .info").text(availablePoints.toLocaleString() + "P"); 
+                return; 
+            } 
+
+            var finalUsedPoints = Math.min(usedPoints, availablePoints); 
+
+            $("#reserve_price_dd").text("- " + finalUsedPoints.toLocaleString() + "원"); 
+
+            var finalPrice = totalPrice - finalUsedPoints; 
+
+            $("#finish_price_span").text(finalPrice.toLocaleString() + "원"); 
+
+            $("#result2 .info").text((availablePoints - finalUsedPoints).toLocaleString() + "P"); 
+        }); 
+         
+        //포인트 
+        $("#all_use_reserve").change(function() { 
+            if (this.checked) { 
+                $("#use_reserve").val(availablePoints); 
+            } else { 
+                $("#use_reserve").val(0); 
+            } 
+            $("#use_reserve").trigger("input"); 
+        }); 
+
+        $("#result2 .info").text(availablePoints.toLocaleString() + "P"); 
+    }); 
+     
+    //주문서작성(ajax) 
     
-    //결제
-    $(document).ready(function() {
-        var totalPrice = parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, ''));
-        var availablePoints = ${availablePoints};
+/*     function submitOrder() {
+    var orderData = {
+        // 주문 정보를 객체 형태로 생성 
+        orderItems: [
+            <c:forEach items="${orderList}" var="row" varStatus="loop">
+            {
+                productId: "${row.productId}",
+                productName: "${row.productName}",
+                discountPrice: ${row.discountPrice},
+                orderAmount: ${row.orderAmount}
+            }${loop.last ? "" : ","}
+            </c:forEach>
+        ],
+        orderInfo: {
+            memberNo: $("#memberNo").val(),
+            name: $("#receipt_name").val(),
+            email: $("#or_email").val(),
+            phoneNumber: $("#receipt_tel").val(),
+            address: $("#receipt_address").val(),
+            orderRequest: $("#receipt_memo").val()
+        },
+        usedPoints: parseInt($("#use_reserve").val()),
+        totalPrice: parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, '')),
+        finalPrice: parseInt($("#finish_price_span").text().replace(/[^0-9]/g, '')),
+        orderStatus: $("#orderStatus").val(),
+        memberNo: 2
+    };
 
-        $("#finish_price_span").text(totalPrice.toLocaleString() + "원");
-
-        $("#use_reserve").on("input", function() {
-            var usedPoints = parseInt($(this).val());
-			
-            if (isNaN(usedPoints) || usedPoints === 0) {
-                $("#reserve_price_dd").text("- 0원");
-                $("#finish_price_span").text(totalPrice.toLocaleString() + "원");
-                $("#result2 .info").text(availablePoints.toLocaleString() + "P");
-                return;
-            }
-
-            var finalUsedPoints = Math.min(usedPoints, availablePoints);
-
-            $("#reserve_price_dd").text("- " + finalUsedPoints.toLocaleString() + "원");
-
-            var finalPrice = totalPrice - finalUsedPoints;
-
-            $("#finish_price_span").text(finalPrice.toLocaleString() + "원");
-
-            $("#result2 .info").text((availablePoints - finalUsedPoints).toLocaleString() + "P");
-        });
-		
-        //포인트
-        $("#all_use_reserve").change(function() {
-            if (this.checked) {
-                $("#use_reserve").val(availablePoints);
+    console.log(orderData);
+    $.ajax({
+        url: "http://localhost:8586/restOrderWrite.do",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(orderData),
+        success: function(response) {
+            if (response.success) {
+                IMP.init("imp86113226");
+                // 주문 정보 저장 성공 시 결제 요청
+                IMP.request_pay(
+                    {
+                        pg: "uplus",
+                        pay_method: "card",
+                        merchant_uid: new Date().getTime(), // 주문 고유 번호 (임시로 현재 시간 사용)
+                        name: orderData.orderItems[0].productName, // 대표 상품명
+                        amount: 1000, // 최종 결제 금액
+                        buyer_email: orderData.orderInfo.email,
+                        buyer_name: orderData.orderInfo.name,
+                        buyer_tel: orderData.orderInfo.phoneNumber,
+                        buyer_addr: orderData.orderInfo.address,
+                        buyer_postcode: "",
+                    },
+                    function(rsp) {
+                        if (rsp.success) {
+                            console.log(rsp);
+                            // 결제 승인 여부를 서버로 전달
+                            $.ajax({
+                                url: "http://localhost:8586/restOrderWrite.do",
+                                type: "POST",
+                                contentType: "application/json",
+                                data: JSON.stringify({
+                                    paymentApproved: true,
+                                    orderData: orderData
+                                }),
+                                success: function(result) {
+                                    alert("주문이 완료되었습니다.");
+                                },
+                                error: function(xhr, status, error) {
+                                    alert("주문 상태 업데이트 중 오류가 발생했습니다.");
+                                }
+                            });
+                        } else {
+                            console.log(rsp);
+                            alert("결제가 취소되었습니다.");
+                        }
+                    }
+                );
             } else {
-                $("#use_reserve").val(0);
-            }
-            $("#use_reserve").trigger("input");
-        });
-
-        
-        $("#result2 .info").text(availablePoints.toLocaleString() + "P");
-  	  });
-    
-    //주문서작성(ajax)
-    function submitOrder() {
-        var orderData = {
-            // 주문 정보를 객체 형태로 생성
-            orderItems: [
-                <c:forEach items="${orderList}" var="row" varStatus="loop">
-                {
-                    productId: "${row.productId}",
-                    productName: "${row.productName}",
-                    discountPrice: ${row.discountPrice},
-                    orderAmount: ${row.orderAmount}
-                }${loop.last ? "" : ","}
-                </c:forEach>
-            ],
-            orderInfo: {
-            	memberNo:$("#memberNo").val(),
-                name: $("#receipt_name").val(),
-                phoneNumber: $("#receipt_tel").val(),
-                address: $("#receipt_address").val(),
-                orderRequest: $("#receipt_memo").val()
-            },
-            usedPoints: parseInt($("#use_reserve").val()),
-            totalPrice: parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, '')),
-            finalPrice: parseInt($("#finish_price_span").text().replace(/[^0-9]/g, ''))
-        };
-		console.log(orderData);
-        $.ajax({
-            url: "http://localhost:8586/restOrderWrite.do",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(orderData),
-            success: function(response) {
-                alert("주문이 완료되었습니다.");
-            },
-            error: function(xhr, status, error) {
                 alert("주문 처리 중 오류가 발생했습니다.");
             }
-        });
-    }
+        },
+        error: function(xhr, status, error) {
+            alert("주문 처리 중 오류가 발생했습니다.");
+        }
+    });
+} */
     
-    </script>
+    
+    
+    
+    
+    
+	function submitOrder() { 
+        var orderData = { 
+            // 주문 정보를 객체 형태로 생성 
+            orderItems: [ 
+                <c:forEach items="${orderList}" var="row" varStatus="loop"> 
+                { 
+                    productId: "${row.productId}", 
+                    productName: "${row.productName}", 
+                    discountPrice: ${row.discountPrice}, 
+                    orderAmount: ${row.orderAmount} 
+              	 }${loop.last ? "" : ","} 
+                </c:forEach> 
+            ], 
+            orderInfo: { 
+                //memberNo: $("#memberNo").val(),
+                memberNo: $("#memberNo").val(), 
+                name: $("#receipt_name").val(),
+                email: $("#or_email").val(),
+                phoneNumber: $("#receipt_tel").val(), 
+                address: $("#receipt_address").val(), 
+                orderRequest: $("#receipt_memo").val() 
+            }, 
+            usedPoints: parseInt($("#use_reserve").val()), 
+            totalPrice: parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, '')), 
+            finalPrice: parseInt($("#finish_price_span").text().replace(/[^0-9]/g, '')) ,
+            orderStatus: $("#orderStatus").val(),
+            //memberNo: $("#memberNo").val()
+            memberNo: 2
+    	    };
+        
+       
+      		console.log(orderData); 
+	        $.ajax({ 
+            url: "http://localhost:8586/restOrderWrite.do", 
+            type: "POST", 
+            contentType: "application/json", 
+            data: JSON.stringify({
+                /* paymentApproved: true, */
+                orderData: orderData
+            }),
+            success: function(response) {
+            	
+            	IMP.init("imp86113226");
+                // 주문 정보 저장 성공 시 결제 요청
+                IMP.request_pay(
+                    {
+                        pg: "uplus",
+                        pay_method: "card",
+                        merchant_uid: response.orderId, // 주문 고유 번호
+                        name: orderData.orderItems[0].productName, // 대표 상품명
+                     //amount: orderData.finalPrice, // 최종 결제 금액 
+                        amount: 1000, // 최종 결제 금액
+                        buyer_email: orderData.orderInfo.email,
+                        buyer_name: orderData.orderInfo.name,
+                        buyer_tel: orderData.orderInfo.phoneNumber,
+                        buyer_addr: orderData.orderInfo.address,
+                        buyer_postcode: "",
+                    },
+                    function(rsp) {
+                        if (rsp.success) {
+                            console.log(rsp);
+                            alert("주문이 완료되었습니다.");
+                        } else {
+                            console.log(rsp);
+                            alert("결제가 취소되었습니다."); 
+                        }
+                    }
+                );
+            },
+            error: function(xhr, status, error) { 
+                alert("주문 처리 중 오류가 발생했습니다."); 
+            } 
+       }); 
+   	}  
+    
+  
+  	function submitOrder() {
+   	    var orderData = {
+   	        // 주문 정보를 객체 형태로 생성 
+   	        orderItems: [
+   	            <c:forEach items="${orderList}" var="row" varStatus="loop">
+   	            {
+   	                productId: "${row.productId}",
+   	                productName: "${row.productName}",
+   	                discountPrice: ${row.discountPrice},
+   	                orderAmount: ${row.orderAmount}
+   	            }${loop.last ? "" : ","}
+   	            </c:forEach>
+   	        ],
+   	        orderInfo: {
+   	            memberNo: $("#memberNo").val(),
+   	            name: $("#receipt_name").val(),
+   	            email: $("#or_email").val(),
+   	            phoneNumber: $("#receipt_tel").val(), 
+   	            address: $("#receipt_address").val(),
+   	            orderRequest: $("#receipt_memo").val()
+   	        },
+   	        usedPoints: parseInt($("#use_reserve").val()),
+   	        totalPrice: parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, '')),
+   	        finalPrice: parseInt($("#finish_price_span").text().replace(/[^0-9]/g, ''))
+   	    };
+   	    console.log(orderData);
+
+   	    IMP.init("imp86113226");
+   	    // 결제 요청
+   	    IMP.request_pay(
+   	        {
+   	            pg: "uplus",
+   	            pay_method: "card",
+   	            merchant_uid: new Date().getTime(), // 주문 고유 번호
+   	            name: orderData.orderItems[0].productName, // 대표 상품명
+   	         	amount: 1000, // 최종 결제 금액
+   	            buyer_email: orderData.orderInfo.email,
+   	            buyer_name: orderData.orderInfo.name,
+   	            buyer_tel: orderData.orderInfo.phoneNumber,
+   	            buyer_addr: orderData.orderInfo.address,
+   	            buyer_postcode: "",
+   	        },
+   	        function(rsp) {
+   	            if (rsp.success) {
+   	                console.log(rsp);
+   	                // 결제 성공 시에만 주문 정보 저장
+   	                saveOrder(orderData);
+   	            } else {
+   	                console.log(rsp);
+   	                alert("결제가 취소되었습니다."); 
+   	            }
+   	        }
+   	    );
+   	}
+
+   	function saveOrder(orderData) {
+   	    $.ajax({
+   	        url: "http://localhost:8586/restOrderWrite.do",
+   	        type: "POST",
+   	        contentType: "application/json",
+   	        data: JSON.stringify(orderData),
+   	        success: function(response) {
+   	            alert("주문이 완료되었습니다.");
+   	        },
+   	        error: function(xhr, status, error) {
+   	            alert("주문 처리 중 오류가 발생했습니다.");
+   	        }
+   	    });
+   	} 
+   
+
+   
+    
+    
+</script>
+  
 
 </head>
 
 <body>
     <%@ include file="../common/common.jsp"%>
-
+	
+	
+	
+	
     <!-- contents -->
     <section id="contents" class="mb_margin_0" style="margin-top: 188px;">
         <div class="lnb order_lnb lnb_wrap step_wrap">
@@ -113,6 +322,7 @@
                 </div>
             </div>
             <!-- 주문서 작성페이지 -->
+            
             <div class="pc_lnb order_tit">
                 <div class="page_tit">
                     <picture>
@@ -135,6 +345,10 @@
                     <div class="c_lists">
                         <ul id="result1">
                                 <c:forEach items="${orderList}" var="row" varStatus="loop">
+                                <!-- 주문상태  -->
+                                 <div>
+			                            <input type="hid-den" name="orderStatus" id="orderStatus" value="${ row.orderStatus }">
+			                     </div>
                             <li>
                                 <div class="box ip_img">
                                     <picture style="background:#E0D8EA">
@@ -383,9 +597,9 @@
                         <button type="button" class="btn_txt" onclick="location.href='/cart/cart_lists'">
                             <span>취소</span>
                         </button>
-                      <button type="button" class="btn_txt btn_black" onclick="submitOrder();">
+                       <button type="button" class="btn_txt btn_black" onclick="submitOrder();">
 				        <span>주문하기</span>
-				  	  </button>
+				   	       </button>
                     </div>
                 </div>
             </form>

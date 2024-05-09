@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  				 SELECT tb.*, ROWNUM rNum
  					 FROM (
  					   SELECT p.ProductName, p.DiscountPrice, m.Name, 
- 					   			m.PhoneNumber, m.Points, o.orderAmount, m.Email, m.memberNo, m.address, p.productImg, p.wine, p.country
+ 					   			m.PhoneNumber, m.Points, o.orderAmount, m.Email, m.memberNo, m.address, p.productImg, p.wine, p.country, o.orderStatus
   						  FROM Orders o
    						 INNER JOIN Member m ON o.MemberNo = m.MemberNo
    						 INNER JOIN Product p ON o.ProductNo = p.ProductNo
@@ -49,26 +49,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
-	
-	    INSERT INTO order_users (
-	        Order_usersNo, name, phoneNumber, address, orderRequest, 
-	        discountPrice, orderAmount, points, finalPrice, memberNo,
-	        receiverName, receiverPhone, receiverAddress;
-	    ) VALUES (
-	        order_users_seq.NEXTVAL, #{orderInfo.name},  #{orderInfo.phoneNumber}, #{orderInfo.address}, #{orderInfo.orderRequest},
-	      <!--   #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo}, -->
-	        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 2,
-	        #{orderInfo.name}, #{orderInfo.phoneNumber}, #{orderInfo.address}
-	    )
-	   		<foreach collection="orderItems" item="item" index="index">
-	        <if test="index > 0">
-	            INSERT INTO order_details (
-	                orderDetailNo, productId, productName, discountPrice, orderAmount
-	            ) VALUES (
-	                order_detail_seq, #{item.productId}, #{item.productName}, #{item.discountPrice}, #{item.orderAmount}
-	            );
-	        </if>
-	   		</foreach>
-	</insert>
-	
+		    INSERT INTO order_users (
+		        Order_usersNo, name, email, phoneNumber, address, orderRequest,
+		        discountPrice, orderAmount, points, finalPrice, memberNo,
+		        receiverName, receiverPhone, receiverAddress,orderStatus
+		    ) VALUES (
+		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address}, #{orderInfo.orderRequest},
+		        <!-- #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo}, -->
+		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 2,
+		        #{orderInfo.name}, #{orderInfo.phoneNumber}, #{orderInfo.address}, #{orderStatus}
+		    )
+		
+<!-- 		    <foreach collection="orderItems" item="item" index="index" separate=";">
+		        <if test="index > 0">
+		            INSERT INTO order_details (
+		                orderDetailNo, productId, productName, discountPrice, orderAmount, order_usersNo
+		            ) VALUES (
+		                order_detail_seq.NEXTVAL, #{item.productId}, #{item.productName}, #{item.discountPrice}, #{item.orderAmount}, #{order_usersNo}
+		            )
+		        </if>
+		        
+		    </foreach> -->
+    
+</insert>
+
+ <update id="updateOrderStatus" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+        UPDATE order_users
+        SET orderStatus = #{orderStatus}
+      <!--   WHERE Order_usersNo = #{id} -->
+        WHERE MemberNo = 2
+    </update>	
 </mapper>

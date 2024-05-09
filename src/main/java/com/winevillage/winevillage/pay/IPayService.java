@@ -12,7 +12,7 @@ import com.winevillage.winevillage.pay.ParameterDTO;
 public interface IPayService {
 
 
-	public ArrayList<PayDTO> getOrderUserInfo(ParameterDTO parameterDTO);
+	
 	//게시물 개수
 	public int totalCount();
 	//게시물 가져오기
@@ -26,5 +26,7 @@ public interface IPayService {
 	public int writeRest(OrderDTO orderDTO);
 	
 	//order
+	public ArrayList<PayDTO> getOrderUserInfo(ParameterDTO parameterDTO);
 	public ArrayList<PayDTO> listOrder(ParameterDTO parameterDTO);
+	public int updateOrderStatus(OrderDTO orderDTO);
 }

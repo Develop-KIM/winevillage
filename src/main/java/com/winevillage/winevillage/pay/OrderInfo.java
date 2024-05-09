@@ -9,4 +9,6 @@ public class OrderInfo {
 	private String phoneNumber;
 	private String orderRequest;
 	private String address;
+	private String email;
+	private int memberNo;
 }
