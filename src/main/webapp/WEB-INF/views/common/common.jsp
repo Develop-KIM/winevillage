@@ -106,44 +106,44 @@
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a href="list_product.do?category=wine">WINE</a>
+						<li class=""><a href="list_product.do?category=wine&state=value&sort=recent">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
 								        	<li class="ico_red"><a
-								        		href="list_product.do?category=red">레드</a></li>
+								        		href="list_product.do?category=red&state=value&sort=recent">레드</a></li>
 								            <li class="ico_white"><a 
-								            	href="list_product.do?category=white">화이트</a></li>
+								            	href="list_product.do?category=white&state=value&sort=recent">화이트</a></li>
 								            <li class="ico_rose"><a 
-								            	href="list_product.do?category=rose">로제</a></li>
+								            	href="list_product.do?category=rose&state=value&sort=recent">로제</a></li>
 								            <li class="ico_sparkling"><a 
-								            	href="list_product.do?category=sparkling">스파클링</a></li>
+								            	href="list_product.do?category=sparkling&state=value&sort=recent">스파클링</a></li>
 								            <li class="ico_spirits"><a 
-								            	href="list_product.do?category=fortified">주정강화</a></li>
+								            	href="list_product.do?category=fortified&state=value&sort=recent">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
-												href="list_product.do?category=fra">프랑스</a></li>
+												href="list_product.do?category=fra&state=value&sort=recent">프랑스</a></li>
 											<li class="ico_italia"><a
-												href="list_product.do?category=ita">이탈리아</a></li>
+												href="list_product.do?category=ita&state=value&sort=recent">이탈리아</a></li>
 											<li class="ico_spain"><a
-												href="list_product.do?category=esp">스페인</a></li>
+												href="list_product.do?category=esp&state=value&sort=recent">스페인</a></li>
 											<li class="ico_germ"><a
-												href="list_product.do?category=deu">독일</a></li>
+												href="list_product.do?category=deu&state=value&sort=recent">독일</a></li>
 											<li class="ico_usa"><a
-												href="list_product.do?category=usa">미국</a></li>
+												href="list_product.do?category=usa&state=value&sort=recent">미국</a></li>
 											<li class="ico_chile"><a
-												href="list_product.do?category=chl">칠레</a></li>
+												href="list_product.do?category=chl&state=value&sort=recent">칠레</a></li>
 											<li class="ico_argentina"><a
-												href="list_product.do?category=arg">아르헨티나</a></li>
+												href="list_product.do?category=arg&state=value&sort=recent">아르헨티나</a></li>
 											<li class="ico_aus"><a
-												href="list_product.do?category=aus">호주</a></li>
+												href="list_product.do?category=aus&state=value&sort=recent">호주</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li class=""><a href="list_product.do?category=other">OTHER</a>
+						<li class=""><a href="list_product.do?category=other&sort=recent">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
@@ -159,7 +159,9 @@
 					</ul>
 				</div>
 				<ul class="right_menu">
-					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
+<!-- 					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
+								List</span> </a></li> -->
+					<li class="cart"><a href="/cart_list.do" ><span>Cart
 								List</span> </a></li>
 					<li class="mb_hidden wish"><a href="#" onclick="$('.layer.login_layer').show();"><img
 							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
@@ -389,7 +391,7 @@
 						<div class="allDelete off">
 							<h2 class="tit">최근검색어</h2>
 							<button type="button" class="btn del_btn"
-								onclick="all_del_item();">
+								onclick="all_del_item();" >
 								전체삭제</span>
 						</div>
 						<ul id="result_list" class="result_list">
@@ -404,16 +406,12 @@
 	<form action="https://www.winenara.com/login" id="LoginPostFrm"
 		onkeydown="javascript:onEnterLogin();" method="post"
 		accept-charset="utf-8">
-		<input type="hidden" name="witplus_csrf_token"
-			value="be7b38b9302ff3c05cc7f68a617d7dd7" />
 		<div class="layer login_layer" id="login_layer">
 			<div class="display_table">
 				<div class="table_cell">
 					<div class="layer_area">
 						<h2 class="layer_tit">
 							회원서비스
-							<!-- <p class="check"><span>로그인</span></p>
-                    <p><span><a href="/member/join/law_agreement">회원가입</a></span></p> -->
 						</h2>
 						<button type="button" class="layer_close"
 							onclick="commonUI.layer.close()">닫기</button>
@@ -429,10 +427,9 @@
 							<div class="social_login">
 								<h2 class="social_tit">소셜아이디로 로그인</h2>
 								<ul>
-									<li><a href="#none" class="social_btn naver">네이버</a></li>
-									<li><a href="#none" class="social_btn kakao">카카오</a></li>
+							<!-- 		<li><a href="#none" class="social_btn naver">네이버</a></li> -->
+									<!-- <li><a href="#none" class="social_btn kakao">카카오</a></li> -->
 									<li><a href="#none" class="social_btn google">구글</a></li>
-									<!-- <li><a href="#none" class="social_btn apple">애플</a></li> -->
 								</ul>
 							</div>
 							<div class="form_area">

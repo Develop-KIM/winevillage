@@ -1,22 +1,17 @@
-var code = "";
-$(".send").click(function() {
-	alert("인증번호 발송이 완료되었습니다.\n");
-	var phone = $("#phone").val();
-	$.ajax({
-		url: "/join_form.do", // 여기를 수정해야 합니다.
-		type: "POST",
-		data: { phone: phone }, // 여기도 수정해야 합니다.
-		success: function(data) {
-			const checkNum = data;
-
-			$('#enterBtn').click(function() {
-				const userNum = $('#certification').val();
-				if (checkNum == userNum) {
-					alert('인증 성공하였습니다.');
-				} else {
-					alert('인증 실패하였습니다. 다시 입력해주세요.');
-				}
-			});
-		}
-	});
-});
+    $("#loginBtn").click(function() {
+        var formData = $("#LoginPostFrm").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/login", // Spring Security에 설정된 로그인 URL
+            data: formData,
+            success: function(response) {
+                // 로그인 성공 시 처리
+                alert("로그인 성공!");
+                location.reload(); // 페이지 새로고침 또는 다른 작업 수행
+            },
+            error: function(xhr, status, error) {
+                // 로그인 실패 시 처리
+                alert("로그인 실패: " + xhr.responseText);
+            }
+        });
+    });

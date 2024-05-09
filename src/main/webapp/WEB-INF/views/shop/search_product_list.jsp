@@ -23,14 +23,12 @@
 			<!-- <img src="images/shop/product/p_.jpg" alt="상단타이틀 이미지"> -->
 			<!-- <img src="images/shop/product/p_.jpg" alt="상단타이틀 이미지"> -->
 		</div>
-		<div class="page_tit">
-			<h2><span>WINE</span></h2>
-		</div>
 	</div>
 </div>
 <div class="wrap">
 	<div class="wrap">
-		<div class="content product product_lists_page search_product_lists_page">
+		<div class="content product product_lists_page search_product_lists_page"
+			 style="padding-top: 80px">
 			<div class="product_lists_wrap">
 				<div class="line_map mb_hidden">
 					<ul>
@@ -88,12 +86,13 @@
 					</div>
 					<ul class="n_prd_list" id="product_ul">
 						<c:forEach items="${productList }" var="row" varStatus="loop"> 
+						<c:set var="category" value="${category }" />
 						<c:set var="wineStyles"
 							   value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
 						<li>
 						<div class="item">
-							<div class="main_img" style="background: ${wineStyles[row.wine]};">
-								<a href="/shop/product/product_view?product_cd=03R032" class="prd_img table_box">
+							<div class="main_img" style="background: ${empty row.wine ? '#fff' : wineStyles[row.wine]};">
+								<a href="/product_view.do?category=${category }&productNo=${row.productNo}" class="prd_img table_box">
 								<picture>
 								<!--[if IE 9]><video style="display: none;"><![endif]-->
 								<source srcset="uploads/product/200/${row.productImg }" media="(min-width:1024px)">
@@ -127,7 +126,7 @@
 									<c:if test="${not empty row.country }">
 										<span style="background: ${wineStyles[row.wine]};">${row.country }</span>
 									</c:if>
-									<c:if test="${not empty row.grapeVariety }">
+									<c:if test="${not  row.grapeVariety }">
 										<span style="background: ${wineStyles[row.wine]};">${row.grapeVariety }</span>
 									</c:if>
 								</div>
@@ -136,13 +135,7 @@
 											<c:if test="${row.discountRate > 0 }">
 												<em class="discount">${row.discountRate }%</em>
 												<del><fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>원</del>
-												<ins>
-												    <script>
-												        var price = ${(row.fullPrice - (row.fullPrice * row.discountRate / 100))};
-												        var DiscountPrice = Math.floor(price / 100) * 100;
-												        document.write(DiscountPrice.toLocaleString() + "원");
-												    </script>
-												</ins>
+												<ins><fmt:formatNumber value="${row.discountPrice }" pattern="#,##0"/>원</ins>
 											</c:if>
 											<c:if test="${row.discountRate == 0}">
 												<ins class="out">매장문의</ins>

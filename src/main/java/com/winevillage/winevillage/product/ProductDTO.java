@@ -1,7 +1,5 @@
 package com.winevillage.winevillage.product;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
@@ -27,4 +25,7 @@ public class ProductDTO {
 	private String sweetNess;
 	private java.sql.Date registerDate;
 	
+    public ProductDTO getProduct() {
+        return this;
+    }
 }

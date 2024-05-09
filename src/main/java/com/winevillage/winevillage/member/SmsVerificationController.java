@@ -23,8 +23,8 @@ public class SmsVerificationController {
     }
 
     @PostMapping("/send_sms")
-    public ResponseEntity<?> sendSMS(@RequestParam("phone") String userPhoneNumber, HttpSession session) {
-        try {
+    public ResponseEntity<?> sendSMS(@RequestParam("phoneNumber") String userPhoneNumber, HttpSession session) {
+        try  { 	
         	System.out.println("Received phone number: " + userPhoneNumber); 
             int randomNumber = ThreadLocalRandom.current().nextInt(1000, 10000);
             System.out.println("Generated random number: " + randomNumber);

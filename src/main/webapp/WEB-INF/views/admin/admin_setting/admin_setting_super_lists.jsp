@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ include file="../admin_common/admin_isLoggedin.jsp" %>
+<%-- <%@ include file="../admin_common/admin_isLoggedin.jsp" %> --%>
 <!doctype html>
 <html lang="ko">
 <head>

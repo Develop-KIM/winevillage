@@ -20,7 +20,9 @@ public class MemberDTO {
 	private String name;
 	private String phoneNumber;
 	private String email;
-	private String address;
+	private String postcode;
+	private String address1; // 동
+	private String address2; // 상세주소
 	private MemberGrade grade;
 	private int point;
 	private Date joinDate;

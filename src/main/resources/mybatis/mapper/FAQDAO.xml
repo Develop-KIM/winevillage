@@ -8,7 +8,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	parameterType="com.winevillage.winevillage.faq.ParameterDTO">
 		SELECT COUNT(*) FROM faq
 		<if test="searchKeyword!=null and !searchKeyword.equals('')">
-		WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+			<choose>
+				<when test="searchField == 'all'">
+					WHERE
+					faq_title LIKE '%'||#{searchKeyword}||'%' OR
+					faq_content LIKE '%'||#{searchKeyword}||'%' OR
+					faq_classified LIKE '%'||#{searchKeyword}||'%'
+				</when>
+				<otherwise>
+					WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</otherwise>
+			</choose>
 		</if>
 	</select>
 	
@@ -19,8 +29,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT Tb.*, rownum rNum FROM (
 				SELECT * FROM faq
 				<if test="searchKeyword!=null and !searchKeyword.equals('')">
-				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
-				</if>
+		            <choose>
+		                <when test="searchField == 'all'">
+		                    WHERE 
+		                        faq_title LIKE '%'||#{searchKeyword}||'%' OR 
+		                        faq_content LIKE '%'||#{searchKeyword}||'%' OR
+		                        faq_classified LIKE '%'||#{searchKeyword}||'%'
+		                </when>
+		                <otherwise>
+		                    WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		                </otherwise>
+		            </choose>
+		        </if>
 				ORDER BY faq_no DESC
 			)Tb
 		)
@@ -56,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="categoryEdit"
 	parameterType="com.winevillage.winevillage.faq.FAQDTO">
-	UPDATE faq SET faq_classified=#{faq_classified}
+	UPDATE faq SET faq_classified=#{new_faq_classified}
 	WHERE faq_no IN (SELECT faq_no FROM faq WHERE faq_classified=#{faq_classified});
 	</update>
 	
