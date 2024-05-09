@@ -33,6 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE rNum<![CDATA[>=]]>#{start}
 		AND rNum<![CDATA[<=]]>#{end}
 	</select>
+	
 	<select id="ProductCount" resultType="int"
 		parameterType="com.winevillage.winevillage.product.ParameterDTO">
 		SELECT COUNT(*) FROM product
@@ -198,11 +199,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       #{sweetNess})
    </insert>
 
-   <select id="productView"
-      resultType="com.winevillage.winevillage.product.ProductDTO"
-      parameterType="com.winevillage.winevillage.product.ProductDTO">
-      SELECT * FROM product WHERE productNo = #{productNo}
-   </select>
+	<select id="productView"
+		resultType="com.winevillage.winevillage.product.ProductDTO"
+		parameterType="com.winevillage.winevillage.product.ProductDTO">
+		SELECT * FROM product WHERE productCode = #{productCode}
+	</select>
 
    <update id="productEdit"
       parameterType="com.winevillage.winevillage.product.ProductDTO">

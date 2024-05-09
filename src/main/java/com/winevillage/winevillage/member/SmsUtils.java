@@ -1,7 +1,5 @@
 package com.winevillage.winevillage.member;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +9,6 @@ import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
 import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
-import utils.SmsSendingException;
 
 @Component
 public class SmsUtils {
@@ -44,6 +41,7 @@ public class SmsUtils {
             return response;
 //        } catch (Exception e) {
 //            throw new SmsSendingException("Failed to send SMS", e); // 적절한 예외로 변경
-//        }
+//        }	1
     }
+   
 }

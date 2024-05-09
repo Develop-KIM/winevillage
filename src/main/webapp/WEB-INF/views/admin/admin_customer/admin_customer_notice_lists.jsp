@@ -72,7 +72,7 @@ function multiDelete() {
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10">
-					<a href="admin_customer_inquery.do">1:1 상담문의
+					<a href="admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
 				</dd>
@@ -143,12 +143,12 @@ function multiDelete() {
 						<tr>
 							<th scope="row">검색어</th>
 							<td colspan="3">
-								<select name="sfl">
-									<option value="query">전체</option>
-									<option value="title">제목</option>
-									<option value="content">내용</option>
+								<select name="searchField">
+									<option value="all">전체</option>
+									<option value="notice_title">제목</option>
+									<option value="notice_content">내용</option>
 								</select>
-								<input type="text" name="stx" value="" class="frm_input" size="30">
+								<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 							</td>
 						</tr>
 						<tr>
@@ -229,7 +229,7 @@ function multiDelete() {
 						<c:choose>
 						<c:when test="${ empty lists }">
 							<tr>
-								<td colspan='7'>리스트가 없습니다.</td>
+								<td colspan='7' class="empty_table">리스트가 없습니다.</td>
 							</tr>
 						</c:when>
 						<c:otherwise>

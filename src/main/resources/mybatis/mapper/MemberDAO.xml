@@ -8,8 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <!-- 회원 정보 삽입 -->
     <insert id="insert" parameterType="com.winevillage.winevillage.member.MemberDTO">
-        INSERT INTO member (memberId, password, phoneNumber, email, address, birthday)
-        VALUES (#{memberId}, #{password}, #{phoneNumber}, #{email}, #{address}, #{birthday})
+        INSERT INTO member (name, memberId, password, phoneNumber, email, postcode, address1, address2, birthday)
+        VALUES (#{name}, #{memberId}, #{password}, #{phoneNumber}, #{email}, #{postcode}, #{address1}, #{address2}, #{birthday})
     </insert>
     
     <!-- 전화번호 중복 확인 -->
@@ -17,7 +17,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT COUNT(*) FROM member WHERE phoneNumber = #{phoneNumber}
     </select>
     
-	<select id="memberTotalCount" resultType="int"
+    <!-- 아이디 중복 확인 -->
+    <select id="checkMemberIdExists" parameterType="String" resultType="int">
+    	 SELECT COUNT(*) FROM member WHERE memberId = #{memberId}
+    </select>
+    
+    <select id="memberTotalCount" resultType="int"
 	parameterType="com.winevillage.winevillage.member.ParameterDTO">
 		SELECT COUNT(*) FROM member
 		<if test="searchKeyword!=null and !searchKeyword.equals('')">
@@ -40,3 +45,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE rNum<![CDATA[>=]]>#{start} AND rNum<![CDATA[<=]]>#{end}
 	</select>
 </mapper>
+

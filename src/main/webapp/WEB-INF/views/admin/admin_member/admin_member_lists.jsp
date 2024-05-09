@@ -180,14 +180,14 @@ pageEncoding="UTF-8"%>
 								<td>${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
 								<td>${item.memberId}</td>
 								<td>${item.name}</td>
-								<td>${item.birthDay}</td>
-								<td>${item.phonenumber}</td>
+								<td>${item.birthday}</td>
+								<td>${item.phoneNumber}</td>
 								<td>${item.password}</td>
 								<td>${item.email}</td>
-								<td>${item.address}</td>
-								<td>${item.memberGrade}</td>
-								<td>${item.joindate}</td>
-								<td>${item.points}</td>
+								<td>${item.address1}<br>${item.address2}</td>
+								<td>${item.grade}</td>
+								<td>${item.joinDate}</td>
+								<td>${item.point}</td>
 							</tr>
 							</c:forEach>
 							</tbody>

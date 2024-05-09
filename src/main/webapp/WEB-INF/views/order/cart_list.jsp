@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <!-- Mirrored from www.winenara.com/shop/main?login_on=Y&return_url=https://me2.do/Fijy5pow by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 13:02:33 GMT -->
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
@@ -38,52 +37,6 @@
 </div>
 <div class="wrap">    <script src="/asset/js/wn.product.js"></script>
     <div class="content order cart_lists_page">
-
-        <!-- 탭 버튼 형식 -->
-        <!-- <div class="tab_area">
-            <ul class="tab1">
-                <li class="on">
-					<button type="button" onclick="location.href='/shop/cart/cart_lists?order_gb=P'">
-						<span>온라인주문
-						<em class="count">1</em> 						</span>
-					</button>
-				</li>
-                
-				<li >
-					<button type="button" onclick="location.href='/shop/cart/cart_lists?order_gb=V'">
-						<span>
-							매장방문주문
-														</span>
-					</button>
-				</li>
-                
-				<li >
-					<button type="button" onclick="location.href='/shop/cart/cart_lists?order_gb=D'">
-						<span>
-							택배배송
-													</span>
-					</button>
-				</li>
-            </ul>
-        </div> -->
-
-
-        <!-- 라디오박스 형식(두 개 중 골라 쓰시면 됩니다) -->
-        <!-- <div class="radio_area">
-            <div class="radiobox">
-                <input type="radio" name="receive_way" id="pickup" checked>
-                <label for="pickup"><span>직접픽업(Array건)</span></label>
-            </div>
-            <div class="radiobox">
-                <input type="radio" name="receive_way" id="store">
-                <label for="store"><span>매장방문(0건)</span></label>
-            </div>
-            <div class="radiobox">
-                <input type="radio" name="receive_way" id="shipping">
-                <label for="shipping"><span>택배배송</span></label>
-            </div>
-        </div> -->
-
         <div class="c_lists">
             <div class="top">
                 <div class="checkbox type2">
@@ -93,18 +46,18 @@
 				<button type="button" id="btn_del">선택삭제</button>
             </div>
             <ul>
-
-                <li class="65402">
+<c:forEach var="cartItem" items="${cartList}" >
+<c:set var="wineStyles"
+	   value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
+                <li class="${cartItem.cartno }">
                     <div class="box ip_img">
                         <div class="checkbox type2">
-                            <input type="checkbox" id="cart_seq_65402" name="cart_seq[]" class="ip_check" value="65402" data-qty="1" data-price="14900" data-supply-price="14900" data-promotion-limit="N">
-                            <label for="cart_seq_65402">
-                                <picture style="background:#E0D8EA">
-                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
-                                    <source srcset="/uploads/product/aa7a7a81345a0f66e00a0962f5ab3904.png" media="(min-width:768px)"><!-- pc이미지 -->
-                                    <source srcset="/uploads/product/aa7a7a81345a0f66e00a0962f5ab3904.png" media="(max-width:767px)"><!-- mb이미지 -->
-                                    <!--[if IE 9]></video><![endif]-->
-                                    <img src="/uploads/product/aa7a7a81345a0f66e00a0962f5ab3904.png" alt=""><!-- pc이미지 -->
+                           		<input type="checkbox" id="cart_seq_${cartItem.cartno }" name="cart_seq[]" class="ip_check" value="${cartItem.productCode }" data-qty="${cartItem.quantity }" data-price="${cartItem.discountPrice }" data-supply-price="${cartItem.fullPrice }" data-promotion-limit="N">
+								<label for="cart_seq_${cartItem.cartno }">
+                                <picture style="background: ${empty cartItem.wine ? '#fff' : wineStyles[cartItem.wine]}">
+                                    <source srcset="/uploads/product/200/${cartItem.productImg }" media="(min-width:768px)"><!-- pc이미지 -->
+                                    <source srcset="/uploads/product/200/${cartItem.productImg }" media="(max-width:767px)"><!-- mb이미지 -->
+                                    <img src="/uploads/product/200/${cartItem.productImg }" alt=""><!-- pc이미지 -->
                                 </picture>
                             </label>
                         </div>
@@ -112,15 +65,20 @@
                     <div class="box con">
                         <div class="more_info">
                             <p class="prd_name">
-                                <a href="/shop/product/product_view?product_cd=03U001" target="_blank">
-                                    디아블로 데블스 카나발 카베르네<br>
+                                <a href="/product_view.do?category=${cartItem.wine }&productCode=${cartItem.productCode}" target="_blank">${cartItem.productName }<br>
                               	</a>
                             </p>
 
 							<div class="cate_label">
-								<span class="label" style="background:#E0D8EA">레드</span>								
-								<span class="label" style="background:#E0D8EA">칠레</span>								
-								<span class="label" style="background:#E0D8EA">카베르네 소비뇽</span>							
+								<c:if test="${not empty cartItem.wine }">
+									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.wine }</span>
+								</c:if>
+								<c:if test="${not empty cartItem.country }">
+									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.country }</span>
+								</c:if>
+								<c:if test="${not empty cartItem.grapeVariety }">
+									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.grapeVariety }</span>
+								</c:if>
 							</div>
                         </div>
                     </div>
@@ -129,54 +87,48 @@
 					</div>
                     <div class="box price_amount">
                         <div class="box amount">
-                            <div class="quantity" data-cart-seq="65402" data-product-cd="03U001" data-base-price="14900" data-opt-gb="C">
+                            <div class="quantity" data-cart-seq="${cartItem.cartno }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-opt-gb="C">
                                 <button type="button" class="minus" onclick="box_qty(this, -1);">감소</button>
-                                <input type="text" class="qty" title="수량" value="1">
+                                <input type="text" class="qty" title="수량" value="${cartItem.quantity }" readonly>
                                 <button type="button" class="plus" onclick="box_qty(this, +1);">증가</button>
                             </div>
                         </div>
 						<div class="box price price_con">
 							<div>
 								<span>상품금액</span>
-								<ins>14,900원</ins>
+								<ins id="originalSupply"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.quantity}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="discount">
 								<span>할인금액</span>
-								<ins>0원</ins>
+								<ins id="originalSale"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.quantity}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="total">
 								<span>총 결제금액</span>
-								<ins>14,900원</ins>
+								<ins id="originalTotal"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.quantity}" pattern="#,##0"/>원</ins>
 							</div>
 						</div>
                     </div>
                 </li>
+                </c:forEach>
 			</ul>
         </div>
-
 
 		<div class="reload_container">
 			<div class="total_price">
 				<dl class="dash">
 					<dt>상품금액</dt>
-					<dd id="supply">14,900원</dd>
+					<dd id="supply">원</dd>
 				</dl>
 				<dl class="plus">
 					<dt>할인금액</dt>
-					<dd id="sale">0원</dd>
+					<dd id="sale">원</dd>
 				</dl>
-			<!-- 	<dl class="equal">
-					<dt>배송비</dt>
-					<dd>0원</dd>
-				</dl> -->
 				<dl class="total">
 					<dt>총 결제금액</dt>
-					<dd id="total">14,900원</dd>
+					<dd id="total">원</dd>
 				</dl>
 			</div>
 		</div>
-
-        <!-- <p class="txt">당일 픽업은 오늘(04월19일) 오후 4시 이전 주문 완료 후 1시간 이후 픽업만 가능합니다.</p> -->
 
         <div class="btn_area col2">
             <button type="button" class="btn_txt" onclick="location.href='/shop/product/product_lists?sh_category1_cd=10000'"><span>계속 쇼핑하기</span></button>
@@ -187,14 +139,6 @@
         </div>
 
         <div class="recommend_area">
-          <!--   <h3>추천 상품</h3>
-            
-            <ul class="prd_list" id="cart_recommend">
-            </ul> -->
-
-            <!-- <div class="btn_area">
-			                <button type="button" class="btn_txt" id="more_button_wine" onclick="getList('add')"><span>더보기</span></button>
-			            </div> -->
         </div>
     </div>
 </div>
@@ -369,7 +313,7 @@ $('.main_img .slider').slick({
 			return false;
 		}
 	});
-	function box_qty(e, add){
+/* 	function box_qty(e, add){
 		var qty				=	parseInt( $(e).siblings('.qty').val() ) + parseInt(add);
 		var cart_seq		=	$(e).parents('.quantity').data('cart-seq');
 		var opt_gb			=	$(e).parents('.quantity').data('opt-gb');
@@ -412,7 +356,9 @@ $('.main_img .slider').slick({
 			       }
 		      });
 		}
-	}
+	} */
+	// 상품 수령 변경
+	
 	// 구매하기
 	function orderSet(state){        
 		if(state == 'a'){

@@ -1,4 +1,4 @@
-package com.winevillage.winevillage.parameter;
+package com.winevillage.winevillage.qna;
 
 import lombok.Getter;
 import lombok.Setter;

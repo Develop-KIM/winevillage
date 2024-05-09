@@ -1,10 +1,9 @@
 package com.winevillage.winevillage.member;
 
 import java.util.ArrayList;
-
 import org.apache.ibatis.annotations.Mapper;
 
-import com.winevillage.winevillage.parameter.ParameterDTO;
+
 
 @Mapper
 public interface MemberService {
@@ -13,5 +12,6 @@ public interface MemberService {
 	int checkMemberIdExists(String memberId);
 	void registerMember(MemberDTO memberDTO);
 	ArrayList<MemberDTO> memberlistPage(ParameterDTO parameterDTO);
-	int memberTotalCount(ParameterDTO parameterDTO);
+	public int memberTotalCount(ParameterDTO parameterDTO);
 }
+

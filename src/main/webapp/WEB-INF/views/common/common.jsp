@@ -48,6 +48,7 @@
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/filter.js"></script>
+<script type="text/javascript" src="./js/order.js"></script>
 
 
 <script>
@@ -390,7 +391,7 @@
 						<div class="allDelete off">
 							<h2 class="tit">최근검색어</h2>
 							<button type="button" class="btn del_btn"
-								onclick="all_del_item();">
+								onclick="all_del_item();" >
 								전체삭제</span>
 						</div>
 						<ul id="result_list" class="result_list">
@@ -405,16 +406,12 @@
 	<form action="https://www.winenara.com/login" id="LoginPostFrm"
 		onkeydown="javascript:onEnterLogin();" method="post"
 		accept-charset="utf-8">
-		<input type="hidden" name="witplus_csrf_token"
-			value="be7b38b9302ff3c05cc7f68a617d7dd7" />
 		<div class="layer login_layer" id="login_layer">
 			<div class="display_table">
 				<div class="table_cell">
 					<div class="layer_area">
 						<h2 class="layer_tit">
 							회원서비스
-							<!-- <p class="check"><span>로그인</span></p>
-                    <p><span><a href="/member/join/law_agreement">회원가입</a></span></p> -->
 						</h2>
 						<button type="button" class="layer_close"
 							onclick="commonUI.layer.close()">닫기</button>
@@ -430,10 +427,9 @@
 							<div class="social_login">
 								<h2 class="social_tit">소셜아이디로 로그인</h2>
 								<ul>
-									<li><a href="#none" class="social_btn naver">네이버</a></li>
-									<li><a href="#none" class="social_btn kakao">카카오</a></li>
+							<!-- 		<li><a href="#none" class="social_btn naver">네이버</a></li> -->
+									<!-- <li><a href="#none" class="social_btn kakao">카카오</a></li> -->
 									<li><a href="#none" class="social_btn google">구글</a></li>
-									<!-- <li><a href="#none" class="social_btn apple">애플</a></li> -->
 								</ul>
 							</div>
 							<div class="form_area">
