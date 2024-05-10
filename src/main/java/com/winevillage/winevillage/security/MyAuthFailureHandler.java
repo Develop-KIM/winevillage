@@ -49,8 +49,8 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
 			.forward(request, response);
 	}
 	
-	public void loginFailureCnt(String username) {
-		System.out.println("요청 아이디: " + username);
+	public void loginFailureCnt(String memberId) {
+		System.out.println("요청 아이디: " + memberId);
 	}
 	
 }

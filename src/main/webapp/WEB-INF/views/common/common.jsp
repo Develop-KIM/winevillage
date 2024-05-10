@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
@@ -31,9 +31,11 @@
 <link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
 <link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/shop/main99d9.css?v=231010140029" />
-<link rel="stylesheet" type="text/css" href="./css/shop/main_pc2092.css?v=230810114342"
-            media="screen and (min-width:1024px)">
+<link rel="stylesheet" type="text/css"
+	href="./css/shop/main99d9.css?v=231010140029" />
+<link rel="stylesheet" type="text/css"
+	href="./css/shop/main_pc2092.css?v=230810114342"
+	media="screen and (min-width:1024px)">
 <link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
 <link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
 
@@ -43,7 +45,8 @@
 <script type="text/javascript" src="./js/picturefill.min.js"></script>
 <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
 <script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
-<script type="text/JavaScript" src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
+<script type="text/JavaScript"
+	src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 <script src="./js/wn.productf100.js?v=230405140747"></script>
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
@@ -64,8 +67,59 @@
                 }
             });
         });
-    });
+        
+        $('#loginBtn').click(function() {
+            submitLoginForm();
+        });
+        
+        // 엔터 키를 눌렀을 때 로그인 처리
+        $('#loginMemberId, #loginPassword').keydown(function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // 폼 제출 방지
+                submitLoginForm(); // 로그인 함수 호출
+            }
+        });
+    }); // 여기에 중괄호가 닫혀 있어야 합니다.
+    
+    // 로그인 폼 제출 함수
+    function submitLoginForm() {
+        var memberId = $("#loginMemberId").val();
+        var password = $("#loginPassword").val();
+        
+        // 아이디와 비밀번호가 빈 값인지 확인
+        if (memberId.trim() === '' || password.trim() === '') {
+            alert('아이디와 비밀번호를 입력해주세요.');
+            return;
+        }
+
+        // Ajax 요청
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ memberId: memberId, password: password }),
+            success: function(response) {
+                // 서버로부터의 응답 출력
+                console.log(response.message);
+                // 로그인 성공 시 모달 닫기
+                $('#login_layer').css('display', 'none');
+                // 성공적으로 로그인했을 때 추가적인 동작을 수행하려면 여기에 작성
+                // 예: 리다이렉트 등
+            },
+            error: function(xhr, status, error) {
+                // 서버로부터의 응답 출력
+                var errorMessage = xhr.responseJSON.message;
+                console.log(errorMessage);
+                // 실패 알림창 표시
+                alert('로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.');
+                // 입력 필드 초기화
+                $("#memberId").val('');
+                $("#password").val('');
+            }
+        });
+    }
 </script>
+
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
@@ -106,21 +160,22 @@
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a href="list_product.do?category=wine&state=value&sort=recent">WINE</a>
+						<li class=""><a
+							href="list_product.do?category=wine&state=value&sort=recent">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
-								        	<li class="ico_red"><a
-								        		href="list_product.do?category=red&state=value&sort=recent">레드</a></li>
-								            <li class="ico_white"><a 
-								            	href="list_product.do?category=white&state=value&sort=recent">화이트</a></li>
-								            <li class="ico_rose"><a 
-								            	href="list_product.do?category=rose&state=value&sort=recent">로제</a></li>
-								            <li class="ico_sparkling"><a 
-								            	href="list_product.do?category=sparkling&state=value&sort=recent">스파클링</a></li>
-								            <li class="ico_spirits"><a 
-								            	href="list_product.do?category=fortified&state=value&sort=recent">주정강화</a></li>
+											<li class="ico_red"><a
+												href="list_product.do?category=red&state=value&sort=recent">레드</a></li>
+											<li class="ico_white"><a
+												href="list_product.do?category=white&state=value&sort=recent">화이트</a></li>
+											<li class="ico_rose"><a
+												href="list_product.do?category=rose&state=value&sort=recent">로제</a></li>
+											<li class="ico_sparkling"><a
+												href="list_product.do?category=sparkling&state=value&sort=recent">스파클링</a></li>
+											<li class="ico_spirits"><a
+												href="list_product.do?category=fortified&state=value&sort=recent">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
@@ -143,13 +198,14 @@
 									</div>
 								</div>
 							</div></li>
-						<li class=""><a href="list_product.do?category=other&sort=recent">OTHER</a>
+						<li class=""><a
+							href="list_product.do?category=other&sort=recent">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
 										<ul>
-											<li class="ico_acc"><a href="list_product.do?category=acc">액세서리</a>
-											</li>
+											<li class="ico_acc"><a
+												href="list_product.do?category=acc">액세서리</a></li>
 										</ul>
 									</div>
 								</div>
@@ -159,11 +215,12 @@
 					</ul>
 				</div>
 				<ul class="right_menu">
-<!-- 					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
+					<!-- 					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
 								List</span> </a></li> -->
-					<li class="cart"><a href="/cart_list.do" ><span>Cart
+					<li class="cart"><a href="/cart_list.do"><span>Cart
 								List</span> </a></li>
-					<li class="mb_hidden wish"><a href="#" onclick="$('.layer.login_layer').show();"><img
+					<li class="mb_hidden wish"><a href="#"
+						onclick="$('.layer.login_layer').show();"><img
 							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
 					<li class="mypage mb_hidden">
 						<button type="button" onclick="commonUI.header.Mypage.clickFn()">
@@ -171,9 +228,8 @@
 						</button>
 						<div class="mypage_layer">
 							<div class="no_login">
-								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a>
-								 <a href="join_form.do">회원가입</a>
-								 <a href="order_list.do">MyPage</a>
+								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a> <a
+									href="join_form.do">회원가입</a> <a href="order_list.do">MyPage</a>
 							</div>
 						</div>
 					</li>
@@ -391,7 +447,7 @@
 						<div class="allDelete off">
 							<h2 class="tit">최근검색어</h2>
 							<button type="button" class="btn del_btn"
-								onclick="all_del_item();" >
+								onclick="all_del_item();">
 								전체삭제</span>
 						</div>
 						<ul id="result_list" class="result_list">
@@ -404,15 +460,12 @@
 		</form>
 	</header>
 	<form action="https://www.winenara.com/login" id="LoginPostFrm"
-		onkeydown="javascript:onEnterLogin();" method="post"
-		accept-charset="utf-8">
+		method="post" accept-charset="utf-8">
 		<div class="layer login_layer" id="login_layer">
 			<div class="display_table">
 				<div class="table_cell">
 					<div class="layer_area">
-						<h2 class="layer_tit">
-							회원서비스
-						</h2>
+						<h2 class="layer_tit">회원서비스</h2>
 						<button type="button" class="layer_close"
 							onclick="commonUI.layer.close()">닫기</button>
 						<div class="layer_con">
@@ -427,7 +480,7 @@
 							<div class="social_login">
 								<h2 class="social_tit">소셜아이디로 로그인</h2>
 								<ul>
-							<!-- 		<li><a href="#none" class="social_btn naver">네이버</a></li> -->
+									<!-- 		<li><a href="#none" class="social_btn naver">네이버</a></li> -->
 									<!-- <li><a href="#none" class="social_btn kakao">카카오</a></li> -->
 									<li><a href="#none" class="social_btn google">구글</a></li>
 								</ul>
@@ -436,13 +489,13 @@
 								<ul>
 									<li>
 										<div class="form_box">
-											<input type="text" id="login_user_id" name="login_user_id"
-												value="" placeholder="아이디를 입력하세요">
+											<input type="text" id="loginMemberId" name="loginMemberId"
+												placeholder="아이디를 입력하세요">
 										</div>
 									</li>
 									<li>
 										<div class="form_box">
-											<input type="password" id="login_passwd" name="login_passwd"
+											<input type="password" id="loginPassword" name="loginPassword"
 												placeholder="비밀번호를 입력하세요">
 										</div>
 									</li>
@@ -452,17 +505,13 @@
 								name="login_return_url_param">
 							<div class="save_box">
 								<div class="checkbox">
-									<input type="checkbox" name="login_auto" id="login_auto"
-										value="Y" checked> <label for="login_auto">로그인유지</label>
-								</div>
-								<div class="checkbox">
 									<input type="checkbox" name="id_save" id="id_save" value="Y">
 									<label for="id_save">아이디저장</label>
 								</div>
-								<p class="input_info_txt">※ 공공장소에서는 꺼주세요.</p>
 							</div>
 							<div class="btn_area">
-								<button type="button" class="btn_txt btn_black" id="loginBtn">
+								<button type="button" class="btn_txt btn_black" id="loginBtn"
+									onclick="submitLoginForm();">
 									<span>로그인</span>
 								</button>
 							</div>
@@ -477,5 +526,7 @@
 			</div>
 		</div>
 	</form>
+	<p id="loginError" style="color: red; display: none;">로그인에 실패했습니다.
+		다시 시도해주세요.</p>
 </body>
 </html>
