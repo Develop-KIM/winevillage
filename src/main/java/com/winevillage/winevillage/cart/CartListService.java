@@ -41,8 +41,7 @@ public class CartListService {
         return cartListMapper.getCartListByMemberNo(memberNo);
     }
     
-    public CartListDTO getProductByCode(String productCode) {
-        return cartListMapper.getProductByCode(productCode);
+    public void updateOrderQuantity(int orderNo, String productCode, int orderAmount) {
+        cartListMapper.updateOrderQuantity(orderNo, productCode, orderAmount);
     }
-
 }

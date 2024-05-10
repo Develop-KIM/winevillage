@@ -51,10 +51,12 @@
 		SELECT * FROM Orders WHERE memberno = #{memberNo}
 	</select>
 	
-	<select id="getProductByCode" resultType="com.winevillage.winevillage.cart.CartListDTO">
-        SELECT p.*
-        FROM product p
-        JOIN Orders c ON p.productCode = c.productCode
-        WHERE p.productCode = #{productCode}
-	</select>
+	<update id="updateOrderQuantity" parameterType="com.winevillage.winevillage.cart.CartListMapper">
+        UPDATE Orders
+        SET orderAmount = #{orderAmount}
+        WHERE orderNo = #{orderNo} 
+        	AND productCode = #{productCode}
+    </update>
+	
+	
 </mapper>

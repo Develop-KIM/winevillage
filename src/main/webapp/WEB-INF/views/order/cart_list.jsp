@@ -92,6 +92,33 @@
                                 <input type="text" class="qty" title="수량" value="${cartItem.orderAmount }" readonly>
                                 <button type="button" class="plus" onclick="box_qty(this, +1);">증가</button>
                             </div>
+                            <script>
+                            function box_qty(element, value) {
+                                var parent = element.parentNode;
+                                var qtyInput = parent.querySelector('.qty');
+                                var currentQty = parseInt(qtyInput.value);
+                                var newQty = currentQty + value;
+                                qtyInput.value = newQty >= 0 ? newQty : 0;
+
+                                // 변경된 수량을 서버에 업데이트하는 AJAX 요청
+                                $.ajax({
+                                    url: '/update-quantity', // 서버의 엔드포인트 URL
+                                    type: 'POST', // HTTP 요청 방식
+                                    data: {
+                                        orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자
+                                        productCode: parent.getAttribute('data-product-cd'), // 제품 코드
+                                        orderAmount: newQty, // 변경된 수량
+                                    },
+                                    success: function(response) {
+                                        console.log('수량 업데이트 성공:', response); // 성공 메시지 로깅
+                                    },
+                                    error: function(xhr, status, error) {
+                                        console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
+                                    }
+                                });
+                            }
+
+							</script>
                         </div>
 						<div class="box price price_con">
 							<div>

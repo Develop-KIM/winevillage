@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.winevillage.winevillage.user.UserService;
@@ -92,11 +92,6 @@ public class CartListController {
         return "order/cart_list";
     }
     
-    @PostMapping("/getProduct")
-    public CartListDTO getProduct(@RequestBody CartListDTO cartlistDTO) {
-        return cartListService.getProductByCode(cartlistDTO.getProductCode());
-    }
-    
     private Long findMemberNoByUsername(String username) {
         return userService.findMemberNoByUsername(username); 
     }
@@ -114,5 +109,17 @@ public class CartListController {
             }
         }
         return null;
+    }
+    
+    @PostMapping("/update-quantity")
+    public ResponseEntity<?> updateOrderQuantity(@RequestParam("orderNo") int orderNo,
+                                                 @RequestParam("productCode") String productCode,
+                                                 @RequestParam("orderAmount") int orderAmount) {
+        try {
+            cartListService.updateOrderQuantity(orderNo, productCode, orderAmount);
+            return ResponseEntity.ok("수량 업데이트 성공");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("수량 업데이트 실패");
+        }
     }
 }

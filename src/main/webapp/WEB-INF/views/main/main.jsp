@@ -171,415 +171,57 @@
 			</div>
 			<div class="prd_wrap slide_prd section newarrivals">
 				<h2>NEW ARRIVALS</h2>
-				<a href="product/group_product_listsc8ae.html?group_cd=1901"
-					class="btn_more">더보기</a>
 				<div class="prd_wrap">
-					<ul class="n_prd_list">
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #E0D8EA">
-									<a href="product/product_view9f82.html?product_cd=03T999"
-										class="prd_img table_box"> <picture>
-										<source
-											srcset="../uploads/product/200/32f8106a802290f578b2fd00bb18757e.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/32f8106a802290f578b2fd00bb18757e.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <img
-											src="..../uploads/product/200/32f8106a802290f578b2fd00bb18757e.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="btn">
-										<button type="button" class="wish wish_03T999 "
-											id="wish_03T999" onclick="product.likeProduct('03T999');">
-											<span>찜하기</span>
-										</button>
+					<c:forEach items="${product }" var="product" varStatus="loop">
+						<ul class="n_prd_list">
+							<li>
+								<div class="item">
+									<div class="main_img" style="background: #E0D8EA">
+										<a href="product/product_view9f82.html?product_cd=03T999"
+											class="prd_img table_box"> <picture>
+											<source
+												srcset="../uploads/product/200/${product.productImg }"
+												media="(min-width:1024px)">
+											<!-- pc이미지 -->
+											<source
+												srcset="../uploads/product/200/${product.productImg }"
+												media="(max-width:1023px)">
+											<!-- mb이미지 --> <img
+												src="..../uploads/product/200/${product.productImg }"
+												loading="lazy" alt=""><!-- pc이미지 --> </picture>
+										</a>
+										<div class="btn">
+											<button type="button" class="wish wish_03T999 "
+												id="wish_03T999" onclick="product.likeProduct('03T999');">
+												<span>찜하기</span>
+											</button>
+										</div>
+										<div class="label_wrap"></div>
 									</div>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_view9f82.html?product_cd=03T999"><span>디아블로
-													데블스 카나발 스위트</span><span class="en"></span></a>
-										</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #E0D8EA">레드</span> <span
-											style="background: #E0D8EA">칠레</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<!-- 할인가 -->
-											<em class="discount">70%</em>
-											<del>50,000원</del>
-											<ins>14,900원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #E0D8EA">
-									<a href="product/product_view56a9.html?product_cd=03U001"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/aa7a7a81345a0f66e00a0962f5ab3904.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/aa7a7a81345a0f66e00a0962f5ab3904.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/aa7a7a81345a0f66e00a0962f5ab3904.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="btn">
-										<button type="button" class="wish wish_03U001 "
-											id="wish_03U001" onclick="product.likeProduct('03U001');">
-											<span>찜하기</span>
-										</button>
-									</div>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_view56a9.html?product_cd=03U001"><span>디아블로
-													데블스 카나발 카베르네</span><span class="en"></span></a>
-										</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #E0D8EA">레드</span> <span
-											style="background: #E0D8EA">칠레</span> <span
-											style="background: #E0D8EA">카베르네 소비뇽</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<!-- 할인가 -->
-											<em class="discount">70%</em>
-											<del>50,000원</del>
-											<ins>14,900원</ins>
-										</p>
+									<div class="info">
+										<div class="more_info">
+											<p class="prd_name">
+												<a href="product/product_view9f82.html?product_cd=03T999">
+												<span>${product.productName }</span><span class="en"></span></a>
+											</p>
+										</div>
+										<div class="cate_label">
+											<span style="background: #E0D8EA">레드</span> <span
+												style="background: #E0D8EA">칠레</span>
+										</div>
+										<div class="price_area">
+											<p class="price">
+												<!-- 할인가 -->
+												<em class="discount">70%</em>
+												<del>50,000원</del>
+												<ins>14,900원</ins>
+											</p>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #F6EC9C">
-									<a href="product/product_viewacc9.html?product_cd=04F033"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/0bb964fdc5052765a1fc3f6ccfd37d6d.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/0bb964fdc5052765a1fc3f6ccfd37d6d.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/0bb964fdc5052765a1fc3f6ccfd37d6d.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="btn">
-										<button type="button" class="wish wish_04F033 "
-											id="wish_04F033" onclick="product.likeProduct('04F033');">
-											<span>찜하기</span>
-										</button>
-									</div>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_viewacc9.html?product_cd=04F033"><span>디아블로
-													데블스 카나발 소비뇽 </span><span class="en"></span></a>
-										</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #F6EC9C">화이트</span> <span
-											style="background: #F6EC9C">칠레</span> <span
-											style="background: #F6EC9C">소비뇽 블랑</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<!-- 할인가 -->
-											<em class="discount">70%</em>
-											<del>50,000원</del>
-											<ins>14,900원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #E0D8EA">
-									<a href="product/product_view1e3f.html?product_cd=03T989"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/546ccbcb4c22a81defb341b9be9b4c10.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/546ccbcb4c22a81defb341b9be9b4c10.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/546ccbcb4c22a81defb341b9be9b4c10.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="btn">
-										<button type="button" class="wish wish_03T989 "
-											id="wish_03T989" onclick="product.likeProduct('03T989');">
-											<span>찜하기</span>
-										</button>
-									</div>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_view1e3f.html?product_cd=03T989"><span>디아블로
-													데블스 카나발 레드</span><span class="en"></span></a>
-										</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #E0D8EA">레드</span> <span
-											style="background: #E0D8EA">칠레</span> <span
-											style="background: #E0D8EA">기타</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<!-- 할인가 -->
-											<em class="discount">70%</em>
-											<del>50,000원</del>
-											<ins>14,900원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #E0D8EA">
-									<a href="product/product_view154f.html?product_cd=03T786"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/65b95cf91ef4678a3376cf742f7e5749.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/65b95cf91ef4678a3376cf742f7e5749.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/65b95cf91ef4678a3376cf742f7e5749.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="btn">
-										<button type="button" class="wish wish_03T786 "
-											id="wish_03T786" onclick="product.likeProduct('03T786');">
-											<span>찜하기</span>
-										</button>
-									</div>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_view154f.html?product_cd=03T786"><span>마틴
-													레이 오크빌 카베르네 소비뇽</span><span class="en"></span></a>
-										</p>
-										<p class="prd_info">세계적인 와인 평론가들로부터 높은 평가를 받고 있으며, 매년 평균
-											90points 이상의 점수를 받는 프리미엄 나파밸리 와인</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #E0D8EA">레드</span> <span
-											style="background: #E0D8EA">미국</span> <span
-											style="background: #E0D8EA">피노누아</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<!-- 할인가 -->
-											<em class="discount">33%</em>
-											<del>300,000원</del>
-											<ins>200,000원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #E0D8EA">
-									<a href="product/product_view2445.html?product_cd=03S801"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/74804eb1e4f3451e09af1e3a24c95b99.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/74804eb1e4f3451e09af1e3a24c95b99.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/74804eb1e4f3451e09af1e3a24c95b99.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="btn">
-										<button type="button" class="wish wish_03S801 "
-											id="wish_03S801" onclick="product.likeProduct('03S801');">
-											<span>찜하기</span>
-										</button>
-									</div>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_view2445.html?product_cd=03S801"><span>앤젤린
-													멘도치노 피노누아 </span><span class="en"></span></a>
-										</p>
-										<p class="prd_info">"고급 레스토랑에서 판매하는 고퀄리티 글라스 와인으로 시작해서 현재는
-											해외 판매까지 성공시킨 역주행 성공의 브랜드"</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #E0D8EA">레드</span> <span
-											style="background: #E0D8EA">미국</span> <span
-											style="background: #E0D8EA">피노누아</span>
-									</div>
-									<div class="price_area">
-										<p class="price set">
-											<!-- n병 구매시 -->
-											<span class="regular_price price"> <em
-												class="discount">50%</em> <del>60,000원</del> <ins>29,900원</ins>
-											</span> <em class="discount">53%</em> <i>3병 이상 구매시</i>
-											<ins>28,400원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #F5F5F5">
-									<a href="product/product_view3f70.html?product_cd=12A859"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/bd00bd3e0782af640631e043a24ef996.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/bd00bd3e0782af640631e043a24ef996.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/bd00bd3e0782af640631e043a24ef996.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_view3f70.html?product_cd=12A859"><span>고든앤맥패일
-													코노세어초이스 토민툴 2001</span><span class="en"></span></a>
-										</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #F5F5F5">스코틀랜드</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<ins class="out">매장문의</ins>
-											<ins class="out out_price">560,000원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #F5F5F5">
-									<a href="product/product_view3262.html?product_cd=12A184"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/158cf9333bab49d2357122779833b4f1.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/158cf9333bab49d2357122779833b4f1.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/158cf9333bab49d2357122779833b4f1.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="btn">
-										<button type="button" class="wish wish_12A184 "
-											id="wish_12A184" onclick="product.likeProduct('12A184');">
-											<span>찜하기</span>
-										</button>
-									</div>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_view3262.html?product_cd=12A184"><span>고든앤맥패일
-													패디스커버리부나하벤 10년</span><span class="en"></span></a>
-										</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #F5F5F5">위스키</span> <span
-											style="background: #F5F5F5">스코틀랜드</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<!-- 할인가 -->
-											<ins>185,000원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item">
-								<div class="main_img" style="background: #F5F5F5">
-									<a href="product/product_viewc547.html?product_cd=14A084"
-										class="prd_img table_box"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-										<source
-											srcset="../uploads/product/200/5275ca713fd1a20b8b86a3583ee32186.png"
-											media="(min-width:1024px)">
-										<!-- pc이미지 -->
-										<source
-											srcset="../uploads/product/200/5275ca713fd1a20b8b86a3583ee32186.png"
-											media="(max-width:1023px)">
-										<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-											src="..../uploads/product/200/5275ca713fd1a20b8b86a3583ee32186.png"
-											loading="lazy" alt=""><!-- pc이미지 --> </picture>
-									</a>
-									<div class="label_wrap"></div>
-								</div>
-								<div class="info">
-									<div class="more_info">
-										<p class="prd_name">
-											<a href="product/product_viewc547.html?product_cd=14A084"><span>고든앤맥패일
-													디스커버리 밀튼더프 10년</span><span class="en"></span></a>
-										</p>
-									</div>
-									<div class="cate_label">
-										<span style="background: #F5F5F5">스코틀랜드</span>
-									</div>
-									<div class="price_area">
-										<p class="price">
-											<ins class="out">매장문의</ins>
-											<ins class="out out_price">185,000원</ins>
-										</p>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
+							</li>
+						</ul>
+					</c:forEach>
 				</div>
 			</div>
 
@@ -641,7 +283,7 @@
 			<!-- //리뷰 레이어 (유형 퍼블 추가) -->
 
 			<!-- page_script -->
-	
+
 			<script>
 				function dormant_submit() {
 					location.href = "auth/change_dormentba25.html?num=";

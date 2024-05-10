@@ -28,10 +28,10 @@ public class MappingController {
 //	}
 
 	// main
-	@GetMapping("/main.do")
-	public String mainpage() {
-		return "main/main";
-	}
+//	@GetMapping("/main.do")
+//	public String mainpage() {
+//		return "main/main";
+//	}
 
 	// cs
 	@GetMapping("/qna_list.do")
