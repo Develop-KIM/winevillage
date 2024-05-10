@@ -36,6 +36,7 @@ public class SecurityConfig {
                     .requestMatchers("/", "/setCookie", "/**", "/**.do").permitAll()
                     .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                     .requestMatchers("/login").permitAll()
+                    .requestMatchers("/checkMemberIdExist").permitAll()
                     .requestMatchers("/join_form.do", "/join_success.do").permitAll()
 //                    .requestMatchers("/member/**").hasRole("USER")
 //                    .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -45,8 +46,8 @@ public class SecurityConfig {
 				.loginProcessingUrl("/login")
 				.failureHandler(myAuthFailureHandler)
 				.successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // 로그인 성공 시 이전 요청에 따라 이동
-				.usernameParameter("login_user_id")
-				.passwordParameter("login_passwd")
+				.usernameParameter("loginMemberId")
+				.passwordParameter("loginPassword")
 				.permitAll());
 		
 		http.logout((logout) -> logout
