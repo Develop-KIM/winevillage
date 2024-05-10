@@ -29,7 +29,6 @@ eclipse.wtp.facet {
 }
 
 dependencies {
-	implementation 'javax.validation:validation-api:2.0.1.Final'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-security'

@@ -52,74 +52,39 @@
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/filter.js"></script>
 <script type="text/javascript" src="./js/order.js"></script>
-
-
 <script>
-    $(document).ready(function(){
-        $('ul li a').click(function(){
-            var category = $(this).text();
-            $.ajax({
-                type: "POST",
-                url: "/processCategory",
-                data: { category: category },
-                success: function(response){
-                    console.log("카테고리 값이 서버로 전송되었습니다.");
-                }
-            });
-        });
-        
-        $('#loginBtn').click(function() {
-            submitLoginForm();
-        });
-        
-        // 엔터 키를 눌렀을 때 로그인 처리
-        $('#loginMemberId, #loginPassword').keydown(function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // 폼 제출 방지
-                submitLoginForm(); // 로그인 함수 호출
+function checkLoginStatus() {
+    var loginMemberId = document.getElementById("loginMemberId").value.trim();
+    var loginPassword = document.getElementById("loginPassword").value.trim();
+    console.log(loginMemberId);
+    console.log(loginPassword);
+    $.ajax({
+        type: "post",
+        data: { loginMemberId: loginMemberId, loginPassword: loginPassword },
+        url: "/checkLoginStatus", // 백엔드에서 로그인 상태를 확인하는 엔드포인트 URL
+        success: function(response) {
+            console.log('콜백', response);
+            if (response) {
+                // 로그인된 경우
+                $('.on_login').show(); // 로그인 후 보여줄 영역 표시
+                $('.no_login').hide(); // 로그인 전 보여줄 영역 숨김
+                $('.login_layer').hide();
+                window.location.href = window.location.href;
+                console.log(response.memberId + "넌 뭔데");
+            } else {
+                // 로그인되지 않은 경우
+                $('.on_login').hide(); // 로그인 후 보여줄 영역 숨김
+                $('.no_login').show(); // 로그인 전 보여줄 영역 표시
+                // 아이디나 비밀번호가 맞지 않는다는 alert을 표시합니다.
+                alert("아이디나 비밀번호가 맞지 않습니다.");
             }
-        });
-    }); // 여기에 중괄호가 닫혀 있어야 합니다.
-    
-    // 로그인 폼 제출 함수
-    function submitLoginForm() {
-        var memberId = $("#loginMemberId").val();
-        var password = $("#loginPassword").val();
-        
-        // 아이디와 비밀번호가 빈 값인지 확인
-        if (memberId.trim() === '' || password.trim() === '') {
-            alert('아이디와 비밀번호를 입력해주세요.');
-            return;
+        },
+        error: function(xhr, status, error) {
+            alert("에러 발생: " + error); // 예상치 못한 에러 처리
         }
-
-        // Ajax 요청
-        $.ajax({
-            url: '/login',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ memberId: memberId, password: password }),
-            success: function(response) {
-                // 서버로부터의 응답 출력
-                console.log(response.message);
-                // 로그인 성공 시 모달 닫기
-                $('#login_layer').css('display', 'none');
-                // 성공적으로 로그인했을 때 추가적인 동작을 수행하려면 여기에 작성
-                // 예: 리다이렉트 등
-            },
-            error: function(xhr, status, error) {
-                // 서버로부터의 응답 출력
-                var errorMessage = xhr.responseJSON.message;
-                console.log(errorMessage);
-                // 실패 알림창 표시
-                alert('로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.');
-                // 입력 필드 초기화
-                $("#memberId").val('');
-                $("#password").val('');
-            }
-        });
-    }
+    });
+}
 </script>
-
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
@@ -227,10 +192,35 @@
 							<img src="./images/default/pc_icon_mypage.png" alt="My Page">
 						</button>
 						<div class="mypage_layer">
-							<div class="no_login">
-								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a> <a
-									href="join_form.do">회원가입</a> <a href="order_list.do">MyPage</a>
-							</div>
+							<c:choose>
+								<c:when test="${user_id != null && user_id != ''}">
+									<!-- 로그인 후 보여줄 내용 -->
+									<div class="on_login">
+										<ul>
+											<li>
+												<h3>${user_id }님</h3>
+											</li>
+											<li>
+												<h3>가용 마일리지	</h3>
+											</li>
+											<li class="top_line">
+												<h3>
+													<a href="order_list.do">마이페이지</a>
+												</h3>
+											</li>
+										</ul>
+										<button type="button" class="btn_txt btn_black logout_btn on"
+											onclick="logout();">로그아웃</button>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<!-- 로그인 전 보여줄 내용 -->
+									<div class="no_login">
+										<button type="button" onclick="$('.layer.login_layer').show();">로그인</button>
+										<a href="join_form.do">회원가입</a>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</li>
 					<li class="mb_hidden"><a href="/notice_list.do"><img
@@ -459,8 +449,8 @@
 			</div>
 		</form>
 	</header>
-	<form action="https://www.winenara.com/login" id="LoginPostFrm"
-		method="post" accept-charset="utf-8">
+	<form id="LoginPostFrm" method="post"
+		accept-charset="utf-8">
 		<div class="layer login_layer" id="login_layer">
 			<div class="display_table">
 				<div class="table_cell">
@@ -474,7 +464,7 @@
 									<span>기존회원</span>
 								</p>
 								<p>
-									<span><a href="/join/join_form.do">신규회원가입</a></span>
+									<span><a href="join_form.do">신규회원가입</a></span>
 								</p>
 							</div>
 							<div class="social_login">
@@ -495,23 +485,22 @@
 									</li>
 									<li>
 										<div class="form_box">
-											<input type="password" id="loginPassword" name="loginPassword"
-												placeholder="비밀번호를 입력하세요">
+											<input type="password" id="loginPassword"
+												name="loginPassword" placeholder="비밀번호를 입력하세요">
 										</div>
 									</li>
 								</ul>
 							</div>
 							<input type="hidden" id="login_return_url_param"
 								name="login_return_url_param">
-							<div class="save_box">
+<!-- 							<div class="save_box">
 								<div class="checkbox">
 									<input type="checkbox" name="id_save" id="id_save" value="Y">
 									<label for="id_save">아이디저장</label>
 								</div>
-							</div>
+							</div> -->
 							<div class="btn_area">
-								<button type="button" class="btn_txt btn_black" id="loginBtn"
-									onclick="submitLoginForm();">
+								<button type="button" class="btn_txt btn_black" id="loginBtn" onClick="checkLoginStatus();">
 									<span>로그인</span>
 								</button>
 							</div>
@@ -526,7 +515,6 @@
 			</div>
 		</div>
 	</form>
-	<p id="loginError" style="color: red; display: none;">로그인에 실패했습니다.
-		다시 시도해주세요.</p>
+
 </body>
 </html>

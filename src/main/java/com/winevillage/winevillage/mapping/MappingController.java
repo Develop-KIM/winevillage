@@ -30,9 +30,19 @@ public class MappingController {
 	// main
 	@GetMapping("/main.do")
 	public String mainpage() {
+//		Principal principal, Model model
+//		try {
+//			String user_id = principal.getName();
+//			model.addAttribute("user_id", user_id);
+//			System.out.println("user"+ user_id);
+//		} 
+//		catch (Exception e) {
+//			System.out.println("로그인 전입니다.");
+//		}
+		
 		return "main/main";
 	}
-
+	
 	// cs
 	@GetMapping("/qna_list.do")
 	public String qna_list() {

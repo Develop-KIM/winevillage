@@ -22,15 +22,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	 SELECT COUNT(*) FROM member WHERE memberId = #{memberId}
     </select>
     
-    <!-- 로그인 처리 -->
-    <select id="getMemberByCredentials" resultType="String"
-    parameterType="com.winevillage.winevillage.member.LoginRequest">
-    SELECT memberId, password
-    FROM member
-    WHERE memberId = #{memberId}
-        AND password = #{password}
-	</select>
-    
     <select id="memberTotalCount" resultType="int"
 	parameterType="com.winevillage.winevillage.member.ParameterDTO">
 		SELECT COUNT(*) FROM member
