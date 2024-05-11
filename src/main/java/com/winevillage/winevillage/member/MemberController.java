@@ -1,16 +1,22 @@
 package com.winevillage.winevillage.member;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import utils.PagingUtil;
 
 @Controller
@@ -25,15 +31,64 @@ public class MemberController {
     }
 
     @GetMapping("/join_success.do")
-    public String joinSuccess() {
+    public String joinSuccess(Model model, HttpSession session) {
+        // 세션에서 이름 가져오기
+        String memberName = (String) session.getAttribute("memberName");
+
+        // 모델에 이름 추가
+        model.addAttribute("memberName", memberName);
+
+        // join_success 페이지로 이동
         return "member/join/join_success";
     }
-
-    @PostMapping("/join_form.do")
-    public String handleJoinSuccessPost() {
-        System.out.println("회원 가입이 완료되었습니다. 환영합니다!");
-        return "redirect:/join_success.do";
+    
+    @GetMapping("/checkMemberIdExist")
+    public ResponseEntity<String> checkMemberIdExist(@RequestParam("memberId") String memberId) {
+        if (memberId == null || memberId.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("아이디를 입력하세요.");
+        }
+        System.out.println("Received memberId: " + memberId);
+        int count = memberService.checkMemberIdExist(memberId);
+        if (count > 0) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 등록된 아이디입니다.");
+        } else {
+            return ResponseEntity.ok("사용 가능한 아이디입니다.");
+        }
     }
+    
+    @GetMapping("/checkPhoneNumberExist")
+    public ResponseEntity<String> checkPhoneNumberExist(@RequestParam("phoneNumber") String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("휴대폰 번호를 입력하세요.");
+        }
+        System.out.println("Received phoneNumber: " + phoneNumber);
+        int count = memberService.checkPhoneNumberExist(phoneNumber);
+        if (count > 0) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 등록된 휴대폰 번호입니다.");
+        } else {
+            return ResponseEntity.ok("사용 가능한 휴대폰 번호입니다.");
+        }
+    }
+    
+//    @GetMapping("/login")
+//    public String login(Principal principal, HttpServletRequest request, Model model) {
+//        try {
+//            String memberId = principal.getName();
+//            model.addAttribute("memberId", memberId);
+//        } catch (Exception e) {
+//            // 로그인하지 않은 경우, 현재 페이지로 유지
+//            return "forward:/";
+//        }
+//
+//        // 로그인 성공 시, 현재 페이지로 리다이렉트
+//        String referer = request.getHeader("Referer");
+//        if (referer != null) {
+//            return "redirect:" + referer;
+//        } else {
+//            return "redirect:/";
+//        }
+//    }
+
     
     @GetMapping("/admin_member_lists.do")
 	public String memberLists(Model model, HttpServletRequest req,
@@ -63,5 +118,4 @@ public class MemberController {
 
 		return "admin/admin_member/admin_member_lists";
 	}
-    
 }

@@ -51,7 +51,7 @@
 	<div class="layer wine_profile_layer"></div>
 	<!-- //와인 프로파일 레이어 -->
 	<!-- 회원 등급현황 레이어 - 로그인 했을 때만 노출 -->
-	<div class="layer grade_layer">
+	<!-- <div class="layer grade_layer">
 		<div class="display_table">
 			<div class="table_cell">
 				<div class="layer_area">
@@ -120,7 +120,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- //회원 등급현황 레이어 -->
 	<!-- 알림설정 레이어 -->
 	<div class="layer push_layer" id="push_layer" style="display: none;">
@@ -835,18 +835,18 @@
 			<div class="common_lnb">
 				<div class="my">
 					<div class="txt grade_area">
-						<div class="img gold grade_info g100">
+						<!-- <div class="img gold grade_info g100">
 							<span>실버</span>
-						</div>
+						</div> -->
 						<p>
-							<strong class="name">윤영길</strong>님
+							<strong class="name">${user_id}</strong>님
 						</p>
 					</div>
-					<div class="btn_area">
+<!-- 					<div class="btn_area">
 						<button type="button" class="btn_txt"
 							onclick="commonUI.layer.open('grade_layer')">등급 혜택보기</button>
-						<!-- <span>시음노트 작성하면 등급 UP</span> -->
-					</div>
+						<span>시음노트 작성하면 등급 UP</span>
+					</div> -->
 				</div>
 				<div class="my_info my_class_info">
 					<ul class="">

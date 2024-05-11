@@ -204,7 +204,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		SELECT * FROM product WHERE productCode = #{productCode}
 	</select>
-
    <update id="productEdit"
       parameterType="com.winevillage.winevillage.product.ProductDTO">
       UPDATE product SET
