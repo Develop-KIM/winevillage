@@ -9,4 +9,5 @@ public class OrderItem {
 	private String productName;
     private int discountPrice;
     private int orderAmount;
+    private int order_usersNo;
 }

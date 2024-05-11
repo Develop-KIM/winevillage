@@ -20,7 +20,7 @@ public class OrderDTO {
 	   private int orderDetailNo;
 	   private int order_usersNo;
 	   private String email;
-	   
+	   private String cookie_id;
 	   private String orderStatus;
 	   
 //	   public  String payment_pending;

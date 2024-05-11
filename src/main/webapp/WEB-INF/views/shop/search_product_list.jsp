@@ -92,7 +92,7 @@
 						<li>
 						<div class="item">
 							<div class="main_img" style="background: ${empty row.wine ? '#fff' : wineStyles[row.wine]};">
-								<a href="/product_view.do?category=${category }&productCode=${row.productCode}" class="prd_img table_box">
+								<a href="/product_view.do?category=${category }&productNo=${row.productNo}" class="prd_img table_box">
 								<picture>
 								<!--[if IE 9]><video style="display: none;"><![endif]-->
 								<source srcset="uploads/product/200/${row.productImg }" media="(min-width:1024px)">
@@ -132,7 +132,7 @@
 								</div>
 									<div class="price_area">
 										<p class="price">
-											<%-- <c:if test="${row.discountRate > 0 }">
+											<c:if test="${row.discountRate > 0 }">
 												<em class="discount">${row.discountRate }%</em>
 												<del><fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>원</del>
 												<ins><fmt:formatNumber value="${row.discountPrice }" pattern="#,##0"/>원</ins>
@@ -142,28 +142,7 @@
 												<del class="out out_price"
 													style="text-decoration: none; font-weight: 700">
 												<fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>	원</del>
-											</c:if> --%>
-											<c:choose>
-												<c:when test="${row.stock != 0 }">
-												<c:if test="${row.discountRate > 0 }">
-													<em class="discount">${row.discountRate }%</em>
-													<del><fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>원</del>
-													<ins><fmt:formatNumber value="${row.discountPrice }" pattern="#,##0"/>원</ins>
-												</c:if>
-												<c:if test="${row.discountRate == 0 && row.state != 'exclusive' }">
-													<del style="font-size:20px;font-weight: 700;color: #000; text-decoration:none;"><fmt:formatNumber value="${product.discountPrice }" pattern="#,##0"/>원</del>
-												</c:if>
-												<c:if test="${row.state == 'exclusive'}">
-													<ins class="out">매장문의</ins>
-													<del class="out out_price"
-														style="text-decoration: none; font-weight: 700">
-														<fmt:formatNumber value="${row.fullPrice }" pattern="#,##0"/>원</del>
-												</c:if>
-												</c:when>
-												<c:otherwise>
-													<ins class="out" style="text-align: right">품절</ins>
-												</c:otherwise>
-											</c:choose>
+											</c:if>
 										</p>
 									</div>
 							</div>
