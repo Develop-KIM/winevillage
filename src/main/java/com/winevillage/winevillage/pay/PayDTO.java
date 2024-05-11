@@ -41,9 +41,13 @@ public class PayDTO {
 	private String cookie_id;
 	
 	private int order_usersNo;
-	private String re_name; 
-    private String re_hp; // 수령자 연락처
-    private String re_address1; // 수령자 주소
-    private int finish_price_span; 
+	private String re_name;
+	private String re_hp; // 수령자 연락처
+	private String re_address; // 수령자 주소
+	private String receiverName;
+	private String receiverPhone;
+	private String receiverAddress1;
+    private int finish_price_span;
+    private int finalPrice;
     
 }

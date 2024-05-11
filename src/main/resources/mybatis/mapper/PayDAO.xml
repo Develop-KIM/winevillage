@@ -6,12 +6,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <mapper namespace="com.winevillage.winevillage.pay.IPayService">
+	<!-- 게시물 갯수 -->
+	<select id="totalCount" resultType="int"
+		parameterType="com.winevillage.winevillage.pay.ParameterDTO">
+		SELECT COUNT(*) FROM order_users
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+			WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</select>
 	
 	<!-- 주문자 정보 -->
 	<select id="getOrderUserInfo"
 		parameterType="com.winevillage.winevillage.pay.ParameterDTO"
 		resultType="com.winevillage.winevillage.pay.PayDTO">
 		  SELECT * FROM member WHERE memberNo = 47
+	</select>
+	
+	<select id="listOrderUsers"
+		resultType="com.winevillage.winevillage.pay.PayDTO"
+		parameterType="com.winevillage.winevillage.pay.ParameterDTO">
+		SELECT * FROM (
+			SELECT Tb.*, rownum rNum FROM (
+				SELECT * FROM order_users
+				<if test="searchKeyword!=null and !searchKeyword.equals('')">
+					WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</if>
+				ORDER BY order_usersno DESC
+			)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start}
+		AND rNum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="listPage"
+		resultType="com.winevillage.winevillage.product.ProductDTO"
+		parameterType="com.winevillage.winevillage.product.ParameterDTO">
+		SELECT * FROM (
+		SELECT Tb.*, rownum rNum FROM (
+		SELECT * FROM product
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+			WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY productno DESC
+		)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start}
+		AND rNum<![CDATA[<=]]>#{end}
 	</select>
 	
 	<select id="listOrder"

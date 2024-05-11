@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -45,7 +46,7 @@
             <div class="form_area">
             <form action="qna_write.do" method="post" id="postFrm" accept-charset="utf-8">
 				<!-- <input type="hidden" name="witplus_csrf_token" value="ea2f7313ebf1263a2796ee85bb21ab14"> -->
-				<input type="hidden" name="memberNo" value="38">
+				<input type="hidden" name="memberNo" value="47">
                 <ul>
                     <li>
                         <div class="l_tit">
@@ -136,7 +137,9 @@ function form_submit(){
 	    return false;
 	} else{
 	    var str = $('#qna_content').val();
-	    str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	    var qna_phonenumber = document.getElementById('qna_phonenumber');
+	    /* str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	    qna_phonenumber.value = qna_phonenumber.value.replace(/\D/g, ''); */
 	    $('#qna_content').val(str);
 	}
 	//Csrf.Set(_CSRF_NAME_); // 토큰 초기화

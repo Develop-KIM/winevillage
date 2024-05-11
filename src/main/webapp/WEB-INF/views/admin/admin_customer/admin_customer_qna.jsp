@@ -628,6 +628,11 @@ function multiDelete() {
 					</div>
 				</form>
 
+				<nav class="pg_wrap">
+				<span class="pg">
+					${ pagingImg }
+				</span>
+				</nav>
 
 				<script>
 					function fqalist_submit(f) {

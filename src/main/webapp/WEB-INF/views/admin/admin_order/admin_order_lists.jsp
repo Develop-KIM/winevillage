@@ -219,345 +219,96 @@ jQuery(function($){
 <div class="tbl_head01">
 	<table id="sodr_list">
 	<colgroup>
-		<col class="w50">
+		<col class="w40">
 		<col class="w100">
-		<col class="w150">
+		<col class="w100">
 		<col class="w40">
+		<col class="w20">
+		<col>
 		<col class="w40">
-		<col class="w400">
 		<col class="w60">
 		<col class="w80">
-		<col class="w80">
+		<col class="w100">
+		<col class="w200">
 		<col class="w90">
-		<col class="w90">
-		<col class="w90">
-		<col class="w90">
-		<col class="w90">
-		<col class="w90">
-		<col class="w90">
+		<col class="w70">
 	</colgroup>
 	<thead>
 	<tr>
 		<th scope="col">번호</th>
 		<th scope="col">주문일시</th>
-		<th scope="col">주문번호</th>
+		<!-- 추가 --><th scope="col">주문자</th>
+		<!-- 변경 --><th scope="col">회원번호</th>
 		<th scope="col"><input type="checkbox" name="chkall" value="1" onclick="check_all(this.form);"></th>
-		<th scope="col" colspan="2">주문상품</th>
-		<th scope="col">수량</th>
-		<th scope="col">상품금액</th>
-		<th scope="col">배송비</th>
-		<th scope="col">주문상태</th>
-		<th scope="col">구매확정</th>
-		<th scope="col">주문자</th>
-		<th scope="col">수령자</th>
-		<th scope="col">총주문액</th>
-		<th scope="col" colspan="2">결제방법</th>
+		<!-- <th scope="col" colspan="2">주문상품</th> -->
+		<!-- null --><th scope="col">주문상품</th>
+		<!-- null --><th scope="col">수량</th>
+		<!-- null --><th scope="col">상품금액</th>
+		<!-- 변경 --><th scope="col">수령자명</th>
+		<!-- 변경 --><th scope="col">수령자전화번호</th>
+		<!-- 변경 --><th scope="col">수령주소</th>
+		<!-- 변경 --><th scope="col">총주문액</th>
+		<!-- 주문상태 --><th scope="col">주문상태</th>
+		<!-- 삭제 --><!-- <th scope="col">총주문액</th> -->
+		<!-- 삭제 --><!-- <th scope="col" colspan="2">결제방법</th> -->
 	</tr>
 	</thead>
 	<tbody>
-		<tr class="list0">
-				<td rowspan="3">34</td>
-		<td rowspan="3">
-			24-04-05 11:53			<span class="list_test">테스트</span>		</td>
-		<td rowspan="3">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=24040511530204" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">24040511530204</a>
-					</td>
-		<td rowspan="3">
-			<input type="hidden" name="od_id[0]" value="24040511530204">
-			<label for="chk_0" class="sound_only">주문번호 24040511530204</label>
-			<input type="checkbox" name="chk[]" value="0" id="chk_0">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=14" target="_blank"><img src="http://demofran.com/data/order/2404/24040511530204/thumb-95S2lNwQks3caPhpLyDPjPWygyeCsC_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=14" target="_blank">Mathey-Tissot 심플 서류가방+백팩 블랙세트</a></td>
-		<td>1</td>
-		<td class="tar">70,000</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="3">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="3">관리자</td>
-		<td rowspan="3" class="td_price">136,240</td>
-		<td rowspan="3" colspan="2">무통장</td>
-				<tr class="list0">
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=20" target="_blank"><img src="http://demofran.com/data/order/2404/24040511530204/thumb-30323_NcEq6PgZABZ4yTEDMfbc7CMZjFb4w8_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=20" target="_blank">Guy Laroche 토리노 지퍼 동전 카드케이스 GL-9300-TR-NY</a></td>
-		<td>1</td>
-		<td class="tar">29,520</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-</noscript></span></td>
-				<tr class="list0">
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=16" target="_blank"><img src="http://demofran.com/data/order/2404/24040511530204/thumb-l7xUjCx1dy5Tp6GlLAy2zMlRLHhxGx_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=16" target="_blank">Guy Laroche 사피아노 핸들 카드케이스 GL-9307-OR</a></td>
-		<td>1</td>
-		<td class="tar">36,720</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<tr class="list1">
-				<td rowspan="2">33</td>
-		<td rowspan="2">
-			24-04-04 16:42			<span class="list_test">테스트</span>		</td>
-		<td rowspan="2">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=24040416420267" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">24040416420267</a>
-					</td>
-		<td rowspan="2">
-			<input type="hidden" name="od_id[1]" value="24040416420267">
-			<label for="chk_1" class="sound_only">주문번호 24040416420267</label>
-			<input type="checkbox" name="chk[]" value="1" id="chk_1">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=19" target="_blank"><img src="http://demofran.com/data/order/2404/24040416420267/thumb-10228_95S2lNwQks3caPhpLyDPjPWygyeCsC_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=19" target="_blank">[루이까또즈] 넥타이 네이비 LW705ST03-N-75</a></td>
-		<td>1</td>
-		<td class="tar">38,730</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="2">
-			11111111			<span class="list_mb_id">(비회원)</span>		</td>
-		<td rowspan="2">11111111</td>
-		<td rowspan="2" class="td_price">58,890</td>
-		<td rowspan="2" colspan="2">무통장</td>
-				<tr class="list1">
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=10" target="_blank"><img src="http://demofran.com/data/order/2404/24040416420267/thumb-Dqpxzw59F3Pzg9PrtDe9tSmaUCF7tu_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=10" target="_blank">선인장 자수패치 반팔T</a></td>
-		<td>2</td>
-		<td class="tar">20,160</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<tr class="list0">
-				<td rowspan="1">22</td>
-		<td rowspan="1">
-			22-06-30 14:18			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=22063014170424" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">22063014170424</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[12]" value="22063014170424">
-			<label for="chk_12" class="sound_only">주문번호 22063014170424</label>
-			<input type="checkbox" name="chk[]" value="12" id="chk_12">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=11" target="_blank"><img src="http://demofran.com/data/order/2206/22063014170424/thumb-mUTbYFV6RKVvmYLLdFAjpB7zQp5DHR_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=11" target="_blank">[폴리폴리] 미니 레이디버블 가죽 시계 WF16R009SPS</a></td>
-		<td>1</td>
-		<td class="tar">218,000</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="1">관리자</td>
-		<td rowspan="1" class="td_price">218,000</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list1">
-				<td rowspan="1">21</td>
-		<td rowspan="1">
-			22-05-16 20:32			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=22051620311219" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">22051620311219</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[13]" value="22051620311219">
-			<label for="chk_13" class="sound_only">주문번호 22051620311219</label>
-			<input type="checkbox" name="chk[]" value="13" id="chk_13">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=11" target="_blank"><img src="http://demofran.com/data/order/2205/22051620311219/thumb-mUTbYFV6RKVvmYLLdFAjpB7zQp5DHR_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=11" target="_blank">[폴리폴리] 미니 레이디버블 가죽 시계 WF16R009SPS</a></td>
-		<td>1</td>
-		<td class="tar">218,000</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="1">관리자</td>
-		<td rowspan="1" class="td_price">218,000</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list0">
-				<td rowspan="1">20</td>
-		<td rowspan="1">
-			22-03-07 17:20			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=22030717201579" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">22030717201579</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[14]" value="22030717201579">
-			<label for="chk_14" class="sound_only">주문번호 22030717201579</label>
-			<input type="checkbox" name="chk[]" value="14" id="chk_14">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=14" target="_blank"><img src="http://demofran.com/data/order/2203/22030717201579/thumb-95S2lNwQks3caPhpLyDPjPWygyeCsC_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=14" target="_blank">Mathey-Tissot 심플 서류가방+백팩 블랙세트</a></td>
-		<td>1</td>
-		<td class="tar">70,000</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="1">관리자</td>
-		<td rowspan="1" class="td_price">70,000</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list1">
-				<td rowspan="1">19</td>
-		<td rowspan="1">
-			22-02-06 13:47			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=22020613471949" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">22020613471949</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[15]" value="22020613471949">
-			<label for="chk_15" class="sound_only">주문번호 22020613471949</label>
-			<input type="checkbox" name="chk[]" value="15" id="chk_15">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=16" target="_blank"><img src="http://demofran.com/data/order/2202/22020613471949/thumb-l7xUjCx1dy5Tp6GlLAy2zMlRLHhxGx_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=16" target="_blank">Guy Laroche 사피아노 핸들 카드케이스 GL-9307-OR</a></td>
-		<td>1</td>
-		<td class="tar">36,720</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="1">관리자</td>
-		<td rowspan="1" class="td_price">36,720</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list0">
-				<td rowspan="1">18</td>
-		<td rowspan="1">
-			22-02-06 13:45			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=22020613445315" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">22020613445315</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[16]" value="22020613445315">
-			<label for="chk_16" class="sound_only">주문번호 22020613445315</label>
-			<input type="checkbox" name="chk[]" value="16" id="chk_16">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=12" target="_blank"><img src="http://demofran.com/data/order/2202/22020613445315/thumb-NcEq6PgZABZ4yTEDMfbc7CMZjFb4w8_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=12" target="_blank">[벨카리노] 안틱캐주얼 투타임 블랙 남녀공용 손목시계 [BC97042B]</a></td>
-		<td>1</td>
-		<td class="tar">60,060</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="1">관리자</td>
-		<td rowspan="1" class="td_price">60,060</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list1">
-				<td rowspan="1">17</td>
-		<td rowspan="1">
-			22-01-26 17:05			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=22012617052419" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">22012617052419</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[17]" value="22012617052419">
-			<label for="chk_17" class="sound_only">주문번호 22012617052419</label>
-			<input type="checkbox" name="chk[]" value="17" id="chk_17">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=16" target="_blank"><img src="http://demofran.com/data/order/2201/22012617052419/thumb-l7xUjCx1dy5Tp6GlLAy2zMlRLHhxGx_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=16" target="_blank">Guy Laroche 사피아노 핸들 카드케이스 GL-9307-OR</a></td>
-		<td>1</td>
-		<td class="tar">36,720</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			<span class="sv_wrap">
-</noscript></span>		<span class="list_mb_id">(tubeweb1)</span>		</td>
-		<td rowspan="1">한글만</td>
-		<td rowspan="1" class="td_price">36,720</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list0">
-				<td rowspan="1">16</td>
-		<td rowspan="1">
-			21-11-30 15:49			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=21113015485110" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">21113015485110</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[18]" value="21113015485110">
-			<label for="chk_18" class="sound_only">주문번호 21113015485110</label>
-			<input type="checkbox" name="chk[]" value="18" id="chk_18">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=16" target="_blank"><img src="http://demofran.com/data/order/2111/21113015485110/thumb-l7xUjCx1dy5Tp6GlLAy2zMlRLHhxGx_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=16" target="_blank">Guy Laroche 사피아노 핸들 카드케이스 GL-9307-OR</a></td>
-		<td>1</td>
-		<td class="tar">36,720</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="1">관리자</td>
-		<td rowspan="1" class="td_price">36,720</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list1">
-				<td rowspan="1">15</td>
-		<td rowspan="1">
-			21-09-28 19:15			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=21092819144124" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">21092819144124</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[19]" value="21092819144124">
-			<label for="chk_19" class="sound_only">주문번호 21092819144124</label>
-			<input type="checkbox" name="chk[]" value="19" id="chk_19">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=16" target="_blank"><img src="http://demofran.com/data/order/2109/21092819144124/thumb-l7xUjCx1dy5Tp6GlLAy2zMlRLHhxGx_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=16" target="_blank">Guy Laroche 사피아노 핸들 카드케이스 GL-9307-OR</a></td>
-		<td>1</td>
-		<td class="tar">36,720</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			관리자			<span class="list_mb_id">(admin)</span>		</td>
-		<td rowspan="1">관리자</td>
-		<td rowspan="1" class="td_price">36,720</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list0">
-				<td rowspan="1">14</td>
-		<td rowspan="1">
-			21-09-12 15:03			<span class="list_test">테스트</span>		</td>
-		<td rowspan="1">
-			<a href="http://demofran.com/admin/pop_orderform.php?od_id=21091215023650" onclick="win_open(this,'pop_orderform','1200','800','yes');return false;" class="fc_197">21091215023650</a>
-					</td>
-		<td rowspan="1">
-			<input type="hidden" name="od_id[20]" value="21091215023650">
-			<label for="chk_20" class="sound_only">주문번호 21091215023650</label>
-			<input type="checkbox" name="chk[]" value="20" id="chk_20">
-		</td>
-				<td class="td_img"><a href="http://demofran.com/shop/view.php?index_no=16" target="_blank"><img src="http://demofran.com/data/order/2109/21091215023650/thumb-l7xUjCx1dy5Tp6GlLAy2zMlRLHhxGx_30x30.jpg" width="30" height="30"></a></td>
-		<td class="td_itname"><a href="http://demofran.com/admin/goods.php?code=form&w=u&gs_id=16" target="_blank">Guy Laroche 사피아노 핸들 카드케이스 GL-9307-OR</a></td>
-		<td>1</td>
-		<td class="tar">36,720</td>
-		<td class="tar">0</td>
-		<td>취소</td>
-		<td>구매미확정</td>
-				<td rowspan="1">
-			임이슬			<span class="list_mb_id">(비회원)</span>		</td>
-		<td rowspan="1">임이슬</td>
-		<td rowspan="1" class="td_price">36,720</td>
-		<td rowspan="1" colspan="2">무통장</td>
-				<tr class="list1">
-				</tbody>
-	</table>
+		<c:choose>
+			<c:when test="${ empty lists }">
+				<tr>
+					<td colspan='14' class="empty_table">리스트가 없습니다.</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${ lists }" var="item" varStatus="loop">
+					<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
+						<td><a href="/" onclick="return false;">${ item.order_usersNo }</a></td>
+						<td><a href="/" onclick="return false;"><span class="ellipsis1">주문일시(null)</span></a></td>
+						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.name }</span></a></td>
+						<td><a href="/" onclick="return false;">${ item.memberNo }</a></td>
+						<td>
+							<input type="hidden" name="od_id[0]" value="${ item.order_usersNo }">
+							<label for="chk_0" class="sound_only">주문번호 ${ item.order_usersNo }</label>
+							<input type="checkbox" name="chk[]" value="0" id="chk_0">
+						</td>
+						<td><span class="ellipsis1">주문상품(null)</span></td>
+						<td><a href="/" onclick="return false;">${ item.orderAmount }</a></td>
+						<td><span class="ellipsis1">상품금액(null)</span></td>
+						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.receiverName }</span></a></td>
+						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.receiverPhone }</span></a></td>
+						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.receiverAddress1 }</span></a></td>
+						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.finalPrice }</span></a></td>
+						<td><a href="/" onclick="return false;">
+						<c:choose>
+							<c:when test="${ item.orderStatus == 'PAYMENT_PENDING' }">
+								<div class="btn_small red" style="cursor:initial;">결제대기</div>
+							</c:when>
+							<c:when test="${ item.orderStatus == 'PAYMENT_COMPLETED' }">
+								<div class="btn_small white" style="cursor:initial;">결제완료</div>
+							</c:when>
+							<c:otherwise>${ item.orderStatus }</c:otherwise>
+						</c:choose>
+						</a></td>
+					</tr>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</tbody>
+</table>
 </div>
 </form>
 
-<nav class="pg_wrap"><span class="pg"><span class="pg_start">처음</span>
+<!-- <nav class="pg_wrap"><span class="pg"><span class="pg_start">처음</span>
 <span class="pg_prev">이전</span>
 <span class="sound_only">열린</span><strong class="pg_current">1</strong><span class="sound_only">페이지</span>
 <a href="/admin/order.php?code=list&page=2" class="pg_page">2<span class="sound_only">페이지</span></a>
 <span class="pg_next">다음</span>
 <a href="/admin/order.php?code=list&page=2" class="pg_page pg_end">맨끝</a>
-</span></nav>
+</span></nav> -->
+
+<nav class="pg_wrap"><span class="pg">${ pagingImg }</span></nav>
+
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"></script>
 <script>
 $(function(){

@@ -44,10 +44,10 @@ public class MappingController {
 	}
 	
 	// cs
-	@GetMapping("/qna_list.do")
-	public String qna_list() {
-		return "cs/qna_list";
-	}
+//	@GetMapping("/qna_list.do")
+//	public String qna_list() {
+//		return "cs/qna_list";
+//	}
 
 	@GetMapping("/mileage_list.do")
 	public String mileage_list() {
@@ -59,15 +59,15 @@ public class MappingController {
 //		return "cs/qna_write";
 //	}
 
-	@GetMapping("/faq_list.do")
-	public String faq_list() {
-		return "cs/faq_list";
-	}
+//	@GetMapping("/faq_list.do")
+//	public String faq_list() {
+//		return "cs/faq_list";
+//	}
 
-	@GetMapping("/notice_list.do")
-	public String notice_list() {
-		return "cs/notice_list";
-	}
+//	@GetMapping("/notice_list.do")
+//	public String notice_list() {
+//		return "cs/notice_list";
+//	}
 
 	// member
 //	@GetMapping("/join.do")

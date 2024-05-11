@@ -24,8 +24,70 @@ public class NoticeController {
 	@Autowired
 	NoticeService dao;
 	
-	@GetMapping("/admin_customer_notice_lists.do")
+	@GetMapping("/notice_list.do")
 	public String noticeLists(Model model, HttpServletRequest req, 
+			ParameterDTO parameterDTO) {
+		int totalCount = dao.getTotalCount(parameterDTO);
+		int pageSize = 10;
+		int blockPage = 5;
+		int pageNum = (req.getParameter("pageNum")==null || req.getParameter("pageNum").equals(""))
+				? 1 : Integer.parseInt(req.getParameter("pageNum"));
+		int start = (pageNum-1) * pageSize + 1;
+		int end = pageNum * pageSize;
+		
+		parameterDTO.setStart(start);
+		parameterDTO.setEnd(end);
+		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("totalCount", totalCount);
+		maps.put("pageSize", pageSize);
+		maps.put("pageNum", pageNum);
+		model.addAttribute("maps", maps);
+		
+		ArrayList<NoticeDTO> lists = dao.listPage(parameterDTO);
+		model.addAttribute("lists", lists);
+		
+		String pagingImg = PagingUtil.pagingImg(totalCount, pageSize, blockPage, pageNum, 
+				req.getContextPath()+"/notice_list.do?");
+		model.addAttribute("pagingImg", pagingImg);
+		
+		return "cs/notice_list";
+	}
+	
+	@GetMapping("/notice_view.do")
+	public String noticeView(Model model, NoticeDTO noticeDTO,
+			@RequestParam(value = "no", defaultValue = "0") String no) {
+		noticeDTO.setNotice_no(Integer.parseInt(no));
+		noticeDTO = dao.noticeView(noticeDTO);
+		
+		if (noticeDTO == null) {
+			noticeDTO = new NoticeDTO();
+			noticeDTO.setNotice_title("게시물 로드 중 에러가 발생하였습니다.");
+			noticeDTO.setNotice_content("게시물 로드 중 에러가 발생하였습니다.");
+			noticeDTO.setNotice_postdate(null);
+		} else {
+			String li_start = "<li style='box-sizing: border-box; color: rgb(76, 76, 76); "
+					+ " line-height: 22px; list-style: none; margin-bottom: 6px; padding-left: 8px;"
+					+ " position: relative;'>";
+			String li_end = "</li>";
+			
+			String noticeContent = noticeDTO.getNotice_content();
+			noticeContent = li_start + noticeContent + li_end;
+			
+			noticeDTO.setNotice_content(noticeContent.replace("\r\n", "</li>"
+					+ "<li style='box-sizing: border-box; color: rgb(76, 76, 76);"
+					+ " line-height: 22px; list-style: none; margin-bottom: 6px; padding-left: 8px;"
+					+ " position: relative;'>"));
+		}
+		
+		model.addAttribute("noticeDTO", noticeDTO);
+		model.addAttribute("no", no);
+		
+		return "cs/notice_view";
+	}
+	
+	@GetMapping("/admin_customer_notice_lists.do")
+	public String noticeAdminLists(Model model, HttpServletRequest req, 
 			ParameterDTO parameterDTO) {
 		
 		int totalCount = dao.getTotalCount(parameterDTO);
@@ -54,11 +116,6 @@ public class NoticeController {
 		
 		return "admin/admin_customer/admin_customer_notice_lists";
 	}
-	
-//	@PostMapping("/admin_customer_notice_lists.do")
-//	public String handleNoticeLists() {
-//		return "admin/admin_customer/admin_customer_notice_lists";
-//	}
 	
 	@GetMapping("/admin_customer_notice_write.do")
 	public String noticeWriteGet(Model model) {
