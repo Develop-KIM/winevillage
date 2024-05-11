@@ -137,7 +137,9 @@ function form_submit(){
 	    return false;
 	} else{
 	    var str = $('#qna_content').val();
-	    str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	    var qna_phonenumber = document.getElementById('qna_phonenumber');
+	    /* str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	    qna_phonenumber.value = qna_phonenumber.value.replace(/\D/g, ''); */
 	    $('#qna_content').val(str);
 	}
 	//Csrf.Set(_CSRF_NAME_); // 토큰 초기화

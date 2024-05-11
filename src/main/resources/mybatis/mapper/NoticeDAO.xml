@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM notice
 		<if test="searchKeyword!=null and !searchKeyword.equals('')">
 			<choose>
-				<when test="searchField == 'all'">
+				<when test="searchField == 'all' or searchField == null or searchField == ''">
 					WHERE
 					notice_title LIKE '%'||#{searchKeyword}||'%' OR
 					notice_content LIKE '%'||#{searchKeyword}||'%'
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				SELECT * FROM notice
 				<if test="searchKeyword!=null and !searchKeyword.equals('')">
 					<choose>
-						<when test="searchField == 'all'">
+						<when test="searchField == 'all' or searchField == null or searchField == ''">
 							WHERE
 							notice_title LIKE '%'||#{searchKeyword}||'%' OR
 							notice_content LIKE '%'||#{searchKeyword}||'%'

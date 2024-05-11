@@ -55,7 +55,7 @@ pageEncoding="UTF-8"%>
 						<a href="admin_member_lists.do" class="gnb_1da">회원관리</a>
 					</li>
 					<li class="gnb_1dli">
-						<a href="admin_customer_inquery.do" class="gnb_1da">고객지원</a>
+						<a href="admin_customer_qna.do" class="gnb_1da">고객지원</a>
 					</li>
 					<li class="gnb_1dli">
 						<a href="admin_setting_super.do" class="gnb_1da">환경설정</a>

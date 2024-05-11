@@ -56,17 +56,29 @@ public class NoticeController {
 	
 	@GetMapping("/notice_view.do")
 	public String noticeView(Model model, NoticeDTO noticeDTO,
-			@RequestParam("no") String no) {
+			@RequestParam(value = "no", defaultValue = "0") String no) {
 		noticeDTO.setNotice_no(Integer.parseInt(no));
 		noticeDTO = dao.noticeView(noticeDTO);
-		/* noticeDTO.setNotice_content(noticeDTO.getNotice_content()
-				  .replace("\r\n", "<br/>")); */
-		String noticeContent = noticeDTO.getNotice_content();
-	    noticeContent = "<li style='box-sizing: border-box; color: rgb(76, 76, 76); "
-	    		+ "line-height: 22px; list-style: none; margin-bottom: 6px; padding-left: 8px;"
-	    		+ " position: relative;'>" + noticeContent + "</li>";
-	    
-	    noticeDTO.setNotice_content(noticeContent);
+		
+		if (noticeDTO == null) {
+			noticeDTO = new NoticeDTO();
+			noticeDTO.setNotice_title("게시물 로드 중 에러가 발생하였습니다.");
+			noticeDTO.setNotice_content("게시물 로드 중 에러가 발생하였습니다.");
+			noticeDTO.setNotice_postdate(null);
+		} else {
+			String li_start = "<li style='box-sizing: border-box; color: rgb(76, 76, 76); "
+					+ " line-height: 22px; list-style: none; margin-bottom: 6px; padding-left: 8px;"
+					+ " position: relative;'>";
+			String li_end = "</li>";
+			
+			String noticeContent = noticeDTO.getNotice_content();
+			noticeContent = li_start + noticeContent + li_end;
+			
+			noticeDTO.setNotice_content(noticeContent.replace("\r\n", "</li>"
+					+ "<li style='box-sizing: border-box; color: rgb(76, 76, 76);"
+					+ " line-height: 22px; list-style: none; margin-bottom: 6px; padding-left: 8px;"
+					+ " position: relative;'>"));
+		}
 		
 		model.addAttribute("noticeDTO", noticeDTO);
 		model.addAttribute("no", no);
@@ -104,11 +116,6 @@ public class NoticeController {
 		
 		return "admin/admin_customer/admin_customer_notice_lists";
 	}
-	
-//	@PostMapping("/admin_customer_notice_lists.do")
-//	public String handleNoticeLists() {
-//		return "admin/admin_customer/admin_customer_notice_lists";
-//	}
 	
 	@GetMapping("/admin_customer_notice_write.do")
 	public String noticeWriteGet(Model model) {
