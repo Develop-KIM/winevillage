@@ -86,7 +86,6 @@ public class CartListController {
         } else {
             cartList = List.of();
         }
-
         model.addAttribute("cartList", cartList);
         
         return "order/cart_list";
@@ -112,14 +111,17 @@ public class CartListController {
     }
     
     @PostMapping("/update-quantity")
-    public ResponseEntity<?> updateOrderQuantity(@RequestParam("orderNo") int orderNo,
+    public ResponseEntity<CartListDTO> updateOrderQuantity(@RequestParam("orderNo") Long orderNo,
                                                  @RequestParam("productCode") String productCode,
                                                  @RequestParam("orderAmount") int orderAmount) {
         try {
             cartListService.updateOrderQuantity(orderNo, productCode, orderAmount);
-            return ResponseEntity.ok("수량 업데이트 성공");
+            
+            CartListDTO cartListDTO = cartListService.getCartItem(orderNo, productCode);
+            
+            return ResponseEntity.ok(cartListDTO);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("수량 업데이트 실패");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

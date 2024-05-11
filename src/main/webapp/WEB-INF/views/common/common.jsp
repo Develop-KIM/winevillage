@@ -205,7 +205,7 @@
 									<div class="box other">
 										<ul>
 											<li class="ico_acc"><a
-												href="list_product.do?category=acc">액세서리</a></li>
+												href="list_product.do?category=acc&sort=recent">액세서리</a></li>
 										</ul>
 									</div>
 								</div>

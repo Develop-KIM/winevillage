@@ -87,51 +87,24 @@
 					</div>
                     <div class="box price_amount">
                         <div class="box amount">
-                            <div class="quantity" data-cart-seq="${cartItem.orderNo }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-opt-gb="C">
+                            <div class="quantity" data-cart-seq="${cartItem.orderNo }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-stock="${cartItem.stock }">
                                 <button type="button" class="minus" onclick="box_qty(this, -1);">감소</button>
                                 <input type="text" class="qty" title="수량" value="${cartItem.orderAmount }" readonly>
                                 <button type="button" class="plus" onclick="box_qty(this, +1);">증가</button>
                             </div>
-                            <script>
-                            function box_qty(element, value) {
-                                var parent = element.parentNode;
-                                var qtyInput = parent.querySelector('.qty');
-                                var currentQty = parseInt(qtyInput.value);
-                                var newQty = currentQty + value;
-                                qtyInput.value = newQty >= 0 ? newQty : 0;
-
-                                // 변경된 수량을 서버에 업데이트하는 AJAX 요청
-                                $.ajax({
-                                    url: '/update-quantity', // 서버의 엔드포인트 URL
-                                    type: 'POST', // HTTP 요청 방식
-                                    data: {
-                                        orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자
-                                        productCode: parent.getAttribute('data-product-cd'), // 제품 코드
-                                        orderAmount: newQty, // 변경된 수량
-                                    },
-                                    success: function(response) {
-                                        console.log('수량 업데이트 성공:', response); // 성공 메시지 로깅
-                                    },
-                                    error: function(xhr, status, error) {
-                                        console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
-                                    }
-                                });
-                            }
-
-							</script>
                         </div>
-						<div class="box price price_con">
+						<div style="white-space:nowrap" class="box price price_con">
 							<div>
 								<span>상품금액</span>
-								<ins id="originalSupply"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
+								<ins id="originalSupply_${cartItem.orderNo }"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="discount">
 								<span>할인금액</span>
-								<ins id="originalSale"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
+								<ins id="originalSale_${cartItem.orderNo }"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="total">
 								<span>총 결제금액</span>
-								<ins id="originalTotal"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
+								<ins id="originalTotal_${cartItem.orderNo }"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 						</div>
                     </div>
@@ -266,30 +239,44 @@ $('.main_img .slider').slick({
 			});
 		}
 	});
-	// 단일 삭제(추가옵션)
-	/*
-	$(".opt").on("click", function(){
-		var cart_opt_seq = $(this).val();
-		if(confirm("장바구니에서 삭제하시겠습니까?")){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.post("/shop/cart/cart_proc_ajax?ajax_mode=DEL_OPT", {
-				cart_opt_seq: cart_opt_seq
-			},function(res) {
-				if(typeof (res) == "string"){
-					res = JSON.parse(res);
-				}
-				if(res.status == 'ok'){
-					location.reload();
-				}else{
-					alert("삭제에 실패했습니다.");
-					return false;
-				 }
-			}).fail(function(error){
-				alert("장바구니 삭제중 오류가 발생했습니다.");
-			});
-		}
-	});
-	*/
+	// 수량변경 및 가격 출력
+    function box_qty(element, value) {
+        var parent = element.parentNode;
+        var qtyInput = parent.querySelector('.qty');
+        var currentQty = parseInt(qtyInput.value);
+        var newQty = currentQty + value;
+        
+        var maxQty = parseInt(parent.getAttribute('data-stock'));
+        
+        // 수량이 최대값을 초과하는 경우
+        if (newQty > maxQty) {
+            alert("최대주문갯수는 " + maxQty + "개 입니다");
+            return; // AJAX 요청을 보내지 않고 함수 종료
+        }
+        
+        qtyInput.value = newQty >= 0 ? newQty : 0;
+
+        // 변경된 수량을 서버에 업데이트하는 AJAX 요청
+        $.ajax({
+            url: '/update-quantity', // 서버의 엔드포인트 URL
+            type: 'POST', // HTTP 요청 방식
+            data: {
+                orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자
+                productCode: parent.getAttribute('data-product-cd'), // 제품 코드
+                orderAmount: newQty, // 변경된 수량
+            },
+            success: function(response) {
+                console.log('수량 업데이트 성공:', response); // 성공 메시지 로깅
+                
+                $('#originalSupply_' + response.orderNo).text((response.fullPrice * response.orderAmount).toLocaleString() + '원');
+                $('#originalSale_' + response.orderNo).text(((response.fullPrice - response.discountPrice) * response.orderAmount).toLocaleString() + '원');
+                $('#originalTotal_' + response.orderNo).text((response.discountPrice * response.orderAmount).toLocaleString()+'원');
+            },
+            error: function(xhr, status, error) {
+                console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
+            }
+        });
+    }
 	// 선택 삭제
 	$("#btn_del").on("click", function(){
 		var frm = document.DelForm;

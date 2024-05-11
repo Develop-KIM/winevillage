@@ -13,7 +13,9 @@ public interface CartListMapper {
     List<CartListDTO> getCartListByCookieId(@Param("cookieId") String cookieId);
     List<CartListDTO> getCartListByMemberNo(Long memberNo);
     CartListDTO getProductByCode(@Param("productCode") String productCode);
-    void updateOrderQuantity(@Param("orderNo") int orderNo, 
+    void updateOrderQuantity(@Param("orderNo") Long orderNo, 
     						@Param("productCode") String productCode,
     						@Param("orderAmount") int orderAmount);
+    CartListDTO getCartItem(@Param("orderNo") Long orderNo, @Param("productCode") String productCode);
+
 }

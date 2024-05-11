@@ -16,6 +16,8 @@ public interface ProductService {
 
 	public ArrayList<ProductDTO> listProduct(ParameterDTO parameterDTO);
 	
+	public ArrayList<ProductDTO> ArrivalList(ProductDTO productDTO);
+
 	public int productWrite(ProductDTO productDTO);
 
 	public ProductDTO productView(ProductDTO productDTO);
