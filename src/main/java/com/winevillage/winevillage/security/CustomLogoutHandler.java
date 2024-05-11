@@ -11,10 +11,12 @@ import jakarta.servlet.http.HttpSession;
 @Component
 public class CustomLogoutHandler implements LogoutHandler {
 
-    @Override
+	@Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-        HttpSession session = request.getSession();
-        session.setAttribute("lastUrl", request.getRequestURI());
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate(); // 세션을 무효화하여 로그아웃 처리
+        }
     }
 }
 
