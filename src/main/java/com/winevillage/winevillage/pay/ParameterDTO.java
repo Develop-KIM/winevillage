@@ -13,7 +13,7 @@ public class ParameterDTO {
 //	private String num;
 	private String pageNum;
 	private String searchField;
-	private ArrayList<String> searchWord;
+	private ArrayList<String> searchKeyword;
 	private int start;
 	private int end;
 	

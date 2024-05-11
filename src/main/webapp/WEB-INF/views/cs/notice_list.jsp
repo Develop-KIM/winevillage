@@ -1,98 +1,128 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-
 <head>
-    <title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
-
+<title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <script type="text/javascript" src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
 <body>
 <%@ include file="../common/common.jsp"%>
 <section id="contents" style="margin-top: 188px;"><div class="lnb cs_lnb lnb_wrap">
-    <div class="pc_hidden">
-        <a href="javascript:history.go(-1);" class="prev">이전</a>
-        <div class="select_brand js_select" id="select_brand">
-            <button type="button" class="my_value js_selectBtn" onclick="$(this).toggleClass('on')"><span>공지사항</span></button>
-            <ul class="mb_lnb_lists">
-                <li class="on"><a href="/notice_list.do">공지사항</a></li>
-                <li><a href="/faq_list.do">자주하는 질문</a></li>
-                        	<li><a href="/qna_write.do">1:1문의</a></li>
-                        <li><a href="/shop/company/member_benefit">회원혜택</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="pc_lnb mb_hidden">
-        <div class="page_tit">
-            <h2><span>공지사항</span></h2>
-        </div>
-        <ul class="menu tab3">
-            <li class="on"><a href="/notice_list.do"><span>공지사항</span></a></li>
-            <li><a href="/faq_list.do"><span>자주하는 질문</span></a></li>
-                	<li><a href="/qna_write.do"><span>1:1문의</span></a></li>
-        </ul>
-    </div>
+	<div class="pc_hidden">
+		<a href="javascript:history.go(-1);" class="prev">이전</a>
+		<div class="select_brand js_select" id="select_brand">
+			<button type="button" class="my_value js_selectBtn" onclick="$(this).toggleClass('on')"><span>공지사항</span></button>
+			<ul class="mb_lnb_lists">
+				<li class="on"><a href="/notice_list.do">공지사항</a></li>
+				<li><a href="/faq_list.do">자주하는 질문</a></li>
+				<li><a href="/qna_write.do">1:1문의</a></li>
+				<li><a href="/shop/company/member_benefit">회원혜택</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="pc_lnb mb_hidden">
+		<div class="page_tit">
+			<h2><span>공지사항</span></h2>
+		</div>
+		<ul class="menu tab3">
+			<li class="on"><a href="/notice_list.do"><span>공지사항</span></a></li>
+			<li><a href="/faq_list.do"><span>자주하는 질문</span></a></li>
+			<li><a href="/qna_write.do"><span>1:1문의</span></a></li>
+		</ul>
+	</div>
 </div>
-<div class="wrap">    <div class="content cs notice_lists_page">
-        <div class="notice_lists_wrap">
-            <form action="https://www.winenara.com/shop/cs/notice_lists_ajax" method="post" id="listFrm" accept-charset="utf-8">
-<input type="hidden" name="witplus_csrf_token" value="ab3740380312bdc653282710568c8d2d">                                                                                              
-                <div class="search_box">
-                    <input type="text" name="keyword" placeholder="검색어를 입력해주세요.">
-                    <input type="hidden" name="page" id="page" value="2">
-                    <button type="button" onclick="get_notice_list('search');">검색</button>
-                </div>
-            </form>
-            <table class="tbl_list">
-                <caption>공지사항</caption>
-                <colgroup>
-                    <col class="num">
-                    <col class="tit">
-                    <col class="date">
-                </colgroup>
-                <thead>
-                    <tr class="tbl_list_tit">
-                        <th class="num">번호</th>
-                        <th class="tit">제목</th>
-                        <th class="date">작성일</th>
-                    </tr>
-                </thead>
-                <tbody class="notice_lists">
-                    
-                            <tr>
-                                    <td class="num"><span class="ico_ntc">공지</span></td>
-                                <td class="tit">
-                                            <span class="ico_ntc">공지</span>
-                                        <a href="/shop/cs/notice_view?no=1175"><p>[공지] 와인나라 온라인몰 이용안내</p></a>
-                                    </td>
-                <td class="date">2024.02.23</td>
-            </tr>
+<div class="wrap">
+	<div class="content cs notice_lists_page">
+		<div class="notice_lists_wrap">
+			<form action="https://www.winenara.com/shop/cs/notice_lists_ajax" method="post" id="listFrm" accept-charset="utf-8">
+				<input type="hidden" name="witplus_csrf_token" value="ab3740380312bdc653282710568c8d2d">                                                                                              
+				<div class="search_box">
+					<input type="text" name="keyword" placeholder="검색어를 입력해주세요.">
+					<input type="hidden" name="page" id="page" value="2">
+					<button type="button" onclick="get_notice_list('search');">검색</button>
+				</div>
+			</form>
+			<table class="tbl_list">
+				<caption>공지사항</caption>
+				<colgroup>
+					<col class="num">
+					<col class="tit">
+					<col class="date">
+				</colgroup>
+				<thead>
+					<tr class="tbl_list_tit">
+						<th class="num">번호</th>
+						<th class="tit">제목</th>
+						<th class="date">작성일</th>
+					</tr>
+				</thead>
+				<tbody class="notice_lists">
+					<c:choose>
+					<c:when test="${ empty lists }">
+						<tr>
+							<td colspan="3">리스트가 없습니다.</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${ lists }" var="item" varStatus="loop">
+							<c:if test="${ item.notice_pinned == '1' }">
+								<tr>
+									<td class="num"><span class="ico_ntc">공지</span></td>
+									<td class="tit">
+										<span class="ico_ntc">공지</span>
+										<a href="/shop/cs/notice_view?no=1175"><p>${ item.notice_content }</p></a>
+									</td>
+									<td class="date">${ item.notice_editdate == null ? item.notice_postdate : item.notice_editdate }</td>
+								</tr>
+							</c:if>
+						</c:forEach>
+						<c:forEach items="${ lists }" var="item" varStatus="loop">
+							<c:if test="${ item.notice_pinned == '0' }">
+								<tr>
+									<td class="num">${ item.notice_no }</td>
+									<td class="tit">
+										<a href="/shop/cs/notice_view?no=1061"><p>${ item.notice_content }</p></a>
+									</td>
+									<td class="date">${ item.notice_postdate }</td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</c:otherwise>
+					</c:choose>
+					<!-- <tr>
+						<td class="num"><span class="ico_ntc">공지</span></td>
+						<td class="tit">
+							<span class="ico_ntc">공지</span>
+							<a href="/shop/cs/notice_view?no=1175"><p>[공지] 와인나라 온라인몰 이용안내</p></a>
+						</td>
+						<td class="date">2024.02.23</td>
+					</tr>
+					<tr>
+						<td class="num"><span class="ico_ntc">공지</span></td>
+						<td class="tit">
+							<span class="ico_ntc">공지</span>
+                            <a href="/shop/cs/notice_view?no=1156"><p>[공지] 개인정보 보호법 개정에 따른 휴면 회원 복귀 안내</p></a>
+						</td>
+						<td class="date">2023.12.01</td>
+					</tr>
                     <tr>
-                                    <td class="num"><span class="ico_ntc">공지</span></td>
-                                <td class="tit">
-                                            <span class="ico_ntc">공지</span>
-                                        <a href="/shop/cs/notice_view?no=1156"><p>[공지] 개인정보 보호법 개정에 따른 휴면 회원 복귀 안내</p></a>
-                                    </td>
-                <td class="date">2023.12.01</td>
-            </tr>
+						<td class="num"><span class="ico_ntc">공지</span></td>
+						<td class="tit">
+							<span class="ico_ntc">공지</span>
+							<a href="/shop/cs/notice_view?no=1021"><p>와인나라의 개인정보취급방침 및 이용 약관을 개정 안내 (7월 1일) </p></a>
+						</td>
+						<td class="date">2022.06.13</td>
+					</tr>
                     <tr>
-                                    <td class="num"><span class="ico_ntc">공지</span></td>
-                                <td class="tit">
-                                            <span class="ico_ntc">공지</span>
-                                        <a href="/shop/cs/notice_view?no=1021"><p>와인나라의 개인정보취급방침 및 이용 약관을 개정 안내 (7월 1일) </p></a>
-                                    </td>
-                <td class="date">2022.06.13</td>
-            </tr>
-                    <tr>
-                                    <td class="num">318</td>
-                                <td class="tit">
-                                        <a href="/shop/cs/notice_view?no=1061"><p>와인나라 서울창고 이전으로 인한 배송 불가 안내</p></a>
-                                    </td>
-                <td class="date">2022.10.21</td>
-            </tr>
+						<td class="num">318</td>
+						<td class="tit">
+							<a href="/shop/cs/notice_view?no=1061"><p>와인나라 서울창고 이전으로 인한 배송 불가 안내</p></a>
+						</td>
+						<td class="date">2022.10.21</td>
+					</tr>
                     <tr>
                                     <td class="num">317</td>
                                 <td class="tit">
@@ -204,7 +234,7 @@
                                         <a href="/shop/cs/notice_view?no=645"><p>[RAFFLE WEEK 01: 사시카이아 2017] 당첨자 발표</p></a>
                                     </td>
                 <td class="date">2021.10.14</td>
-            </tr>
+            </tr> -->
         
 <script>
     // var page = 1;
@@ -217,8 +247,9 @@
     // }else{
     //     $('#more_btn').show();
     // }
-</script>            <tr>
-                                    <td class="num">301</td>
+</script>            
+		<!-- <tr>
+				<td class="num">301</td>
                                 <td class="tit">
                                         <a href="/shop/cs/notice_view?no=644"><p>[점검완료] 와인나라 회원가입시 오류 해결 안내</p></a>
                                     </td>
@@ -357,7 +388,7 @@
                                         <a href="/shop/cs/notice_view?no=625"><p>11월 이달의 와인</p></a>
                                     </td>
                 <td class="date">2020.11.08</td>
-            </tr>
+            </tr> -->
         
 <script>
     // var page = 2;
@@ -370,7 +401,8 @@
     // }else{
     //     $('#more_btn').show();
     // }
-</script></tbody>
+</script>
+</tbody>
             </table>
             <!-- <button type="button" class="btn_txt" id="more_btn" onclick="get_notice_list('more');"><span>더보기</span></button> -->
         </div><!--//event-lists-wrap-->
@@ -378,6 +410,10 @@
 </div>
     </div><!--//cs qna_lists_page-->
 </div>
+
+<style>section#contents nav.pg_wrap {text-align:center;}</style>
+<nav class="pg_wrap"><span class="pg">${ pagingImg }</span></nav>
+
 <script>
 
     // 검색

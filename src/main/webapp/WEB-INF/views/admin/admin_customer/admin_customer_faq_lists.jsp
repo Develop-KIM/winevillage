@@ -264,7 +264,7 @@ function multiDelete() {
 												</tr>
 												<tr>
 													<th>내용</th>
-													<td><textarea name="inquery_content" class="frm_textbox">수령점으로 전화 주시면, 최대한 고객님 편의에 맞춰 도와드리겠습니다.</textarea></td>
+													<td><textarea name="qna_content" class="frm_textbox">수령점으로 전화 주시면, 최대한 고객님 편의에 맞춰 도와드리겠습니다.</textarea></td>
 												</tr>
 											</tbody>
 										</table>

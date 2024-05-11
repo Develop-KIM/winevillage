@@ -12,9 +12,14 @@ public class AdminMappingController {
 	}
 	
 	/* 주문 관리 */
-	@GetMapping("/admin_order_lists.do")
-	public String admin_order_lists() {
-		return "admin/admin_order/admin_order_lists";
+//	@GetMapping("/admin_order_lists.do")
+//	public String admin_order_lists() {
+//		return "admin/admin_order/admin_order_lists";
+//	}
+	/* 테스트 */
+	@GetMapping("/admin_order_lists1.do")
+	public String admin_order_lists1() {
+		return "admin/admin_order/admin_order_lists1";
 	}
 	
 	@GetMapping("/admin_order2.do")

@@ -14,7 +14,7 @@ public interface IPayService {
 
 	
 	//게시물 개수
-	public int totalCount();
+	public int totalCount(ParameterDTO parameterDTO);
 	//게시물 가져오기
 //	public ArrayList<PayDTO> list(ParameterDTO parameterDTO);
 	//게시물 검색하기
@@ -28,5 +28,6 @@ public interface IPayService {
 	//order
 	public ArrayList<PayDTO> getOrderUserInfo(ParameterDTO parameterDTO);
 	public ArrayList<PayDTO> listOrder(ParameterDTO parameterDTO);
+	public ArrayList<PayDTO> listOrderUsers(ParameterDTO parameterDTO);
 	public int updateOrderStatus(OrderDTO orderDTO);
 }

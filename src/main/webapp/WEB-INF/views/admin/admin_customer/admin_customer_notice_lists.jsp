@@ -493,7 +493,7 @@ function multiDelete() {
 		<nav class="pg_wrap">
 		<span class="pg">
 			${ pagingImg }
-		</span]>
+		</span>
 		</nav>
 
 		<script>

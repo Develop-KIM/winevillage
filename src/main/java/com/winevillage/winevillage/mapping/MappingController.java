@@ -54,10 +54,10 @@ public class MappingController {
 		return "cs/faq_list";
 	}
 
-	@GetMapping("/notice_list.do")
-	public String notice_list() {
-		return "cs/notice_list";
-	}
+//	@GetMapping("/notice_list.do")
+//	public String notice_list() {
+//		return "cs/notice_list";
+//	}
 
 	// member
 //	@GetMapping("/join.do")
