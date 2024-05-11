@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  				 SELECT tb.*, ROWNUM rNum
  					 FROM (
  					   SELECT p.ProductName, p.DiscountPrice, m.Name, 
- 					   			m.PhoneNumber, m.Points, o.orderAmount, m.Email, m.memberNo, m.address1, m.address2, p.productImg, p.wine, p.country, o.orderStatus
+ 					   			m.PhoneNumber, m.Points, o.orderAmount, m.Email, m.memberNo, m.address1, m.address2, p.productImg, p.wine, p.country, o.orderStatus, o.cookie_id
   						  FROM Orders o
    						 INNER JOIN Member m ON o.MemberNo = m.MemberNo
    						 INNER JOIN Product p ON o.ProductNo = p.ProductNo
@@ -34,49 +34,82 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="write" parameterType="com.winevillage.winevillage.pay.PayDTO">
 	  INSERT INTO Order_users (
 	        order_usersNo,
-	        name, email, phoneNumber, address, orderRequest,
+	        name, email, phoneNumber, address1, orderRequest,
 	        discountPrice, 
 	        orderAmount, points, finalPrice, memberNo,
 	        receiverName, receiverPhone, receiverAddress
 	    )
 	    VALUES (
 	        order_users_seq.NEXTVAL,
-	        #{name}, #{email}, #{phoneNumber}, #{address}, #{orderRequest},
+	        #{name}, #{email}, #{phoneNumber}, #{address1}, #{orderRequest},
 	        #{discountPrice},
 	        #{orderAmount}, #{points}, #{finish_price_span}, 47,
-	        #{re_name}, #{re_hp}, #{re_address}
+	        #{re_name}, #{re_hp}, #{re_address1}
 	    )
 	</insert>
 	
 	<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
-		    INSERT INTO order_users (
-		        Order_usersNo, name, email, phoneNumber, address, orderRequest,
+		  INSERT INTO order_users (
+		        Order_usersNo, name, email, phoneNumber, address1, orderRequest,
 		        discountPrice, orderAmount, points, finalPrice, memberNo,
-		        receiverName, receiverPhone, receiverAddress,orderStatus
+		        receiverName, receiverPhone, receiverAddress1, orderStatus, cookie_id
 		    ) VALUES (
-		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address}, #{orderInfo.orderRequest},
-		        <!-- #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo}, -->
+		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest}, 
+		     <!--    #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo}, -->
 		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 47,
-		        #{orderInfo.name}, #{orderInfo.phoneNumber}, #{orderInfo.address}, #{orderStatus}
+		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{orderStatus}, #{cookie_id}
 		    )
 		
-<!-- 		    <foreach collection="orderItems" item="item" index="index" separate=";">
+		 <!--  <foreach collection="orderItems" item="item" index="index">
 		        <if test="index > 0">
 		            INSERT INTO order_details (
-		                orderDetailNo, productId, productName, discountPrice, orderAmount, order_usersNo
+		                orderDetailNo, productName, discountPrice, orderAmount
 		            ) VALUES (
-		                order_detail_seq.NEXTVAL, #{item.productId}, #{item.productName}, #{item.discountPrice}, #{item.orderAmount}, #{order_usersNo}
+		                order_detail_seq.NEXTVAL, #{item.productName}, #{item.discountPrice}, #{item.orderAmount}
 		            )
 		        </if>
-		        
-		    </foreach> -->
-    
-</insert>
+		   </foreach> -->
+    </insert>
+	
+	
+	
+	
+	
+	
+	
 
- <update id="updateOrderStatus" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+	<update id="updateOrderStatus" parameterType="com.winevillage.winevillage.pay.OrderDTO">
         UPDATE order_users
-        SET orderStatus = #{orderStatus}
-      <!--   WHERE Order_usersNo = #{id} -->
-        WHERE MemberNo = 47
-    </update>	
+        SET orderStatus = 'PAYMENT_COMPLETED'
+        WHERE cookie_id = #{cookie_id}
+    </update>
+    
+    <delete id="deleteOrder" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+        DELETE FROM order_users
+        WHERE cookie_id = #{cookie_id}
+    </delete>
+    
+    <!-- <insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		  INSERT INTO order_users (
+		        Order_usersNo, name, email, phoneNumber, address1, orderRequest,
+		        discountPrice, orderAmount, points, finalPrice, memberNo,
+		        receiverName, receiverPhone, receiverAddress1, orderStatus, cookie_id
+		    ) VALUES (
+		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest}, 
+		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo},
+		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 47,
+		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{orderStatus}, #{cookie_id}
+		    )
+		
+		  <foreach collection="orderItems" item="item" index="index">
+		        <if test="index > 0">
+		            INSERT INTO order_details (
+		                orderDetailNo, productName, discountPrice, orderAmount
+		            ) VALUES (
+		                order_detail_seq.NEXTVAL, #{item.productName}, #{item.discountPrice}, #{item.orderAmount}
+		            )
+		        </if>
+		    </foreach>
+    </insert> -->
+     
 </mapper>
