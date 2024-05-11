@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.winevillage.winevillage.pay.PayDTO;
+import com.winevillage.winevillage.store.StoreDTO;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
@@ -20,12 +23,14 @@ public class StoreController {
     private static final String apiKey = "AIzaSyCA_wHpvweyggdV7nAg-7ekrGf2Sx4h4CY";
 
     @GetMapping("/list_store.do")
-    public String getStores(Model model, HttpServletRequest req, 
+    public String getStores(Model model, StoreDTO storeDTO, HttpServletRequest req, 
                             @RequestParam(value = "latTxt", required = false) String latTxt,
                             @RequestParam(value = "lngTxt", required = false) String lngTxt) {
     	
-        List<StoreDTO> storeDTO = dao.getStores();
-        System.out.println("Store: " + storeDTO);
+    	model.addAttribute("apiKey", apiKey);
+        ArrayList<StoreDTO> store = dao.getStores(storeDTO);
+		model.addAttribute("store", store);
+        System.out.println("store: " + store);
 
         // 위도와 경도 변환
         double latitude = 0.0;
@@ -35,7 +40,6 @@ public class StoreController {
             longitude = Double.parseDouble(lngTxt);
         }
 
-        model.addAttribute("storeDTO", storeDTO);
         model.addAttribute("apiKey", apiKey);
         model.addAttribute("latitude", latitude);
         model.addAttribute("longitude", longitude);
