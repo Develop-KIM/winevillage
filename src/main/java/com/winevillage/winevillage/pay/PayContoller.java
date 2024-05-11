@@ -1,6 +1,8 @@
 package com.winevillage.winevillage.pay;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpServletRequest;
+import utils.PagingUtil;
 
 
 @Controller
@@ -54,6 +59,37 @@ public class PayContoller {
     	model.addAttribute("message", "성공");
 	    	
 	    return "main/main";
+	}
+	
+	@GetMapping("/admin_order_lists.do")
+	public String adminOrderListsGet(Model model, HttpServletRequest req, 
+			ParameterDTO parameterDTO) {
+		
+		int totalCount = dao.totalCount(parameterDTO);
+		int pageSize = 10;
+		int blockPage = 5;
+		int pageNum = (req.getParameter("pageNum")==null || req.getParameter("pageNum").equals(""))
+				? 1 : Integer.parseInt(req.getParameter("pageNum"));
+		int start = (pageNum-1) * pageSize + 1;
+		int end = pageNum * pageSize;
+		
+		parameterDTO.setStart(start);
+		parameterDTO.setEnd(end);
+		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("totalCount", totalCount);
+		maps.put("pageSize", pageSize);
+		maps.put("pageNum", pageNum);
+		model.addAttribute("maps", maps);
+		
+		ArrayList<PayDTO> lists = dao.listOrderUsers(parameterDTO);
+		model.addAttribute("lists", lists);
+		
+		String pagingImg = PagingUtil.pagingImg(totalCount, pageSize, blockPage, pageNum, 
+				req.getContextPath()+"/admin_order_lists.do?");
+		model.addAttribute("pagingImg", pagingImg);
+		
+		return "admin/admin_order/admin_order_lists";
 	}
 	
 //	@GetMapping("/restBoardList.do")

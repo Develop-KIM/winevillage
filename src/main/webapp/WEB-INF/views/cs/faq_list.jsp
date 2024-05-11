@@ -47,230 +47,52 @@
 			<div class="content cs faq_lists_page">
 				<div class="faq_lists_wrap">
 					<div class="search_wrap">
-						<form action="https://www.winenara.com/shop/cs/notice_lists_ajax"
-							method="post" id="listFrm" accept-charset="utf-8">
-							<input type="hidden" name="witplus_csrf_token"
-								value="263185d7352e7ba37310c9ba7c895012"> <input
-								type="hidden" name="page" id="page" value="14"> <select
-								name="key" id="key">
-								<option value="">전체</option>
-								<option value="title">제목</option>
-								<option value="content">내용</option>
+						<!-- <form action="https://www.winenara.com/shop/cs/notice_lists_ajax"
+							method="post" id="listFrm" accept-charset="utf-8"> -->
+						<form action="faq_list.do" method="get" id="listFrm" accept-charset="utf-8">
+							<!-- <input type="hidden" name="witplus_csrf_token" value="263185d7352e7ba37310c9ba7c895012">
+							<input type="hidden" name="page" id="page" value="14"> -->
+							<select name="searchField" id="key">
+								<option value="all">전체</option>
+								<option value="faq_title">제목</option>
+								<option value="faq_content">내용</option>
+								<option value="faq_classified">분류명</option>
 							</select>
 							<div class="search_box">
-								<input type="text" id="keyword" name="keyword"
-									placeholder="검색어를 입력해주세요.">
-								<button type="button" onclick="get_faq_list('search');">검색</button>
+								<input type="text" id="keyword" name="searchKeyword" placeholder="검색어를 입력해주세요.">
+								<!-- <button type="button" onclick="get_faq_list('search');">검색</button> -->
+								<button type="submit">검색</button>
 							</div>
 						</form>
 					</div>
 					<ul class="faq_lists">
-
-						<li>
-							<button class="q">
-								<span>[픽업,배송] 지정한 수령일보다, 몇 주 늦게 가도 될까요? 와인 보관이 가능한가요?</span>
-							</button>
-							<div class="a">
-								<div class="con">
-									<p>
-										<font face="바탕체, serif"><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">수령점으로
-												전화 주시면, 최대한 고객님 편의에 맞춰 도와드리겠습니다.</span></font>&nbsp;
-									</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<button class="q">
-								<span>[픽업,배송] 주문자가 직접 가지 못하여, 대리인이 가서 수령하려고 합니다.</span>
-							</button>
-							<div class="a">
-								<div class="con">
-									<p>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">기본적으로</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">주문하신</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">고객님</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">본인께서</span>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">매장에</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">방문해주셔야</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">합니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.
-										</span><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">예외적인</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">경우애는</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">수령점으로</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">전화</span>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">주시기</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">바랍니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.</span>
-									</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<button class="q">
-								<span>[주문,결제] 와인 어떻게 사나요? 주문 어떻게 하나요?</span>
-							</button>
-							<div class="a">
-								<div class="con">
-									<p>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">와인</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">상세페이지에서</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> <span
-											style="color: rgb(255, 0, 0);"><b>[바로구매</b></span></span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif; color: rgb(255, 0, 0);"><b>]</b>
-										</span><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">클릭</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">후</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">진행하실</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">수</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">있습니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.</span>
-									</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<button class="q">
-								<span>[픽업,배송] 수령점 변경은 어떻게 하나요?</span>
-							</button>
-							<div class="a">
-								<div class="con">
-									<p>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">주류통신판매</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">행정고시사항으로</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">선택하신</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">수령점</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">외에는</span>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">수령</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">하실</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">수</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">없습니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.<span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">﻿</span></span>
-									</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<button class="q">
-								<span>[픽업,배송] 수령일자 변경은 어떻게 하나요?</span>
-							</button>
-							<div class="a">
-								<div class="con">
-									<p>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">지정하신</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">수령점으로</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">전화</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">하셔서</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">변경이</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">가능합니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.</span>
-									</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<button class="q">
-								<span>[픽업,배송] 지방은 구매가 안 되는 건가요?</span>
-							</button>
-							<div class="a">
-								<div class="con">
-									<p>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">온라인으로</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">구매예약</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">/</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">결제완료한</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">상품을</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">,
-										</span><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">매장에서</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">직접</span>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">수령하시게</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">됩니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.</span>
-									</p>
-
-									<p class="MsoNormal">
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">와인나라</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">매장은</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">서울에</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">&nbsp;6</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">곳이</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">있습니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.</span>
-									</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<button class="q">
-								<span>[픽업,배송] 택배 발송 가능한가요?</span>
-							</button>
-							<div class="a">
-								<div class="con">
-									<p>
-										<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">와인나라</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">직영점</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">,
-										</span><span style="font-family: 나눔고딕, NanumGothic, sans-serif;">서울</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">&nbsp;6</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">개점에서</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">수령이</span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;"> </span><span
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">가능합니다</span><span
-											lang="EN-US"
-											style="font-family: 나눔고딕, NanumGothic, sans-serif;">.</span>
-									</p>
-								</div>
-							</div>
-						</li>
+						<c:choose>
+							<c:when test="${ empty lists }">
+								<li>
+									<div style="padding:60px 30px; text-align:center;">리스트가 없습니다.</div>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${ lists }" var="item" varStatus="loop">
+									<li>
+										<button class="q">
+											<span>[${ item.faq_classified }] ${ item.faq_title }</span>
+										</button>
+										<div class="a">
+											<div class="con">
+												<p>
+													<font face="바탕체, serif">
+														<span style="font-family: 나눔고딕, NanumGothic, sans-serif;">
+															${ item.faq_content }
+														</span>
+													</font>&nbsp;
+												</p>
+											</div>
+										</div>
+									</li>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 
 						<script>
 							// var page = 1;
@@ -468,11 +290,14 @@
 						</script>
 
 					</ul>
+					
+					<style>section#contents nav.pg_wrap {margin-top:60px;text-align:center;}</style>
+					<nav class="pg_wrap"><span class="pg">${ pagingImg }</span></nav>
+					
 					<!-- <button type="button" class="btn_txt" id="more_btn" onclick="get_faq_list('more');"><span>더보기</span></button> -->
 					<div class="add_q">
 						<span>자주 찾는 질문의 답변이 부족하시다면<br>와인나라 상담원에게 문의해 주세요.
-						</span> <a href="/shop/cs/qna_write" class="btn_txt btn_black">1:1
-							문의하기</a>
+						</span> <a href="qna_write.do" class="btn_txt btn_black">1:1 문의하기</a>
 					</div>
 				</div>
 				<!--//faq_lists_wrap-->

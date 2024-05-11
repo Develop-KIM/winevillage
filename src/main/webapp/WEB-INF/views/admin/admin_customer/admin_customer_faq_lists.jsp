@@ -172,7 +172,7 @@ function multiDelete() {
 		<c:choose>
 			<c:when test="${ empty lists }">
 				<tr>
-					<td colspan='4' class="empty_table">리스트가 없습니다.</td>
+					<td colspan='6' class="empty_table">리스트가 없습니다.</td>
 				</tr>
 			</c:when>
 			<c:otherwise>
@@ -264,7 +264,7 @@ function multiDelete() {
 												</tr>
 												<tr>
 													<th>내용</th>
-													<td><textarea name="inquery_content" class="frm_textbox">수령점으로 전화 주시면, 최대한 고객님 편의에 맞춰 도와드리겠습니다.</textarea></td>
+													<td><textarea name="qna_content" class="frm_textbox">수령점으로 전화 주시면, 최대한 고객님 편의에 맞춰 도와드리겠습니다.</textarea></td>
 												</tr>
 											</tbody>
 										</table>
@@ -354,6 +354,12 @@ function multiDelete() {
 	<input type="submit" name="act_button" value="선택수정" class="btn_lsmall bx-white" onclick="document.pressed=this.value">
 <input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white" onclick="document.pressed=this.value"></div>
 </form>
+
+<nav class="pg_wrap">
+<span class="pg">
+	${ pagingImg }
+</span>
+</nav>
 
 
 <!-- <script>

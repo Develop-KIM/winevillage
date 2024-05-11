@@ -31,8 +31,50 @@ public class FAQController {
 	@Autowired
 	FAQService dao;
 
-	@GetMapping("/admin_customer_faq_lists.do")
+	@GetMapping("/faq_list.do")
 	public String faqLists(Model model, HttpServletRequest req, 
+			ParameterDTO parameterDTO, FAQDTO faqDTO) {
+		
+		int totalCount = dao.getTotalCount(parameterDTO);
+		int pageSize = 10;
+		int blockPage = 5;
+		int pageNum = (req.getParameter("pageNum")==null || req.getParameter("pageNum").equals(""))
+				? 1 : Integer.parseInt(req.getParameter("pageNum"));
+		int start = (pageNum-1) * pageSize + 1;
+		int end = pageNum * pageSize;
+		
+		parameterDTO.setStart(start);
+		parameterDTO.setEnd(end);
+		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("totalCount", totalCount);
+		maps.put("pageSize", pageSize);
+		maps.put("pageNum", pageNum);
+		model.addAttribute("maps", maps);
+		
+		ArrayList<FAQDTO> lists = dao.listPage(parameterDTO);
+		
+		for (FAQDTO faq : lists) {
+			String span_start = "<span style='font-family: 나눔고딕, NanumGothic, sans-serif;'>";
+			String span_end = "</span>";
+		    String faqContent = faq.getFaq_content();
+		    faqContent = span_start + faqContent + span_end;
+		    faqContent = faqContent.replaceAll("\r\n", "</span><br />"
+		    		+ "<span style='font-family: 나눔고딕, NanumGothic, sans-serif;'>");
+		    faq.setFaq_content(faqContent);
+		}
+		
+		model.addAttribute("lists", lists);
+		
+		String pagingImg = PagingUtil.pagingImg(totalCount, pageSize, blockPage, pageNum, 
+				req.getContextPath()+"/faq_list.do?");
+		model.addAttribute("pagingImg", pagingImg);
+		
+		return "cs/faq_list";
+	}
+	
+	@GetMapping("/admin_customer_faq_lists.do")
+	public String faqAdminLists(Model model, HttpServletRequest req, 
 			ParameterDTO parameterDTO, FAQDTO faqDTO) {
 		
 		int totalCount = dao.getTotalCount(parameterDTO);
@@ -63,7 +105,7 @@ public class FAQController {
 	}
 	
 	@GetMapping("/admin_customer_faq_category.do")
-	public String faqCategoryGet(Model model, HttpServletRequest req, 
+	public String faqAdminCategoryGet(Model model, HttpServletRequest req, 
 			ParameterDTO parameterDTO, FAQDTO faqDTO) {
 		
 		int totalCount = dao.getTotalCount(parameterDTO);
@@ -97,7 +139,7 @@ public class FAQController {
 	}
 	
 	@PostMapping("/admin_customer_faq_category.do")
-	public String faqCategoryPost(FAQDTO faqDTO, Model model) {
+	public String faqAdminCategoryPost(FAQDTO faqDTO, Model model) {
 		try {
 			int result = dao.faqCategoryWrite(faqDTO);
 			if(result==1) System.out.println("입력완료");;

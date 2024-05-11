@@ -27,17 +27,26 @@ public class MappingController {
 //		return "order/cart_list";
 //	}
 
-	// main
-//	@GetMapping("/main.do")
-//	public String mainpage() {
-//		return "main/main";
-//	}
-
-	// cs
-	@GetMapping("/qna_list.do")
-	public String qna_list() {
-		return "cs/qna_list";
+	@GetMapping("/main.do")
+	public String mainpage() {
+//		Principal principal, Model model
+//		try {
+//			String user_id = principal.getName();
+//			model.addAttribute("user_id", user_id);
+//			System.out.println("user"+ user_id);
+//		} 
+//		catch (Exception e) {
+//			System.out.println("로그인 전입니다.");
+//		}
+		
+		return "main/main";
 	}
+	
+	// cs
+//	@GetMapping("/qna_list.do")
+//	public String qna_list() {
+//		return "cs/qna_list";
+//	}
 
 	@GetMapping("/mileage_list.do")
 	public String mileage_list() {
@@ -49,15 +58,15 @@ public class MappingController {
 //		return "cs/qna_write";
 //	}
 
-	@GetMapping("/faq_list.do")
-	public String faq_list() {
-		return "cs/faq_list";
-	}
+//	@GetMapping("/faq_list.do")
+//	public String faq_list() {
+//		return "cs/faq_list";
+//	}
 
-	@GetMapping("/notice_list.do")
-	public String notice_list() {
-		return "cs/notice_list";
-	}
+//	@GetMapping("/notice_list.do")
+//	public String notice_list() {
+//		return "cs/notice_list";
+//	}
 
 	// member
 //	@GetMapping("/join.do")
@@ -106,14 +115,14 @@ public class MappingController {
 		return "shop/other/product_list_other";
 	}
 
-	@GetMapping("/list_store.do")
-	public String list_store() {
-		return "/store/store";
-	}
+//	@GetMapping("/list_store.do")
+//	public String list_store() {
+//		return "store/store";
+//	}
 
 	@GetMapping("/list_aboutus.do")
 	public String list_aboutus() {
-		return "/aboutus/about_us";
+		return "aboutus/about_us";
 	}
 
 	@GetMapping("/list_other_acc.do")
