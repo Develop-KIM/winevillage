@@ -1,12 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 <title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
+<c:if test="${loggedIn}">
 <script type="text/javascript" src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
+</c:if>
+<c:choose>
+<c:when test="${not loggedIn}">
+<script>
+alert('로그인 후 이용해주세요.');
+location.href="main.do";
+</script>
+<body></body>
+</c:when>
+<c:otherwise>
 <body>
 <%@ include file="../common/common.jsp"%>
 
@@ -123,4 +135,6 @@
 <footer>
 <%@ include file="../common/footer.jsp"%>
 </footer>
+</c:otherwise>
+</c:choose>
 </html>

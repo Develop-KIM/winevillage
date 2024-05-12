@@ -3,12 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-
 <head>
-    <title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
-
+<title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <script type="text/javascript" src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
 <body>
@@ -21,8 +18,8 @@
             <ul class="mb_lnb_lists">
                 <li><a href="/notice_list.do">공지사항</a></li>
                 <li><a href="/faq_list.do">자주하는 질문</a></li>
-                        	<li class="on"><a href="/qna_write.do">1:1문의</a></li>
-                        <li><a href="/shop/company/member_benefit">회원혜택</a></li>
+                <li class="on"><a href="/qna_write.do">1:1문의</a></li>
+                <li><a href="/shop/company/member_benefit">회원혜택</a></li>
             </ul>
         </div>
     </div>
@@ -39,21 +36,40 @@
 </div>
 <div class="wrap">
 	<div class="content cs qna_lists_page">
-        <div class="qna_lists_wrap">
-            <div class="top">
+        <div class="qna_lists_wrap" style="position:relative;">
+        	<%
+        		Boolean loggedIn = (Boolean) request.getAttribute("loggedIn");
+        		String qnaTopMsg;
+        		
+        		if (!loggedIn) {
+        	        qnaTopMsg = "로그인하지 않으신 분은 이용하실 수 없습니다.";
+        	    } else {
+        	        qnaTopMsg = "와인나라 이용 중에 생긴<br>불편한 점이나 문의사항을 보내주세요.";
+        	    }
+			%>
+        	<div class="top">
+       			<span><%= qnaTopMsg %></span>
+       		</div>
+            <!-- <div class="top">
                 <span>와인나라 이용 중에 생긴<br>불편한 점이나 문의사항을 보내주세요.</span>
-            </div>
+            </div> -->
+            <c:if test="${!loggedIn}">
+	            <div class="disable" style="position:absolute;
+	            top:60px;bottom:0;left:0;right:0;background:rgba(0,0,0,0.3);">
+	            </div>
+            </c:if>
             <div class="form_area">
             <form action="qna_write.do" method="post" id="postFrm" accept-charset="utf-8">
-				<!-- <input type="hidden" name="witplus_csrf_token" value="ea2f7313ebf1263a2796ee85bb21ab14"> -->
-				<input type="hidden" name="memberNo" value="47">
+				<input type="hidden" name="witplus_csrf_token" value="ea2f7313ebf1263a2796ee85bb21ab14">
+				<input type="hidden" name="memberNo" value="${ user.memberNo }">
+				<input type="hidden" name="memberId" value="${ user.memberId }">
                 <ul>
                     <li>
                         <div class="l_tit">
                             <label for="qna_writer">이름</label>
                         </div>
                         <div class="form_box">
-                            <input type="text" id="qna_writer" name="qna_writer" value="박성현">
+                            <input type="text" id="qna_writer" name="qna_writer" value="${ user.name }">
                         </div>
                     </li>
                     <li>
@@ -61,8 +77,8 @@
                             <label for="qna_phonenumber">연락처</label>
                         </div>
                         <div class="form_box">
-                            <input type="text" id="qna_phonenumber" name="qna_phonenumber" placeholder=" '-'제외한 숫자만 입력해주세요." maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="010-4924-6766">
-                            <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
+                            <input type="text" id="qna_phonenumber" name="qna_phonenumber" placeholder=" '-'제외한 숫자만 입력해주세요." maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="${ user.phonenumber }">
+                            <p class="input_info_txt">안내메시지 텍스트</p>
                         </div>
                     </li>
                     <li>
@@ -89,7 +105,7 @@
                         </div>
                         <div class="form_box">
                             <input type="text" id="qna_title" name="qna_title" placeholder="제목을 입력해주세요.">
-                            <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
+                            <p class="input_info_txt">안내메시지 텍스트</p>
                         </div>
                     </li>
                     <li>
@@ -98,7 +114,7 @@
                         </div>
                         <div class="form_box">
                             <textarea type="text" id="qna_content" name="qna_content" placeholder="문의내용을 입력해주세요."></textarea>
-                            <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
+                            <p class="input_info_txt">안내메시지 텍스트</p>
                         </div>
                     </li>
                 </ul>
@@ -143,7 +159,13 @@ function form_submit(){
 	    $('#qna_content').val(str);
 	}
 	//Csrf.Set(_CSRF_NAME_); // 토큰 초기화
-	$('#postFrm').submit();
+	var loggedIn = ${loggedIn};
+	if (loggedIn) {
+		$('#postFrm').submit();		
+	}
+	else {
+		alert("로그인 이용자만 1:1 문의가 가능합니다.");
+	}
 }
 </script>
 </section>

@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +32,26 @@ public class QNAController {
 	
 	@GetMapping("/qna_list.do")
 	public String qnaLists(Model model, HttpServletRequest req, 
-			ParameterDTO parameterDTO, QNADTO qnaDTO) {
+			ParameterDTO parameterDTO, QNADTO qnaDTO, Authentication authentication) {
+		
+		boolean loggedIn = true;
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			String currentUsername = auth.getName();
+			// 마지막 로그인한 사용자가 anonymousUser인지 확인
+			// 로그인한 사용자가 없으면 anonymousUser
+			if (currentUsername.equals("anonymousUser")) {
+				// 로그인하지 않은 사용자에 대한 처리
+				loggedIn = false;
+			}
+			else {
+				UserDetails userDetails = (UserDetails) auth.getPrincipal();
+				// 로그인한 사용자의 정보를 활용한 처리
+			}
+		}
+		
+		model.addAttribute("loggedIn", loggedIn);
 		
 		int totalCount = dao.getTotalCount(parameterDTO);
 		int pageSize = 10;
@@ -48,6 +71,19 @@ public class QNAController {
 		model.addAttribute("maps", maps);
 		
 		ArrayList<QNADTO> lists = dao.listPage(parameterDTO);
+		
+		if (authentication != null) {
+			String memberId = authentication.getName();
+			QNADTO memberView = dao.memberView(memberId);
+			QNADTO user = new QNADTO();
+			
+			if (memberView != null) {
+				user.setMemberNo(memberView.getMemberNo());
+				user.setMemberId(memberView.getMemberId());
+				user.setName(memberView.getName());
+				user.setPhonenumber(memberView.getPhonenumber());
+			}
+		}
 		
 		for (QNADTO list : lists) {
 			// 각 질문에 대한 답변을 불러옵니다.
@@ -75,6 +111,38 @@ public class QNAController {
 	
 	@GetMapping("/qna_write.do")
 	public String qnaWriteGet(Model model) {
+		boolean loggedIn = true;
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+			String currentUsername = auth.getName();
+			// 마지막 로그인한 사용자가 anonymousUser인지 확인
+			// 로그인한 사용자가 없으면 anonymousUser
+			if (currentUsername.equals("anonymousUser")) {
+				// 로그인하지 않은 사용자에 대한 처리
+				loggedIn = false;
+			}
+			else {
+				UserDetails userDetails = (UserDetails) auth.getPrincipal();
+				// 로그인한 사용자의 정보를 활용한 처리
+			}
+		}
+		
+		model.addAttribute("loggedIn", loggedIn);
+		
+		String memberId = auth.getName();
+		QNADTO memberView = dao.memberView(memberId);
+		QNADTO user = new QNADTO();
+		
+		if (memberView != null) {
+			user.setMemberNo(memberView.getMemberNo());
+			user.setMemberId(memberView.getMemberId());
+			user.setName(memberView.getName());
+			user.setPhonenumber(memberView.getPhonenumber());
+		}
+		
+		model.addAttribute("user", user);
+		
 		return "cs/qna_write";
 	}
 	
@@ -148,7 +216,6 @@ public class QNAController {
 	
 	@PostMapping("/admin_customer_qna_answer_write.do")
 	public String qnaAnswerWritePost(QNADTO qnaDTO) {
-		System.out.println(qnaDTO.getQna_no());
 		try {
 			int result = dao.qnaAnswerWrite(qnaDTO);
 			if(result==-1) System.out.println("입력완료");
