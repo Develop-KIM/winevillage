@@ -13,6 +13,14 @@ public class StoreDTO {
     private String Store_explain;
     private String Store_tel;
     private String Store_addr;
+    private String Store_img;
     private String latitude;
     private String longitude;
+    private String distance;
+    
+    private String disKM;
+    
+    
+    
+    
 }

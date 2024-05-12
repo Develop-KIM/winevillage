@@ -5,12 +5,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.winevillage.winevillage.pay.ParameterDTO;
-import com.winevillage.winevillage.pay.PayDTO;
-
-
 @Mapper
 public interface IStoreService {
-	
-	public ArrayList<StoreDTO> getStores(StoreDTO storeDTO);
+    public int searchCount(int distance, double latTxt, double lngTxt);
+    public ArrayList<StoreDTO> storeList(StoreDTO storeDTO);
+    public ArrayList<StoreDTO> searchRadius(int distance, double latTxt, double lngTxt, int start, int end);
 }
