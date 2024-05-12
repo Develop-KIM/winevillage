@@ -9,6 +9,7 @@ public interface QNAService {
 	public ArrayList<QNADTO> listPage(ParameterDTO parameterDTO);
 	public int qnaWrite(QNADTO qnaDTO);
 	public QNADTO qnaView(QNADTO qnaDTO);
+	public QNADTO memberView(String userId);
 	public int qnaEdit(QNADTO qnaDTO);
 	public int qnaDelete(QNADTO qnaDTO);
 	
