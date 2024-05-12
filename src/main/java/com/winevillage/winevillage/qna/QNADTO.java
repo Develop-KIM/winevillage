@@ -1,10 +1,27 @@
 package com.winevillage.winevillage.qna;
 
+import java.sql.Date;
+
+import com.winevillage.winevillage.member.MemberGrade;
+
 import lombok.Data;
 
 @Data
 public class QNADTO {
 	private String memberNo;
+	private String memberId;
+	private String password;
+	private String name;
+	private String phonenumber;
+	private String email;
+	private String postcode;
+	private String address1; // 동
+	private String address2; // 상세주소
+	private MemberGrade grade;
+	private int point;
+	private Date joindate;
+	private String birthday;
+	
 	private int qna_no;
 	private String qna_category;
 	private String qna_writer;
