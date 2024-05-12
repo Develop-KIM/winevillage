@@ -7,89 +7,7 @@
 <html>
 <head>
     <title>와인 매장 지도</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=${apiKey }"></script>
-
-    <script>
-   	 window.onload =function (initMap) {
-    	  var map = new google.maps.Map(document.getElementById('map'), {
-    	    center: {lat: 37.5665, lng: 126.9780},
-    	    zoom: 12
-    	  });
-    	  var redIcon = {
-    	    url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-    	    scaledSize: new google.maps.Size(32, 32)
-    	  };
-    	// 하드코딩된 매장 정보
-          /* var stores = [
-              {lat: 37.5665, lng: 126.9780, name: '매장 1'},
-              {lat: 37.5705, lng: 126.9890, name: '매장 2'},
-              {lat: 37.5645, lng: 126.9680, name: '매장 3'}
-          ]; */
-          
-          //db 매장정보
-          var stores = [
-              <c:forEach var="store" items="${store}">
-                  {lat: ${store.latitude}, lng: ${store.longitude}, name: '${store.store_name}'},
-              </c:forEach>
-          ];
-          
-    	
-       // 매장 마커 추가
-          stores.forEach(function(store) {
-              var marker = new google.maps.Marker({
-                  position: {lat: store.lat, lng: store.lng},
-                  map: map,
-                  title: store.name,
-                  icon: redIcon
-              });
-          });
-       
-    	  // 현재 위치 가져오기
-    	  if (navigator.geolocation) {
-    	    navigator.geolocation.getCurrentPosition(function(position) {
-    	      var currentLat = position.coords.latitude;
-    	      var currentLng = position.coords.longitude;
-    	      var currentPosition = new google.maps.LatLng(currentLat, currentLng);
-
-    	      // 현재 위치 마커 추가
-    	      var currentMarker = new google.maps.Marker({
-    	        position: currentPosition,
-    	        map: map,
-    	        title: '현재 위치',
-    	        icon: {
-    	            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-    	            scaledSize: new google.maps.Size(48, 48) // 마커 크기 조절
-    	          }
-    	      });
-
-    	      map.setCenter(currentPosition);
-    	      map.setZoom(15);
-    	    });
-    	  }
-    	}
-        $(document).ready(function() {
-        	$('#storeSelect').change(function() {
-                var selectedStore = $(this).find('option:selected');
-                var lat = selectedStore.data('lat');
-                var lng = selectedStore.data('lng');
-                var position = new google.maps.LatLng(lat, lng);
-                map.setCenter(position);
-                map.setZoom(15);
-            });
-        });
-    </script>
-</head>
-<body>
-  <%--   <%@ include file="../common/common.jsp"%> --%>
-  
-  <!-- 헤더 로딩바와 충돌로 일단 로딩바 삭제한 헤더 입력 -->
-
-<!DOCTYPE html>
-<html>
-<head>
+    
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -122,20 +40,169 @@
 	media="screen and (min-width:1024px)">
 <link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
 <link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
-
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="./js/picturefill.min.js"></script>
 <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
 <script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
-<script type="text/JavaScript"
-	src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
+<script type="text/JavaScript" src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 <script src="./js/wn.productf100.js?v=230405140747"></script>
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/filter.js"></script>
 <script type="text/javascript" src="./js/order.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+        .result-message {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        #no-result {
+            color: red;
+        }
+        #result-count {
+            color: red;
+        }
+    </style>
+
+    <c:choose>
+        <c:when test="${param.distance eq 1 }">
+            <c:set var="zoomLevel" value="15" />
+        </c:when>
+        <c:when test="${param.distance eq 5 }">
+            <c:set var="zoomLevel" value="14" />
+        </c:when>
+        <c:when test="${param.distance eq 10 }">
+            <c:set var="zoomLevel" value="13" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="zoomLevel" value="12" />
+        </c:otherwise>
+    </c:choose>
+
+    <script>
+        
+        var map;
+        var markers = [];
+        var storeMarkers = [];
+
+        window.onload = function() {
+            initMap();
+        }
+        function initMap() {
+            var center = {lat: 37.5665, lng: 126.9780};
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: center
+            });
+
+            var redIcon = {
+                url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+                scaledSize: new google.maps.Size(32, 32)
+            };
+
+            var locations = [
+                <c:forEach var="store" items="${store}">
+                ['${store.store_name}',${store.latitude},${store.longitude}],
+                </c:forEach>
+            ];
+
+            var infowindow = new google.maps.InfoWindow();
+
+            for (var i = 0; i < locations.length; i++) {
+                var marker = new google.maps.Marker({
+                    id: i,
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map,
+                    icon: redIcon
+                });
+
+                storeMarkers.push(marker);
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(locations[i][0] + "<br/><a href='javascript:alert(\"와인빌리지매장:" + locations[i][0] + "\");'>바로가기</a>");
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                if (marker) {
+                    marker.addListener('click', function() {
+                        map.setZoom(16);
+                        map.setCenter(this.getPosition());
+                    });
+                }
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            document.getElementById("latTxt").value = latitude;
+            document.getElementById("lngTxt").value = longitude;
+
+            var myLocation = {lat: latitude, lng: longitude};
+
+            if (markers.length === 0) {
+                map.setCenter(myLocation);
+                map.setZoom(${zoomLevel});
+
+                var blueIcon = {
+                    url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                    scaledSize: new google.maps.Size(48, 48)
+                };
+
+                var marker = new google.maps.Marker({
+                    position: myLocation,
+                    map: map,
+                    icon: blueIcon
+                });
+
+                markers.push(marker);
+            }
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.UNKNOWN_ERROR:
+                    alert("알 수 없는 오류 발생");
+                    break;
+                case error.PERMISSION_DENIED:
+                    alert("권한이 없습니다");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("위치 확인 불가");
+                    break;
+                case error.TIMEOUT:
+                    alert("검색을 다시 눌러주세요");
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+
 <script>
 function checkLoginStatus() {
     var loginMemberId = document.getElementById("loginMemberId").value.trim();
@@ -169,12 +236,13 @@ function checkLoginStatus() {
     });
 }
 </script>
-<title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
-</head>
 <body>
+
+<!-- 헤더 인클루드 로딩페이지 충돌 -->
+
 	<header id="header" class="header">
 		<!-- 로딩바 -->
-		<!-- <div class="loading">
+<!-- 		<div class="loading">
 			<div class="loading_bar">
 				<div class="loading_img">
 					<img src="./images/default/ico_loading.svg" alt="">
@@ -599,41 +667,89 @@ function checkLoginStatus() {
 			</div>
 		</div>
 	</form>
-  
-  <!-- 헤더 로딩바와 충돌로 일단 로딩바 삭제한 헤더 입력 -->
-  
-    <section id="contents">
-        <div class="wrap">
-            <div class="content cs store_page">
-                <div class="inner">
-                    <div class="con_top">
-                        <h3>Wine Village 매장안내</h3>
-                        <span>와인이 필요한 순간, 가장 가까운 Wine Village 매장을 찾아주세요!</span>
-				        <div class="store-list">
-				            <select id="storeSelect" class="form-select">
-				                <option value="">매장을 선택하세요</option>
-				                <c:forEach var="store" items="${store}">
-				                    <option value="${store.store_name}" data-lat="${store.latitude}" 
-				                    	data-lng="${store.longitude}">${store.store_name}</option>
-				                </c:forEach>
-				            </select>
-				        </div>
-                    </div>
-                    <div class="store_map">
-                        <div class="map">
-                            <div id="map" style="height: 700px;">
-                            	    <div class="container">
-								        <div class="map-container">
-								            <div id="map"></div>
-								        </div>
-								    </div>
-                            </div>
+
+<!-- 헤어 인클루드 로딩바 충돌  -->
+
+<section id="contents">
+    <div class="wrap">
+        <div class="content cs store_page">
+            <div class="inner">
+                <div class="con_top">
+                    <h3>Wine Village 매장안내</h3>
+                    <span>와인이 필요한 순간, 가장 가까운 Wine Village 매장을 찾아주세요!</span>
+                    <form name="searchFrm">
+                        <input type="hidden" id="latTxt" name="latTxt"/>
+                        <input type="hidden" id="lngTxt" name="lngTxt"/>
+                        <c:if test="${selectNum > 1}">
+                            <select name="pageNum" id="pageNum" style="font-size: 14px; width: 90px; float:right; border-radius: 4px;">
+                                <c:forEach begin="1" end="${selectNum}" var="i" varStatus="loop">
+                                    <option value="${i}" <c:if test="${param.pageNum==i}">selected</c:if>>${i}쪽</option>
+                                </c:forEach>
+                            </select>
+                        </c:if>
+                        <input type="submit" value="검색하기" style="height:50px; float: right; font-size: 14px; width: 80px; float:rigth; border: 1px solid #ccc;
+                            background-color: #fff; color: #333; padding: 4px 8px; border-radius: 4px; cursor: pointer;"/>
+                        <div class="distance_search">
+                            <select name="distance" id="distance" style="font-size: 14px; width: 150px; float:right; border-radius: 4px;">
+                                <option value="0" <c:if test="${empty param.distance or param.distance == 0}">selected</c:if>>내 주변 가까운 매장</option>
+                                <option value="1" <c:if test="${param.distance==1 }">selected</c:if>>1Km</option>
+                                <option value="5" <c:if test="${param.distance==5 }">selected</c:if>>5Km</option>
+                                <option value="10" <c:if test="${param.distance==10 }">selected</c:if>>10Km</option>
+                                <option value="20" <c:if test="${param.distance==20 }">selected</c:if>>20Km</option>
+                                <option value="30" <c:if test="${param.distance==30 }">selected</c:if>>30Km</option>
+                                <option value="40" <c:if test="${param.distance==40 }">selected</c:if>>40Km</option>
+                            </select>
                         </div>
+                        <div class="result_message">
+                            <span id="no-result" style="font-color: red; margin-left: 208px; display: none;">검색 조건에 해당하는 매장이 없습니다.</span>
+                        </div>
+                        <span id="result-count" style="margin-left: 208px;"></span>
+                    </form>
+                    <div id="map">
+                        <script src="https://maps.googleapis.com/maps/api/js?key=${apiKey }"></script>
+                    </div>
+                    <div class="store_list">
+                        <ul id="store_ul">
+                            <c:choose>
+                                <c:when test="${not empty store}">
+                                    <c:forEach var="store" items="${store}">
+                                        <li>
+                                            <div class="img">
+                                                <a href="store_view20c5.html?no=95">
+                                                    <picture>
+                                                        <img src="/uploads/sale_company/${store.store_img}" alt="">
+                                                    </picture>
+                                                </a>
+                                            </div>
+                                            <div class="con">
+                                                <p class="tit"><a href="store_view20c5.html?no=95">${store.store_name}</a></p>
+                                                <p class="tel">${store.store_tel}</p>
+                                                <p class="addr">${store.store_addr}</p>
+                                            </div>
+                                        </li>
+                                    </c:forEach>
+                                    <script>
+                                        document.getElementById("no-result").style.display = "none";
+                                        document.getElementById("result-count").textContent = "검색 결과: ${fn:length(store)}개 매장이 검색되었습니다.";
+                                    </script>
+                                </c:when>
+                                <c:otherwise>
+                      <%--               <c:if test="${param.distance != 0}"> --%>
+                                        <script>
+                                    /*         document.getElementById("no-result").style.display = "inline"; */
+                                            document.getElementById("no-result").style.display = "none";
+                                            document.getElementById("result-count").textContent = "";
+                                        </script>
+                                    <%-- </c:if> --%>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <%@ include file="../common/footer.jsp"%>
+    </div>
+</section>
+<%@ include file="../common/footer.jsp" %>
 </body>
 </html>

@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.winevillage.winevillage.pay.PayDTO;
-import com.winevillage.winevillage.store.StoreDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -23,27 +21,28 @@ public class StoreController {
     private static final String apiKey = "AIzaSyCA_wHpvweyggdV7nAg-7ekrGf2Sx4h4CY";
 
     @GetMapping("/list_store.do")
-    public String getStores(Model model, StoreDTO storeDTO, HttpServletRequest req, 
-                            @RequestParam(value = "latTxt", required = false) String latTxt,
-                            @RequestParam(value = "lngTxt", required = false) String lngTxt) {
-    	
-    	model.addAttribute("apiKey", apiKey);
-        ArrayList<StoreDTO> store = dao.getStores(storeDTO);
-		model.addAttribute("store", store);
-        System.out.println("store: " + store);
-
-        // 위도와 경도 변환
-        double latitude = 0.0;
-        double longitude = 0.0;
-        if (latTxt != null && !latTxt.isEmpty() && lngTxt != null && !lngTxt.isEmpty()) {
-            latitude = Double.parseDouble(latTxt);
-            longitude = Double.parseDouble(lngTxt);
-        }
+    public String geoFunc4(Model model, HttpServletRequest req,
+                           @RequestParam(value = "distance", defaultValue = "0") int distance,
+                           @RequestParam(value = "latTxt", defaultValue = "37.55998") double latTxt,
+                           @RequestParam(value = "lngTxt", defaultValue = "126.9858296") double lngTxt,
+                           @RequestParam(value = "pageNum", defaultValue = "1") int pageNum) {
 
         model.addAttribute("apiKey", apiKey);
-        model.addAttribute("latitude", latitude);
-        model.addAttribute("longitude", longitude);
 
+        int numberPerPage = 10;
+        int resultCount = dao.searchCount(distance, latTxt, lngTxt);
+
+        model.addAttribute("resultCount", " / 검색결과 : " + resultCount + "건");
+        model.addAttribute("selectNum", Math.ceil((double) resultCount / numberPerPage));
+
+        int start = ((pageNum - 1) * numberPerPage) + 1;
+        int end = pageNum * numberPerPage;
+
+        System.out.println(distance + " " + latTxt + " " + lngTxt + " " + start + " " + end);
+
+        ArrayList<StoreDTO> store = dao.searchRadius(distance, latTxt, lngTxt, start, end);
+        model.addAttribute("store", store);
+        System.out.println(store);
         return "store/store";
     }
 }
