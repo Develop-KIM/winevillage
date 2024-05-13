@@ -417,13 +417,16 @@
 					<div class="tab_btn">
 						<ul class="tab_btn_area">
 							<li>
-								<button type="button" class="on">
+								<button type="button" class="prd on">
 									<span>PRODUCT</span>
 								</button>
 							</li>
 							<li>
-								<button type="button"
+								<!-- <button type="button"
 									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'winery_info'})">
+									<span>REVIEW (0)</span>
+								</button> -->
+								<button type="button" class="review">
 									<span>REVIEW (0)</span>
 								</button>
 							</li>
@@ -482,6 +485,22 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$(document).ready(function() {
+		$(".tab_btn_area button.review").on("click", function() {
+			$(this).addClass("on");
+			$(this).parent().siblings().find('button').removeClass('on');
+			$('.tab_con.detail_con').removeClass('on');
+			$('.tab_con.review_con').addClass('on');
+		});
+		$(".tab_btn_area button.prd").on("click", function() {
+			$(this).addClass("on");
+			$(this).parent().siblings().find('button').removeClass('on');
+			$('.tab_con.review_con').removeClass('on');
+			$('.tab_con.detail_con').addClass('on');
+		});
+	});
+	</script>
 	<%@ include file="../common/footer.jsp"%>
 </body>
 </html>
