@@ -30,11 +30,10 @@
 			<div class="page_tit">
 				<h2><span>공지사항</span></h2>
 			</div>
-			<ul class="menu tab4">
-				<li class="on"><a href="/shop/cs/notice_lists"><span>공지사항</span></a></li>
-				<li><a href="/shop/cs/faq_lists"><span>자주하는 질문</span></a></li>
-				<li><a href="/shop/cs/qna_write"><span>1:1문의</span></a></li>
-				<li><a href="/shop/cs/nomem_cert"><span>비회원주문조회</span></a></li>
+			<ul class="menu tab3">
+				<li class="on"><a href="/notice_list.do"><span>공지사항</span></a></li>
+				<li><a href="/faq_list.do"><span>자주하는 질문</span></a></li>
+				<li><a href="/qna_write.do"><span>1:1문의</span></a></li>
 			</ul>
 		</div>
 	</div>
