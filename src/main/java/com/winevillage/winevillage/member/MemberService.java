@@ -12,5 +12,6 @@ public interface MemberService {
 	void registerMember(MemberDTO memberDTO);
 	ArrayList<MemberDTO> memberlistPage(ParameterDTO parameterDTO);
 	public int memberTotalCount(ParameterDTO parameterDTO);
+	void deleteMember(String memberId);
 }
 

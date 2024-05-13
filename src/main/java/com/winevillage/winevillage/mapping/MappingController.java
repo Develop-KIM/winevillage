@@ -21,68 +21,16 @@ public class MappingController {
 	public String wish_list() {
 		return "order/wish_list";
 	}
-
-//	@GetMapping("/cart_list.do")
-//	public String cart_list() {
-//		return "order/cart_list";
-//	}
-
-//	@GetMapping("/main.do")
-//	public String mainpage() {
-////		Principal principal, Model model
-////		try {
-////			String user_id = principal.getName();
-////			model.addAttribute("user_id", user_id);
-////			System.out.println("user"+ user_id);
-////		} 
-////		catch (Exception e) {
-////			System.out.println("로그인 전입니다.");
-////		}
-//		
-//		return "main/main";
-//	}
-	
-	// cs
-//	@GetMapping("/qna_list.do")
-//	public String qna_list() {
-//		return "cs/qna_list";
-//	}
+	// main
+	@GetMapping("/main.do")
+	public String mainpage() {
+		return "main/main";
+	}
 
 	@GetMapping("/mileage_list.do")
 	public String mileage_list() {
 		return "order/mileage_list";
 	}
-	
-//	@GetMapping("/qna_write.do")
-//	public String qna_write() {
-//		return "cs/qna_write";
-//	}
-
-//	@GetMapping("/faq_list.do")
-//	public String faq_list() {
-//		return "cs/faq_list";
-//	}
-
-//	@GetMapping("/notice_list.do")
-//	public String notice_list() {
-//		return "cs/notice_list";
-//	}
-
-	// member
-//	@GetMapping("/join.do")
-//	public String join() {
-//		return "member/join/join_agree";
-//	}
-//
-//	@GetMapping("/join_form.do")
-//	public String join_form() {
-//		return "member/join/join_form";
-//	}
-//
-//	@GetMapping("/join/join_success.do")
-//	public String join_success() {
-//		return "member/join/join_success";
-//	}
 
 	@GetMapping("/password_cert.do")
 	public String password_cert() {
@@ -92,11 +40,6 @@ public class MappingController {
 	@GetMapping("/change_password.do")
 	public String change_password() {
 		return "member/change_password";
-	}
-
-	@GetMapping("/withdrawal.do")
-	public String withdrawal() {
-		return "member/withdrawal";
 	}
 
 	@GetMapping("/forgoten_id.do")
