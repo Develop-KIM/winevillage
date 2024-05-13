@@ -3,7 +3,6 @@ package com.winevillage.winevillage.member;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MemberService {

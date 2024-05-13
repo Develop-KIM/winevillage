@@ -19,10 +19,10 @@ public class CartListService {
         this.cartListMapper = cartListMapper;
     }
     
-    public void addProductToMemberCart(String productCode, Long memberNo) {
+    public void addProductToMemberCart(String productCode, CartListDTO memberView) {
         Map<String, Object> params = new HashMap<>();
         params.put("productCode", productCode);
-        params.put("memberNo", memberNo);
+        params.put("memberNo", memberView);
         cartListMapper.addProductToMemberCart(params);
     }
 
@@ -37,7 +37,7 @@ public class CartListService {
         return cartListMapper.getCartListByCookieId(cookieId);
     }
     
-    public List<CartListDTO> getCartListByMemberNo(Long memberNo) {
+    public List<CartListDTO> getCartListByMemberNo(CartListDTO memberNo) {
         return cartListMapper.getCartListByMemberNo(memberNo);
     }
     
@@ -47,6 +47,10 @@ public class CartListService {
     
     public CartListDTO getCartItem(Long orderNo, String productCode) {
         return cartListMapper.getCartItem(orderNo, productCode);
+    }
+    
+    public CartListDTO memberView(String username) {
+        return cartListMapper.memberView(username);
     }
 
 }

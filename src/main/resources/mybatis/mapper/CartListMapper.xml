@@ -76,10 +76,16 @@
 		resultType="com.winevillage.winevillage.cart.CartListDTO">
 		SELECT o.*, p.*
 		FROM Orders o
-		JOIN Product p ON o.productCode = p.productCode
+		JOIN Product p ON o.productCode
+		= p.productCode
 		WHERE o.orderNo = #{orderNo}
-		AND o.productCode = #{productCode}
+		AND o.productCode =
+		#{productCode}
 	</select>
 
+	<select id="memberView"
+		resultType="com.winevillage.winevillage.cart.CartListDTO">
+		SELECT * FROM member WHERE memberID=#{memberID}
+	</select>
 
 </mapper>
