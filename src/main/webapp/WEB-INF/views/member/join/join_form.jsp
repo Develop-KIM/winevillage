@@ -738,7 +738,8 @@
         contentType: "application/json",
         data: JSON.stringify(Object.fromEntries(new Map(formData))),
         success: function(response) {
-            if (response['성공'] === 1) {
+        	console.log(response)
+            if (response['result'] === 1) {
                 alert("회원 가입이 완료되었습니다.");
                 window.location.href = "/join_success.do";
             } else {

@@ -85,6 +85,26 @@ function checkLoginStatus() {
     });
 }
 </script>
+<script>
+$(document).ready(function(){
+    $("#logoutButton").click(function(){
+        $.ajax({
+            type: "POST",
+            url: "/logout", // 로그아웃을 처리할 서버의 URL. Spring Security의 logoutUrl과 일치해야 합니다.
+            success: function(response){
+            	console.log(response);
+                // 로그아웃 성공 후 처리할 로직
+                // 예를 들어, 로그아웃 성공 URL로 리다이렉트 할 수 있습니다.
+                window.location.href = window.location.href; // 로그아웃 성공 후 이동할 URL
+            },
+            error: function(e){
+                // 로그아웃 실패 처리
+                console.log(e);
+            }
+        });
+    });
+});
+</script>
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
@@ -209,8 +229,7 @@ function checkLoginStatus() {
 												</h3>
 											</li>
 										</ul>
-										<button type="button" class="btn_txt btn_black logout_btn on"
-											onclick="logout();">로그아웃</button>
+										<button type="button" class="btn_txt btn_black logout_btn on" id="logoutButton">로그아웃</button>
 									</div>
 								</c:when>
 								<c:otherwise>
