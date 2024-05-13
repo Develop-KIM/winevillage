@@ -63,13 +63,13 @@
                         </div>
                     </div>
                     <div class="box con">
-                        <div class="more_info">
+                        <div class="more_info" style="white-space: nowrap; overflow: visible;">
                             <p class="prd_name">
-                                <a href="/product_view.do?category=${cartItem.wine }&productCode=${cartItem.productCode}" target="_blank">${cartItem.productName }<br>
+                                <a style="overflow: visible;" href="/product_view.do?category=${cartItem.wine }&productCode=${cartItem.productCode}" target="_blank">${cartItem.productName }<br>
                               	</a>
                             </p>
 
-							<div class="cate_label">
+							<div class="cate_label" >
 								<c:if test="${not empty cartItem.wine }">
 									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.wine }</span>
 								</c:if>
@@ -248,32 +248,30 @@ $('.main_img .slider').slick({
         
         var maxQty = parseInt(parent.getAttribute('data-stock'));
         
-        // 수량이 최대값을 초과하는 경우
         if (newQty > maxQty) {
-            alert("최대주문갯수는 " + maxQty + "개 입니다");
-            return; // AJAX 요청을 보내지 않고 함수 종료
+            alert("주문 가능한 수량은 " + maxQty + "개 입니다");
+            return;
         }
         
         qtyInput.value = newQty >= 0 ? newQty : 0;
 
-        // 변경된 수량을 서버에 업데이트하는 AJAX 요청
         $.ajax({
-            url: '/update-quantity', // 서버의 엔드포인트 URL
-            type: 'POST', // HTTP 요청 방식
+            url: '/update-quantity', 
+            type: 'POST', 
             data: {
-                orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자
-                productCode: parent.getAttribute('data-product-cd'), // 제품 코드
-                orderAmount: newQty, // 변경된 수량
+                orderNo: parent.getAttribute('data-cart-seq'),
+                productCode: parent.getAttribute('data-product-cd'), 
+                orderAmount: newQty,  
             },
             success: function(response) {
-                console.log('수량 업데이트 성공:', response); // 성공 메시지 로깅
+                console.log('수량 업데이트 성공:', response); 
                 
                 $('#originalSupply_' + response.orderNo).text((response.fullPrice * response.orderAmount).toLocaleString() + '원');
                 $('#originalSale_' + response.orderNo).text(((response.fullPrice - response.discountPrice) * response.orderAmount).toLocaleString() + '원');
                 $('#originalTotal_' + response.orderNo).text((response.discountPrice * response.orderAmount).toLocaleString()+'원');
             },
             error: function(xhr, status, error) {
-                console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
+                console.error('수량 업데이트 실패:', error);
             }
         });
     }
@@ -327,51 +325,7 @@ $('.main_img .slider').slick({
 			return false;
 		}
 	});
-/* 	function box_qty(e, add){
-		var qty				=	parseInt( $(e).siblings('.qty').val() ) + parseInt(add);
-		var cart_seq		=	$(e).parents('.orderAmount').data('cart-seq');
-		var opt_gb			=	$(e).parents('.orderAmount').data('opt-gb');
-		var product_cd      =	$(e).parents('.orderAmount').data('product-cd');
-		//	alert(product_cd);
-		if( qty > 0 ){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.ajax({
-			       type: "POST",
-			       url: "/shop/cart/cart_proc_ajax?ajax_mode=UPD_QTY",
-			       dataType: 'json',
-				   async: false,
-			       data: {cart_seq: cart_seq, qty: qty, opt_gb : opt_gb, product_cd : product_cd},
-			       success: function(res){
-				       if($.trim(res.status) == "ok"){
-							//$(e).siblings('.qty').val(qty);
-							//alert('test');
-							//$('.tab_area').load(location.href+' .tab_area');
-							location.href='/shop/cart/cart_lists?upt=Y';
-				       } else{
-					       if($.trim(res.status) == "err2"){
-						       if(res.data.length > 0){
-							       var stock = parseInt(res.data[0].stock) - parseInt(res.data[0].limit_cnt);
-							       alert("재고가 부족합니다. 현재 남아있는 재고의 수는 " + stock + "개 입니다.");
-							       location.reload();
-						       }
-					       }else if($.trim(res.status) == "err3"){
-								alert('해당 옵션의 최소 수량은 ' +res.data+ '개 이상입니다. ');
-								return;
-							}else{
-						       alert(res.msg);
-						       location.reload();
-						       return;
-					       }
-				       return;
-					   }
-			       },
-			       error: function(res){
-				       alert(res.responseText);
-			       }
-		      });
-		}
-	} */
-	// 상품 수령 변경
+	상품 수령 변경
 	
 	// 구매하기
 	function orderSet(state){        
