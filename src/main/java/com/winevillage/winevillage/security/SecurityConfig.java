@@ -1,5 +1,7 @@
 package com.winevillage.winevillage.security;
 
+import java.io.IOException;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +19,9 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import jakarta.servlet.DispatcherType;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
@@ -58,10 +64,17 @@ public class SecurityConfig{
 				.passwordParameter("loginPassword")
 				.permitAll());
 		http.logout((logout) -> logout
-				.logoutSuccessUrl("/")
-				.addLogoutHandler(customLogoutHandler)
+				.logoutUrl("/logout")
 				.invalidateHttpSession(true)
-				.logoutSuccessHandler(customLogoutSuccessHandler)
+				.deleteCookies("JSESSIONID")
+				.logoutSuccessHandler(new LogoutSuccessHandler() {
+                    @Override
+                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+                        // 로그아웃 성공 후, 현재 페이지로 리다이렉션하는 로직
+                        String refererUrl = request.getHeader("Referer");
+                        response.sendRedirect(refererUrl);
+                    }
+                })
 				.permitAll());
 		
 		http.exceptionHandling((expHanding) -> expHanding
