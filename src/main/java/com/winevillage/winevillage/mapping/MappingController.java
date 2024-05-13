@@ -22,10 +22,10 @@ public class MappingController {
 		return "order/wish_list";
 	}
 	// main
-	@GetMapping("/main.do")
-	public String mainpage() {
-		return "main/main";
-	}
+//	@GetMapping("/main.do")
+//	public String mainpage() {
+//		return "main/main";
+//	}
 
 	@GetMapping("/mileage_list.do")
 	public String mileage_list() {
