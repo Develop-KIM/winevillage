@@ -21,11 +21,6 @@ public class MappingController {
 	public String wish_list() {
 		return "order/wish_list";
 	}
-	// main
-//	@GetMapping("/main.do")
-//	public String mainpage() {
-//		return "main/main";
-//	}
 
 	@GetMapping("/mileage_list.do")
 	public String mileage_list() {
