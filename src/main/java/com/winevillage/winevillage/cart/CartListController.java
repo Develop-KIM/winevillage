@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.winevillage.winevillage.user.UserService;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,31 +27,22 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CartListController {
 
     private final CartListService cartListService;
+    private final UserService userService;
 
     @Autowired
-    public CartListController(CartListService cartListService) {
+    public CartListController(CartListService cartListService, UserService userService) {
         this.cartListService = cartListService;
+        this.userService = userService;
     }
 
     @PostMapping("/addToCart")
     public ResponseEntity<?> addToCart(@RequestParam("productCode") String productCode,
                                        HttpServletRequest request, HttpServletResponse response) {
-    	
-		boolean loggedIn = true;
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            String memberID = authentication.getName();
-            CartListDTO memberView = cartListService.memberView(memberID);
-            CartListDTO user = new CartListDTO();
-			if (memberView != null) {
-				user.setMemberNo(memberView.getMemberNo());
-				user.setMemberId(memberView.getMemberId());
-				user.setName(memberView.getName());
-				user.setPhonenumber(memberView.getPhonenumber());
-			}
-            cartListService.addProductToMemberCart(productCode, memberView);
-            return ResponseEntity.ok().body(Map.of("status", "success", "message", "장바구니에 추가되었습니다."));
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String username = authentication.getName();
+            Long memberNo = findMemberNoByUsername(username);
+            cartListService.addProductToMemberCart(productCode, memberNo);
         } else {
             String cookieId = null;
             Cookie cartCookie = getCookie(request, "COOKIE_ID");
@@ -64,7 +58,7 @@ public class CartListController {
             cartListService.addProductToNonMemberCart(productCode, cookieId);
             return ResponseEntity.ok().body(Map.of("status", "success", "message", "장바구니에 추가되었습니다."));
         }
-        
+		return null;
     }
 
     @GetMapping("/cart_list.do")
@@ -102,6 +96,10 @@ public class CartListController {
         return UUID.randomUUID().toString();
     }
 
+    private Long findMemberNoByUsername(String username) {
+        return userService.findMemberNoByUsername(username); 
+    }
+    
     private Cookie getCookie(HttpServletRequest request, String name) {
         if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {
