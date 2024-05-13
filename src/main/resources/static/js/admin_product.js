@@ -115,7 +115,7 @@ $(function() {
 	})
 	
     $('#generateCodeBtn').on('click', function(e) {
-        e.preventDefault(); // 기본 동작 방지 (페이지 이동)
+        e.preventDefault();
 
         $.ajax({
             type: 'GET',

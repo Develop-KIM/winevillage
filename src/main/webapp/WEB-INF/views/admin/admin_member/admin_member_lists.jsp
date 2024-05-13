@@ -141,12 +141,12 @@ pageEncoding="UTF-8"%>
 							<col class="w100">
 							<col class="w130">
 							<col class="w130">
-							<col class="w100">
 							<col class="w130">
 							<col class="w200">
 							<col class="w60">
 							<col class="w60">
-							<col class="w90">
+							<col class="w60">
+							<%-- <col class="w90"> --%>
 						</colgroup>
 						<thead>
 							<tr>
@@ -155,7 +155,7 @@ pageEncoding="UTF-8"%>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=id&orderby=asc">회원명</a></th>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=grade&orderby=asc">생년월일</a></th>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=pt_id&orderby=asc">핸드폰</a></th>
-								<th scope="col">비밀번호</th>
+								<!-- <th scope="col">비밀번호</th> -->
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=reg_time&orderby=asc">email</a></th>
 								<th scope="col">주소</th>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=login_sum&orderby=asc">등급</a></th>
@@ -182,7 +182,7 @@ pageEncoding="UTF-8"%>
 								<td>${item.name}</td>
 								<td>${item.birthday}</td>
 								<td>${item.phoneNumber}</td>
-								<td>${item.password}</td>
+								<%-- <td>${item.password}</td> --%>
 								<td>${item.email}</td>
 								<td>${item.address1}<br>${item.address2}</td>
 								<td>${item.grade}</td>
