@@ -63,13 +63,13 @@
                         </div>
                     </div>
                     <div class="box con">
-                        <div class="more_info">
+                        <div class="more_info" style="white-space: nowrap; overflow: visible;">
                             <p class="prd_name">
-                                <a href="/product_view.do?category=${cartItem.wine }&productCode=${cartItem.productCode}" target="_blank">${cartItem.productName }<br>
+                                <a style="overflow: visible;" href="/product_view.do?category=${cartItem.wine }&productCode=${cartItem.productCode}" target="_blank">${cartItem.productName }<br>
                               	</a>
                             </p>
 
-							<div class="cate_label">
+							<div class="cate_label" >
 								<c:if test="${not empty cartItem.wine }">
 									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.wine }</span>
 								</c:if>
@@ -87,24 +87,24 @@
 					</div>
                     <div class="box price_amount">
                         <div class="box amount">
-                            <div class="quantity" data-cart-seq="${cartItem.orderNo }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-opt-gb="C">
+                            <div class="quantity" data-cart-seq="${cartItem.orderNo }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-stock="${cartItem.stock }">
                                 <button type="button" class="minus" onclick="box_qty(this, -1);">감소</button>
                                 <input type="text" class="qty" title="수량" value="${cartItem.orderAmount }" readonly>
                                 <button type="button" class="plus" onclick="box_qty(this, +1);">증가</button>
                             </div>
                         </div>
-						<div class="box price price_con">
+						<div style="white-space:nowrap" class="box price price_con">
 							<div>
 								<span>상품금액</span>
-								<ins id="originalSupply"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
+								<ins id="originalSupply_${cartItem.orderNo }"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="discount">
 								<span>할인금액</span>
-								<ins id="originalSale"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
+								<ins id="originalSale_${cartItem.orderNo }"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="total">
 								<span>총 결제금액</span>
-								<ins id="originalTotal"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
+								<ins id="originalTotal_${cartItem.orderNo }"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 						</div>
                     </div>
@@ -239,30 +239,42 @@ $('.main_img .slider').slick({
 			});
 		}
 	});
-	// 단일 삭제(추가옵션)
-	/*
-	$(".opt").on("click", function(){
-		var cart_opt_seq = $(this).val();
-		if(confirm("장바구니에서 삭제하시겠습니까?")){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.post("/shop/cart/cart_proc_ajax?ajax_mode=DEL_OPT", {
-				cart_opt_seq: cart_opt_seq
-			},function(res) {
-				if(typeof (res) == "string"){
-					res = JSON.parse(res);
-				}
-				if(res.status == 'ok'){
-					location.reload();
-				}else{
-					alert("삭제에 실패했습니다.");
-					return false;
-				 }
-			}).fail(function(error){
-				alert("장바구니 삭제중 오류가 발생했습니다.");
-			});
-		}
-	});
-	*/
+	// 수량변경 및 가격 출력
+    function box_qty(element, value) {
+        var parent = element.parentNode;
+        var qtyInput = parent.querySelector('.qty');
+        var currentQty = parseInt(qtyInput.value);
+        var newQty = currentQty + value;
+        
+        var maxQty = parseInt(parent.getAttribute('data-stock'));
+        
+        if (newQty > maxQty) {
+            alert("주문 가능한 수량은 " + maxQty + "개 입니다");
+            return;
+        }
+        
+        qtyInput.value = newQty >= 0 ? newQty : 0;
+
+        $.ajax({
+            url: '/update-quantity', 
+            type: 'POST', 
+            data: {
+                orderNo: parent.getAttribute('data-cart-seq'),
+                productCode: parent.getAttribute('data-product-cd'), 
+                orderAmount: newQty,  
+            },
+            success: function(response) {
+                console.log('수량 업데이트 성공:', response); 
+                
+                $('#originalSupply_' + response.orderNo).text((response.fullPrice * response.orderAmount).toLocaleString() + '원');
+                $('#originalSale_' + response.orderNo).text(((response.fullPrice - response.discountPrice) * response.orderAmount).toLocaleString() + '원');
+                $('#originalTotal_' + response.orderNo).text((response.discountPrice * response.orderAmount).toLocaleString()+'원');
+            },
+            error: function(xhr, status, error) {
+                console.error('수량 업데이트 실패:', error);
+            }
+        });
+    }
 	// 선택 삭제
 	$("#btn_del").on("click", function(){
 		var frm = document.DelForm;
@@ -313,51 +325,7 @@ $('.main_img .slider').slick({
 			return false;
 		}
 	});
-/* 	function box_qty(e, add){
-		var qty				=	parseInt( $(e).siblings('.qty').val() ) + parseInt(add);
-		var cart_seq		=	$(e).parents('.orderAmount').data('cart-seq');
-		var opt_gb			=	$(e).parents('.orderAmount').data('opt-gb');
-		var product_cd      =	$(e).parents('.orderAmount').data('product-cd');
-		//	alert(product_cd);
-		if( qty > 0 ){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.ajax({
-			       type: "POST",
-			       url: "/shop/cart/cart_proc_ajax?ajax_mode=UPD_QTY",
-			       dataType: 'json',
-				   async: false,
-			       data: {cart_seq: cart_seq, qty: qty, opt_gb : opt_gb, product_cd : product_cd},
-			       success: function(res){
-				       if($.trim(res.status) == "ok"){
-							//$(e).siblings('.qty').val(qty);
-							//alert('test');
-							//$('.tab_area').load(location.href+' .tab_area');
-							location.href='/shop/cart/cart_lists?upt=Y';
-				       } else{
-					       if($.trim(res.status) == "err2"){
-						       if(res.data.length > 0){
-							       var stock = parseInt(res.data[0].stock) - parseInt(res.data[0].limit_cnt);
-							       alert("재고가 부족합니다. 현재 남아있는 재고의 수는 " + stock + "개 입니다.");
-							       location.reload();
-						       }
-					       }else if($.trim(res.status) == "err3"){
-								alert('해당 옵션의 최소 수량은 ' +res.data+ '개 이상입니다. ');
-								return;
-							}else{
-						       alert(res.msg);
-						       location.reload();
-						       return;
-					       }
-				       return;
-					   }
-			       },
-			       error: function(res){
-				       alert(res.responseText);
-			       }
-		      });
-		}
-	} */
-	// 상품 수령 변경
+	상품 수령 변경
 	
 	// 구매하기
 	function orderSet(state){        

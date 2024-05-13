@@ -21,7 +21,6 @@ public class MappingController {
 	public String wish_list() {
 		return "order/wish_list";
 	}
-	
 	// main
 	@GetMapping("/main.do")
 	public String mainpage() {

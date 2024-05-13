@@ -33,8 +33,9 @@ public class ProductViewController {
 		model.addAttribute("sort", sort);
 		model.addAttribute("productDTO", productDTO);
 		String uppercaseCategory = null; 
+		if (category != null) {
 		uppercaseCategory = category.toUpperCase();
-		model.addAttribute("uppercaseCategory", uppercaseCategory); 
+		}		model.addAttribute("uppercaseCategory", uppercaseCategory); 
 		return "shop/product_view";
 	}
 }

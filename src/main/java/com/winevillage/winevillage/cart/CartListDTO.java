@@ -1,21 +1,36 @@
 package com.winevillage.winevillage.cart;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import java.sql.Date;
 import java.sql.Timestamp;
 
-@Getter
-@Setter
+import com.winevillage.winevillage.member.MemberGrade;
+
+import lombok.Data;
+import lombok.ToString;
+
+@Data
 @ToString
 public class CartListDTO {
     private Long orderNo;
-    private Long memberNo;
     private String cookie_id;
     private String productCode;
     private Integer OrderAmount;
     private Timestamp createDate;
     
+	private String memberNo;
+	private String memberId;
+	private String password;
+	private String name;
+	private String phonenumber;
+	private String email;
+	private String postcode;
+	private String address1; // 동
+	private String address2; // 상세주소
+	private MemberGrade grade;
+	private int point;
+	private Date joindate;
+	private String birthday;
+	
     private String productImg;
 	private String productName;
 	private int fullPrice;
@@ -24,4 +39,5 @@ public class CartListDTO {
 	private String wine;
 	private String country;
 	private String grapeVariety;
+	private int Stock;
 }
