@@ -19,10 +19,10 @@ public class CartListService {
         this.cartListMapper = cartListMapper;
     }
     
-    public void addProductToMemberCart(String productCode, CartListDTO memberView) {
+    public void addProductToMemberCart(String productCode, Long memberNo) {
         Map<String, Object> params = new HashMap<>();
         params.put("productCode", productCode);
-        params.put("memberNo", memberView);
+        params.put("memberNo", memberNo);
         cartListMapper.addProductToMemberCart(params);
     }
 
