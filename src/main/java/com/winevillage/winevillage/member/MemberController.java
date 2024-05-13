@@ -1,6 +1,5 @@
 package com.winevillage.winevillage.member;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -70,26 +69,12 @@ public class MemberController {
         }
     }
     
-//    @GetMapping("/login")
-//    public String login(Principal principal, HttpServletRequest request, Model model) {
-//        try {
-//            String memberId = principal.getName();
-//            model.addAttribute("memberId", memberId);
-//        } catch (Exception e) {
-//            // 로그인하지 않은 경우, 현재 페이지로 유지
-//            return "forward:/";
-//        }
-//
-//        // 로그인 성공 시, 현재 페이지로 리다이렉트
-//        String referer = request.getHeader("Referer");
-//        if (referer != null) {
-//            return "redirect:" + referer;
-//        } else {
-//            return "redirect:/";
-//        }
-//    }
+	@GetMapping("/withdrawal.do")
+	public String withdrawal() {
+		return "member/withdrawal";
+	}
 
-    
+	
     @GetMapping("/admin_member_lists.do")
 	public String memberLists(Model model, HttpServletRequest req,
 			ParameterDTO parameterDTO) {
