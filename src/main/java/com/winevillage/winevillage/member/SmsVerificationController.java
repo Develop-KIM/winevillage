@@ -1,6 +1,6 @@
 package com.winevillage.winevillage.member;
 
-import java.util.Collections;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.http.HttpStatus;
@@ -24,21 +24,20 @@ public class SmsVerificationController {
 
     @PostMapping("/send_sms")
     public ResponseEntity<?> sendSMS(@RequestParam("phoneNumber") String userPhoneNumber, HttpSession session) {
-        try  { 	
-        	System.out.println("Received phone number: " + userPhoneNumber); 
+        try {
+            System.out.println("Received phone number: " + userPhoneNumber);
             int randomNumber = ThreadLocalRandom.current().nextInt(1000, 10000);
             System.out.println("Generated random number: " + randomNumber);
             smsUtils.sendOne(userPhoneNumber, randomNumber);
             session.setAttribute("randomNumber", randomNumber);
-            return ResponseEntity.ok().body(Collections.singletonMap("randomNumber", randomNumber));
+            return ResponseEntity.ok().body(Map.of("randomNumber", randomNumber));
         } catch (SmsSendingException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("SMS sending failed");
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("SMS 전송 실패");
         }
     }
 
     @PostMapping("/verify_code")
     public ResponseEntity<?> verifyCode(@RequestParam("code") int codeFromUser, HttpSession session) {
-        // 세션 속성 null 체크
         Integer storedCode = (Integer) session.getAttribute("randomNumber");
         if (storedCode != null && codeFromUser == storedCode) {
             return ResponseEntity.ok().body("인증 성공");
@@ -46,9 +45,9 @@ public class SmsVerificationController {
             return ResponseEntity.badRequest().body("인증 실패");
         }
     }
-    
+
     @ExceptionHandler(SmsSendingException.class)
     public ResponseEntity<?> handleSmsSendingException(SmsSendingException ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("SMS sending failed");
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("SMS 전송 실패");
     }
 }
