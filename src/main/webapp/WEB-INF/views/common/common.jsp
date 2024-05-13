@@ -70,7 +70,6 @@ function checkLoginStatus() {
                 $('.no_login').hide(); // 로그인 전 보여줄 영역 숨김
                 $('.login_layer').hide();
                 window.location.href = window.location.href;
-                console.log(response.memberId + "넌 뭔데");
             } else {
                 // 로그인되지 않은 경우
                 $('.on_login').hide(); // 로그인 후 보여줄 영역 숨김
@@ -512,12 +511,6 @@ $(document).ready(function(){
 							</div>
 							<input type="hidden" id="login_return_url_param"
 								name="login_return_url_param">
-<!-- 							<div class="save_box">
-								<div class="checkbox">
-									<input type="checkbox" name="id_save" id="id_save" value="Y">
-									<label for="id_save">아이디저장</label>
-								</div>
-							</div> -->
 							<div class="btn_area">
 								<button type="button" class="btn_txt btn_black" id="loginBtn" onClick="checkLoginStatus();">
 									<span>로그인</span>
