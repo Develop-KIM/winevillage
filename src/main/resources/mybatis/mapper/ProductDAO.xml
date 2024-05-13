@@ -222,6 +222,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       body=#{body},
       acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
       WHERE
-      productNo=#{productNo}
+      productCode=#{productCode}
    </update>
 </mapper>

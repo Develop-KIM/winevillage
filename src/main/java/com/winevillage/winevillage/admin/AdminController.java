@@ -44,7 +44,8 @@ public class AdminController {
 	}
 	
 	@PostMapping("/admin_login.do")
-	public String adminLoginPost(@RequestParam("admin_id") String admin_id, @RequestParam("admin_pass") String admin_pass, HttpSession session) {
+	public String adminLoginPost(@RequestParam("admin_id") String admin_id, 
+			@RequestParam("admin_pass") String admin_pass, HttpSession session) {
 		AdminDTO admin = dao.getAdmin(admin_id);
 		if(admin==null || !admin.getAdmin_pass().equals(admin_pass)) {
 			return "redirect:admin_login.do";

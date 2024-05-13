@@ -157,15 +157,15 @@ jQuery(function($){
 </span>
 	</td>
 	</tr>
-	<tr>
+<!-- 	<tr>
 		<th scope="row">결제방법</th>
 		<td>
 			<label><input type="radio" name="od_settle_case" value="" checked="checked"> 전체</label>
 			<label><input type="radio" name="od_settle_case" value="가상계좌"> 가상계좌</label>
 			<label><input type="radio" name="od_settle_case" value="KAKAOPAY"> KAKAOPAY</label>
 		</td>
-	</tr>
-	<tr>
+	</tr> -->
+<!-- 	<tr>
 		<th scope="row">주문상태</th>
 		<td>
 			<label><input type="radio" name="od_status" value="" checked="checked"> 전체</label>
@@ -179,15 +179,15 @@ jQuery(function($){
 			<label><input type="radio" name="od_status" value="7"> 반품</label>
 			<label><input type="radio" name="od_status" value="8"> 교환</label>
 		</td>
-	</tr>
-	<tr>
+	</tr> -->
+<!-- 	<tr>
 		<th scope="row">구매확정</th>
 		<td>
 			<label><input type="radio" name="od_final" value="" checked="checked"> 전체</label>
 			<label><input type="radio" name="od_final" value="1"> 구매확정</label>
 			<label><input type="radio" name="od_final" value="0"> 구매미확정</label>
 		</td>
-	</tr>
+	</tr> -->
 	</tbody>
 	</table>
 </div>
