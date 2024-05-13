@@ -1,5 +1,6 @@
 package com.winevillage.winevillage.member;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,5 +54,21 @@ public class MemberRestController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+    
+    @DeleteMapping("/withdrawal.do")
+    public ResponseEntity<String> withdrawMember(Principal principal) {
+        if(principal == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요한 서비스입니다.");
+        }
+        
+        String memberId = principal.getName(); // 현재 로그인한 사용자의 ID를 가져옵니다.
+        
+        // 회원 탈퇴 작업 수행
+        memberService.deleteMember(memberId);
+        
+        // 회원 탈퇴가 성공했을 때 리다이렉트할 주소 반환
+        return ResponseEntity.ok("/main.do");
+    }
+
 }
 
