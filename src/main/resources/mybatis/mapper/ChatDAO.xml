@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winevillage.winevillage.chat.ChatService">
+	<select id="getTotalCount" resultType="int"
+	parameterType="com.winevillage.winevillage.chat.ParameterDTO">
+		SELECT COUNT(*) FROM chat
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+			<choose>
+				<when test="searchField == 'all'">
+					WHERE
+					memberno LIKE '%'||#{searchKeyword}||'%' OR
+					memberid LIKE '%'||#{searchKeyword}||'%' OR
+					chat_no LIKE '%'||#{searchKeyword}||'%' OR
+					chat_writer LIKE '%'||#{searchKeyword}||'%' OR
+					chat_message LIKE '%'||#{searchKeyword}||'%' OR
+					chat_date LIKE '%'||#{searchKeyword}||'%'
+				</when>
+				<otherwise>
+					WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</otherwise>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="listPage"
+		resultType="com.winevillage.winevillage.chat.ChatDTO"
+		parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+		SELECT * FROM (
+			SELECT Tb.*, rownum rNum FROM (
+				SELECT * FROM chat
+				<if test="searchKeyword!=null and !searchKeyword.equals('')">
+					<choose>
+						<when test="searchField == 'all'">
+							WHERE
+							memberno LIKE '%'||#{searchKeyword}||'%' OR
+							memberid LIKE '%'||#{searchKeyword}||'%' OR
+							chat_no LIKE '%'||#{searchKeyword}||'%' OR
+							chat_writer LIKE '%'||#{searchKeyword}||'%' OR
+							chat_message LIKE '%'||#{searchKeyword}||'%' OR
+							chat_date LIKE '%'||#{searchKeyword}||'%'
+						</when>
+						<otherwise>
+							WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+						</otherwise>
+					</choose>
+				</if>
+				ORDER BY chat_no DESC
+			)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start} AND rNum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="memberView"
+	resultType="com.winevillage.winevillage.qna.QNADTO"
+	parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+	SELECT * FROM member WHERE memberid=#{memberid}
+	</select>
+	
+	<insert id="qnaWrite"
+	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	DECLARE
+	next_no NUMBER;
+	BEGIN
+	getnext_chat_no(next_no);
+	INSERT INTO chat (memberNo, memberId, chat_no, chat_writer, chat_message, chat_date, chat_ended)
+	VALUES (#{memberNo}, #{memberId}, next_no, #{chat_writer}, #{chat_message}, sysdate, 0);
+	END;
+	</insert>
+	
+	<!-- <select id="chatView"
+	resultType="com.winevillage.winevillage.chat.ChatDTO"
+	parameterType="com.winevillage.winevillage.chat.ParameterDTO">
+	SELECT * FROM chat WHERE qna_no=#{qna_no}
+	</select> -->
+	
+	<!-- <delete id="chatDelete"
+	parameterType="com.winevillage.winevillage.chat.ChatDTO">
+	DELETE FROM chat WHERE chat_no=#{chat_no};
+	</delete> -->
+</mapper>
