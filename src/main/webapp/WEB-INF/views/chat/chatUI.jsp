@@ -5,13 +5,13 @@
 <title>웹소켓채팅</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="./css/chat_ui.css" />
+<link rel="stylesheet" href="./css/chat/chat_ui.css" />
 </head>
 <body> 
 <input type="hidden" id="chatId" value="${param.chatId }" />
 <input type="hidden" id="chatRoom" value="${param.chatRoom }" />
-<div class="chat_ui" id="chat_ui_test" style="width: 320px; height: 480px;">
-	<div class="msg" id="chatWindow"></div>
+<div class="chat_ui" id="chat_ui_test" style="width: 320px; height: 490px;">
+	<div class="msg" id="chatWindow" style="margin-bottom:5px;"></div>
 	<div class="sendmsg">
 	    <textarea class="textarea" id="chatMessage" onkeyup="enterKey();"></textarea>
 	    <div class="button" onclick="sendMessage();">
@@ -20,7 +20,7 @@
 	    <div class="clear"></div>
 	</div>	
 </div>
-<div id="logWindow" class="border border-danger" style="display:none; height:0px; overflow:none;"></div> 
+<div id="logWindow" class="border border-danger" style=" height:100px; overflow:none;"></div> 
 </body>
 </html>
 <script>
@@ -116,6 +116,7 @@ webSocket.onerror = function(event) {
 
 //웹소켓 서버가 메세지를 받았을때 자동으로 호출 
 webSocket.onmessage = function(event) {
+	console.log("event.data=", event.data);
 	//대화명과 메세지를 분리한다. 전송시 |(파이프)로 조립해서 보낸다. 
     var message = event.data.split("|");  
 	//앞부분은 보낸 사람의 대화명
@@ -137,9 +138,15 @@ webSocket.onmessage = function(event) {
             }
         }
         else {
-        	//슬러쉬가 없다면 일반적인 메세지로 판단한다.
-        	msg = makeBalloon(sender, content);   
-            chatWindow.innerHTML += msg;
+        	console.log(sender, content);
+        	if(sender=='sender_leaveSOIEFHJ234NIE29035920354WFIE'){
+        		chatWindow.innerHTML += "퇴장하셨습니다.<br/>";
+        	}
+        	else{
+	        	//슬러쉬가 없다면 일반적인 메세지로 판단한다.
+	        	msg = makeBalloon(sender, content);   
+	            chatWindow.innerHTML += msg;
+        	}
         }
     }
     
@@ -153,7 +160,7 @@ function makeBalloon(id, cont){
 	var msg = '';
 	msg =
 		"<div class='othertalk' style='margin-top:10px;'>"+
-		"<div class=\"profile_image\" style=\"background: url(./img/profile_image.png) no-repeat;\">\n"+
+		"<div class=\"profile_image\" style=\"background: url(../images/chat/profile_image.png) no-repeat;\">\n"+
 		"</div>\n"+
 		"<div class=\"box\">\n"+
 		"<div class=\"profile_name\">이름:"+id+"\n"+

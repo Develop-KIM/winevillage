@@ -69,7 +69,6 @@ function sendMessage() {
 
 //웹소켓 서버에서 접속종료
 function disconnect() {
-	webSocket.send("상대방이 채팅을 종료하였습니다..");
     webSocket.close();
 }
 
@@ -89,7 +88,6 @@ webSocket.onopen = function(event) {
 
 //웹소켓 서버가 종료되었을때 자동으로 호출 
 webSocket.onclose = function(event) {
-	webSocket.send("상대방이 채팅을 종료하였습니다..");
     chatWindow.innerHTML += "웹소켓 서버가 종료되었습니다.<br/>";
 };
 
@@ -122,10 +120,16 @@ webSocket.onmessage = function(event) {
                 	+ temp + "</div>";
             }
         }
-        else {  
-        	//슬러쉬가 없다면 일반적인 메세지로 판단한다. 
-            chatWindow.innerHTML += "<div>" + sender + " : " 
-            	+ content + "</div>";
+        else {
+        	console.log(sender, content);
+        	if(sender=='sender_leaveSOIEFHJ234NIE29035920354WFIE'){
+        		chatWindow.innerHTML += "퇴장하셨습니다.<br/>";
+        	}
+        	else{
+        		//슬러쉬가 없다면 일반적인 메세지로 판단한다. 
+                chatWindow.innerHTML += "<div>" + sender + " : " 
+                	+ content + "</div>";
+        	}
         }
     }
     
