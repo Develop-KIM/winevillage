@@ -13,17 +13,15 @@ public class CartListService {
 	// CartMapper 인터페이스 의존성 주입
     private final CartListMapper cartListMapper;
 
+    
     // 생성자를 통한 의존성 주입
     @Autowired
     public CartListService(CartListMapper cartListMapper) {
         this.cartListMapper = cartListMapper;
     }
     
-    public void addProductToMemberCart(String productCode, Long memberNo) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("productCode", productCode);
-        params.put("memberNo", memberNo);
-        cartListMapper.addProductToMemberCart(params);
+    public void addProductToMemberCart(String productCode, String memberNo) {
+        cartListMapper.addProductToMemberCart(productCode, memberNo);
     }
 
     public void addProductToNonMemberCart(String productCode, String cookieId) {
@@ -37,7 +35,7 @@ public class CartListService {
         return cartListMapper.getCartListByCookieId(cookieId);
     }
     
-    public List<CartListDTO> getCartListByMemberNo(CartListDTO memberNo) {
+    public List<CartListDTO> getCartListByMemberNo(String memberNo) {
         return cartListMapper.getCartListByMemberNo(memberNo);
     }
     
@@ -49,8 +47,13 @@ public class CartListService {
         return cartListMapper.getCartItem(orderNo, productCode);
     }
     
-    public CartListDTO memberView(String username) {
-        return cartListMapper.memberView(username);
+    public String getMemberNo(String user_id) {
+        return cartListMapper.getMemberNo(user_id);
     }
+    
+    public boolean updateMemberCart(String memberNo, String cookieId) {
+    	return cartListMapper.updateMemberCart(memberNo, cookieId);
+    }
+    
 
 }
