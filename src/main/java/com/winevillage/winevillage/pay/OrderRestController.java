@@ -45,14 +45,14 @@ public class OrderRestController {
 	    OrderDTO orderDTO = new ObjectMapper().convertValue(requestData.get("orderData"), OrderDTO.class);
 	    
 	    System.out.println("확인4 " + paymentApproved);
-	    System.out.println("확인5 " +orderDTO.getCookie_id());
+//	    System.out.println("확인5 " +orderDTO.getCookie_id());
 	    System.out.println("orderStatus " +orderDTO.getOrderStatus());
 	    
 	    if (paymentApproved) {
 	    	orderDTO.setOrderStatus("PAYMENT_COMPLETED");
 	        System.out.println("확인6 " + orderDTO.getOrderStatus());
 	        
-	        System.out.println("getCookie_id " +orderDTO.getCookie_id());
+//	        System.out.println("getCookie_id " +orderDTO.getCookie_id());
 	        int result = dao.updateOrderStatus(orderDTO);
 	        
 		    Map<String, Object> map = new HashMap<>();

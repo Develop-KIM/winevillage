@@ -6,6 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <mapper namespace="com.winevillage.winevillage.pay.IPayService">
+	
+<!-- 	<select id="memberView"
+	resultType="com.winevillage.winevillage.pay.PayDTO"
+	parameterType="com.winevillage.winevillage.pay.ParameterDTO">
+	SELECT * FROM member WHERE memberId=#{memberId}
+	</select> -->
+
 	<!-- 게시물 갯수 -->
 	<select id="totalCount" resultType="int"
 		parameterType="com.winevillage.winevillage.pay.ParameterDTO">
@@ -15,12 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>
 	
-	<!-- 주문자 정보 -->
-	<select id="getOrderUserInfo"
+ 	<!-- 주문자 정보 -->
+<!-- 	<select id="getOrderUserInfo"
 		parameterType="com.winevillage.winevillage.pay.ParameterDTO"
 		resultType="com.winevillage.winevillage.pay.PayDTO">
 		  SELECT * FROM member WHERE memberNo = 47
-	</select>
+	</select> --> 
 	
 	<select id="listOrderUsers"
 		resultType="com.winevillage.winevillage.pay.PayDTO"
@@ -55,6 +62,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="listOrder"
+	    parameterType="com.winevillage.winevillage.pay.ParameterDTO"
+	    resultType="com.winevillage.winevillage.pay.OrderDTO">
+	    SELECT p.ProductName, p.ProductImg, o.OrderAmount, p.wine, p.country, p.discountPrice, o.createDate, o.orderStatus
+	    FROM Orders o
+	    JOIN Member m ON o.MemberNo = m.MemberNo
+	    JOIN Product p ON o.ProductNo = p.ProductNo
+	    WHERE m.MemberNo = #{memberNo}
+	</select>
+	
+	<select id="memberView" parameterType="string" resultType="com.winevillage.winevillage.pay.PayDTO">
+	    SELECT MemberNo, MemberId, Name, PhoneNumber, Email, address1, address2, points
+	    FROM Member
+	    WHERE MemberId = #{memberId}
+	</select>
+	
+	
+<!-- 	<select id="listOrder"
 		parameterType="com.winevillage.winevillage.pay.ParameterDTO"
 		resultType="com.winevillage.winevillage.pay.PayDTO">
 		SELECT *
@@ -68,8 +92,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    						 INNER JOIN Product p ON o.ProductNo = p.ProductNo
   					) tb
 			)
-		WHERE memberNo = 47
-	</select> 
+		WHERE  memberNo= #{memberNo}
+	</select>  -->
 	
 	<insert id="write" parameterType="com.winevillage.winevillage.pay.PayDTO">
 	  INSERT INTO Order_users (
@@ -91,16 +115,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
 		  INSERT INTO order_users (
 		        Order_usersNo, name, email, phoneNumber, address1, orderRequest,
-		        discountPrice, orderAmount, points, finalPrice, memberNo,
-		        receiverName, receiverPhone, receiverAddress1, orderStatus, cookie_id
+		        discountPrice, orderAmount, points, finalPrice, memberNo, productImg,
+		        receiverName, receiverPhone, receiverAddress1, orderStatus
 		    ) VALUES (
 		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest}, 
-		     <!--    #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo}, -->
-		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 47,
-		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{orderStatus}, #{cookie_id}
+		        #{productItems[0].discountPrice}, #{productItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{productItems[0].memberNo}, #{productItems[0].productImg},
+		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{productItems[0].orderStatus}
 		    )
+    </insert>
 		
-		 <!--  <foreach collection="orderItems" item="item" index="index">
+		 <!--  <foreach collection="productItems" item="item" index="index">
 		        <if test="index > 0">
 		            INSERT INTO order_details (
 		                orderDetailNo, productName, discountPrice, orderAmount
@@ -109,24 +133,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		            )
 		        </if>
 		   </foreach> -->
-    </insert>
 	
-	
-	
-	
-	
-	
-	
-
 	<update id="updateOrderStatus" parameterType="com.winevillage.winevillage.pay.OrderDTO">
         UPDATE order_users
         SET orderStatus = 'PAYMENT_COMPLETED'
-        WHERE cookie_id = #{cookie_id}
+        WHERE createDate = #{orderInfo.createDate}
     </update>
     
     <delete id="deleteOrder" parameterType="com.winevillage.winevillage.pay.OrderDTO">
         DELETE FROM order_users
-        WHERE cookie_id = #{cookie_id}
+        WHERE createDate = #{orderInfo.createDate}
     </delete>
     
     <!-- <insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
@@ -136,12 +152,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		        receiverName, receiverPhone, receiverAddress1, orderStatus, cookie_id
 		    ) VALUES (
 		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest}, 
-		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo},
-		        #{orderItems[0].discountPrice}, #{orderItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 47,
+		        #{productItems[0].discountPrice}, #{productItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo},
+		        #{productItems[0].discountPrice}, #{productItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 47,
 		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{orderStatus}, #{cookie_id}
 		    )
 		
-		  <foreach collection="orderItems" item="item" index="index">
+		  <foreach collection="productItems" item="item" index="index">
 		        <if test="index > 0">
 		            INSERT INTO order_details (
 		                orderDetailNo, productName, discountPrice, orderAmount
@@ -151,5 +167,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		        </if>
 		    </foreach>
     </insert> -->
+    
+    
      
-</mapper>
+</mapper> 
