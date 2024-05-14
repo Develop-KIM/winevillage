@@ -37,8 +37,10 @@
 		<if test="isProductExist == 0">
 			INSERT INTO Orders (orderNo, memberNo, productCode,
 			orderAmount)
-			VALUES (order_seq.NEXTVAL, #{memberNo}, #{productCode},
-			1)
+
+			VALUES (order_seq.NEXTVAL, #{memberNo},
+			#{productCode}, 1
+			)
 		</if>
 	</insert>
 

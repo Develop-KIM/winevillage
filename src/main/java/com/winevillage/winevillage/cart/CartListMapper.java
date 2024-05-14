@@ -18,5 +18,6 @@ public interface CartListMapper {
     						@Param("orderAmount") int orderAmount);
     CartListDTO getCartItem(@Param("orderNo") Long orderNo, @Param("productCode") String productCode);
     String getMemberNo(String user_id);
+
     boolean updateMemberCart(@Param("cookieId") String cookieId, @Param("memberNo") String memberNo);
 }
