@@ -64,4 +64,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	parameterType="com.winevillage.winevillage.admin.AdminDTO">
 		DELETE FROM admin WHERE admin_idx=#{admin_idx}
 	</delete>
+	
+	<select id="recentMemberList"
+	    resultType="com.winevillage.winevillage.member.MemberDTO">
+		    <![CDATA[
+		    SELECT *
+		    FROM (
+		        SELECT *
+		        FROM (
+		            SELECT *
+		            FROM member
+		            ORDER BY memberNo DESC
+		        )
+		        WHERE ROWNUM <= 3
+		    )
+		    ORDER BY memberNo DESC
+		    ]]>
+	</select>
+	
+	<select id="recentOrderUsers"
+	    resultType="com.winevillage.winevillage.pay.PayDTO">
+	    <![CDATA[SELECT *
+	    FROM (
+	        SELECT *
+	        FROM (
+	            SELECT *
+	            FROM order_users
+	            ORDER BY order_usersNo DESC
+	        )
+	        WHERE ROWNUM <= 3
+	    )
+	    ORDER BY order_usersNo DESC
+	    ]]>
+	</select>
 </mapper>

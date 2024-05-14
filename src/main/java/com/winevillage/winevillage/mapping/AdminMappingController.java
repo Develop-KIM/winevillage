@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminMappingController {
 	
-	@GetMapping("/admin_index.do")
-	public String admin_index() {
-		return "admin/admin_common/admin_index";
-	}
+//	@GetMapping("/admin_index.do")
+//	public String admin_index() {
+//		return "admin/admin_common/admin_index";
+//	}
 	
 	/* 주문 관리 */
 //	@GetMapping("/admin_order_lists.do")
