@@ -2,16 +2,28 @@ package com.winevillage.winevillage.security;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
+
+import com.winevillage.winevillage.cart.CartListService;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+@Component
 public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
+	   private CartListService cartListService;
+
+	    // 생성자 정의
+	    public CustomLoginSuccessHandler(CartListService cartListService) {
+	        this.cartListService = cartListService;
+	    }
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 	    HttpSession session = request.getSession();
@@ -21,6 +33,21 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	    session.setAttribute("userId", user_id); // 세션에 사용자 ID 저장
 	    System.out.println("user: " + user_id);
 
+		 // COOKIE_ID 확인 후 주문 정보 업데이트
+	        Cookie[] cookies = request.getCookies();
+	        if (cookies != null) {
+	            for (Cookie cookie : cookies) {
+	                if (cookie.getName().equals("COOKIE_ID")) {
+	                    // Orders 테이블에서 cookie_id를 찾아 memberNo를 업데이트하고 cookie_id를 삭제
+	                	String memberNo = cartListService.getMemberNo(user_id);
+	                    cartListService.updateMemberCart(cookie.getValue(), memberNo);
+//	                    // 쿠키 삭제
+	                    cookie.setMaxAge(0);
+	                    response.addCookie(cookie);
+	                    break;
+	                }
+	            }
+	        }
 	    // 로그인한 페이지 확인
 	    String referrer = request.getHeader("Referer");
 	    System.out.println(referrer);
