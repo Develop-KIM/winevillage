@@ -142,7 +142,7 @@
 										</a>
 										<div class="btn">
 											<button type="button" class="wish wish_03T999 "
-												id="wish_03T999" onclick="product.likeProduct('03T999');">
+												id="wish_03T999" onclick="product.likeProduct('099');">
 												<span>찜하기</span>
 											</button>
 										</div>
