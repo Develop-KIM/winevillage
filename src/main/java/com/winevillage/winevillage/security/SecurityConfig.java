@@ -18,6 +18,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+import com.winevillage.winevillage.cart.CartListService;
+
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,6 +42,8 @@ public class SecurityConfig{
 	private DataSource dataSource;
 
 	@Autowired
+	private CartListService cartListService;
+	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("select memberId, password, enabled " + " from member where memberId = ?")
@@ -59,7 +63,7 @@ public class SecurityConfig{
 		http.formLogin((formLogin) -> formLogin
 				.loginProcessingUrl("/checkLoginStatus")
 				.failureHandler(myAuthFailureHandler)
-				.successHandler(new CustomLoginSuccessHandler()) // 로그인 성공 시 이전 요청에 따라 이동
+				.successHandler(new CustomLoginSuccessHandler(cartListService)) // 로그인 성공 시 이전 요청에 따라 이동
 				.usernameParameter("loginMemberId")
 				.passwordParameter("loginPassword")
 				.permitAll());
