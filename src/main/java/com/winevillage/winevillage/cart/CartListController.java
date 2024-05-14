@@ -40,6 +40,7 @@ public class CartListController {
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
         	String user_id = authentication.getName();
         	String memberNo = cartListService.getMemberNo(user_id);
+
             cartListService.addProductToMemberCart(productCode, memberNo);
             return ResponseEntity.ok().body(Map.of("status", "success", "message", "장바구니에 추가되었습니다."));
         } else {

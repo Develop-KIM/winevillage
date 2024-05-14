@@ -8,6 +8,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import org.springframework.stereotype.Component;
 
 import com.winevillage.winevillage.cart.CartListService;
+import com.winevillage.winevillage.member.MemberService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -18,12 +19,17 @@ import jakarta.servlet.http.HttpSession;
 @Component
 public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
+      private MemberService memberService;
 	   private CartListService cartListService;
 
-	    // 생성자 정의
-	    public CustomLoginSuccessHandler(CartListService cartListService) {
+	    public CustomLoginSuccessHandler(CartListService cartListService, MemberService memberService) {
 	        this.cartListService = cartListService;
+	        this.memberService = memberService; // 멤버 변수 초기화
 	    }
+	public String findByName(String user_id) {
+	    	return memberService.findByName(user_id);
+	}
+	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 	    HttpSession session = request.getSession();
@@ -32,7 +38,10 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	    String user_id = authentication.getName(); // 사용자 ID 가져오기
 	    session.setAttribute("userId", user_id); // 세션에 사용자 ID 저장
 	    System.out.println("user: " + user_id);
-
+    	String name = memberService.findByName(user_id);
+    	session.setAttribute("name", name);
+    	System.out.println(name + "asds");
+    	
 		 // COOKIE_ID 확인 후 주문 정보 업데이트
 	        Cookie[] cookies = request.getCookies();
 	        if (cookies != null) {

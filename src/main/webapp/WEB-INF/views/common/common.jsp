@@ -219,7 +219,7 @@ $(document).ready(function(){
 									<div class="on_login">
 										<ul>
 											<li>
-												<h3>${user_id }님</h3>
+												<h3>${name }님</h3>
 											</li>
 											<li>
 												<h3>가용 마일리지	</h3>
