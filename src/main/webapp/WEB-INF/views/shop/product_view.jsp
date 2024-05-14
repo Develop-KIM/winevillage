@@ -6,7 +6,11 @@
 <meta charset="UTF-8">
 <title>WINE VILLAGE | ${productDTO.productName }</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<script>
+function quickOrder() {
+	console.log("sdasdas")
+}
+</script>
 </head>
 <body>
 	<%@ include file="../common/common.jsp"%>
@@ -198,7 +202,7 @@
 									});
 									</script>
 								<button type="button"
-									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'buying'}); chklayer();"
+									onclick="quickOrder();"
 									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button>
 								</c:when>
 								<c:when test="${productDTO.stock == 0 }">
