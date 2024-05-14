@@ -26,9 +26,12 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	    System.out.println(referrer);
 	    if (referrer != null && (referrer.contains("join_form.do") || referrer.contains("join_success.do"))) {
 	        // join_form 또는 join_success에서 로그인한 경우, main.do로 리다이렉트
+	    	System.out.println("111111-1");
 	        response.sendRedirect("main.do");
+	        System.out.println("111111-2");
 	        return; // 리다이렉트 후 메소드 실행 종료
 	    } else {
+	    	System.out.println("22222222");
 	        // 그 외의 경우, 기존 로직 실행 (요청된 페이지 또는 기본 URL로 리다이렉트)
 	        super.onAuthenticationSuccess(request, response, authentication);
 	    }

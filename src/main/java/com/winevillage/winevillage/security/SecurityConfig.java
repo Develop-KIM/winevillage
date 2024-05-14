@@ -60,6 +60,7 @@ public class SecurityConfig{
 				.loginProcessingUrl("/checkLoginStatus")
 				.failureHandler(myAuthFailureHandler)
 				.successHandler(new CustomLoginSuccessHandler()) // 로그인 성공 시 이전 요청에 따라 이동
+				.defaultSuccessUrl("/main.do")
 				.usernameParameter("loginMemberId")
 				.passwordParameter("loginPassword")
 				.permitAll());

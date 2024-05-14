@@ -38,7 +38,10 @@
 	media="screen and (min-width:1024px)">
 <link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
 <link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
-
+<style>
+#mylogin {padding: 0; background-image: none;}
+.gnb>ul {margin-left: 110px;}
+</style>
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
@@ -69,7 +72,7 @@ function checkLoginStatus() {
                 $('.on_login').show(); // 로그인 후 보여줄 영역 표시
                 $('.no_login').hide(); // 로그인 전 보여줄 영역 숨김
                 $('.login_layer').hide();
-                window.location.href = window.location.href;
+                window.location.href = 'main.do';
             } else {
                 // 로그인되지 않은 경우
                 $('.on_login').hide(); // 로그인 후 보여줄 영역 숨김
@@ -195,7 +198,6 @@ $(document).ready(function(){
 								</div>
 							</div></li>
 						<li><a href="list_store.do">SHOP</a></li>
-						<li><a href="list_aboutus.do">ABOUT US</a></li>
 					</ul>
 				</div>
 				<ul class="right_menu">
@@ -207,7 +209,7 @@ $(document).ready(function(){
 						onclick="$('.layer.login_layer').show();"><img
 							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
 					<li class="mypage mb_hidden">
-						<button type="button" onclick="commonUI.header.Mypage.clickFn()">
+						<button type="button" onclick="commonUI.header.Mypage.clickFn()" class="mypage">
 							<img src="./images/default/pc_icon_mypage.png" alt="My Page">
 						</button>
 						<div class="mypage_layer">
@@ -234,7 +236,7 @@ $(document).ready(function(){
 								<c:otherwise>
 									<!-- 로그인 전 보여줄 내용 -->
 									<div class="no_login">
-										<button type="button" onclick="$('.layer.login_layer').show();">로그인</button>
+										<button type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
 										<a href="join_form.do">회원가입</a>
 									</div>
 								</c:otherwise>
@@ -485,14 +487,6 @@ $(document).ready(function(){
 									<span><a href="join_form.do">신규회원가입</a></span>
 								</p>
 							</div>
-							<div class="social_login">
-								<h2 class="social_tit">소셜아이디로 로그인</h2>
-								<ul>
-									<!-- 		<li><a href="#none" class="social_btn naver">네이버</a></li> -->
-									<!-- <li><a href="#none" class="social_btn kakao">카카오</a></li> -->
-									<li><a href="#none" class="social_btn google">구글</a></li>
-								</ul>
-							</div>
 							<div class="form_area">
 								<ul>
 									<li>
@@ -515,11 +509,6 @@ $(document).ready(function(){
 								<button type="button" class="btn_txt btn_black" id="loginBtn" onClick="checkLoginStatus();">
 									<span>로그인</span>
 								</button>
-							</div>
-							<div class="login_sub_btn">
-								<a href="/forgoten_id.do" class="btn">아이디 찾기</a> <a
-									href="/forgoten_pw.do" class="btn">비밀번호 재발급</a> <a
-									href="/admin_login.do" class="btn">관리자 로그인</a>
 							</div>
 						</div>
 					</div>
