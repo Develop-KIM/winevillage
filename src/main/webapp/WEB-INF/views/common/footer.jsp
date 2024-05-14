@@ -72,7 +72,7 @@
 			<ul class="list">
 				<li>
 					<!-- <a href="http://pf.kakao.com/_vlkxfxb/chat"> -->
-					<a href="/" onclick="chatWinOpen();">
+					<a href="chatUI.do" target="_blank" onclick="chatWinOpen(); return false;">
 						<div class="icon">
 							<img src="./images/default/ico_quick_kakao_comment.png"
 								alt="온라인 1:1 상담" draggable="false">
@@ -101,7 +101,7 @@
 			$(".quick_menu").toggleClass("on")
 		});
 		function chatWinOpen() {
-	        var id = document.getElementById("chatId");
+	        var id = document.getElementById("user_id");
 	        if (id.value == "") {
 	            alert("대화명을 입력 후 채팅창을 열어주세요.");
 	            id.focus();
