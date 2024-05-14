@@ -126,6 +126,7 @@ public class QNAController {
 				UserDetails userDetails = (UserDetails) auth.getPrincipal();
 				// 로그인한 사용자의 정보를 활용한 처리
 			}
+			System.out.println("세션" + currentUsername);
 		}
 		
 		model.addAttribute("loggedIn", loggedIn);

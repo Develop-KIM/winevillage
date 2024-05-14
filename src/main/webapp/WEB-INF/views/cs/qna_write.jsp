@@ -61,8 +61,8 @@
             <div class="form_area">
             <form action="qna_write.do" method="post" id="postFrm" accept-charset="utf-8">
 				<input type="hidden" name="witplus_csrf_token" value="ea2f7313ebf1263a2796ee85bb21ab14">
-				<input type="hidden" name="memberNo" value="${ user.memberNo }">
-				<input type="hidden" name="memberId" value="${ user.memberId }">
+				<input type="hidd-en" name="memberNo" value="${ user.memberNo }">
+				<input type="hid-den" name="memberId" value="${ user.memberId }">
                 <ul>
                     <li>
                         <div class="l_tit">

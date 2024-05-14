@@ -11,6 +11,10 @@ public class OrderInfo {
 	private String re_hp;
 	private String orderRequest;
 	private String address1;
+	private String re_address1;
 	private String email;
 	private int memberNo;
+	private String receiverAddress1;
+	private int points;
+	private String createDate;
 }
