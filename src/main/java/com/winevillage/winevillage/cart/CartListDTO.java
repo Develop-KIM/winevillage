@@ -39,5 +39,5 @@ public class CartListDTO {
 	private String wine;
 	private String country;
 	private String grapeVariety;
-	private int Stock;
+	private int stock;
 }

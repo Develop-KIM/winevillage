@@ -239,4 +239,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 		productCode=#{productCode}
 	</update>
+
+	<select id="getMemberInfo" resultType="String">
+		SELECT * FROM member
+		WHERE memberID=#{user_id}
+	</select>
 </mapper>

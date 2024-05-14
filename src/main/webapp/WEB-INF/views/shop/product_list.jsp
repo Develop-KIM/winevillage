@@ -17,7 +17,8 @@
 
 		var clickedItem = document.getElementById(clickedId);
 		clickedItem.classList.add('on');
-	}
+	};
+	
 </script>
 </head>
 
@@ -141,8 +142,8 @@
 												loading="lazy" alt=""><!-- pc이미지 --> </picture>
 										</a>
 										<div class="btn">
-											<button type="button" class="wish wish_03T999 "
-												id="wish_03T999" onclick="product.likeProduct('03T999');">
+											<button type="button" class="wish wish_${product.productCode } "
+												id="wish_${product.productCode }" onclick="">
 												<span>찜하기</span>
 											</button>
 										</div>

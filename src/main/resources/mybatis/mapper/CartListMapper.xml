@@ -10,26 +10,39 @@
 		<selectKey keyProperty="isProductExist" resultType="int"
 			order="BEFORE">
 			SELECT COUNT(*) FROM Orders WHERE productCode = #{productCode}
-			AND
-			memberNo = #{memberNo}
+			AND memberNo
+			= #{memberNo}
 		</selectKey>
 
-		<!-- 상품이 존재하는 경우에는 수량을 증가시킴 -->
+		<!-- 상품이 존재하고 재고가 주문량보다 많은 경우에만 수량을 증가시킴 -->
 		<if test="isProductExist > 0">
-			UPDATE Orders SET orderAmount = orderAmount + 1
-			WHERE
-			productCode = #{productCode} AND memberNo = #{memberNo}
+			UPDATE Orders
+			SET orderAmount =
+			CASE
+			WHEN (SELECT stock FROM
+			Product WHERE productCode = #{productCode}) >
+			orderAmount
+			THEN
+			orderAmount + 1
+			ELSE orderAmount
+			END
+			WHERE productCode = #{productCode}
+			AND memberNo = #{memberNo} AND
+			orderAmount &lt; (SELECT stock FROM
+			Product WHERE productCode =
+			#{productCode})
 		</if>
 
 		<!-- 상품이 존재하지 않는 경우에는 새로 추가 -->
 		<if test="isProductExist == 0">
 			INSERT INTO Orders (orderNo, memberNo, productCode,
 			orderAmount)
-			VALUES (order_seq.NEXTVAL, #{memberNo},
-			#{productCode}, 1,
-			)
+			VALUES (order_seq.NEXTVAL, #{memberNo}, #{productCode},
+			1)
 		</if>
 	</insert>
+
+
 
 	<!-- 비회원 장바구니에 상품 추가 -->
 	<insert id="addProductToNonMemberCart"
@@ -44,9 +57,21 @@
 
 		<!-- 상품이 존재하는 경우에는 수량을 증가시킴 -->
 		<if test="isProductExist > 0">
-			UPDATE Orders SET orderAmount = orderAmount + 1
-			WHERE
-			productCode = #{productCode} AND cookie_id = #{cookieId}
+			UPDATE Orders
+			SET orderAmount =
+			CASE
+			WHEN (SELECT stock FROM
+			Product WHERE productCode = #{productCode}) >
+			orderAmount
+			THEN
+			orderAmount + 1
+			ELSE orderAmount
+			END
+			WHERE productCode = #{productCode}
+			AND cookie_id = #{cookieId} AND
+			orderAmount &lt; (SELECT stock FROM
+			Product WHERE productCode =
+			#{productCode})
 		</if>
 
 		<!-- 상품이 존재하지 않는 경우에는 새로 추가 -->
@@ -54,8 +79,7 @@
 			INSERT INTO Orders (orderNo, cookie_id, productCode,
 			orderAmount)
 			VALUES (order_seq.NEXTVAL, #{cookieId},
-			#{productCode}, 1
-			)
+			#{productCode}, 1)
 		</if>
 	</insert>
 

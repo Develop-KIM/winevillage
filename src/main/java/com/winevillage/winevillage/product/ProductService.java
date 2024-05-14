@@ -26,4 +26,6 @@ public interface ProductService {
 	
 	public int productDelete(ProductDTO productDTO);
 	
+    public String getMemberInfo(String user_id);
+
 }
