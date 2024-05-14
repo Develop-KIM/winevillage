@@ -58,17 +58,18 @@ var chatWindow, chatMessage, chatId;
 function sendMessage() {
 	//메세지를 대화창에 추가한다. 
     chatWindow.innerHTML += "<div class='myMsg'>" + 
-    							chatMessage.value + "</div>"
+								chatMessage.value + "</div>"
 	//웹소켓 서버로 메세지를 전송한다. 전송형식은 '채팅아이디|메세지'     							
-    webSocket.send(chatId + '|' + chatMessage.value);
-    //다음 메세지를 즉시 입력할 수 있도록 비워준다. 
-    chatMessage.value = ""; 
-    //대화창의 스크롤을 항상 제일 아래로 내려준다. 
-    chatWindow.scrollTop = chatWindow.scrollHeight; 
+	webSocket.send(chatId + '|' + chatMessage.value);
+	//다음 메세지를 즉시 입력할 수 있도록 비워준다. 
+	chatMessage.value = ""; 
+	//대화창의 스크롤을 항상 제일 아래로 내려준다. 
+	chatWindow.scrollTop = chatWindow.scrollHeight; 
 }
 
 //웹소켓 서버에서 접속종료
 function disconnect() {
+	webSocket.send("상대방이 채팅을 종료하였습니다..");
     webSocket.close();
 }
 
@@ -88,6 +89,7 @@ webSocket.onopen = function(event) {
 
 //웹소켓 서버가 종료되었을때 자동으로 호출 
 webSocket.onclose = function(event) {
+	webSocket.send("상대방이 채팅을 종료하였습니다..");
     chatWindow.innerHTML += "웹소켓 서버가 종료되었습니다.<br/>";
 };
 

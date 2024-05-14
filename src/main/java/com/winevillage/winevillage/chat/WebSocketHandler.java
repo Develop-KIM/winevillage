@@ -43,6 +43,19 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	public void afterConnectionClosed(WebSocketSession session, 
 			CloseStatus status) 
 					throws Exception {
+		String id = session.getId();
+	    TextMessage message = new TextMessage(id + "님이 채팅을 종료하였습니다..");
+
+	    // 연결이 닫힌 클라이언트를 제외한 모든 클라이언트에게 메시지를 전송합니다.
+	    CLIENTS.entrySet().forEach(arg -> {
+	        if (!arg.getKey().equals(id)) {
+	            try {
+	                arg.getValue().sendMessage(message);
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    });
 		CLIENTS.remove(session.getId());
 	}
 	
@@ -56,7 +69,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			TextMessage message) 
 					throws Exception {
 		//메세지를 보낸 사용자의 웹소켓 세션값을 얻어온다. 
-		String id = session.getId(); 
+		String id = session.getId();		
 		//Map에 저장된 클라이언트의 수만큼 반복한다. 
         CLIENTS.entrySet().forEach( arg->{
         	/*
