@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		DELETE FROM product WHERE productNo=#{productNo}
 	</delete>
-	
+
 	<select id="listPage"
 		resultType="com.winevillage.winevillage.product.ProductDTO"
 		parameterType="com.winevillage.winevillage.product.ParameterDTO">
@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE rNum<![CDATA[>=]]>#{start}
 		AND rNum<![CDATA[<=]]>#{end}
 	</select>
-	
+
 	<select id="ProductCount" resultType="int"
 		parameterType="com.winevillage.winevillage.product.ParameterDTO">
 		SELECT COUNT(*) FROM product
@@ -113,7 +113,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="state == 'exclusive'">
 					AND STATE = 'exclusive'
 				</when>
-				<when test="state == 'null'"></when> 
+				<when test="state == 'null'"></when>
 			</choose>
 			<choose>
 				<when test="category == 'red'">
@@ -179,49 +179,64 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE rNum<![CDATA[>=]]>#{start}
 		AND rNum<![CDATA[<=]]>#{end}
 	</select>
-  <insert id="productWrite"
-      parameterType="com.winevillage.winevillage.product.ProductDTO">
-      INSERT INTO product (productNo, productCode,
-      productName, productName_En, state, productInfo,
-      productImg,
-      fullPrice, discountPrice, stock,
-      discountRate, wine,
-      country, grapeVariety, alcohol, body,
-      acidity,
-      tannins, sweetNess)
-      VALUES (product_seq.nextval, #{productCode},
-      #{productName}, #{productName_En}, #{state},
-      #{productInfo}, #{productImg},
-      #{fullPrice},
-      #{discountPrice}, #{stock}, #{discountRate}, #{wine}, #{country},
-      #{grapeVariety}, #{alcohol}, #{body},
-      #{acidity}, #{tannins},
-      #{sweetNess})
-   </insert>
+	<insert id="productWrite"
+		parameterType="com.winevillage.winevillage.product.ProductDTO">
+		INSERT INTO product (productNo, productCode,
+		productName, productName_En, state, productInfo,
+		productImg,
+		fullPrice,
+		discountPrice, stock,
+		discountRate, wine,
+		country, grapeVariety,
+		alcohol, body,
+		acidity,
+		tannins, sweetNess)
+		VALUES (product_seq.nextval,
+		#{productCode},
+		#{productName}, #{productName_En}, #{state},
+		#{productInfo}, #{productImg},
+		#{fullPrice},
+		#{discountPrice}, #{stock},
+		#{discountRate}, #{wine}, #{country},
+		#{grapeVariety}, #{alcohol},
+		#{body},
+		#{acidity}, #{tannins},
+		#{sweetNess})
+	</insert>
 
 	<select id="productView"
 		resultType="com.winevillage.winevillage.product.ProductDTO"
 		parameterType="com.winevillage.winevillage.product.ProductDTO">
 		SELECT * FROM product WHERE productCode = #{productCode}
 	</select>
-   <update id="productEdit"
-      parameterType="com.winevillage.winevillage.product.ProductDTO">
-      UPDATE product SET
-      productCode=#{productCode},
-      productName=#{productName},
-      productName_En=#{productName_En},
-      state=#{state},
-      productInfo=#{productInfo},
-      productImg=#{productImg},
-      fullPrice=#{fullPrice},
-      discountPrice=#{discountPrice},
-      stock=#{stock},
-      discountRate=#{discountRate},
-      wine=#{wine}, country=#{country},
-      grapeVariety=#{grapeVariety}, alcohol=#{alcohol},
-      body=#{body},
-      acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
-      WHERE
-      productCode=#{productCode}
-   </update>
+
+	<select id="ArrivalList"
+		resultType="com.winevillage.winevillage.product.ProductDTO">
+		SELECT *
+		FROM product
+		WHERE state IS NOT NULL
+		ORDER BY
+		productno DESC
+		FETCH FIRST 25 ROWS ONLY
+	</select>
+	<update id="productEdit"
+		parameterType="com.winevillage.winevillage.product.ProductDTO">
+		UPDATE product SET
+		productCode=#{productCode},
+		productName=#{productName},
+		productName_En=#{productName_En},
+		state=#{state},
+		productInfo=#{productInfo},
+		productImg=#{productImg},
+		fullPrice=#{fullPrice},
+		discountPrice=#{discountPrice},
+		stock=#{stock},
+		discountRate=#{discountRate},
+		wine=#{wine}, country=#{country},
+		grapeVariety=#{grapeVariety}, alcohol=#{alcohol},
+		body=#{body},
+		acidity=#{acidity}, tannins=#{tannins}, sweetNess=#{sweetNess}
+		WHERE
+		productCode=#{productCode}
+	</update>
 </mapper>
