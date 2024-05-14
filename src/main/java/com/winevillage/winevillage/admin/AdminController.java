@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.winevillage.winevillage.member.MemberDTO;
-import com.winevillage.winevillage.pay.OrderDTO;
+import com.winevillage.winevillage.pay.PayDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -124,7 +124,7 @@ public class AdminController {
 	
 	@GetMapping("/admin_index.do")
 	public String adminDashboardLists(Model model, HttpServletRequest req, 
-			MemberDTO memberDTO, OrderDTO orderDTO) {
+			MemberDTO memberDTO, PayDTO payDTO) {
 		
 		Map<String, Object> maps = new HashMap<String, Object>();
 		model.addAttribute("maps", maps);
@@ -132,7 +132,7 @@ public class AdminController {
 		ArrayList<MemberDTO> lists = dao.recentMemberList(memberDTO);
 		model.addAttribute("lists", lists);
 		
-		ArrayList<OrderDTO> orderlists = dao.recentOrderUsers(orderDTO);
+		ArrayList<PayDTO> orderlists = dao.recentOrderUsers(payDTO);
 		model.addAttribute("orderlists", orderlists);
 		
 		return "admin/admin_common/admin_index";

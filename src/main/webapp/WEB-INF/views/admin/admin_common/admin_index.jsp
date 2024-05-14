@@ -81,7 +81,7 @@ pageEncoding="UTF-8"%>
 	</section>
 
 	<section class="sidx_head01">
-		<h2>최근 주문내역(5건)<a href="admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
+		<h2>최근 주문내역(3건)<a href="admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
 		<table>
 		<thead>
 		<tr>
@@ -98,19 +98,19 @@ pageEncoding="UTF-8"%>
 		<c:choose>
 			<c:when test="${ empty orderlists }">
 				<tr>
-					<td colspan='14' class="empty_table">리스트가 없습니다.</td>
+					<td colspan='7' class="empty_table">리스트가 없습니다.</td>
 				</tr>
 			</c:when>
 		<c:otherwise>
 			<c:forEach items="${ orderlists }" var="orderitem" varStatus="loop">
 				<tr class="tr_alignc">
-				<td>{orderitem.order_usersNo}</td>
-				<td>{orderitem.re_name}</td>
-				<td>{orderitem.receiverName}</td>
-				<td>{orderitem.receiverPhone}</td>
-				<td>{orderitem.receiverAddress1}</td>
-				<td>{orderitem.finalPrice}</td>
-				<td>{orderitem.orderDate} (일)</td>
+				<td>${orderitem.order_usersNo}</td>
+				<td>${orderitem.name}</td>
+				<td>${orderitem.receiverName}</td>
+				<td>${orderitem.receiverPhone}</td>
+				<td>${orderitem.receiverAddress1}</td>
+				<td>${orderitem.finalPrice}</td>
+				<td>${orderitem.orderDate}</td>
 			</tr>
 			</c:forEach>
 		</c:otherwise>
@@ -120,7 +120,7 @@ pageEncoding="UTF-8"%>
 	</section>
 
 	<section class="sidx_head01">
-		<h2>최근 회원가입(5건)<a href="admin_member_lists.do" class="btn_small">회원관리 바로가기</a></h2>
+		<h2>최근 회원가입(3건)<a href="admin_member_lists.do" class="btn_small">회원관리 바로가기</a></h2>
 		<table>
 		<thead>
 		<tr>

@@ -27,5 +27,5 @@ public interface AdminService {
 	
 	public ArrayList<MemberDTO> recentMemberList(MemberDTO memberDTO);
 	
-	public ArrayList<OrderDTO> recentOrderUsers(OrderDTO orderDTO);
+	public ArrayList<PayDTO> recentOrderUsers(PayDTO payDTO);
 }

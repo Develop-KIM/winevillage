@@ -76,25 +76,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		            FROM member
 		            ORDER BY memberNo DESC
 		        )
-		        WHERE ROWNUM <= 5
+		        WHERE ROWNUM <= 3
 		    )
 		    ORDER BY memberNo DESC
 		    ]]>
 	</select>
 	
 	<select id="recentOrderUsers"
-	    resultType="com.winevillage.winevillage.pay.OrderDTO">
+	    resultType="com.winevillage.winevillage.pay.PayDTO">
 	    <![CDATA[SELECT *
 	    FROM (
 	        SELECT *
 	        FROM (
 	            SELECT *
 	            FROM order_users
-	            ORDER BY order_usersno DESC
+	            ORDER BY order_usersNo DESC
 	        )
-	        WHERE ROWNUM <= 5
+	        WHERE ROWNUM <= 3
 	    )
-	    ORDER BY order_usersno DESC
+	    ORDER BY order_usersNo DESC
 	    ]]>
 	</select>
 </mapper>
