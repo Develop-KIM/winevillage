@@ -21,7 +21,26 @@ public class PayContoller {
 	
 	@Autowired
 	IPayService dao;
-	
+
+
+	public void createOrders(OrderDTO orderDTO) {
+		// productItems 배열의 각 요소에 대해 반복
+		for (OrderDTO item : orderDTO.getProductItems()) {
+			// 현재 순회중인 productItem을 사용하여 새 OrderDTO 객체를 생성하거나
+			// 기존 OrderDTO 객체를 수정하여 필요한 정보를 설정
+			OrderDTO newOrderDTO = new OrderDTO();
+			newOrderDTO.setOrderInfo(orderDTO.getOrderInfo()); // orderInfo는 공유될 수 있음
+			newOrderDTO.setProductItems(new ProductItem[]{item}); // 현재 아이템만 포함
+
+			// 필요한 다른 필드도 여기서 설정
+			// 예: newOrderDTO.setUsedPoints(usedPoints);
+			// 예: newOrderDTO.setFinalPrice(finalPrice);
+
+			// 설정된 OrderDTO 객체를 사용하여 매퍼 메소드 호출
+			orderMapper.writeRest(newOrderDTO);
+		}
+	}
+
 	@GetMapping("order_write.do")
 	public String getOrderUserInfo(ParameterDTO parameterDTO, Model model, PayDTO payDTO) {
 		
