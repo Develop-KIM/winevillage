@@ -839,7 +839,7 @@
 							<span>실버</span>
 						</div> -->
 						<p>
-							<strong class="name">${user_id}</strong>님
+							<strong class="name">${name}</strong>님
 						</p>
 					</div>
 <!-- 					<div class="btn_area">

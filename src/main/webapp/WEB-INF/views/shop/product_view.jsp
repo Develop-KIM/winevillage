@@ -7,6 +7,7 @@
 <title>WINE VILLAGE | ${productDTO.productName }</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+<<<<<<< HEAD
 function goToOrderWrite() {
     // 필요한 상품 정보 가져오기
     var productCode = "${productDTO.productCode}";
@@ -18,6 +19,11 @@ function goToOrderWrite() {
     location.href = "/order_write.do?productCode=" + productCode + "&productName=" + productName + "&discountPrice=" + discountPrice;
 }
 
+=======
+function quickOrder() {
+	console.log("sdasdas")
+}
+>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 </script>
 </head>
 <body>
@@ -214,6 +220,11 @@ function goToOrderWrite() {
 									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'buying'}); chklayer();"
 									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button> -->
 								<button type="button" class="btn_txt buy_btn btn_black buy_process_btn" onclick="goToOrderWrite()">바로구매</button>
+
+								<button type="button"
+									onclick="quickOrder();"
+									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button>
+
 								</c:when>
 								<c:when test="${productDTO.stock == 0 }">
 									<button type="button" class="btn_txt wish_btn">찜하기</button>
@@ -431,13 +442,16 @@ function goToOrderWrite() {
 					<div class="tab_btn">
 						<ul class="tab_btn_area">
 							<li>
-								<button type="button" class="on">
+								<button type="button" class="prd on">
 									<span>PRODUCT</span>
 								</button>
 							</li>
 							<li>
-								<button type="button"
+								<!-- <button type="button"
 									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'winery_info'})">
+									<span>REVIEW (0)</span>
+								</button> -->
+								<button type="button" class="review">
 									<span>REVIEW (0)</span>
 								</button>
 							</li>
@@ -496,6 +510,22 @@ function goToOrderWrite() {
 			</div>
 		</div>
 	</div>
+	<script>
+	$(document).ready(function() {
+		$(".tab_btn_area button.review").on("click", function() {
+			$(this).addClass("on");
+			$(this).parent().siblings().find('button').removeClass('on');
+			$('.tab_con.detail_con').removeClass('on');
+			$('.tab_con.review_con').addClass('on');
+		});
+		$(".tab_btn_area button.prd").on("click", function() {
+			$(this).addClass("on");
+			$(this).parent().siblings().find('button').removeClass('on');
+			$('.tab_con.review_con').removeClass('on');
+			$('.tab_con.detail_con').addClass('on');
+		});
+	});
+	</script>
 	<%@ include file="../common/footer.jsp"%>
 </body>
 </html>

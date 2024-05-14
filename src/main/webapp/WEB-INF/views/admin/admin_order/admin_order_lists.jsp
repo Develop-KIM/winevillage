@@ -75,28 +75,6 @@ pageEncoding="UTF-8"%>
 	<h1>주문리스트(전체)</h1>
 	
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script>
-jQuery(function($){
-    $.datepicker.regional["ko"] = {
-        closeText: "닫기",
-        prevText: "이전달",
-        nextText: "다음달",
-        currentText: "오늘",
-        monthNames: ["1월(JAN)","2월(FEB)","3월(MAR)","4월(APR)","5월(MAY)","6월(JUN)", "7월(JUL)","8월(AUG)","9월(SEP)","10월(OCT)","11월(NOV)","12월(DEC)"],
-        monthNamesShort: ["1월","2월","3월","4월","5월","6월", "7월","8월","9월","10월","11월","12월"],
-        dayNames: ["일","월","화","수","목","금","토"],
-        dayNamesShort: ["일","월","화","수","목","금","토"],
-        dayNamesMin: ["일","월","화","수","목","금","토"],
-        weekHeader: "Wk",
-        dateFormat: "yymmdd",
-        firstDay: 0,
-        isRTL: false,
-        showMonthAfterYear: true,
-        yearSuffix: ""
-    };
-	$.datepicker.setDefaults($.datepicker.regional["ko"]);
-});
-</script>
 <h2>기본검색</h2>
 <form name="fsearch" id="fsearch" method="get">
 <input type="hidden" name="code" value="list">
@@ -127,45 +105,15 @@ jQuery(function($){
 			<input type="text" name="stx" value="" class="frm_input" size="30">
 		</td>
 	</tr>
-	<tr>
-		<th scope="row">기간검색</th>
-		<td>
-			<select name="sel_field">
-				<option value="od_time">주문일</option>
-				<option value="receipt_time">입금완료일</option>
-				<option value="delivery_date">배송일</option>
-				<option value="invoice_date">배송완료일</option>
-				<option value="user_date">구매확정일</option>
-				<option value="cancel_date">주문취소일</option>
-				<option value="refund_date">환불완료일</option>
-				<option value="return_date">반품완료일</option>
-				<option value="change_date">교환완료일</option>
-			</select>
-			<label for="fr_date" class="sound_only">시작일</label>
-<input type="text" name="fr_date" value="" id="fr_date" class="frm_input w80" maxlength="10">
- ~ 
-<label for="to_date" class="sound_only">종료일</label>
-<input type="text" name="to_date" value="" id="to_date" class="frm_input w80" maxlength="10">
-<span class="btn_group">
-	<input type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="오늘">
-	<input type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="어제">
-	<input type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="일주일">
-	<input type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="지난달">
-	<input type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="1개월">
-	<input type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="3개월">
-	<input type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="전체">
-</span>
-	</td>
-	</tr>
-	<tr>
+<!-- 	<tr>
 		<th scope="row">결제방법</th>
 		<td>
 			<label><input type="radio" name="od_settle_case" value="" checked="checked"> 전체</label>
 			<label><input type="radio" name="od_settle_case" value="가상계좌"> 가상계좌</label>
 			<label><input type="radio" name="od_settle_case" value="KAKAOPAY"> KAKAOPAY</label>
 		</td>
-	</tr>
-	<tr>
+	</tr> -->
+<!-- 	<tr>
 		<th scope="row">주문상태</th>
 		<td>
 			<label><input type="radio" name="od_status" value="" checked="checked"> 전체</label>
@@ -179,15 +127,15 @@ jQuery(function($){
 			<label><input type="radio" name="od_status" value="7"> 반품</label>
 			<label><input type="radio" name="od_status" value="8"> 교환</label>
 		</td>
-	</tr>
-	<tr>
+	</tr> -->
+<!-- 	<tr>
 		<th scope="row">구매확정</th>
 		<td>
 			<label><input type="radio" name="od_final" value="" checked="checked"> 전체</label>
 			<label><input type="radio" name="od_final" value="1"> 구매확정</label>
 			<label><input type="radio" name="od_final" value="0"> 구매미확정</label>
 		</td>
-	</tr>
+	</tr> -->
 	</tbody>
 	</table>
 </div>

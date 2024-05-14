@@ -69,7 +69,7 @@
 								<c:choose>
 									<c:when test="${not empty state }">
 										<li
-											onclick="location.href='/list_product.do?category=${category}&state=${state }'"
+											onclick="location.href='/list_product.do?category=${category}&state=${state }&sort=${sort }'"
 											style="cursor: pointer;" id="cate_txt">${uppercaseState }</li>
 									</c:when>
 									<c:otherwise>

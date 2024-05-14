@@ -3,7 +3,6 @@ package com.winevillage.winevillage.member;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface MemberService {
@@ -13,5 +12,7 @@ public interface MemberService {
 	void registerMember(MemberDTO memberDTO);
 	ArrayList<MemberDTO> memberlistPage(ParameterDTO parameterDTO);
 	public int memberTotalCount(ParameterDTO parameterDTO);
+	void deleteMember(String memberId);
+	String findByName(String user_id);
 }
 

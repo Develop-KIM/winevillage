@@ -79,6 +79,7 @@
         #result-count {
             color: red;
         }
+        .gnb>ul {margin-left: 110px;}
     </style>
 
     <c:choose>
@@ -237,7 +238,6 @@ function checkLoginStatus() {
 }
 </script>
 <body>
-
 <!-- 헤더 인클루드 로딩페이지 충돌 -->
 
 	<header id="header" class="header">
@@ -328,7 +328,6 @@ function checkLoginStatus() {
 								</div>
 							</div></li>
 						<li><a href="list_store.do">SHOP</a></li>
-						<li><a href="list_aboutus.do">ABOUT US</a></li>
 					</ul>
 				</div>
 				<ul class="right_menu">
@@ -668,7 +667,6 @@ function checkLoginStatus() {
 		</div>
 	</form>
 
-<!-- 헤더 인클루드 로딩바 충돌  -->
 
 <section id="contents">
     <div class="wrap">
