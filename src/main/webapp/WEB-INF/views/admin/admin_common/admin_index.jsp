@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ include file="admin_isLoggedin.jsp" %>
+<%-- <%@ include file="admin_isLoggedin.jsp" %> --%>
 <!doctype html>
 <html lang="ko">
 <body>
@@ -9,44 +9,9 @@ pageEncoding="UTF-8"%>
 <!-- <script src="js/admin_product.js"></script> -->
 
 <%@ include file="admin_header.jsp"%>
-<canvas id="myChart" width="400" height="400">test</canvas>
-<script>
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-</script>
+
+
+<%-- <canvas id="myChart" width="50" height="50">test</canvas> --%>
 <div id="wrapper">
 <div id="main_wrap">
 	<section>
@@ -105,16 +70,18 @@ const myChart = new Chart(ctx, {
 					<p class="ddtit">반품</p>
 					<p>0</p>
 				</dd>
+				
 				<dd>
 					<p class="ddtit">교환</p>
 					<p>0</p>
 				</dd>
 			</dl>
 		</div>
+		
 	</section>
 
 	<section class="sidx_head01">
-		<h2>최근 주문내역<a href="admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
+		<h2>최근 주문내역(5건)<a href="admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
 		<table>
 		<thead>
 		<tr>
@@ -122,103 +89,71 @@ const myChart = new Chart(ctx, {
 			<th scope="col">주문자명</th>
 			<th scope="col">수령자명</th>
 			<th scope="col">전화번호</th>
-			<th scope="col">결제방법</th>
+			<th scope="col">수령주소</th>
 			<th scope="col">총주문액</th>
 			<th scope="col">주문일시</th>
 		</tr>
 		</thead>
 		<tbody>
+		<c:choose>
+			<c:when test="${ empty orderlists }">
+				<tr>
+					<td colspan='14' class="empty_table">리스트가 없습니다.</td>
+				</tr>
+			</c:when>
+		<c:otherwise>
+			<c:forEach items="${ orderlists }" var="orderitem" varStatus="loop">
 				<tr class="tr_alignc">
-			<td>24040511530204</td>
-			<td>관리자</td>
-			<td>관리자</td>
-			<td>010-0000-0000</td>
-			<td>무통장</td>
-			<td>136,240</td>
-			<td>2024-04-05 11:53 (금)</td>
-		</tr>
-				<tr class="tr_alignc">
-			<td>24040416420267</td>
-			<td>11111111</td>
-			<td>11111111</td>
-			<td>11111</td>
-			<td>무통장</td>
-			<td>58,890</td>
-			<td>2024-04-04 16:42 (목)</td>
-		</tr>
-				<tr class="tr_alignc">
-			<td>24032211451267</td>
-			<td>한글만</td>
-			<td>한글만</td>
-			<td>010-1111-1111</td>
-			<td>무통장</td>
-			<td>60,060</td>
-			<td>2024-03-22 11:45 (금)</td>
-		</tr>
-				<tr class="tr_alignc">
-			<td>24022111001895</td>
-			<td>sd</td>
-			<td>sd</td>
-			<td>01053475421</td>
-			<td>신용카드</td>
-			<td>23,000</td>
-			<td>2024-02-21 11:00 (수)</td>
-		</tr>
-				<tr class="tr_alignc">
-			<td>24021814175590</td>
-			<td>관리자</td>
-			<td>관리자</td>
-			<td>010-0000-0000</td>
-			<td>무통장</td>
-			<td>60,060</td>
-			<td>2024-02-18 14:19 (일)</td>
-		</tr>
-				</tbody>
+				<td>{orderitem.order_usersNo}</td>
+				<td>{orderitem.re_name}</td>
+				<td>{orderitem.receiverName}</td>
+				<td>{orderitem.receiverPhone}</td>
+				<td>{orderitem.receiverAddress1}</td>
+				<td>{orderitem.finalPrice}</td>
+				<td>{orderitem.orderDate} (일)</td>
+			</tr>
+			</c:forEach>
+		</c:otherwise>
+		</c:choose>
+		</tbody>
 		</table>
 	</section>
 
 	<section class="sidx_head01">
-		<h2>최근 회원가입<a href="admin_member_lists.do" class="btn_small">회원관리 바로가기</a></h2>
+		<h2>최근 회원가입(5건)<a href="admin_member_lists.do" class="btn_small">회원관리 바로가기</a></h2>
 		<table>
 		<thead>
 		<tr>
-			<th scope="col">이름</th>
 			<th scope="col">아이디</th>
-			<th scope="col">레벨</th>
-			<th scope="col">이메일</th>
-			<th scope="col">접속횟수</th>
-			<th scope="col">추천인</th>
+			<th scope="col">회원명</th>
+			<th scope="col">생년월일</th>
+			<th scope="col">핸드폰</th>
+			<th scope="col">email</th>
+			<th scope="col">주소</th>
 			<th scope="col">가입일시</th>
 		</tr>
 		</thead>
 		<tbody>
-				<tr class="tr_alignc">
-			<td>세글만</td>
-			<td>tubeweb3</td>
-			<td>일반회원</td>
-			<td>tubeweb3@gmail.com</td>
-			<td>54</td>
-			<td>tubeweb1</td>
-			<td>2020-10-04 18:05 (일)</td>
-		</tr>
-				<tr class="tr_alignc">
-			<td>두글만</td>
-			<td>tubeweb2</td>
-			<td>일반회원</td>
-			<td>tubeweb2@gmail.com</td>
-			<td>693</td>
-			<td>admin</td>
-			<td>2020-10-04 18:05 (일)</td>
-		</tr>
-				<tr class="tr_alignc">
-			<td>한글만</td>
-			<td>tubeweb1</td>
-			<td>가맹점</td>
-			<td>tubeweb1@gmail.com</td>
-			<td>766</td>
-			<td>admin</td>
-			<td>2020-10-04 18:04 (일)</td>
-		</tr>
+		<c:choose>
+		<c:when test="${ empty lists }">
+			<tr>
+				<td colspan='14' class="empty_table">리스트가 없습니다.</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${ lists }" var="item" varStatus="loop">
+			<tr class="tr_alignc">
+				<td>${item.memberId }</td>
+				<td>${item.name }</td>
+				<td>${item.birthday }</td>
+				<td>${item.phoneNumber }</td>
+				<td>${item.email }</td>
+				<td>${item.address1 }</td>
+				<td>${item.joinDate }</td>
+			</tr>
+			</c:forEach>
+		</c:otherwise>
+		</c:choose>
 				</tbody>
 		</table>
 	</section>
@@ -227,5 +162,42 @@ const myChart = new Chart(ctx, {
 </div>
 
 <%@ include file="admin_footer.jsp"%>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script> 
 </body>
 </html>

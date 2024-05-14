@@ -1,6 +1,5 @@
 $(function() {
-	
-	
+
 	
 	$('#wine_category1').on('click', function() {
 		
@@ -233,7 +232,7 @@ $(function() {
 	alert('아이디 입력이 완료되었습니다.')
 		
 	})
-$(document).ready(function() {
+/*$(document).ready(function() {
     var ctx = $('#myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -269,7 +268,7 @@ $(document).ready(function() {
             }
         }
     });
-});
+});*/
 	
 	
 

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.winevillage.winevillage.product.ProductDTO;
+import com.winevillage.winevillage.member.MemberDTO;
+import com.winevillage.winevillage.pay.OrderDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import utils.JSFunction;
 import utils.PagingUtil;
 
 
@@ -122,9 +122,25 @@ public class AdminController {
 			return "redirect:admin_setting_super_lists.do";
 	}
 	
+	@GetMapping("/admin_index.do")
+	public String adminDashboardLists(Model model, HttpServletRequest req, 
+			MemberDTO memberDTO, OrderDTO orderDTO) {
+		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		model.addAttribute("maps", maps);
+		
+		ArrayList<MemberDTO> lists = dao.recentMemberList(memberDTO);
+		model.addAttribute("lists", lists);
+		
+		ArrayList<OrderDTO> orderlists = dao.recentOrderUsers(orderDTO);
+		model.addAttribute("orderlists", orderlists);
+		
+		return "admin/admin_common/admin_index";
+	}
+	
+	
 	
 }
-
 
 
 

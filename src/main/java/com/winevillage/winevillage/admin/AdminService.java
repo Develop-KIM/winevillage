@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.winevillage.winevillage.member.MemberDTO;
+import com.winevillage.winevillage.pay.OrderDTO;
+import com.winevillage.winevillage.pay.PayDTO;
+
 @Mapper
 public interface AdminService {
 	
@@ -21,4 +25,7 @@ public interface AdminService {
 	
 	public int adminDelete(AdminDTO adminDTO);
 	
+	public ArrayList<MemberDTO> recentMemberList(MemberDTO memberDTO);
+	
+	public ArrayList<OrderDTO> recentOrderUsers(OrderDTO orderDTO);
 }
