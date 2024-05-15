@@ -220,6 +220,7 @@ $(document).ready(function(){
 										<ul>
 											<li>
 												<h3>${name }님</h3>
+
 											</li>
 											<li>
 												<h3>가용 마일리지	</h3>

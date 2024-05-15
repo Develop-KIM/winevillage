@@ -44,7 +44,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			CloseStatus status) 
 					throws Exception {
 		CLIENTS.remove(session.getId());
-			
+		
 		TextMessage message = new TextMessage("sender_leaveSOIEFHJ234NIE29035920354WFIE|text");
 		CLIENTS.entrySet().forEach( arg->{
             try {
