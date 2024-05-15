@@ -36,7 +36,6 @@ public class SmsUtils {
             message.setText("[WineVillage] 아래의 인증 번호를 입력해주세요.\n" + randomNumber);
 
             SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
-            System.out.println(response);
 
             return response;
         } catch (Exception e) {
