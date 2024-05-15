@@ -101,7 +101,7 @@ function enterKey() {
 //웹소켓 서버에 연결되었을때 자동으로 호출
 webSocket.onopen = function(event) {   
     chatWindow.innerHTML += "웹소켓 서버에 연결되었습니다.<br/>";
-    webSocket.send("sender_joinSOIEFHJ234NIE29035920354WFIE|입장하셨습니다.");
+    webSocket.send("sender_joinSOIEFHJ357SHQ299823850WEHI|입장하셨습니다.");
 };
 
 //웹소켓 서버가 종료되었을때 자동으로 호출 
@@ -140,10 +140,10 @@ webSocket.onmessage = function(event) {
         }
         else {
         	console.log(sender, content);
-        	if(sender=='sender_leaveSOIEFHJ234NIE29035920354WFIE'){
+        	if(sender=='sender_leaveSOIEFHJ357NIE29035920354WFIE'){
         		chatWindow.innerHTML += "퇴장하셨습니다.<br/>";
         	}
-        	else if(sender=='sender_joinSOIEFHJ234NIE29035920354WFIE'){
+        	else if(sender=='sender_joinSOIEFHJ357SHQ299823850WEHI'){
                 chatWindow.innerHTML += "입장하셨습니다.<br/>";
             }
         	else{
