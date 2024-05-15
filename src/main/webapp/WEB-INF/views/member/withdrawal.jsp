@@ -27,9 +27,9 @@ function confirmLeave() {
         .then(response => response.text())
         .then(data => {
             if(data.startsWith("http")) {
-                window.location.href = data; // 응답받은 주소로 리다이렉트
+                window.location.href = 'main.do'; // 응답받은 주소로 리다이렉트
             } else {
-                alert(data); // 오류 메시지 출력
+            	window.location.href = 'main.do';
             }
         })
         .catch((error) => {

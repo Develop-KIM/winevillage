@@ -853,13 +853,13 @@
 						<li><a href="/order_list.do">
 								<p class="tit">주문내역</p>
 								<div class="num_box">
-									<span>0</span>
+									<span>${count}</span>
 								</div>
 						</a></li>
 						<li><a href="/mileage_list.do">
 								<p class="tit">나의 마일리지</p>
 								<div class="num_box">
-									<span>0</span>
+									<span>${point}</span>
 								</div>
 						</a></li>
 					</ul>
