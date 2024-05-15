@@ -64,10 +64,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listOrder"
 	    parameterType="com.winevillage.winevillage.pay.ParameterDTO"
 	    resultType="com.winevillage.winevillage.pay.OrderDTO">
-	    SELECT p.ProductName, p.ProductImg, o.OrderAmount, p.wine, p.country, p.discountPrice, o.createDate, o.orderStatus
+	    SELECT p.ProductName, p.ProductImg, o.OrderAmount, p.wine, p.country, p.discountPrice, o.createDate, o.orderStatus, o.productCode
 	    FROM Orders o
 	    JOIN Member m ON o.MemberNo = m.MemberNo
-	    JOIN Product p ON o.ProductNo = p.ProductNo
+	    JOIN Product p ON o.ProductCode = p.ProductCode
 	    WHERE m.MemberNo = #{memberNo}
 	</select>
 	
