@@ -61,8 +61,8 @@
             <div class="form_area">
             <form action="qna_write.do" method="post" id="postFrm" accept-charset="utf-8">
 				<input type="hidden" name="witplus_csrf_token" value="ea2f7313ebf1263a2796ee85bb21ab14">
-				<input type="hidd-en" name="memberNo" value="${ user.memberNo }">
-				<input type="hid-den" name="memberId" value="${ user.memberId }">
+				<input type="hidden" name="memberNo" value="${ user.memberNo }">
+				<input type="hidden" name="memberId" value="${ user.memberId }">
                 <ul>
                     <li>
                         <div class="l_tit">
@@ -78,7 +78,7 @@
                         </div>
                         <div class="form_box">
                             <input type="text" id="qna_phonenumber" name="qna_phonenumber" placeholder=" '-'제외한 숫자만 입력해주세요." maxlength="11" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="${ user.phonenumber }">
-                            <p class="input_info_txt">안내메시지 텍스트</p>
+                            <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
                         </div>
                     </li>
                     <li>
@@ -105,7 +105,7 @@
                         </div>
                         <div class="form_box">
                             <input type="text" id="qna_title" name="qna_title" placeholder="제목을 입력해주세요.">
-                            <p class="input_info_txt">안내메시지 텍스트</p>
+                            <!-- <p class="input_info_txt">안내메시지 텍스트</p> -->
                         </div>
                     </li>
                     <li>

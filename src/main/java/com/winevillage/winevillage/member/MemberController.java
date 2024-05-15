@@ -69,7 +69,7 @@ public class MemberController {
         }
     }
     
-	@GetMapping("/member/withdrawal.do")
+	@GetMapping("/withdrawal.do")
 	public String withdrawal() {
 		return "member/withdrawal";
 	}
