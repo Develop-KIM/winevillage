@@ -20,7 +20,7 @@ $(document).ready(function() {
         var reservePrice = useReserve ? '-' + addCommas(useReserve) + '원' : '- 0원';
         $('#reserve_price_dd').text(reservePrice);
     });
-
+	
     $('#all_use_reserve').on('click', function() {
         if ($(this).is(':checked')) {
             $('#use_reserve').val(availablePoints);
