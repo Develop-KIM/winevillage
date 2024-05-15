@@ -99,7 +99,7 @@
 	            username.focus();
 	            return;
 	        }
-	        window.open("chatUI.do?chatId=" + username, "", 
+	        window.open("chatUI.do?chatId=" + id + "&chatName=" + username, "", 
 	        		"width=321,height=482,scrollbars=no");
 	        /* username = ""; */
 	    }

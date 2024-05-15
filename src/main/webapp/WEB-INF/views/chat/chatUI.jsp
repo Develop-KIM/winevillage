@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="./css/chat/chat_ui.css" />
 </head>
 <body> 
-<input type="hidden" id="chatId" value="${param.chatId }" />
+<input type="hidden" id="chatName" value="${param.chatName }" />
 <input type="hidden" id="chatRoom" value="${param.chatRoom }" />
 <div class="chat_ui" id="chat_ui_test" style="width: 320px; height: 490px;">
 	<div class="msg" id="chatWindow" style="margin-bottom:5px;"></div>
@@ -34,7 +34,7 @@ var webSocket
     = new WebSocket("ws://localhost:8586/myChatServer");
 
 //채팅을 위한 전역변수 생성 
-var chatWindow, chatMessage, chatId;
+var chatWindow, chatMessage, chatId, chatName;
 
 /*
 채팅창이 열리면 대화창, 메세지입력란, 대화명 표시란으로 사용할 DOM을 얻어와서
@@ -43,7 +43,7 @@ var chatWindow, chatMessage, chatId;
 //window.onload = function() {
     chatWindow = document.getElementById("chatWindow");
     chatMessage = document.getElementById("chatMessage");
-    chatId = document.getElementById('chatId').value;    
+    chatName = document.getElementById('chatName').value;    
 //}
 
 function nowTime(){
@@ -77,7 +77,7 @@ function sendMessage() {
     chatWindow.innerHTML += msg;
     
 	//웹소켓 서버로 메세지를 전송한다. 전송형식은 '채팅아이디|메세지'     							
-    webSocket.send(chatId + '|' + chatMessage.value);
+    webSocket.send(chatName + '|' + chatMessage.value);
     //다음 메세지를 즉시 입력할 수 있도록 비워준다. 
     chatMessage.value = ""; 
     //대화창의 스크롤을 항상 제일 아래로 내려준다. 
@@ -101,6 +101,7 @@ function enterKey() {
 //웹소켓 서버에 연결되었을때 자동으로 호출
 webSocket.onopen = function(event) {   
     chatWindow.innerHTML += "웹소켓 서버에 연결되었습니다.<br/>";
+    webSocket.send("sender_joinSOIEFHJ234NIE29035920354WFIE|입장하셨습니다.");
 };
 
 //웹소켓 서버가 종료되었을때 자동으로 호출 
@@ -126,13 +127,13 @@ webSocket.onmessage = function(event) {
     if (content != "") {
         if (content.match("/")) { 
         	//메세지에 슬러쉬가 포함되어 있다면 명령어로 인식한다. 
-            if (content.match(("/" + chatId))) {
+            if (content.match(("/" + chatName))) {
             	/*
             	귓속말은 지정된 특정 사용자에게만 보여진다. 서버에서는 
             	모든 사용자에게 메세지를 Echo하지만 if문을 통해 한사람
             	에게만 디스플레이된다. 
           		*/
-                var temp = content.replace(("/" + chatId), "[귓속말] : ");
+                var temp = content.replace(("/" + chatName), "[귓속말] : ");
                 msg = makeBalloon(sender, temp);
             	chatWindow.innerHTML += msg;
             }
@@ -142,6 +143,9 @@ webSocket.onmessage = function(event) {
         	if(sender=='sender_leaveSOIEFHJ234NIE29035920354WFIE'){
         		chatWindow.innerHTML += "퇴장하셨습니다.<br/>";
         	}
+        	else if(sender=='sender_joinSOIEFHJ234NIE29035920354WFIE'){
+                chatWindow.innerHTML += "입장하셨습니다.<br/>";
+            }
         	else{
 	        	//슬러쉬가 없다면 일반적인 메세지로 판단한다.
 	        	msg = makeBalloon(sender, content);   
@@ -155,7 +159,7 @@ webSocket.onmessage = function(event) {
 };
 
 //상대방이 보낸 메세지를 출력하기 위한 부분
-function makeBalloon(id, cont){
+function makeBalloon(sender, cont){
 	var time = nowTime();
 	var msg = '';
 	msg =
@@ -163,7 +167,7 @@ function makeBalloon(id, cont){
 		"<div class=\"profile_image\" style=\"background: url(../images/chat/profile_image.png) no-repeat;\">\n"+
 		"</div>\n"+
 		"<div class=\"box\">\n"+
-		"<div class=\"profile_name\">이름:"+id+"\n"+
+		"<div class=\"profile_name\">이름:"+sender+"\n"+
 		"</div>\n"+
 		"<div class=\"a\">\n"+
 		"</div>\n"+

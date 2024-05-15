@@ -19,7 +19,7 @@
 <body> 
 	<!-- 파라미터로 전달된 대화명을 얻어와서 사용 -->
     대화명 : 
-    <input type="text" id="chatId" value="${ param.chatId }" 
+    <input type="text" id="chatName" value="${ param.chatName }" 
     	readonly />
     <button id="closeBtn" onclick="disconnect();">채팅 종료</button>
     <!-- 채팅 내역이 출력되는 부분 -->
@@ -42,7 +42,7 @@ var webSocket
     = new WebSocket("ws://localhost:8586/myChatServer");
 
 //채팅을 위한 전역변수 생성 
-var chatWindow, chatMessage, chatId;
+var chatWindow, chatMessage, chatId, chatName;
 
 /*
 채팅창이 열리면 대화창, 메세지입력란, 대화명 표시란으로 사용할 DOM을 얻어와서
@@ -51,7 +51,7 @@ var chatWindow, chatMessage, chatId;
 //window.onload = function() {
     chatWindow = document.getElementById("chatWindow");
     chatMessage = document.getElementById("chatMessage");
-    chatId = document.getElementById('chatId').value;    
+    chatName = document.getElementById('chatName').value;    
 //}
 
 //입력된 메세지를 전송할 때 호출한다. 
@@ -60,7 +60,7 @@ function sendMessage() {
     chatWindow.innerHTML += "<div class='myMsg'>" + 
 								chatMessage.value + "</div>"
 	//웹소켓 서버로 메세지를 전송한다. 전송형식은 '채팅아이디|메세지'     							
-	webSocket.send(chatId + '|' + chatMessage.value);
+	webSocket.send(chatName + '|' + chatMessage.value);
 	//다음 메세지를 즉시 입력할 수 있도록 비워준다. 
 	chatMessage.value = ""; 
 	//대화창의 스크롤을 항상 제일 아래로 내려준다. 
