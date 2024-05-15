@@ -6,10 +6,10 @@
 
 <head>
 <title>WineVillage 주문결제</title>
-<script type="text/JavaScript" language="JavaScript"
+<!-- <script type="text/JavaScript" language="JavaScript"
 	src="https://winenara-recommend-method.s3.ap-northeast-2.amazonaws.com/rcMethod.js"
 	charset="UTF-8"></script>
-<!--백로그 API-->
+백로그 API
 <meta id="CsrfSecrets" name="witplus_csrf_token"
 	content="be7b38b9302ff3c05cc7f68a617d7dd7" />
 <script async
@@ -20,8 +20,8 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-	crossorigin="anonymous">
-
+	crossorigin="anonymous"> -->
+	<%@ include file="../common/common.jsp"%>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 
@@ -131,7 +131,7 @@
 </head>
 
 <body>
-	<%@ include file="../common/common.jsp"%>
+
 
 
 
