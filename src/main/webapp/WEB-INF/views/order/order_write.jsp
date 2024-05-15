@@ -188,7 +188,6 @@
 											src="../uploads/product/200/${row.productImg }" alt=""
 											id="productImg"> </picture>
 									</div>
-    
 									<div class="box con">
 										<div class="more_info product">
 											<p class="prd_name">
