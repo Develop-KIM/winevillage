@@ -34,4 +34,9 @@ public class ChatController {
 	public String chatUI() {
 		return "chat/chatUI";
 	}
+	
+	@GetMapping("/admin_customer_chat.do")
+	public String adminChatList() {
+		return "admin/admin_customer/admin_customer_chat";
+	}
 }
