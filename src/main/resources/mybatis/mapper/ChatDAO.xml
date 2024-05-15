@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="listPage"
 		resultType="com.winevillage.winevillage.chat.ChatDTO"
-		parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+		parameterType="com.winevillage.winevillage.chat.ParameterDTO">
 		SELECT * FROM (
 			SELECT Tb.*, rownum rNum FROM (
 				SELECT * FROM chat
@@ -54,13 +54,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="memberView"
-	resultType="com.winevillage.winevillage.qna.QNADTO"
-	parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+	resultType="com.winevillage.winevillage.chat.ChatDTO"
+	parameterType="com.winevillage.winevillage.chat.ChatDTO">
 	SELECT * FROM member WHERE memberid=#{memberid}
 	</select>
 	
-	<insert id="qnaWrite"
-	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	<insert id="chatWrite"
+	parameterType="com.winevillage.winevillage.chat.ChatDTO">
 	DECLARE
 	next_no NUMBER;
 	BEGIN
