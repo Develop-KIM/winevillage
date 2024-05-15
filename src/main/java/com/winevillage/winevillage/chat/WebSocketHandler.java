@@ -44,6 +44,18 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			CloseStatus status) 
 					throws Exception {
 		CLIENTS.remove(session.getId());
+		
+		TextMessage message = new TextMessage("sender_leaveSOIEFHJ234NIE29035920354WFIE|text");
+		CLIENTS.entrySet().forEach( arg->{
+            try {
+                arg.getValue().sendMessage(message);
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+		
+		System.out.println(session.getId()+" 퇴장");
 	}
 	
 	/*
@@ -56,7 +68,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			TextMessage message) 
 					throws Exception {
 		//메세지를 보낸 사용자의 웹소켓 세션값을 얻어온다. 
-		String id = session.getId(); 
+		String id = session.getId();		
 		//Map에 저장된 클라이언트의 수만큼 반복한다. 
         CLIENTS.entrySet().forEach( arg->{
         	/*

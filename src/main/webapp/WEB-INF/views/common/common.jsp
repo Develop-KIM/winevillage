@@ -220,6 +220,7 @@ $(document).ready(function(){
 										<ul>
 											<li>
 												<h3>${name }님</h3>
+
 											</li>
 											<li>
 												<h3>포인트</h3>
