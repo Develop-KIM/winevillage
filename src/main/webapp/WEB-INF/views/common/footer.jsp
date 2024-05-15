@@ -96,7 +96,7 @@
 			var username = event.currentTarget.dataset.username;
 	        if (username == "") {
 	            alert("대화명을 입력 후 채팅창을 열어주세요.");
-	            username.focus();
+	            /* username.focus(); */
 	            return;
 	        }
 	        window.open("chatUI.do?chatId=" + id + "&chatName=" + username, "", 
