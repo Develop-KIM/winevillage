@@ -19,7 +19,7 @@ import utils.PagingUtil;
 
 @Controller
 public class PayContoller {
-
+ 
 	@Autowired
 	IPayService dao;
 
@@ -73,7 +73,6 @@ public class PayContoller {
 		for (OrderDTO order : orderList) {
 			totalPrice += order.getDiscountPrice() * order.getOrderAmount();
 		}
-
 		int finalPrice = totalPrice - payDTO.getPoints();
 
 		model.addAttribute("finalPrice", finalPrice);

@@ -23,6 +23,7 @@ public class OrderDTO {
 		private String fullPrice;
 		private String country;
 		private String wine;
+		private String productCode;
 		
 		private int orderNo;
 		private Date orderDate;
