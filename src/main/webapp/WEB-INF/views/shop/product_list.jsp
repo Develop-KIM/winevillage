@@ -142,7 +142,6 @@
 												loading="lazy" alt=""><!-- pc이미지 --> </picture>
 										</a>
 										<div class="btn">
-<<<<<<< HEAD
 											<c:choose>
 												<c:when test="${user_id != null && user_id != ''}">
 													<button type="button" class="wish wish_${product.productCode } "
@@ -157,12 +156,6 @@
 													</button>
 												</c:otherwise>
 											</c:choose>
-=======
-											<button type="button" class="wish wish_03T999 "
-												id="wish_03T999" onclick="product.likeProduct('099');">
-												<span>찜하기</span>
-											</button>
->>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 										</div>
 										<div class="label_wrap"></div>
 									</div>
