@@ -24,6 +24,7 @@
 
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
+
 <script>
 	//주문서 작성(ajax) 
 	function submitOrder() {
@@ -200,9 +201,9 @@
 							<c:forEach items="${orderList}" var="row" varStatus="loop">
 								<!-- 주문상태  -->
 								<div>
-									<input type="hidd-en" name="orderStatus" id="orderStatus" value="${ row.orderStatus }">
-									<input type="hid-den" name="memberNo" id="memberNo" value="${ user.memberNo }">
-									<input type="hid-den" name="createDate" id="createDate" value="${ row.createDate }">	
+									<input type="hidden" name="orderStatus" id="orderStatus" value="${ row.orderStatus }">
+									<input type="hidden" name="memberNo" id="memberNo" value="${ user.memberNo }">
+									<input type="hidden" name="createDate" id="createDate" value="${ row.createDate }">	
 								</div>
 								<li>
 									<div class="box ip_img">
@@ -238,8 +239,8 @@
 						</ul>
 					</div>
 					<div class="form_area left">
-						<input type="hidd-en" name="memberNo" value="${ user.memberNo }">
-						<input type="hid-den" name="memberId" value="${ user.memberId }">
+						<input type="hidden" name="memberNo" value="${ user.memberNo }">
+						<input type="hidden" name="memberId" value="${ user.memberId }">
 						<%--  <c:forEach items="${lists}" var="row" varStatus="loop"> --%>
 						<div class="f_top">
 							<h2>주문자 정보</h2>
@@ -247,7 +248,7 @@
 						<ul>
 							<li>
 								<div>
-									<input type="hid-den" name="memberNo" id="memberNo"
+									<input type="hidden" name="memberNo" id="memberNo"
 										value="${ user.memberNo }">
 								</div>
 							<li>
@@ -394,8 +395,7 @@
 									</div>
 									<div id="result2">
 										<p class="input_info_txt" id="result2">
-											<%-- (<span class="info"> ${availablePoints }P</span> 사용가능 ) --%>
-											(<span class="points"> ${user.points }P</span> 사용가능 )
+											(<span class="points info"> ${user.points }P</span> 사용가능 )
 										</p>
 									</div>
 									<div class="checkbox type2">
@@ -404,6 +404,20 @@
 									</div>
 								</div>
 							</li>
+							
+							<!-- 포인트 전액 사용 스크립트 -->
+							<script>
+							  document.getElementById("all_use_reserve").addEventListener("change", function() {
+								    if (this.checked) {
+								      let points = document.getElementById("result2").querySelector(".points").textContent;
+								      points = parseInt(points.replace("P", "")); // "P" 제거 및 숫자로 변환
+								      document.getElementById("use_reserve").value = points;
+								    } else {
+								      document.getElementById("use_reserve").value = 0;
+								    }
+								  });
+							</script>
+							
 							<!-- <li class="gift">
                                 <div class="l_tit">
                                     <label for="gift">기프트카드</label>
