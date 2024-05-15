@@ -23,7 +23,6 @@ public class MemberDTO {
 	private String postcode;
 	private String address1; // 동
 	private String address2; // 상세주소
-	private MemberGrade grade;
 	private int point;
 	private Date joinDate;
 	private String birthday;

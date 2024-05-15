@@ -223,7 +223,8 @@ $(document).ready(function(){
 
 											</li>
 											<li>
-												<h3>가용 마일리지	</h3>
+												<h3>포인트</h3>
+												<p class="info">${point }P</p>
 											</li>
 											<li class="top_line">
 												<h3>

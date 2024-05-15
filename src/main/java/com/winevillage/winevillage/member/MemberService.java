@@ -14,5 +14,6 @@ public interface MemberService {
 	public int memberTotalCount(ParameterDTO parameterDTO);
 	void deleteMember(String memberId);
 	String findByName(String user_id);
+	int findByPoint(String user_id);
 }
 

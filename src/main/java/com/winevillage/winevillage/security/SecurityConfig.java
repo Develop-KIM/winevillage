@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import com.winevillage.winevillage.cart.CartListService;
@@ -62,7 +61,7 @@ public class SecurityConfig{
 		http.formLogin((formLogin) -> formLogin
 				.loginProcessingUrl("/checkLoginStatus")
 				.failureHandler(myAuthFailureHandler)
-				.successHandler(new CustomLoginSuccessHandler(cartListService, memberService)) // 로그인 성공 시 이전 요청에 따라 이동
+				.successHandler(new CustomLoginSuccessHandler(cartListService, memberService))
 				.usernameParameter("loginMemberId")
 				.passwordParameter("loginPassword")
 				.permitAll());
