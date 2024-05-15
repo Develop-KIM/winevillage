@@ -142,10 +142,20 @@
 												loading="lazy" alt=""><!-- pc이미지 --> </picture>
 										</a>
 										<div class="btn">
-											<button type="button" class="wish wish_${product.productCode } "
-												id="wish_${product.productCode }" onclick="">
-												<span>찜하기</span>
-											</button>
+											<c:choose>
+												<c:when test="${user_id != null && user_id != ''}">
+													<button type="button" class="wish wish_${product.productCode } "
+														id="wish_${product.productCode }" onclick="">
+														<span>찜하기</span>
+													</button>
+												</c:when>
+												<c:otherwise>
+													<button type="button" class="wish wish_${product.productCode } "
+														id="wish_${product.productCode }" onclick="$('.layer.login_layer').show();">
+														<span>찜하기</span>
+													</button>
+												</c:otherwise>
+											</c:choose>
 										</div>
 										<div class="label_wrap"></div>
 									</div>
