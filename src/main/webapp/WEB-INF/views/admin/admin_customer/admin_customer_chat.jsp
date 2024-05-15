@@ -31,13 +31,13 @@ function deleteChat(chat_no) {
 	}
 }
 function multiDelete() {
-	var form = document.getElementById('qnalist');
+	var form = document.getElementById('chatlist');
 	if (!form) {
 		alert('리스트가 정상적으로 로드되지 않았습니다.');
 		return;
 	}
 	
-	var selected = document.querySelectorAll('#qnalist input[name="chk[]"]:checked');
+	var selected = document.querySelectorAll('#chatlist input[name="chk[]"]:checked');
 	var deleteItem = Array.from(selected).map(chk => chk.value);
 	
 	if (deleteItem.length === 0) {
@@ -48,7 +48,7 @@ function multiDelete() {
 	var confirmed = confirm("정말로 삭제하시겠습니까?");
 	if (confirmed) {
 		form.setAttribute("method", "post");
-		form.setAttribute("action", "admin_customer_qna_delete2.do");
+		form.setAttribute("action", "admin_customer_chat_delete2.do");
 	    
 		var input = document.createElement("input");
 		input.setAttribute("type", "hidden");
@@ -107,7 +107,7 @@ function multiDelete() {
 			<div class="s_wrap">
 				<h1>1:1 채팅상담</h1>
 
-				<h2>기본검색</h2>
+				<%-- <h2>기본검색</h2>
 				<form name="fsearch" id="fsearch" method="get">
 					<input type="hidden" name="code" value="qa">
 					<div class="tbl_frm01">
@@ -137,19 +137,19 @@ function multiDelete() {
 						<input type="submit" value="검색" class="btn_medium">
 						<input type="button" value="초기화" id="frmRest" class="btn_medium grey">
 					</div>
-				</form>
+				</form> --%>
 
-				<form name="qnalist" id="qnalist" method="post">
+				<form name="chatlist" id="chatlist" method="post">
 					<input type="hidden" name="q1" value="code=qa">
 					<input type="hidden" name="page" value="1">
 
-					<div class="local_ov mart30">
+					<%-- <div class="local_ov mart30">
 						전체 : <b class="fc_red">${ maps.totalCount }</b> 건 조회
-					</div>
-					<div class="local_frm01">
+					</div> --%>
+					<!-- <div class="local_frm01">
 						<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white"
 							onclick="multiDelete(); return false;">
-					</div>
+					</div> -->
 					<div class="tbl_head01">
 						<table>
 							<colgroup>
@@ -157,101 +157,22 @@ function multiDelete() {
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="col">채팅접</th>
-									
+									<th scope="col">채팅접속</th>
 								</tr>
 							</thead>
 							<tbody>
-								<!-- <tr>
-									<td colspan="8" class="empty_table">자료가 없습니다.</td>
-								</tr> -->
-								<%-- <tr>
-									<td colspan="8">
-										<div class="tbl_frm02">
-											<div class="mart20"></div>
-											<table>
-											<colgroup>
-												<col class="w180">
-												<col>
-											</colgroup>
-											<tbody>
-											<tr>
-												<th scope="row">번호</th>
-												<td><input type="text" name="inquery_code" value="9" required="" itemname="" class="frm_input" readonly></td>
-											</tr>
-											<tr>
-												<th scope="row">작성일</th>
-												<td><input type="text" name="inquery_postdate" value="2024-99-99" required="" itemname="" class="frm_input" readonly></td>
-											</tr>
-											<tr>
-												<th scope="row">구분</th>
-												<td><input type="text" name="inquery_category" value="상품관련" required="" itemname="" class="required frm_input" size="80" readonly></td>
-											</tr>
-											<tr>
-												<th scope="row">이름</th>
-												<td><input type="text" name="inquery_name" value="홍길동" required="" itemname="" class="required frm_input" size="80" readonly></td>
-											</tr>
-											<tr>
-												<th scope="row">연락처</th>
-												<td><input type="text" name="inquery_cntnum" value="010-1234-5678" class="required frm_input" size="80" readonly></td>
-											</tr>
-											<tr>
-												<th scope="row">제목</th>
-												<td><input type="text" name="inquery_title" value="상품관련 문의입니다. 상품관련 문의입니다." class="required frm_input" size="80" readonly></td>
-											</tr>
-											<tr>
-												<th scope="row">문의내용</th>
-												<td><textarea name="inquery_content" class="frm_textbox">상품관련이 이래서 이렇고 저래서 저렇습니다. 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련 상품관련</textarea></td>
-											</tr>
-											<!-- <tr>
-												<th scope="row">검색키워드</th>
-												<td>
-													<input type="text" name="keywords" value="" class="frm_input wfull">
-													<span class="frm_info fc_125">단어와 단어 사이는 콤마 ( , ) 로 구분하여 여러개를 입력할 수 있습니다. 예시) 빨강, 노랑, 파랑</span>
-												</td>
-											</tr> -->
-											</tbody>
-											</table>
-											<div class="btn_confirm">
-												<input type="submit" value="답변" class="btn_small bx-red">
-												<input type="submit" value="닫기" class="btn_small bx-white">
-											</div>
-											<div class="marb20"></div>											
-										</div>
-										<div class="padt10"></div>
-										<div class="tbl_frm02">
-											<div class="mart20"></div>
-											<table>
-											<colgroup>
-												<col class="w180">
-												<col>
-											</colgroup>
-											<tbody>
-											<tr>
-												<th scope="row">제목</th>
-												<td><input type="text" name="inquery_answer_title" value="안녕하세요. 와인빌리지입니다." class="required frm_input" size="80" readonly></td>
-											</tr>
-											<tr>
-												<th scope="row">답변내용</th>
-												<td><textarea name="inquery_answer_content" class="frm_textbox"></textarea></td>
-											</tr>
-											</tbody>
-											</table>
-											<div class="btn_confirm">
-												<input type="submit" value="전송" class="btn_small">
-												<input type="submit" value="닫기" class="btn_small bx-white">
-											</div>
-											<div class="marb20"></div>											
-										</div>
+								<tr>
+									<td>
+										<button onclick="chatWinOpen(); return false;" class="btn_medium">접속</button>
 									</td>
-								</tr> --%>
+								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="local_frm02">
+					<!-- <div class="local_frm02">
 						<input type="submit" name="act_button" value="선택삭제" class="btn_lsmall bx-white"
 							onclick="document.pressed=this.value">
-					</div>
+					</div> -->
 				</form>
 
 				<nav class="pg_wrap">
@@ -261,6 +182,11 @@ function multiDelete() {
 				</nav>
 
 				<script>
+					function chatWinOpen() {
+				        //채팅창을 팝업으로 오픈한다. 이때 대화명을 파라미터로 전달한다.  
+				        window.open("chatUI.do?chatName=와인빌리지 고객센터", "", 
+				        		"width=350,height=450");
+				    }
 					function fqalist_submit(f) {
 						if (!is_checked("chk[]")) {
 							alert(document.pressed + " 하실 항목을 하나 이상 선택하세요.");

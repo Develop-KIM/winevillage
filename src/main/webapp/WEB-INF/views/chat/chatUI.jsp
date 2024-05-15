@@ -101,7 +101,8 @@ function enterKey() {
 //웹소켓 서버에 연결되었을때 자동으로 호출
 webSocket.onopen = function(event) {   
     chatWindow.innerHTML += "웹소켓 서버에 연결되었습니다.<br/>";
-    webSocket.send("sender_joinSOIEFHJ357SHQ299823850WEHI|입장하셨습니다.");
+    webSocket.send("sender_joinSOIEFHJ357SHQ299823850WEHI|"+chatName+"입장하셨습니다.");
+    console.log(chatName);
 };
 
 //웹소켓 서버가 종료되었을때 자동으로 호출 
@@ -133,19 +134,19 @@ webSocket.onmessage = function(event) {
             	모든 사용자에게 메세지를 Echo하지만 if문을 통해 한사람
             	에게만 디스플레이된다. 
           		*/
-                var temp = content.replace(("/" + chatName), "[귓속말] : ");
+                var temp = content.replace(("/" + chatName), "");
                 msg = makeBalloon(sender, temp);
             	chatWindow.innerHTML += msg;
             }
         }
         else {
         	console.log(sender, content);
-        	if(sender=='sender_leaveSOIEFHJ357NIE29035920354WFIE'){
-        		chatWindow.innerHTML += "퇴장하셨습니다.<br/>";
+        	if(sender.endsWith('sender_leaveSOIEFHJ234NIE29035920354WFIE')){
+        	    chatWindow.innerHTML += "퇴장하셨습니다.<br/>";
         	}
-        	else if(sender=='sender_joinSOIEFHJ357SHQ299823850WEHI'){
-                chatWindow.innerHTML += "입장하셨습니다.<br/>";
-            }
+        	else if(sender.endsWith('sender_joinSOIEFHJ357SHQ299823850WEHI')){
+        	    chatWindow.innerHTML += "입장하셨습니다.<br/>";
+        	}
         	else{
 	        	//슬러쉬가 없다면 일반적인 메세지로 판단한다.
 	        	msg = makeBalloon(sender, content);   
@@ -167,7 +168,7 @@ function makeBalloon(sender, cont){
 		"<div class=\"profile_image\" style=\"background: url(../images/chat/profile_image.png) no-repeat;\">\n"+
 		"</div>\n"+
 		"<div class=\"box\">\n"+
-		"<div class=\"profile_name\">이름:"+sender+"\n"+
+		"<div class=\"profile_name\">"+sender+"\n"+
 		"</div>\n"+
 		"<div class=\"a\">\n"+
 		"</div>\n"+

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -112,6 +113,14 @@ public class PayContoller {
 		model.addAttribute("maps", maps);
 
 		ArrayList<PayDTO> lists = dao.listOrderUsers(parameterDTO);
+		
+		// Calculate the count of each orderNo
+	    Map<Integer, Long> orderCountMap = lists.stream()
+	            .collect(Collectors.groupingBy(PayDTO::getOrderNo, Collectors.counting()));
+
+	    // Set the rowspan for each order
+	    lists.forEach(order -> order.setOrder_rowspan(orderCountMap.get(order.getOrderNo()).intValue()));
+		
 		model.addAttribute("lists", lists);
 
 		String pagingImg = PagingUtil.pagingImg(totalCount, pageSize, blockPage, pageNum,
