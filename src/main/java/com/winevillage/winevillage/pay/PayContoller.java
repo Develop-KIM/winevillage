@@ -2,6 +2,7 @@ package com.winevillage.winevillage.pay;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.winevillage.winevillage.qna.QNADTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import utils.PagingUtil;
@@ -97,7 +95,9 @@ public class PayContoller {
 	    return "order/order_write";
 	}
 	
-	
+
+        
+    
 //	
 //	@GetMapping("order_write.do")
 //	public String getOrderUserInfo(ParameterDTO parameterDTO, Model model, PayDTO payDTO) {
