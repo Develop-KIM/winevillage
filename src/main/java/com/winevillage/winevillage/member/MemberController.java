@@ -35,8 +35,8 @@ public class MemberController {
         String memberName = (String) session.getAttribute("memberName");
 
         // 모델에 이름 추가
-        model.addAttribute("memberName", memberName);
-
+        model.addAttribute("membeName", memberName);
+        
         // join_success 페이지로 이동
         return "member/join/join_success";
     }
