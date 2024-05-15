@@ -61,7 +61,7 @@ public class SecurityConfig{
 		http.formLogin((formLogin) -> formLogin
 				.loginProcessingUrl("/checkLoginStatus")
 				.failureHandler(myAuthFailureHandler)
-				.successHandler(new CustomLoginSuccessHandler(cartListService, memberService)) // 로그인 성공 시 이전 요청에 따라 이동
+				.successHandler(new CustomLoginSuccessHandler(cartListService, memberService))
 				.usernameParameter("loginMemberId")
 				.passwordParameter("loginPassword")
 				.permitAll());
