@@ -1,9 +1,6 @@
 package com.winevillage.winevillage.cart;
 
 import java.sql.Date;
-import java.sql.Timestamp;
-
-import com.winevillage.winevillage.member.MemberGrade;
 
 import lombok.Data;
 import lombok.ToString;
@@ -26,7 +23,6 @@ public class CartListDTO {
 	private String postcode;
 	private String address1; // 동
 	private String address2; // 상세주소
-	private MemberGrade grade;
 	private int point;
 	private Date joindate;
 	private String birthday;

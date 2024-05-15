@@ -7,14 +7,29 @@
 <title>WINE VILLAGE | ${productDTO.productName }</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+<<<<<<< HEAD
+function goToOrderWrite() {
+    // 필요한 상품 정보 가져오기
+    var productCode = "${productDTO.productCode}";
+    var productName = "${productDTO.productName}";
+    var discountPrice = "${productDTO.discountPrice}";
+    // 필요한 다른 정보들...
+
+    // order_write.do 페이지로 이동하면서 상품 정보 전달
+    location.href = "/order_write.do?productCode=" + productCode + "&productName=" + productName + "&discountPrice=" + discountPrice;
+}
+
+=======
 function quickOrder() {
 	console.log("sdasdas")
 }
+>>>>>>> branch 'develop' of https://github.com/Develop-KIM/WineVillage.git
 </script>
 </head>
 <body>
 	<%@ include file="../common/common.jsp"%>
 	<div class="wrap" style="padding-top: 80px">
+	<p>회원 번호: ${sessionScope.memberNo}</p>
 		<c:set var="wineStyles"
 			value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
 		<div class="content product product_view_page product_lists_page">
@@ -201,9 +216,15 @@ function quickOrder() {
 									    });
 									});
 									</script>
+								<!-- <button type="button"
+									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'buying'}); chklayer();"
+									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button> -->
+								<button type="button" class="btn_txt buy_btn btn_black buy_process_btn" onclick="goToOrderWrite()">바로구매</button>
+
 								<button type="button"
 									onclick="quickOrder();"
 									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button>
+
 								</c:when>
 								<c:when test="${productDTO.stock == 0 }">
 									<button type="button" class="btn_txt wish_btn">찜하기</button>

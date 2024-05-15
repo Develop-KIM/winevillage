@@ -61,20 +61,25 @@
 		</div>
 		<div class="mb_hidden quick_menu">
 			<ul class="list">
-				<li><a href="http://pf.kakao.com/_vlkxfxb/chat">
+				<li>
+					<!-- <a href="http://pf.kakao.com/_vlkxfxb/chat"> -->
+					<a href="chatUI.do" target="_blank" onclick="chatWinOpen(); return false;" data-id=${ user_id } data-username="${ name }">
 						<div class="icon">
 							<img src="./images/default/ico_quick_kakao_comment.png"
-								alt="카카오 상담" draggable="false">
+								alt="온라인 1:1 상담" draggable="false">
 						</div>
 						<div class="txt">온라인 1:1 상담</div>
-				</a></li>
-				<li><a href="/faq_list.do">
+					</a>
+				</li>
+				<li>
+					<a href="/faq_list.do">
 						<div class="icon">
 							<img src="./images/default/ico_quick_faq.png" alt="자주하는 질문"
 								draggable="false">
 						</div>
 						<div class="txt">FAQ</div>
-				</a></li>
+					</a>
+				</li>
 			</ul>
 			<div class="open_box">
 				<button type="button" class="menu_open">quick menu open</button>
@@ -86,6 +91,18 @@
 		$(".quick_menu .menu_open").on("click", function() {
 			$(".quick_menu").toggleClass("on")
 		});
+		function chatWinOpen() {
+			var id = event.currentTarget.dataset.id;
+			var username = event.currentTarget.dataset.username;
+	        if (username == "") {
+	            alert("대화명을 입력 후 채팅창을 열어주세요.");
+	            /* username.focus(); */
+	            return;
+	        }
+	        window.open("chatUI.do?chatId=" + id + "&chatName=" + username, "", 
+	        		"width=321,height=482,scrollbars=no");
+	        /* username = ""; */
+	    }
 	</script>
 </body>
 </html>

@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>와인 매장 지도</title>
-    
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -40,22 +38,75 @@
 	media="screen and (min-width:1024px)">
 <link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
 <link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
+<style>
+#mylogin {padding: 0; background-image: none;}
+.gnb>ul {margin-left: 110px;}
+</style>
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="./js/picturefill.min.js"></script>
 <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
 <script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
-<script type="text/JavaScript" src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
+<script type="text/JavaScript"
+	src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 <script src="./js/wn.productf100.js?v=230405140747"></script>
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
 <script type="text/javascript" src="./js/filter.js"></script>
 <script type="text/javascript" src="./js/order.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+<script>
+function checkLoginStatus() {
+    var loginMemberId = document.getElementById("loginMemberId").value.trim();
+    var loginPassword = document.getElementById("loginPassword").value.trim();
+    console.log(loginMemberId);
+    console.log(loginPassword);
+    $.ajax({
+        type: "post",
+        data: { loginMemberId: loginMemberId, loginPassword: loginPassword },
+        url: "/checkLoginStatus", // 백엔드에서 로그인 상태를 확인하는 엔드포인트 URL
+        success: function(response) {
+            console.log('콜백', response);
+            if (response) {
+                // 로그인된 경우
+                $('.on_login').show(); // 로그인 후 보여줄 영역 표시
+                $('.no_login').hide(); // 로그인 전 보여줄 영역 숨김
+                $('.login_layer').hide();
+                window.location.href = 'main.do';
+            } else {
+                // 로그인되지 않은 경우
+                $('.on_login').hide(); // 로그인 후 보여줄 영역 숨김
+                $('.no_login').show(); // 로그인 전 보여줄 영역 표시
+                // 아이디나 비밀번호가 맞지 않는다는 alert을 표시합니다.
+                alert("아이디나 비밀번호가 맞지 않습니다.");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("에러 발생: " + error); // 예상치 못한 에러 처리
+        }
+    });
+}
+</script>
+<script>
+$(document).ready(function(){
+    $("#logoutButton").click(function(){
+        $.ajax({
+            type: "POST",
+            url: "/logout", // 로그아웃을 처리할 서버의 URL. Spring Security의 logoutUrl과 일치해야 합니다.
+            success: function(response){
+            	console.log(response);
+                // 로그아웃 성공 후 처리할 로직
+                // 예를 들어, 로그아웃 성공 URL로 리다이렉트 할 수 있습니다.
+                window.location.href = window.location.href; // 로그아웃 성공 후 이동할 URL
+            },
+            error: function(e){
+                // 로그아웃 실패 처리
+                console.log(e);
+            }
+        });
+    });
+});
+</script>
     <style>
         #map {
             width: 100%;
@@ -80,6 +131,8 @@
             color: red;
         }
         .gnb>ul {margin-left: 110px;}
+        
+
     </style>
 
     <c:choose>
@@ -202,8 +255,9 @@
         }
     </script>
 </head>
-<body>
 
+
+<script>
 <script>
 function checkLoginStatus() {
     var loginMemberId = document.getElementById("loginMemberId").value.trim();
@@ -221,8 +275,7 @@ function checkLoginStatus() {
                 $('.on_login').show(); // 로그인 후 보여줄 영역 표시
                 $('.no_login').hide(); // 로그인 전 보여줄 영역 숨김
                 $('.login_layer').hide();
-                window.location.href = window.location.href;
-                console.log(response.memberId + "넌 뭔데");
+                window.location.href = 'main.do';
             } else {
                 // 로그인되지 않은 경우
                 $('.on_login').hide(); // 로그인 후 보여줄 영역 숨김
@@ -237,12 +290,32 @@ function checkLoginStatus() {
     });
 }
 </script>
+<script>
+$(document).ready(function(){
+    $("#logoutButton").click(function(){
+        $.ajax({
+            type: "POST",
+            url: "/logout", // 로그아웃을 처리할 서버의 URL. Spring Security의 logoutUrl과 일치해야 합니다.
+            success: function(response){
+            	console.log(response);
+                // 로그아웃 성공 후 처리할 로직
+                // 예를 들어, 로그아웃 성공 URL로 리다이렉트 할 수 있습니다.
+                window.location.href = window.location.href; // 로그아웃 성공 후 이동할 URL
+            },
+            error: function(e){
+                // 로그아웃 실패 처리
+                console.log(e);
+            }
+        });
+    });
+});
+</script>
+</script>
 <body>
-<!-- 헤더 인클루드 로딩페이지 충돌 -->
-
-	<header id="header" class="header">
+<!--  로딩바 제외 헤더-->
+<header id="header" class="header">
 		<!-- 로딩바 -->
-<!-- 		<div class="loading">
+		<!-- <div class="loading">
 			<div class="loading_bar">
 				<div class="loading_img">
 					<img src="./images/default/ico_loading.svg" alt="">
@@ -322,7 +395,7 @@ function checkLoginStatus() {
 									<div class="box other">
 										<ul>
 											<li class="ico_acc"><a
-												href="list_product.do?category=acc">액세서리</a></li>
+												href="list_product.do?category=acc&sort=recent">액세서리</a></li>
 										</ul>
 									</div>
 								</div>
@@ -339,7 +412,7 @@ function checkLoginStatus() {
 						onclick="$('.layer.login_layer').show();"><img
 							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
 					<li class="mypage mb_hidden">
-						<button type="button" onclick="commonUI.header.Mypage.clickFn()">
+						<button type="button" onclick="commonUI.header.Mypage.clickFn()" class="mypage">
 							<img src="./images/default/pc_icon_mypage.png" alt="My Page">
 						</button>
 						<div class="mypage_layer">
@@ -349,10 +422,12 @@ function checkLoginStatus() {
 									<div class="on_login">
 										<ul>
 											<li>
-												<h3>${user_id }님</h3>
+												<h3>${name }님</h3>
+
 											</li>
 											<li>
-												<h3>가용 마일리지	</h3>
+												<h3>포인트</h3>
+												<p class="info">${point }P</p>
 											</li>
 											<li class="top_line">
 												<h3>
@@ -360,14 +435,13 @@ function checkLoginStatus() {
 												</h3>
 											</li>
 										</ul>
-										<button type="button" class="btn_txt btn_black logout_btn on"
-											onclick="logout();">로그아웃</button>
+										<button type="button" class="btn_txt btn_black logout_btn on" id="logoutButton">로그아웃</button>
 									</div>
 								</c:when>
 								<c:otherwise>
 									<!-- 로그인 전 보여줄 내용 -->
 									<div class="no_login">
-										<button type="button" onclick="$('.layer.login_layer').show();">로그인</button>
+										<button type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
 										<a href="join_form.do">회원가입</a>
 									</div>
 								</c:otherwise>
@@ -618,14 +692,6 @@ function checkLoginStatus() {
 									<span><a href="join_form.do">신규회원가입</a></span>
 								</p>
 							</div>
-							<div class="social_login">
-								<h2 class="social_tit">소셜아이디로 로그인</h2>
-								<ul>
-									<!-- 		<li><a href="#none" class="social_btn naver">네이버</a></li> -->
-									<!-- <li><a href="#none" class="social_btn kakao">카카오</a></li> -->
-									<li><a href="#none" class="social_btn google">구글</a></li>
-								</ul>
-							</div>
 							<div class="form_area">
 								<ul>
 									<li>
@@ -644,21 +710,10 @@ function checkLoginStatus() {
 							</div>
 							<input type="hidden" id="login_return_url_param"
 								name="login_return_url_param">
-<!-- 							<div class="save_box">
-								<div class="checkbox">
-									<input type="checkbox" name="id_save" id="id_save" value="Y">
-									<label for="id_save">아이디저장</label>
-								</div>
-							</div> -->
 							<div class="btn_area">
 								<button type="button" class="btn_txt btn_black" id="loginBtn" onClick="checkLoginStatus();">
 									<span>로그인</span>
 								</button>
-							</div>
-							<div class="login_sub_btn">
-								<a href="/forgoten_id.do" class="btn">아이디 찾기</a> <a
-									href="/forgoten_pw.do" class="btn">비밀번호 재발급</a> <a
-									href="/admin_login.do" class="btn">관리자 로그인</a>
 							</div>
 						</div>
 					</div>
@@ -666,7 +721,10 @@ function checkLoginStatus() {
 			</div>
 		</div>
 	</form>
-<!-- 헤어 인클루드 로딩바 충돌  -->
+
+	</header>
+<!--  로딩바 제외 헤더-->
+
 
 
 <section id="contents">
@@ -700,7 +758,7 @@ function checkLoginStatus() {
                             </select>
                         </div>
                         <div class="result_message">
-                            <span id="no-result" style="font-color: red; margin-left: 208px; display: none;">검색 조건에 해당하는 매장이 없습니다.</span>
+                            <span id="no-result" style="font-color: red; margin-left: 208px; display:none;">검색 조건에 해당하는 매장이 없습니다.</span>
                         </div>
                         <span id="result-count" style="margin-left: 208px;"></span>
                     </form>
@@ -733,13 +791,12 @@ function checkLoginStatus() {
                                     </script>
                                 </c:when>
                                 <c:otherwise>
-                      <%--               <c:if test="${param.distance != 0}"> --%>
+                                    <c:if test="${param.distance != 0}">
                                         <script>
-                                    /*         document.getElementById("no-result").style.display = "inline"; */
-                                            document.getElementById("no-result").style.display = "none";
+                                            document.getElementById("no-result").style.display = "inline";
                                             document.getElementById("result-count").textContent = "";
                                         </script>
-                                    <%-- </c:if> --%>
+                                    </c:if>
                                 </c:otherwise>
                             </c:choose>
                         </ul>

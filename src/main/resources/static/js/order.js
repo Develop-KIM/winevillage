@@ -1,23 +1,16 @@
 //주문자정보 동일 버튼
 $(function() {
-    $("#copy_mem_info").click(function() {
-        if ($(this).is(":checked")) {
-            // 주문자 정보 가져오기
-            var orderName = $("#or_name").val();
-            var orderPhoneNumber = $("#or_hp").val();
-            var orderAddress = $("#address1").val();
-
-            // 수령자 정보에 복사
-            $("#receipt_name").val(orderName);
-            $("#receipt_tel").val(orderPhoneNumber);
-            $("#receipt_address1").val(orderAddress);
-        } else {
-            // 체크박스 해제 시 입력 필드 초기화
-            $("#receipt_name").val("");
-            $("#receipt_tel").val("");
-            $("#receipt_address1").val("");
-        }
-    });
+          $("#copy_mem_info").on("change", function() {
+            if (this.checked) {
+                $("#receipt_name").val($("#or_name").val());
+                $("#receipt_tel").val($("#or_hp").val());
+                $("#receipt_address1").val($("#address1").val());
+            } else {
+                $("#receipt_name").val("");
+                $("#receipt_tel").val("");
+                $("#receipt_address1").val("");
+            }
+        });
 });
 
 //포인트 동기화, 포인트 전액사용
@@ -27,7 +20,7 @@ $(document).ready(function() {
         var reservePrice = useReserve ? '-' + addCommas(useReserve) + '원' : '- 0원';
         $('#reserve_price_dd').text(reservePrice);
     });
-
+	
     $('#all_use_reserve').on('click', function() {
         if ($(this).is(':checked')) {
             $('#use_reserve').val(availablePoints);
