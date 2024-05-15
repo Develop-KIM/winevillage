@@ -178,11 +178,9 @@
 							<c:forEach items="${orderList}" var="row" varStatus="loop">
 								<!-- 주문상태  -->
 								<div>
-									<input type="hidd-en" name="orderStatus" id="orderStatus"
-										value="${ row.orderStatus }"> <input type="hid-den"
-										name="memberNo" id="memberNo" value="${ user.memberNo }">
-									<input type="hid-den" name="createDate" id="createDate"
-										value="${ row.createDate }">
+									<input type="hidden" name="orderStatus" id="orderStatus" value="${ row.orderStatus }">
+									<input type="hidden" name="memberNo" id="memberNo" value="${ user.memberNo }">
+									<input type="hidden" name="createDate" id="createDate" value="${ row.createDate }">	
 								</div>
 								<li>
 									<div class="box ip_img">
