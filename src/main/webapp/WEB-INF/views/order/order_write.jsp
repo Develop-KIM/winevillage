@@ -26,7 +26,6 @@
 
 
 <script>
-	//주문서 작성(ajax) 
 	function submitOrder() {
 		var orderInfo = {
 			name : $('#or_name').val(),
@@ -37,117 +36,95 @@
 			re_name : $('#receipt_name').val(),
 			re_hp : $('#receipt_tel').val(),
 			re_address1 : $('#receipt_address1').val(),
-			points: parseInt($('.points').text().replace(/[^0-9]/g, '')),
-		    /* createDate: $('#createDate').val() */
+			points : parseInt($('.points').text().replace(/[^0-9]/g, '')),
 		};
-		console.log(orderInfo);
-
 		var productItems = [];
 		$('.result1 > li ').each(
 				function() {
-					// 현재 .product 요소 내에서 필요한 정보를 추출
 					var item = {
-						productName : $(this).find('#productName').text(), // 클래스 선택자를 사용
-						productImg: $(this).find('#productImg').attr('src').split('/').pop(), 
-						wine : $(this).find('#wine').text(), // 클래스 선택자를 사용
-						country : $(this).find('#country').text(), // 클래스 선택자를 사용
-						discountPrice: parseInt($(this).find('.discountPrice').text().replace(/[^0-9]/g, '')), // 클래스 선택자를 사용
-						orderAmount: parseInt($(this).find('.orderAmount').text().replace(/[^0-9]/g, '')), // 클래스 선택자를 사용
+						productName : $(this).find('#productName').text(),
+						productImg : $(this).find('#productImg').attr('src')
+								.split('/').pop(),
+						wine : $(this).find('#wine').text(),
+						country : $(this).find('#country').text(),
+						discountPrice : parseInt($(this).find('.discountPrice')
+								.text().replace(/[^0-9]/g, '')),
+						orderAmount : parseInt($(this).find('.orderAmount')
+								.text().replace(/[^0-9]/g, '')),
 						orderStatus : $(this).closest('li').prev('div').find(
-								'#orderStatus').val(), // 상위 div에서 클래스 선택자를 사용하여 orderStatus를 찾음
+								'#orderStatus').val(),
 						memberNo : $(this).closest('li').prev('div').find(
 								'#memberNo').val(),
-						createDate: $('#createDate').val()
-						
-					// 상위 div에서 클래스 선택자를 사용하여 memberNo를 찾음
+						createDate : $('#createDate').val()
 					};
 					productItems.push(item);
 				});
-		console.log(productItems);
-
 		var usedPoints = parseInt($('#use_reserve').val()) || 0;
 		var finalPrice = parseInt($('#finish_price_span').text().replace(
 				/[^0-9]/g, ''));
 		var memberNo = parseInt($('#memberNo').val());
-		console.log(usedPoints);
-		console.log(finalPrice);
-
 		var orderData = {
 			orderInfo : orderInfo,
 			productItems : productItems,
 			usedPoints : usedPoints,
 			finalPrice : finalPrice,
 		};
-
-		console.log(orderData); // 전송 데이터 확인
-		
-	    $.ajax({
-	        url: "http://localhost:8586/restOrderWrite.do",
-	        type: "POST",
-	        contentType: "application/json",
-	        data: JSON.stringify(orderData),
-	        success: function(response) {
-	        	
-            var orderId = response.orderId;
-            
-            IMP.init("imp86113226");
-            // 주문 정보 저장 성공 시 결제 요청
-            IMP.request_pay(
-                {
-                	pg: "uplus",
-       	            pay_method: "card",
-       	            merchant_uid: new Date().getTime(), // 주문 고유 번호
-       	            name: orderData.productItems[0].productName, // 대표 상품명
-       	         	amount: orderData.finalPrice, // 최종 결제 금액
-       	            buyer_email: orderData.orderInfo.email,
-       	            buyer_name: orderData.orderInfo.name,
-       	            buyer_tel: orderData.orderInfo.phoneNumber,
-       	            buyer_addr: orderData.orderInfo.address1,
-       	            buyer_postcode: "",
-                },
-                function(rsp) {
-                    if (rsp.success) {
-                        console.log(rsp);
-                        // 결제 승인 여부를 서버로 전달
-                        $.ajax({
-                            url: "http://localhost:8586/restOrderUpdate.do",
-                            type: "POST",
-                            contentType: "application/json",
-                            data: JSON.stringify({
-                                paymentApproved: true,
-                                orderData: orderData
-                            }),
-                            success: function(result) {
-                                alert("주문이 완료되었습니다.");
-                            },
-                            error: function(xhr, status, error) {
-                                alert("주문 상태 업데이트 중 오류가 발생했습니다.");
-                            }
-                        });
-                    } 
-                    else {
-                        console.log(rsp);
-                        // 결제 취소 정보를 서버로 전달
-                        $.ajax({
-                            url: "http://localhost:8586/restOrderCancel.do",
-                            type: "POST",
-                            contentType: "application/json",
-                            data: JSON.stringify(orderData),
-                            success: function(result) {
-                                alert("결제가 취소되었습니다.");
-                            },
-                            error: function(xhr, status, error) {
-                                alert("주문 취소 중 오류가 발생했습니다.");
-                            }
-                        });
-                    }
-                }
-            );
-        },
-        error: function(xhr, status, error) {
-            alert("주문 처리 중 오류가 발생했습니다.");
-        }
-    }); 
+		$.ajax({
+			url : "http://localhost:8586/restOrderWrite.do",
+			type : "POST",
+			contentType : "application/json",
+			data : JSON.stringify(orderData),
+			success : function(response) {
+				var orderId = response.orderId;
+				IMP.init("imp86113226");
+				IMP.request_pay({
+					pg : "uplus",
+					pay_method : "card",
+					merchant_uid : new Date().getTime(), // 주문 고유 번호
+					name : orderData.productItems[0].productName, // 대표 상품명
+					amount : orderData.finalPrice, // 최종 결제 금액
+					buyer_email : orderData.orderInfo.email,
+					buyer_name : orderData.orderInfo.name,
+					buyer_tel : orderData.orderInfo.phoneNumber,
+					buyer_addr : orderData.orderInfo.address1,
+					buyer_postcode : "",
+				}, function(rsp) {
+					if (rsp.success) {
+						$.ajax({
+							url : "http://localhost:8586/restOrderUpdate.do",
+							type : "POST",
+							contentType : "application/json",
+							data : JSON.stringify({
+								paymentApproved : true,
+								orderData : orderData
+							}),
+							success : function(result) {
+								alert("주문이 완료되었습니다.");
+							},
+							error : function(xhr, status, error) {
+								alert("주문 상태 업데이트 중 오류가 발생했습니다.");
+							}
+						});
+					} else {
+						$.ajax({
+							url : "http://localhost:8586/restOrderCancel.do",
+							type : "POST",
+							contentType : "application/json",
+							data : JSON.stringify(orderData),
+							success : function(result) {
+								alert("결제가 취소되었습니다.");
+							},
+							error : function(xhr, status, error) {
+								alert("주문 취소 중 오류가 발생했습니다.");
+							}
+						});
+					}
+				});
+			},
+			error : function(xhr, status, error) {
+				alert("주문 처리 중 오류가 발생했습니다.");
+			}
+		});
 	}
 </script>
 
@@ -201,9 +178,11 @@
 							<c:forEach items="${orderList}" var="row" varStatus="loop">
 								<!-- 주문상태  -->
 								<div>
-									<input type="hidden" name="orderStatus" id="orderStatus" value="${ row.orderStatus }">
-									<input type="hidden" name="memberNo" id="memberNo" value="${ user.memberNo }">
-									<input type="hidden" name="createDate" id="createDate" value="${ row.createDate }">	
+									<input type="hidd-en" name="orderStatus" id="orderStatus"
+										value="${ row.orderStatus }"> <input type="hid-den"
+										name="memberNo" id="memberNo" value="${ user.memberNo }">
+									<input type="hid-den" name="createDate" id="createDate"
+										value="${ row.createDate }">
 								</div>
 								<li>
 									<div class="box ip_img">
