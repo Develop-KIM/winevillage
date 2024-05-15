@@ -79,6 +79,7 @@
         #result-count {
             color: red;
         }
+        .gnb>ul {margin-left: 110px;}
     </style>
 
     <c:choose>
@@ -237,7 +238,6 @@ function checkLoginStatus() {
 }
 </script>
 <body>
-
 <!-- 헤더 인클루드 로딩페이지 충돌 -->
 
 	<header id="header" class="header">
@@ -328,7 +328,6 @@ function checkLoginStatus() {
 								</div>
 							</div></li>
 						<li><a href="list_store.do">SHOP</a></li>
-						<li><a href="list_aboutus.do">ABOUT US</a></li>
 					</ul>
 				</div>
 				<ul class="right_menu">
@@ -668,7 +667,6 @@ function checkLoginStatus() {
 		</div>
 	</form>
 
-<!-- 헤어 인클루드 로딩바 충돌  -->
 
 <section id="contents">
     <div class="wrap">
@@ -701,7 +699,7 @@ function checkLoginStatus() {
                             </select>
                         </div>
                         <div class="result_message">
-                            <span id="no-result" style="font-color: red; margin-left: 208px; display: none;">검색 조건에 해당하는 매장이 없습니다.</span>
+                            <span id="no-result" style="font-color: red; margin-left: 208px; display:none;">검색 조건에 해당하는 매장이 없습니다.</span>
                         </div>
                         <span id="result-count" style="margin-left: 208px;"></span>
                     </form>
@@ -734,13 +732,12 @@ function checkLoginStatus() {
                                     </script>
                                 </c:when>
                                 <c:otherwise>
-                      <%--               <c:if test="${param.distance != 0}"> --%>
+                                    <c:if test="${param.distance != 0}">
                                         <script>
-                                    /*         document.getElementById("no-result").style.display = "inline"; */
-                                            document.getElementById("no-result").style.display = "none";
+                                            document.getElementById("no-result").style.display = "inline";
                                             document.getElementById("result-count").textContent = "";
                                         </script>
-                                    <%-- </c:if> --%>
+                                    </c:if>
                                 </c:otherwise>
                             </c:choose>
                         </ul>

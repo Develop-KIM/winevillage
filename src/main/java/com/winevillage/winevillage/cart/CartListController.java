@@ -27,12 +27,10 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CartListController {
 
     private final CartListService cartListService;
-    private final UserService userService;
 
     @Autowired
-    public CartListController(CartListService cartListService, UserService userService) {
+    public CartListController(CartListService cartListService) {
         this.cartListService = cartListService;
-        this.userService = userService;
     }
 
     @PostMapping("/addToCart")
@@ -40,9 +38,11 @@ public class CartListController {
                                        HttpServletRequest request, HttpServletResponse response) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String username = authentication.getName();
-            Long memberNo = findMemberNoByUsername(username);
+        	String user_id = authentication.getName();
+        	String memberNo = cartListService.getMemberNo(user_id);
+
             cartListService.addProductToMemberCart(productCode, memberNo);
+            return ResponseEntity.ok().body(Map.of("status", "success", "message", "장바구니에 추가되었습니다."));
         } else {
             String cookieId = null;
             Cookie cartCookie = getCookie(request, "COOKIE_ID");
@@ -51,14 +51,13 @@ public class CartListController {
             } else {
                 cookieId = createUniqueCookieId();
                 Cookie newCartCookie = new Cookie("COOKIE_ID", cookieId);
-                newCartCookie.setMaxAge(24 * 60 * 60); // 24시간
+                newCartCookie.setMaxAge(24 * 60 * 60);
                 newCartCookie.setPath("/");
                 response.addCookie(newCartCookie);
             }
             cartListService.addProductToNonMemberCart(productCode, cookieId);
             return ResponseEntity.ok().body(Map.of("status", "success", "message", "장바구니에 추가되었습니다."));
         }
-		return null;
     }
 
     @GetMapping("/cart_list.do")
@@ -78,8 +77,8 @@ public class CartListController {
         List<?> cartList;
         
         if (principal != null) {
-            String username = principal.getName();
-            CartListDTO memberNo = cartListService.memberView(username);
+        	String memberId = principal.getName();
+        	String memberNo = cartListService.getMemberNo(memberId);
             cartList = cartListService.getCartListByMemberNo(memberNo);
         } else if (cookieId != null) {
             cartList = cartListService.getCartListByCookieId(cookieId);
@@ -96,10 +95,6 @@ public class CartListController {
         return UUID.randomUUID().toString();
     }
 
-    private Long findMemberNoByUsername(String username) {
-        return userService.findMemberNoByUsername(username); 
-    }
-    
     private Cookie getCookie(HttpServletRequest request, String name) {
         if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {

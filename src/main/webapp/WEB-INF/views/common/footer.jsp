@@ -36,33 +36,24 @@
 <body>
 	<footer id="footer" class="footer">
 		<div class="hidden_info">
-			<div class="link_box">
-				<div class="wrap">
-					<ul>
-						<li><a href="/company/about_us">소개</a></li>
-						<li><a href="/member/policy/privacy_con">개인정보처리방침</a></li>
-						<li><a href="/cs/notice_lists">고객센터</a></li>
-					</ul>
-				</div>
-			</div>
 			<div class="info_box">
 				<div class="logo">
 					<img src="./css/default/wine_village_rev2_wh.svg" alt="WINEVILLAGE">
 				</div>
 				<div class="info">
 					<ul class="company_info">
-						<li>대표번호 : 080-732-0101 (업무시간 : 10:00-17:00 월~금/ 점심시간 :
+						<li>대표번호 : 000-0000-0101 (업무시간 : 10:00-17:00 월~금/ 점심시간 :
 							12:00-13:00) 주말, 공휴일 휴무</li>
-						<li><span><em>대표자</em> : 이권휴</span><span><em>주소</em> :
-								서울특별시 중구 퇴계로46길 23, 1층(묵정동)</span></li>
-						<li><span><em>법인명</em> : (주)와인나라아이비 제일와인셀러점</span><span><em>사업자
-									등록정보</em> : 142-81-83435</span></li>
-						<li><span><em>통신판매업</em> : 제 2022-서울중구-1128호</span><span><em>개인정보보호책임자</em>
-								: 정재훈</span></li>
-						<li><span>호스팅 : (주)와인나라아이비</span><span>E-MAIL :
-								jjh2310@winenara.com</span></li>
+						<li><span><em>대표자</em> : 김동환</span><span><em>주소</em> :
+								서울특별시 중구 삼일대로 51길 17</span></li>
+						<li><span><em>법인명</em> : (주)와인빌리지 아카데미</span><span><em>사업자
+									등록정보</em> : 0000-00-000000</span></li>
+						<li><span><em>통신판매업</em> : 제 2024-서울중구-7777호</span><span><em>개인정보보호책임자</em>
+								: 와인빌리지</span></li>
+						<li><span>호스팅 : (주)와인빌리지</span><span>E-MAIL :
+								https://github.com/Develop-KIM/WineVillage</span></li>
 						<li>주류는 매장을 방문하여 수령하여야 하며, 주류를 매장 외부로 반출하여 소비자에게 배달/판매하지 않음</li>
-						<li>Copyright (c) WINENARA All Rights Reserved. 무단 전재와 무단 복제를
+						<li>Copyright (c) WINEVillage All Rights Reserved. 무단 전재와 무단 복제를
 							금함.</li>
 					</ul>
 				</div>

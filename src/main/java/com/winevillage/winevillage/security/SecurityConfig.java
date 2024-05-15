@@ -18,6 +18,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+import com.winevillage.winevillage.cart.CartListService;
+import com.winevillage.winevillage.member.MemberService;
+
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,14 +34,14 @@ public class SecurityConfig{
 	private MyAuthFailureHandler myAuthFailureHandler;
 
 	@Autowired
-	private LogoutHandler customLogoutHandler;
-
-	@Autowired
-	private LogoutSuccessHandler customLogoutSuccessHandler;
-
-	@Autowired
 	private DataSource dataSource;
 
+	@Autowired
+	private CartListService cartListService;
+
+	@Autowired
+	private MemberService memberService;
+	
 	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
@@ -59,7 +62,7 @@ public class SecurityConfig{
 		http.formLogin((formLogin) -> formLogin
 				.loginProcessingUrl("/checkLoginStatus")
 				.failureHandler(myAuthFailureHandler)
-				.successHandler(new CustomLoginSuccessHandler()) // 로그인 성공 시 이전 요청에 따라 이동
+				.successHandler(new CustomLoginSuccessHandler(cartListService, memberService)) // 로그인 성공 시 이전 요청에 따라 이동
 				.usernameParameter("loginMemberId")
 				.passwordParameter("loginPassword")
 				.permitAll());

@@ -15,8 +15,8 @@ public class CartListDTO {
     private String cookie_id;
     private String productCode;
     private Integer OrderAmount;
-    private Timestamp createDate;
-    
+    private String createDate;
+    private String Orderstatus;
 	private String memberNo;
 	private String memberId;
 	private String password;

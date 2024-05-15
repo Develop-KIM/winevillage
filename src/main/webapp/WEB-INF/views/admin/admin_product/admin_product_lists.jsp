@@ -142,13 +142,12 @@ function multiDelete() {
 								<col>
 							</colgroup>
 							<tbody>
-								<tr>
+								<tr class="main_search">
 									<th scope="row">검색어</th>
 									<td colspan="3">
 										<select name="searchField">
 											<option value="productName">상품명</option>
 											<option value="productCode">상품코드</option>
-											<option value="wine">와인</option>
 										</select>
 										<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 									</td>
@@ -160,64 +159,7 @@ function multiDelete() {
 								<label><input class="other_choice" type="radio" name="option" value="와인"> 액세서리</label>
 								</td>
 								</tr> -->
-								<tr>
-									<th scope="row">카테고리</th>
-									<td colspan="3">
-								<div class="wine_select">
-										
-										<select id="wine_category1" name="wine">
-											<option value="">=와인선택=</option>
-											<option value="레드">레드</option>
-											<option value="화이트">화이트</option>
-											<option value="로제">로제</option>
-											<option value="스파클링">스파클링</option>
-											<option value="주정강화">주정강화</option>
-										</select>
-										<select id="wine_category2" name="country">
-											<option value="">=원산지선택=</option>
-												<option value="프랑스">프랑스</option>
-												<option value="이탈리아">이탈리아</option>
-												<option value="스페인">스페인</option>
-												<option value="독일">독일</option>
-												<option value="미국">미국</option>
-												<option value="칠레">칠레</option>
-												<option value="아르헨티나">아르헨티나</option>
-												<option value="호주">호주</option>
-										</select>
-										<select id="wine_category3" name="grapeVariety">
-											<option value="">=품종선택=</option>
-											<option value="카베르네 소비뇽">카베르네 소비뇽</option>
-											<option value="쉬라즈">쉬라즈</option>
-											<option value="메를로">메를로</option>
-											<option value="카베르네 프랑">카베르네 프랑</option>
-											<option value="템프라니요">템프라니요</option>
-											<option value="피노 누아">피노 누아</option>
-											<option value="말벡">말벡</option>
-											<option value="진판델">진판델</option>
-											<option value="산지오베제">산지오베제</option>
-											<option value="가메">가메</option>
-											<option value="네비올로">네비올로</option>
-											<option value="카르메네르">카르메네르</option>
-											<option value="그르나슈">그르나슈</option>
-											<option value="몬테풀치아노">몬테풀치아노</option>
-											<option value="바르베라">바르베라</option>
-											<option value="샤르도네">샤르도네</option>
-											<option value="세미용">세미용</option>
-											<option value="소비뇽 블랑">소비뇽 블랑</option>
-											<option value="리슬링">리슬링</option>
-											<option value="슈냉 블랑">슈냉 블랑</option>
-											<option value="모스카토">모스카토</option>
-											<option value="피노그리">피노그리</option>
-											<option value="비오니에">비오니에</option>
-											<option value="게뷔르츠트라미너">게뷔르츠트라미너</option>
-											<option value="그뤼너 펠트리너">그뤼너 펠트리너</option>
-											<option value="베르데호">베르데호</option>
-											<option value="알리고떼">알리고떼</option>
-											<option value="기타">기타</option>
-										</select>
-										</div>
-									</td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
