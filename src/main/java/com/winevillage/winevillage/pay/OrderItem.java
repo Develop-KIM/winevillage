@@ -17,4 +17,9 @@ public class OrderItem {
     private String wine;
     private String country;
     private String productImg;
+    public java.sql.Date createDate;
+	public Date getCreateDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

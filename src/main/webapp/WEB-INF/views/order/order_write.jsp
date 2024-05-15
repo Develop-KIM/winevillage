@@ -41,20 +41,6 @@
 		};
 		console.log(orderInfo);
 
-		/*    var productItems = [
-		 {
-		 productName: $('#productName').text,
-		 productImg: $('#productImg').attr('src'),
-		 wine: $('#wine').text,
-		 country: $('#country').text,
-		 discountPrice: parseInt($('#order_price_span').text().replace(/[^0-9]/g, '')),
-		 orderAmount: parseInt($('span:contains("EA")').text().replace(/[^0-9]/g, '')),
-		 orderStatus: $('#orderStatus').val(),
-		 cookie_id: $('#cookie_id').val()
-		 }
-		 ];
-		 console.log(productItems);
-		 */
 		var productItems = [];
 		$('.result1 > li ').each(
 				function() {
