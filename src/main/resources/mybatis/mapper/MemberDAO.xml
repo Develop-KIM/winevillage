@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<delete id="deleteMember" parameterType="String">
-		DELETE FROM member WHERE memberId = #{memberId};
+		DELETE FROM member WHERE memberId = #{memberId}
 	</delete>
 
 	<select id="findByName" resultType="String">
