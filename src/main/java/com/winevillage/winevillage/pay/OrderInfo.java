@@ -16,5 +16,5 @@ public class OrderInfo {
 	private int memberNo;
 	private String receiverAddress1;
 	private int points;
-	private String createDate;
+	public java.sql.Date createDate;
 }

@@ -25,7 +25,7 @@ public interface IPayService {
 	public int write(PayDTO payDTO);
 	
 	public int writeRest(OrderDTO orderDTO);
-	
+
 	//주문페이지 - 회원정보
 //	public ArrayList<PayDTO> getOrderUserInfo(ParameterDTO parameterDTO);
 	//주문페이지 - 상품정보
@@ -39,5 +39,6 @@ public interface IPayService {
 	//시큐리티 세션 값 정보 가져오기
 	public PayDTO memberView(String userId);
 //	public OrderDTO ordermemberView(String userId);
+//	public void writeRest(OrderItem item);
 	
 }

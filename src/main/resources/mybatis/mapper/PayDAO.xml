@@ -112,62 +112,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    )
 	</insert>
 	
-	<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		   INSERT INTO order_users (
+		    Order_usersNo, name, email, phoneNumber, address1, orderRequest,
+		    points, finalPrice, memberNo,
+		    receiverName, receiverPhone, receiverAddress1,
+		    productName, productImg, wine, country, discountPrice, orderAmount, orderStatus
+		 
+		  ) VALUES (
+		    order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest},
+		    #{usedPoints}, #{finalPrice}, #{memberNo},
+		    #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1},
+		    #{productName}, #{productImg}, #{wine}, #{country}, #{discountPrice}, #{orderAmount}, #{orderStatus}
+
+		  )
+		</insert>
+			
+<!-- 	<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
 		  INSERT INTO order_users (
 		        Order_usersNo, name, email, phoneNumber, address1, orderRequest,
 		        discountPrice, orderAmount, points, finalPrice, memberNo, productImg,
 		        receiverName, receiverPhone, receiverAddress1, orderStatus
 		    ) VALUES (
 		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest}, 
-		        #{productItems[0].discountPrice}, #{productItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{productItems[0].memberNo}, #{productItems[0].productImg},
-		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{productItems[0].orderStatus}
+		        #{productItems.discountPrice}, #{productItems.orderAmount}, #{usedPoints}, #{finalPrice}, #{productItems.memberNo}, #{productItems.productImg},
+		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{productItems.orderStatus}
 		    )
-    </insert>
-		
-		 <!--  <foreach collection="productItems" item="item" index="index">
-		        <if test="index > 0">
-		            INSERT INTO order_details (
-		                orderDetailNo, productName, discountPrice, orderAmount
-		            ) VALUES (
-		                order_detail_seq.NEXTVAL, #{item.productName}, #{item.discountPrice}, #{item.orderAmount}
-		            )
-		        </if>
-		   </foreach> -->
+    </insert> -->
 	
 	<update id="updateOrderStatus" parameterType="com.winevillage.winevillage.pay.OrderDTO">
-        UPDATE order_users
-        SET orderStatus = 'PAYMENT_COMPLETED'
-        WHERE createDate = #{orderInfo.createDate}
+         UPDATE order_users
+		  SET orderStatus = 'PAYMENT_COMPLETED'
+		  WHERE productName = #{productName}
+		    AND productImg = #{productImg}
+		    AND memberNo = #{memberNo}
     </update>
     
-    <delete id="deleteOrder" parameterType="com.winevillage.winevillage.pay.OrderDTO">
-        DELETE FROM order_users
-        WHERE createDate = #{orderInfo.createDate}
-    </delete>
+	<delete id="deleteOrder" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		  DELETE FROM order_users
+		  WHERE productName = #{productName}
+		    AND productImg = #{productImg}
+		    AND memberNo = #{memberNo}
+	</delete>
     
-    <!-- <insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
-		  INSERT INTO order_users (
-		        Order_usersNo, name, email, phoneNumber, address1, orderRequest,
-		        discountPrice, orderAmount, points, finalPrice, memberNo,
-		        receiverName, receiverPhone, receiverAddress1, orderStatus, cookie_id
-		    ) VALUES (
-		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest}, 
-		        #{productItems[0].discountPrice}, #{productItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, #{memberNo},
-		        #{productItems[0].discountPrice}, #{productItems[0].orderAmount}, #{usedPoints}, #{finalPrice}, 47,
-		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{orderStatus}, #{cookie_id}
-		    )
-		
-		  <foreach collection="productItems" item="item" index="index">
-		        <if test="index > 0">
-		            INSERT INTO order_details (
-		                orderDetailNo, productName, discountPrice, orderAmount
-		            ) VALUES (
-		                order_detail_seq.NEXTVAL, #{item.productName}, #{item.discountPrice}, #{item.orderAmount}
-		            )
-		        </if>
-		    </foreach>
-    </insert> -->
-    
-    
-     
 </mapper> 
