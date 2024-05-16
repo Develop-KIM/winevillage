@@ -105,8 +105,8 @@
 	<select id="getCartListByMemberNo"
 		resultType="com.winevillage.winevillage.cart.CartListDTO">
 		SELECT
-		c.*,
-		p.*
+		c.memberNo,
+		p.productCode
 		FROM
 		Orders c
 		INNER JOIN
@@ -116,7 +116,7 @@
 		c.memberNo = #{memberNo}
 		AND
 		c.OrderStatus = 'PAYMENT_PENDING'
-
+		GROUP BY p.productCode, c.memberNo
 	</select>
 
 	<update id="updateOrderQuantity"

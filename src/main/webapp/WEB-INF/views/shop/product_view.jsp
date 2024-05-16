@@ -214,15 +214,16 @@ function directOrder() {
 									$(function() {
 									    $('#add-to-cart-button').click(function() {
 									    	
-									        var productCode = $(this).data('product-code');
-
+									        var productCode = $(this).data('product-code');	
+									        console.log("productCode", productCode);
 									        $.ajax({
-									            url: '/addToCart',
+									            url: '/addToCart.do',
 									            type: 'POST',
 									            data: {
 									                productCode: productCode // 여기에 동적으로 제품 코드 삽입
 									            },
 									            success: function(response) {
+									            	console.log("확인", response)
 									                alert(response.message);
 									            },
 									            error: function(xhr, status, error) {
