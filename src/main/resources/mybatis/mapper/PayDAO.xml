@@ -48,21 +48,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM (
 			SELECT Tb.*, rownum rNum FROM (
 				WITH grouped_orders AS (
-					SELECT 
-						createDate, memberNo, finalPrice, COUNT(*),
-						ROW_NUMBER() OVER (ORDER BY createDate, memberNo, finalPrice) AS orderNo
+					SELECT
+					to_char(createDate,'YYYY-MM-DD HH24:MI') as createDate, memberNo, finalPrice, COUNT(*),
+					ROW_NUMBER() OVER (ORDER BY to_char(createDate,'YYYY-MM-DD HH24:MI'),
+					memberNo, finalPrice) AS orderNo
 					FROM order_users
-					GROUP BY createDate, memberNo, finalPrice
-					HAVING COUNT(*) > 1
+					GROUP BY to_char(createDate,'YYYY-MM-DD HH24:MI'), memberNo, finalPrice
+					HAVING COUNT(*) > 0
 				)
 				SELECT 
 					grouped_orders.orderNo,
 					order_users.*
 				FROM order_users
 				JOIN grouped_orders
-				ON order_users.createDate = grouped_orders.createDate
-				AND order_users.memberNo = grouped_orders.memberNo
-				AND order_users.finalPrice = grouped_orders.finalPrice
+					ON to_char(order_users.createDate,'YYYY-MM-DD HH24:MI') = grouped_orders.createDate
+					AND order_users.memberNo = grouped_orders.memberNo
+					AND order_users.finalPrice = grouped_orders.finalPrice
 				<if test="searchKeyword!=null and !searchKeyword.equals('')">
 				<choose>
 					<when test="searchField == 'all' or searchField == null or searchField == ''">
