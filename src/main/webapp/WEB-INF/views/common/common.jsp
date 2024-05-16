@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,45 +11,100 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="./css/layouta0da.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pcdc60.css"
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/layouta0da.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pcdc60.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_jj7f50.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_jj7d5a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_jj7f50.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_jj7d5a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_elly302b.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_elly302b.css" />
 <link rel="stylesheet" type="text/css"
 	href="./css/layout_pc_elly1d8d.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_ch1bc4.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_chae31.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_ch1bc4.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_chae31.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_sy6617.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_sy231a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_sy6617.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_sy231a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
-<link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
+<link rel="stylesheet" type="text/css" href="/css/main99d9.css" />
+<link rel="stylesheet" type="text/css" href="/css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/shop/main99d9.css?v=231010140029" />
-<link rel="stylesheet" type="text/css" href="./css/shop/main_pc2092.css?v=230810114342"
-            media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
-<link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
-
-<script type="text/javascript" src="./js/slick.min.js"></script>
-<script type="text/javascript" src="./js/jquery.min.js"></script>
-<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="./js/picturefill.min.js"></script>
-<script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
-<script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
-<script type="text/JavaScript" src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
-<script src="./js/wn.productf100.js?v=230405140747"></script>
-<script type="text/javascript" src="./js/jqcloud.min.js"></script>
-<script type="text/javascript" src="./js/slick.min.js"></script>
-<script type="text/javascript" src="./js/filter.js"></script>
-
-
+<link rel="stylesheet" type="text/css"
+	href="/css/shop/main99d9.css?v=231010140029" />
+<link rel="stylesheet" type="text/css"
+	href="/css/shop/main_pc2092.css?v=230810114342"
+	media="screen and (min-width:1024px)">
+<link rel="stylesheet" type="text/css" href="/css/shop/slick.css">
+<link rel="stylesheet" type="text/css" href="/css/shop/jqcloud.min.css" />
+<style>
+#mylogin {padding: 0; background-image: none;}
+.gnb>ul {margin-left: 110px;}
+</style>
+<script type="text/javascript" src="/js/slick.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/picturefill.min.js"></script>
+<script type="text/javascript" src="/js/commond820.js?v=221216102931"></script>
+<script type="text/javascript" src="/js/front_ui9442.js?v=221226120920"></script>
+<script src="/js/wn.productf100.js?v=230405140747"></script>
+<script type="text/javascript" src="/js/jqcloud.min.js"></script>
+<script type="text/javascript" src="/js/slick.min.js"></script>
+<script type="text/javascript" src="/js/filter.js"></script>
+<script type="text/javascript" src="/js/order.js"></script>
+<script>
+function checkLoginStatus() {
+    var loginMemberId = document.getElementById("loginMemberId").value.trim();
+    var loginPassword = document.getElementById("loginPassword").value.trim();
+    console.log(loginMemberId);
+    console.log(loginPassword);
+    $.ajax({
+        type: "post",
+        data: { loginMemberId: loginMemberId, loginPassword: loginPassword },
+        url: "/checkLoginStatus", // 백엔드에서 로그인 상태를 확인하는 엔드포인트 URL
+        success: function(response) {
+            console.log('콜백', response);
+            if (response) {
+                // 로그인된 경우
+                $('.on_login').show(); // 로그인 후 보여줄 영역 표시
+                $('.no_login').hide(); // 로그인 전 보여줄 영역 숨김
+                $('.login_layer').hide();
+                window.location.href = 'main.do';
+            } else {
+                // 로그인되지 않은 경우
+                $('.on_login').hide(); // 로그인 후 보여줄 영역 숨김
+                $('.no_login').show(); // 로그인 전 보여줄 영역 표시
+                // 아이디나 비밀번호가 맞지 않는다는 alert을 표시합니다.
+                alert("아이디나 비밀번호가 맞지 않습니다.");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("에러 발생: " + error); // 예상치 못한 에러 처리
+        }
+    });
+}
+</script>
+<script>
+$(document).ready(function(){
+    $("#logoutButton").click(function(){
+        $.ajax({
+            type: "POST",
+            url: "/logout", // 로그아웃을 처리할 서버의 URL. Spring Security의 logoutUrl과 일치해야 합니다.
+            success: function(response){
+            	console.log(response);
+                // 로그아웃 성공 후 처리할 로직
+                // 예를 들어, 로그아웃 성공 URL로 리다이렉트 할 수 있습니다.
+                window.location.href = window.location.href; // 로그아웃 성공 후 이동할 URL
+            },
+            error: function(e){
+                // 로그아웃 실패 처리
+                console.log(e);
+            }
+        });
+    });
+});
+</script>
 <title>WINEVILLAGE ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 </head>
 <body>
@@ -75,89 +133,127 @@
 			<div class="wrap">
 				<h1 class="logo">
 					<a href="/main.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-						<source srcset="./images/default/wine_village.svg"
+						<source srcset="/images/default/wine_village.svg"
 							media="(min-width:768px)">
 						<!-- pc이미지 -->
-						<source srcset="./images/default/wine_village.svg"
+						<source srcset="/images/default/wine_village.svg"
 							media="(max-width:767px)">
 						<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-							src="./images/default/wine_village.svg" alt="WINEVILLAGE"
+							src="/images/default/wine_village.svg" alt="WINEVILLAGE"
 							draggable="false"><!-- pc이미지 --> </picture>
 					</a>
 				</h1>
 				<div class="gnb">
 					<ul>
-						<li class=""><a href="list_wine.do">WINE</a>
+						<li class=""><a
+							href="/list_product.do?category=wine&state=value&sort=recent">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
 											<li class="ico_red"><a
-												href="/list_wine_red.do">레드</a></li>
+												href="/list_product.do?category=red&state=value&sort=recent">레드</a></li>
 											<li class="ico_white"><a
-												href="/list_wine_white.do">화이트</a></li>
+												href="/list_product.do?category=white&state=value&sort=recent">화이트</a></li>
 											<li class="ico_rose"><a
-												href="/list_wine_rose.do">로제</a></li>
+												href="/list_product.do?category=rose&state=value&sort=recent">로제</a></li>
 											<li class="ico_sparkling"><a
-												href="/list_wine_sparkling.do">스파클링</a></li>
+												href="/list_product.do?category=sparkling&state=value&sort=recent">스파클링</a></li>
 											<li class="ico_spirits"><a
-												href="/list_wine_fortified.do">주정강화</a></li>
+												href="/list_product.do?category=fortified&state=value&sort=recent">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
-												href="/list_wine_fra.do">프랑스</a></li>
+												href="/list_product.do?category=fra&state=value&sort=recent">프랑스</a></li>
 											<li class="ico_italia"><a
-												href="/list_wine_ita.do">이탈리아</a></li>
+												href="/list_product.do?category=ita&state=value&sort=recent">이탈리아</a></li>
 											<li class="ico_spain"><a
-												href="/list_wine_esp.do">스페인</a></li>
+												href="/list_product.do?category=esp&state=value&sort=recent">스페인</a></li>
 											<li class="ico_germ"><a
-												href="/list_wine_deu.do">독일</a></li>
+												href="/list_product.do?category=deu&state=value&sort=recent">독일</a></li>
 											<li class="ico_usa"><a
-												href="/list_wine_usa.do">미국</a></li>
+												href="/list_product.do?category=usa&state=value&sort=recent">미국</a></li>
 											<li class="ico_chile"><a
-												href="/list_wine_chl.do">칠레</a></li>
+												href="'/list_product.do?category=chl&state=value&sort=recent">칠레</a></li>
 											<li class="ico_argentina"><a
-												href="/list_wine_arg.do">아르헨티나</a></li>
+												href="/list_product.do?category=arg&state=value&sort=recent">아르헨티나</a></li>
 											<li class="ico_aus"><a
-												href="/list_wine_aus.do">호주</a></li>
+												href="/list_product.do?category=aus&state=value&sort=recent">호주</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li class=""><a href="list_other.do">OTHER</a>
+						<li class=""><a
+							href="/list_product.do?category=other&sort=recent">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
 										<ul>
-											<li class="ico_acc"><a href="list_other_acc.do">액세서리</a>
-											</li>
+											<li class="ico_acc"><a
+												href="/list_product.do?category=acc&sort=recent">액세서리</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li><a href="list_store.do">SHOP</a></li>
-						<li><a href="list_aboutus.do">ABOUT US</a></li>
+						<li><a href="/list_store.do">SHOP</a></li>
 					</ul>
 				</div>
 				<ul class="right_menu">
-					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
+					<!-- 					<li class="cart"><a href="#" onclick="$('.layer.login_layer').show();"><span>Cart
+								List</span> </a></li> -->
+					<li class="cart"><a href="/cart_list.do"><span>Cart
 								List</span> </a></li>
-					<li class="mb_hidden wish"><a href="#" onclick="$('.layer.login_layer').show();"><img
-							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
+					<c:choose>
+						<c:when test="${user_id != null && user_id != ''}">
+							<li class="mb_hidden wish"><a href="#"
+								onclick="location.href='/member/wish_list.do'"><img
+									src="/images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="mb_hidden wish"><a href="#"
+							onclick="$('.layer.login_layer').show();"><img
+								src="/images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
+						</c:otherwise>
+					</c:choose>
 					<li class="mypage mb_hidden">
-						<button type="button" onclick="commonUI.header.Mypage.clickFn()">
-							<img src="./images/default/pc_icon_mypage.png" alt="My Page">
+						<button type="button" onclick="commonUI.header.Mypage.clickFn()" class="mypage">
+							<img src="/images/default/pc_icon_mypage.png" alt="My Page">
 						</button>
 						<div class="mypage_layer">
-							<div class="no_login">
-								<a href="#" onclick="$('.layer.login_layer').show();">로그인</a>
-								 <a href="/join.do">회원가입</a>
-								 <a href="order_list.do">MyPage</a>
-							</div>
+							<c:choose>
+								<c:when test="${user_id != null && user_id != ''}">
+									<!-- 로그인 후 보여줄 내용 -->
+									<div class="on_login">
+										<ul>
+											<li>
+												<h3>${name }님</h3>
+
+											</li>
+											<li>
+												<h3>포인트</h3>
+												<p class="info">${point }P</p>
+											</li>
+											<li class="top_line">
+												<h3>
+													<a href="/member/order_list.do">마이페이지</a>
+												</h3>
+											</li>
+										</ul>
+										<button type="button" class="btn_txt btn_black logout_btn on" id="logoutButton">로그아웃</button>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<!-- 로그인 전 보여줄 내용 -->
+									<div class="no_login">
+										<button style="display:block; font-size: 12px; color: #555; margin-left: 3px;" type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
+										<a href="join_form.do">회원가입</a>
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</li>
 					<li class="mb_hidden"><a href="/notice_list.do"><img
-							src="./images/default/pc_icon_center.png" alt="Info Center"></a></li>
+							src="/images/default/pc_icon_center.png" alt="Info Center"></a></li>
 				</ul>
 
 			</div>
@@ -166,7 +262,7 @@
 		<div class="bottom">
 			<h1 class="fixed_logo" style="display: none;">
 				<a href="main6f31.html"> <img
-					src="./images/default/pc_fixed_logo.png" alt="WINENARA 1987"
+					src="/images/default/pc_fixed_logo.png" alt="WINENARA 1987"
 					draggable="false">
 				</a>
 			</h1>
@@ -316,7 +412,7 @@
 			<button type="button" onclick="commonUI.header.Search.clickFn()"
 				class="fixed_search_btn">PC Search</button>
 			<a href="mypageping/mypage.html" class="fixed_mypage"><img
-				src="./images/default/pc_icon_mypage.png" alt="My Page"></a> <a
+				src="/images/default/pc_icon_mypage.png" alt="My Page"></a> <a
 				href="cart/cart_lists.html" class="fixed_cart"> </a>
 		</div>
 		<div class="mb_lnb pc_hidden">
@@ -382,20 +478,13 @@
 			</div>
 		</form>
 	</header>
-	<form action="https://www.winenara.com/login" id="LoginPostFrm"
-		onkeydown="javascript:onEnterLogin();" method="post"
+	<form id="LoginPostFrm" method="post"
 		accept-charset="utf-8">
-		<input type="hidden" name="witplus_csrf_token"
-			value="be7b38b9302ff3c05cc7f68a617d7dd7" />
 		<div class="layer login_layer" id="login_layer">
 			<div class="display_table">
 				<div class="table_cell">
 					<div class="layer_area">
-						<h2 class="layer_tit">
-							회원서비스
-							<!-- <p class="check"><span>로그인</span></p>
-                    <p><span><a href="/member/join/law_agreement">회원가입</a></span></p> -->
-						</h2>
+						<h2 class="layer_tit">회원서비스</h2>
 						<button type="button" class="layer_close"
 							onclick="commonUI.layer.close()">닫기</button>
 						<div class="layer_con">
@@ -404,56 +493,31 @@
 									<span>기존회원</span>
 								</p>
 								<p>
-									<span><a href="/join.do">신규회원가입</a></span>
+									<span><a href="join_form.do">신규회원가입</a></span>
 								</p>
-							</div>
-							<div class="social_login">
-								<h2 class="social_tit">소셜아이디로 로그인</h2>
-								<ul>
-									<li><a href="#none" class="social_btn naver">네이버</a></li>
-									<li><a href="#none" class="social_btn kakao">카카오</a></li>
-									<li><a href="#none" class="social_btn google">구글</a></li>
-									<!-- <li><a href="#none" class="social_btn apple">애플</a></li> -->
-								</ul>
 							</div>
 							<div class="form_area">
 								<ul>
 									<li>
 										<div class="form_box">
-											<input type="text" id="login_user_id" name="login_user_id"
-												value="" placeholder="아이디를 입력하세요">
+											<input type="text" id="loginMemberId" name="loginMemberId"
+												placeholder="아이디를 입력하세요">
 										</div>
 									</li>
 									<li>
 										<div class="form_box">
-											<input type="password" id="login_passwd" name="login_passwd"
-												placeholder="비밀번호를 입력하세요">
+											<input type="password" id="loginPassword"
+												name="loginPassword" placeholder="비밀번호를 입력하세요">
 										</div>
 									</li>
 								</ul>
 							</div>
 							<input type="hidden" id="login_return_url_param"
 								name="login_return_url_param">
-							<div class="save_box">
-								<div class="checkbox">
-									<input type="checkbox" name="login_auto" id="login_auto"
-										value="Y" checked> <label for="login_auto">로그인유지</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" name="id_save" id="id_save" value="Y">
-									<label for="id_save">아이디저장</label>
-								</div>
-								<p class="input_info_txt">※ 공공장소에서는 꺼주세요.</p>
-							</div>
 							<div class="btn_area">
-								<button type="button" class="btn_txt btn_black" id="loginBtn">
+								<button type="button" class="btn_txt btn_black" id="loginBtn" onClick="checkLoginStatus();">
 									<span>로그인</span>
 								</button>
-							</div>
-							<div class="login_sub_btn">
-								<a href="/forgoten_id.do" class="btn">아이디 찾기</a> <a
-									href="/forgoten_pw.do" class="btn">비밀번호 재발급</a> <a
-									href="/admin_login.do" class="btn">관리자 로그인</a>
 							</div>
 						</div>
 					</div>
@@ -461,5 +525,6 @@
 			</div>
 		</div>
 	</form>
+
 </body>
 </html>

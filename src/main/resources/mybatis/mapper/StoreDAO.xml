@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winevillage.winevillage.store.IStoreService">
+
+    <select id="searchCount" resultType="int">
+        SELECT COUNT(*)
+        FROM WineStores
+        WHERE TRUNC(TO_NUMBER(DISTANCE_WGS84(#{param2}, #{param3}, latitude, longitude)), 5) <![CDATA[<=]]> #{param1}
+    </select>
+
+    <select id="searchRadius" resultType="com.winevillage.winevillage.store.StoreDTO">
+        SELECT Store_name, Store_sido, Store_gugun, Store_addr, Store_tel, Store_img, latitude, longitude, disKM
+        FROM (
+            SELECT Store_name, Store_sido, Store_gugun, Store_addr, Store_tel, Store_img, latitude, longitude,
+                   TRUNC(TO_NUMBER(DISTANCE_WGS84(#{param2}, #{param3}, latitude, longitude)), 5) AS disKM,
+                   ROW_NUMBER() OVER (ORDER BY TRUNC(TO_NUMBER(DISTANCE_WGS84(#{param2}, #{param3}, latitude, longitude)), 5) ASC) AS rNum
+            FROM WineStores
+            WHERE TRUNC(TO_NUMBER(DISTANCE_WGS84(#{param2}, #{param3}, latitude, longitude)), 5) <![CDATA[<=]]> #{param1}
+        )
+        WHERE rNum BETWEEN #{param4} AND #{param5}
+    </select>
+
+</mapper>

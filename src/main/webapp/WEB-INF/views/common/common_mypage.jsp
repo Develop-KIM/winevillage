@@ -51,7 +51,7 @@
 	<div class="layer wine_profile_layer"></div>
 	<!-- //와인 프로파일 레이어 -->
 	<!-- 회원 등급현황 레이어 - 로그인 했을 때만 노출 -->
-	<div class="layer grade_layer">
+	<!-- <div class="layer grade_layer">
 		<div class="display_table">
 			<div class="table_cell">
 				<div class="layer_area">
@@ -120,7 +120,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- //회원 등급현황 레이어 -->
 	<!-- 알림설정 레이어 -->
 	<div class="layer push_layer" id="push_layer" style="display: none;">
@@ -817,17 +817,8 @@
 					</button>
 					<ul class="mb_lnb_lists">
 						<li><a href="/mypageping/order_lists">주문내역</a></li>
-						<li><a href="/mypageping/return_order_lists">교환/반품내역</a></li>
 						<li><a href="/mypage/note/wish_lists">위시리스트</a></li>
-						<li><a href="/mypage/note/giftcard_lists">나의 기프트카드</a></li>
-						<li><a href="/mypage/note/mileage_lists">나의 마일리지</a></li>
-						<li><a href="/mypage/note/coupon_lists">나의 쿠폰</a></li>
-						<li><a href="/mypage/recommand/recommand_expert_lists">와인추천</a></li>
-						<li><a href="/mypage/action/tasting_lists">나의 리뷰관리</a></li>
 						<li><a href="/mypage/action/qna_lists">문의내역확인</a></li>
-						<li><a href="/mypage/account/password_cert">회원정보수정</a></li>
-						<li><a href="/mypage/account/sns_connect">SNS 연동관리</a></li>
-						<li><a href="/mypage/account/change_password">비밀번호 변경</a></li>
 						<li><a href="/mypage/account/withdrawal">회원탈퇴</a></li>
 					</ul>
 				</div>
@@ -835,55 +826,37 @@
 			<div class="common_lnb">
 				<div class="my">
 					<div class="txt grade_area">
-						<div class="img gold grade_info g100">
+						<!-- <div class="img gold grade_info g100">
 							<span>실버</span>
-						</div>
+						</div> -->
 						<p>
-							<strong class="name">윤영길</strong>님
+							<strong class="name">${name}</strong>님
 						</p>
 					</div>
-					<div class="btn_area">
+					<!-- 					<div class="btn_area">
 						<button type="button" class="btn_txt"
 							onclick="commonUI.layer.open('grade_layer')">등급 혜택보기</button>
-						<!-- <span>시음노트 작성하면 등급 UP</span> -->
-					</div>
+						<span>시음노트 작성하면 등급 UP</span>
+					</div> -->
 				</div>
 				<div class="my_info my_class_info">
 					<ul class="">
-						<li><a href="/order_list.do">
+						<li><a href="/member/order_list.do">
 								<p class="tit">주문내역</p>
 								<div class="num_box">
-									<span>0</span>
+									<span>${count}</span>
 								</div>
 						</a></li>
-						<li><a href="/mileage_list.do">
-								<p class="tit">나의 마일리지</p>
-								<div class="num_box">
-									<span>0</span>
-								</div>
-						</a></li>
+						<li>
+							<p class="tit">나의 마일리지</p>
+							<div class="num_box">
+								<span>${point}</span>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
-<!-- 		<div class="mypage_link mb_hidden">
-				<ul class="depth_01">
-					<li><a href="/mypageping/mypage">나의 쇼핑</a>
-						<ul class="depth_02">
-							<li><a href="/mypageping/order_lists">주문내역</a></li>
-							<li><a href="/mypageping/return_order_lists">교환/반품내역</a></li>
-							<li><a href="/mypage/note/wish_lists">위시리스트</a></li>
-							<li><a href="/cart/cart_lists">장바구니</a></li>
-						</ul></li>
-					<li><a href="#none">개인정보</a>
-						<ul class="depth_02">
-							<li><a href="/mypage/action/qna_lists">문의내역확인</a></li>
-							<li class="on"><a href="/mypage/account/password_cert">회원정보수정</a></li>
-							<li><a href="/mypage/account/change_password">비밀번호 변경</a></li>
-							<li><a href="/mypage/account/withdrawal">회원탈퇴</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div> -->
+
 		</div>
 		<script>
 	function myPublic(){

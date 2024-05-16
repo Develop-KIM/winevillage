@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.winevillage.winevillage.admin.AdminService">
+	<select id="adminTotalCount" resultType="int"
+	parameterType="com.winevillage.winevillage.admin.ParameterDTO">
+		SELECT COUNT(*) FROM admin
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+		WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</select>
+	
+	<select id="adminlistPage"
+		resultType="com.winevillage.winevillage.admin.AdminDTO"
+		parameterType="com.winevillage.winevillage.admin.ParameterDTO">
+		SELECT * FROM (
+			SELECT Tb.*, rownum rNum FROM (
+				SELECT * FROM admin
+				<if test="searchKeyword!=null and !searchKeyword.equals('')">
+				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</if>
+				ORDER BY admin_idx DESC
+			)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start} AND rNum<![CDATA[<=]]>#{end}
+	</select>
+
+	<select id="getAdmin" parameterType="String" 
+	resultType="com.winevillage.winevillage.admin.AdminDTO">
+	SELECT admin_idx, admin_id, admin_name, admin_pass, admin_email, admin_phone, admin_joindate
+	FROM admin WHERE admin_id=#{admin_id}
+	
+	</select>
+	
+	<insert id="adminInsert"
+		parameterType="com.winevillage.winevillage.admin.AdminDTO">
+		INSERT INTO admin (admin_idx, admin_id, admin_name, admin_pass,
+				admin_email, admin_phone)
+		VALUES (admin_seq.nextval, #{admin_id}, #{admin_name}, #{admin_pass},
+				#{admin_email}, #{admin_phone})
+	</insert>
+	
+	<select id="adminView"
+      resultType="com.winevillage.winevillage.admin.AdminDTO"
+      parameterType="com.winevillage.winevillage.admin.AdminDTO">
+      SELECT * FROM admin WHERE admin_idx = #{admin_idx}
+    </select>
+
+	<update id="adminEdit"
+      parameterType="com.winevillage.winevillage.admin.AdminDTO">
+      UPDATE admin SET
+      admin_id=#{admin_id},
+      admin_name=#{admin_name},
+      admin_pass=#{admin_pass},
+      admin_email=#{admin_email},
+      admin_phone=#{admin_phone},
+      admin_joindate=#{admin_joindate}
+      WHERE
+      admin_idx=#{admin_idx}
+   </update>
+
+	<delete id="adminDelete"
+	parameterType="com.winevillage.winevillage.admin.AdminDTO">
+		DELETE FROM admin WHERE admin_idx=#{admin_idx}
+	</delete>
+	
+	<select id="recentMemberList"
+	    resultType="com.winevillage.winevillage.member.MemberDTO">
+		    <![CDATA[
+		    SELECT *
+		    FROM (
+		        SELECT *
+		        FROM (
+		            SELECT *
+		            FROM member
+		            ORDER BY memberNo DESC
+		        )
+		        WHERE ROWNUM <= 3
+		    )
+		    ORDER BY memberNo DESC
+		    ]]>
+	</select>
+	
+	<select id="recentOrderUsers"
+	    resultType="com.winevillage.winevillage.pay.PayDTO">
+	    <![CDATA[SELECT *
+	    FROM (
+	        SELECT *
+	        FROM (
+	            SELECT *
+	            FROM order_users
+	            ORDER BY order_usersNo DESC
+	        )
+	        WHERE ROWNUM <= 3
+	    )
+	    ORDER BY order_usersNo DESC
+	    ]]>
+	</select>
+</mapper>

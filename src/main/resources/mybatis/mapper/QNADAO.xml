@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.winevillage.winevillage.qna.QNAService">
+	<select id="getTotalCount" resultType="int"
+	parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+		SELECT COUNT(*) FROM qna
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+			<choose>
+				<when test="searchField == 'all'">
+					WHERE
+					qna_category LIKE '%'||#{searchKeyword}||'%' OR
+					qna_writer LIKE '%'||#{searchKeyword}||'%' OR
+					qna_title LIKE '%'||#{searchKeyword}||'%' OR
+					qna_content LIKE '%'||#{searchKeyword}||'%'
+				</when>
+				<otherwise>
+					WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				</otherwise>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="listPage"
+		resultType="com.winevillage.winevillage.qna.QNADTO"
+		parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+		SELECT * FROM (
+			SELECT Tb.*, rownum rNum FROM (
+				SELECT * FROM qna
+				<if test="searchKeyword!=null and !searchKeyword.equals('')">
+					<choose>
+						<when test="searchField == 'all'">
+							WHERE
+							qna_category LIKE '%'||#{searchKeyword}||'%' OR
+							qna_writer LIKE '%'||#{searchKeyword}||'%' OR
+							qna_title LIKE '%'||#{searchKeyword}||'%' OR
+							qna_content LIKE '%'||#{searchKeyword}||'%'
+						</when>
+						<otherwise>
+							WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+						</otherwise>
+					</choose>
+				</if>
+				ORDER BY qna_no DESC
+			)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start} AND rNum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="memberView"
+	resultType="com.winevillage.winevillage.qna.QNADTO"
+	parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+	SELECT * FROM member WHERE memberid=#{memberid}
+	</select>
+	
+	<insert id="qnaWrite"
+	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	DECLARE
+	next_no NUMBER;
+	BEGIN
+	getnext_qna_no(next_no);
+	INSERT INTO qna (memberNo, memberId, qna_no, qna_category, qna_writer, qna_phonenumber,
+	qna_title, qna_content, qna_postdate, qna_answered)
+	VALUES (#{memberNo}, #{memberId}, next_no, #{qna_category}, #{qna_writer}, #{qna_phonenumber},
+	#{qna_title}, #{qna_content}, sysdate, 0);
+	END;
+	</insert>
+	
+	<insert id="qnaAnswerWrite"
+	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	DECLARE
+	next_no NUMBER;
+	BEGIN
+	getnext_qna_answer_no(next_no);
+	INSERT INTO qna_answer (qna_no, qna_answer_title, qna_answer_content, qna_answer_postdate)
+	VALUES (#{qna_no}, #{qna_answer_title}, #{qna_answer_content}, sysdate);
+	UPDATE qna SET qna_answered=1 WHERE qna_no = #{qna_no};
+	END;
+	</insert>
+	
+	<select id="qnaView"
+	resultType="com.winevillage.winevillage.qna.QNADTO"
+	parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+	SELECT * FROM qna WHERE qna_no=#{qna_no}
+	</select>
+	
+	<select id="qnaAnswerView"
+	resultType="com.winevillage.winevillage.qna.QNADTO"
+	parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+	SELECT * FROM qna_answer WHERE qna_no=#{qna_no}
+	</select>
+	
+	<update id="qnaEdit"
+	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	UPDATE qna SET
+		qna_category=#{qna_category}, qna_writer=#{qna_writer},
+		qna_title=#{qna_title}, qna_content=#{qna_content}, qna_editdate=sysdate
+	 	WHERE qna_no=#{qna_no}
+	</update>
+	
+	<update id="qnaAnswerEdit"
+	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	UPDATE qna_answer SET
+		qna_answer_title=#{qna_answer_title}, qna_answer_content=#{qna_answer_content},
+		qna_answer_editdate=sysdate
+	 	WHERE qna_no=#{qna_no}
+	</update>
+	
+	<delete id="qnaDelete"
+	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	BEGIN
+		DELETE FROM qna_answer WHERE qna_no=#{qna_no};
+		DELETE FROM qna WHERE qna_no=#{qna_no};
+	END;
+	</delete>
+	
+	<delete id="qnaAnswerDelete"
+	parameterType="com.winevillage.winevillage.qna.QNADTO">
+	BEGIN
+		DELETE FROM qna_answer WHERE qna_no=#{qna_no};
+		UPDATE qna SET qna_answered=0 WHERE qna_no=#{qna_no};
+	END;
+	</delete>
+</mapper>

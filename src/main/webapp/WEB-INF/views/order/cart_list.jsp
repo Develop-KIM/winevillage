@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <!-- Mirrored from www.winenara.com/shop/main?login_on=Y&return_url=https://me2.do/Fijy5pow by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 13:02:33 GMT -->
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
@@ -12,6 +11,9 @@
 
 </head>
 <script type="text/javascript" src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
+<script>
+
+</script>
 <body>
 <%@ include file="../common/common.jsp"%>
 <section id="contents" class="mb_margin_0" style="margin-top: 188px;"><div class="lnb cart_lnb lnb_wrap step_wrap">
@@ -38,52 +40,6 @@
 </div>
 <div class="wrap">    <script src="/asset/js/wn.product.js"></script>
     <div class="content order cart_lists_page">
-
-        <!-- 탭 버튼 형식 -->
-        <!-- <div class="tab_area">
-            <ul class="tab1">
-                <li class="on">
-					<button type="button" onclick="location.href='/shop/cart/cart_lists?order_gb=P'">
-						<span>온라인주문
-						<em class="count">1</em> 						</span>
-					</button>
-				</li>
-                
-				<li >
-					<button type="button" onclick="location.href='/shop/cart/cart_lists?order_gb=V'">
-						<span>
-							매장방문주문
-														</span>
-					</button>
-				</li>
-                
-				<li >
-					<button type="button" onclick="location.href='/shop/cart/cart_lists?order_gb=D'">
-						<span>
-							택배배송
-													</span>
-					</button>
-				</li>
-            </ul>
-        </div> -->
-
-
-        <!-- 라디오박스 형식(두 개 중 골라 쓰시면 됩니다) -->
-        <!-- <div class="radio_area">
-            <div class="radiobox">
-                <input type="radio" name="receive_way" id="pickup" checked>
-                <label for="pickup"><span>직접픽업(Array건)</span></label>
-            </div>
-            <div class="radiobox">
-                <input type="radio" name="receive_way" id="store">
-                <label for="store"><span>매장방문(0건)</span></label>
-            </div>
-            <div class="radiobox">
-                <input type="radio" name="receive_way" id="shipping">
-                <label for="shipping"><span>택배배송</span></label>
-            </div>
-        </div> -->
-
         <div class="c_lists">
             <div class="top">
                 <div class="checkbox type2">
@@ -93,118 +49,89 @@
 				<button type="button" id="btn_del">선택삭제</button>
             </div>
             <ul>
-
-                <li class="65402">
+<c:forEach var="cartItem" items="${cartList}" >
+<c:set var="wineStyles"
+	   value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
+                <li class="${cartItem.orderNo }">
                     <div class="box ip_img">
                         <div class="checkbox type2">
-                            <input type="checkbox" id="cart_seq_65402" name="cart_seq[]" class="ip_check" value="65402" data-qty="1" data-price="14900" data-supply-price="14900" data-promotion-limit="N">
-                            <label for="cart_seq_65402">
-                                <picture style="background:#E0D8EA">
-                                    <!--[if IE 9]><video style="display: none;"><![endif]-->
-                                    <source srcset="/uploads/product/aa7a7a81345a0f66e00a0962f5ab3904.png" media="(min-width:768px)"><!-- pc이미지 -->
-                                    <source srcset="/uploads/product/aa7a7a81345a0f66e00a0962f5ab3904.png" media="(max-width:767px)"><!-- mb이미지 -->
-                                    <!--[if IE 9]></video><![endif]-->
-                                    <img src="/uploads/product/aa7a7a81345a0f66e00a0962f5ab3904.png" alt=""><!-- pc이미지 -->
+                           		<input type="checkbox" id="cart_seq_${cartItem.orderNo }" name="cart_seq[]" class="ip_check" value="${cartItem.productCode }" data-cart-seq="${cartItem.orderNo }" data-qty="${cartItem.orderAmount }" data-price="${cartItem.discountPrice }" data-supply-price="${cartItem.fullPrice }" data-promotion-limit="N">
+								<label for="cart_seq_${cartItem.orderNo }">
+                                <picture style="background: ${empty cartItem.wine ? '#fff' : wineStyles[cartItem.wine]}">
+                                    <source srcset="/uploads/product/200/${cartItem.productImg }" media="(min-width:768px)"><!-- pc이미지 -->
+                                    <source srcset="/uploads/product/200/${cartItem.productImg }" media="(max-width:767px)"><!-- mb이미지 -->
+                                    <img src="/uploads/product/200/${cartItem.productImg }" alt=""><!-- pc이미지 -->
                                 </picture>
                             </label>
                         </div>
                     </div>
                     <div class="box con">
-                        <div class="more_info">
+                        <div class="more_info" style="white-space: nowrap; overflow: visible;">
                             <p class="prd_name">
-                                <a href="/shop/product/product_view?product_cd=03U001" target="_blank">
-                                    디아블로 데블스 카나발 카베르네<br>
-                                                                    </a>
+                                <a style="overflow: visible;" href="/product_view.do?category=${cartItem.wine }&productCode=${cartItem.productCode}" target="_blank">${cartItem.productName }<br>
+                              	</a>
                             </p>
 
-							<div class="cate_label">
-								<span class="label" style="background:#E0D8EA">레드</span>								<span class="label" style="background:#E0D8EA">칠레</span>								<span class="label" style="background:#E0D8EA">카베르네 소비뇽</span>							</div>
-
-							<!-- 픽업제외매장 -->
-														<!-- //픽업제외매장 -->
-
-
+							<div class="cate_label" >
+								<c:if test="${not empty cartItem.wine }">
+									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.wine }</span>
+								</c:if>
+								<c:if test="${not empty cartItem.country }">
+									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.country }</span>
+								</c:if>
+								<c:if test="${not empty cartItem.grapeVariety }">
+									<span class="label" style="background: ${wineStyles[cartItem.wine]};">${cartItem.grapeVariety }</span>
+								</c:if>
+							</div>
                         </div>
-						                        						                    </div>
+                    </div>
                     <div class="box opt">
 						<span> </span>
-						<!-- <span></span> -->
 					</div>
                     <div class="box price_amount">
                         <div class="box amount">
-                            <div class="quantity" data-cart-seq="65402" data-product-cd="03U001" data-base-price="14900" data-opt-gb="C">
-
+                            <div class="quantity" data-cart-seq="${cartItem.orderNo }" data-product-cd="${cartItem.productCode }" data-base-price="${cartItem.fullPrice }" data-stock="${cartItem.stock }">
                                 <button type="button" class="minus" onclick="box_qty(this, -1);">감소</button>
-                                <input type="text" class="qty" title="수량" value="1">
+                                <input type="text" class="qty" title="수량" value="${cartItem.orderAmount }" readonly>
                                 <button type="button" class="plus" onclick="box_qty(this, +1);">증가</button>
                             </div>
-														<!-- <select class="packing" onchange="change_packing('65402',this.value)">
-								<option value="">포장선택</option>
-																	<option 
-										value="2701"
-																			>
-										쇼핑백									</option>
-																	<option 
-										value="2702"
-																			>
-										완충포장									</option>
-																	<option 
-										value="2703"
-																			>
-										칠링백(+2,000원)									</option>
-																	<option 
-										value="2704"
-																			>
-										선물포장(+5,000원)									</option>
-															</select> -->
-							                        </div>
-						<div class="box price price_con">
+                        </div>
+						<div style="white-space:nowrap" class="box price price_con">
 							<div>
 								<span>상품금액</span>
-								<ins>14,900원</ins>
+								<ins id="originalSupply_${cartItem.orderNo }"><fmt:formatNumber value="${cartItem.fullPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="discount">
 								<span>할인금액</span>
-								<ins>0원</ins>
+								<ins id="originalSale_${cartItem.orderNo }"><fmt:formatNumber value="${(cartItem.fullPrice - cartItem.discountPrice) * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 							<div class="total">
 								<span>총 결제금액</span>
-								<ins>14,900원</ins>
+								<ins id="originalTotal_${cartItem.orderNo }"><fmt:formatNumber value="${cartItem.discountPrice * cartItem.orderAmount}" pattern="#,##0"/>원</ins>
 							</div>
 						</div>
                     </div>
-                    <!-- <div class="box btn">
-                        <button type="button" class="btn_like wish_03U001 " id="wish_03U001" onclick="product.likeProduct('03U001');">좋아요</button>
-                        <button type="button" class="btn_del basic" value="65402">삭제</button>
-                    </div> -->
                 </li>
-
-			                        </ul>
+                </c:forEach>
+			</ul>
         </div>
-
 
 		<div class="reload_container">
 			<div class="total_price">
 				<dl class="dash">
 					<dt>상품금액</dt>
-					<dd id="supply">14,900원</dd>
+					<dd id="supply">원</dd>
 				</dl>
 				<dl class="plus">
 					<dt>할인금액</dt>
-					<dd id="sale">0원</dd>
+					<dd id="sale">원</dd>
 				</dl>
-			<!-- 	<dl class="equal">
-					<dt>배송비</dt>
-					<dd>0원</dd>
-				</dl> -->
 				<dl class="total">
 					<dt>총 결제금액</dt>
-					<dd id="total">14,900원</dd>
+					<dd id="total">원</dd>
 				</dl>
 			</div>
 		</div>
-
-        <!-- <p class="txt">당일 픽업은 오늘(04월19일) 오후 4시 이전 주문 완료 후 1시간 이후 픽업만 가능합니다.</p> -->
 
         <div class="btn_area col2">
             <button type="button" class="btn_txt" onclick="location.href='/shop/product/product_lists?sh_category1_cd=10000'"><span>계속 쇼핑하기</span></button>
@@ -215,14 +142,6 @@
         </div>
 
         <div class="recommend_area">
-          <!--   <h3>추천 상품</h3>
-            
-            <ul class="prd_list" id="cart_recommend">
-            </ul> -->
-
-            <!-- <div class="btn_area">
-			                <button type="button" class="btn_txt" id="more_button_wine" onclick="getList('add')"><span>더보기</span></button>
-			            </div> -->
         </div>
     </div>
 </div>
@@ -239,208 +158,139 @@
 <script type="text/javascript" src="/asset/js/jqcloud.min.js"></script>
 <script>
 //전체선택
-$("#all_sel").click(function() {
-	if($("#all_sel").is(":checked")) $(".ip_check").prop("checked", true);
-	else $(".ip_check").prop("checked", false);
-	var price = 0;
-	$("input:checkbox[name='cart_seq[]']").each(function (index) {
-		
-		if($(this).is(":checked")==true){
-			price += $(this).data('qty') * $(this).data('price');
-		}
+	$("#all_sel").click(function() {
+		if($("#all_sel").is(":checked")) $(".ip_check").prop("checked", true);
+		else $(".ip_check").prop("checked", false);
+		var price = 0;
+		$("input:checkbox[name='cart_seq[]']").each(function (index) {
+			
+			if($(this).is(":checked")==true){
+				price += $(this).data('qty') * $(this).data('price');
+			}
+		});
+		$("#total").text(price.toLocaleString()+'원');
 	});
-	$("#total").text(price.toLocaleString()+'원');
-});
-$(".ip_check").click(function() {
-	var total = $(".ip_check").length;
-	var checked = $(".ip_check:checked").length;
-	if(total != checked) $("#all_sel").prop("checked", false);
-	else $("#all_sel").prop("checked", true); 
-});
-$('.main_img .slider').slick({
-    dots: true,
-    arrows: true
-});
-// 슬라이드시 비비노 키워드 호출
-    $('.main_img .slider').on("afterChange", function(){
-    	var product_cd = $(this).data('cd');
-    	 var words = [];	// 키워드 담을 배열
-    	
-    	Csrf.Set(_CSRF_NAME_); //토큰 초기화
-        $.ajax({
-            type: "POST",
-            url : "/shop/product/vivino_keyword_ajax",
-            data: {product_cd:product_cd},
-            success : function (res) {
-                if (typeof(res)=="string"){ res = JSON.parse(res); }
-				
-				if(res.status == "ok"){
-					var vivino = res.list;
-                	for(var i = 0;i < vivino.length;i++){
-//                 		console.log(vivino[i]);	
-                		var tempObj = {};
-                		tempObj['text'] = vivino[i]['keyword_kr'];
-        				tempObj['weight'] = vivino[i]['score'];
-        				
-        				words.push(tempObj);
-                	}
-    				var some_words_with_same_weight = $(".cloud_"+product_cd).jQCloud(words, {
-                        width: 334,
-                        height: 135
-                    });
-					return false;
-				}else{
-					$(".cloud_"+product_cd).html("<span>no data</span>");
-					console.log("no_list");
-					return false;
-				}
-            },
-            error: function (res) {
-                alert("상품 리스트 조회시 에러가 발생했습니다.");
-                alert(res.responseText);
-            }
-        });
+	$(".ip_check").click(function() {
+		var total = $(".ip_check").length;
+		var checked = $(".ip_check:checked").length;
+		if(total != checked) $("#all_sel").prop("checked", false);
+		else $("#all_sel").prop("checked", true); 
+	});
+	$('.main_img .slider').slick({
+	    dots: true,
+	    arrows: true
+	});
+	// 체크
+	$(document).ready(function() {
+    $('.ip_check').change(function() {
+        if ($(this).is(':checked')) {
+            var productCode = $(this).val();
+            var orderNo = $(this).data('cartSeq');
+            var info = {
+                productCode: productCode,
+                orderNo: orderNo
+            };
+            getProductInfo(info); // getProductInfo 함수 호출
+        }
     });
-	// 단일 삭제
-	$(".basic").on("click", function(){
-		var cart_seq = $(this).val();
-		if(confirm("장바구니에서 삭제하시겠습니까?")){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.post("/shop/cart/cart_proc_ajax?ajax_mode=DEL", {
-				cart_seq: cart_seq
-			},function(res) {
-				if(typeof (res) == "string"){
-					res = JSON.parse(res);
-				}
-				if(res.status == 'ok'){
-					location.reload();
-				}else{
-					alert("삭제에 실패했습니다.");
-					return false;
-				 }
-			}).fail(function(error){
-				alert("장바구니 삭제중 오류가 발생했습니다.");
-			});
-		}
-	});
-	// 단일 삭제(추가옵션)
-	/*
-	$(".opt").on("click", function(){
-		var cart_opt_seq = $(this).val();
-		if(confirm("장바구니에서 삭제하시겠습니까?")){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.post("/shop/cart/cart_proc_ajax?ajax_mode=DEL_OPT", {
-				cart_opt_seq: cart_opt_seq
-			},function(res) {
-				if(typeof (res) == "string"){
-					res = JSON.parse(res);
-				}
-				if(res.status == 'ok'){
-					location.reload();
-				}else{
-					alert("삭제에 실패했습니다.");
-					return false;
-				 }
-			}).fail(function(error){
-				alert("장바구니 삭제중 오류가 발생했습니다.");
-			});
-		}
-	});
-	*/
+});
+
+function getProductInfo(info) {
+    console.log(info);
+    $.ajax({
+        url: '/getCartList.do',
+        type: 'GET',
+        data: {
+            productCode: info.productCode,
+            orderNo: info.orderNo
+        },
+        dataType: 'json', // 응답을 JSON으로 기대함
+        success: function(response) {
+            console.log(response); // JSON 객체 그대로 콘솔에 출력
+            // 예: 장바구니 정보를 페이지에 표시하는 로직을 추가할 수 있습니다.
+            // $('#cartList').html(response.someProperty); // 예를 들어, 응답으로 받은 장바구니 정보를 페이지의 특정 요소에 표시
+        },
+        error: function(xhr, status, error) {
+            alert('제품 정보를 가져오는 중 오류가 발생했습니다.');
+            console.error(error);
+        }
+    });
+}
+
+
 	// 선택 삭제
-	$("#btn_del").on("click", function(){
-		var frm = document.DelForm;
-		var cart_val = []; 
-		var cart_opt_val = [];
-		if( $("input[name='cart_seq[]']:checked").length > 0 || $("input[name='cart_opt_seq[]']:checked").length > 0  ){
-			$("input[name='cart_seq[]']:checked").each(function(idx){
-				cart_val.push($(this).val());
-			});
-			$("input[name='cart_opt_seq[]']:checked").each(function(idx){
-				cart_opt_val.push($(this).val());
-			});
+		$(document).ready(function() {
+	    $('#deleteSelected').click(function() {
+	        var selectedItems = $('input[name="cart_seq[]"]:checked').map(function() {
+	            return $(this).val();
+	        }).get();
 	
-			if(confirm("선택한 상품을 삭제하시겠습니까?")){		//추가옵션 외
-			if(cart_val.length  !== 0) {
-				Csrf.Set(_CSRF_NAME_); 
-				$.ajax({
-					type: "POST",
-					url: "/shop/cart/cart_proc_ajax?ajax_mode=DEL",
-					dataType: 'json',
-					data: {cart_seq: cart_val},
-					success: function(res){
-						location.reload();
-					},
-					error: function(res){
-						alert(res.responseText);
-					}
-				});
-			}
-				if(cart_opt_val.length  !== 0) {		//선택한 (추가)옵션 삭제
-					Csrf.Set(_CSRF_NAME_); 
-					$.ajax({
-						type: "POST",
-						url: "/shop/cart/cart_proc_ajax?ajax_mode=DEL_OPT",
-						dataType: 'json',
-						data: {cart_opt_seq: cart_opt_val},
-						success: function(res){
-							location.reload();
-						},
-						error: function(res){
-							alert(res.responseText);
-						}
-					});
-				}
-			}
-		}else{
-			alert("삭제할 상품을 선택해 주세요.");
-			return false;
-		}
+	        if (selectedItems.length > 0) {
+	            $.ajax({
+	                url: '/delete-items',
+	                type: 'POST',
+	                contentType: 'application/json',
+	                data: JSON.stringify(selectedItems),
+	                success: function(response) {
+	                    if (response === 'success') {
+	                        location.reload(); // 페이지 새로고침
+	                    } else {
+	                        alert('삭제 실패');
+	                    }
+	                },
+	                error: function() {
+	                    alert('서버 오류');
+	                }
+	            });
+	        } else {
+	            alert('선택된 항목이 없습니다.');
+	        }
+	    });
 	});
-	function box_qty(e, add){
-		var qty				=	parseInt( $(e).siblings('.qty').val() ) + parseInt(add);
-		var cart_seq		=	$(e).parents('.quantity').data('cart-seq');
-		var opt_gb			=	$(e).parents('.quantity').data('opt-gb');
-		var product_cd      =	$(e).parents('.quantity').data('product-cd');
-		//	alert(product_cd);
-		if( qty > 0 ){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.ajax({
-			       type: "POST",
-			       url: "/shop/cart/cart_proc_ajax?ajax_mode=UPD_QTY",
-			       dataType: 'json',
-				   async: false,
-			       data: {cart_seq: cart_seq, qty: qty, opt_gb : opt_gb, product_cd : product_cd},
-			       success: function(res){
-				       if($.trim(res.status) == "ok"){
-							//$(e).siblings('.qty').val(qty);
-							//alert('test');
-							//$('.tab_area').load(location.href+' .tab_area');
-							location.href='/shop/cart/cart_lists?upt=Y';
-				       } else{
-					       if($.trim(res.status) == "err2"){
-						       if(res.data.length > 0){
-							       var stock = parseInt(res.data[0].stock) - parseInt(res.data[0].limit_cnt);
-							       alert("재고가 부족합니다. 현재 남아있는 재고의 수는 " + stock + "개 입니다.");
-							       location.reload();
-						       }
-					       }else if($.trim(res.status) == "err3"){
-								alert('해당 옵션의 최소 수량은 ' +res.data+ '개 이상입니다. ');
-								return;
-							}else{
-						       alert(res.msg);
-						       location.reload();
-						       return;
-					       }
-				       return;
-					   }
-			       },
-			       error: function(res){
-				       alert(res.responseText);
-			       }
-		      });
-		}
-	}
+	
+	// 수량변경 및 가격 출력
+	function box_qty(element, value) {
+    var parent = element.parentNode;
+    var qtyInput = parent.querySelector('.qty');
+    var currentQty = parseInt(qtyInput.value);
+    var newQty = currentQty + value;
+    
+    var maxQty = parseInt(parent.getAttribute('data-stock'));
+    var minQty = 1; // 최소 주문 개수를 1로 설정
+    
+    if (newQty > maxQty) {
+        alert("최대주문갯수는 " + maxQty + "개 입니다");
+        return; // AJAX 요청을 보내지 않고 함수 종료
+    }
+    
+    if (newQty < minQty) {
+        alert("최소주문갯수는 " + minQty + "개 입니다");
+        return; // AJAX 요청을 보내지 않고 함수 종료
+    }
+    
+    qtyInput.value = newQty; // 이미 조건을 통해 newQty가 1 이상임을 보장
+    
+    $.ajax({
+        url: '/update-quantity.do', // 서버의 엔드포인트 URL
+        type: 'POST', // HTTP 요청 방식
+        data: {
+            orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자
+            productCode: parent.getAttribute('data-product-cd'), // 제품 코드
+            orderAmount: newQty, // 변경된 수량
+        },
+        success: function(response) {
+            console.log('수량 업데이트 성공:', response); // 성공 메시지 로깅
+            
+            $('#originalSupply_' + response.orderNo).text((response.fullPrice * response.orderAmount).toLocaleString() + '원');
+            $('#originalSale_' + response.orderNo).text(((response.fullPrice - response.discountPrice) * response.orderAmount).toLocaleString() + '원');
+            $('#originalTotal_' + response.orderNo).text((response.discountPrice * response.orderAmount).toLocaleString()+'원');
+        },
+        error: function(xhr, status, error) {
+            console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
+        }
+    });
+};
+
 	// 구매하기
 	function orderSet(state){        
 		if(state == 'a'){
@@ -516,14 +366,6 @@ var product = '["03U001"]';
 var product_cd;
 product_cd = JSON.parse(product);
 var mode ='init';
-/*
-if( product_cd ) {
-	getList('init');
-}else{
-	//$(".recommend_area").hide();  
-	getList2('init');
-}
-*/
     
 //스크롤 바닥 감지
 window.addEventListener('scroll', moreShowList);
@@ -650,7 +492,7 @@ $("#all_sel").trigger("click");
 <!-- //page_script -->
 
 <!--백로그 API-->
-<script type="text/JavaScript">
+<!-- <script type="text/JavaScript">
 	var cart_log = '{"03U001":"1"}';
 	
 	if(cart_log.length>2){
@@ -684,7 +526,7 @@ $("#all_sel").trigger("click");
             }
         });
 		
-	}
+	} -->
 </script>
 <!--백로그 API-->
 </section>

@@ -28,8 +28,14 @@ pageEncoding="UTF-8"%>
 				<ul>
 					<li>오늘:60, 어제:80, 최대:739, 전체:167994</li>
 					<li><a href="main.do">쇼핑몰</a></li>
-					<li><p>admin님 환영합니다.</p></li>
-					<li id="tnb_logout"><a href="admin_login.do">로그아웃</a></li>
+					<c:if test="${admin eq null }">
+					<li><a href="admin_login.do">로그인</a></li>
+					<li><a href="admin_setting_super.do">관리자등록</a></li>
+					</c:if>
+					<c:if test="${admin ne null }">
+					<li><p class="admin_id_bold">${admin.admin_id}님 환영합니다.</p></li>	
+					<li id="tnb_logout"><a href="admin_logout.do">로그아웃</a></li>
+					</c:if>
 				</ul>
 			</div>
 
@@ -49,7 +55,7 @@ pageEncoding="UTF-8"%>
 						<a href="admin_member_lists.do" class="gnb_1da">회원관리</a>
 					</li>
 					<li class="gnb_1dli">
-						<a href="admin_customer_inquery.do" class="gnb_1da">고객지원</a>
+						<a href="admin_customer_qna.do" class="gnb_1da">고객지원</a>
 					</li>
 					<li class="gnb_1dli">
 						<a href="admin_setting_super.do" class="gnb_1da">환경설정</a>

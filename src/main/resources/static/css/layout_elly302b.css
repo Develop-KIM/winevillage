@@ -180,7 +180,7 @@
 .order_write_page .form_area li.coupon .form_box .ip_box input{width:calc(100% - 23px)}
 .order_write_page .form_area li.coupon .form_box .btn_area button{border-color:#AC8B68;background:#AC8B68;color:#fff}
 .order_write_page .form_area li.mileage .form_box .ip_box{position:relative}
-.order_write_page .form_area li.mileage .form_box .ip_box::after{content:"마일리지";display:block;float:right;width:62px;line-height:50px;color:#555;text-align:right}
+.order_write_page .form_area li.mileage .form_box .ip_box::after{content:"포인트";display:block;float:right;width:62px;line-height:50px;color:#555;text-align:right}
 .order_write_page .form_area li.mileage .form_box .ip_box input{width:calc(100% - 62px)}
 .order_write_page .form_area li.mileage .form_box .checkbox{margin-top:10px}
 .order_write_page .form_area li.gift .form_box .ip_box{position:relative}

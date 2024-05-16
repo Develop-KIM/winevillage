@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.winevillage.winevillage.pay.IPayService">
+	
+<!-- 	<select id="memberView"
+	resultType="com.winevillage.winevillage.pay.PayDTO"
+	parameterType="com.winevillage.winevillage.pay.ParameterDTO">
+	SELECT * FROM member WHERE memberId=#{memberId}
+	</select> -->
+
+	<!-- 게시물 갯수 -->
+	<select id="totalCount" resultType="int"
+		parameterType="com.winevillage.winevillage.pay.ParameterDTO">
+		SELECT COUNT(*) FROM order_users
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+		<choose>
+			<when test="searchField == 'all' or searchField == null or searchField == ''">
+				WHERE
+				memberno LIKE '%'||#{searchKeyword}||'%' OR
+				name LIKE '%'||#{searchKeyword}||'%' OR
+				productname LIKE '%'||#{searchKeyword}||'%' OR
+				receivername LIKE '%'||#{searchKeyword}||'%' OR
+				receiverphone LIKE '%'||#{searchKeyword}||'%' OR
+				receiveraddress1 LIKE '%'||#{searchKeyword}||'%'
+			</when>
+			<otherwise>
+				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+			</otherwise>
+		</choose>
+		</if>
+	</select>
+	
+ 	<!-- 주문자 정보 -->
+<!-- 	<select id="getOrderUserInfo"
+		parameterType="com.winevillage.winevillage.pay.ParameterDTO"
+		resultType="com.winevillage.winevillage.pay.PayDTO">
+		  SELECT * FROM member WHERE memberNo = 47
+	</select> --> 
+	
+	<select id="listOrderUsers"
+		resultType="com.winevillage.winevillage.pay.PayDTO"
+		parameterType="com.winevillage.winevillage.pay.ParameterDTO">
+		SELECT * FROM (
+			SELECT Tb.*, rownum rNum FROM (
+				WITH grouped_orders AS (
+					SELECT
+					to_char(createDate,'YYYY-MM-DD HH24:MI') as createDate, memberNo, finalPrice, COUNT(*),
+					ROW_NUMBER() OVER (ORDER BY to_char(createDate,'YYYY-MM-DD HH24:MI'),
+					memberNo, finalPrice) AS orderNo
+					FROM order_users
+					GROUP BY to_char(createDate,'YYYY-MM-DD HH24:MI'), memberNo, finalPrice
+					HAVING COUNT(*) > 0
+				)
+				SELECT 
+					grouped_orders.orderNo,
+					order_users.*
+				FROM order_users
+				JOIN grouped_orders
+					ON to_char(order_users.createDate,'YYYY-MM-DD HH24:MI') = grouped_orders.createDate
+					AND order_users.memberNo = grouped_orders.memberNo
+					AND order_users.finalPrice = grouped_orders.finalPrice
+				<if test="searchKeyword!=null and !searchKeyword.equals('')">
+				<choose>
+					<when test="searchField == 'all' or searchField == null or searchField == ''">
+						WHERE
+						memberno LIKE '%'||#{searchKeyword}||'%' OR
+						name LIKE '%'||#{searchKeyword}||'%' OR
+						productname LIKE '%'||#{searchKeyword}||'%' OR
+						receivername LIKE '%'||#{searchKeyword}||'%' OR
+						receiverphone LIKE '%'||#{searchKeyword}||'%' OR
+						receiveraddress1 LIKE '%'||#{searchKeyword}||'%'
+					</when>
+					<otherwise>
+						WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+					</otherwise>
+				</choose>
+				</if>
+				ORDER BY grouped_orders.orderNo DESC
+			)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start}
+		AND rNum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="listPage"
+		resultType="com.winevillage.winevillage.product.ProductDTO"
+		parameterType="com.winevillage.winevillage.product.ParameterDTO">
+		SELECT * FROM (
+		SELECT Tb.*, rownum rNum FROM (
+		SELECT * FROM product
+		<if test="searchKeyword!=null and !searchKeyword.equals('')">
+		<choose>
+			<when test="searchField == 'all' or searchField == null or searchField == ''">
+				WHERE
+				memberno LIKE '%'||#{searchKeyword}||'%' OR
+				name LIKE '%'||#{searchKeyword}||'%' OR
+				productname LIKE '%'||#{searchKeyword}||'%' OR
+				receivername LIKE '%'||#{searchKeyword}||'%' OR
+				receiverphone LIKE '%'||#{searchKeyword}||'%' OR
+				receiveraddress1 LIKE '%'||#{searchKeyword}||'%'
+			</when>
+			<otherwise>
+				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+			</otherwise>
+		</choose>
+		</if>
+		ORDER BY productno DESC
+		)Tb
+		)
+		WHERE rNum<![CDATA[>=]]>#{start}
+		AND rNum<![CDATA[<=]]>#{end}
+	</select>
+	
+	<select id="listOrder"
+	    parameterType="com.winevillage.winevillage.pay.ParameterDTO"
+	    resultType="com.winevillage.winevillage.pay.OrderDTO">
+	    SELECT p.ProductName, p.ProductImg, o.OrderAmount, p.wine, p.country, p.discountPrice, o.createDate, o.orderStatus, o.productCode
+	    FROM Orders o
+	    JOIN Member m ON o.MemberNo = m.MemberNo
+	    JOIN Product p ON o.ProductCode = p.ProductCode
+	    WHERE m.MemberNo = #{memberNo}
+	</select>
+	
+	<select id="memberView" parameterType="string" resultType="com.winevillage.winevillage.pay.PayDTO">
+	    SELECT MemberNo, MemberId, Name, PhoneNumber, Email, address1, address2, points
+	    FROM Member
+	    WHERE MemberId = #{memberId}
+	</select>
+	
+	
+<!-- 	<select id="listOrder"
+		parameterType="com.winevillage.winevillage.pay.ParameterDTO"
+		resultType="com.winevillage.winevillage.pay.PayDTO">
+		SELECT *
+			FROM (
+ 				 SELECT tb.*, ROWNUM rNum
+ 					 FROM (
+ 					   SELECT p.ProductName, p.DiscountPrice, m.Name, 
+ 					   			m.PhoneNumber, m.Points, o.orderAmount, m.Email, m.memberNo, m.address1, m.address2, p.productImg, p.wine, p.country, o.orderStatus, o.cookie_id
+  						  FROM Orders o
+   						 INNER JOIN Member m ON o.MemberNo = m.MemberNo
+   						 INNER JOIN Product p ON o.ProductNo = p.ProductNo
+  					) tb
+			)
+		WHERE  memberNo= #{memberNo}
+	</select>  -->
+	
+	<insert id="write" parameterType="com.winevillage.winevillage.pay.PayDTO">
+	  INSERT INTO Order_users (
+	        order_usersNo,
+	        name, email, phoneNumber, address1, orderRequest,
+	        discountPrice, 
+	        orderAmount, points, finalPrice, memberNo,
+	        receiverName, receiverPhone, receiverAddress
+	    )
+	    VALUES (
+	        order_users_seq.NEXTVAL,
+	        #{name}, #{email}, #{phoneNumber}, #{address1}, #{orderRequest},
+	        #{discountPrice},
+	        #{orderAmount}, #{points}, #{finish_price_span}, 47,
+	        #{re_name}, #{re_hp}, #{re_address1}
+	    )
+	</insert>
+	
+		<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		   INSERT INTO order_users (
+		    Order_usersNo, name, email, phoneNumber, address1, orderRequest,
+		    points, finalPrice, memberNo,
+		    receiverName, receiverPhone, receiverAddress1,
+		    productName, productImg, wine, country, discountPrice, orderAmount, orderStatus
+		 
+		  ) VALUES (
+		    order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest},
+		    #{usedPoints}, #{finalPrice}, #{memberNo},
+		    #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1},
+		    #{productName}, #{productImg}, #{wine}, #{country}, #{discountPrice}, #{orderAmount}, #{orderStatus}
+
+		  )
+		</insert>
+			
+<!-- 	<insert id="writeRest" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		  INSERT INTO order_users (
+		        Order_usersNo, name, email, phoneNumber, address1, orderRequest,
+		        discountPrice, orderAmount, points, finalPrice, memberNo, productImg,
+		        receiverName, receiverPhone, receiverAddress1, orderStatus
+		    ) VALUES (
+		        order_users_seq.NEXTVAL, #{orderInfo.name}, #{orderInfo.email}, #{orderInfo.phoneNumber}, #{orderInfo.address1}, #{orderInfo.orderRequest}, 
+		        #{productItems.discountPrice}, #{productItems.orderAmount}, #{usedPoints}, #{finalPrice}, #{productItems.memberNo}, #{productItems.productImg},
+		        #{orderInfo.re_name}, #{orderInfo.re_hp}, #{orderInfo.address1}, #{productItems.orderStatus}
+		    )
+    </insert> -->
+	
+	<update id="updateOrderStatus" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+         UPDATE order_users
+		  SET orderStatus = 'PAYMENT_COMPLETED'
+		  WHERE productName = #{productName}
+		    AND productImg = #{productImg}
+		    AND memberNo = #{memberNo}
+    </update>
+    
+	<delete id="deleteOrder" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		  DELETE FROM order_users
+		  WHERE productName = #{productName}
+		    AND productImg = #{productImg}
+		    AND memberNo = #{memberNo}
+	</delete>
+	
+	<delete id="deleteOrderCart" parameterType="com.winevillage.winevillage.pay.OrderDTO">
+		  DELETE FROM orders
+		  WHERE orderStatus = 'PAYMENT_PENDING'
+		    AND memberNo = #{memberNo}
+	</delete>
+    
+</mapper> 

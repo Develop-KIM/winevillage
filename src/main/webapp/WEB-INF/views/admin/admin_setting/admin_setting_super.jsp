@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%-- <%@ include file="../admin_common/admin_isLoggedin.jsp" %> --%>
 <!doctype html>
 <html lang="ko">
 <head>
 <body>
 <%@ include file="../admin_common/admin_header.jsp"%>
+<script src="js/admin_setting.js"></script>
 <div id="wrapper">
 	
 <div id="snb">
@@ -46,27 +48,27 @@ pageEncoding="UTF-8"%>
 								<tr>
 									<th scope="row">관리자 ID</th>
 									<td>
-										<input type="text" name="admin_id" value="" required itemname="관리자id" class="frm_input required">
+										<input id="admin_id" type="text" name="admin_id" value="" required itemname="관리자id" class="frm_input required">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">이름</th>
 									<td>
-										<input type="text" name="admin_name" value="" required itemname="관리자이름" class="frm_input required">
+										<input id="admin_name" type="text" name="admin_name" value="" required itemname="관리자이름" class="frm_input required">
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">비밀번호</th>
 									<td>
-										<input type="password" name="admin_pass" value="" required itemname="관리자pass" class="frm_input required">
+										<input id="admin_pass" type="password" name="admin_pass" value="" required itemname="관리자pass" class="frm_input required">
 									</td>
 								</tr>
-<!-- 								<tr>
+ 								<tr>
 									<th scope="row">비밀번호 확인</th>
 									<td>
-										<input type="password" name="name" value="" required itemname="관리자pass2" class="frm_input required">
+										<input id="admin_pass_re" type="password" name="name" value="" required itemname="관리자pass2" class="frm_input required">
 									</td>
-								</tr> -->
+								</tr>
 								<tr>
 									<th scope="row">이메일주소</th>
 									<td>
@@ -76,7 +78,7 @@ pageEncoding="UTF-8"%>
 								</tr>
 								<tr>
 									<th scope="row">핸드폰</th>
-									<td><input type="text" name="admin_phone" value="010-0000-0000" required itemname="핸드폰"
+									<td><input type="text" name="admin_phone" value="" required itemname="핸드폰" placeholder="010-0000-0000"
 											class="frm_input required"></td>
 								</tr>
 							</tbody>
@@ -84,7 +86,7 @@ pageEncoding="UTF-8"%>
 					</div>
 
 					<div class="btn_confirm">
-						<input type="submit" value="등록" class="btn_large" accesskey="s">
+						<input id="admin_signup" type="submit" value="등록" class="btn_large" accesskey="s">
 					</div>
 				</form>
 			</div>

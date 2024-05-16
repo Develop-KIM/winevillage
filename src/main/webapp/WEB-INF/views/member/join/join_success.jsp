@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>WINE VILLAGE | 회원가입</title>
 </head>
+<script type="text/javascript">
+    function moveToMainPage() {
+        window.location.href = "/main.do"; // 메인 페이지로 이동
+    }
+</script>
 <body>
 	<%@ include file="../../common/common.jsp"%>
 	<section id="contents">
@@ -28,9 +33,8 @@
 						<span>회원가입</span>
 					</h2>
 					<ul>
-						<li class="">1. 이용약관 동의</li>
-						<li class="">2. 회원정보 입력</li>
-						<li class="on">3. 회원가입 완료</li>
+						<li class="">1. 회원정보 입력</li>
+						<li class="on">2. 회원가입 완료</li>
 					</ul>
 				</div>
 			</div>
@@ -52,14 +56,16 @@
 						<div class="form_area"></div>
 						<div>
 							<h2 style="text-align: center; font-size: 32px;">
-								<strong style="font-weight: 500;">ㅇㅇㅇ</strong>님 회원가입을 환영합니다.
+								<strong style="font-weight: 500;"><%=session.getAttribute("memberName")%></strong>님
+								회원가입을 환영합니다.
 							</h2>
 						</div>
 						<div class="btn_area">
-							<button type="button" class="btn_txt btn_black">메인페이지로
+							<button type="button" class="btn_txt btn_black" onclick="moveToMainPage()">메인페이지로
 								이동</button>
 						</div>
 					</div>
+
 
 					<!-- 통합회원 조회 레이어 -->
 					<div class="layer m_view_layer" id="m_view_layer">
