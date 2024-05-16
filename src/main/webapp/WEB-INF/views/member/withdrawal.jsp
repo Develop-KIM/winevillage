@@ -9,35 +9,11 @@
 <!-- /Added by HTTrack -->
 
 <head>
-<title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
+<title>WINEVILLAGEㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 
 </head>
 <script type="text/javascript"
 	src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
-<script>
-function confirmLeave() {
-    if (confirm("정말로 회원을 탈퇴하시겠습니까?")) {
-        // AJAX 요청으로 변경
-        fetch("/withdrawal.do", {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(response => response.text())
-        .then(data => {
-            if(data.startsWith("http")) {
-                window.location.href = 'main.do'; // 응답받은 주소로 리다이렉트
-            } else {
-            	window.location.href = 'main.do';
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
-}
-</script>
 
 <body>
 	<%@ include file="../common/common.jsp"%>
@@ -48,18 +24,11 @@ function confirmLeave() {
 			<ul class="depth_01">
 				<li><a href="javascript:void(0);">나의 쇼핑</a>
 					<ul class="depth_02">
-						<li><a href="/order_list.do">주문내역</a></li>
-						<li><a href="/return_order_list.do">교환/반품내역</a></li>
-						<li><a href="/wish_lists.do">위시리스트</a></li>
+						<li><a href="/member/order_list.do">주문내역</a></li>
+						<li><a href="/member/wish_list.do">위시리스트</a></li>
 						<li><a href="/cart_list.do">장바구니</a></li>
-						<li><a href="/mileage_list.do">나의 마일리지</a></li>
-					</ul></li>
-				<li><a href="#none">개인정보</a>
-					<ul class="depth_02">
-						<li><a href="/qna_list.do">문의내역확인</a></li>
-						<li><a href="/password_cert.do">회원정보수정</a></li>
-						<li><a href="/change_password.do">비밀번호 변경</a></li>
-						<li class="on"><a href="/withdrawal.do">회원탈퇴</a></li>
+						<li><a href="/member/qna_list.do">문의내역확인</a></li>
+						<li class="on"><a href="/member/withdrawal.do">회원탈퇴</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -69,7 +38,7 @@ function confirmLeave() {
 			<h2 class="page_tit">회원탈퇴</h2>
 			<div class="ok_area">
 				<p class="tit">
-					와인나라 쇼핑몰 <br class="pc_hidden">회원탈퇴를 원하시나요?
+					와인빌리지 쇼핑몰 <br class="pc_hidden">회원탈퇴를 원하시나요?
 				</p>
 				<p class="txt">
 					서비스 탈퇴 시 고객님의 회원정보 및 활동내역이 <br class="pc_hidden">모두 삭제되며 <br
@@ -85,4 +54,36 @@ function confirmLeave() {
 <footer>
 	<%@ include file="../common/footer.jsp"%>
 </footer>
+<script>
+function confirmLeave() {
+    if (confirm("회원 탈퇴를 진행하시겠습니까?")) {
+        fetch("/member/withdrawal.do", {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // 사용자 정보가 저장된 로컬 스토리지 또는 세션 스토리지 항목 제거
+                localStorage.removeItem('userInfo');
+                sessionStorage.removeItem('userInfo');
+                
+                // 서버에서 전달한 redirectUrl 대신 직접 "/main.do"로 리다이렉트
+                window.location.href = "/main.do";
+                
+                // 페이지 새로고침을 통해 클라이언트 상태 초기화 (선택적)
+                // window.location.reload(true);
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+}
+
+</script>
 </html>

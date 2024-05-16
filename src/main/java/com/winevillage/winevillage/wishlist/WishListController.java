@@ -2,7 +2,9 @@ package com.winevillage.winevillage.wishlist;
 
 import java.security.Principal;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,16 +30,19 @@ public class WishListController {
 	}
 	
 	@GetMapping("/member/wish_list.do")
-	public String wish_list(Model model,HttpServletRequest request, Principal principal ) {
+	public String wish_list(Model model,HttpServletRequest request, Principal principal) {
 		if (principal == null) {
 		        return null; 
 		    } else {
 		        String user_id = principal.getName();
 		        String memberNo = wishListService.getMemberNo(user_id);
         List<?> wishList;
-        
+        int totalCount = wishListService.wishListCount(memberNo);
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("totalCount", totalCount);
         wishList = wishListService.WishListView(memberNo);
 		model.addAttribute("wishList", wishList);
+		model.addAttribute("maps", maps);
 		
 		return "order/wish_list";
 		    }

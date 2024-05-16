@@ -187,14 +187,14 @@
 										class="prd_img table_box">
 										<picture>
 										<source
-											srcset="../uploads/product/200/${product.productImg }"
+											srcset="/uploads/product/200/${product.productImg }"
 											media="(min-width:1024px)">
 										<!-- pc이미지 -->
 										<source
-											srcset="../uploads/product/200/${product.productImg }"
+											srcset="/uploads/product/200/${product.productImg }"
 											media="(max-width:1023px)">
 										<!-- mb이미지 --> <img
-											src="..../uploads/product/200/${product.productImg }"
+											src="/uploads/product/200/${product.productImg }"
 											loading="lazy" alt=""><!-- pc이미지 --> </picture>
 									</a>
 									<div class="btn">
@@ -220,7 +220,7 @@
 								<div class="info">
 									<div class="more_info">
 										<p class="prd_name">
-											<a href="/product_view.do">
+											<a href="/product_view.do?category=${category == null || category == '' ? 'wine' : category}&state=${state == null || state == '' ? 'value' : state}&sort=${sort == null || sort == '' ? 'recent' : sort}&productCode=${product.productCode}">
 											<span>${product.productName }</span><span class="en"></span></a>
 										</p>
 										<p class="prd_info">${product.productInfo }</p>

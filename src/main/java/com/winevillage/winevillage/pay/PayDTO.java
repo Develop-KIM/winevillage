@@ -1,7 +1,5 @@
 package com.winevillage.winevillage.pay;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
@@ -23,20 +21,20 @@ public class PayDTO {
 	private int points;
 	private String role;
 	
-//	private int orderNo;
-//	private java.sql.Date orderDate;
-//	private int orderAmount;
-//	private String orderStatus;
-//	private String orderRequest;
+	private int orderNo;
+	private java.sql.Date orderDate;
+	private int orderAmount;
+	private String orderStatus;
+	private String orderRequest;
 	
-//	private int productNo;
-//	private String productId;
-//	private String productName;
-//	private int discountPrice;
-//	private String productImg;
-//	private String fullPrice;
-//	private String country;
-//	private String wine;
+	private int productNo;
+	private String productId;
+	private String productName;
+	private int discountPrice;
+	private String productImg;
+	private String fullPrice;
+	private String country;
+	private String wine;
 	
 	private String cookie_id;
 	

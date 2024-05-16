@@ -44,8 +44,8 @@ function directOrder() {
 	<div class="wrap" style="padding-top: 80px">
 	<p>회원 번호: ${sessionScope.memberNo}</p>
 	<p>회원 번호: ${user.memberNo}</p>
-	<input type="hid-den" name="userId" id="userId" value="${user.memberId}">
-	<input type="hid-den" name="memberNo" id="memberNo" value="${user.memberNo}">
+	<input type="hidden" name="userId" id="userId" value="${user.memberId}">
+	<input type="hidden" name="memberNo" id="memberNo" value="${user.memberNo}">
 		<c:set var="wineStyles"
 			value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
 		<div class="content product product_view_page product_lists_page">

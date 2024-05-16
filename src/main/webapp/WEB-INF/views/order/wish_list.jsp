@@ -8,43 +8,6 @@
 
 <head>
 <title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
-<script>
-	function wishlist(element) {
-		var productCode = element.parentNode.getAttribute('data-product-cd');
-		let isAdded = $('.wish_' + productCode).hasClass('on');
-
-		if (!isAdded) {
-			// 위시리스트에 추가
-			$.ajax({
-				url : '/addToWishList',
-				type : 'POST',
-				data : {
-					productCode : productCode,
-				},
-				success : function(response) {
-					$('.wish_' + productCode).addClass('on')
-				},
-				error : function(xhr, status, error) {
-					console.error("Ajax 요청 실패: ", status, error);
-				}
-			});
-		} else {
-			$.ajax({
-				url : '/deleteWishList',
-				type : 'POST',
-				data : {
-					productCode : productCode,
-				},
-				success : function(response) {
-					$('.wish_' + productCode).removeClass('on')
-				},
-				error : function(xhr, status, error) {
-					console.error("Ajax 요청 실패: ", status, error);
-				}
-			});
-		}
-	};
-</script>
 </head>
 <script type="text/javascript"
 	src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
@@ -57,18 +20,11 @@
 			<ul class="depth_01">
 				<li><a href="javascript:void(0);">나의 쇼핑</a>
 					<ul class="depth_02">
-						<li><a href="/order_list.do">주문내역</a></li>
-						<li><a href="/return_order_list.do">교환/반품내역</a></li>
-						<li class="on"><a href="/wish_list.do">위시리스트</a></li>
-						<li><a href="/cart_list.do">장바구니</a></li>
-						<li><a href="/mileage_list.do">나의 마일리지</a></li>
-					</ul></li>
-				<li><a href="#none">개인정보</a>
-					<ul class="depth_02">
-						<li><a href="/qna_list.do">문의내역확인</a></li>
-						<li><a href="/password_cert.do">회원정보수정</a></li>
-						<li><a href="/change_password.do">비밀번호 변경</a></li>
-						<li><a href="/withdrawal.do">회원탈퇴</a></li>
+						<li><a href="/member/order_list.do">주문내역</a></li>
+						<li class="on"><a href="/member/wish_list.do">위시리스트</a></li>
+						<li><a href="/member/cart_list.do">장바구니</a></li>
+						<li><a href="/member/qna_list.do">문의내역확인</a></li>
+						<li><a href="/member/withdrawal.do">회원탈퇴</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -84,10 +40,10 @@
 				<button type="button" class="btn_select">선택삭제</button>
 				<button type="button" class="btn_all">전체삭제</button>
 			</div>
-			<div class="prd_list_area">
-				<div class="search_result">
+			<div class="prd_list_area" style="position:relative">
+				<div class="search_result" style="display: block; z-index: 999; left: 141px; top: -76px; border: none;">
 					<p class="result">
-						총<span>1</span>개의 상품
+						총<span>${maps.totalCount}</span>개의 상품
 					</p>
 				</div>
 				<ul class="n_prd_list" id="wish_ul">

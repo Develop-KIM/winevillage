@@ -18,7 +18,7 @@
 	<div class="pc_lnb mb_hidden">
 		<div class="img">
 			<video width="100%" height="auto" autoplay="" muted="" loop="" playsinline="">
-			<source src="images/wine.mp4">
+			<source src="/images/wine.mp4">
 			</video>
 			<!-- <img src="images/shop/product/p_.jpg" alt="상단타이틀 이미지"> -->
 			<!-- <img src="images/shop/product/p_.jpg" alt="상단타이틀 이미지"> -->
@@ -63,7 +63,7 @@
 				</div>
 				<div class="prd_list_area">
 					<div class="search_result">
-						<div class="second_order">
+<!-- 						<div class="second_order">
 							<select name="js_select" id="js_select" class="">
 								<option value="C">높은 가격순</option>
 								<option value="B">낮은 가격순</option>
@@ -71,7 +71,7 @@
 								<option value="A">최신순</option>
 							</select>
 						</div>
-						<p class="result">
+ -->						<p class="result">
 						    총 <span class="total_count_text">
 						    <c:choose>
 						        <c:when test="${actionBtn == 'search'}">
@@ -92,15 +92,15 @@
 						<li>
 						<div class="item">
 							<div class="main_img" style="background: ${empty row.wine ? '#fff' : wineStyles[row.wine]};">
-								<a href="/product_view.do?category=${category }&productNo=${row.productNo}" class="prd_img table_box">
+								<a href="/product_view.do?category=${category }&productCode=${row.productCode}" class="prd_img table_box">
 								<picture>
 								<!--[if IE 9]><video style="display: none;"><![endif]-->
-								<source srcset="uploads/product/200/${row.productImg }" media="(min-width:1024px)">
+								<source srcset="/uploads/product/200/${row.productImg }" media="(min-width:1024px)">
 								<!-- pc이미지 -->
-								<source srcset="uploads/product/200/${row.productImg }" media="(max-width:1023px)">
+								<source srcset="/uploads/product/200/${row.productImg }" media="(max-width:1023px)">
 								<!-- mb이미지 -->
 								<!--[if IE 9]></video><![endif]-->
-								<img src="uploads/product/200/${row.productImg }" loading="lazy" alt="">
+								<img src="/uploads/product/200/${row.productImg }" loading="lazy" alt="">
 								<!-- pc이미지 -->
 								</picture>
 								</a>

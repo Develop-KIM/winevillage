@@ -12,4 +12,5 @@ public interface WishListMapper {
     List<WishListDTO> getWishList(String memberNo);
     List<WishListDTO> WishListView(String memberNo);
     String getMemberNo(String user_id);
+    int wishListCount(String memberNo);
 }

@@ -47,5 +47,8 @@ public class WishListService {
 	public String getMemberNo(String user_id) {
         return wishListMapper.getMemberNo(user_id);
     }
-
+	
+	public int wishListCount(String memberNo) {
+		return wishListMapper.wishListCount(memberNo);
+	}
 }
