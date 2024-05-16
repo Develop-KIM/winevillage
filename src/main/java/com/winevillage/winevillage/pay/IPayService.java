@@ -36,6 +36,8 @@ public interface IPayService {
 	public int updateOrderStatus(OrderDTO orderDTO);
 	//주문서삭제
 	public int deleteOrder(OrderDTO orderDTO);
+	//장바구니에서 삭
+	public int deleteOrderCart(OrderDTO orderDTO);
 	//시큐리티 세션 값 정보 가져오기
 	public PayDTO memberView(String userId);
 //	public OrderDTO ordermemberView(String userId);
