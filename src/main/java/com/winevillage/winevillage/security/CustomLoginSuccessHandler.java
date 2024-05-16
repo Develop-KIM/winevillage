@@ -41,24 +41,19 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 		HttpSession session = request.getSession();
 
 		// 사용자 ID 세션에 저장
-		String user_id = authentication.getName(); // 사용자 ID 가져오기
-		session.setAttribute("userId", user_id); // 세션에 사용자 ID 저장
+		String user_id = authentication.getName();
 		String name = memberService.findByName(user_id);
 		int point = memberService.findByPoint(user_id);
-		int memberNo1 = memberService.findByPoint(user_id);
+		session.setAttribute("userId", user_id);
 		session.setAttribute("name", name);
 		session.setAttribute("point", point);
-//    	session.setAttribute("memberNo1", memberNo1);
 
-		// COOKIE_ID 확인 후 주문 정보 업데이트
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("COOKIE_ID")) {
-					// Orders 테이블에서 cookie_id를 찾아 memberNo를 업데이트하고 cookie_id를 삭제
 					String memberNo = cartListService.getMemberNo(user_id);
 					cartListService.updateMemberCart(cookie.getValue(), memberNo);
-//	                    // 쿠키 삭제
 					cookie.setMaxAge(0);
 					response.addCookie(cookie);
 					break;

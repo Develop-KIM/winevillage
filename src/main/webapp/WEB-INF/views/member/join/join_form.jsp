@@ -152,8 +152,8 @@
 												id="addr_open">우편번호찾기</button>
 										</div>
 										<div class="add_box_02">
-											<input type="text" id="address1" name="address1">
-											<input type="text" id="address2" name="address2">
+											<input type="text" id="address1" name="address1"> <input
+												type="text" id="address2" name="address2">
 										</div>
 									</div>
 								</li>
@@ -191,73 +191,13 @@
 
 		<div id="layer"
 			style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-			<img
-				src="../../../../t1.daumcdn.net/postcode/resource/images/close.png"
-				id="btnCloseLayer"
-				style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+			<img src="/images/mypage/ico_del_lightgray.png" id="btnCloseLayer"
+				style="cursor: pointer; position: absolute; right: 0; top: 0; z-index: 1"
 				onclick="closeDaumPostcode()" alt="닫기 버튼">
 		</div>
 
 		<script>
     
-    /* function chk_wine_member(){
-        var name = $('#user_nm').val();
-        var phone = $('#phone').val();
-        if(!name || !phone){
-            alert('성인인증을 진행해주세요.');
-            $('#auth_btn').focus();
-            return false;
-        }else{
-            Csrf.Set(_CSRF_NAME_); //토큰 초기화
-            $.ajax({
-                type:'POST',
-                url :'/shop/auth/chk_wine_member',
-                data : {'name':name, 'phone':phone},
-                dataType:'json',
-                success:function(res){
-                    if(res.state == 'Y'){
-                        wine_mem_chk = true;
-                        console.log(res.data);
-                        if(res.data.length !== 0){
-                            var input="";
-                            var i = 1;
-                            merge_mem_chk = false;
-                            $.each(res.data, function(index, entry){
-                                input += "<li>"
-                                        + "<div class='checkbox type2'>"
-                                        + "<input type='radio' id='m_view0"+i+"' name='mem_num' value='"+entry.q_cst+"' data-shop='"+entry.q_shop+"'>"
-                                        + "<label for='m_view0"+i+"'>"
-                                        + "<span class='tit'>"
-                                        + "<em>"+entry.q_cst_knm+"</em>"
-                                        + entry.q_tel_1
-                                        + "</span>"
-                                        + "<span>"
-                                        + "회원번호 : "+entry.q_cst+"<br>"
-                                        + "가입매장 : "+entry.q_shop_nm
-                                        + "</span>"
-                                        + "</label>"
-                                        + "</div>"
-                                        + "</li>"
-                                i++;
-                            });
-                            $('#wine_mem_list').empty();
-                            $('#wine_mem_list').append(input);
-                            commonUI.layer.open('m_view_layer.html');
-                        }else{
-                            alert(res.msg);
-                        }
-                        
-                    }else{
-                        alert('통합회원 조회 중 오류가 발생했습니다.');
-                    }
-                },error:function(res){
-                    alert('통합회원 조회 중 오류가 발생했습니다.');
-                    console.log(res);
-                }
-            })
-        }
-
-    } */
     var wine_mem_chk = false;
     var merge_mem_chk = true;
     function auth_type_check(){

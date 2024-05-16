@@ -71,10 +71,13 @@ function multiDelete() {
 			</div>
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
-				<dd class="h10 active">
+				<dd class="h10">
 					<a href="admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
+				</dd>
+				<dd class="h10 active">
+					<a href="admin_customer_chat.do">1:1 채팅문의</a>
 				</dd>
 				<dd class="h10">
 					<a href="admin_customer_withdrawal.do">회원 탈퇴내역</a>

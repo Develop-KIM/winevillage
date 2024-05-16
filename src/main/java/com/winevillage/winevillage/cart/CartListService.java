@@ -68,5 +68,10 @@ public class CartListService {
     	return cartListMapper.updateMemberCart(memberNo, cookieId);
     }
     
+    public CartListDTO getCartList(Long orderNo, String productCode) {
+        return cartListMapper.getCartList(orderNo, productCode);
 
+    }
 }
+    
+

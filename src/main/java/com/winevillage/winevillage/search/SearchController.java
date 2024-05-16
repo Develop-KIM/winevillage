@@ -47,6 +47,7 @@ public class SearchController {
 	        model.addAttribute("totalCountKeyword", totalCountKeyword);
 	        model.addAttribute("actionBtn", actionBtn);
 	        
+	        System.out.println(searchDTO.getProductCode());
 	    } 
 	    else if("apply".equals(actionBtn)){
 	    	System.out.println("apply=" +actionBtn);

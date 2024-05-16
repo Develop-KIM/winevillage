@@ -21,6 +21,9 @@ pageEncoding="UTF-8"%>
 					</a>
 				</dd>
 				<dd class="h10">
+					<a href="admin_customer_chat.do">1:1 채팅문의</a>
+				</dd>
+				<dd class="h10">
 					<a href="admin_customer_withdrawal.do">회원 탈퇴내역</a>
 				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
