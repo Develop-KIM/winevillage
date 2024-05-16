@@ -26,7 +26,8 @@ public class PayDTO {
 	private int orderAmount;
 	private String orderStatus;
 	private String orderRequest;
-	
+	private int order_rowspan;
+	private String createDate;
 	private int productNo;
 	private String productId;
 	private String productName;
@@ -35,7 +36,6 @@ public class PayDTO {
 	private String fullPrice;
 	private String country;
 	private String wine;
-	
 	private String cookie_id;
 	
 	private int order_usersNo;

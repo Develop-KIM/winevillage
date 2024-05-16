@@ -1,6 +1,7 @@
 package com.winevillage.winevillage.chat;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Component;
@@ -45,7 +46,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 					throws Exception {
 		CLIENTS.remove(session.getId());
 		
-		TextMessage message = new TextMessage("sender_leaveSOIEFHJ234NIE29035920354WFIE|text");
+		TextMessage message = new TextMessage("00sender_leaveSOIEFHJ234NIE29035920354WFIE|text");
 		CLIENTS.entrySet().forEach( arg->{
             try {
                 arg.getValue().sendMessage(message);
@@ -68,7 +69,17 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			TextMessage message) 
 					throws Exception {
 		//메세지를 보낸 사용자의 웹소켓 세션값을 얻어온다. 
-		String id = session.getId();		
+		String id = session.getId();
+		
+		
+		String chatName = message.getPayload();
+		
+		Map<String, Object> sessionAttributes = session.getAttributes();
+        if (!sessionAttributes.containsKey("chatName")) {
+            sessionAttributes.put("chatName", chatName);
+        }
+		
+		
 		//Map에 저장된 클라이언트의 수만큼 반복한다. 
         CLIENTS.entrySet().forEach( arg->{
         	/*

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -77,7 +78,7 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <h2>기본검색</h2>
 <form name="fsearch" id="fsearch" method="get">
-<input type="hidden" name="code" value="list">
+<!-- <input type="hidden" name="code" value="list"> -->
 <div class="tbl_frm01">
 	<table>
 	<colgroup>
@@ -88,21 +89,16 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">검색어</th>
 		<td>
-			<select name="sfl">
-				<option value="od_no">주문번호</option>
-				<option value="od_name">주문상품</option>
-				<option value="mb_id">회원아이디</option>
-				<option value="name">주문자명</option>
-				<option value="deposit_name">입금자명</option>
-				<option value="bank">입금계좌</option>
-				<option value="b_name">수령자명</option>
-				<option value="b_telephone">수령자집전화</option>
-				<option value="b_cellphone">수령자핸드폰</option>
-				<option value="delivery_no">운송장번호</option>
-				<option value="seller_id">판매자ID</option>
-				<option value="pt_id">가맹점ID</option>
+			<select name="searchField">
+				<option value="all">전체</option>
+				<option value="memberNo">회원번호</option>
+				<option value="name">주문자</option>
+				<option value="productName">주문상품</option>
+				<option value="receiverName">수령자명</option>
+				<option value="receiverPhone">수령자전화번호</option>
+				<option value="receiverAddress1">수령주소</option>
 			</select>
-			<input type="text" name="stx" value="" class="frm_input" size="30">
+			<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 		</td>
 	</tr>
 <!-- 	<tr>
@@ -146,24 +142,30 @@ pageEncoding="UTF-8"%>
 </form>
 
 <div class="local_ov mart30">
-	전체 : <b class="fc_red">34</b> 건 조회
-	<select id="page_rows" onchange="location='/admin/order.php?code=list&page=1&page_rows='+this.value;" class="marl5">
+	전체 : <b class="fc_red">${maps.totalCount }</b> 건 조회
+	<!-- <select id="page_rows" onchange="location='/admin/order.php?code=list&page=1&page_rows='+this.value;" class="marl5">
 		<option value="30" selected="selected">30줄 정렬</option>
 		<option value="50">50줄 정렬</option>
 		<option value="100">100줄 정렬</option>
 		<option value="150">150줄 정렬</option>
-	</select>
-	<strong class="ov_a">총주문액 : 2,437,700원</strong>
+	</select> -->
+	<c:set var="totalPrice" value="0" />
+	<c:forEach items="${lists}" var="item">
+	    <c:set var="totalPrice" value="${totalPrice + item.finalPrice}" />
+	</c:forEach>
+	<!-- <strong class="ov_a">총주문액 : 2,437,700원</strong> -->
+	<strong class="ov_a">총주문액 : <fmt:formatNumber value="${totalPrice}" type="number" groupingUsed="true"/>원</strong>
 </div>
 
 <form name="forderlist" id="forderlist" method="post">
 <input type="hidden" name="q1" value="code=list">
 <input type="hidden" name="page" value="1">
 
-<div class="local_frm01">
+<!-- <div class="local_frm01">
 	<a href="#" id="frmOrderPrint" class="btn_lsmall white"><i class="fa fa-print"></i> 주문서출력</a>
-<a href="#" id="frmOrderExcel" class="btn_lsmall white"><i class="fa fa-file-excel-o"></i> 선택 엑셀저장</a>
-<a href="./order/order_excel.php?code=list" class="btn_lsmall white"><i class="fa fa-file-excel-o"></i> 검색결과 엑셀저장</a></div>
+	<a href="#" id="frmOrderExcel" class="btn_lsmall white"><i class="fa fa-file-excel-o"></i> 선택 엑셀저장</a>
+	<a href="./order/order_excel.php?code=list" class="btn_lsmall white"><i class="fa fa-file-excel-o"></i> 검색결과 엑셀저장</a>
+</div> -->
 <div class="tbl_head01">
 	<table id="sodr_list">
 	<colgroup>
@@ -172,6 +174,7 @@ pageEncoding="UTF-8"%>
 		<col class="w100">
 		<col class="w40">
 		<col class="w20">
+		<col class="w40">
 		<col>
 		<col class="w40">
 		<col class="w60">
@@ -189,7 +192,7 @@ pageEncoding="UTF-8"%>
 		<!-- 변경 --><th scope="col">회원번호</th>
 		<th scope="col"><input type="checkbox" name="chkall" value="1" onclick="check_all(this.form);"></th>
 		<!-- <th scope="col" colspan="2">주문상품</th> -->
-		<!-- null --><th scope="col">주문상품</th>
+		<!-- null --><th colspan="2" scope="col">주문상품</th>
 		<!-- null --><th scope="col">수량</th>
 		<!-- null --><th scope="col">상품금액</th>
 		<!-- 변경 --><th scope="col">수령자명</th>
@@ -209,37 +212,109 @@ pageEncoding="UTF-8"%>
 				</tr>
 			</c:when>
 			<c:otherwise>
-				<c:forEach items="${ lists }" var="item" varStatus="loop">
-					<tr class="${ loop.index % 2 == 0 ? 'list1' : 'list0' }">
-						<td><a href="/" onclick="return false;">${ item.order_usersNo }</a></td>
-						<td><a href="/" onclick="return false;"><span class="ellipsis1">주문일시(null)</span></a></td>
-						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.name }</span></a></td>
-						<td><a href="/" onclick="return false;">${ item.memberNo }</a></td>
-						<td>
-							<input type="hidden" name="od_id[0]" value="${ item.order_usersNo }">
-							<label for="chk_0" class="sound_only">주문번호 ${ item.order_usersNo }</label>
-							<input type="checkbox" name="chk[]" value="0" id="chk_0">
-						</td>
-						<td><span class="ellipsis1">주문상품(null)</span></td>
-						<td><a href="/" onclick="return false;">${ item.orderAmount }</a></td>
-						<td><span class="ellipsis1">상품금액(null)</span></td>
-						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.receiverName }</span></a></td>
-						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.receiverPhone }</span></a></td>
-						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.receiverAddress1 }</span></a></td>
-						<td><a href="/" onclick="return false;"><span class="ellipsis1">${ item.finalPrice }</span></a></td>
-						<td><a href="/" onclick="return false;">
-						<c:choose>
-							<c:when test="${ item.orderStatus == 'PAYMENT_PENDING' }">
-								<div class="btn_small red" style="cursor:initial;">결제대기</div>
-							</c:when>
-							<c:when test="${ item.orderStatus == 'PAYMENT_COMPLETED' }">
-								<div class="btn_small white" style="cursor:initial;">결제완료</div>
-							</c:when>
-							<c:otherwise>${ item.orderStatus }</c:otherwise>
-						</c:choose>
-						</a></td>
-					</tr>
-				</c:forEach>
+				<c:set var="previousOrderNo" value=""/>
+		        <c:forEach items="${lists}" var="item" varStatus="loop">
+		            <tr class="${item.orderNo % 2 == 0 ? 'list1' : 'list0'}">
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                        <a href="/" onclick="return false;">${item.orderNo}</a>
+		                    </td>
+		                </c:if>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">
+		                    		<span class="ellipsis2">${item.createDate}</span>
+		                    	</a>
+		                    </td>
+		                </c:if>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">
+		                    		<span class="ellipsis1">${item.name}</span>
+		                    		<%-- <span class="list_mb_id">(${item.memberId})</span> --%>
+		                    	</a>
+		                    </td>
+		                </c:if>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">${item.memberNo}</a>
+		                    </td>
+		                </c:if>
+		                <td style="border-left:1px solid #e4e5e7 !important;">
+		                    <input type="hidden" name="od_id[0]" value="${item.order_usersNo}">
+		                    <label for="chk_0" class="sound_only">주문번호 ${item.order_usersNo}</label>
+		                    <input type="checkbox" name="chk[]" value="0" id="chk_0">
+		                </td>
+		                <td class="td_img"><img src="../Uploads/product/200/${item.productImg}" width="30" height="30"></td>
+		                <td class="td_itname"><span class="ellipsis1">${item.productName}</span></td>
+		                <td><a href="/" onclick="return false;">${item.orderAmount}</a></td>
+		                <td>
+		                	<span class="ellipsis1">
+			                	<fmt:formatNumber value="${item.discountPrice}" type="number" groupingUsed="true"/>
+			                </span>
+		                </td>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">
+		                    		<span class="ellipsis1">${item.receiverName}</span>
+		                    	</a>
+		                    </td>
+		                </c:if>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">
+		                    		<span class="receiver_phone ellipsis1">${item.receiverPhone}</span>
+									<script>
+									// receiver_phone 클래스를 가진 모든 요소 선택
+								    var receiverPhoneSelector = document.querySelectorAll(".receiver_phone");
+
+								    // 각 요소에 대해 반복하여 처리
+								    receiverPhoneSelector.forEach(function(element) {
+								        // 요소에서 전화번호를 가져와서 문자열로 변환
+								        var receiverPhoneRaw = element.textContent;
+								        // 전화번호를 형식에 맞게 변환
+								        var receiverPhone = receiverPhoneRaw.replace(/^(\d{3})(\d{4})(\d{4})$/, "$1-$2-$3");
+								        // 형식에 맞게 변환된 전화번호를 요소에 적용
+								        element.textContent = receiverPhone;
+								    });
+									</script>
+		                    	</a>
+		                    </td>
+		                </c:if>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">
+		                    		<span class="ellipsis1">${item.receiverAddress1}</span>
+		                    	</a>
+		                    </td>
+		                </c:if>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">
+		                    		<span class="ellipsis1">
+		                    			<fmt:formatNumber value="${item.finalPrice}" type="number" groupingUsed="true"/>
+		                    		</span>
+		                    	</a>
+		                    </td>
+		                </c:if>
+		                <c:if test="${item.orderNo != previousOrderNo}">
+		                    <td rowspan="${item.order_rowspan}">
+		                    	<a href="/" onclick="return false;">
+		                    		<c:choose>
+					                    <c:when test="${item.orderStatus == 'PAYMENT_PENDING'}">
+					                        <div class="btn_small red" style="cursor:initial;">결제대기</div>
+					                    </c:when>
+					                    <c:when test="${item.orderStatus == 'PAYMENT_COMPLETED'}">
+					                        <div class="btn_small white" style="cursor:initial;">결제완료</div>
+					                    </c:when>
+					                    <c:otherwise>${item.orderStatus}</c:otherwise>
+					                </c:choose>
+		                    	</a>
+		                    </td>
+		                </c:if>
+		            </tr>
+		            <c:set var="previousOrderNo" value="${item.orderNo}"/>
+		        </c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</tbody>
