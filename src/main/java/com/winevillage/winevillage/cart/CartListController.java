@@ -31,13 +31,13 @@ public class CartListController {
         this.cartListService = cartListService;
     }
 
-    @PostMapping("/addToCart")
+    @PostMapping("/addToCart.do")
     public ResponseEntity<?> addToCart(@RequestParam("productCode") String productCode,
                                        HttpServletRequest request, HttpServletResponse response) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-        	String user_id = authentication.getName();
-        	String memberNo = cartListService.getMemberNo(user_id);
+        	String memberId = authentication.getName();
+        	String memberNo = cartListService.getMemberNo(memberId);
 
             cartListService.addProductToMemberCart(productCode, memberNo);
             return ResponseEntity.ok().body(Map.of("status", "success", "message", "장바구니에 추가되었습니다."));
@@ -49,7 +49,7 @@ public class CartListController {
             } else {
                 cookieId = createUniqueCookieId();
                 Cookie newCartCookie = new Cookie("COOKIE_ID", cookieId);
-                newCartCookie.setMaxAge(24 * 60 * 60);
+                newCartCookie.setMaxAge(24 * 60 * 60); // 24시간
                 newCartCookie.setPath("/");
                 response.addCookie(newCartCookie);
             }
@@ -104,7 +104,7 @@ public class CartListController {
         return null;
     }
     
-    @PostMapping("/update-quantity")
+    @PostMapping("/update-quantity.do")
     public ResponseEntity<CartListDTO> updateOrderQuantity(@RequestParam("orderNo") Long orderNo,
                                                  @RequestParam("productCode") String productCode,
                                                  @RequestParam("orderAmount") int orderAmount) {

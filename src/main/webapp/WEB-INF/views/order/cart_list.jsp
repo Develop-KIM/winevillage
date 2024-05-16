@@ -312,7 +312,7 @@ $('.main_img .slider').slick({
 	    qtyInput.value = newQty >= 0 ? newQty : 0;
 	    // 변경된 수량을 서버에 업데이트하는 AJAX 요청
 	    $.ajax({
-	        url: '/update-quantity', // 서버의 엔드포인트 URL
+	        url: '/update-quantity.do', // 서버의 엔드포인트 URL
 	        type: 'POST', // HTTP 요청 방식
 	        data: {
 	            orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자

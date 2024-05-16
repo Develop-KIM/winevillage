@@ -60,8 +60,8 @@ public class CartListService {
         return cartListMapper.getCartItem(orderNo, productCode);
     }
     
-    public String getMemberNo(String user_id) {
-        return cartListMapper.getMemberNo(user_id);
+    public String getMemberNo(String memberId) {
+        return cartListMapper.getMemberNo(memberId);
     }
     
     public boolean updateMemberCart(String memberNo, String cookieId) {

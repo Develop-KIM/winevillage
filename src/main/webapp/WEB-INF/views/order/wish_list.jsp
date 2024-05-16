@@ -191,7 +191,7 @@ function wishlist(element) {
 	
 	if (!isAdded) {
         $.ajax({
-            url: '/addToWishList',
+            url: '/addToWishList.do',
             type: 'POST',
             data: {
             	productCode: productCode,
@@ -206,7 +206,7 @@ function wishlist(element) {
         });	
 	} else {
 		$.ajax({
-			url: '/deleteWishList',
+			url: '/deleteWishList.do',
 			type: 'POST',
 			data: {
             	productCode: productCode,
