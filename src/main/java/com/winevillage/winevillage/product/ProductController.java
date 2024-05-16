@@ -162,7 +162,6 @@ public class ProductController {
 				System.out.println("result? "+result);
 			}
 		}
-		
 		return "redirect:admin_product_lists.do";
 	}
 	
