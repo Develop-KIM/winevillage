@@ -72,7 +72,6 @@ public class SecurityConfig{
 				.logoutSuccessHandler(new LogoutSuccessHandler() {
                     @Override
                     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                        // 로그아웃 성공 후, 현재 페이지로 리다이렉션하는 로직
                         String refererUrl = request.getHeader("Referer");
                         response.sendRedirect(refererUrl);
                     }

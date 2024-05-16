@@ -15,6 +15,5 @@ public interface MemberService {
 	void deleteMember(String memberId);
 	String findByName(String user_id);
 	int findByPoint(String user_id);
-//	int findByNo(String user_id);
 }
 
