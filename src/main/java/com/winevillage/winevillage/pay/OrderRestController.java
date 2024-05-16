@@ -60,6 +60,7 @@ public class OrderRestController {
 				updateOrderDTO.setProductImg(item.getProductImg());
 				updateOrderDTO.setMemberNo(item.getMemberNo());
 				result += dao.updateOrderStatus(updateOrderDTO);
+				dao.deleteOrderCart(updateOrderDTO); 
 			}
 			Map<String, Object> map = new HashMap<>();
 			map.put("result", result);

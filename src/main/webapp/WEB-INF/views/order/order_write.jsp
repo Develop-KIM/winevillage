@@ -26,6 +26,39 @@
 
 
 <script>
+	$(document).ready(function() {
+	    var totalPrice = parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, ''));
+	    var availablePoints = parseInt($(".points.info").text().replace(/[^0-9]/g, ''));
+	
+	    $("#use_reserve").on("input", function() {
+	        var usedPoints = parseInt($(this).val());
+	
+	        if (isNaN(usedPoints)) {
+	            usedPoints = 0;
+	        }
+	
+	        if (usedPoints > availablePoints) {
+	            usedPoints = availablePoints;
+	            $(this).val(usedPoints);
+	        }
+	
+	        $("#reserve_price_dd").text("- " + usedPoints.toLocaleString() + "원");
+	        
+	        var finalPrice = totalPrice - usedPoints;
+	        $("#finish_price_span").text(finalPrice.toLocaleString() + "원");
+	    });
+	
+	    $("#all_use_reserve").change(function() {
+	        if (this.checked) {
+	            $("#use_reserve").val(availablePoints);
+	        } else {
+	            $("#use_reserve").val(0);
+	        }
+	        $("#use_reserve").trigger("input");
+	    });
+	});	
+
+
 	function submitOrder() {
 		var orderInfo = {
 			name : $('#or_name').val(),
@@ -77,11 +110,16 @@
 			success : function(response) {
 				var orderId = response.orderId;
 				IMP.init("imp86113226");
+				
+				var productName = orderData.productItems[0].productName;
+			    var productCount = orderData.productItems.length;
+			    var displayName = productName + (productCount > 1 ? " 외 " + (productCount - 1) + "개" : "");
+			    
 				IMP.request_pay({
 					pg : "uplus",
 					pay_method : "card",
 					merchant_uid : new Date().getTime(), // 주문 고유 번호
-					name : orderData.productItems[0].productName, // 대표 상품명
+					name : displayName, // 대표 상품명
 					amount : orderData.finalPrice, // 최종 결제 금액
 					buyer_email : orderData.orderInfo.email,
 					buyer_name : orderData.orderInfo.name,

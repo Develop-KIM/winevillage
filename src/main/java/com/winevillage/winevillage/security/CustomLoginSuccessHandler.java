@@ -25,6 +25,7 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	    public CustomLoginSuccessHandler(CartListService cartListService, MemberService memberService) {
 	        this.cartListService = cartListService;
 	        this.memberService = memberService; // 멤버 변수 초기화
+	       
 	    }
 	    
 	public String findByName(String user_id) {
@@ -34,6 +35,9 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	public int findByPoint(String user_id) {
 		return memberService.findByPoint(user_id);
 	}
+//	public int findByNo(String user_id) {
+//		return memberService.findByNo(user_id);
+//	}
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -44,8 +48,10 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	    session.setAttribute("userId", user_id); // 세션에 사용자 ID 저장
     	String name = memberService.findByName(user_id);
     	int point = memberService.findByPoint(user_id);
+    	int memberNo1 = memberService.findByPoint(user_id);
     	session.setAttribute("name", name);
     	session.setAttribute("point", point);
+//    	session.setAttribute("memberNo1", memberNo1);
     	
 		 // COOKIE_ID 확인 후 주문 정보 업데이트
 	        Cookie[] cookies = request.getCookies();

@@ -28,4 +28,8 @@ public interface ProductService {
 	
     public String getMemberInfo(String user_id);
 
+	public ProductDTO memberView(String userId);
+	
+	public int writeRest(ProductDTO productDTO);
+	
 }
