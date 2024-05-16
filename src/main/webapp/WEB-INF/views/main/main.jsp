@@ -220,7 +220,7 @@
 								<div class="info">
 									<div class="more_info">
 										<p class="prd_name">
-											<a href="/product_view.do">
+											<a href="/product_view.do?category=${category == null || category == '' ? 'wine' : category}&state=${state == null || state == '' ? 'value' : state}&sort=${sort == null || sort == '' ? 'recent' : sort}&productCode=${product.productCode}">
 											<span>${product.productName }</span><span class="en"></span></a>
 										</p>
 										<p class="prd_info">${product.productInfo }</p>

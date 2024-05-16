@@ -15,6 +15,10 @@ public class WishListService {
 		this.wishListMapper = wishListMapper;
 	}
 	
+	public List<WishListDTO> WishListView(String MemberNo) {
+		return wishListMapper.WishListView(MemberNo);
+	}
+	
 	public boolean addToWishList(String productCode, String memberNo) {
 		try {
 			wishListMapper.addToWishList(productCode, memberNo);
@@ -43,5 +47,8 @@ public class WishListService {
 	public String getMemberNo(String user_id) {
         return wishListMapper.getMemberNo(user_id);
     }
-
+	
+	public int wishListCount(String memberNo) {
+		return wishListMapper.wishListCount(memberNo);
+	}
 }

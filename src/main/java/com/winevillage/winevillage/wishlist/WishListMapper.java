@@ -10,5 +10,7 @@ public interface WishListMapper {
     void addToWishList(@Param("productCode") String productCode, @Param("memberNo") String memberNo);
     void deleteWishList(@Param("productCode") String productCode, @Param("memberNo") String memberNo);
     List<WishListDTO> getWishList(String memberNo);
+    List<WishListDTO> WishListView(String memberNo);
     String getMemberNo(String user_id);
+    int wishListCount(String memberNo);
 }
