@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.winevillage.winevillage.wishlist.WishListMapper">
+
+	<insert id="addToWishList"
+		parameterType="com.winevillage.winevillage.wishlist.WishListDTO">
+		INSERT INTO WishList (wishNo, memberNo, productCode)
+
+		VALUES (wishlist_seq.NEXTVAL, #{memberNo}, #{productCode})
+	</insert>
+	<delete id="deleteWishList"
+		parameterType="com.winevillage.winevillage.wishlist.WishListDTO">
+		DELETE FROM WishList
+		WHERE memberNo = #{memberNo}
+		AND
+		productCode = #{productCode}
+	</delete>
+	
+	<select id="getWishList" 
+		resultType="com.winevillage.winevillage.wishlist.WishListDTO">
+		SELECT * FROM WishList
+		WHERE memberNo = #{memberNo}
+	</select>
+
+	<select id="getMemberNo" resultType="String">
+		SELECT memberNo FROM member
+		WHERE memberID=#{user_id}
+	</select>
+</mapper>

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,11 @@ public class ProductListController {
 	    parameterDTO.setCategory(category);
 	    parameterDTO.setStateNotNull(true); 
 	    
+	    
+	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String user_id = authentication.getName();
+        String memberInfo = dao.getMemberInfo(user_id);
+        
 		int ProductCount = dao.ProductCount(parameterDTO);
 
 		int pageSize = 25;
@@ -51,6 +58,7 @@ public class ProductListController {
 		maps.put("pageSize", pageSize);
 		maps.put("pageNum", pageNum);
 		maps.put("ProductCount", ProductCount);
+		model.addAttribute("memberInfo", memberInfo);
 		model.addAttribute("maps", maps);
 		model.addAttribute("category", category);
 		model.addAttribute("state", state);
