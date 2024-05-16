@@ -192,9 +192,9 @@
 		<div id="layer"
 			style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
 			<img
-				src="../../../../t1.daumcdn.net/postcode/resource/images/close.png"
+				src="/images/mypage/ico_del_lightgray.png"
 				id="btnCloseLayer"
-				style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+				style="cursor: pointer; position: absolute; right: 0; top: 0; z-index: 1"
 				onclick="closeDaumPostcode()" alt="닫기 버튼">
 		</div>
 
