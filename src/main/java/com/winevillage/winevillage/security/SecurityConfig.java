@@ -53,16 +53,16 @@ public class SecurityConfig{
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf((csrf) -> csrf.disable()).cors((cors) -> cors.disable())
 				.authorizeHttpRequests((request) -> request.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-						.requestMatchers("/", "/setCookie", "/**", "/**.do").permitAll()
-						.requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-						.requestMatchers("/login", "/join_form.do", "/join_success.do").permitAll()
+						.requestMatchers("/", "/setCookie", "/**.do").permitAll()
+						.requestMatchers("/css/**", "/js/**", "/images/**", "/uploads/**").permitAll()
 						.requestMatchers("/member/**").hasRole("USER")
 						.anyRequest().authenticated());
 		http.formLogin((formLogin) -> formLogin
+				.loginPage("/main.do")
 				.loginProcessingUrl("/checkLoginStatus")
 				.failureHandler(myAuthFailureHandler)
 				.successHandler(new CustomLoginSuccessHandler(cartListService, memberService))
-				.usernameParameter("loginMemberId")
+				.usernameParameter("loginMemberId") 
 				.passwordParameter("loginPassword")
 				.permitAll());
 		http.logout((logout) -> logout

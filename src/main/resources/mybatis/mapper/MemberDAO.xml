@@ -42,12 +42,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE memberID=#{user_id}
 	</select>
 	
-	<!-- <select id="findByNo" resultType="int">
-		SELECT memberNo FROM member
-		WHERE memberID=#{user_id}
-	</select> -->
-	
-	
 	<select id="memberTotalCount" resultType="int"
 		parameterType="com.winevillage.winevillage.member.ParameterDTO">
 		SELECT COUNT(*) FROM member

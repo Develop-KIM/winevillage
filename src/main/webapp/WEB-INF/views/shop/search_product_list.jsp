@@ -18,7 +18,7 @@
 	<div class="pc_lnb mb_hidden">
 		<div class="img">
 			<video width="100%" height="auto" autoplay="" muted="" loop="" playsinline="">
-			<source src="images/wine.mp4">
+			<source src="/images/wine.mp4">
 			</video>
 			<!-- <img src="images/shop/product/p_.jpg" alt="상단타이틀 이미지"> -->
 			<!-- <img src="images/shop/product/p_.jpg" alt="상단타이틀 이미지"> -->
@@ -95,12 +95,12 @@
 								<a href="/product_view.do?category=${category }&productNo=${row.productNo}" class="prd_img table_box">
 								<picture>
 								<!--[if IE 9]><video style="display: none;"><![endif]-->
-								<source srcset="uploads/product/200/${row.productImg }" media="(min-width:1024px)">
+								<source srcset="/uploads/product/200/${row.productImg }" media="(min-width:1024px)">
 								<!-- pc이미지 -->
-								<source srcset="uploads/product/200/${row.productImg }" media="(max-width:1023px)">
+								<source srcset="/uploads/product/200/${row.productImg }" media="(max-width:1023px)">
 								<!-- mb이미지 -->
 								<!--[if IE 9]></video><![endif]-->
-								<img src="uploads/product/200/${row.productImg }" loading="lazy" alt="">
+								<img src="/uploads/product/200/${row.productImg }" loading="lazy" alt="">
 								<!-- pc이미지 -->
 								</picture>
 								</a>

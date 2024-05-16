@@ -7,12 +7,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
@@ -24,7 +26,7 @@ public class MemberRestController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @PostMapping("/join_form")
+    @PostMapping("/join_form.do")
     public ResponseEntity<Map<String, Object>> join(@RequestBody MemberDTO memberDTO, HttpSession session) {
         try {
             // 비밀번호 암호화
@@ -55,20 +57,37 @@ public class MemberRestController {
         }
     }
     
-    @DeleteMapping("/withdrawal.do")
-    public ResponseEntity<String> withdrawMember(Principal principal) {
+    @DeleteMapping("/member/withdrawal.do")
+    public ResponseEntity<Map<String, Object>> withdrawMember(Principal principal, HttpServletRequest request) {
+        Map<String, Object> response = new HashMap<>();
+
         if(principal == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인이 필요한 서비스입니다.");
+            response.put("success", false);
+            response.put("message", "로그인이 필요한 서비스입니다.");
+            return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
         
-        String memberId = principal.getName(); // 현재 로그인한 사용자의 ID를 가져옵니다.
+        String memberId = principal.getName();
         
         // 회원 탈퇴 작업 수행
         memberService.deleteMember(memberId);
         
+        // SecurityContext에서 인증 정보를 제거
+        SecurityContextHolder.clearContext();
+        
+        // HttpSession 무효화
+        HttpSession session = request.getSession(false);
+        if(session != null) {
+            session.invalidate();
+        }
+        
         // 회원 탈퇴가 성공했을 때 리다이렉트할 주소 반환
-        return ResponseEntity.ok("/main.do");
+        response.put("success", true);
+        response.put("redirectUrl", "main.do");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+
 
 }
 

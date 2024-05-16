@@ -11,50 +11,48 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="./css/layouta0da.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pcdc60.css"
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/layouta0da.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pcdc60.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_jj7f50.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_jj7d5a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_jj7f50.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_jj7d5a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_elly302b.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_elly302b.css" />
 <link rel="stylesheet" type="text/css"
 	href="./css/layout_pc_elly1d8d.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_ch1bc4.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_chae31.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_ch1bc4.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_chae31.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_sy6617.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_sy231a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_sy6617.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_sy231a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
-<link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
+<link rel="stylesheet" type="text/css" href="/css/main99d9.css" />
+<link rel="stylesheet" type="text/css" href="/css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
 <link rel="stylesheet" type="text/css"
-	href="./css/shop/main99d9.css?v=231010140029" />
+	href="/css/shop/main99d9.css?v=231010140029" />
 <link rel="stylesheet" type="text/css"
-	href="./css/shop/main_pc2092.css?v=230810114342"
+	href="/css/shop/main_pc2092.css?v=230810114342"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
-<link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/shop/slick.css">
+<link rel="stylesheet" type="text/css" href="/css/shop/jqcloud.min.css" />
 <style>
 #mylogin {padding: 0; background-image: none;}
 .gnb>ul {margin-left: 110px;}
 </style>
-<script type="text/javascript" src="./js/slick.min.js"></script>
-<script type="text/javascript" src="./js/jquery.min.js"></script>
-<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="./js/picturefill.min.js"></script>
-<script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
-<script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
-<script type="text/JavaScript"
-	src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
-<script src="./js/wn.productf100.js?v=230405140747"></script>
-<script type="text/javascript" src="./js/jqcloud.min.js"></script>
-<script type="text/javascript" src="./js/slick.min.js"></script>
-<script type="text/javascript" src="./js/filter.js"></script>
-<script type="text/javascript" src="./js/order.js"></script>
+<script type="text/javascript" src="/js/slick.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/js/picturefill.min.js"></script>
+<script type="text/javascript" src="/js/commond820.js?v=221216102931"></script>
+<script type="text/javascript" src="/js/front_ui9442.js?v=221226120920"></script>
+<script src="/js/wn.productf100.js?v=230405140747"></script>
+<script type="text/javascript" src="/js/jqcloud.min.js"></script>
+<script type="text/javascript" src="/js/slick.min.js"></script>
+<script type="text/javascript" src="/js/filter.js"></script>
+<script type="text/javascript" src="/js/order.js"></script>
 <script>
 function checkLoginStatus() {
     var loginMemberId = document.getElementById("loginMemberId").value.trim();
@@ -135,69 +133,69 @@ $(document).ready(function(){
 			<div class="wrap">
 				<h1 class="logo">
 					<a href="/main.do"> <picture> <!--[if IE 9]><video style="display: none;"><![endif]-->
-						<source srcset="./images/default/wine_village.svg"
+						<source srcset="/images/default/wine_village.svg"
 							media="(min-width:768px)">
 						<!-- pc이미지 -->
-						<source srcset="./images/default/wine_village.svg"
+						<source srcset="/images/default/wine_village.svg"
 							media="(max-width:767px)">
 						<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-							src="./images/default/wine_village.svg" alt="WINEVILLAGE"
+							src="/images/default/wine_village.svg" alt="WINEVILLAGE"
 							draggable="false"><!-- pc이미지 --> </picture>
 					</a>
 				</h1>
 				<div class="gnb">
 					<ul>
 						<li class=""><a
-							href="list_product.do?category=wine&state=value&sort=recent">WINE</a>
+							href="/list_product.do?category=wine&state=value&sort=recent">WINE</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box wine">
 										<ul>
 											<li class="ico_red"><a
-												href="list_product.do?category=red&state=value&sort=recent">레드</a></li>
+												href="/list_product.do?category=red&state=value&sort=recent">레드</a></li>
 											<li class="ico_white"><a
-												href="list_product.do?category=white&state=value&sort=recent">화이트</a></li>
+												href="/list_product.do?category=white&state=value&sort=recent">화이트</a></li>
 											<li class="ico_rose"><a
-												href="list_product.do?category=rose&state=value&sort=recent">로제</a></li>
+												href="/list_product.do?category=rose&state=value&sort=recent">로제</a></li>
 											<li class="ico_sparkling"><a
-												href="list_product.do?category=sparkling&state=value&sort=recent">스파클링</a></li>
+												href="/list_product.do?category=sparkling&state=value&sort=recent">스파클링</a></li>
 											<li class="ico_spirits"><a
-												href="list_product.do?category=fortified&state=value&sort=recent">주정강화</a></li>
+												href="/list_product.do?category=fortified&state=value&sort=recent">주정강화</a></li>
 										</ul>
 										<ul>
 											<li class="ico_france"><a
-												href="list_product.do?category=fra&state=value&sort=recent">프랑스</a></li>
+												href="/list_product.do?category=fra&state=value&sort=recent">프랑스</a></li>
 											<li class="ico_italia"><a
-												href="list_product.do?category=ita&state=value&sort=recent">이탈리아</a></li>
+												href="/list_product.do?category=ita&state=value&sort=recent">이탈리아</a></li>
 											<li class="ico_spain"><a
-												href="list_product.do?category=esp&state=value&sort=recent">스페인</a></li>
+												href="/list_product.do?category=esp&state=value&sort=recent">스페인</a></li>
 											<li class="ico_germ"><a
-												href="list_product.do?category=deu&state=value&sort=recent">독일</a></li>
+												href="/list_product.do?category=deu&state=value&sort=recent">독일</a></li>
 											<li class="ico_usa"><a
-												href="list_product.do?category=usa&state=value&sort=recent">미국</a></li>
+												href="/list_product.do?category=usa&state=value&sort=recent">미국</a></li>
 											<li class="ico_chile"><a
-												href="list_product.do?category=chl&state=value&sort=recent">칠레</a></li>
+												href="'/list_product.do?category=chl&state=value&sort=recent">칠레</a></li>
 											<li class="ico_argentina"><a
-												href="list_product.do?category=arg&state=value&sort=recent">아르헨티나</a></li>
+												href="/list_product.do?category=arg&state=value&sort=recent">아르헨티나</a></li>
 											<li class="ico_aus"><a
-												href="list_product.do?category=aus&state=value&sort=recent">호주</a></li>
+												href="/list_product.do?category=aus&state=value&sort=recent">호주</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
 						<li class=""><a
-							href="list_product.do?category=other&sort=recent">OTHER</a>
+							href="/list_product.do?category=other&sort=recent">OTHER</a>
 							<div class="pc_category_gnb">
 								<div class="flex_box">
 									<div class="box other">
 										<ul>
 											<li class="ico_acc"><a
-												href="list_product.do?category=acc&sort=recent">액세서리</a></li>
+												href="/list_product.do?category=acc&sort=recent">액세서리</a></li>
 										</ul>
 									</div>
 								</div>
 							</div></li>
-						<li><a href="list_store.do">SHOP</a></li>
+						<li><a href="/list_store.do">SHOP</a></li>
 					</ul>
 				</div>
 				<ul class="right_menu">
@@ -207,10 +205,10 @@ $(document).ready(function(){
 								List</span> </a></li>
 					<li class="mb_hidden wish"><a href="#"
 						onclick="$('.layer.login_layer').show();"><img
-							src="./images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
+							src="/images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
 					<li class="mypage mb_hidden">
 						<button type="button" onclick="commonUI.header.Mypage.clickFn()" class="mypage">
-							<img src="./images/default/pc_icon_mypage.png" alt="My Page">
+							<img src="/images/default/pc_icon_mypage.png" alt="My Page">
 						</button>
 						<div class="mypage_layer">
 							<c:choose>
@@ -228,7 +226,7 @@ $(document).ready(function(){
 											</li>
 											<li class="top_line">
 												<h3>
-													<a href="order_list.do">마이페이지</a>
+													<a href="/member/order_list.do">마이페이지</a>
 												</h3>
 											</li>
 										</ul>
@@ -239,14 +237,14 @@ $(document).ready(function(){
 									<!-- 로그인 전 보여줄 내용 -->
 									<div class="no_login">
 										<button type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
-										<a href="join_form.do">회원가입</a>
+										<a href="/join_form.do">회원가입</a>
 									</div>
 								</c:otherwise>
 							</c:choose>
 						</div>
 					</li>
 					<li class="mb_hidden"><a href="/notice_list.do"><img
-							src="./images/default/pc_icon_center.png" alt="Info Center"></a></li>
+							src="/images/default/pc_icon_center.png" alt="Info Center"></a></li>
 				</ul>
 
 			</div>
@@ -255,7 +253,7 @@ $(document).ready(function(){
 		<div class="bottom">
 			<h1 class="fixed_logo" style="display: none;">
 				<a href="main6f31.html"> <img
-					src="./images/default/pc_fixed_logo.png" alt="WINENARA 1987"
+					src="/images/default/pc_fixed_logo.png" alt="WINENARA 1987"
 					draggable="false">
 				</a>
 			</h1>
@@ -405,7 +403,7 @@ $(document).ready(function(){
 			<button type="button" onclick="commonUI.header.Search.clickFn()"
 				class="fixed_search_btn">PC Search</button>
 			<a href="mypageping/mypage.html" class="fixed_mypage"><img
-				src="./images/default/pc_icon_mypage.png" alt="My Page"></a> <a
+				src="/images/default/pc_icon_mypage.png" alt="My Page"></a> <a
 				href="cart/cart_lists.html" class="fixed_cart"> </a>
 		</div>
 		<div class="mb_lnb pc_hidden">

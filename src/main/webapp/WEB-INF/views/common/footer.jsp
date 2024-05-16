@@ -11,25 +11,25 @@
 <link rel="shortcut icon" href="./images/default/favicon.ico"
 	type="image/x-icon" />
 <link rel="icon" href="./images/default/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="./css/layouta0da.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pcdc60.css"
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/layouta0da.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pcdc60.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_jj7f50.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_jj7d5a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_jj7f50.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_jj7d5a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_elly302b.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_elly302b.css" />
 <link rel="stylesheet" type="text/css"
-	href="./css/layout_pc_elly1d8d.css"
+	href="/css/layout_pc_elly1d8d.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_ch1bc4.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_chae31.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_ch1bc4.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_chae31.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_sy6617.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_sy231a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_sy6617.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_sy231a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
-<link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
+<link rel="stylesheet" type="text/css" href="/css/main99d9.css" />
+<link rel="stylesheet" type="text/css" href="/css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
 <title>Insert title here</title>
 </head>
@@ -38,7 +38,7 @@
 		<div class="hidden_info">
 			<div class="info_box">
 				<div class="logo">
-					<img src="./css/default/wine_village_rev2_wh.svg" alt="WINEVILLAGE">
+					<img src="/css/default/wine_village_rev2_wh.svg" alt="WINEVILLAGE">
 				</div>
 				<div class="info">
 					<ul class="company_info">
@@ -65,7 +65,7 @@
 					<!-- <a href="http://pf.kakao.com/_vlkxfxb/chat"> -->
 					<a href="chatUI.do" target="_blank" onclick="chatWinOpen(); return false;" data-id=${ user_id } data-username="${ name }">
 						<div class="icon">
-							<img src="./images/default/ico_quick_kakao_comment.png"
+							<img src="/images/default/ico_quick_kakao_comment.png"
 								alt="온라인 1:1 상담" draggable="false">
 						</div>
 						<div class="txt">온라인 1:1 상담</div>
@@ -74,7 +74,7 @@
 				<li>
 					<a href="/faq_list.do">
 						<div class="icon">
-							<img src="./images/default/ico_quick_faq.png" alt="자주하는 질문"
+							<img src="/images/default/ico_quick_faq.png" alt="자주하는 질문"
 								draggable="false">
 						</div>
 						<div class="txt">FAQ</div>
