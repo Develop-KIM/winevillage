@@ -41,7 +41,7 @@ public class MemberController {
         return "member/join/join_success";
     }
     
-    @GetMapping("/checkMemberIdExist")
+    @GetMapping("/checkMemberIdExist.do")
     public ResponseEntity<String> checkMemberIdExist(@RequestParam("memberId") String memberId) {
         if (memberId == null || memberId.trim().isEmpty()) {
             return ResponseEntity.badRequest().body("아이디를 입력하세요.");
@@ -55,7 +55,7 @@ public class MemberController {
         }
     }
     
-    @GetMapping("/checkPhoneNumberExist")
+    @GetMapping("/checkPhoneNumberExist.do")
     public ResponseEntity<String> checkPhoneNumberExist(@RequestParam("phoneNumber") String phoneNumber) {
         if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
             return ResponseEntity.badRequest().body("휴대폰 번호를 입력하세요.");
@@ -69,7 +69,7 @@ public class MemberController {
         }
     }
     
-	@GetMapping("/withdrawal.do")
+	@GetMapping("/member/withdrawal.do")
 	public String withdrawal() {
 		return "member/withdrawal";
 	}

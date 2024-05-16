@@ -37,7 +37,6 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
 		} 
 		// request영역에 에러메세지를 저장한다.
 		request.setAttribute("errorMsg", errorMsg);
-		System.out.println("error: " + errorMsg);
 	}
 	
 	public void loginFailureCnt(String memberId) {
