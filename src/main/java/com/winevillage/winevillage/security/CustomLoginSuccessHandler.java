@@ -20,12 +20,12 @@ import jakarta.servlet.http.HttpSession;
 public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
       private MemberService memberService;
-	   private CartListService cartListService;
+	  private CartListService cartListService;
 
-	    public CustomLoginSuccessHandler(CartListService cartListService, MemberService memberService) {
+	  public CustomLoginSuccessHandler(CartListService cartListService, MemberService memberService) {
 	        this.cartListService = cartListService;
 	        this.memberService = memberService; // 멤버 변수 초기화
-	    }
+	  }
 	    
 	public String findByName(String user_id) {
 	    	return memberService.findByName(user_id);
@@ -34,7 +34,7 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 	public int findByPoint(String user_id) {
 		return memberService.findByPoint(user_id);
 	}
-	
+		 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 	    HttpSession session = request.getSession();

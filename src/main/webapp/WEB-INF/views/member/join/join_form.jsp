@@ -734,7 +734,7 @@
     // AJAX 요청
     $.ajax({
         type: "POST",
-        url: "/join_form",
+        url: "/join_form.do",
         contentType: "application/json",
         data: JSON.stringify(Object.fromEntries(new Map(formData))),
         success: function(response) {
@@ -758,7 +758,7 @@
         
      // AJAX를 이용하여 서버로 전화번호 중복 여부를 확인
         $.ajax({
-            url: '/checkPhoneNumberExist', // 중복 확인을 위한 API 엔드포인트
+            url: '/checkPhoneNumberExist.do', // 중복 확인을 위한 API 엔드포인트
             type: 'GET',
             data: { phoneNumber: phoneNumber },
             success: function(response) {
@@ -767,7 +767,7 @@
                 } else {
                     // 휴대폰 번호가 중복되지 않으면 인증번호를 전송
                     $.ajax({
-                        url: '/send_sms', // 휴대폰 인증 번호를 전송할 API 엔드포인트
+                        url: '/send_sms.do', // 휴대폰 인증 번호를 전송할 API 엔드포인트
                         type: 'POST',
                         data: { phoneNumber: phoneNumber },
                         success: function(response) {
@@ -792,7 +792,7 @@
         
         // AJAX를 이용하여 서버로 인증번호를 전송하여 확인
         $.ajax({
-            url: '/verify_code',
+            url: '/verify_code.do',
             type: 'POST',
             data: { code: code },
             success: function(response) {
@@ -819,7 +819,7 @@
             return;
         }
         $.ajax({
-            url: "/checkMemberIdExist",
+            url: "/checkMemberIdExist.do",
             type: "GET",
             data: { memberId: memberId },
             success: function(response) {
