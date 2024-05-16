@@ -28,4 +28,20 @@
 		SELECT memberNo FROM member
 		WHERE memberID=#{user_id}
 	</select>
+	
+	<!-- 회원 장바구니 리스트 -->
+	<select id="WishListView"
+		resultType="com.winevillage.winevillage.wishlist.WishListDTO">
+		SELECT
+		c.*,
+		p.*
+		FROM
+		WishList c
+		INNER JOIN
+		product p ON
+		c.productCode = p.productCode
+		WHERE
+		c.memberNo = #{memberNo}
+
+	</select>
 </mapper>

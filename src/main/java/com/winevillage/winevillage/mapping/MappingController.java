@@ -17,10 +17,6 @@ public class MappingController {
 		return "order/order_list";
 	}
 
-	@GetMapping("/wish_list.do")
-	public String wish_list() {
-		return "order/wish_list";
-	}
 
 	@GetMapping("/mileage_list.do")
 	public String mileage_list() {
