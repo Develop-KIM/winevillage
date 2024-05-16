@@ -431,7 +431,7 @@ $(document).ready(function(){
 											</li>
 											<li class="top_line">
 												<h3>
-													<a href="order_list.do">마이페이지</a>
+													<a href="/member/order_list.do">마이페이지</a>
 												</h3>
 											</li>
 										</ul>
