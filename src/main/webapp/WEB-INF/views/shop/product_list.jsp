@@ -5,20 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>WINE VILLAGE | WINE</title>
-<script>
-	function state_list(value) {
 
-		var clickedId = "state_li_" + value;
-
-		var listItems = document.querySelectorAll('.state_li');
-		listItems.forEach(function(item) {
-			item.classList.remove('on');
-		});
-
-		var clickedItem = document.getElementById(clickedId);
-		clickedItem.classList.add('on');
-	}
-</script>
 </head>
 
 <body>
@@ -141,10 +128,22 @@
 												loading="lazy" alt=""><!-- pc이미지 --> </picture>
 										</a>
 										<div class="btn">
-											<button type="button" class="wish wish_03T999 "
-												id="wish_03T999" onclick="product.likeProduct('099');">
-												<span>찜하기</span>
-											</button>
+											<c:choose>
+												<c:when test="${user_id != null && user_id != ''}">
+													<div data-product-cd="${product.productCode }">
+														<button type="button" class="wish wish_${product.productCode } "
+															id="wish_${product.productCode }" onclick="wishlist(this)">
+															<span>찜하기</span>
+														</button>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<button type="button" class="wish wish_${product.productCode } "
+														id="wish_${product.productCode }" onclick="$('.layer.login_layer').show();">
+														<span>찜하기</span>
+													</button>
+												</c:otherwise>
+											</c:choose>
 										</div>
 										<div class="label_wrap"></div>
 									</div>
@@ -206,5 +205,78 @@
 		</div>
 	</div>
 	<%@ include file="../common/footer.jsp"%>
+	
+<script>
+
+	// state변경
+	function state_list(value) {
+
+		var clickedId = "state_li_" + value;
+
+		var listItems = document.querySelectorAll('.state_li');
+		listItems.forEach(function(item) {
+			item.classList.remove('on');
+		});
+
+		var clickedItem = document.getElementById(clickedId);
+		clickedItem.classList.add('on');
+	};
+	
+	$(document).ready(function() {
+		
+	    $.ajax({
+	        url: '/getWishList', 
+	        type: 'GET', 
+	        success: function(response) {
+	        	response.forEach(function(item) {
+	                console.log("productCode", item.productCode);
+	                $('.wish_' + item.productCode).addClass('on'); 
+	            });
+	        },
+	        error: function(xhr, status, error) {
+	            console.error("Ajax 요청 실패: ", status, error);
+	        }
+	    });
+	});
+
+	// 위시리스트 추가
+	function wishlist(element) {
+	    var productCode = element.parentNode.getAttribute('data-product-cd');
+		let isAdded = $('.wish_' + productCode).hasClass('on');
+		
+		if (!isAdded) {
+	        $.ajax({
+	            url: '/addToWishList',
+	            type: 'POST',
+	            data: {
+	            	productCode: productCode,
+	            },
+	            success: function(response) {
+	                $('.wish_' + productCode).addClass('on');
+	                console.log("위시리스트 추가")
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Ajax 요청 실패: ", status, error);
+	            }
+	        });	
+		} else {
+			$.ajax({
+				url: '/deleteWishList',
+				type: 'POST',
+				data: {
+	            	productCode: productCode,
+	            },
+	            success: function(response) {
+	                $('.wish_' + productCode).removeClass('on');
+	                console.log("위시리스트 삭제")
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Ajax 요청 실패: ", status, error);
+	            }
+			});
+		}
+		
+	};
+</script>
 </body>
 </html>

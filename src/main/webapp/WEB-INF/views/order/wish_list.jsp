@@ -3,13 +3,47 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<!-- Mirrored from www.winenara.com/shop/main?login_on=Y&return_url=https://me2.do/Fijy5pow by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Apr 2024 13:02:33 GMT -->
-<!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
     <title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
-
+<script>
+function wishlist(element) {
+    var productCode = element.parentNode.getAttribute('data-product-cd');
+	let isAdded = $('.wish_' + productCode).hasClass('on');
+	
+	if (!isAdded) {
+        // 위시리스트에 추가
+        $.ajax({
+            url: '/addToWishList',
+            type: 'POST',
+            data: {
+            	productCode: productCode,
+            },
+            success: function(response) {
+                $('.wish_' + productCode).addClass('on')
+            },
+            error: function(xhr, status, error) {
+                console.error("Ajax 요청 실패: ", status, error);
+            }
+        });	
+	} else {
+		$.ajax({
+			url: '/deleteWishList',
+			type: 'POST',
+			data: {
+            	productCode: productCode,
+            },
+            success: function(response) {
+                $('.wish_' + productCode).removeClass('on')
+            },
+            error: function(xhr, status, error) {
+                console.error("Ajax 요청 실패: ", status, error);
+            }
+		});
+	}
+};
+</script>
 </head>
 <script type="text/javascript" src="/WineVillage/src/main/resources/static/js/front_ui9442.js"></script>
 <body>

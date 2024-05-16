@@ -239,4 +239,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 		productCode=#{productCode}
 	</update>
+
+	<select id="getMemberInfo" resultType="String">
+		SELECT * FROM member
+		WHERE memberID=#{user_id}
+	</select>
+	
+	<select id="memberView"
+	resultType="com.winevillage.winevillage.product.ProductDTO"
+	parameterType="com.winevillage.winevillage.qna.ParameterDTO">
+	SELECT * FROM member WHERE memberid=#{memberid}
+	</select>
+	
+	<insert id="writeRest" parameterType="com.winevillage.winevillage.product.ProductDTO">
+	   INSERT INTO Orders (orderNo, memberNo, productCode, orderAmount)
+		VALUES (order_seq.NEXTVAL, #{memberNo}, #{productCode}, 1)
+	</insert>
 </mapper>

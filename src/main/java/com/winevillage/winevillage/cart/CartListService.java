@@ -20,16 +20,29 @@ public class CartListService {
         this.cartListMapper = cartListMapper;
     }
     
-    public void addProductToMemberCart(String productCode, String memberNo) {
-        cartListMapper.addProductToMemberCart(productCode, memberNo);
+    public boolean addProductToMemberCart(String productCode, String memberNo) {
+        try {
+            cartListMapper.addProductToMemberCart(productCode, memberNo);
+            return true; // 상품 추가 작업이 성공적으로 수행되었다고 가정
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false; // 상품 추가 작업 중 오류 발생
+        }
     }
 
-    public void addProductToNonMemberCart(String productCode, String cookieId) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("productCode", productCode);
-        params.put("cookieId", cookieId);
-        cartListMapper.addProductToNonMemberCart(params);
+    public boolean addProductToNonMemberCart(String productCode, String cookieId) {
+        try {
+            Map<String, Object> params = new HashMap<>();
+            params.put("productCode", productCode);
+            params.put("cookieId", cookieId);
+            cartListMapper.addProductToNonMemberCart(params);
+            return true; // 상품 추가 작업이 성공적으로 수행되었다고 가정
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false; // 상품 추가 작업 중 오류 발생
+        }
     }
+
     
     public List<CartListDTO> getCartListByCookieId(String cookieId) {
         return cartListMapper.getCartListByCookieId(cookieId);
