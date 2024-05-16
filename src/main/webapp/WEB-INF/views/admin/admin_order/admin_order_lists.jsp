@@ -245,7 +245,7 @@ pageEncoding="UTF-8"%>
 		                    <label for="chk_0" class="sound_only">주문번호 ${item.order_usersNo}</label>
 		                    <input type="checkbox" name="chk[]" value="0" id="chk_0">
 		                </td>
-		                <td class="td_img"><img src="../Uploads/product/200/${item.productImg}" width="30" height="30"></td>
+		                <td class="td_img"><img src="../uploads/product/200/${item.productImg}" width="30" height="30"></td>
 		                <td class="td_itname"><span class="ellipsis1">${item.productName}</span></td>
 		                <td><a href="/" onclick="return false;">${item.orderAmount}</a></td>
 		                <td>
