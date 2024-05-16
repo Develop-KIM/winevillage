@@ -26,4 +26,8 @@ public interface ProductService {
 	
 	public int productDelete(ProductDTO productDTO);
 	
+	public ProductDTO memberView(String userId);
+	
+	public int writeRest(ProductDTO productDTO);
+	
 }
