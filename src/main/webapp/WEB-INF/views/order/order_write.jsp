@@ -103,7 +103,7 @@
 			finalPrice : finalPrice,
 		};
 		$.ajax({
-			url : "http://localhost:8586/restOrderWrite.do",
+			url : "/restOrderWrite.do",
 			type : "POST",
 			contentType : "application/json",
 			data : JSON.stringify(orderData),
