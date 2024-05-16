@@ -203,9 +203,18 @@ $(document).ready(function(){
 								List</span> </a></li> -->
 					<li class="cart"><a href="/cart_list.do"><span>Cart
 								List</span> </a></li>
-					<li class="mb_hidden wish"><a href="#"
-						onclick="$('.layer.login_layer').show();"><img
-							src="/images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
+					<c:choose>
+						<c:when test="${user_id != null && user_id != ''}">
+							<li class="mb_hidden wish"><a href="#"
+								onclick="location.href='/member/wish_list.do'"><img
+									src="/images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="mb_hidden wish"><a href="#"
+							onclick="$('.layer.login_layer').show();"><img
+								src="/images/default/pc_icon_wish.png" alt="Wish List"> </a></li>
+						</c:otherwise>
+					</c:choose>
 					<li class="mypage mb_hidden">
 						<button type="button" onclick="commonUI.header.Mypage.clickFn()" class="mypage">
 							<img src="/images/default/pc_icon_mypage.png" alt="My Page">
@@ -236,8 +245,8 @@ $(document).ready(function(){
 								<c:otherwise>
 									<!-- 로그인 전 보여줄 내용 -->
 									<div class="no_login">
-										<button type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
-										<a href="/join_form.do">회원가입</a>
+										<button style="display:block; font-size: 12px; color: #555; margin-left: 3px;" type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
+										<a href="join_form.do">회원가입</a>
 									</div>
 								</c:otherwise>
 							</c:choose>

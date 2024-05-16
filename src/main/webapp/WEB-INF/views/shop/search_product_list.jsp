@@ -63,7 +63,7 @@
 				</div>
 				<div class="prd_list_area">
 					<div class="search_result">
-						<div class="second_order">
+<!-- 						<div class="second_order">
 							<select name="js_select" id="js_select" class="">
 								<option value="C">높은 가격순</option>
 								<option value="B">낮은 가격순</option>
@@ -71,7 +71,7 @@
 								<option value="A">최신순</option>
 							</select>
 						</div>
-						<p class="result">
+ -->						<p class="result">
 						    총 <span class="total_count_text">
 						    <c:choose>
 						        <c:when test="${actionBtn == 'search'}">
@@ -92,7 +92,6 @@
 						<li>
 						<div class="item">
 							<div class="main_img" style="background: ${empty row.wine ? '#fff' : wineStyles[row.wine]};">
-<%-- 								<a href="/product_view.do?category=${category }&productNo=${row.product}" class="prd_img table_box"> --%>
 								<a href="/product_view.do?category=${category }&state=${state }&sort=${sort }&productCode=${row.productCode}" class="prd_img table_box">
 								<picture>
 								<!--[if IE 9]><video style="display: none;"><![endif]-->

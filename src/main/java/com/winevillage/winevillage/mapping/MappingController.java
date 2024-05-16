@@ -12,11 +12,6 @@ public class MappingController {
 		return "order/order_list";
 	}
 
-	@GetMapping("/member/wish_list.do")
-	public String wish_list() {
-		return "order/wish_list";
-	}
-
 	@GetMapping("/list_other.do")
 	public String list_other() {
 		return "shop/other/product_list_other";

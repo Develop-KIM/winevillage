@@ -9,7 +9,7 @@
 <!-- /Added by HTTrack -->
 
 <head>
-<title>WINENARA 1987 ㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
+<title>WINEVILLAGEㅣ 와인의 모든 것이 있는 곳 와인빌리지입니다!</title>
 
 </head>
 <script type="text/javascript"
@@ -38,7 +38,7 @@
 			<h2 class="page_tit">회원탈퇴</h2>
 			<div class="ok_area">
 				<p class="tit">
-					와인나라 쇼핑몰 <br class="pc_hidden">회원탈퇴를 원하시나요?
+					와인빌리지 쇼핑몰 <br class="pc_hidden">회원탈퇴를 원하시나요?
 				</p>
 				<p class="txt">
 					서비스 탈퇴 시 고객님의 회원정보 및 활동내역이 <br class="pc_hidden">모두 삭제되며 <br

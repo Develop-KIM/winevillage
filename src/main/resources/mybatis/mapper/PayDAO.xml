@@ -18,7 +18,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.winevillage.winevillage.pay.ParameterDTO">
 		SELECT COUNT(*) FROM order_users
 		<if test="searchKeyword!=null and !searchKeyword.equals('')">
-			WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		<choose>
+			<when test="searchField == 'all' or searchField == null or searchField == ''">
+				WHERE
+				memberno LIKE '%'||#{searchKeyword}||'%' OR
+				name LIKE '%'||#{searchKeyword}||'%' OR
+				productname LIKE '%'||#{searchKeyword}||'%' OR
+				receivername LIKE '%'||#{searchKeyword}||'%' OR
+				receiverphone LIKE '%'||#{searchKeyword}||'%' OR
+				receiveraddress1 LIKE '%'||#{searchKeyword}||'%'
+			</when>
+			<otherwise>
+				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+			</otherwise>
+		</choose>
 		</if>
 	</select>
 	
@@ -34,11 +47,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.winevillage.winevillage.pay.ParameterDTO">
 		SELECT * FROM (
 			SELECT Tb.*, rownum rNum FROM (
-				SELECT * FROM order_users
+				WITH grouped_orders AS (
+					SELECT
+					to_char(createDate,'YYYY-MM-DD HH24:MI') as createDate, memberNo, finalPrice, COUNT(*),
+					ROW_NUMBER() OVER (ORDER BY to_char(createDate,'YYYY-MM-DD HH24:MI'),
+					memberNo, finalPrice) AS orderNo
+					FROM order_users
+					GROUP BY to_char(createDate,'YYYY-MM-DD HH24:MI'), memberNo, finalPrice
+					HAVING COUNT(*) > 0
+				)
+				SELECT 
+					grouped_orders.orderNo,
+					order_users.*
+				FROM order_users
+				JOIN grouped_orders
+					ON to_char(order_users.createDate,'YYYY-MM-DD HH24:MI') = grouped_orders.createDate
+					AND order_users.memberNo = grouped_orders.memberNo
+					AND order_users.finalPrice = grouped_orders.finalPrice
 				<if test="searchKeyword!=null and !searchKeyword.equals('')">
-					WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+				<choose>
+					<when test="searchField == 'all' or searchField == null or searchField == ''">
+						WHERE
+						memberno LIKE '%'||#{searchKeyword}||'%' OR
+						name LIKE '%'||#{searchKeyword}||'%' OR
+						productname LIKE '%'||#{searchKeyword}||'%' OR
+						receivername LIKE '%'||#{searchKeyword}||'%' OR
+						receiverphone LIKE '%'||#{searchKeyword}||'%' OR
+						receiveraddress1 LIKE '%'||#{searchKeyword}||'%'
+					</when>
+					<otherwise>
+						WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+					</otherwise>
+				</choose>
 				</if>
-				ORDER BY order_usersno DESC
+				ORDER BY grouped_orders.orderNo DESC
 			)Tb
 		)
 		WHERE rNum<![CDATA[>=]]>#{start}
@@ -52,7 +94,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT Tb.*, rownum rNum FROM (
 		SELECT * FROM product
 		<if test="searchKeyword!=null and !searchKeyword.equals('')">
-			WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+		<choose>
+			<when test="searchField == 'all' or searchField == null or searchField == ''">
+				WHERE
+				memberno LIKE '%'||#{searchKeyword}||'%' OR
+				name LIKE '%'||#{searchKeyword}||'%' OR
+				productname LIKE '%'||#{searchKeyword}||'%' OR
+				receivername LIKE '%'||#{searchKeyword}||'%' OR
+				receiverphone LIKE '%'||#{searchKeyword}||'%' OR
+				receiveraddress1 LIKE '%'||#{searchKeyword}||'%'
+			</when>
+			<otherwise>
+				WHERE ${searchField} LIKE '%'||#{searchKeyword}||'%'
+			</otherwise>
+		</choose>
 		</if>
 		ORDER BY productno DESC
 		)Tb
