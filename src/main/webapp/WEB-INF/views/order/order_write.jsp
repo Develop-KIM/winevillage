@@ -21,10 +21,19 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous"> -->
+<c:if test="${loggedIn}">
 	<%@ include file="../common/common.jsp"%>
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
-
-
+</c:if>
+<c:choose>
+<c:when test="${not loggedIn}">
+<script>
+alert('로그인 후 이용해주세요.');
+location.href="main.do";
+</script>
+<body></body>
+</c:when>
+<c:otherwise>
 <script>
 	$(document).ready(function() {
 	    var totalPrice = parseInt($("#totalPurchasePrice").text().replace(/[^0-9]/g, ''));
@@ -138,6 +147,7 @@
 							}),
 							success : function(result) {
 								alert("주문이 완료되었습니다.");
+								location.href = "member/order_list.do";
 							},
 							error : function(xhr, status, error) {
 								alert("주문 상태 업데이트 중 오류가 발생했습니다.");
@@ -591,6 +601,8 @@
 	</script>
 
 </body>
+</c:otherwise>
+</c:choose>
 
 </html>
 

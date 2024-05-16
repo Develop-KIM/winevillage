@@ -39,6 +39,7 @@ public class OrderDTO {
 	   private int order_usersNo;
 	   private String email;
 	   public java.sql.Date createDate;
+	   public String createOrderDate;
 	   
 //	   public  String payment_pending;
 //	   public  String payment_completed;
