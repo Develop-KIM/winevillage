@@ -62,7 +62,7 @@ function delete_confirm2(msg)
         return false;
 }
 
-function get_ajax_token()
+/* function get_ajax_token()
 {
     var token = "";
 
@@ -86,7 +86,7 @@ function get_ajax_token()
     });
 
     return token;
-}
+} */
 
 $(function(){	
 	// ajax 실행 및 완료시 'LOADING 이미지'의 동작을 컨트롤.
@@ -140,7 +140,7 @@ $(function(){
 		$('html, body').animate({scrollTop: 0}, 'fast');
 	});
 
-	$(document).on("click", "form :submit", function() {
+	/*$(document).on("click", "form :submit", function() {
 		var f = this.form;
 		var token = get_ajax_token();
 
@@ -157,7 +157,7 @@ $(function(){
 		$f.find("input[name=token]").val(token);
 
 		return true;
-	});
+	});*/
 
 	// 사이드뷰
     var sv_hide = false;

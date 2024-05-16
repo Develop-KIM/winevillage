@@ -32,6 +32,7 @@ localhost로 작성하면 내컴퓨터에서만 테스트할 수 있고, 내부�
  */
 var webSocket
     = new WebSocket("ws://localhost:8586/myChatServer");
+    /* = new WebSocket("ws://ec2-43-201-77-215.ap-northeast-2.compute.amazonaws.com:8586/myChatServer"); */
 
 //채팅을 위한 전역변수 생성 
 var chatWindow, chatMessage, chatId, chatName;
@@ -108,11 +109,13 @@ webSocket.onopen = function(event) {
 //웹소켓 서버가 종료되었을때 자동으로 호출 
 webSocket.onclose = function(event) {
     chatWindow.innerHTML += "웹소켓 서버가 종료되었습니다.<br/>";
+    webSocket.send(chatName+"00sender_leaveSOIEFHJ234NIE29035920354WFIE|입장하셨습니다.");
 };
 
 //에러발생시 자동으로 호출 
 webSocket.onerror = function(event) { 
-    alert(event.data);
+    /* alert(event.data); */
+    alert("로그인 후 이용해주세요.");
     chatWindow.innerHTML += "채팅 중 에러가 발생하였습니다.<br/>";
 }; 
 
@@ -143,22 +146,14 @@ webSocket.onmessage = function(event) {
         	console.log(sender, content);
         	let sender_leave = "00sender_leaveSOIEFHJ234NIE29035920354WFIE";
         	let sender_join = "00sender_joinSOIEFHJ357SHQ299823850WEHI";
-        	let support_leave = "와인빌리지 고객센터00sender_leaveSOIEFHJ234NIE29035920354WFIE";
-        	let support_join = "와인빌리지 고객센터00sender_joinSOIEFHJ357SHQ299823850WEHI";
         	
         	if(sender.endsWith(sender_leave)){
         		let trimmedSender = sender.slice(0, -sender_leave.length);
-        		chatWindow.innerHTML += trimmedSender + "님이 퇴장하셨습니다.<br/>";
+        		chatWindow.innerHTML += trimmedSender + "상담이 종료되었습니다.<br/>";
         	}
         	else if(sender.endsWith(sender_join)){
         		let trimmedSender = sender.slice(0, -sender_join.length);
         		chatWindow.innerHTML += trimmedSender + "님이 입장하셨습니다.<br/>";
-        	}
-        	else if(sender.endsWith(support_leave)){
-        		chatWindow.innerHTML = "";
-        	}
-        	else if(sender.endsWith(support_join)){
-        		chatWindow.innerHTML = "";
         	}
         	else{
 	        	//슬러쉬가 없다면 일반적인 메세지로 판단한다.

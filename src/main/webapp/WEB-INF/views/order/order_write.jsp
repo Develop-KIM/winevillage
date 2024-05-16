@@ -103,7 +103,7 @@
 			finalPrice : finalPrice,
 		};
 		$.ajax({
-			url : "http://localhost:8586/restOrderWrite.do",
+			url : "/restOrderWrite.do",
 			type : "POST",
 			contentType : "application/json",
 			data : JSON.stringify(orderData),
@@ -129,7 +129,7 @@
 				}, function(rsp) {
 					if (rsp.success) {
 						$.ajax({
-							url : "http://localhost:8586/restOrderUpdate.do",
+							url : "/restOrderUpdate.do",
 							type : "POST",
 							contentType : "application/json",
 							data : JSON.stringify({
@@ -145,7 +145,7 @@
 						});
 					} else {
 						$.ajax({
-							url : "http://localhost:8586/restOrderCancel.do",
+							url : "/restOrderCancel.do",
 							type : "POST",
 							contentType : "application/json",
 							data : JSON.stringify(orderData),

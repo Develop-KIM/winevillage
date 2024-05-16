@@ -48,8 +48,6 @@
 <script type="text/javascript" src="./js/picturefill.min.js"></script>
 <script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
 <script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
-<script type="text/JavaScript"
-	src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
 <script src="./js/wn.productf100.js?v=230405140747"></script>
 <script type="text/javascript" src="./js/jqcloud.min.js"></script>
 <script type="text/javascript" src="./js/slick.min.js"></script>
@@ -763,8 +761,8 @@ $(document).ready(function(){
                         <span id="result-count" style="margin-left: 208px;"></span>
                     </form>
                     <div id="map">
-                        <script src="https://maps.googleapis.com/maps/api/js?key=${apiKey }"></script>
                     </div>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=${apiKey }"></script>
                     <div class="store_list">
                         <ul id="store_ul">
                             <c:choose>

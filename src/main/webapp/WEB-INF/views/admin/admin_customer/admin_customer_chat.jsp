@@ -183,11 +183,14 @@ function multiDelete() {
 
 				<script>
 					function chatWinOpen() {
+						var id = "admin";
+						var username = "와인빌리지 고객센터";
 				        //채팅창을 팝업으로 오픈한다. 이때 대화명을 파라미터로 전달한다.  
-				        window.open("chatUI.do?chatName=와인빌리지 고객센터", "", 
+				        window.open("chatUI.do?chatId="+ id +"&chatName="+ username, "", 
 				        		"width=350,height=450");
+				        console.log("asdf");
 				    }
-					function fqalist_submit(f) {
+					/* function fqalist_submit(f) {
 						if (!is_checked("chk[]")) {
 							alert(document.pressed + " 하실 항목을 하나 이상 선택하세요.");
 							return false;
@@ -200,7 +203,7 @@ function multiDelete() {
 						}
 
 						return true;
-					}
+					} */
 				</script>
 			</div>
 
