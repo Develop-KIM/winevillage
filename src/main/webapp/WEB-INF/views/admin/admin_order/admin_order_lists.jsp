@@ -76,9 +76,9 @@ pageEncoding="UTF-8"%>
 	<h1>주문리스트(전체)</h1>
 	
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<h2>기본검색</h2>
+<!-- <h2>기본검색</h2>
 <form name="fsearch" id="fsearch" method="get">
-<!-- <input type="hidden" name="code" value="list"> -->
+<input type="hidden" name="code" value="list">
 <div class="tbl_frm01">
 	<table>
 	<colgroup>
@@ -100,7 +100,7 @@ pageEncoding="UTF-8"%>
 			</select>
 			<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 		</td>
-	</tr>
+	</tr> -->
 <!-- 	<tr>
 		<th scope="row">결제방법</th>
 		<td>
@@ -132,16 +132,16 @@ pageEncoding="UTF-8"%>
 			<label><input type="radio" name="od_final" value="0"> 구매미확정</label>
 		</td>
 	</tr> -->
-	</tbody>
+	<!-- </tbody>
 	</table>
 </div>
 <div class="btn_confirm">
 	<input type="submit" value="검색" class="btn_medium">
 	<input type="button" value="초기화" id="frmRest" class="btn_medium grey">
 </div>
-</form>
+</form> -->
 
-<div class="local_ov mart30">
+<div class="local_ov mart30" style="border-top:0;">
 	전체 : <b class="fc_red">${maps.totalCount }</b> 건 조회
 	<!-- <select id="page_rows" onchange="location='/admin/order.php?code=list&page=1&page_rows='+this.value;" class="marl5">
 		<option value="30" selected="selected">30줄 정렬</option>
