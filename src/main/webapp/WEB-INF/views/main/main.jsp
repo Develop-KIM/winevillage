@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+
+</script>
 </head>
 <body>
 	<%@ include file="../common/common.jsp"%>
@@ -195,10 +198,22 @@
 											loading="lazy" alt=""><!-- pc이미지 --> </picture>
 									</a>
 									<div class="btn">
-										<button type="button" class="wish wish_03T999 "
-											id="wish_03T999" onclick="product.likeProduct('03T999');">
-											<span>찜하기</span>
-										</button>
+										<c:choose>
+												<c:when test="${user_id != null && user_id != ''}">
+													<div data-product-cd="${product.productCode }">
+														<button type="button" class="wish wish_${product.productCode } "
+															id="wish_${product.productCode }" onclick="wishlist(this)">
+															<span>찜하기</span>
+														</button>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<button type="button" class="wish wish_${product.productCode } "
+														id="wish_${product.productCode }" onclick="$('.layer.login_layer').show();">
+														<span>찜하기</span>
+													</button>
+												</c:otherwise>
+											</c:choose>
 									</div>
 									<div class="label_wrap"></div>
 								</div>
@@ -314,6 +329,60 @@
 			<!-- page_script -->
 	
 			<script>
+			
+			$(document).ready(function() {
+				
+			    $.ajax({
+			        url: '/getWishList', // 서버의 해당 경로로 GET 요청을 보냅니다.
+			        type: 'GET', // HTTP 메소드 유형
+			        success: function(response) {
+			            // response는 사용자의 위시리스트에 있는 상품 코드 배열입니다.
+			        	response.forEach(function(item) {
+			                console.log("productCode", item.productCode); // 객체에서 productCode를 직접 참조
+			                $('.wish_' + item.productCode).addClass('on'); // 클래스에 추가
+			            });
+			        },
+			        error: function(xhr, status, error) {
+			            // 요청이 실패하면 콘솔에 에러 메시지를 출력합니다.
+			            console.error("Ajax 요청 실패: ", status, error);
+			        }
+			    });
+			});
+			function wishlist(element) {
+			    var productCode = element.parentNode.getAttribute('data-product-cd');
+				let isAdded = $('.wish_' + productCode).hasClass('on');
+				
+				if (!isAdded) {
+			        // 위시리스트에 추가
+			        $.ajax({
+			            url: '/addToWishList',
+			            type: 'POST',
+			            data: {
+			            	productCode: productCode,
+			            },
+			            success: function(response) {
+			                $('.wish_' + productCode).addClass('on')
+			            },
+			            error: function(xhr, status, error) {
+			                console.error("Ajax 요청 실패: ", status, error);
+			            }
+			        });	
+				} else {
+					$.ajax({
+						url: '/deleteWishList',
+						type: 'POST',
+						data: {
+			            	productCode: productCode,
+			            },
+			            success: function(response) {
+			                $('.wish_' + productCode).removeClass('on')
+			            },
+			            error: function(xhr, status, error) {
+			                console.error("Ajax 요청 실패: ", status, error);
+			            }
+					});
+				}
+			};
 				function dormant_submit() {
 					location.href = "auth/change_dormentba25.html?num=";
 				}
