@@ -55,7 +55,7 @@
                 <li class="${cartItem.orderNo }">
                     <div class="box ip_img">
                         <div class="checkbox type2">
-                           		<input type="checkbox" id="cart_seq_${cartItem.orderNo }" name="cart_seq[]" class="ip_check" value="${cartItem.productCode }" data-qty="${cartItem.orderAmount }" data-price="${cartItem.discountPrice }" data-supply-price="${cartItem.fullPrice }" data-promotion-limit="N">
+                           		<input type="checkbox" id="cart_seq_${cartItem.orderNo }" name="cart_seq[]" class="ip_check" value="${cartItem.productCode }" data-cart-seq="${cartItem.orderNo }" data-qty="${cartItem.orderAmount }" data-price="${cartItem.discountPrice }" data-supply-price="${cartItem.fullPrice }" data-promotion-limit="N">
 								<label for="cart_seq_${cartItem.orderNo }">
                                 <picture style="background: ${empty cartItem.wine ? '#fff' : wineStyles[cartItem.wine]}">
                                     <source srcset="/uploads/product/200/${cartItem.productImg }" media="(min-width:768px)"><!-- pc이미지 -->
@@ -159,179 +159,139 @@
 <script type="text/javascript" src="/asset/js/jqcloud.min.js"></script>
 <script>
 //전체선택
-$("#all_sel").click(function() {
-	if($("#all_sel").is(":checked")) $(".ip_check").prop("checked", true);
-	else $(".ip_check").prop("checked", false);
-	var price = 0;
-	$("input:checkbox[name='cart_seq[]']").each(function (index) {
-		
-		if($(this).is(":checked")==true){
-			price += $(this).data('qty') * $(this).data('price');
-		}
+	$("#all_sel").click(function() {
+		if($("#all_sel").is(":checked")) $(".ip_check").prop("checked", true);
+		else $(".ip_check").prop("checked", false);
+		var price = 0;
+		$("input:checkbox[name='cart_seq[]']").each(function (index) {
+			
+			if($(this).is(":checked")==true){
+				price += $(this).data('qty') * $(this).data('price');
+			}
+		});
+		$("#total").text(price.toLocaleString()+'원');
 	});
-	$("#total").text(price.toLocaleString()+'원');
-});
-$(".ip_check").click(function() {
-	var total = $(".ip_check").length;
-	var checked = $(".ip_check:checked").length;
-	if(total != checked) $("#all_sel").prop("checked", false);
-	else $("#all_sel").prop("checked", true); 
-});
-$('.main_img .slider').slick({
-    dots: true,
-    arrows: true
-});
-// 슬라이드시 비비노 키워드 호출
-    $('.main_img .slider').on("afterChange", function(){
-    	var product_cd = $(this).data('cd');
-    	 var words = [];	// 키워드 담을 배열
-    	
-    	Csrf.Set(_CSRF_NAME_); //토큰 초기화
-        $.ajax({
-            type: "POST",
-            url : "/shop/product/vivino_keyword_ajax",
-            data: {product_cd:product_cd},
-            success : function (res) {
-                if (typeof(res)=="string"){ res = JSON.parse(res); }
-				
-				if(res.status == "ok"){
-					var vivino = res.list;
-                	for(var i = 0;i < vivino.length;i++){
-//                 		console.log(vivino[i]);	
-                		var tempObj = {};
-                		tempObj['text'] = vivino[i]['keyword_kr'];
-        				tempObj['weight'] = vivino[i]['score'];
-        				
-        				words.push(tempObj);
-                	}
-    				var some_words_with_same_weight = $(".cloud_"+product_cd).jQCloud(words, {
-                        width: 334,
-                        height: 135
-                    });
-					return false;
-				}else{
-					$(".cloud_"+product_cd).html("<span>no data</span>");
-					console.log("no_list");
-					return false;
-				}
-            },
-            error: function (res) {
-                alert("상품 리스트 조회시 에러가 발생했습니다.");
-                alert(res.responseText);
-            }
-        });
+	$(".ip_check").click(function() {
+		var total = $(".ip_check").length;
+		var checked = $(".ip_check:checked").length;
+		if(total != checked) $("#all_sel").prop("checked", false);
+		else $("#all_sel").prop("checked", true); 
+	});
+	$('.main_img .slider').slick({
+	    dots: true,
+	    arrows: true
+	});
+	// 체크
+	$(document).ready(function() {
+    $('.ip_check').change(function() {
+        if ($(this).is(':checked')) {
+            var productCode = $(this).val();
+            var orderNo = $(this).data('cartSeq');
+            var info = {
+                productCode: productCode,
+                orderNo: orderNo
+            };
+            getProductInfo(info); // getProductInfo 함수 호출
+        }
     });
-	// 단일 삭제
-	$(".basic").on("click", function(){
-		var cart_seq = $(this).val();
-		if(confirm("장바구니에서 삭제하시겠습니까?")){
-			Csrf.Set(_CSRF_NAME_); //토큰 초기화
-			$.post("/shop/cart/cart_proc_ajax?ajax_mode=DEL", {
-				cart_seq: cart_seq
-			},function(res) {
-				if(typeof (res) == "string"){
-					res = JSON.parse(res);
-				}
-				if(res.status == 'ok'){
-					location.reload();
-				}else{
-					alert("삭제에 실패했습니다.");
-					return false;
-				 }
-			}).fail(function(error){
-				alert("장바구니 삭제중 오류가 발생했습니다.");
-			});
-		}
-	});
+});
+
+function getProductInfo(info) {
+    console.log(info);
+    $.ajax({
+        url: '/getCartList.do',
+        type: 'GET',
+        data: {
+            productCode: info.productCode,
+            orderNo: info.orderNo
+        },
+        dataType: 'json', // 응답을 JSON으로 기대함
+        success: function(response) {
+            console.log(response); // JSON 객체 그대로 콘솔에 출력
+            // 예: 장바구니 정보를 페이지에 표시하는 로직을 추가할 수 있습니다.
+            // $('#cartList').html(response.someProperty); // 예를 들어, 응답으로 받은 장바구니 정보를 페이지의 특정 요소에 표시
+        },
+        error: function(xhr, status, error) {
+            alert('제품 정보를 가져오는 중 오류가 발생했습니다.');
+            console.error(error);
+        }
+    });
+}
+
 
 	// 선택 삭제
-	$("#btn_del").on("click", function(){
-		var frm = document.DelForm;
-		var cart_val = []; 
-		var cart_opt_val = [];
-		if( $("input[name='cart_seq[]']:checked").length > 0 || $("input[name='cart_opt_seq[]']:checked").length > 0  ){
-			$("input[name='cart_seq[]']:checked").each(function(idx){
-				cart_val.push($(this).val());
-			});
-			$("input[name='cart_opt_seq[]']:checked").each(function(idx){
-				cart_opt_val.push($(this).val());
-			});
+		$(document).ready(function() {
+	    $('#deleteSelected').click(function() {
+	        var selectedItems = $('input[name="cart_seq[]"]:checked').map(function() {
+	            return $(this).val();
+	        }).get();
 	
-			if(confirm("선택한 상품을 삭제하시겠습니까?")){		//추가옵션 외
-			if(cart_val.length  !== 0) {
-				Csrf.Set(_CSRF_NAME_); 
-				$.ajax({
-					type: "POST",
-					url: "/shop/cart/cart_proc_ajax?ajax_mode=DEL",
-					dataType: 'json',
-					data: {cart_seq: cart_val},
-					success: function(res){
-						location.reload();
-					},
-					error: function(res){
-						alert(res.responseText);
-					}
-				});
-			}
-				if(cart_opt_val.length  !== 0) {		//선택한 (추가)옵션 삭제
-					Csrf.Set(_CSRF_NAME_); 
-					$.ajax({
-						type: "POST",
-						url: "/shop/cart/cart_proc_ajax?ajax_mode=DEL_OPT",
-						dataType: 'json',
-						data: {cart_opt_seq: cart_opt_val},
-						success: function(res){
-							location.reload();
-						},
-						error: function(res){
-							alert(res.responseText);
-						}
-					});
-				}
-			}
-		}else{
-			alert("삭제할 상품을 선택해 주세요.");
-			return false;
-		}
-	});
-	//상품 수령 변경
-	// 수량변경 및 가격 출력
-	function box_qty(element, value) {
-	    var parent = element.parentNode;
-	    var qtyInput = parent.querySelector('.qty');
-	    var currentQty = parseInt(qtyInput.value);
-	    var newQty = currentQty + value;
-	    
-	    var maxQty = parseInt(parent.getAttribute('data-stock'));
-	    
-	    // 수량이 최대값을 초과하는 경우
-	    if (newQty > maxQty) {
-	        alert("최대주문갯수는 " + maxQty + "개 입니다");
-	        return; // AJAX 요청을 보내지 않고 함수 종료
-	    }
-	    
-	    qtyInput.value = newQty >= 0 ? newQty : 0;
-	    // 변경된 수량을 서버에 업데이트하는 AJAX 요청
-	    $.ajax({
-	        url: '/update-quantity.do', // 서버의 엔드포인트 URL
-	        type: 'POST', // HTTP 요청 방식
-	        data: {
-	            orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자
-	            productCode: parent.getAttribute('data-product-cd'), // 제품 코드
-	            orderAmount: newQty, // 변경된 수량
-	        },
-	        success: function(response) {
-	            console.log('수량 업데이트 성공:', response); // 성공 메시지 로깅
-	            
-	            $('#originalSupply_' + response.orderNo).text((response.fullPrice * response.orderAmount).toLocaleString() + '원');
-	            $('#originalSale_' + response.orderNo).text(((response.fullPrice - response.discountPrice) * response.orderAmount).toLocaleString() + '원');
-	            $('#originalTotal_' + response.orderNo).text((response.discountPrice * response.orderAmount).toLocaleString()+'원');
-	        },
-	        error: function(xhr, status, error) {
-	            console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
+	        if (selectedItems.length > 0) {
+	            $.ajax({
+	                url: '/delete-items',
+	                type: 'POST',
+	                contentType: 'application/json',
+	                data: JSON.stringify(selectedItems),
+	                success: function(response) {
+	                    if (response === 'success') {
+	                        location.reload(); // 페이지 새로고침
+	                    } else {
+	                        alert('삭제 실패');
+	                    }
+	                },
+	                error: function() {
+	                    alert('서버 오류');
+	                }
+	            });
+	        } else {
+	            alert('선택된 항목이 없습니다.');
 	        }
 	    });
-	};
+	});
+	
+	// 수량변경 및 가격 출력
+	function box_qty(element, value) {
+    var parent = element.parentNode;
+    var qtyInput = parent.querySelector('.qty');
+    var currentQty = parseInt(qtyInput.value);
+    var newQty = currentQty + value;
+    
+    var maxQty = parseInt(parent.getAttribute('data-stock'));
+    var minQty = 1; // 최소 주문 개수를 1로 설정
+    
+    if (newQty > maxQty) {
+        alert("최대주문갯수는 " + maxQty + "개 입니다");
+        return; // AJAX 요청을 보내지 않고 함수 종료
+    }
+    
+    if (newQty < minQty) {
+        alert("최소주문갯수는 " + minQty + "개 입니다");
+        return; // AJAX 요청을 보내지 않고 함수 종료
+    }
+    
+    qtyInput.value = newQty; // 이미 조건을 통해 newQty가 1 이상임을 보장
+    
+    $.ajax({
+        url: '/update-quantity.do', // 서버의 엔드포인트 URL
+        type: 'POST', // HTTP 요청 방식
+        data: {
+            orderNo: parent.getAttribute('data-cart-seq'), // 장바구니 항목 식별자
+            productCode: parent.getAttribute('data-product-cd'), // 제품 코드
+            orderAmount: newQty, // 변경된 수량
+        },
+        success: function(response) {
+            console.log('수량 업데이트 성공:', response); // 성공 메시지 로깅
+            
+            $('#originalSupply_' + response.orderNo).text((response.fullPrice * response.orderAmount).toLocaleString() + '원');
+            $('#originalSale_' + response.orderNo).text(((response.fullPrice - response.discountPrice) * response.orderAmount).toLocaleString() + '원');
+            $('#originalTotal_' + response.orderNo).text((response.discountPrice * response.orderAmount).toLocaleString()+'원');
+        },
+        error: function(xhr, status, error) {
+            console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
+        }
+    });
+};
+
 	// 구매하기
 	function orderSet(state){        
 		if(state == 'a'){
@@ -407,14 +367,6 @@ var product = '["03U001"]';
 var product_cd;
 product_cd = JSON.parse(product);
 var mode ='init';
-/*
-if( product_cd ) {
-	getList('init');
-}else{
-	//$(".recommend_area").hide();  
-	getList2('init');
-}
-*/
     
 //스크롤 바닥 감지
 window.addEventListener('scroll', moreShowList);
@@ -541,7 +493,7 @@ $("#all_sel").trigger("click");
 <!-- //page_script -->
 
 <!--백로그 API-->
-<script type="text/JavaScript">
+<!-- <script type="text/JavaScript">
 	var cart_log = '{"03U001":"1"}';
 	
 	if(cart_log.length>2){
@@ -575,7 +527,7 @@ $("#all_sel").trigger("click");
             }
         });
 		
-	}
+	} -->
 </script>
 <!--백로그 API-->
 </section>
