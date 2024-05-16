@@ -30,7 +30,7 @@ public class QNAController {
 	@Autowired
 	QNAService dao;
 	
-	@GetMapping("/qna_list.do")
+	@GetMapping("/member/qna_list.do")
 	public String qnaLists(Model model, HttpServletRequest req, 
 			ParameterDTO parameterDTO, QNADTO qnaDTO, Authentication authentication) {
 		
@@ -156,7 +156,7 @@ public class QNAController {
 			e.printStackTrace();
 			System.out.println("1:1문의 등록에 실패하였습니다.");
 		}
-		return "redirect:qna_list.do";
+		return "redirect:/member/qna_list.do";
 	}
 	
 	@GetMapping("/admin_customer_qna.do")
@@ -263,7 +263,7 @@ public class QNAController {
 		return "redirect:admin_customer_qna.do";
 	}
 	
-	@PostMapping("/qna_delete.do")
+	@PostMapping("qna_delete.do")
 	public String qnaDeletePost(QNADTO qnaDTO) {
 		int result = dao.qnaDelete(qnaDTO);
 		if(result==-1) {
@@ -273,7 +273,7 @@ public class QNAController {
 			System.out.println("result? "+result);
 		}
 		
-		return "redirect:qna_list.do";
+		return "redirect:/member/qna_list.do";
 	}
 	
 	@PostMapping("/admin_customer_qna_delete.do")

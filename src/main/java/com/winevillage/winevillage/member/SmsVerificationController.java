@@ -22,7 +22,7 @@ public class SmsVerificationController {
         this.smsUtils = smsUtils;
     }
 
-    @PostMapping("/send_sms")
+    @PostMapping("/send_sms.do")
     public ResponseEntity<?> sendSMS(@RequestParam("phoneNumber") String userPhoneNumber, HttpSession session) {
         try {
             int randomNumber = ThreadLocalRandom.current().nextInt(1000, 10000);
@@ -34,7 +34,7 @@ public class SmsVerificationController {
         }
     }
 
-    @PostMapping("/verify_code")
+    @PostMapping("/verify_code.do")
     public ResponseEntity<?> verifyCode(@RequestParam("code") int codeFromUser, HttpSession session) {
         Integer storedCode = (Integer) session.getAttribute("randomNumber");
         if (storedCode != null && codeFromUser == storedCode) {

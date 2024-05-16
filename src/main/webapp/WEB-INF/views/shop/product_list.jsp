@@ -124,7 +124,7 @@
 											<source srcset="/uploads/product/200/${product.productImg }"
 												media="(max-width:1023px)">
 											<!-- mb이미지 --> <!--[if IE 9]></video><![endif]--> <img
-												src="../../uploads/product/200/${product.productImg }"
+												src="/uploads/product/200/${product.productImg }"
 												loading="lazy" alt=""><!-- pc이미지 --> </picture>
 										</a>
 										<div class="btn">
