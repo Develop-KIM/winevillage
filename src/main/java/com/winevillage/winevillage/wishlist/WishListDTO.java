@@ -9,7 +9,7 @@ public class WishListDTO {
 	private Long wishNo;
     private String createDate;
 	private String memberNo;
-	
+	private Long orderNo;
 	private int productNo;
 	private String productCode;
 	private String productName;

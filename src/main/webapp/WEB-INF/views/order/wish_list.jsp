@@ -30,15 +30,15 @@
 		</div>
 	</div>
 	<div class="content mypage note wish_lists_page">
-		<div class="inner">
+		<div class="inner" style="padding-top: 30px">
 			<div class="top_info">
 				<div class="page_tit">
 					<h2 class="tit">위시리스트</h2>
 				</div>
 			</div>
 			<div class="del_area">
-				<button type="button" class="btn_select">선택삭제</button>
-				<button type="button" class="btn_all">전체삭제</button>
+				<button type="button" id="btn_del" class="btn_select">선택삭제</button>
+				<button type="button" id="btn_all" class="btn_all">전체선택</button>
 			</div>
 			<div class="prd_list_area" style="position:relative">
 				<div class="search_result" style="display: block; z-index: 999; left: 141px; top: -76px; border: none;">
@@ -53,8 +53,8 @@
 						<li>
 							<div class="item">
 								<div class="checkbox type2">
-									<input type="checkbox" name="wish[]" id="wish_item03S801"
-										value="03S801"> <label for="wish_item03S801">&nbsp;</label>
+									<input type="checkbox" name="wish_seq[]" id="wish_seq_${wishItem.wishNo }"  data-mem-seq="${wishItem.memberNo }"
+										value="${wishItem.productCode }" > <label for="wish_seq_${wishItem.wishNo }">&nbsp;</label>
 								</div>
 								<div class="main_img"
 									style="background: ${empty wishItem.wine ? '#fff' : wineStyles[wishItem.wine]};">
@@ -220,8 +220,50 @@ function wishlist(element) {
             }
 		});
 	}
-	
 };
+//선택 삭제
+$(document).ready(function() {
+    $('#btn_del').click(function() {
+        // 체크된 체크박스를 찾기
+        $('input[name="wish_seq[]"]:checked').each(function() {
+            // 체크된 항목에서 memberNo와 productCode 추출
+            var memberNo = $(this).data('mem-seq'); // data-mem-seq 속성에서 memberNo 추출
+            var productCode = $(this).val(); // value 속성에서 productCode 추출
+
+            // 서버로 삭제 요청을 보내는 AJAX 요청
+            $.ajax({
+                url: '/deleteWishItem.do', // 처리할 URL
+                type: 'POST', // HTTP 요청 방식
+                data: {memberNo: memberNo, productCode: productCode}, // 서버로 전송할 데이터
+                success: function(response) {
+                    // 삭제가 성공하면 페이지를 새로 고침하거나 UI를 업데이트
+                    console.log('삭제 성공', response);
+                    location.reload(); // 예: 페이지 새로 고침
+                },
+                error: function(xhr, status, error) {
+                    // 오류 처리
+                    console.error('삭제 실패', error);
+                }
+            });
+        });
+    });
+});
+
+//전체 선택
+$(document).ready(function() {
+    // 전체 선택 상태를 추적하는 변수
+    var isAllChecked = false;
+
+    // 전체 선택/해제 버튼 클릭 이벤트
+    $('#btn_all').click(function() {
+        // 전체 선택 상태 변경
+        isAllChecked = !isAllChecked;
+
+        // 모든 체크박스의 체크 상태를 isAllChecked 변수의 값에 따라 변경
+        $('input[name="wish_seq[]"]').prop('checked', isAllChecked);
+    });
+});
+
 </script>
 </body>
 <footer>

@@ -47,4 +47,10 @@
 		SELECT COUNT(*) FROM WishList
 		WHERE memberNo = #{memberNo}
 	</select>
+	
+	<delete id="deleteWishItem">
+        DELETE FROM wishlist
+        WHERE productCode = #{productCode}
+        AND memberNo = #{memberNo}
+    </delete>
 </mapper>
