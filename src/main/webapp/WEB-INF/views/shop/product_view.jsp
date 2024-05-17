@@ -557,14 +557,20 @@ function directOrder() {
 	});
 	
 	$(document).ready(function() {
-		
+	    var urlParams = new URLSearchParams(window.location.search);
+	    var productCodeFromURL = urlParams.get('productCode');
+
+	    console.log("URL에서 추출한 productCode: ", productCodeFromURL);
+
 	    $.ajax({
-	        url: '/getWishList', 
-	        type: 'GET', 
+	        url: '/getWishList',
+	        type: 'GET',
 	        success: function(response) {
-	        	response.forEach(function(item) {
+	            response.forEach(function(item) {
 	                console.log("productCode", item.productCode);
-	                $('.wish_btn').addClass('on'); 
+	                if (item.productCode === productCodeFromURL) {
+	                    $('.wish_btn').addClass('on');
+	                }
 	            });
 	        },
 	        error: function(xhr, status, error) {
@@ -572,6 +578,7 @@ function directOrder() {
 	        }
 	    });
 	});
+
 	// 위시리스트 추가
 	function wishlist(element) {
 	    var productCode = element.parentNode.getAttribute('data-product-cd');
