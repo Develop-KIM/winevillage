@@ -58,7 +58,7 @@
 					<c:set var="list" value="${entry.value}"/>
 					<li>
 						<div class="top_date">
-							<p>2024.04.10</p>
+							<p>${ entry.key }</p>
 							<!-- <button type="button" class="btn_txt" onclick="location.href='/shop/mypage/shopping/order_view?ocode=202404101712122YUI'"> -->
 							<button type="button" class="btn_txt" onclick="return false;">
 								<span>주문완료</span>
@@ -92,7 +92,7 @@
 									<div class="price">
 										<p>
 											<!-- <del>50,000원</del> -->
-											<ins>${order.discountPrice}원</ins>
+											<ins><fmt:formatNumber value="${order.discountPrice}" pattern="#,###" />원</ins>
 										</p>
 										<p class="amount">${order.orderAmount}개</p>
 									</div>

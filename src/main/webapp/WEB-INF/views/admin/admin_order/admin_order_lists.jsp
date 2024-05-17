@@ -17,53 +17,53 @@ pageEncoding="UTF-8"%>
 			<dt class="o10 menu_toggle">주문관리</dt>
 			<dd class="o10 active">
 				<a href="admin_order_lists.do">주문리스트(전체)
-					<em class="snb_air">34</em>
+					<!-- <em class="snb_air">34</em> -->
 				</a>
 			</dd>		
 			<dd class="o10">
 				<a href="admin_order2.do">입금대기
-					<em>0</em>
+					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 			<dd class="o10">
 				<a href="admin_order3.do">입금완료
-					<em>0</em>
+					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 			<dd class="o10">
 				<a href="admin_order4.do">배송준비
-					<em>0</em>
+					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 			<dd class="o10">
 				<a href="admin_order5.do">배송중
-					<em>0</em>
+					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 			<dd class="o10">
 				<a href="admin_order6.do">배송완료
-					<em class="snb_air">1</em>
+					<!-- <em class="snb_air">1</em> -->
 				</a>
 			</dd>
 			<dt class="o20 menu_toggle">취소/교환/반품/환불 관리</dt>
 			<dd class="o20">
 				<a href="admin_order7.do">입금전 취소
-					<em class="snb_air">33</em>
+					<!-- <em class="snb_air">33</em> -->
 				</a>
 			</dd>		
 			<dd class="o20">
 				<a href="admin_order8.do">배송전 환불
-					<em>0</em>
+					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 			<dd class="o20">
 				<a href="admin_order9.do">배송후 반품
-					<em>0</em>
+					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 			<dd class="o20">
 				<a href="admin_order10.do">배송후 교환
-					<em>0</em>
+					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 		</dl>

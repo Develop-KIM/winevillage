@@ -244,9 +244,9 @@ $(document).ready(function(){
 								</c:when>
 								<c:otherwise>
 									<!-- 로그인 전 보여줄 내용 -->
-									<div class="no_login">
-										<button style="display:block; font-size: 12px; color: #555; margin-left: 3px;" type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
-										<a href="join_form.do">회원가입</a>
+									<div class="no_login" style="width:70px;">
+										<button style="display:block; font-size: 12px; color: #555; margin-left: 3px; margin:0 auto;" type="button" onclick="$('.layer.login_layer').show();" id="mylogin">로그인</button>
+										<a style="margin:0 auto;" href="join_form.do">회원가입</a>
 									</div>
 								</c:otherwise>
 							</c:choose>

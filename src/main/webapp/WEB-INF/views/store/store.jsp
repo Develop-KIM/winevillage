@@ -231,7 +231,7 @@ $(document).ready(function(){
                     alert("알 수 없는 오류 발생");
                     break;
                 case error.PERMISSION_DENIED:
-                    alert("권한이 없습니다");
+                    /* alert("권한이 없습니다"); */
                     break;
                 case error.POSITION_UNAVAILABLE:
                     alert("위치 확인 불가");
