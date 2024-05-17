@@ -14,7 +14,7 @@ function deleteChat(chat_no) {
 		if (confirmed) {
 			var form = document.createElement("form");
 			form.setAttribute("method", "post");
-			form.setAttribute("action", "admin_customer_chat_delete.do");
+			form.setAttribute("action", "/admin_customer_chat_delete.do");
 
 			var input = document.createElement("input");
 			input.setAttribute("type", "hidden");
@@ -48,7 +48,7 @@ function multiDelete() {
 	var confirmed = confirm("정말로 삭제하시겠습니까?");
 	if (confirmed) {
 		form.setAttribute("method", "post");
-		form.setAttribute("action", "admin_customer_chat_delete2.do");
+		form.setAttribute("action", "/admin_customer_chat_delete2.do");
 	    
 		var input = document.createElement("input");
 		input.setAttribute("type", "hidden");
@@ -72,29 +72,29 @@ function multiDelete() {
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10 active">
-					<a href="admin_customer_qna.do">1:1 상담문의
+					<a href="/admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
 				</dd>
 				<dd class="h10">
-					<a href="admin_customer_withdrawal.do">회원 탈퇴내역</a>
+					<a href="/admin_customer_withdrawal.do">회원 탈퇴내역</a>
 				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
-					<a href="admin_customer_faq_lists.do">FAQ 관리</a>
+					<a href="/admin_customer_faq_lists.do">FAQ 관리</a>
 				</dd>
 				<dd class="h20">
-					<a href="admin_customer_faq_category.do">FAQ 분류</a>
+					<a href="/admin_customer_faq_category.do">FAQ 분류</a>
 				</dd>
 				<dd class="h20">
-					<a href="admin_customer_faq_write.do">FAQ 작성</a>
+					<a href="/admin_customer_faq_write.do">FAQ 작성</a>
 				</dd>
 				<dt class="h20 menu_toggle">공지사항</dt>
 				<dd class="h20">
-					<a href="admin_customer_notice_lists.do">공지사항 관리</a>
+					<a href="/admin_customer_notice_lists.do">공지사항 관리</a>
 				</dd>
 				<dd class="h20">
-					<a href="admin_customer_notice_write.do">공지사항 작성</a>
+					<a href="/admin_customer_notice_write.do">공지사항 작성</a>
 				</dd>
 			</dl>
 		</div>
