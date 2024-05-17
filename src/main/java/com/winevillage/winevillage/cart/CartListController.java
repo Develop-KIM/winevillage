@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -125,4 +126,14 @@ public class CartListController {
 		CartListDTO cartListDTO = cartListService.getCartList(orderNo, productCode);
 		return ResponseEntity.ok(cartListDTO);
 	}
+	
+	@PostMapping("/deleteItem.do")
+    @ResponseBody
+    public String deleteSelectedItems(@RequestBody List<CartListDTO> cartListDTO) {
+        if (cartListDTO == null || cartListDTO.isEmpty()) {
+            return "No items selected";
+        }
+        cartListService.deleteItems(cartListDTO);
+        return "Items deleted successfully";
+    }
 }
