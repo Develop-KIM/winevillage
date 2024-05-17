@@ -314,7 +314,7 @@ function multiDelete() {
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10 active">
 					<a href="admin_customer_qna.do">1:1 상담문의
-						<em>0</em>
+						<!-- <em>0</em> -->
 					</a>
 				</dd>
 				<dd class="h10">
@@ -405,7 +405,7 @@ function multiDelete() {
 								<col class="w300">
 								<col>
 								<col class="w50">
-								<col class="w130">
+								<%-- <col class="w130"> --%>
 							</colgroup>
 							<thead>
 								<tr>
@@ -417,7 +417,7 @@ function multiDelete() {
 									<th scope="col">제목</th>
 									<th scope="col">문의내용</th>
 									<th scope="col">답변여부</th>
-									<th scope="col">관리</th>
+									<!-- <th scope="col">관리</th> -->
 									
 								</tr>
 							</thead>
@@ -533,11 +533,11 @@ function multiDelete() {
 														${ item.qna_answered == 0 ? '답변대기' : '답변완료' }
 													</div>
 												</td>
-												<td>
+												<%-- <td>
 													<a href="admin_customer_qna_reply.do?qna_no=${ item.qna_no }" class="btn_small grey" style="margin-right:0.6px;">답변</a>
 													<a href="admin_customer_qna_edit.do?qna_no=${ item.qna_no }" class="btn_small">수정</a>
 													<a href="#" onclick="event.preventDefault(); deleteQna(${item.qna_no});" class="btn_small white">삭제</a>
-												</td>
+												</td> --%>
 											</tr>
 										</c:forEach>
 									</c:otherwise>
