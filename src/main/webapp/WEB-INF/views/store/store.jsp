@@ -12,6 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>	
 <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/layouta0da.css" />
 <link rel="stylesheet" type="text/css" href="/css/layout_pcdc60.css"
@@ -193,7 +194,11 @@ $(document).ready(function(){
             }
 
             if (navigator.geolocation) {
+            	console.log('지오로케이션 사용가능');
                 navigator.geolocation.getCurrentPosition(showPosition, showError);
+            }
+            else{
+            	console.log('지오로케이션 사용할 수 없음');
             }
         }
 
@@ -228,16 +233,16 @@ $(document).ready(function(){
         function showError(error) {
             switch (error.code) {
                 case error.UNKNOWN_ERROR:
-                    alert("알 수 없는 오류 발생");
+                	console.log("알 수 없는 오류 발생");
                     break;
                 case error.PERMISSION_DENIED:
-                    /* alert("권한이 없습니다"); */
+                    console.log("권한이 없습니다");
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    alert("위치 확인 불가");
+                	console.log("위치 확인 불가");
                     break;
                 case error.TIMEOUT:
-                    alert("검색을 다시 눌러주세요");
+                	console.log("검색을 다시 눌러주세요");
                     break;
             }
         }
@@ -245,7 +250,6 @@ $(document).ready(function(){
 </head>
 
 
-<script>
 <script>
 function checkLoginStatus() {
     var loginMemberId = document.getElementById("loginMemberId").value.trim();
