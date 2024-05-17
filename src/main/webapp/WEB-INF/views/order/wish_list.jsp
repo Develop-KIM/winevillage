@@ -22,7 +22,7 @@
 					<ul class="depth_02">
 						<li><a href="/member/order_list.do">주문내역</a></li>
 						<li class="on"><a href="/member/wish_list.do">위시리스트</a></li>
-						<li><a href="/member/cart_list.do">장바구니</a></li>
+						<li><a href="/cart_list.do">장바구니</a></li>
 						<li><a href="/member/qna_list.do">문의내역확인</a></li>
 						<li><a href="/member/withdrawal.do">회원탈퇴</a></li>
 					</ul></li>
