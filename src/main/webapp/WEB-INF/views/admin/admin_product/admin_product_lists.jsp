@@ -243,8 +243,6 @@ function multiDelete() {
 									<td rowspan="1" colspan="1" class="tar">${item.fullPrice}</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountRate }%</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
-									<%-- <input type="hid-den" name="productNo" value="${item.productNo }"> --%>
-									<!-- <td rowspan="1" colspan="1"><button type="submit" class="btn_small">삭제</button></td> -->
 									<td rowspan="1" colspan="2"><a href="admin_product_edit.do?productCode=${item.productCode }" class="btn_small">수정</a>
 									</td>
 								</tr>
@@ -263,7 +261,6 @@ function multiDelete() {
 
 		</div>
 	</div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

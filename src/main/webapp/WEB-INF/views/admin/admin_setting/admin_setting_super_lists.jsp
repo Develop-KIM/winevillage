@@ -143,7 +143,6 @@ function deletePost(idx) {
 
 		</div>
 	</div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

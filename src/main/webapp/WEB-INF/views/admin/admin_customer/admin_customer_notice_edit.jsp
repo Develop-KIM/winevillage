@@ -112,7 +112,6 @@ pageEncoding="UTF-8"%>
 
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

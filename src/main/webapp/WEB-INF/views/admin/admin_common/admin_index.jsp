@@ -91,7 +91,6 @@ pageEncoding="UTF-8"%>
 
 </div>
 
-<%@ include file="admin_footer.jsp"%>
 <script>
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {

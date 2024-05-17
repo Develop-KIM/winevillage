@@ -308,10 +308,6 @@ pageEncoding="UTF-8"%>
 	<tr>
 		<th scope="row">수량</th>
 		<td>
-<!-- 			<input type="radio" name="stock" value="" id="ids_stock_mode1" checked="checked">
-			<label for="ids_stock_mode1" class="marr10">무제한</label>
-			<input type="radio" name="stock" value="" id="ids_stock_mode2">
-			<label for="ids_stock_mode2">한정</label> -->
 			<input type="text" name="stock" placeholder="0" value="" class="frm_input w80"> 개,
 			<p class="fc_197 mart7">상품의 재고가 통보수량보다 작을 때 상품 재고관리에 표시됩니다.<br>옵션이 있는 상품은 개별 옵션의 통보수량이 적용됩니다. 설정이 무제한이면 재고관리에 표시되지 않습니다.</p>
 		</td>
@@ -333,7 +329,6 @@ pageEncoding="UTF-8"%>
 
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 
