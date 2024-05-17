@@ -105,8 +105,8 @@
 	<select id="getCartListByMemberNo"
 		resultType="com.winevillage.winevillage.cart.CartListDTO">
 		SELECT
-		c.memberNo,
-		p.productCode
+		c.*,
+		p.*
 		FROM
 		Orders c
 		INNER JOIN
@@ -116,7 +116,18 @@
 		c.memberNo = #{memberNo}
 		AND
 		c.OrderStatus = 'PAYMENT_PENDING'
-		GROUP BY p.productCode, c.memberNo
+		AND c.OrderNo IN (
+		SELECT
+		MAX(OrderNo)
+		FROM
+		Orders
+		WHERE
+		memberNo = #{memberNo}
+		AND OrderStatus =
+		'PAYMENT_PENDING'
+		GROUP BY
+		productCode, memberNo
+		)
 	</select>
 
 	<update id="updateOrderQuantity"
@@ -150,4 +161,26 @@
 		WHERE
 		cookie_id = #{cookieId}
 	</update>
+
+	<select id="getCartList"
+		resultType="com.winevillage.winevillage.cart.CartListDTO">
+		SELECT o.*, p.*
+		FROM Orders o
+		JOIN Product p ON o.productCode
+		= p.productCode
+		WHERE o.orderNo = #{orderNo}
+		AND o.productCode =
+		#{productCode}
+	</select>
+
+	<delete id="deleteItems" parameterType="list">
+		DELETE FROM Orders
+		WHERE (productCode, orderNo) IN
+		<foreach item="item" index="index" collection="list" open="("
+			separator="," close=")">
+			(#{item.productCode}, #{item.orderNo})
+		</foreach>
+	</delete>
+
+
 </mapper>

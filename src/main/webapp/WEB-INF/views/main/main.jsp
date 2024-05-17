@@ -333,7 +333,7 @@
 			$(document).ready(function() {
 				
 			    $.ajax({
-			        url: '/getWishList.do', // 서버의 해당 경로로 GET 요청을 보냅니다.
+			        url: '/getWishList', // 서버의 해당 경로로 GET 요청을 보냅니다.
 			        type: 'GET', // HTTP 메소드 유형
 			        success: function(response) {
 			            // response는 사용자의 위시리스트에 있는 상품 코드 배열입니다.
@@ -355,7 +355,7 @@
 				if (!isAdded) {
 			        // 위시리스트에 추가
 			        $.ajax({
-			            url: '/addToWishList.do',
+			            url: '/addToWishList',
 			            type: 'POST',
 			            data: {
 			            	productCode: productCode,
@@ -369,7 +369,7 @@
 			        });	
 				} else {
 					$.ajax({
-						url: '/deleteWishList.do',
+						url: '/deleteWishList',
 						type: 'POST',
 						data: {
 			            	productCode: productCode,

@@ -48,7 +48,7 @@ public class WishListController {
 		    }
 	}
 	
-	@PostMapping("/addToWishList.do")
+	@PostMapping("/addToWishList")
     public ResponseEntity<WishListDTO> addToWishlist(@RequestParam("productCode") String productCode) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String user_id = authentication.getName();
@@ -58,7 +58,7 @@ public class WishListController {
 		return ResponseEntity.ok().build();
 	}
 	
-	@PostMapping("/deleteWishList.do")
+	@PostMapping("/deleteWishList")
 	public ResponseEntity<WishListDTO> deleteWishList(@RequestParam("productCode") String productCode) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String user_id = authentication.getName();
@@ -68,7 +68,7 @@ public class WishListController {
         return ResponseEntity.ok().build();
 	}
 	
-	@GetMapping("/getWishList.do")
+	@GetMapping("/getWishList")
 	@ResponseBody
     public List<WishListDTO> getWishList(Principal principal) {
 		  if (principal == null) {

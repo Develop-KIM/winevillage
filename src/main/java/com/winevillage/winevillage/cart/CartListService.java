@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CartListService {
@@ -68,5 +69,13 @@ public class CartListService {
     	return cartListMapper.updateMemberCart(memberNo, cookieId);
     }
     
-
+    public CartListDTO getCartList(Long orderNo, String productCode) {
+        return cartListMapper.getCartList(orderNo, productCode);
+    }
+    
+    public void deleteItems(List<CartListDTO> cartListDTO) {
+        cartListMapper.deleteItems(cartListDTO);
+    }
 }
+    
+
