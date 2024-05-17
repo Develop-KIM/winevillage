@@ -207,36 +207,32 @@ function directOrder() {
 							<div class="btn_area">
 							<c:choose>
 								<c:when test="${productDTO.state != 'exclusive' }">
-								<button  class="btn_txt wish_btn">찜하기</button>
+								<c:choose>
+										<c:when test="${user_id != null && user_id != ''}">
+											<div data-product-cd="${productDTO.productCode }">
+												<button type="button" class="btn_txt wish_btn"
+													id="wish_${productDTO.productCode }" onclick="wishlist(this)">
+													<span>찜하기</span>
+												</button>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<button type="button" class="btn_txt wish_btn"
+												id="wish_${productDTO.productCode }" onclick="$('.layer.login_layer').show();">
+												<span>찜하기</span>
+											</button>
+										</c:otherwise>
+									</c:choose>
 								<!--피씨-->
 								    <button id="add-to-cart-button" data-product-code="${productDTO.productCode}" class="btn_txt cart_btn buy_process_btn">장바구니</button>
-									<script>
-									$(function() {
-									    $('#add-to-cart-button').click(function() {
-									    	
-									        var productCode = $(this).data('product-code');	
-									        console.log("productCode", productCode);
-									        $.ajax({
-									            url: '/addToCart.do',
-									            type: 'POST',
-									            data: {
-									                productCode: productCode // 여기에 동적으로 제품 코드 삽입
-									            },
-									            success: function(response) {
-									            	console.log("확인", response)
-									                alert(response.message);
-									            },
-									            error: function(xhr, status, error) {
-									                alert("오류 발생: " + error);
-									            }
-									        });
-									    });
-									});
-									</script>
-								<!-- <button type="button"
-									onclick="RC_Method({page_type:'product_page', behavior: 'user_action', action: 'buying'}); chklayer();"
-									class="btn_txt buy_btn btn_black buy_process_btn">바로구매</button> -->
-								<button type="button" class="btn_txt buy_btn btn_black buy_process_btn" onclick="directOrder()">바로구매</button>
+								<c:choose>
+									<c:when test="${user_id != null && user_id != ''}">
+										<button type="button" class="btn_txt buy_btn btn_black buy_process_btn" onclick="directOrder()">바로구매</button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="btn_txt buy_btn btn_black buy_process_btn" onclick="$('.layer.login_layer').show();">바로구매</button>
+									</c:otherwise>
+								</c:choose>
 								</c:when>
 								<c:when test="${productDTO.stock == 0 }">
 									<button type="button" class="btn_txt wish_btn">찜하기</button>
@@ -537,6 +533,82 @@ function directOrder() {
 			$('.tab_con.detail_con').addClass('on');
 		});
 	});
+	//장바구니
+	$(function() {
+	    $('#add-to-cart-button').click(function() {
+	    	
+	        var productCode = $(this).data('product-code');	
+	        console.log("productCode", productCode);
+	        $.ajax({
+	            url: '/addToCart.do',
+	            type: 'POST',
+	            data: {
+	                productCode: productCode 
+	            },
+	            success: function(response) {
+	            	console.log("확인", response)
+	                alert(response.message);
+	            },
+	            error: function(xhr, status, error) {
+	                alert("오류 발생: " + error);
+	            }
+	        });
+	    });
+	});
+	
+	$(document).ready(function() {
+		
+	    $.ajax({
+	        url: '/getWishList', 
+	        type: 'GET', 
+	        success: function(response) {
+	        	response.forEach(function(item) {
+	                console.log("productCode", item.productCode);
+	                $('.wish_btn').addClass('on'); 
+	            });
+	        },
+	        error: function(xhr, status, error) {
+	            console.error("Ajax 요청 실패: ", status, error);
+	        }
+	    });
+	});
+	// 위시리스트 추가
+	function wishlist(element) {
+	    var productCode = element.parentNode.getAttribute('data-product-cd');
+		let isAdded = $('.wish_btn').hasClass('on');
+		
+		if (!isAdded) {
+	        $.ajax({
+	            url: '/addToWishList',
+	            type: 'POST',
+	            data: {
+	            	productCode: productCode,
+	            },
+	            success: function(response) {
+	                $('.wish_btn').addClass('on');
+	                console.log("위시리스트 추가")
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Ajax 요청 실패: ", status, error);
+	            }
+	        });	
+		} else {
+			$.ajax({
+				url: '/deleteWishList',
+				type: 'POST',
+				data: {
+	            	productCode: productCode,
+	            },
+	            success: function(response) {
+	                $('.wish_btn').removeClass('on');
+	                console.log("위시리스트 삭제")
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Ajax 요청 실패: ", status, error);
+	            }
+			});
+		}
+	};
 	</script>
 	<%@ include file="../common/footer.jsp"%>
 </body>

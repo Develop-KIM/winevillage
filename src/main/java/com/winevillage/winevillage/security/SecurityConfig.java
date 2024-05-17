@@ -56,6 +56,7 @@ public class SecurityConfig{
 						.requestMatchers("/", "/setCookie", "/**.do").permitAll()
 						.requestMatchers("/css/**", "/js/**", "/images/**", "/uploads/**").permitAll()
 						.requestMatchers("/member/**").hasRole("USER")
+						.requestMatchers("/chatUI.do").permitAll()
 						.anyRequest().authenticated());
 		http.formLogin((formLogin) -> formLogin
 				.loginPage("/main.do")

@@ -42,18 +42,7 @@
 <style>
 #mylogin {padding: 0; background-image: none;}
 .gnb>ul {margin-left: 110px;}
-</style>	
-<script type="text/javascript" src="/js/slick.min.js"></script>
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/picturefill.min.js"></script>
-<script type="text/javascript" src="/js/commond820.js?v=221216102931"></script>
-<script type="text/javascript" src="/js/front_ui9442.js?v=221226120920"></script>
-<script src="/js/wn.productf100.js?v=230405140747"></script>
-<script type="text/javascript" src="/js/jqcloud.min.js"></script>
-<script type="text/javascript" src="/js/slick.min.js"></script>
-<script type="text/javascript" src="/js/filter.js"></script>
-<script type="text/javascript" src="/js/order.js"></script>
+</style>
 <script>
 function checkLoginStatus() {
     var loginMemberId = document.getElementById("loginMemberId").value.trim();
@@ -242,7 +231,7 @@ $(document).ready(function(){
                     alert("알 수 없는 오류 발생");
                     break;
                 case error.PERMISSION_DENIED:
-                    alert("권한이 없습니다");
+                    /* alert("권한이 없습니다"); */
                     break;
                 case error.POSITION_UNAVAILABLE:
                     alert("위치 확인 불가");
@@ -761,9 +750,7 @@ $(document).ready(function(){
                         </div>
                         <span id="result-count" style="margin-left: 208px;"></span>
                     </form>
-                    <div id="map">
-
-                    </div>
+                    <div id="map"></div>
                     <div class="store_list">
                         <ul id="store_ul">
                             <c:choose>
