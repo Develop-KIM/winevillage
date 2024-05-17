@@ -20,9 +20,6 @@ pageEncoding="UTF-8"%>
 						<em>0</em>
 					</a>
 				</dd>
-				<dd class="h10">
-					<a href="admin_customer_withdrawal.do">회원 탈퇴내역</a>
-				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
 					<a href="admin_customer_faq_lists.do">FAQ 관리</a>
@@ -50,10 +47,6 @@ pageEncoding="UTF-8"%>
 		<h1>공지사항 수정</h1>
 		<form name="fboardform" method="post" action="admin_customer_notice_edit.do">
 			<input type="hidden" name="notice_no" value="${noticeDTO.notice_no }" />
-			<!-- <input type="hidden" name="w" value="u">
-			<input type="hidden" name="sfl" value="">
-			<input type="hidden" name="stx" value="">
-			<input type="hidden" name="page" value="1"> -->
 			<div class="tbl_frm02">
 				<table>
 				<colgroup>
@@ -119,7 +112,6 @@ pageEncoding="UTF-8"%>
 
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

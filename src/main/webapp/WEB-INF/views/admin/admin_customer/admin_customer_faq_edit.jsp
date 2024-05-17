@@ -20,9 +20,6 @@ pageEncoding="UTF-8"%>
 						<em>0</em>
 					</a>
 				</dd>
-				<dd class="h10">
-					<a href="/admin_customer_withdrawal.do">회원 탈퇴내역</a>
-				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
 					<a href="/admin_customer_faq_lists.do">FAQ 관리</a>
@@ -72,15 +69,6 @@ pageEncoding="UTF-8"%>
 								<option value="${faqDTO.faq_classified}">${faqDTO.faq_classified}</option>
 							</c:forEach>
 						</select>
-						<!-- <select name="faq_classified">
-							<option value="배송문의">배송문의</option>
-							<option value="취소/교환/반품">취소/교환/반품</option>
-							<option value="환불관련">환불관련</option>
-							<option value="주문/결제">주문/결제</option>
-							<option value="쿠폰/포인트">쿠폰/포인트</option>
-							<option value="회원관련">회원관련</option>
-							<option value="기타">기타</option>
-						</select> -->
 					</td>
 				</tr>
 				<tr>
@@ -94,12 +82,6 @@ pageEncoding="UTF-8"%>
 					<th scope="row">내용</th>
 					<td>
 						<textarea name="faq_content" class="frm_textbox wfull" rows="5">${faqDTO.faq_content}</textarea>
-						<!-- <span class="sound_only">웹에디터 시작</span>
-						<script src="http://demofran.com/plugin/editor/smarteditor2/js/HuskyEZCreator.js"></script>
-						<script>var tw_editor_url = "http://demofran.com/plugin/editor/smarteditor2", oEditors = [];</script>
-						<script src="http://demofran.com/plugin/editor/smarteditor2/config.js"></script>
-						<textarea id="memo" name="faq_content" class="smarteditor2" maxlength="65536" style="width:100%"></textarea>
-						<span class="sound_only">웹 에디터 끝</span> -->
 					</td>
 				</tr>
 				</tbody>
@@ -110,20 +92,9 @@ pageEncoding="UTF-8"%>
 				<a href="/admin_customer_faq_lists.do" class="btn_large bx-white">목록</a>
 			</div>
 		</form>
-		<!-- <script>
-			function faqform_submit(f) {
-				var memo_editor_data = oEditors.getById['memo'].getIR();
-			oEditors.getById['memo'].exec('UPDATE_CONTENTS_FIELD', []);
-			if(jQuery.inArray(document.getElementById('memo').value.toLowerCase().replace(/^\s*|\s*$/g, ''), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<div><br></div>','<p></p>','<br>','']) != -1){document.getElementById('memo').value='';}
-				f.action = "./help/help_faq_form_update.php";
-					return true;
-			}
-		</script> -->
 	</div>
-
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

@@ -23,9 +23,6 @@ pageEncoding="UTF-8"%>
 				<dd class="h10">
 					<a href="admin_customer_chat.do">1:1 채팅문의</a>
 				</dd>
-				<dd class="h10">
-					<a href="admin_customer_withdrawal.do">회원 탈퇴내역</a>
-				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
 					<a href="admin_customer_faq_lists.do">FAQ 관리</a>
@@ -76,22 +73,6 @@ pageEncoding="UTF-8"%>
 							<option value="">그 외</option>
 						</select>
 						<input type="text" id="faq_classified_other" name="faq_classified" value="" class="frm_input required" size="20" style="background-position: right top; background-repeat: no-repeat; display: none;">
-						<!-- <select name="faq_classified">
-							<option value="배송문의">배송문의</option>
-							<option value="취소/교환/반품">취소/교환/반품</option>
-							<option value="환불관련">환불관련</option>
-							<option value="주문/결제">주문/결제</option>
-							<option value="쿠폰/포인트">쿠폰/포인트</option>
-							<option value="회원관련">회원관련</option>
-							<option value="기타">기타</option>
-						</select> -->
-						<%-- <select id="faq_classified" name="faq_classified">
-							<c:forEach items="${ category }" var="item" varStatus="loop">
-								<option value="${ item }">${ item }</option>
-							</c:forEach>
-							<option value="">그 외</option>
-						</select>
-						<input type="text" id="faq_classified_other" name="faq_classified" value="" class="frm_input required" size="20" style="background-position: right top; background-repeat: no-repeat; display:none;"> --%>
 					</td>
 				</tr>
 				<tr>
@@ -111,9 +92,6 @@ pageEncoding="UTF-8"%>
 						<textarea id="memo" name="faq_content" class="smarteditor2" maxlength="65536" style="width:100%"></textarea>
 						<span class="sound_only">웹 에디터 끝</span>		
 					</td>
-					<!-- <td>
-						<textarea name="faq_content" class="frm_textbox wfull" rows="5"></textarea>
-					</td> -->
 				</tr>
 				</tbody>
 				</table>
@@ -144,40 +122,10 @@ pageEncoding="UTF-8"%>
 		    });
 		});
 		</script>
-		<!-- <script>
-		$(document).ready(function() {
-		    $('#faq_classified').change(function() {
-		        if ($(this).val() === '') {
-		            $('#faq_classified').attr('name', 'faq_classified_other');
-		            $('#faq_classified_other').attr('name', 'faq_classified').show();
-		        } else {
-		            $('#faq_classified').attr('name', 'faq_classified');
-		            $('#faq_classified_other').attr('name', 'faq_classified_other').hide();
-		        }
-		    });
-		    if ($('#faq_classified').val() === '') {
-		        $('#faq_classified').attr('name', 'faq_classified_other');
-		        $('#faq_classified_other').attr('name', 'faq_classified').show();
-		    } else {
-		        $('#faq_classified').attr('name', 'faq_classified');
-		        $('#faq_classified_other').attr('name', 'faq_classified_other').hide();
-		    }
-		});
-		</script> -->
-		<!-- <script>
-			function faqform_submit(f) {
-				var memo_editor_data = oEditors.getById['memo'].getIR();
-			oEditors.getById['memo'].exec('UPDATE_CONTENTS_FIELD', []);
-			if(jQuery.inArray(document.getElementById('memo').value.toLowerCase().replace(/^\s*|\s*$/g, ''), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<div><br></div>','<p></p>','<br>','']) != -1){document.getElementById('memo').value='';}
-				f.action = "./help/help_faq_form_update.php";
-					return true;
-			}
-		</script> -->
 	</div>
 
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 
