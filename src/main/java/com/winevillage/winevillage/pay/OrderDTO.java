@@ -24,7 +24,8 @@ public class OrderDTO {
 		private String country;
 		private String wine;
 		private String productCode;
-		
+		private String grapeVariety;
+
 		private int orderNo;
 		private Date orderDate;
 		private int orderAmount;

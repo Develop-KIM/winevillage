@@ -224,6 +224,8 @@ location.href="main.do";
 					<div class="c_lists">
 						<ul class="result1">
 							<c:forEach items="${orderList}" var="row" varStatus="loop">
+							<c:set var="wineStyles"
+								value="${{'레드':'#E0D8EA','화이트':'#F6EC9C','로제':'#EEC1CC','스파클링':'#E0EBF8','주정강화':'#E1D5CA','디저트':'#D7F9E2'}}" />
 								<!-- 주문상태  -->
 								<div>
 									<input type="hidden" name="orderStatus" id="orderStatus" value="${ row.orderStatus }">
@@ -232,7 +234,7 @@ location.href="main.do";
 								</div>
 								<li>
 									<div class="box ip_img">
-										<picture style="background:#E0D8EA"> <img
+										<picture style="background: ${empty row.wine ? '#fff' : wineStyles[row.wine]}"> <img
 											src="../uploads/product/200/${row.productImg }" alt=""
 											id="productImg"> </picture>
 									</div>
@@ -242,8 +244,17 @@ location.href="main.do";
 												<a href="/product/product_view?product_cd=03T999"
 													id="productName">${row.productName }</a>
 											</p>
-											<span class="label" style="background: #E0D8EA" id="wine">${row.wine }</span>
-											<span class="label" style="background: #E0D8EA" id="country">${row.country }</span>
+											<div>
+												<c:if test="${not empty row.wine }">
+													<span class="label" style="background: ${wineStyles[row.wine]};">${row.wine }</span>
+												</c:if>
+												<c:if test="${not empty row.country }">
+													<span class="label" style="background: ${wineStyles[row.wine]};">${row.country }</span>
+												</c:if>
+												<c:if test="${not empty row.grapeVariety }">
+											<span class="label" style="background: ${wineStyles[row.wine]};">${row.grapeVariety }</span>
+										</c:if>
+									</div>
 										</div>
 									</div>
 									<div class="box opt mb_hidden"></div>

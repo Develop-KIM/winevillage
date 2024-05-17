@@ -88,9 +88,17 @@
 									<p class="prd_name">
 										<a href="/" onclick="return false;">${order.productName}</a>
 									</p>
-									
-									<span class="label" style="background:#EEC1CC">${order.wine}</span>
-									<span class="label" style="background:#EEC1CC">${order.country}</span>
+									<div>
+										<c:if test="${not empty order.wine }">
+											<span class="label" style="background: ${wineStyles[order.wine]};">${order.wine }</span>
+										</c:if>
+										<c:if test="${not empty order.country }">
+											<span class="label" style="background: ${wineStyles[order.wine]};">${order.country }</span>
+										</c:if>
+										<c:if test="${not empty order.grapeVariety }">
+											<span class="label" style="background: ${wineStyles[order.wine]};">${order.grapeVariety }</span>
+										</c:if>
+									</div>
 									<!-- <span class="label" style="background:#EEC1CC">로제</span><span class="label" style="background:#EEC1CC">프랑스</span><span class="label" style="background:#EEC1CC">그르나슈</span> -->
 									<!-- <span class="icon box">750ml</span> -->
 									<div class="price">
