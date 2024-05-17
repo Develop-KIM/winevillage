@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
         <div class="login-block">
             <div class="login-logo">
                 <h1>
-                    <img src="images/admin/wine_village.png" style="width: calc(200px * 0.727);" alt="Wine Village">
+                    <img src="/images/admin/wine_village.png" style="width: calc(200px * 0.727);" alt="Wine Village">
                 </h1>
             </div>
             <h2 class="login-title">관리자 페이지 로그인</h2>

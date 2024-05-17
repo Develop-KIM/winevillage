@@ -141,6 +141,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY o.createDate DESC
 	</select>
 	
+	<select id="getOrderedList"
+		parameterType="com.winevillage.winevillage.pay.ParameterDTO"
+	    resultType="com.winevillage.winevillage.pay.OrderDTO">
+		WITH grouped_orders AS (
+		    SELECT to_char(createDate,'YYYY-MM-DD HH24:MI') as createOrderDate
+		    FROM order_users 
+		    WHERE memberNo=#{memberNo}
+		    GROUP BY to_char(createDate,'YYYY-MM-DD HH24:MI')
+		)
+		SELECT 
+		    grouped_orders.createOrderDate,
+		    order_users.*
+		FROM
+		    order_users
+		JOIN
+		    grouped_orders
+		    ON to_char(order_users.createDate,'YYYY-MM-DD HH24:MI') = grouped_orders.createOrderDate
+		ORDER BY 
+		    grouped_orders.createOrderDate DESC
+	</select>
+	
 	<select id="memberView" parameterType="string" resultType="com.winevillage.winevillage.pay.PayDTO">
 	    SELECT MemberNo, MemberId, Name, PhoneNumber, Email, address1, address2, points
 	    FROM Member

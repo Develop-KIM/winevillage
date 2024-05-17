@@ -43,11 +43,68 @@
 
 			</div>
 			<div class="o_lists">
+				<c:choose>
+				<c:when test="${ empty orders }">
 				<!-- 주문 내역 없을 때 -->
-				<div class="empty" id="nodata">
+				<!-- <div class="empty" id="nodata">
 					<p>주문 내역이 없습니다.</p>
-				</div>
-				<!-- //주문 내역 없을 때 -->
+				</div> -->
+				</c:when>
+				<c:otherwise>
+				<!-- 주문 내역 있을 때 -->
+				<ul>
+					<c:forEach items="${ orders }" var="entry" varStatus="loop">
+					<c:set var="createOrderDate" value="${entry.key}"/>
+					<c:set var="list" value="${entry.value}"/>
+					<li>
+						<div class="top_date">
+							<p>${ entry.key }</p>
+							<!-- <button type="button" class="btn_txt" onclick="location.href='/shop/mypage/shopping/order_view?ocode=202404101712122YUI'"> -->
+							<button type="button" class="btn_txt" onclick="return false;">
+								<span>주문완료</span>
+							</button>
+						</div>
+						<c:forEach items="${ list }" var="order">
+						<div class="o_wrap">
+							<div class="box ip_img" style="background:#EEC1CC">
+								<a href="/">
+								<picture>
+								<!--[if IE 9]><video style="display: none;"><![endif]-->
+								<source srcset="/uploads/product/550/${order.productImg}" media="(min-width:768px)">
+								<!-- pc이미지 -->
+								<source srcset="/uploads/product/200/${order.productImg}" media="(max-width:767px)">
+								<!-- mb이미지 -->
+								<!--[if IE 9]></video><![endif]-->
+								<img src="/uploads/product/200/${order.productImg}" alt="">
+								<!-- pc이미지 -->
+								</picture>
+								</a>
+							</div>
+							<div class="box con">
+								<div class="more_info">
+									<p class="store">　</p>
+									<p class="prd_name">
+										<a href="/shop/mypage/shopping/order_view?ocode=202404101712122YUI">샤또 루빈 라 비 앙 로제</a>
+									</p>
+									<span class="label" style="background:#EEC1CC">${order.wine}</span><span class="label" style="background:#EEC1CC">${order.country}</span>
+									<!-- <span class="label" style="background:#EEC1CC">로제</span><span class="label" style="background:#EEC1CC">프랑스</span><span class="label" style="background:#EEC1CC">그르나슈</span> -->
+									<!-- <span class="icon box">750ml</span> -->
+									<div class="price">
+										<p>
+											<!-- <del>50,000원</del> -->
+											<ins><fmt:formatNumber value="${order.discountPrice}" pattern="#,###" />원</ins>
+										</p>
+										<p class="amount">${order.orderAmount}개</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						</c:forEach>
+					</li>
+					</c:forEach>
+				</ul>
+				</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 

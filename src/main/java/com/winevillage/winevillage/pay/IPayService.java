@@ -1,6 +1,7 @@
 package com.winevillage.winevillage.pay;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -32,11 +33,13 @@ public interface IPayService {
 	public ArrayList<OrderDTO> listOrder(OrderDTO orderDTO);
 	//관리자 주문 확인 페이지
 	public ArrayList<PayDTO> listOrderUsers(ParameterDTO parameterDTO);
+	//주문내역 확인
+	public List<OrderDTO> getOrderedList(ParameterDTO parameterDTO);
 	//주문서 업데이트
 	public int updateOrderStatus(OrderDTO orderDTO);
 	//주문서삭제
 	public int deleteOrder(OrderDTO orderDTO);
-	//장바구니에서 삭
+	//장바구니에서 삭제
 	public int deleteOrderCart(OrderDTO orderDTO);
 	//시큐리티 세션 값 정보 가져오기
 	public PayDTO memberView(String userId);

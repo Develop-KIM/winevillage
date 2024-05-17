@@ -26,12 +26,7 @@ public class PayContoller {
 
 	@GetMapping("order_write.do")
 	public String getOrderUserInfo(OrderDTO orderDTO, Model model, PayDTO payDTO) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-		String memberId = userDetails.getUsername();
-		PayDTO memberInfo = dao.memberView(memberId);
-
+		
 		boolean loggedIn = true;
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -40,33 +35,35 @@ public class PayContoller {
 			if (currentUsername.equals("anonymousUser")) {
 				loggedIn = false;
 			} else {
-				UserDetails userDetails1 = (UserDetails) auth.getPrincipal();
+				UserDetails userDetails = (UserDetails) auth.getPrincipal();
 			}
-			System.out.println("세션" + currentUsername);
+			System.out.println("세션 아이디명 : " + currentUsername);
 		}
 
 		model.addAttribute("loggedIn", loggedIn);
 
-		String memberId1 = auth.getName();
+		String memberId = auth.getName();
 
-		PayDTO memberView = dao.memberView(memberId1);
+		PayDTO memberInfo = dao.memberView(memberId);
 		PayDTO user = new PayDTO();
 
-		if (memberView != null) {
-			user.setMemberNo(memberView.getMemberNo());
-			user.setMemberId(memberView.getMemberId());
-			user.setName(memberView.getName());
-			user.setPhoneNumber(memberView.getPhoneNumber());
-			user.setEmail(memberView.getEmail());
-			user.setAddress1(memberView.getAddress1());
-			user.setPoints(memberView.getPoints());
+		if (memberInfo != null) {
+			user.setMemberNo(memberInfo.getMemberNo());
+			user.setMemberId(memberInfo.getMemberId());
+			user.setName(memberInfo.getName());
+			user.setPhoneNumber(memberInfo.getPhoneNumber());
+			user.setEmail(memberInfo.getEmail());
+			user.setAddress1(memberInfo.getAddress1());
+			user.setPoints(memberInfo.getPoints());
 		}
 
 		model.addAttribute("user", user);
 
-		int memberNo = memberInfo.getMemberNo();
-
-		orderDTO.setMemberNo(memberNo);
+		int memberNo = 0;
+		if (memberInfo != null) {
+			memberNo = memberInfo.getMemberNo();
+		}
+		orderDTO.setMemberNo(memberNo);			
 		
 		ArrayList<OrderDTO> orderList = dao.listOrder(orderDTO);
 		model.addAttribute("orderList", orderList);
@@ -130,4 +127,23 @@ public class PayContoller {
 		return "admin/admin_order/admin_order_lists";
 	}
 
+	@GetMapping("/member/order_list.do")
+	public String orderList(Model model, ParameterDTO parameterDTO) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String memberId = auth.getName();
+		PayDTO memberInfo = dao.memberView(memberId);
+		PayDTO user = new PayDTO();
+
+		if (memberInfo != null) {
+			user.setMemberId(memberInfo.getMemberId());
+			parameterDTO.setMemberNo(memberInfo.getMemberNo());
+		}
+		
+		List<OrderDTO> grouped_order = dao.getOrderedList(parameterDTO);
+		
+		Map<String, List<OrderDTO>> ordersMap = grouped_order.stream()
+			    .collect(Collectors.groupingBy(OrderDTO::getCreateOrderDate));
+			model.addAttribute("orders", ordersMap);
+		return "order/order_list";
+	}
 }

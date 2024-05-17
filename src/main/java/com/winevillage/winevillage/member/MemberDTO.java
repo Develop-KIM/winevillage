@@ -26,4 +26,5 @@ public class MemberDTO {
 	private int point;
 	private Date joinDate;
 	private String birthday;
+	private String grade;
 } 

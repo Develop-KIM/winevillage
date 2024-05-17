@@ -158,7 +158,7 @@
 <link rel="stylesheet" type="text/css" href="/asset/css/shop/jqcloud.min.css">
 <script type="text/javascript" src="/asset/js/jqcloud.min.js"></script>
 <script>
-//전체선택
+/* //전체선택
 	$("#all_sel").click(function() {
 		if($("#all_sel").is(":checked")) $(".ip_check").prop("checked", true);
 		else $(".ip_check").prop("checked", false);
@@ -181,73 +181,117 @@
 	    dots: true,
 	    arrows: true
 	});
+	 */
+	 $(document).ready(function() {
+		 	$('#all_sel').prop('checked', false);
+		    // '전체 선택' 체크박스 상태 변경 시 실행
+		    $('#all_sel').change(function() {
+		        // '전체 선택' 체크박스의 체크 상태를 변수에 저장
+		        var allChecked = $(this).prop('checked');
+		        
+		        // 'cart_seq[]' 이름을 가진 모든 체크박스를 찾아서, '전체 선택' 체크박스와 동일한 상태로 설정
+		        $('input[name="cart_seq[]"]').prop('checked', allChecked);
+		        updatePriceInfo(); // 체크 상태가 변경될 때마다 호출
+		    });
+		    
+		    // 'cart_seq[]' 체크박스 상태 변경 시 실행
+		    $('input[name="cart_seq[]"]').change(function() {
+		        // 만약 'cart_seq[]' 체크박스 중 하나라도 체크 해제되면, '전체 선택' 체크박스도 체크 해제
+		        if ($('input[name="cart_seq[]"]:not(:checked)').length > 0) {
+		            $('#all_sel').prop('checked', false);
+		        } else {
+		            // 모든 'cart_seq[]' 체크박스가 체크되면, '전체 선택'도 체크
+		            $('#all_sel').prop('checked', true);
+		        }
+		    });
+		});
+
 	// 체크
-	$(document).ready(function() {
-    $('.ip_check').change(function() {
-        if ($(this).is(':checked')) {
-            var productCode = $(this).val();
-            var orderNo = $(this).data('cartSeq');
-            var info = {
+	function updatePriceInfo() {
+    var promises = [];
+    $('.ip_check:checked').each(function() {
+        var productCode = $(this).val();
+        var orderNo = $(this).data('cartSeq');
+        var promise = $.ajax({
+            url: '/getCartList.do',
+            type: 'GET',
+            data: {
                 productCode: productCode,
                 orderNo: orderNo
+            },
+            dataType: 'json'
+        }).then(function(response) {
+            return {
+                qty: response.orderAmount,
+                price: response.discountPrice,
+                supplyPrice: response.fullPrice
             };
-            getProductInfo(info); // getProductInfo 함수 호출
-        }
+        });
+        promises.push(promise);
     });
-});
 
-function getProductInfo(info) {
-    console.log(info);
-    $.ajax({
-        url: '/getCartList.do',
-        type: 'GET',
-        data: {
-            productCode: info.productCode,
-            orderNo: info.orderNo
-        },
-        dataType: 'json', // 응답을 JSON으로 기대함
-        success: function(response) {
-            console.log(response); // JSON 객체 그대로 콘솔에 출력
-            // 예: 장바구니 정보를 페이지에 표시하는 로직을 추가할 수 있습니다.
-            // $('#cartList').html(response.someProperty); // 예를 들어, 응답으로 받은 장바구니 정보를 페이지의 특정 요소에 표시
-        },
-        error: function(xhr, status, error) {
-            alert('제품 정보를 가져오는 중 오류가 발생했습니다.');
-            console.error(error);
-        }
+    Promise.all(promises).then(function(results) {
+        var totalQty = 0;
+        var totalSupplyPrice = 0;
+        var totalSalePrice = 0;
+        var totalPrice = 0;
+
+        results.forEach(function(result) {
+            totalQty += result.qty;
+            totalSupplyPrice += result.supplyPrice * result.qty;
+            totalSalePrice += (result.supplyPrice - result.price) * result.qty;
+            totalPrice += result.price * result.qty;
+        });
+
+        $('#supply').text(totalSupplyPrice.toLocaleString() + '원');
+        $('#sale').text(totalSalePrice.toLocaleString() + '원');
+        $('#total').text(totalPrice.toLocaleString() + '원');
+    }).catch(function(error) {
+        console.error('Error fetching product info:', error);
+        alert('제품 정보를 가져오는 중 오류가 발생했습니다.');
     });
 }
 
+$(document).ready(function() {
+    $('.ip_check').change(function() {
+        updatePriceInfo(); // 체크 상태가 변경될 때마다 호출
+    });
+});
 
-	// 선택 삭제
-		$(document).ready(function() {
-	    $('#deleteSelected').click(function() {
-	        var selectedItems = $('input[name="cart_seq[]"]:checked').map(function() {
-	            return $(this).val();
-	        }).get();
 	
-	        if (selectedItems.length > 0) {
-	            $.ajax({
-	                url: '/delete-items',
-	                type: 'POST',
-	                contentType: 'application/json',
-	                data: JSON.stringify(selectedItems),
-	                success: function(response) {
-	                    if (response === 'success') {
-	                        location.reload(); // 페이지 새로고침
-	                    } else {
-	                        alert('삭제 실패');
-	                    }
-	                },
-	                error: function() {
-	                    alert('서버 오류');
-	                }
-	            });
-	        } else {
-	            alert('선택된 항목이 없습니다.');
-	        }
-	    });
-	});
+	// 선택 삭제
+	$(document).ready(function(){
+    $("#btn_del").click(function(){
+        var checkedItems = $('input[name="cart_seq[]"]:checked').map(function(){
+            return {
+                productCode: $(this).val(),
+                orderNo: $(this).data('cart-seq') // HTML에서 정의된 data attribute와 일치해야 함
+            };
+        }).get();
+        
+        console.log(checkedItems); // 수정된 부분: 체크된 항목들을 콘솔에 출력
+        
+        if (checkedItems.length === 0) {
+            alert("선택된 상품이 없습니다.");
+            return; // 함수 종료
+        }
+
+        $.ajax({
+            url: '/deleteItem.do',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(checkedItems), // 서버로 보내는 데이터
+            success: function(response) {
+                alert('선택한 상품이 삭제되었습니다.'); // 사용자에게 피드백 제공
+                location.reload(); // 페이지를 새로고침하여 변경사항 반영
+            },
+            error: function(xhr, status, error) {
+                alert("에러가 발생했습니다.");
+            }
+        });
+    });
+});
+
 	
 	// 수량변경 및 가격 출력
 	function box_qty(element, value) {
@@ -285,6 +329,8 @@ function getProductInfo(info) {
             $('#originalSupply_' + response.orderNo).text((response.fullPrice * response.orderAmount).toLocaleString() + '원');
             $('#originalSale_' + response.orderNo).text(((response.fullPrice - response.discountPrice) * response.orderAmount).toLocaleString() + '원');
             $('#originalTotal_' + response.orderNo).text((response.discountPrice * response.orderAmount).toLocaleString()+'원');
+            
+            updatePriceInfo();
         },
         error: function(xhr, status, error) {
             console.error('수량 업데이트 실패:', error); // 실패 메시지 로깅
