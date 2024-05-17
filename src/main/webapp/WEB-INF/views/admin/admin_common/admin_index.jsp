@@ -6,79 +6,9 @@ pageEncoding="UTF-8"%>
 <html lang="ko">
 <body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-<!-- <script src="js/admin_product.js"></script> -->
-
 <%@ include file="admin_header.jsp"%>
-
-
-<%-- <canvas id="myChart" width="50" height="50">test</canvas> --%>
 <div id="wrapper">
 <div id="main_wrap">
-	<section>
-		<h2>전체 주문통계<a href="/admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
-		<div class="order_vbx">
-			<dl class="od_bx1">
-				<dt>전체 주문현황</dt>
-				<dd>
-					<p class="ddtit">총 주문건수</p>
-					<p>34</p>
-				</dd>
-				<dd class="total">
-					<p class="ddtit">총 주문액</p>
-					<p>2,437,700</p>
-				</dd>
-			</dl>
-
-			<dl class="od_bx2">
-				<dt>주문상태 현황</dt>
-				<dd>
-					<p class="ddtit">입금대기</p>
-					<p>2</p>
-				</dd>
-				<dd>
-					<p class="ddtit">입금완료</p>
-					<p>0</p>
-				</dd>
-				<dd>
-					<p class="ddtit">배송준비</p>
-					<p>0</p>
-				</dd>
-				<dd>
-					<p class="ddtit">배송중</p>
-					<p>0</p>
-				</dd>
-				<dd>
-					<p class="ddtit">배송완료</p>
-					<p>1</p>
-				</dd>
-			</dl>
-			<dl class="od_bx2">
-				<dt>구매확정/클레임 현황</dt>
-				<dd>
-					<p class="ddtit">구매미확정</p>
-					<p>0</p>
-				</dd>
-				<dd>
-					<p class="ddtit">취소</p>
-					<p>31</p>
-				</dd>
-				<dd>
-					<p class="ddtit">환불</p>
-					<p>0</p>
-				</dd>
-				<dd>
-					<p class="ddtit">반품</p>
-					<p>0</p>
-				</dd>
-				
-				<dd>
-					<p class="ddtit">교환</p>
-					<p>0</p>
-				</dd>
-			</dl>
-		</div>
-		
-	</section>
 
 	<section class="sidx_head01">
 		<h2>최근 주문내역(3건)<a href="/admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>

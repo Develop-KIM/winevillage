@@ -17,16 +17,6 @@ pageEncoding="UTF-8"%>
 				<dd class="m10 active">
 					<a href="admin_member_lists.do">회원 정보관리</a>
 				</dd>
-				<dd class="m10">
-					<a href="admin_member_level.do">회원 등급관리</a>
-				</dd>
-				<dt class="m20 menu_toggle">포인트 관리</dt>
-				<dd class="m20">
-					<a href="admin_member_point.do">포인트 관리</a>
-				</dd>
-				<dd class="m20">
-					<a href="admin_member_point_select_form.do">포인트 지급&차감</a>
-				</dd>
 			</dl>
 		</div>
 		<div id="content">
@@ -61,72 +51,6 @@ pageEncoding="UTF-8"%>
 						$.datepicker.setDefaults($.datepicker.regional["ko"]);
 					});
 				</script>
-				<h2>기본검색</h2>
-				<form name="fsearch" id="fsearch" method="get">
-					<input type="hidden" name="code" value="list">
-					<div class="tbl_frm01">
-						<table>
-							<colgroup>
-								<col class="w100">
-								<col>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row">검색어</th>
-									<td>
-										<select name="searchField">
-											<option value="memberId">아이디</option>
-											<option value="name">회원명</option>
-											<option value="pt_id">추천인</option>
-											<option value="phonenumber">핸드폰</option>
-										</select>
-										<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">기간검색</th>
-									<td>
-										<select name="searchField">
-											<option value="joindate">가입날짜</option>
-											<option value="today_login">최근접속</option>
-										</select>
-										<label for="fr_date" class="sound_only">시작일</label>
-										<input type="text" name="fr_date" value="" id="fr_date" class="frm_input w80" maxlength="10">
-										~
-										<label for="to_date" class="sound_only">종료일</label>
-										<input type="text" name="to_date" value="" id="to_date" class="frm_input w80" maxlength="10">
-										<span class="btn_group"><input type="button" onclick="search_date('fr_date','to_date',this.value);"
-												class="btn_small white" value="오늘"><input type="button"
-												onclick="search_date('fr_date','to_date',this.value);" class="btn_small white" value="어제"><input
-												type="button" onclick="search_date('fr_date','to_date',this.value);" class="btn_small white"
-												value="일주일"><input type="button" onclick="search_date('fr_date','to_date',this.value);"
-												class="btn_small white" value="지난달"><input type="button"
-												onclick="search_date('fr_date','to_date',this.value);" class="btn_small white"
-												value="1개월"><input type="button" onclick="search_date('fr_date','to_date',this.value);"
-												class="btn_small white" value="3개월"><input type="button"
-												onclick="search_date('fr_date','to_date',this.value);" class="btn_small white"
-												value="전체"></span>
-									</td>
-								</tr>
-								<tr>
-									<th scope="row">등급검색</th>
-									<td>
-										<label><input type="radio" name="sst" value="" checked="checked"> 전체</label>
-										<label><input type="radio" name="sst" value="4"> 트리니티</label>
-										<label><input type="radio" name="sst" value="3"> 다이아몬드</label>
-										<label><input type="radio" name="sst" value="2"> 골드</label>
-										<label><input type="radio" name="sst" value="1"> 실버</label>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="btn_confirm">
-						<input type="submit" value="검색" class="btn_medium">
-						<input type="button" value="초기화" id="frmRest" class="btn_medium grey">
-					</div>
-				</form>
-
 				<div class="local_ov mart30">
 					총 회원수 : <b class="fc_red">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</b>명
 				</div>

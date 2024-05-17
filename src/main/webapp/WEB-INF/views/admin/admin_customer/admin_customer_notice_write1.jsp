@@ -20,9 +20,6 @@ pageEncoding="UTF-8"%>
 						<em>0</em>
 					</a>
 				</dd>
-				<dd class="h10">
-					<a href="admin_customer_withdrawal.do">회원 탈퇴내역</a>
-				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
 					<a href="admin_customer_faq_lists.do">FAQ 분류</a>
