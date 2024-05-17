@@ -40,7 +40,7 @@ pageEncoding="UTF-8"%>
 				<td>${orderitem.receiverPhone}</td>
 				<td>${orderitem.receiverAddress1}</td>
 				<td>${orderitem.finalPrice}</td>
-				<td>${orderitem.orderDate}</td>
+				<td>${orderitem.createDate}</td>
 			</tr>
 			</c:forEach>
 		</c:otherwise>
