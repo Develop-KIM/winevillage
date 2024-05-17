@@ -84,7 +84,7 @@
 								<div class="more_info">
 									<p class="store">　</p>
 									<p class="prd_name">
-										<a href="/shop/mypage/shopping/order_view?ocode=202404101712122YUI">샤또 루빈 라 비 앙 로제</a>
+										<a href="/" onclick="return false;">${order.productName}</a>
 									</p>
 									<span class="label" style="background:#EEC1CC">${order.wine}</span><span class="label" style="background:#EEC1CC">${order.country}</span>
 									<!-- <span class="label" style="background:#EEC1CC">로제</span><span class="label" style="background:#EEC1CC">프랑스</span><span class="label" style="background:#EEC1CC">그르나슈</span> -->
