@@ -314,7 +314,7 @@ function multiDelete() {
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10 active">
 					<a href="admin_customer_qna.do">1:1 상담문의
-						<em>0</em>
+						<!-- <em>0</em> -->
 					</a>
 				</dd>
 				<dd class="h10">
@@ -402,7 +402,7 @@ function multiDelete() {
 								<col class="w300">
 								<col>
 								<col class="w50">
-								<col class="w130">
+								<%-- <col class="w130"> --%>
 							</colgroup>
 							<thead>
 								<tr>
