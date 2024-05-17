@@ -17,53 +17,6 @@ pageEncoding="UTF-8"%>
 			<dt class="o10 menu_toggle">주문관리</dt>
 			<dd class="o10 active">
 				<a href="admin_order_lists.do">주문리스트(전체)
-					<!-- <em class="snb_air">34</em> -->
-				</a>
-			</dd>		
-			<dd class="o10">
-				<a href="admin_order2.do">입금대기
-					<!-- <em>0</em> -->
-				</a>
-			</dd>		
-			<dd class="o10">
-				<a href="admin_order3.do">입금완료
-					<!-- <em>0</em> -->
-				</a>
-			</dd>		
-			<dd class="o10">
-				<a href="admin_order4.do">배송준비
-					<!-- <em>0</em> -->
-				</a>
-			</dd>		
-			<dd class="o10">
-				<a href="admin_order5.do">배송중
-					<!-- <em>0</em> -->
-				</a>
-			</dd>		
-			<dd class="o10">
-				<a href="admin_order6.do">배송완료
-					<!-- <em class="snb_air">1</em> -->
-				</a>
-			</dd>
-			<dt class="o20 menu_toggle">취소/교환/반품/환불 관리</dt>
-			<dd class="o20">
-				<a href="admin_order7.do">입금전 취소
-					<!-- <em class="snb_air">33</em> -->
-				</a>
-			</dd>		
-			<dd class="o20">
-				<a href="admin_order8.do">배송전 환불
-					<!-- <em>0</em> -->
-				</a>
-			</dd>		
-			<dd class="o20">
-				<a href="admin_order9.do">배송후 반품
-					<!-- <em>0</em> -->
-				</a>
-			</dd>		
-			<dd class="o20">
-				<a href="admin_order10.do">배송후 교환
-					<!-- <em>0</em> -->
 				</a>
 			</dd>		
 		</dl>
@@ -76,84 +29,13 @@ pageEncoding="UTF-8"%>
 	<h1>주문리스트(전체)</h1>
 	
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<!-- <h2>기본검색</h2>
-<form name="fsearch" id="fsearch" method="get">
-<input type="hidden" name="code" value="list">
-<div class="tbl_frm01">
-	<table>
-	<colgroup>
-		<col class="w100">
-		<col>
-	</colgroup>
-	<tbody>
-	<tr>
-		<th scope="row">검색어</th>
-		<td>
-			<select name="searchField">
-				<option value="all">전체</option>
-				<option value="memberNo">회원번호</option>
-				<option value="name">주문자</option>
-				<option value="productName">주문상품</option>
-				<option value="receiverName">수령자명</option>
-				<option value="receiverPhone">수령자전화번호</option>
-				<option value="receiverAddress1">수령주소</option>
-			</select>
-			<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
-		</td>
-	</tr> -->
-<!-- 	<tr>
-		<th scope="row">결제방법</th>
-		<td>
-			<label><input type="radio" name="od_settle_case" value="" checked="checked"> 전체</label>
-			<label><input type="radio" name="od_settle_case" value="가상계좌"> 가상계좌</label>
-			<label><input type="radio" name="od_settle_case" value="KAKAOPAY"> KAKAOPAY</label>
-		</td>
-	</tr> -->
-<!-- 	<tr>
-		<th scope="row">주문상태</th>
-		<td>
-			<label><input type="radio" name="od_status" value="" checked="checked"> 전체</label>
-			<label><input type="radio" name="od_status" value="1"> 입금대기</label>
-			<label><input type="radio" name="od_status" value="2"> 입금완료</label>
-			<label><input type="radio" name="od_status" value="3"> 배송준비</label>
-			<label><input type="radio" name="od_status" value="4"> 배송중</label>
-			<label><input type="radio" name="od_status" value="5"> 배송완료</label>
-			<label><input type="radio" name="od_status" value="6"> 취소</label>
-			<label><input type="radio" name="od_status" value="9"> 환불</label>
-			<label><input type="radio" name="od_status" value="7"> 반품</label>
-			<label><input type="radio" name="od_status" value="8"> 교환</label>
-		</td>
-	</tr> -->
-<!-- 	<tr>
-		<th scope="row">구매확정</th>
-		<td>
-			<label><input type="radio" name="od_final" value="" checked="checked"> 전체</label>
-			<label><input type="radio" name="od_final" value="1"> 구매확정</label>
-			<label><input type="radio" name="od_final" value="0"> 구매미확정</label>
-		</td>
-	</tr> -->
-	<!-- </tbody>
-	</table>
-</div>
-<div class="btn_confirm">
-	<input type="submit" value="검색" class="btn_medium">
-	<input type="button" value="초기화" id="frmRest" class="btn_medium grey">
-</div>
-</form> -->
 
 <div class="local_ov mart30" style="border-top:0;">
 	전체 : <b class="fc_red">${maps.totalCount }</b> 건 조회
-	<!-- <select id="page_rows" onchange="location='/admin/order.php?code=list&page=1&page_rows='+this.value;" class="marl5">
-		<option value="30" selected="selected">30줄 정렬</option>
-		<option value="50">50줄 정렬</option>
-		<option value="100">100줄 정렬</option>
-		<option value="150">150줄 정렬</option>
-	</select> -->
 	<c:set var="totalPrice" value="0" />
 	<c:forEach items="${lists}" var="item">
 	    <c:set var="totalPrice" value="${totalPrice + item.finalPrice}" />
 	</c:forEach>
-	<!-- <strong class="ov_a">총주문액 : 2,437,700원</strong> -->
 	<strong class="ov_a">총주문액 : <fmt:formatNumber value="${totalPrice}" type="number" groupingUsed="true"/>원</strong>
 </div>
 
@@ -161,11 +43,6 @@ pageEncoding="UTF-8"%>
 <input type="hidden" name="q1" value="code=list">
 <input type="hidden" name="page" value="1">
 
-<!-- <div class="local_frm01">
-	<a href="#" id="frmOrderPrint" class="btn_lsmall white"><i class="fa fa-print"></i> 주문서출력</a>
-	<a href="#" id="frmOrderExcel" class="btn_lsmall white"><i class="fa fa-file-excel-o"></i> 선택 엑셀저장</a>
-	<a href="./order/order_excel.php?code=list" class="btn_lsmall white"><i class="fa fa-file-excel-o"></i> 검색결과 엑셀저장</a>
-</div> -->
 <div class="tbl_head01">
 	<table id="sodr_list">
 	<colgroup>
@@ -200,8 +77,6 @@ pageEncoding="UTF-8"%>
 		<!-- 변경 --><th scope="col">수령주소</th>
 		<!-- 변경 --><th scope="col">총주문액</th>
 		<!-- 주문상태 --><th scope="col">주문상태</th>
-		<!-- 삭제 --><!-- <th scope="col">총주문액</th> -->
-		<!-- 삭제 --><!-- <th scope="col" colspan="2">결제방법</th> -->
 	</tr>
 	</thead>
 	<tbody>
@@ -321,15 +196,6 @@ pageEncoding="UTF-8"%>
 </table>
 </div>
 </form>
-
-<!-- <nav class="pg_wrap"><span class="pg"><span class="pg_start">처음</span>
-<span class="pg_prev">이전</span>
-<span class="sound_only">열린</span><strong class="pg_current">1</strong><span class="sound_only">페이지</span>
-<a href="/admin/order.php?code=list&page=2" class="pg_page">2<span class="sound_only">페이지</span></a>
-<span class="pg_next">다음</span>
-<a href="/admin/order.php?code=list&page=2" class="pg_page pg_end">맨끝</a>
-</span></nav> -->
-
 <nav class="pg_wrap"><span class="pg">${ pagingImg }</span></nav>
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js"></script>
@@ -374,7 +240,6 @@ $(function(){
 
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

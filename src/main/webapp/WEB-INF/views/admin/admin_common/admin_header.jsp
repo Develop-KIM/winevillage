@@ -14,9 +14,7 @@ pageEncoding="UTF-8"%>
 <script src="js/common.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/wrest.js?ver=1"></script>
-<!-- <script src="js/common.js?ver=20240415180634"></script> -->
 <script src="js/categorylist.js"></script>
-<!-- <script src="js/categorylist.js?ver=20240415180634"></script> -->
 </head>
 <body>
 	<header id="hd">
@@ -26,7 +24,6 @@ pageEncoding="UTF-8"%>
 						alt="행복을 주는 쇼핑몰! 관리자"></a></div>
 			<div id="tnb">
 				<ul>
-					<li>오늘:60, 어제:80, 최대:739, 전체:167994</li>
 					<li><a href="/main.do">쇼핑몰</a></li>
 					<c:if test="${admin eq null }">
 					<li><a href="/admin_login.do">로그인</a></li>
