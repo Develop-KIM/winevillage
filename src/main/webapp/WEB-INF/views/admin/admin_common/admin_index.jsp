@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 <div id="wrapper">
 <div id="main_wrap">
 	<section>
-		<h2>전체 주문통계<a href="admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
+		<h2>전체 주문통계<a href="/admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
 		<div class="order_vbx">
 			<dl class="od_bx1">
 				<dt>전체 주문현황</dt>
@@ -81,7 +81,7 @@ pageEncoding="UTF-8"%>
 	</section>
 
 	<section class="sidx_head01">
-		<h2>최근 주문내역(3건)<a href="admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
+		<h2>최근 주문내역(3건)<a href="/admin_order_lists.do" class="btn_small">주문내역 바로가기</a></h2>
 		<table>
 		<thead>
 		<tr>
@@ -120,7 +120,7 @@ pageEncoding="UTF-8"%>
 	</section>
 
 	<section class="sidx_head01">
-		<h2>최근 회원가입(3건)<a href="admin_member_lists.do" class="btn_small">회원관리 바로가기</a></h2>
+		<h2>최근 회원가입(3건)<a href="/admin_member_lists.do" class="btn_small">회원관리 바로가기</a></h2>
 		<table>
 		<thead>
 		<tr>

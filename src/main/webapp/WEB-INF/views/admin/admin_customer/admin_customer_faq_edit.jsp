@@ -16,29 +16,29 @@ pageEncoding="UTF-8"%>
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10">
-					<a href="admin_customer_qna.do">1:1 상담문의
+					<a href="/admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
 				</dd>
 				<dd class="h10">
-					<a href="admin_customer_withdrawal.do">회원 탈퇴내역</a>
+					<a href="/admin_customer_withdrawal.do">회원 탈퇴내역</a>
 				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
-					<a href="admin_customer_faq_lists.do">FAQ 관리</a>
+					<a href="/admin_customer_faq_lists.do">FAQ 관리</a>
 				</dd>
 				<dd class="h20">
-					<a href="admin_customer_faq_category.do">FAQ 분류</a>
+					<a href="/admin_customer_faq_category.do">FAQ 분류</a>
 				</dd>
 				<dd class="h20 active">
-					<a href="admin_customer_faq_write.do">FAQ 작성</a>
+					<a href="/admin_customer_faq_write.do">FAQ 작성</a>
 				</dd>
 				<dt class="h20 menu_toggle">공지사항</dt>
 				<dd class="h20">
-					<a href="admin_customer_notice_lists.do">공지사항 관리</a>
+					<a href="/admin_customer_notice_lists.do">공지사항 관리</a>
 				</dd>
 				<dd class="h20">
-					<a href="admin_customer_notice_write.do">공지사항 작성</a>
+					<a href="/admin_customer_notice_write.do">공지사항 작성</a>
 				</dd>
 			</dl>
 		</div>
@@ -107,7 +107,7 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="btn_confirm">
 				<input type="submit" value="저장" class="btn_large" accesskey="s">
-				<a href="admin_customer_faq_lists.do" class="btn_large bx-white">목록</a>
+				<a href="/admin_customer_faq_lists.do" class="btn_large bx-white">목록</a>
 			</div>
 		</form>
 		<!-- <script>
