@@ -79,13 +79,10 @@ pageEncoding="UTF-8"%>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=id&orderby=asc">회원명</a></th>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=grade&orderby=asc">생년월일</a></th>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=pt_id&orderby=asc">핸드폰</a></th>
-								<!-- <th scope="col">비밀번호</th> -->
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=reg_time&orderby=asc">email</a></th>
 								<th scope="col">주소</th>
-								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=login_sum&orderby=asc">등급</a></th>
 								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=intercept_date&orderby=asc">회원생성일</a>
 								</th>
-								<th scope="col"><a href="/admin/member.php?code=list&page=&filed=point&orderby=asc">포인트</a></th>
 							</tr>
 						</thead>
 						<tbody class="list">
@@ -109,9 +106,7 @@ pageEncoding="UTF-8"%>
 								<%-- <td>${item.password}</td> --%>
 								<td>${item.email}</td>
 								<td>${item.address1}<br>${item.address2}</td>
-								<td>${item.grade}</td>
 								<td>${item.joinDate}</td>
-								<td>${item.point}</td>
 							</tr>
 							</c:forEach>
 							</tbody>
@@ -126,17 +121,6 @@ pageEncoding="UTF-8"%>
 						${ pagingImg }
 					</p>
 				</div>
-				<!-- <div class="local_frm02">
-					<a href="./member.php?code=mail_list" class="btn_lsmall bx-white">전체메일발송</a>
-					<a href="./sms/sms_member.php" onclick="win_open(this,'pop_sms','245','360','no');return false"
-						class="btn_lsmall bx-white">전체문자발송</a>
-					<a href="./member/member_list_excel.php?code=list" class="btn_lsmall bx-white"><i
-							class="fa fa-file-excel-o"></i> 엑셀저장</a>
-					<a href="./member.php?code=register_form" class="fr btn_lsmall red"><i class="ionicons ion-android-add"></i>
-						회원추가</a>
-				</div> -->
-
-
 				<script>
 					function chk_use_app(mb_id) {
 						var error = "";
