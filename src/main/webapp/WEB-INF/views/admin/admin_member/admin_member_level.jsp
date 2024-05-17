@@ -17,16 +17,6 @@ pageEncoding="UTF-8"%>
 				<dd class="m10">
 					<a href="admin_member_lists.do">회원 정보관리</a>
 				</dd>
-				<dd class="m10 active">
-					<a href="admin_member_level.do">회원 등급관리</a>
-				</dd>
-				<dt class="m20 menu_toggle">포인트 관리</dt>
-				<dd class="m20">
-					<a href="admin_member_point.do">포인트 관리</a>
-				</dd>
-				<dd class="m20">
-					<a href="admin_member_point_select_form.do">포인트 지급&차감</a>
-				</dd>
 			</dl>
 		</div>
 		<div id="content">
@@ -189,7 +179,6 @@ pageEncoding="UTF-8"%>
 
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

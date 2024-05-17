@@ -84,18 +84,6 @@ function multiDelete() {
 					<a href="admin_product_lists.do">
 						전체 상품관리</a>
 				</dd>
-				<dd class="g10">
-					<a href="admin_product_review.do">
-						상품 리뷰관리
-						<em>0</em>
-					</a>
-				</dd>
-				<dd class="g10">
-					<a href="admin_product_category.do">
-						카테고리 관리
-						<em>0</em>
-					</a>
-				</dd>
 			</dl>
 		</div>
 		<div id="content">
@@ -152,14 +140,6 @@ function multiDelete() {
 										<input type="text" name="searchKeyword" value="" class="frm_input" size="30">
 									</td>
 								</tr>
-<!-- 								<tr>
-								<th scope="row">상품선택</th>
-								<td colspan="3">
-								<label><input class="wine_choice" type="radio" name="option" value="액세서리" checked="checked"> 와인</label>
-								<label><input class="other_choice" type="radio" name="option" value="와인"> 액세서리</label>
-								</td>
-								</tr> -->
-								
 							</tbody>
 						</table>
 					</div>
@@ -263,8 +243,6 @@ function multiDelete() {
 									<td rowspan="1" colspan="1" class="tar">${item.fullPrice}</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountRate }%</td>
 									<td rowspan="1" colspan="1" class="tar">${item.discountPrice }</td>
-									<%-- <input type="hid-den" name="productNo" value="${item.productNo }"> --%>
-									<!-- <td rowspan="1" colspan="1"><button type="submit" class="btn_small">삭제</button></td> -->
 									<td rowspan="1" colspan="2"><a href="admin_product_edit.do?productCode=${item.productCode }" class="btn_small">수정</a>
 									</td>
 								</tr>
@@ -279,32 +257,10 @@ function multiDelete() {
 				<div class="paging" style="display: flex; justify-content: center; align-items: center;">
 						${ pagingImg }
 				</div>
-<!-- 				<script>
-					function productlist_submit(f) {
-						if (!is_checked("chk[]")) {
-							alert(document.pressed + " 하실 항목을 하나 이상 선택하세요.");
-							return false;
-						}
-
-						if (document.pressed == "선택삭제") {
-							if (!confirm("선택한 자료를 정말 삭제하시겠습니까?")) {
-								return false;
-							}
-						}
-
-						return true;
-					}
-
-					$(function () {
-						// 날짜 검색 : TODAY MAX값으로 인식 (maxDate: "+0d")를 삭제하면 MAX값 해제
-						$("#fr_date,#to_date").datepicker({ changeMonth: true, changeYear: true, dateFormat: "yy-mm-dd", showButtonPanel: true, yearRange: "c-99:c+99", maxDate: "+0d" });
-					});
-				</script> -->
 			</div>
 
 		</div>
 	</div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

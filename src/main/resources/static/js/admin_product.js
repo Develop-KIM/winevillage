@@ -1,6 +1,4 @@
 $(function() {
-
-	
 	$('#wine_category1').on('click', function() {
 		
 		$('#wine_category1 option:selected').val();
@@ -22,7 +20,6 @@ $(function() {
 	$('.wine_choice').on('click', function() {
 		$('.wine_select').show();
 		$('#wine_category_sub1').val("value").change();
-		alert($('#wine_category_sub1').val());
 	})
 	
 	$('.other_choice').on('click', function() {
@@ -32,39 +29,17 @@ $(function() {
 		$('#wine_category3 option:selected').val("");
 		
 		$('#wine_category_sub1').val("").change();
-		alert($('#wine_category_sub1').val());
-	})
-	
-/*	$('.wine_choice').on('click', function() {
-			
-		$('.wine_select').removeClass('on')
-	})
-	
-	$('.other_choice').on('click', function() {
-		$('.wine_select').addClass('on')
-	})*/
-	
+	})	
 	
 	$('.other_choice').on('click', function() {
 		$('.wine_select').addClass('on')
 	})
-	
-
-/*	$('.fullPrice').on('keyup', function() {
-		let originPrice = $('.fullPrice').val();
-		let priceString2 = originPrice.toLocaleString('ko-KR');
-		$('.fullPrice').val(priceString2);
-		console.log(priceString2);
-	})*/
 	
 	$('.fullPrice').on('keyup', function() {
 		let originPrice = $('.fullPrice').val();
 		$('.discountPrice').val(originPrice);
 		$('.discountRate').val(0);
 	})
-/*		if(! originPrice || !discountRate) {
-		return false;
-	} else if(discountRate === ""){*/
 	$('.discountRate').on('keyup', function() {
 		let originPrice = parseInt($('.fullPrice').val());
 		let discountRate = $('.discountRate').val();

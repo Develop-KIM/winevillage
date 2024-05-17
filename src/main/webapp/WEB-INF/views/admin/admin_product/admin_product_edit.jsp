@@ -18,12 +18,6 @@ pageEncoding="UTF-8"%>
 			<dd class="g10 active">
 				<a href="admin_product_lists.do">전체 상품관리</a>
 			</dd>
-			<dd class="g10">
-				<a href="admin_product_review.do">상품 리뷰관리<em>0</em></a>
-			</dd>
-			<dd class="g10">
-				<a href="admin_product_category.do">카테고리 관리<em>0</em></a>
-			</dd>
 		</dl>
 	</div>
 	<div id="content">
@@ -334,7 +328,6 @@ pageEncoding="UTF-8"%>
 
 </div>
 </div>
-<%@ include file="../admin_common/admin_footer.jsp"%>
 </body>
 </html>
 

@@ -6,12 +6,7 @@ pageEncoding="UTF-8"%>
 <html lang="ko">
 <body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-<!-- <script src="js/admin_product.js"></script> -->
-
 <%@ include file="admin_header.jsp"%>
-
-
-<%-- <canvas id="myChart" width="50" height="50">test</canvas> --%>
 <div id="wrapper">
 <div id="main_wrap">
 
@@ -45,7 +40,7 @@ pageEncoding="UTF-8"%>
 				<td>${orderitem.receiverPhone}</td>
 				<td>${orderitem.receiverAddress1}</td>
 				<td>${orderitem.finalPrice}</td>
-				<td>${orderitem.orderDate}</td>
+				<td>${orderitem.createDate}</td>
 			</tr>
 			</c:forEach>
 		</c:otherwise>
@@ -96,7 +91,6 @@ pageEncoding="UTF-8"%>
 
 </div>
 
-<%@ include file="admin_footer.jsp"%>
 <script>
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
