@@ -840,12 +840,12 @@
 					</div> -->
 				</div>
 				<div class="my_info my_class_info">
-					<ul class="">
+					<ul class="" style="padding-left:22px;">
 						<li><a href="/member/order_list.do">
 								<p class="tit">주문내역</p>
-								<div class="num_box">
+								<%-- <div class="num_box">
 									<span>${count}</span>
-								</div>
+								</div> --%>
 						</a></li>
 						<li>
 							<p class="tit">나의 마일리지</p>

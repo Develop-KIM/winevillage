@@ -246,7 +246,7 @@ function multiDelete() {
 									</td>
 									<td rowspan="1">${maps.totalCount - (((maps.pageNum-1) * maps.pageSize) + loop.index) }</td>
 									<td rowspan="1"><a href="/"> <img
-												src="../Uploads/product/200/${item.productImg }"
+												src="../uploads/product/200/${item.productImg }"
 												width="40" height="40"> </a></td>
  									<td>${item.productCode}</td>
  									<c:if test="${item.state eq null }">

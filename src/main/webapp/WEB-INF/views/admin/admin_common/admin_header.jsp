@@ -22,19 +22,19 @@ pageEncoding="UTF-8"%>
 	<header id="hd">
 		<div id="hd_wrap">
 			<h1>행복을 주는 쇼핑몰!</h1>
-			<div id="logo"><a href="admin_index.do"><img src="./images/admin/winevillage_logo_inv.png"
+			<div id="logo"><a href="/admin_index.do"><img src="/images/admin/winevillage_logo_inv.png"
 						alt="행복을 주는 쇼핑몰! 관리자"></a></div>
 			<div id="tnb">
 				<ul>
 					<li>오늘:60, 어제:80, 최대:739, 전체:167994</li>
-					<li><a href="main.do">쇼핑몰</a></li>
+					<li><a href="/main.do">쇼핑몰</a></li>
 					<c:if test="${admin eq null }">
-					<li><a href="admin_login.do">로그인</a></li>
-					<li><a href="admin_setting_super.do">관리자등록</a></li>
+					<li><a href="/admin_login.do">로그인</a></li>
+					<li><a href="/admin_setting_super.do">관리자등록</a></li>
 					</c:if>
 					<c:if test="${admin ne null }">
 					<li><p class="admin_id_bold">${admin.admin_id}님 환영합니다.</p></li>	
-					<li id="tnb_logout"><a href="admin_logout.do">로그아웃</a></li>
+					<li id="tnb_logout"><a href="/admin_logout.do">로그아웃</a></li>
 					</c:if>
 				</ul>
 			</div>
@@ -43,22 +43,22 @@ pageEncoding="UTF-8"%>
 				<h2>관리자 주메뉴</h2>
 				<ul id="gnb_1dul">
 					<li class="gnb_1dli">
-						<a href="admin_index.do" class="gnb_1da">대시보드</a>
+						<a href="/admin_index.do" class="gnb_1da">대시보드</a>
 					</li>
 					<li class="gnb_1dli">
-						<a href="admin_order_lists.do" class="gnb_1da">주문관리</a>
+						<a href="/admin_order_lists.do" class="gnb_1da">주문관리</a>
 					</li>
 					<li class="gnb_1dli">
-						<a href="admin_product_lists.do" class="gnb_1da">상품관리</a>
+						<a href="/admin_product_lists.do" class="gnb_1da">상품관리</a>
 					</li>
 					<li class="gnb_1dli">
-						<a href="admin_member_lists.do" class="gnb_1da">회원관리</a>
+						<a href="/admin_member_lists.do" class="gnb_1da">회원관리</a>
 					</li>
 					<li class="gnb_1dli">
-						<a href="admin_customer_qna.do" class="gnb_1da">고객지원</a>
+						<a href="/admin_customer_qna.do" class="gnb_1da">고객지원</a>
 					</li>
 					<li class="gnb_1dli">
-						<a href="admin_setting_super.do" class="gnb_1da">환경설정</a>
+						<a href="/admin_setting_super.do" class="gnb_1da">환경설정</a>
 					</li>
 				</ul>
 			</nav>

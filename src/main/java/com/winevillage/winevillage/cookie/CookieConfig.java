@@ -25,6 +25,7 @@ public class CookieConfig implements WebMvcConfigurer {
         registry.addInterceptor(new CookieInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/setCookie")
+                .excludePathPatterns("/admin_*")
                 .excludePathPatterns(STATIC_RESOURCES);
     }
 

@@ -14,19 +14,7 @@ function multiEdit() {
 		alert('리스트가 정상적으로 로드되지 않았습니다.');
 		return;
 	}
-	
-	/* var new_faq_classified = $("#new_faq_classified").val();
-	
-	$.ajax({
-		url: "/admin_customer_faq_category_edit.do",
-		type: "GET",
-		data: {
-			new_faq_classified: new_faq_classified
-		}
-	})
-	.done(function(response) {})
-	.fail(function(xhr, status, errorThrown) {}); */
-	
+		
 	var selected = document.querySelectorAll('.tbl_head01 input[name="chk[]"]:checked');
 	var editItem = Array.from(selected).map(chk => chk.value);
 	
@@ -71,7 +59,7 @@ function multiEdit() {
 			<dl>
 				<dt class="h10 menu_toggle">고객지원</dt>
 				<dd class="h10">
-					<a href="admin_customer_qna.do">1:1 상담문의
+					<a href="/admin_customer_qna.do">1:1 상담문의
 						<em>0</em>
 					</a>
 				</dd>
@@ -83,20 +71,20 @@ function multiEdit() {
 				</dd>
 				<dt class="h20 menu_toggle">FAQ 작성</dt>
 				<dd class="h20">
-					<a href="admin_customer_faq_lists.do">FAQ 관리</a>
+					<a href="/admin_customer_faq_lists.do">FAQ 관리</a>
 				</dd>
 				<dd class="h20 active">
-					<a href="admin_customer_faq_category.do">FAQ 분류</a>
+					<a href="/admin_customer_faq_category.do">FAQ 분류</a>
 				</dd>
 				<dd class="h20">
-					<a href="admin_customer_faq_write.do">FAQ 작성</a>
+					<a href="/admin_customer_faq_write.do">FAQ 작성</a>
 				</dd>
 				<dt class="h20 menu_toggle">공지사항</dt>
 				<dd class="h20">
-					<a href="admin_customer_notice_lists.do">공지사항 관리</a>
+					<a href="/admin_customer_notice_lists.do">공지사항 관리</a>
 				</dd>
 				<dd class="h20">
-					<a href="admin_customer_notice_write.do">공지사항 작성</a>
+					<a href="/admin_customer_notice_write.do">공지사항 작성</a>
 				</dd>
 			</dl>
 		</div>
