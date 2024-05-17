@@ -6,55 +6,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://maps.googleapis.com/maps/api/js?key=${apiKey }"></script>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-<link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="./css/layouta0da.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pcdc60.css"
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/layouta0da.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pcdc60.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_jj7f50.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_jj7d5a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_jj7f50.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_jj7d5a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_elly302b.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_elly302b.css" />
 <link rel="stylesheet" type="text/css"
-	href="./css/layout_pc_elly1d8d.css"
+	href="/css/layout_pc_elly1d8d.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_ch1bc4.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_chae31.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_ch1bc4.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_chae31.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/layout_sy6617.css" />
-<link rel="stylesheet" type="text/css" href="./css/layout_pc_sy231a.css"
+<link rel="stylesheet" type="text/css" href="/css/layout_sy6617.css" />
+<link rel="stylesheet" type="text/css" href="/css/layout_pc_sy231a.css"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/main99d9.css" />
-<link rel="stylesheet" type="text/css" href="./css/main_pc2092.css"
+<link rel="stylesheet" type="text/css" href="/css/main99d9.css" />
+<link rel="stylesheet" type="text/css" href="/css/main_pc2092.css"
 	media="screen and (min-width:1024px)">
 <link rel="stylesheet" type="text/css"
-	href="./css/shop/main99d9.css?v=231010140029" />
+	href="/css/shop/main99d9.css?v=231010140029" />
 <link rel="stylesheet" type="text/css"
-	href="./css/shop/main_pc2092.css?v=230810114342"
+	href="/css/shop/main_pc2092.css?v=230810114342"
 	media="screen and (min-width:1024px)">
-<link rel="stylesheet" type="text/css" href="./css/shop/slick.css">
-<link rel="stylesheet" type="text/css" href="./css/shop/jqcloud.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/shop/slick.css">
+<link rel="stylesheet" type="text/css" href="/css/shop/jqcloud.min.css" />
 <style>
 #mylogin {padding: 0; background-image: none;}
 .gnb>ul {margin-left: 110px;}
 </style>
-<script type="text/javascript" src="./js/slick.min.js"></script>
-<script type="text/javascript" src="./js/jquery.min.js"></script>
-<script type="text/javascript" src="./js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="./js/picturefill.min.js"></script>
-<script type="text/javascript" src="./js/commond820.js?v=221216102931"></script>
-<script type="text/javascript" src="./js/front_ui9442.js?v=221226120920"></script>
-<script type="text/JavaScript"
-	src="../../t1.kakaocdn.net/kakao_js_sdk/v1/kakao.min.js"></script>
-<script src="./js/wn.productf100.js?v=230405140747"></script>
-<script type="text/javascript" src="./js/jqcloud.min.js"></script>
-<script type="text/javascript" src="./js/slick.min.js"></script>
-<script type="text/javascript" src="./js/filter.js"></script>
-<script type="text/javascript" src="./js/order.js"></script>
 <script>
 function checkLoginStatus() {
     var loginMemberId = document.getElementById("loginMemberId").value.trim();
@@ -243,7 +231,7 @@ $(document).ready(function(){
                     alert("알 수 없는 오류 발생");
                     break;
                 case error.PERMISSION_DENIED:
-                    alert("권한이 없습니다");
+                    /* alert("권한이 없습니다"); */
                     break;
                 case error.POSITION_UNAVAILABLE:
                     alert("위치 확인 불가");
@@ -762,9 +750,7 @@ $(document).ready(function(){
                         </div>
                         <span id="result-count" style="margin-left: 208px;"></span>
                     </form>
-                    <div id="map">
-                        <script src="https://maps.googleapis.com/maps/api/js?key=${apiKey }"></script>
-                    </div>
+                    <div id="map"></div>
                     <div class="store_list">
                         <ul id="store_ul">
                             <c:choose>
