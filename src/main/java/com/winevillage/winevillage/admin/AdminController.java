@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,10 @@ import utils.PagingUtil;
 
 
 @Controller
+@RequiredArgsConstructor
 public class AdminController {
-	
-	@Autowired
-	AdminService dao;
+
+	private final AdminService dao;
 	
 	@GetMapping("/admin_setting_super.do")
 	public String adminInsertGet() {
