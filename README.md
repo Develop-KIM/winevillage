@@ -14,9 +14,22 @@
 <br/>
 
 ### 🧑‍💻 멤버구성
-|     이름     |        주소       |            변경사항                 |
-| ----------- | ------------------ | -------------------------------- |
-| 김동환 | `GitHub` - <https://github.com/Develop-KIM/> | 최초 배포 |
+<table>
+  <tr>
+    <th>이름</th>
+    <th>깃허브 주소</th>
+    <th>담당</th>
+  </tr>
+  <tr>
+    <td>김동환</td>
+    <td>https://github.com/Develop-KIM</td>
+    <td rowspan="3">
+      • Database 설계 및 스크립트 작성 <br/>
+      • 로그인, 회원가입 <br/>
+      • 프로젝트 통합 및 환경 관리
+    </td>
+  </tr>
+</table>
 
 <br/>
 
