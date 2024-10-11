@@ -695,13 +695,14 @@
 
     function sendPhoneNumber() {
         var phoneNumber = document.getElementById('phoneNumber').value;
-        
+
      // AJAX를 이용하여 서버로 전화번호 중복 여부를 확인
         $.ajax({
             url: '/checkPhoneNumberExist.do', // 중복 확인을 위한 API 엔드포인트
             type: 'GET',
             data: { phoneNumber: phoneNumber },
             success: function(response) {
+				console.log('Success Response:', response);
                 if (response === 'exist') {
                     alert('이미 가입된 번호입니다.');
                 } else {
@@ -722,7 +723,7 @@
                 }
             },
             error: function(xhr, status, error) {
-                alert('이미 가입된 번호입니다.');
+                alert('이미 가입된 번호입니다.1111');
             }
         });
     }

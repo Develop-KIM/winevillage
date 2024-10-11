@@ -22,10 +22,10 @@ repositories {
 	mavenCentral()
 }
 //다이나믹 웹 모듈 5.0으로 고정
-eclipse.wtp.facet {
-    // Change the version of the Dynamic Web Module facet
-    facet name: 'jst.web', version: '5.0'
-}
+//eclipse.wtp.facet {
+//    // Change the version of the Dynamic Web Module facet
+//    facet name: 'jst.web', version: '5.0'
+//}
 
 bootWar.enabled = false
 war.enabled = true
@@ -53,11 +53,6 @@ dependencies {
 	implementation 'javax.validation:validation-api:2.0.1.Final'
  
 }
-
-
-
-
-
 
 tasks.named('test') {
 	useJUnitPlatform()

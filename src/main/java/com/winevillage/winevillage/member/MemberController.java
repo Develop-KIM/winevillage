@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +13,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import utils.PagingUtil;
 
+@Slf4j
 @Controller
 public class MemberController {
 
@@ -40,7 +43,7 @@ public class MemberController {
         // join_success 페이지로 이동
         return "member/join/join_success";
     }
-    
+
     @GetMapping("/checkMemberIdExist.do")
     public ResponseEntity<String> checkMemberIdExist(@RequestParam("memberId") String memberId) {
         if (memberId == null || memberId.trim().isEmpty()) {
@@ -54,7 +57,7 @@ public class MemberController {
             return ResponseEntity.ok("사용 가능한 아이디입니다.");
         }
     }
-    
+
     @GetMapping("/checkPhoneNumberExist.do")
     public ResponseEntity<String> checkPhoneNumberExist(@RequestParam("phoneNumber") String phoneNumber) {
         if (phoneNumber == null || phoneNumber.trim().isEmpty()) {
@@ -68,8 +71,9 @@ public class MemberController {
             return ResponseEntity.ok("사용 가능한 휴대폰 번호입니다.");
         }
     }
-    
-	@GetMapping("/member/withdrawal.do")
+
+
+    @GetMapping("/member/withdrawal.do")
 	public String withdrawal() {
 		return "member/withdrawal";
 	}
