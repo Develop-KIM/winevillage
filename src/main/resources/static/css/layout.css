@@ -89,18 +89,12 @@ p.big{font-size:18px}
 .js_toggle ul{display:none;position:absolute;bottom:100%;left:0;right:0;border:1px solid #666;border-bottom:0;padding:10px 0;background:#111;z-index:950}
 .js_toggle ul li .js_change_btn{display:block;width:100%;font-size:13px;margin-top:20px;padding:0 14px;color:#999;text-align:left}
 .js_toggle ul li:first-child .js_change_btn{margin-top:0}
-/* .js_toggle ul li .js_change_btn:hover,
-.js_toggle ul li.check button{background:#E54802} */
 .js_toggle .js_title_btn.on ~ ul{display:block}
-/* header */
 .header{position:fixed;top:0;left:0;width:100%;background-color:#fff;z-index:500}
 .header .top{border-bottom:1px solid #ddd}
 .header .top .wrap{position:relative;height:auto;padding:8px 0 7px;text-align:center}
 .header .top .wrap h1.logo{width:92px;margin:0 auto}
 .header .mb_gnb_area{display:none;position:fixed;left:0;bottom:0;right:0;top:0;z-index: 900;}
-/* .header .mb_gnb_area .mb_gnb_con .cs_center .box1{position:relative;width:55%;font-size:16px;color:#333;font-weight:500}
-.header .mb_gnb_area .mb_gnb_con .cs_center .box1 a{display:inline-block;width:84px;margin-left:10px;line-height:28px;border:1px solid #ddd;text-align:center;color:#555}
-.header .mb_gnb_area .mb_gnb_con .cs_center .box1 strong{display:block;margin-top:5px;color:#111;font-size:24px} */
 .header .top .wrap .right_menu{position:absolute;top:23px;right:21px}
 .header .top .wrap .right_menu:after{content:"";display:block;clear:both}
 .header .top .wrap .right_menu li{float:left;margin-left:19px}

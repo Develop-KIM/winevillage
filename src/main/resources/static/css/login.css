@@ -20,7 +20,7 @@ body {
     letter-spacing: 0.1px;
 }
 
-h1, h2, h3, p, form, dl, dt, dd {
+h1, h2, h3, h4, h5, h6, p, form, dl, dt, dd {
     margin: 0px;
     padding: 0px;
     font-weight: normal;

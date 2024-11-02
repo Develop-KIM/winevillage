@@ -241,9 +241,6 @@
 
 .wine_profile_layer.layer .display_table{width:800px}
 .wine_profile_layer.layer .layer_area .layer_con{max-height:80vh}
-/* .wine_profile_layer .con_box .box_tit .ico_note.on::before{top:17px;left:3px}
-.wine_profile_layer .con_box .box_tit .ico_note.on::after{top:27px;width:450px;letter-spacing:0} */
-/* .wine_profile_layer .con_box .box_tit .ntc_txt::before{display:block;border-top:3px solid transparent;border-right:4px solid transparent;border-bottom:3px solid #333;border-left:4px solid transparent;z-index:50} */
 .wine_profile_layer.layer .layer_con>.btn_area{position:static;width:auto;padding:0;border-top:0;background:transparent;margin-top:60px}
 .wine_profile_layer.layer .layer_con>.btn_area .btn_txt{width:160px}
 
