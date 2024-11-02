@@ -1,6 +1,5 @@
-=======
 # 🍷 winevillage
-스프링 부트 + JSP 와인 쇼핑몰
+스프링 부트 + JSP + MyBatis 와인 쇼핑몰
 <br/>
 <br/>
 ## 🖥️ 프로젝트 소개
@@ -36,8 +35,7 @@
 <br/>
 
 ### ⚙️ 개발 환경
--  `Java 17`
+-  **Java버전** : `Java 17`
 -  **IDE** : IntelliJ
--  **Framwork** : Springboot(3.2.x)
+-  **Framwork** : Springboot(3.2.x), Mybatis
 -  **Database** : Oracle DB(11xe)
--  **ORM** : Mybatis   
