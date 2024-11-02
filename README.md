@@ -19,7 +19,7 @@
 
 ## 🧑‍💻 멤버구성
 <div align="center">
-  <table>
+  <table style="width: 100%;">
     <tr>
       <th>김동환</th>
       <th>이형렬</th>
@@ -27,17 +27,17 @@
       <th>윤주상</th>
     </tr>
     <tr>
-      <td>
-        <a href="https://github.com/Develop-KIM">https://github.com/Develop-KIM</a>
+      <td style="text-align: center;">
+        <a href="https://github.com/Develop-KIM">Develop-KIM</a>
       </td>
-      <td>
-        <a href="https://github.com/lhr9264">https://github.com/lhr9264</a>
+      <td style="text-align: center;">
+        <a href="https://github.com/lhr9264">lhr9264</a>
       </td>
-      <td>
-        <a href="https://github.com/junuleedk">https://github.com/junuleedk</a>
+      <td style="text-align: center;">
+        <a href="https://github.com/junuleedk">junuleedk</a>
       </td>
-      <td>
-        <a href="https://github.com/JoostLean">https://github.com/JoostLean</a>
+      <td style="text-align: center;">
+        <a href="https://github.com/JoostLean">JoostLean</a>
       </td>
     </tr>
     <tr>
