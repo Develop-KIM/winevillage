@@ -337,10 +337,10 @@
 .join_form_page .form_area{margin-top:30px;padding-bottom:0;border-bottom:0}
 .join_form_page .form_area li .l_tit{font-weight:500}
 .join_form_page .btn_area{margin-top:30px}
-.form_area ul li.gender_li .form_box .gender_box::after{content:'';display:block;clear:both} 
-.form_area ul li.gender_li .form_box .gender_box .box{position:relative;float:left;width:calc(50% - 2.5px)} 
+.form_area ul li.gender_li .form_box .gender_box::after{content:'';display:block;clear:both}
+.form_area ul li.gender_li .form_box .gender_box .box{position:relative;float:left;width:calc(50% - 2.5px)}
 .form_area ul li.gender_li .form_box .gender_box .box:last-of-type{margin-left:5px}
-.form_area ul li.gender_li .form_box .gender_box .box input{position:absolute;top:0;left:0;width:0;height:0} 
+.form_area ul li.gender_li .form_box .gender_box .box input{position:absolute;top:0;left:0;width:0;height:0}
 .form_area ul li.gender_li .form_box .gender_box .box label{display:block;width:100%;height:40px;color:#999;font-size:14px;line-height:39px;text-align:center;border:1px solid #ddd}
 .form_area ul li.gender_li .form_box .gender_box .box input:checked + label{color:#111;border:1px solid #111}
 .form_area ul li.tel_li .form_box .tel_box .btn_txt{margin-top:10px}

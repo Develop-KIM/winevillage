@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/jquery-ui.min.css" />
@@ -36,8 +35,7 @@
 							<a href="/"><img src="./css/default/wine_village_rev2_wh.svg"
 								alt="인트로 와인빌리지"></a>
 						</h2>
-						<p class="txt">
-							만 19세 이상 <br class="pc_hidden">음주 가능한 연령입니까 ?
+						<p class="txt"> 만 19세 이상 <br class="pc_hidden">음주 가능한 연령입니까 ?
 						</p>
 						<div class="btn_area col2">
 							<button type="submit" class="btn_txt btn_black">예</button>

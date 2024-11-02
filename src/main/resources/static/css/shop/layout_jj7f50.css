@@ -45,7 +45,7 @@
 
 .prd_list li{margin-bottom:30px}
 .prd_list li:last-child{margin-bottom:0}
-.prd_list li .item .main_img{position:relative;background:#f8f8f8} 
+.prd_list li .item .main_img{position:relative;background:#f8f8f8}
 .prd_list li .item .main_img a{display:block}
 .prd_list li .item .main_img .slider .slick-arrow{display:none !important}
 .prd_list li .item .main_img .prd_img .table_con{text-align:center}
@@ -722,7 +722,7 @@
 .wine_profile_layer .con_box .price_area li .progress_line{float:right;position:relative;width:calc(100% - 150px);height:10px;margin-top:6px}
 .wine_profile_layer .con_box .price_area li .progress_line p{position:absolute;top:0;left:0;height:10px;border-radius:50px}
 .wine_profile_layer .con_box .price_area li .progress_line .empty{width:100%;background:#ddd}
-.wine_profile_layer .con_box .price_area li .progress_line .fill{background:linear-gradient(270deg, #EA5715 0%, #DC252A 77.6%), #DC252A;z-index:5} 
+.wine_profile_layer .con_box .price_area li .progress_line .fill{background:linear-gradient(270deg, #EA5715 0%, #DC252A 77.6%), #DC252A;z-index:5}
 
 .wine_profile_layer .con_box .review_star ul{text-align:left}
 .wine_profile_layer .con_box .review_star li:not(:first-child){margin-top:10px}
@@ -758,14 +758,14 @@ input[type='range']{width:100%}
       -webkit-appearance: none;
       background-color: #eee;
     }
-    
+
     input[type='range'].css.css::-webkit-slider-runnable-track {
       height: 4px;
       -webkit-appearance: none;
       color: #eee;
       /* margin-top: -1px; */
     }
-    
+
     input[type='range'].css::-webkit-slider-thumb {
       width: 4px;
       -webkit-appearance: none;
@@ -778,15 +778,15 @@ input[type='range']{width:100%}
 }
 /** FF*/
 input[type="range"].css::-moz-range-progress {
-  background-color: #111; 
+  background-color: #111;
 }
-input[type="range"].css::-moz-range-track {  
+input[type="range"].css::-moz-range-track {
   background-color: #eee;
 }
 /* IE*/
 input[type="range"].css::-ms-fill-lower {
-  background-color: #111; 
+  background-color: #111;
 }
-input[type="range"].css::-ms-fill-upper {  
+input[type="range"].css::-ms-fill-upper {
   background-color: #eee;
 }

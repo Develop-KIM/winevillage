@@ -1,0 +1,370 @@
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Pretendard-Regular.eot);
+  src: url(../fonts/Pretendard-Regular.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/Pretendard-Regular.woff) format('woff'),
+    url(../fonts/Pretendard-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Pretendard-Medium.eot);
+  src: url(../fonts/Pretendard-Medium.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/Pretendard-Medium.woff) format('woff'),
+    url(../fonts/Pretendard-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/Pretendard-Bold.eot);
+  src: url(../fonts/Pretendard-Bold.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/Pretendard-Bold.woff) format('woff'),
+    url(../fonts/Pretendard-Bold.ttf) format('truetype');
+}
+
+/* 반응형, 모바일에서 모든요소의 패딩,선을 크기안에 포함시킴 */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+/* 컬러 변수 */
+:root {
+  /* 포인트컬러 */
+  --primary-color: #668904;
+  --secondary-color: #6C801A;
+  /* 글자 공통 컬러 */
+  --text-color-100: #FFF;
+  --text-color-400: #999;
+  --text-color-500: #666;
+  --text-color-600: #333;
+  --text-color-900: #000;
+}
+
+/* body에 들어갈수있는 모든태그의 여백빼기 */
+html, body, div, span, object, iframe, h1, h2, h3, p, a, code, em, img, strong, sub, b, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figure, figcaption, footer, header, hgroup, menu, nav, section, main, audio, video {
+  margin: 0;
+  padding: 0;
+}
+
+/* html5추가 시멘틱엘리먼트를 익스하위버전에서 블럭으로 인식되도록함 */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
+  display: block;
+}
+
+/* button태그에 손모양 커서 */
+button {
+  cursor: pointer;
+}
+
+/* 익스하위버전에서 이미지 선없애기 */
+fieldset, img {
+  border: 0;
+  /* a안에 이미지가 있을경우 vertical-align:baseline이 기본값이므로 a가 아래로 내려가며 간격이슈가 발생함 그러므로 a를 이미지 기준 위로 올려줌 */
+  vertical-align: top;
+}
+
+/* 모바일, 반응형에서 이미지가 원본보다 커지지않게하고 뷰포트에 따라 줄어들게 */
+img {
+  max-width: 100%;
+}
+
+/* 리스트 기호 빼기 */
+ol, ul {
+  list-style: none;
+}
+
+/* 기울임꼴 제거 */
+ em {
+  font-style: normal;
+}
+strong {
+  font-weight: normal;
+}
+
+/* 벤더프리픽스: 브라우저 제조사를 의미 */
+/* -webkit- 크롬, 사파리, 다른브라우저에서 사용하기도함 */
+a {
+  text-decoration: none;
+  color: var(--text-color-500);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* iframe으로 외부컨텐츠 연결시 외부컨텐츠 안쪽내용이 페이지에 영향을 주지못하도록 가려줌*/
+iframe {
+  overflow: hidden;
+  border: 0;
+}
+
+/* 칸의 선 합치고 간격없애기, 가로를 늘려줌 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* 굵기 빼고 폰트크기를 body 폰트크기와 일치시킴 */
+h1, h2, h3 {
+  font-weight: normal;
+  font-size: 100%;
+}
+
+/* 폼요소 높이 다를때 요소끼리 세로정렬시킴 */
+/* border-radius:0 -> iOS 테두리 둥글게 제거 */
+/* -webkit-appearance: none -> iOS 폼요소 기본모양 제거 */
+input, select, textarea, button {
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  /* 포커스시 아웃라인 제거 */
+  outline: none;
+}
+
+/* textarea 리사이즈 막기 */
+textarea {
+  resize: none;
+}
+
+/* 모바일 크롬, 사파리 텍스트 자동확대 방지 */
+body {
+  -webkit-text-size-adjust: none;
+}
+
+/*********************** 공통스타일 *************************/
+/* body에 높이가 없어도 hidden이 걸리면 스크롤바가 사라짐(데스크탑) */
+body.on {overflow: hidden;}
+/* iOS 사파리는 페이지최상단에서만 hidden이 걸리므로 페이지 위로 올라오게함(모바일,반응형) */
+body.on { overflow: hidden; position: fixed; left:0; top:0; width:100%; }
+
+body, input, select, textarea, button, table {
+  font-family: 'Pretendard', 'Noto Sans KR', '맑은 고딕', 'malgun gothic',
+    'Apple SD Gothic Neo', sans-serif;
+  font-size: 12px;
+  color: var(--text-color-600);
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+}
+
+/* 스킵 네비 */
+
+/* 스크롤바 */
+/* ::-webkit-scrollbar {
+  width: 8px;
+  background: #eee;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 8px;
+} */
+
+/* 스크롤바 안보이게 */
+/* IE */
+/* * {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+} */
+
+/* 텍스트 선택 컬러 */
+/* ::selection {
+  background: var(--primary-color);
+  color: #ffffff;
+} */
+
+/* legend,caption, 섹션제목 안보이게 */
+legend, caption, .blind {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+}
+
+/* float해제 */
+
+/********************** 폼요소 ********************/
+/* 입력필드 */
+/* placeholder */
+::-webkit-input-placeholder {
+  color: #b1b1b1;
+} /* Webkit,크롬,사파리 */ /* Firefox 4-18 */
+::-moz-placeholder {
+  color: #b1b1b1;
+  opacity: 1;
+} /* Firefox 19+ */ /* IE10+ */
+
+/* IE x버튼, password 눈모양 제거 */
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+
+/* input search x버튼 제거 */
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* input number 위아래 화살표제거 */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* input[type='text'],
+input[type='search'],
+input[type='password'],
+input[type='number'] {
+  border: 1px solid black;
+  height: 40px;
+  padding: 0 10px;
+  width: 100%;
+} */
+
+/* 체크박스 */
+input[type='checkbox'] + label {
+  color: #333;
+  cursor: pointer;
+  position: relative;
+}
+input[type='checkbox'] + label:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #dddddd;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+input[type='checkbox']:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%) rotateZ(-45deg);
+  width: 10px;
+  height: 6px;
+  border-left: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+/* radio 공통 */
+input[type='radio'] + label {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+input[type='radio'] + label:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+input[type='radio']:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 1px;
+  width: 10px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+}
+
+/* select 공통 */
+/* 익스 화살표 제거 */
+select::-ms-expand {
+  display: none;
+}
+
+/* select 커스텀 */
+
+/* textarea */
+textarea {
+  width: 100%;
+  border: none;
+  background: #f8f8f8;
+  padding: 15px;
+}
+
+/* 파일선택 */
+
+/* 버튼 */
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0px 10px;
+  line-height: 38px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #292929;
+  margin-right: 10px;
+}
+
+/* 라벨 버튼 */
+
+/* 아이콘 버튼 */
+
+/* 다운로드 버튼 */
+
+/* 등록하기 아이콘 */
+
+/* 다운로드 아이콘 */
+
+/* 필수 별 아이콘 */
+
+/* 플랫폼 아이콘 */
+
+/* 커뮤니티 아이콘 */
+
+/* 테이블 캡션 버그 대응 */
+
+/* 게시판 리스트 */
+
+/* 게시판 페이지네이션 */
+
+/* 게시판 쓰기 */
+
+/* 요금 테이블 */
+
+/* 애니메이션 공통 */
+/********** 공통스타일 끝  **********/
+
+/* margin(바깥여백)
+- 이동, 간격에 사용
+- margin:위 오른쪽 아래 왼쪽;
+- margin:위 좌우 아래;
+- margin:위 아래 좌우;
+- 음수가능하나 사용자제
+- 요소 기준점은 기본적으로 좌상단이므로
+margin-left, margin-top으로 좌우 위아래 이동가능
+- 포지션등으로 요소기준이 변경됐을경우
+margin방향도 기준에 맞춰야함
+margin병합
+- 부모나 자식이 수직방향으로 인접했을때 부모, 자식중 margin이 큰값으로 병합되어 가장 바깥요소에 적용되어 통째로 내려가는 현상
+- 형제요소끼리 수직방향 인접일경우 마진병합이므로 마진을 한쪽방향으로 주는것이 좋다
+*/

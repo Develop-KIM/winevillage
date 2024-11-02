@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+/* .header .top .wrap{height:auto;padding:0} */
+/* .header .top .wrap h1.logo{display:none} */
+.header .bottom{display:none}
+.header.fixed .top .wrap .right_menu{top:23px}
+
+.main_page.content{padding:0}
+.main_visual{position:relative;padding:0}
+.main_visual .m_slide .slick-slide{height:auto}
+.main_visual .m_slide .slide{position:relative}
+.main_visual .m_slide .slide img{width:100%}
+/* .main_visual .m_slide .slide .txt_box{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-wrap:wrap;align-items:center;width:100%;height:100%;padding:0 20px;z-index:5;font-size:16px;font-weight:500;color:#fff}
+.main_visual .m_slide .slide .txt_box .tit{font-size:24px;line-height:1.5;margin-bottom:20px} */
+.main_visual .m_slide .slide .visual_category{position:absolute;top:30px;left:30px;font-weight:500;color:#999;z-index:10}
+.main_visual .m_slide .slide .visual_txt{position:absolute;bottom:10%;left:30px;line-height:1.5;font-size:12px;color:#555;z-index:10}
+.main_visual .m_slide .slide .visual_txt .tit{font-size:20px;color:#111}
+.main_visual .m_slide .slide .visual_txt .tit em{display:block;font-weight:700}
+.main_visual .m_slide .slide .visual_txt .sub_txt{margin-top:20px}
+.main_visual .control_box{position:absolute;bottom:15px;right:35px;display:none;width:101px;height:27px;line-height:27px;background:rgba(0, 0, 0, 0.3);border-radius:100px}
+.main_visual .control_box button{width:27px;height:27px;text-indent:-9999px;overflow:hidden}
+.main_visual .control_box button.prev{float:left;background:url(../../images/main/mb_ico_prev.png) no-repeat 50% 50%;background-size:7px}
+.main_visual .control_box button.next{float:right;background:url(../../images/main/mb_ico_next.png) no-repeat 50% 50%;background-size:7px}
+.main_visual .control_box .page_count{float:left;width:43px;font-size:12px;color:#fff;text-align:center}
+.main_visual .control_box .page_count span.current{font-weight:700}
+
+.main_category{margin:40px 0;padding:0 20px}
+.main_category ul{display:flex;flex-wrap:wrap;justify-content:space-around}
+.main_category li a{padding-top:54px}
+.main_category li.ico_wine a{background:url(../../images/main/mb_category_wine.png) no-repeat 50% 1px;background-size:16px}
+.main_category li.ico_beerLiquor a{background:url(../../images/main/mb_category_beerLiquor.png) no-repeat 50% 0;background-size:16px}
+.main_category li.ico_shop a{background:url(../../images/main/mb_category_shop.png) no-repeat 50% 10px/34px}
+.main_category li.ico_event a{background:url(../../images/main/mb_category_event.png) no-repeat 50% 5px/60px}
+
+.section{position:relative;margin-bottom:40px;padding:0 20px}
+.section h2{margin-bottom:20px;font-size:20px;font-weight:500;color:#111}
+.section h2>span{display:inline-block;vertical-align:middle}
+.section h2>.css_switch{vertical-align:middle;margin-left:15px}
+.section h2>.css_switch .right{right:22px}
+.section .btn_more{position:absolute;top:5px;right:20px;width:18px;height:18px;background:url(../../images/default/ico_plus_gray.png) no-repeat center/contain;text-indent:-9999px}
+/* .section .btn_more span{display:block;text-indent:-9999px;overflow:hidden} */
+/* .section .btn_more span::before{content:"";display:block;position:absolute;top:50%;left:50%;width:16px;height:2px;background:#111;margin:-1px 0 0 -8px}
+.section .btn_more span::after{content:"";display:block;position:absolute;top:50%;left:50%;width:2px;height:16px;background:#111;margin:-8px 0 0 -1px} */
+.section .result_tab{margin:0 -20px 30px 0}
+.section .result_tab ul{white-space:nowrap;overflow-x:auto;padding-right:20px}
+.section .result_tab li{display:inline-block;margin-right:2px}
+.section .result_tab li button{height:34px;line-height:34px;padding:0 15px;border:1px solid #ddd;border-radius:50px;font-size:13px;font-weight:500;color:#999}
+.section .result_tab li.on button{border-color:#111;background:#111;color:#fff}
+.section .btn_area{margin-top:30px}
+.section .btn_area .btn_txt{border-radius:0}
+.section.slide_prd .n_prd_list{display:block;margin-right:-20px;white-space:nowrap;overflow:auto;overflow-y:hidden}
+.section.slide_prd .n_prd_list li{display:inline-block;width:154px;vertical-align:top;margin:0 10px 0 0}
+.section.slide_prd .n_prd_list li .item .info .more_info .prd_name a,
+.section.slide_prd .n_prd_list li .item .info .more_info .prd_info,
+.section.slide_prd .n_prd_list li .item .info .cate_label{white-space:normal}
+.theme_area{margin-top:40px}
+.theme_area.product_lists_page .filter{margin-top:0;margin-bottom:30px}
+.theme_area .prd_wrap{position:relative;height:490px}
+.theme_area .prd_wrap .prd_list{position:absolute;top:0;left:0;width:100%;opacity:0;z-index:-1;transition:all 1.5s;-webkit-transition:all 1.5s;-moz-transition:all 1.5s;-o-transition:all 1.5s}
+.theme_area .prd_wrap .prd_list.on{opacity:1;z-index:1}
+.theme_area .prd_wrap .prd_list>.sub_tit{display:inline-block;margin-bottom:20px;font-size:15px;font-weight:500;color:#666666}
+.theme_area .prd_list{white-space:nowrap;overflow-x:auto;margin-right:-20px}
+.theme_area .prd_list li{display:inline-block;width:277px;margin-bottom:0;vertical-align:top}
+.theme_area .prd_list li:not(:first-child){margin-left:13px}
+.theme_area .prd_list li:last-child{margin-right:20px}
+.theme_area .prd_list li .item .info{position:relative;min-height:125px;padding-bottom:35px}
+.theme_area .prd_list li .item .info .more_info .price{position:absolute;bottom:0;left:0;line-height:20px}
+.scroll_area .prd_list>.slick-slider>.slick-list{overflow-x:auto}
+.scroll_area .prd_list>.slick-slider>.slick-arrow{display:none !important}
+.scroll_area .prd_list{white-space:nowrap;overflow-x:auto;margin-right:-20px}
+.scroll_area .prd_list li{display:inline-block;width:277px;margin-bottom:0;vertical-align:top}
+.scroll_area .prd_list li:not(:first-child){margin-left:13px}
+.scroll_area .prd_list li:last-child{margin-right:20px}
+.scroll_area .prd_list li .item .info{position:relative;min-height:125px;padding-bottom:35px}
+.scroll_area .prd_list li .item .info .more_info .price{position:absolute;bottom:0;left:0;line-height:20px}
+/* .newarrivals>.sub_tit{display:block;margin-top:-20px;margin-bottom:30px;font-size:15px;font-weight:500;color:#666666} */
+/* .news_area ul{display:flex;flex-wrap:wrap;margin:0 -6px}
+.news_area li{width:calc(50% - 12px);margin:30px 6px 0;border-bottom:3px solid #eee}
+.news_area li:nth-of-type(-n+2){margin-top:0} */
+/* .mid_bn_area .b_slide .slide .txt_box{position:absolute;top:0;left:0;display:flex;flex-wrap:wrap;align-items:center;width:100%;height:100%;padding-bottom:10%}
+.mid_bn_area .b_slide .slide .txt_box .txt_con{width:100%;color:#fff;text-align:center}
+.mid_bn_area .b_slide .slide .txt_box .txt_con p.txt{font-size:18px;font-weight:500}
+.mid_bn_area .b_slide .slide .txt_box .txt_con p.tit{margin:10px 0 20px;font-size:24px;font-weight:500} */
+.select_area h2{margin-bottom:16px}
+.select_area h2>span{vertical-align:top}
+.select_area h2>.css_switch{vertical-align:top;margin-top:22px}
+.select_area .prd_wrap{position:relative;height:577px}
+.select_area .prd_wrap .prd_list{position:absolute;top:0;left:0;width:100%;opacity:0;z-index:-1;transition:all 1.5s;-webkit-transition:all 1.5s;-moz-transition:all 1.5s;-o-transition:all 1.5s}
+.select_area .prd_wrap .prd_list.on{opacity:1;z-index:1}
+.select_area .prd_wrap .prd_list>ul{white-space:nowrap;overflow-x:auto;margin-right:-20px}
+.select_area .prd_wrap .prd_list li{display:inline-block;width:277px;margin-bottom:0}
+.select_area .prd_wrap .prd_list li:not(:first-child){margin-left:13px}
+.select_area .prd_wrap .prd_list li:last-child{margin-right:20px}
+
+/* main_footer */
+
+.main_layer.layer{background:none}
+.main_layer .display_table{padding:30px}
+.main_layer .layer_area{background:none}
+.main_layer .layer_area .layer_con{padding:0}
+.main_layer .layer_area .layer_con .slider{width:calc( 100vw - 60px )}
+.main_layer .layer_area .layer_con img{width:100%}
+.main_layer .layer_area .layer_close{left:initial;top:auto;bottom:0;right:0;width:24px;height:24px;background:url(../../images/main/main_close.png) 50% 50% no-repeat}
+.main_layer .layer_area .slick-dots{position:absolute;bottom:20px;left:0;right:0;text-align:center}
+.main_layer .layer_area .slick-dots li{display:inline-block;margin:0 4px}
+.main_layer .layer_area .slick-dots li button{width:8px;height:8px;background:#fff;opacity:0.3;overflow:hidden;text-indent:-9899px;border-radius:100px;}
+.main_layer .layer_area .slick-dots li.slick-active button{width:23px;opacity:1;}
+.main_layer .layer_area .not_today{margin-top:10px;text-align:left;color:#333}
+
+/* 휴면해제하기 레이어팝업 */
+.dormant_layer .display_table .table_cell{padding:0 30px}
+.dormant_layer .layer_area .layer_close{top:23px;left:auto;right:23px;background:url(../../images/default/mb_icon_close.png) 50% 50% no-repeat}
+.dormant_layer .layer_area .layer_con{padding:40px 20px 20px}
+.dormant_layer .layer_area .layer_con h3.tit{color:#AC8B68;font-size:20px;font-weight:500;line-height:28px;text-align:center}
+.dormant_layer .layer_area .layer_con .sub_tit{margin-top:20px;color:#555;font-size:14px;line-height:20px;text-align:center}
+.dormant_layer .layer_area .layer_con .user_year{margin-top:30px;padding:20px 0;box-sizing:border-box;border:1px solid #AC8B68}
+.dormant_layer .layer_area .layer_con .user_year p{color:#333;font-size:14px;line-height:20px;text-align:center}
+.dormant_layer .layer_area .layer_con .user_year p span:first-of-type{font-weight:500}
+.dormant_layer .layer_area .layer_con .sub_txt{margin-top:30px;color:#555;font-size:14px;line-height:20px;text-align:center}
+.dormant_layer .layer_area .layer_con .sub_txt span{color:#AC8B68;font-weight:500}
+.dormant_layer .layer_area .layer_con .mem_lists{margin-top:30px;border-top:1px solid #555555}
+.dormant_layer .layer_area .layer_con .mem_lists li{padding:20px 10px;border-bottom:1px solid #DDDDDD}
+.dormant_layer .layer_area .layer_con .mem_lists li .checkbox{display:block;text-align:left}
+.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label{padding-left:44px}
+.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label span{display:block;color:#999999}
+.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label span:last-of-type{margin-top:5px}
+.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label span.tit{color:#555}
+.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label span.tit em{display:inline-block;margin-right:5px;font-weight:500}
+.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label span.info em{display:block;margin-top:5px}
+.dormant_layer .layer_area .layer_con .btn_area{margin-top:20px}
+.dormant_layer .layer_area .layer_con .btn_area .btn_txt{border-radius:0}

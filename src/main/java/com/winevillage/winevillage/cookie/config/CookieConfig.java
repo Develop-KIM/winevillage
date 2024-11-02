@@ -1,31 +1,22 @@
-package com.winevillage.winevillage.cookie;
+package com.winevillage.winevillage.cookie.config;
 
+import com.winevillage.winevillage.cookie.interceptor.CookieInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import static com.winevillage.winevillage.cookie.constants.CookieConstants.EXCLUDED_PATHS;
+import static com.winevillage.winevillage.cookie.constants.CookieConstants.STATIC_RESOURCES;
+
 @Configuration
 public class CookieConfig implements WebMvcConfigurer {
-    
-    private static final String[] STATIC_RESOURCES = {
-        "/**/*.css",
-        "/**/*.png",
-        "/**/*.svg",
-        "/**/*.jpg",
-        "/**/*.ttf",
-        "/**/*.eot",
-        "/**/*.woff",
-        "/**/*.otf",
-        "/**/*.html",
-    };
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new CookieInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/setCookie")
-                .excludePathPatterns("/admin_*")
+                .excludePathPatterns(EXCLUDED_PATHS)
                 .excludePathPatterns(STATIC_RESOURCES);
     }
 
