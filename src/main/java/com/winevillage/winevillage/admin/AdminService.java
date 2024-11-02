@@ -12,20 +12,13 @@ import com.winevillage.winevillage.pay.PayDTO;
 public interface AdminService {
 	
 	public int adminTotalCount(ParameterDTO parameterDTO);
-	
 	public ArrayList<AdminDTO> adminlistPage(ParameterDTO parameterDTO);
-	
 	public int adminInsert(AdminDTO adminDTO);
-	
 	public AdminDTO getAdmin(String adminId);
-	
 	public AdminDTO adminView(AdminDTO adminDTO);
-	
 	public int adminEdit(AdminDTO adminDTO);
-	
 	public int adminDelete(AdminDTO adminDTO);
-	
 	public ArrayList<MemberDTO> recentMemberList(MemberDTO memberDTO);
-	
 	public ArrayList<PayDTO> recentOrderUsers(PayDTO payDTO);
+	ArrayList<AdminDTO> adminListPage(ParameterDTO parameterDTO);
 }

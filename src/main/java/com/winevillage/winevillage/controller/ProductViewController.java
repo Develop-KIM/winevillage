@@ -46,7 +46,7 @@ public class ProductViewController {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
-boolean loggedIn = true;
+		boolean loggedIn = true;
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {
@@ -77,9 +77,7 @@ boolean loggedIn = true;
 				user.setName(memberView.getName());
 			}
 		}
-		
-		
-		
+
 		model.addAttribute("user", user);
 		
 		return "shop/product_view";

@@ -86,8 +86,4 @@ public class MemberRestController {
         response.put("redirectUrl", "main.do");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
-
-
 }
-

@@ -51,7 +51,7 @@ public class CartListController {
 			} else {
 				cookieId = createUniqueCookieId();
 				Cookie newCartCookie = new Cookie("COOKIE_ID", cookieId);
-				newCartCookie.setMaxAge(24 * 60 * 60); // 24시간
+				newCartCookie.setMaxAge(24 * 60 * 60);
 				newCartCookie.setPath("/");
 				response.addCookie(newCartCookie);
 			}
