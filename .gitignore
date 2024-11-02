@@ -4,6 +4,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+.settings/
 
 ### STS ###
 .apt_generated
@@ -13,7 +14,7 @@ build/
 .settings
 .springBeans
 .sts4-cache
-.properties
+*.properties
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
@@ -33,6 +34,12 @@ out/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
 
 ### VS Code ###
 .vscode/
