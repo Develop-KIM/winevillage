@@ -434,12 +434,7 @@
 .o_lists li .o_wrap .box.con .more_info{min-height:130px/* 95px */}
 .o_lists li .o_wrap .box.con .more_info .store{padding-left:23px;background:url(../../images/default/ico_store.png) 0 50% no-repeat;color:#AC8B68}
 .o_lists li .o_wrap .box.con .more_info .icon{display:inline-block;margin-top:5px;margin-right:3px;font-size:12px}
-/* .o_lists li .o_wrap .box.con .more_info .type,
-.o_lists li .o_wrap .box.con .more_info .country{line-height:20px}
-.o_lists li .o_wrap .box.con .more_info .type span,
-.o_lists li .o_wrap .box.con .more_info .country span{display:inline-block;width:14px;height:14px;margin-top:3px;margin-right:2px;overflow:hidden;border-radius:100%;vertical-align:top}
-.o_lists li .o_wrap .box.con .more_info .country span{width:24px;border-radius:0}
-.o_lists li .o_wrap .box.con .more_info .type span.red{background:#A90E2C} */
+
 .o_lists li .o_wrap .box.con .more_info .cate_label{display:block;margin-top:20px}
 .o_lists li .o_wrap .box.con .more_info .label{display:inline-block;padding:2px 8px;font-size:12px;border-radius:10px;color:#111;vertical-align:middle}
 .o_lists li .o_wrap .box.con .more_info .box{border:1px solid #ddd;padding:1px 10px}
@@ -454,18 +449,10 @@
 .o_lists li .o_wrap .box.progress ul li{display:flex;flex-wrap:wrap;justify-content:space-between}
 .o_lists li .o_wrap .box.progress ul li p{font-size:13px;font-weight:500;color:#999;text-align:center}
 .o_lists li .o_wrap .box.progress ul li p em{display:block;font-size:12px;color:#111}
-/* .o_lists li .o_wrap .box.progress ul li.step01 p:first-child,
-.o_lists li .o_wrap .box.progress ul li.step02 p:nth-of-type(-n+2),
-.o_lists li .o_wrap .box.progress ul li.step03 p:nth-of-type(-n+3),
-.o_lists li .o_wrap .box.progress ul li.step04 p:nth-of-type(-n+3){color:#F3A06C}
-.o_lists li .o_wrap .box.progress ul li.step04 p:last-child{color:#B5302F} */
+
 .o_lists li .o_wrap .box.progress ul li p.current{color:#B5302F}
 .o_lists li .o_wrap .box.progress ul li p.end{color:#F3A06C}
-/* .o_lists li .o_wrap .box.price{margin-top:27px}
-.o_lists li .o_wrap .box.price dd del{text-decoration:line-through}
-.o_lists li .o_wrap .box.price dd ins{font-size:16px;font-weight:700;color:#111;text-decoration:none}
-.o_lists li .o_wrap .box.status{margin-top:14px}
-.o_lists li .o_wrap .box.status dd em{font-weight:700;color:#111} */
+
 .o_lists li .o_wrap .box.review{position:relative;margin-top:20px}
 .o_lists li .o_wrap .box.review i,
 .o_lists li .o_wrap .box.review .q{display:inline-block;font-style:normal;color:#BB473A}

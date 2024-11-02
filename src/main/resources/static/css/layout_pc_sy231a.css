@@ -38,13 +38,6 @@
 .mypage_lnb .common_lnb .my_info li:nth-of-type(3) .tit{background-image:url(../../images/mypage/pc_ico_cash.png)}
 .mypage_lnb .common_lnb .my_info li:nth-of-type(4) .tit{background-image:url(../../images/mypage/pc_ico_gift.png)}
 
-/* content event event_lists_page */
-
-/* content event event_end_page */
-
-/* content event event_view_page */
-
-/* view_page */
 .view_page_wrap .view_tit_wrap{display:table;width:1200px;margin:0 0 30px;padding:0 30px 30px}
 .view_page_wrap .view_tit_wrap .tit{display:table-cell;vertical-align:middle;line-height:34px;font-size:24px}
 .view_page_wrap .view_tit_wrap .date{display:table-cell;vertical-align:middle;line-height:22px;text-align:right;font-size:16px}
@@ -98,13 +91,6 @@
 .qna_lists_page .form_area{width:700px;margin:0 auto}
 .qna_lists_page .btn_txt.btn_black{display:block;margin:60px auto 0}
 
-/* content cs special */
-
-/* content cs special_ok */
-
-/* content cs class */
-
-/* content cs store */
 .content.store_page{padding:0px 120px}
 .store_page .con_top h3{margin-bottom:30px;line-height:45px;font-size:32px}
 /* .store_page .store_tab .store_tabCon .map_area .store_map{width:100%} */
@@ -146,19 +132,6 @@
 .review_img_layer .rv_slide .slick-dots{bottom:30px}
 .review_img_layer .rv_slide .slick-dots li.slick-active button{width:24px}
 
-/* content mypage action tasting_write_page */
-
-/* content mypage action tasting_gallery_view_page */
-
-/* content mypage action my_note_lists */
-
-/* content mypage action my_note_write */
-/* .note_write_form .form_area .upload_file_area .form_box span{width:100px;line-height:40px} */
-
-/* content mypage action following_page */
-/* content mypage action follwer_note */
-
-/* content mypage action qna_lists_page */
 .mypage.qna_lists_page .top_info .tit{margin-bottom:20px}
 .mypage.qna_lists_page .faq_lists .q{flex-wrap:nowrap;padding:20px 78px 20px 30px}
 .mypage.qna_lists_page .faq_lists .q::after{top:29px;right:30px}
@@ -320,19 +293,6 @@
 .review_img_layer .rv_slide .slick-dots{bottom:30px}
 .review_img_layer .rv_slide .slick-dots li.slick-active button{width:24px}
 
-/* content mypage action tasting_write_page */
-
-/* content mypage action tasting_gallery_view_page */
-
-/* content mypage action my_note_lists */
-
-/* content mypage action my_note_write */
-/* .note_write_form .form_area .upload_file_area .form_box span{width:100px;line-height:40px} */
-
-/* content mypage action following_page */
-/* content mypage action follwer_note */
-
-/* content mypage action qna_lists_page */
 .mypage.qna_lists_page .top_info .tit{margin-bottom:20px}
 .mypage.qna_lists_page .faq_lists .q{flex-wrap:nowrap;padding:20px 78px 20px 30px}
 .mypage.qna_lists_page .faq_lists .q::after{top:29px;right:30px}
@@ -345,71 +305,3 @@
 .mypage.qna_lists_page .faq_lists .con{padding:0 30px 20px;font-size:16px}
 .mypage.qna_lists_page .faq_lists .con .a_txt{padding-left:48px}
 .mypage.qna_lists_page .add_q .btn_txt.btn_black{margin:60px auto 0}
-
-/* content mypage reserve reserve_list_page */
-
-/* content mypage note balance_lists_page */
-
-/* content community brandstoty_lists */
-
-/* content community brandstoty_view */
-
-/* content community magazine_lists */
-/* .magazine_con_view_page .prd_list li .item .main_img .img_con{margin-top:0}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .label{position:absolute;top:10px;left:10px}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .label span{display:block}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .label span:not(:first-of-type){margin:5px 0 0 0}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap{height:0}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap button{position:absolute;bottom:10px;width:45px;height:45px;border:1px solid #ddd;border-radius:50%;background-color:#fff}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap .like{float:none;left:10px;background-image:url(./images/community/btn_wish_lightgray.png);background-size:19px}
-.magazine_con_view_page .prd_list li .item .main_img .img_con .btn_wrap .cart{float:none;right:10px;background-image:url(./images/community/btn_cart_lightgray.png);background-size:20px} */
-
-/* content community press_lists */
-
-/* content community press_view */
-
-/* content mypage action keeping_write */
-
-/* content mypage action keeping_lists */
-/* .keeping_lists_page .js_tabCon>.btn_area{margin:10px 0}
-.keeping_lists_page .js_tabCon>.btn_area .btn_txt.btn_dgray{font-size:14px} */
-
-/* content mypage action keeping_pro_lists */
-
-/* content mypage action keeping_pro_write */
-
-/* content mypage action keeping_end_lists */
-
-/* content member forgoten_id ,forgoten_pw */
-
-/* content member forgoten_id_ok, forgoten_pw_ok */
-
-/* content member change_pw */
-
-/* content member change_pw_ok */
-
-/* content member policy privacy_con */
-
-/* company */
-
-/* company brand */
-
-/* company whatisnew */
-/* .whatisnew_page .new_con .box.txt .step li .step_img.cart{padding-right:5px}
-.whatisnew_page .new_con .box.txt .step li .step_img.mouth{padding:25px 0 0 5px} */
-
-/* content mypage shopping mypage */
-
-/* mypage account taste_profile_page */
-
-/* reserve info_page */
-
-/* reserve 공통 */
-
-/* reserve write_page */
-
-/* reserve - write_ok_page */
-
-/* reserve - pay_page */
-
-/* reserve - pay_ok_page */

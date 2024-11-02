@@ -57,13 +57,6 @@
 
 .product_lists_page .filter{position:relative;margin:80px 0 50px;/* border-left:1px solid #ddd;border-right:1px solid #ddd */}
 
-/* .product_lists_page .filter .check_type{padding:20px 150px 0 30px;border:1px solid #ddd;border-bottom:0;margin-top:-1px}
-.product_lists_page .filter .check_type.pairing.on{display:flex;flex-wrap:wrap}
-.product_lists_page .filter .check_type .checkbox{width:auto;margin-bottom:20px;margin-right:20px;padding-right:1px}
-.product_lists_page .filter .check_type.pairing .checkbox{width:calc( 25% - 15px )}
-.product_lists_page .filter .check_type.pairing .checkbox:nth-of-type(4n){margin-right: 0} */
-
-
 /* 필터 레이어 */
 .product_lists_page .filter_layer .current_filter{min-height:81px;padding:20px 67px 0 30px;border-left:1px solid #ddd;border-right:1px solid #ddd}
 .product_lists_page .filter_layer .current_filter .check_select{margin:0 5px 10px 0;padding:8px 37px 8px 15px;font-size:16px}

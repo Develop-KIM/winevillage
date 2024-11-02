@@ -162,21 +162,8 @@
 .ok_page .inner .ok_area .txt{font-size:16px;line-height:22px}
 .ok_page .inner .ok_area .btn_area{margin-top:80px}
 .ok_page .inner .ok_area .btn_area .btn_txt{width:160px}
-/* 개인정보약관동의 / 이용약관 레이어디자인 */
-/* mypage - action - recommnend_write_page */
-/* mypage - action - recommand_lists_page */
-
-/* mypage - action - recommand_view_page */
-
-/* mypage - accont - password_cert_page */
 .content.accont{padding:30px 0 120px}
 .accont .inner .page_tit{display:block;padding-bottom:30px;color:#111;font-size:30px;font-weight:700;line-height:42px;border-bottom:1px solid #555}
 .accont .inner .form_area{padding-bottom:0;border-bottom:0;margin:60px auto 0;width:500px}
-/* mypage - accont - member_modify_page */
-/* mypage - accont - sns_connect_page */
-/* mypage - accont - member_modify_page */
-/* mypage - accont - withdrawal_page */
 .withdrawal_page .inner .ok_area{margin-top:60px}
-/* mypage - accont - withdrawal_ok_page */
-/* company - about_us_page */
 

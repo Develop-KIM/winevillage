@@ -73,52 +73,6 @@
 .content.mypage .inner .page_tit .tit{display:none}
 .content.mypage .inner .page_tit .btn_txt{margin-bottom:30px}
 
-/* mypage - note - giftcard_lists_page , giftcard_give_lists_page */
-/* .giftcard_page .inner .my_gift .js_tabCon .list li .info .txt span::after{content:'';display:block;position:absolute;top:51%;right:0;transform:translateY(-50%);width:1px;height:10px;background:#ddd}
-.giftcard_page .inner .my_gift .js_tabCon .list li .info .txt span:last-of-type{padding-right:0;margin-right:0}
-.giftcard_page .inner .my_gift .js_tabCon .list li .info .txt span:last-of-type::after{display:none} */
-/* mypage - note - 선물하기내역 / 받은기프트카드 */
-/* mypage - note - giftcard_order_page */
-/* mypage - note - mileage_lists_page */
-/* .mileage_lists_page .inner .mileage_box{margin-top:30px} */
-/* .mileage_lists_page .inner .o_lists li .o_wrap .box.con{float:left;width:calc(100% - 60px)} */
-/* .mileage_lists_page .inner .mileage_box .list{border-top:1px solid #555}
-.mileage_lists_page .inner .mileage_box .list li{display:table;padding:20px;box-sizing:border-box;width:100%;border-bottom:1px solid #ddd}
-.mileage_lists_page .inner .mileage_box .list li .info{display:table-cell;vertical-align:middle}
-.mileage_lists_page .inner .mileage_box .list li .info .tit{color:#555;font-size:13px;line-height:18px}
-.mileage_lists_page .inner .mileage_box .list li .info .txt{margin-top:10px;font-size:0}
-.mileage_lists_page .inner .mileage_box .list li .info .txt span{display:inline-block;vertical-align:middle;position:relative;color:#999;font-size:12px;line-height:17px}
-.mileage_lists_page .inner .mileage_box .list li .info .txt .pay{padding-right:10px;margin-right:10px}
-.mileage_lists_page .inner .mileage_box .list li .info .txt .pay::after{content:'';display:block;position:absolute;top:50%;right:0;transform:translateY(-50%);width:1px;height:10px;background:#ddd}
-.mileage_lists_page .inner .mileage_box .list li .price_box{display:table-cell;vertical-align:top;text-align:right}
-.mileage_lists_page .inner .mileage_box .list li .price_box .price{color:#111;font-size:13px;font-weight:700;line-height:18px}
-.mileage_lists_page .inner .mileage_box .list li .price_box .price.minus{color:#999} */
-/* mypage - action - recommand_expert_lists_page */
-/* .recommand_wine .wine_list{margin-top:30px} */
-/* .recommand_wine .wine_list .list li{margin-top:20px;padding:30px;box-sizing:border-box;width:100%;border:1px solid #ddd}
-.recommand_wine .wine_list .list li:first-of-type{margin-top:0}
-.recommand_wine .wine_list .list .user_icon img{display:block;overflow:hidden;margin:0 auto;width:100px;height:100px;border-radius:50%}
-.recommand_wine .wine_list .list .user_icon .name{margin-top:10px;color:#111;font-size:20px;font-weight:500;line-height:28px;text-align:center}
-.recommand_wine .wine_list .list .info{margin-top:20px;font-size:0}
-.recommand_wine .wine_list .list .info .txt{color:#999;text-align:center;font-size:0}
-.recommand_wine .wine_list .list .info .txt span{display:inline-block;vertical-align:middle;position:relative;margin-right:10px;padding-right:10px;font-size:13px;line-height:18px}
-.recommand_wine .wine_list .list .info .txt span::after{content:'';display:block;position:absolute;top:1px;right:0;width:1px;height:15px;background:#ddd}
-.recommand_wine .wine_list .list .info .txt span:last-of-type{margin-right:0;padding-right:0}
-.recommand_wine .wine_list .list .info .txt span:last-of-type:after{display:none}
-.recommand_wine .wine_list .list .info .txt span em{padding-left:5px;color:#555;font-weight:700}
-.recommand_wine .wine_list .list .info .box{margin-top:9px;font-size:0;text-align:center}
-.recommand_wine .wine_list .list .info .box .satisfaction_txt{display:inline-block;vertical-align:middle;padding-right:5px;color:#999;font-size:13px;line-height:18px}
-.recommand_wine .wine_list .list .info .box .satisfaction{display:inline-block;vertical-align:middle;font-size:0}
-.recommand_wine .wine_list .list .info .box .satisfaction span{display:inline-block;vertical-align:middle;margin-right:2px;width:12px;height:18px}
-.recommand_wine .wine_list .list .info .box .satisfaction span:last-of-type{margin-right:0}
-.recommand_wine .wine_list .list .info .box .satisfaction span.on{background:url(../../images/default/ico_star_on.png)center 0 no-repeat;background-size:12px}
-.recommand_wine .wine_list .list .info .box .satisfaction span.off{background:url(../../images/default/ico_star_off.png)center 0 no-repeat;background-size:12px}
-.recommand_wine .wine_list .list .btn_area{margin-top:20px}
-.recommand_wine .wine_list .list .btn_area .btn_txt span{padding-left:23px;background:url(../../images/default/ico_app.png)0 center no-repeat;background-size:15px}
-.recommand_wine .wine_list .list .btn_area .btn_txt::after{display:none} */
-/* .recommand_wine .wine_list .list .table_box .info .follower_btn .btn span{padding-left:18px;background:url(../../images/mypage/ico_follower_chk.png) 0 center no-repeat;background-size:13px} */
-/* member - join - law_agreement_page */
-/* member - join - join_form_page */
 .content.join_form_page{padding:30px 20px 120px}
 .join_form_page .form_area{margin-top:30px;padding-bottom:0;border-bottom:0}
 .join_form_page .form_area li .l_tit{font-weight:500}
@@ -147,45 +101,8 @@
 .ok_page .inner .ok_area .tit{margin-top:40px;color:#333;font-size:20px;font-weight:500;line-height:28px;text-align:center}
 .ok_page .inner .ok_area .txt{margin-top:20px;color:#555;font-size:14px;line-height:20px;text-align:center}
 .ok_page .inner .ok_area .btn_area{margin-top:60px}
-/* 개인정보약관동의 / 이용약관 레이어디자인 */
-/* mypage - action - recommnend_write_page */
-/* mypage - action - recommand_lists_page */
-/* .recommand_lists_page .inner .wine_list{margin-top:30px} */
-/* mypage - action - recommand_view_page */
-/* .recommand_view_page .inner .recommand_area .recommand_list>li{margin-top:30px}
-.recommand_view_page .inner .recommand_area .recommand_list>li:first-of-type{margin-top:0}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_img{width:100%}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_img img{width:100%}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info{margin-top:30px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .tit{color:#000;font-size:16px;line-height:22px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_tit{margin-top:10px;color:#999;font-size:14px;line-height:20px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info{margin-top:20px;font-size:0}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_kinds{display:inline-block;vertical-align:middle;padding:1px 0}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_kinds .kinds{position:relative;padding:1px 0 1px 22px;color:#555;font-size:12px;line-height:18px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_kinds .kinds.red::after{content:'';display:block;position:absolute;top:0;left:0;width:18px;height:18px;background:#A90E2C;border-radius:50%}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_kinds .kinds.white{content:'';display:block;position:absolute;top:0;left:0;width:18px;height:18px;background:#A90E2C;border-radius:50%}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_kinds .kinds.champagne{content:'';display:block;position:absolute;top:0;left:0;width:18px;height:18px;background:#A90E2C;border-radius:50%}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .country{display:inline-block;vertical-align:middle;margin-left:8px;padding:1px 0}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .country span{color:#555;font-size:12px;line-height:18px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .country span img{padding-right:4px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_year_ml{display:inline-block;vertical-align:middle;margin-left:8px;font-size:0}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_year_ml .patch{display:inline-block;vertical-align:middle;margin-right:8px;padding:0 10px;box-sizing:border-box;height:20px;color:#555;font-size:12px;line-height:20px;border:1px solid #ddd}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .sub_info .wine_year_ml .patch:last-of-type{margin-right:0}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .price_area{margin-top:20px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .price_area .del_price{display:inline-block;vertical-align:middle;margin-right:4px;color:#999;font-size:14px;line-height:20px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .price_area .main_price{display:inline-block;vertical-align:middle;;color:#111;font-size:16px;font-weight:700;line-height:22px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area{margin-top:20px}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area .wish{display:inline-block;vertical-align:middle;margin-right:20px;width:24px;height:24px;text-indent:-9999px;background:url(../../images/mypage/ico_wish.png)center no-repeat}
-.recommand_view_page .inner .recommand_area .recommand_list>li .box.box_01 .wine_info .wish_area .cart{display:inline-block;vertical-align:middle;width:24px;height:24px;text-indent:-9999px;background:url(../../images/mypage/ico_cart.png)center no-repeat} */
 
-/* mypage - accont - password_cert_page */
 .accont .inner .page_tit{display:none}
 .accont .inner .form_area{padding-bottom:0;border-bottom:0}
 .accont .inner .form_area ul{border-top:0}
 .accont .inner .form_area ul li:first-of-type{margin-top:0}
-/* mypage - accont - member_modify_page */
-/* mypage - accont - sns_connect_page */
-/* mypage - accont - member_modify_page */
-/* mypage - accont - withdrawal_ok_page */
-/* company - about_us_page */
-/* voucher - voucher_view */

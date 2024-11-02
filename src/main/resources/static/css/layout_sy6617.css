@@ -178,22 +178,6 @@
 .review_img_layer .rv_slide .slick-dots li button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);text-indent:-9999px;overflow:hidden}
 .review_img_layer .rv_slide .slick-dots li.slick-active button{width:23px;border-radius:100px;background:#fff}
 
-/* 공통으로 분리 jayj */
-
-/* content mypage action tasting_write_page */
-
-/* content mypage action tasting_gallery_view_page */
-
-/* content mypage action my_note_lists */
-
-/* content mypage action my_note_write */
-
-/* content mypage action following_page */
-
-
-/* content mypage action follwer_note */
-
-/* content mypage action qna_lists_page */
 .mypage.qna_lists_page .top_info p{color:#999}
 .mypage.qna_lists_page .top_info p span{color:#111;font-weight:700;font-family:'NotoSansCJKkr',sans-serif}
 .mypage.qna_lists_page .faq_lists{margin-top:30px}
@@ -390,13 +374,6 @@
 .qna_lists_page .form_area textarea{border:1px solid #DDDDDD;outline:none}
 .qna_lists_page .btn_txt.btn_black{margin-top:30px}
 
-/* content cs special */
-
-/* content cs special_ok */
-
-/* content cs class */
-
-/* content cs store */
 .content.store_page{padding:30px 20px 120px;overflow:hidden}
 .store_page .con_top{text-align:center}
 .store_page .con_top h3{margin:15px 0;line-height:28px;font-size:20px;font-weight:500}
@@ -450,22 +427,6 @@
 .review_img_layer .rv_slide .slick-dots li button{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);text-indent:-9999px;overflow:hidden}
 .review_img_layer .rv_slide .slick-dots li.slick-active button{width:23px;border-radius:100px;background:#fff}
 
-/* 공통으로 분리 jayj */
-
-/* content mypage action tasting_write_page */
-
-/* content mypage action tasting_gallery_view_page */
-
-/* content mypage action my_note_lists */
-
-/* content mypage action my_note_write */
-
-/* content mypage action following_page */
-
-
-/* content mypage action follwer_note */
-
-/* content mypage action qna_lists_page */
 .mypage.qna_lists_page .top_info p{color:#999}
 .mypage.qna_lists_page .top_info p span{color:#111;font-weight:700;font-family:'NotoSansCJKkr',sans-serif}
 .mypage.qna_lists_page .faq_lists{margin-top:30px}
@@ -490,45 +451,7 @@
 .mypage.qna_lists_page .btn_txt{margin:30px 0 80px}
 .mypage.qna_lists_page .add_q .btn_txt.btn_black{margin:30px 0 0;font-family:'NotoSansCJKkr',sans-serif;text-align:center}
 
-/* content mypage note balance_lists_page */
 
-/* content mypage reserve reserve_list_page */
-
-/* content community brandstoty_lists */
-
-/* content community brandstoty_view */
-
-/* content community magazine_lists */
-/* .magazine_con_lists_page .magazine_view_lists li .con strong{display:block;margin-top:20px;font-size:18px;font-weight:500}
-.magazine_con_lists_page .magazine_view_lists li .con span{display:block;margin-top:10px;color:#555} */
-
-/* content community magazine_con_view */
-
-/* content community press_lists */
-
-/* content community press_view */
-
-/* content mypage action keeping_write */
-
-/* content mypage action keeping_lists */
-
-/* content mypage action keeping_end_lists */
-
-/* content member forgoten_id */
-
-/* content member forgoten_id_ok */
-
-/* content member change_pw */
-
-/* content member change_pw_ok */
-
-/* content member policy privacy_con */
-
-/* company brand */
-
-/* company whatisnew */
-
-/* header mb_lnb */
 .header .mb_lnb{position:fixed;bottom:0;left:0;width:100%;background-color:#EEEEEE;z-index:500}
 .header .mb_lnb ul{display:flex;justify-content:space-between;align-items:center}
 .header .mb_lnb ul li{flex:1;text-align:center}
@@ -563,21 +486,3 @@
 .layer.push_lists_layer .layer_area .layer_con li .btn_box{display:flex;justify-content:space-between;align-items:center;margin-top:15px}
 .layer.push_lists_layer .layer_area .layer_con li .btn_box .date{font-size:13px;color:#999}
 .layer.push_lists_layer .layer_area .layer_con li .btn_box .btn_more{display:inline-block;width:97px;height:28px;line-height:28px;border:1px solid #ddd;color:#555}
-
-/* content mypage shopping mypage */
-
-/* order barcode_view */
-
-/* mypage account taste_profile_page */
-
-/* reserve info_page */
-
-/* reserve - 공통 */
-
-/* reserve - write_page */
-
-/* reserve - write_ok_page */
-
-/* reserve - pay_page */
-
-/* reserve - pay_ok_page */
