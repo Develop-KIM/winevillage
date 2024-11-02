@@ -19,7 +19,7 @@
 
 ## 🧑‍💻 멤버구성
 <div align="center">
-  <table style="width: 100%;">
+  <table style="width: 100%; text-align: center;">
     <tr>
       <th>김동환</th>
       <th>이형렬</th>
@@ -27,16 +27,16 @@
       <th>윤주상</th>
     </tr>
     <tr>
-      <td style="text-align: center;">
+      <td>
         <a href="https://github.com/Develop-KIM">Develop-KIM</a>
       </td>
-      <td style="text-align: center;">
+      <td>
         <a href="https://github.com/lhr9264">lhr9264</a>
       </td>
-      <td style="text-align: center;">
+      <td>
         <a href="https://github.com/junuleedk">junuleedk</a>
       </td>
-      <td style="text-align: center;">
+      <td>
         <a href="https://github.com/JoostLean">JoostLean</a>
       </td>
     </tr>
@@ -45,7 +45,7 @@
         • Database 설계 및 스크립트 작성<br/>
         • 로그인, 회원가입<br/>
         • 주문 및 결제 서비스<br/>
-        • AI 와인 추천 <br/>
+        • AI 와인 추천 서비스<br/>
         • 프로젝트 통합 및 환경 관리
       </td>
       <td>
@@ -54,7 +54,8 @@
       </td>
       <td>
         • 상품 조회<br/>
-        • 주문 및 장바구니
+        • 장바구니 <br/>
+        • 주문 및 결제 서비스
       </td>
       <td>
         • 1:1 문의<br/>
