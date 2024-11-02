@@ -353,9 +353,6 @@
 .layer .layer_tit span{display:block;width:70%;overflow:hidden;margin:0 auto;text-overflow:ellipsis;white-space:nowrap}
 
 .wine_profile_layer.layer .layer_area .layer_tit em{color:#AC8B68}
-/* .wine_profile_layer.layer .layer_area .layer_con{max-height:calc(100vh - 110px)} */
-/* .wine_profile_layer .con_box .box_tit .ico_note.on::before{content:"";display:block;position:absolute;top:12px;left:0;border-top:5px solid transparent;border-right:6px solid transparent;border-bottom:5px solid #333;border-left:6px solid transparent;z-index:50}
-.wine_profile_layer .con_box .box_tit .ico_note.on::after{content:"홍길동 고객님께서 구입하신 와인 데이터를 기초로 만들어지는 테이스트 프로파일을 사용해서 고객님께서 선호할 가능성이 높은 와인을 추천합니다. 추천에 사용할 프로파일 항목을 ON/OFF 할 수 있고 추천 세부 조건을 선택하는 것도 가능합니다.";display:block;position:absolute;top:22px;left:-15px;width:280px;padding:5px;background:#333;font-size:12px;font-weight:400;letter-spacing:0.03em;color:#fff;z-index:50} */
 .wine_profile_layer.layer .layer_con>.btn_area{position:fixed;bottom:0;left:0;width:100%;padding:10px 20px;border-top:1px solid #DCDCDC;background:#fff;z-index:50}
 
 .wish_lists_page .del_area{margin-bottom:20px;text-align:right}
