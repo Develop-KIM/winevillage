@@ -6,9 +6,7 @@
 .header .bottom{display:block}
 
 .main_page.content{max-width:100%}
-/* .main_visual .m_slide .slide .txt_box{left:50%;width:600px;font-size:20px;padding:0}
-.main_visual .m_slide .slide .txt_box .txt_con{padding-bottom:130px}
-.main_visual .m_slide .slide .txt_box .tit{font-size:40px;line-height:1.5} */
+
 .main_visual{width:1200px;margin:0 auto 80px;padding:60px 0}
 .main_visual .m_slide{margin:0 -10px}
 .main_visual .m_slide .slide{margin:0 10px}
@@ -45,8 +43,7 @@
 .theme_area{margin-top:120px}
 .theme_area.product_lists_page .filter{margin-bottom:40px}
 .theme_area .prd_wrap{height:645px}
-/* .theme_area .prd_wrap .prd_list{padding-top:55px}
-.theme_area.sub_tit_wrap .prd_wrap .prd_list{padding-top:10px} */
+
 .theme_area .prd_wrap .prd_list>.sub_tit{position:absolute;top:0;margin-bottom:0;font-size:18px}
 .theme_area .prd_list{display:block;white-space:normal;overflow-x:visible;margin-right:0}
 .theme_area .prd_list li{width:384px;margin:0 12px}
@@ -68,15 +65,7 @@
 .scroll_area .prd_list .slick-arrow{border-color:#ddd;margin-top:-130px}
 .scroll_area .prd_list .slick-arrow.slick-prev{margin-left:-694px;background:url(../../images/main/pc_ico_arrow_prev.png) no-repeat 50% 50%;background-size:10px}
 .scroll_area .prd_list .slick-arrow.slick-next{margin-right:-694px;background:url(../../images/main/pc_ico_arrow_next.png) no-repeat 50% 50%;background-size:10px}
-/* .newarrivals>.sub_tit{margin-top:-30px;margin-bottom:40px;font-size:18px} */
-/* .news_area ul{justify-content:space-between;margin:0}
-.news_area li{width:282px;margin:0;border-bottom:2px solid #eee}
-.news_area li:hover{border-color:#111}
-.news_area li p{margin:20px 0 30px;font-size:20px} */
-/* .mid_bn_area.section{width:100%;padding:0} */
-/* .mid_bn_area .b_slide .slide .txt_box{padding-bottom:2%}
-.mid_bn_area .b_slide .slide .txt_box .txt_con p.txt{font-size:20px}
-.mid_bn_area .b_slide .slide .txt_box .txt_con p.tit{margin:8px 0 22px;font-size:40px} */
+
 .select_area.section{width:100%;overflow:hidden}
 .select_area .top{width:1200px;margin:0 auto}
 .select_area h2>span{vertical-align:middle}
@@ -89,8 +78,6 @@
 .select_area .prd_wrap .prd_list li:last-child{margin-right:13px}
 .select_area .prd_wrap .prd_list li .item .main_img{background:transparent}
 
-/* main_footer */
-
 .main_layer.layer{position:absolute;top:20px;left:2%;right:auto;bottom:auto}
 .main_layer:nth-of-type(2),
 .main_layer:nth-of-type(4){top:493px}
@@ -101,21 +88,6 @@
 .main_layer .layer_area .slick-dots{bottom:40px}
 .main_layer .layer_area .not_today{margin-top:20px}
 
-/* 휴면해제하기 레이어팝업 */
-.dormant_layer .display_table .table_cell{padding:0}
-.dormant_layer .layer_area .layer_close{top:33px;right:33px}
-.dormant_layer .layer_area .layer_con{padding:50px 0 40px}
-.dormant_layer .layer_area .layer_con h3.tit{font-size:32px;line-height:44px}
-.dormant_layer .layer_area .layer_con .sub_tit{font-size:16px;line-height:22px}
-.dormant_layer .layer_area .layer_con .user_year{padding:30px 0;margin:30px auto 0;width:384px}
-.dormant_layer .layer_area .layer_con .user_year p{font-size:16px;line-height:22px}
-.dormant_layer .layer_area .layer_con .sub_txt{font-size:16px;line-height:22px}
-.dormant_layer .layer_area .layer_con .mem_lists{width:500px;margin:30px auto 0}
-.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label{display:flex;justify-content:flex-start;align-items:center;padding-left:54px}
-.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label span:last-of-type{margin-top:0px}
-.dormant_layer .layer_area .layer_con .mem_lists li .checkbox label .tit{min-width:164px}
-.dormant_layer .layer_area .layer_con .btn_area{margin-top:40px}
-.dormant_layer .layer_area .layer_con .btn_area .btn_txt{width:160px}
 
 .pagination {
     display: flex;

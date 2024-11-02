@@ -118,13 +118,6 @@
 .qna_lists_page .form_area textarea{border:1px solid #DDDDDD;outline:none}
 .qna_lists_page .btn_txt.btn_black{margin-top:30px}
 
-/* content cs special */
-
-/* content cs special_ok */
-
-/* content cs class */
-
-/* content cs store */
 .content.store_page{padding:30px 20px 120px;overflow:hidden}
 .store_page .con_top{text-align:center}
 .store_page .con_top h3{margin:15px 0;line-height:28px;font-size:20px;font-weight:500}
@@ -237,23 +230,6 @@
 .layer.push_lists_layer .layer_area .layer_con li .btn_box .date{font-size:13px;color:#999}
 .layer.push_lists_layer .layer_area .layer_con li .btn_box .btn_more{display:inline-block;width:97px;height:28px;line-height:28px;border:1px solid #ddd;color:#555}
 
-/* content mypage shopping mypage */
-
-/* order barcode_view */
-
-/* mypage account taste_profile_page */
-
-/* reserve info_page */
-
-/* reserve - 공통 */
-
-/* reserve - write_page */
-
-/* reserve - write_ok_page */
-
-/* reserve - pay_page */
-
-/* reserve - pay_ok_page */
 @charset "utf-8";
 /* lnb event_lnb */
 .lnb_wrap{position:relative}
