@@ -11,11 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class CartListService {
 
-	// CartMapper 인터페이스 의존성 주입
     private final CartListMapper cartListMapper;
 
-    
-    // 생성자를 통한 의존성 주입
     @Autowired
     public CartListService(CartListMapper cartListMapper) {
         this.cartListMapper = cartListMapper;
@@ -24,10 +21,10 @@ public class CartListService {
     public boolean addProductToMemberCart(String productCode, String memberNo) {
         try {
             cartListMapper.addProductToMemberCart(productCode, memberNo);
-            return true; // 상품 추가 작업이 성공적으로 수행되었다고 가정
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // 상품 추가 작업 중 오류 발생
+            return false;
         }
     }
 
@@ -37,13 +34,12 @@ public class CartListService {
             params.put("productCode", productCode);
             params.put("cookieId", cookieId);
             cartListMapper.addProductToNonMemberCart(params);
-            return true; // 상품 추가 작업이 성공적으로 수행되었다고 가정
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // 상품 추가 작업 중 오류 발생
+            return false;
         }
     }
-
     
     public List<CartListDTO> getCartListByCookieId(String cookieId) {
         return cartListMapper.getCartListByCookieId(cookieId);
