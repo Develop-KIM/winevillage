@@ -71,5 +71,5 @@
 ### ⚙️ 개발 환경
 -  **Java버전** : `Java 17`
 -  **IDE** : IntelliJ
--  **Framwork** : Springboot(3.2.4), Mybatis(3.0.3)
+-  **Framework** : Springboot(3.2.4), Mybatis(3.0.3)
 -  **Database** : Oracle DB 11g
